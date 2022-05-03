@@ -1,0 +1,9611 @@
+# name: The location's english name
+# type: The type of location, defined in oot3d_item_location.hpp
+
+- name: Links Pocket
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0xFF
+  vanilla_item: Light Medallion
+  categories:
+  check_type: Always Collected
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: Kokiri Forest
+
+
+- name: Queen Gohma
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0x00
+  vanilla_item: Kokiri Emerald
+  categories:
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x09
+  check_group: Deku Tree
+
+
+- name: King Dodongo
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0x01
+  vanilla_item: Goron Ruby
+  categories:
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x25
+  check_group: Dodongos Cavern
+
+
+- name: Barinade
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0x02
+  vanilla_item: Zora Sapphire
+  categories:
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x37
+  check_group: Jabu Jabus Belly
+
+
+- name: Phantom Ganon
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0x03
+  vanilla_item: Forest Medallion
+  categories:
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x48
+  check_group: Forest Temple
+
+
+- name: Volvagia
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0x04
+  vanilla_item: Fire Medallion
+  categories:
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x49
+  check_group: Fire Temple
+
+
+- name: Morpha
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0x05
+  vanilla_item: Water Medallion
+  categories:
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x4A
+  check_group: Water Temple
+
+
+- name: Bongo Bongo
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0x07
+  vanilla_item: Shadow Medallion
+  categories:
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x46
+  check_group: Shadow Temple
+
+
+- name: Twinrova
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0x06
+  vanilla_item: Spirit Medallion
+  categories:
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x47
+  check_group: Spirit Temple
+
+
+- name: Ganon
+  type: Temple Reward
+  scene: 0xFF
+  flag: 0xF0
+  vanilla_item: Triforce
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: Ganons Castle
+
+
+- name: Song from Impa
+  type: Delayed
+  scene: 0xFF
+  flag: 0x26
+  vanilla_item: Zeldas Lullaby
+  categories:
+  - Hyrule Castle
+  - Market
+  - Song
+  - Song Dungeon Reward
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x59
+  check_group: Hyrule Castle
+
+
+- name: Song from Malon
+  type: Delayed
+  scene: 0xFF
+  flag: 0x27
+  vanilla_item: Eponas Song
+  categories:
+  - Lon Lon Ranch
+  - Song
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x58
+  check_group: Lon Lon Ranch
+
+
+- name: Song from Saria
+  type: Delayed
+  scene: 0xFF
+  flag: 0x28
+  vanilla_item: Sarias Song
+  categories:
+  - Sacred Forest Meadow
+  - Forest
+  - Song
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x57
+  check_group: Lost Woods
+
+
+- name: Song from Royal Familys Tomb
+  type: Delayed
+  scene: 0xFF
+  flag: 0x29
+  vanilla_item: Suns Song
+  categories:
+  - Graveyard
+  - Kakariko
+  - Song
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x5A
+  check_group: Kakariko
+
+
+- name: Song from Ocarina of Time
+  type: Delayed
+  scene: 0xFF
+  flag: 0x2A
+  vanilla_item: Song of Time
+  categories:
+  - Hyrule Field
+  - Song
+  - Need Spiritual Stones
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xA9
+  check_group: Hyrule Field
+
+
+- name: Song from Windmill
+  type: Delayed
+  scene: 0xFF
+  flag: 0x2B
+  vanilla_item: Song of Storms
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Song
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x5B
+  check_group: Kakariko
+
+
+- name: Sheik in Forest
+  type: Delayed
+  scene: 0xFF
+  flag: 0x20
+  vanilla_item: Minuet of Forest
+  categories:
+  - Sacred Forest Meadow
+  - Forest
+  - Song
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x50
+  check_group: Lost Woods
+
+
+- name: Sheik in Crater
+  type: Delayed
+  scene: 0xFF
+  flag: 0x21
+  vanilla_item: Bolero of Fire
+  categories:
+  - Death Mountain Crater
+  - Death Mountain
+  - Song
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x51
+  check_group: Death Mountain
+
+
+- name: Sheik in Ice Cavern
+  type: Delayed
+  scene: 0xFF
+  flag: 0x22
+  vanilla_item: Serenade of Water
+  categories:
+  - Ice Cavern
+  - Song
+  - Song Dungeon Reward
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x52
+  check_group: Ice Cavern
+
+
+- name: Sheik at Colossus
+  type: Delayed
+  scene: 0xFF
+  flag: 0x23
+  vanilla_item: Requiem of Spirit
+  categories:
+  - Desert Colossus
+  - Song
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xAC
+  check_group: Gerudo Valley
+
+
+- name: Sheik in Kakariko
+  type: Delayed
+  scene: 0xFF
+  flag: 0x24
+  vanilla_item: Nocturne of Shadow
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Song
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xAA
+  check_group: Kakariko
+
+
+- name: Sheik at Temple
+  type: Delayed
+  scene: 0xFF
+  flag: 0x25
+  vanilla_item: Prelude of Light
+  categories:
+  - Temple of Time
+  - Market
+  - Song
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x55
+  check_group: Hyrule Castle
+
+
+- name: KF Midos Top Left Chest
+  type: Chest
+  scene: 0x28
+  flag: 0x00
+  vanilla_item: Blue Rupee
+  categories:
+  - Kokiri Forest
+  - Forest
+  check_type: Chest
+  check_type_arg1: 0x28
+  check_type_arg2: 0x00
+  check_group: Kokiri Forest
+
+
+- name: KF Midos Top Right Chest
+  type: Chest
+  scene: 0x28
+  flag: 0x01
+  vanilla_item: Blue Rupee
+  categories:
+  - Kokiri Forest
+  - Forest
+  check_type: Chest
+  check_type_arg1: 0x28
+  check_type_arg2: 0x01
+  check_group: Kokiri Forest
+
+
+- name: KF Midos Bottom Left Chest
+  type: Chest
+  scene: 0x28
+  flag: 0x02
+  vanilla_item: Green Rupee
+  categories:
+  - Kokiri Forest
+  - Forest
+  check_type: Chest
+  check_type_arg1: 0x28
+  check_type_arg2: 0x02
+  check_group: Kokiri Forest
+
+
+- name: KF Midos Bottom Right Chest
+  type: Chest
+  scene: 0x28
+  flag: 0x03
+  vanilla_item: Recovery Heart
+  categories:
+  - Kokiri Forest
+  - Forest
+  check_type: Chest
+  check_type_arg1: 0x28
+  check_type_arg2: 0x03
+  check_group: Kokiri Forest
+
+
+- name: KF Kokiri Sword Chest
+  type: Chest
+  scene: 0x55
+  flag: 0x00
+  vanilla_item: Kokiri Sword
+  categories:
+  - Kokiri Forest
+  - Forest
+  check_type: Chest
+  check_type_arg1: 0x55
+  check_type_arg2: 0x00
+  check_group: Kokiri Forest
+
+
+- name: KF Storms Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x0C
+  vanilla_item: Red Rupee
+  categories:
+  - Kokiri Forest
+  - Forest
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x0C
+  check_group: Kokiri Forest
+
+
+- name: KF Links House Cow
+  type: Base
+  scene: 0x34
+  flag: 0x15
+  vanilla_item: Milk
+  categories:
+  - Forest
+  - Cow
+  - Minigame
+  check_type: Cow
+  check_type_arg1: 0x34
+  check_type_arg2: 0x15
+  check_group: Kokiri Forest
+
+
+- name: KF GS Know It All House
+  type: GS Token
+  scene: 0x0C
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Kokiri Forest
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0C
+  check_type_arg2: 0x02
+  check_group: Kokiri Forest
+
+
+- name: KF GS Bean Patch
+  type: GS Token
+  scene: 0x0C
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Kokiri Forest
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0C
+  check_type_arg2: 0x01
+  check_group: Kokiri Forest
+
+
+- name: KF GS House of Twins
+  type: GS Token
+  scene: 0x0C
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Kokiri Forest
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0C
+  check_type_arg2: 0x04
+  check_group: Kokiri Forest
+
+
+- name: KF Shop Item 1
+  type: Base
+  scene: 0x2D
+  flag: 0x30
+  vanilla_item: Buy Deku Shield
+  categories:
+  - Kokiri Forest
+  - Forest
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2D
+  check_type_arg2: 0x00
+  check_group: Kokiri Forest
+
+
+- name: KF Shop Item 2
+  type: Base
+  scene: 0x2D
+  flag: 0x31
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Kokiri Forest
+  - Forest
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2D
+  check_type_arg2: 0x01
+  check_group: Kokiri Forest
+
+
+- name: KF Shop Item 3
+  type: Base
+  scene: 0x2D
+  flag: 0x32
+  vanilla_item: Buy Deku Nut 10
+  categories:
+  - Kokiri Forest
+  - Forest
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2D
+  check_type_arg2: 0x02
+  check_group: Kokiri Forest
+
+
+- name: KF Shop Item 4
+  type: Base
+  scene: 0x2D
+  flag: 0x33
+  vanilla_item: Buy Deku Stick 1
+  categories:
+  - Kokiri Forest
+  - Forest
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2D
+  check_type_arg2: 0x03
+  check_group: Kokiri Forest
+
+
+- name: KF Shop Item 5
+  type: Base
+  scene: 0x2D
+  flag: 0x34
+  vanilla_item: Buy Deku Seeds 30
+  categories:
+  - Kokiri Forest
+  - Forest
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2D
+  check_type_arg2: 0x04
+  check_group: Kokiri Forest
+
+
+- name: KF Shop Item 6
+  type: Base
+  scene: 0x2D
+  flag: 0x35
+  vanilla_item: Buy Arrows 10
+  categories:
+  - Kokiri Forest
+  - Forest
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2D
+  check_type_arg2: 0x05
+  check_group: Kokiri Forest
+
+
+- name: KF Shop Item 7
+  type: Base
+  scene: 0x2D
+  flag: 0x36
+  vanilla_item: Buy Arrows 30
+  categories:
+  - Kokiri Forest
+  - Forest
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2D
+  check_type_arg2: 0x06
+  check_group: Kokiri Forest
+
+
+- name: KF Shop Item 8
+  type: Base
+  scene: 0x2D
+  flag: 0x37
+  vanilla_item: Buy Heart
+  categories:
+  - Kokiri Forest
+  - Forest
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2D
+  check_type_arg2: 0x07
+  check_group: Kokiri Forest
+
+
+- name: LW Gift from Saria
+  type: Delayed
+  scene: 0xFF
+  flag: 0x02
+  vanilla_item: Progressive Ocarina
+  categories:
+  - Lost Woods
+  - Forest
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xC1
+  check_group: Lost Woods
+
+
+- name: LW Ocarina Memory Game
+  type: Base
+  scene: 0x5B
+  flag: 0x76
+  vanilla_item: Piece of Heart
+  categories:
+  - Lost Woods
+  - Forest
+  - Minigame
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x1F
+  check_group: Lost Woods
+
+
+- name: LW Target in Woods
+  type: Base
+  scene: 0x5B
+  flag: 0x60
+  vanilla_item: Progressive Slingshot
+  categories:
+  - Lost Woods
+  - Forest
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x15
+  check_group: Lost Woods
+
+
+- name: LW Near Shortcuts Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x14
+  vanilla_item: Blue Rupee
+  categories:
+  - Lost Woods
+  - Forest
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x14
+  check_group: Lost Woods
+
+
+- name: Deku Theater Skull Mask
+  type: Base
+  scene: 0x3E
+  flag: 0x77
+  vanilla_item: Progressive Stick Capacity
+  categories:
+  - Lost Woods
+  - Forest
+  - Grotto
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x16
+  check_group: Lost Woods
+
+
+- name: Deku Theater Mask of Truth
+  type: Base
+  scene: 0x3E
+  flag: 0x7A
+  vanilla_item: Progressive Nut Capacity
+  categories:
+  - Lost Woods
+  - Forest
+  - Need Spiritual Stones
+  - Grotto
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x17
+  check_group: Lost Woods
+
+
+- name: LW Skull Kid
+  type: Base
+  scene: 0x5B
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Lost Woods
+  - Forest
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x1E
+  check_group: Lost Woods
+
+
+- name: LW Trade Cojiro
+  type: Base
+  scene: 0x5B
+  flag: 0x1F
+  vanilla_item: Odd Mushroom
+  categories:
+  - Lost Woods
+  - Forest
+  - Adult Trade
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x25
+  check_group: Lost Woods
+
+
+- name: LW Trade Odd Poultice
+  type: Base
+  scene: 0x5B
+  flag: 0x21
+  vanilla_item: Odd Poultice
+  categories:
+  - Lost Woods
+  - Forest
+  - Adult Trade
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x39
+  check_group: Lost Woods
+
+
+- name: LW Deku Scrub Near Bridge
+  type: Base
+  scene: 0x5B
+  flag: 0x77
+  vanilla_item: Progressive Stick Capacity
+  categories:
+  - Lost Woods
+  - Forest
+  - Deku Scrub
+  - Deku Scrub Upgrades
+  check_type: Scrub
+  check_type_arg1: 0x5B
+  check_type_arg2: 0x0A
+  check_group: Lost Woods
+
+
+- name: LW Deku Scrub Near Deku Theater Left
+  type: Base
+  scene: 0x5B
+  flag: 0x31
+  vanilla_item: Buy Deku Stick 1
+  categories:
+  - Lost Woods
+  - Forest
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x5B
+  check_type_arg2: 0x02
+  check_group: Lost Woods
+
+
+- name: LW Deku Scrub Near Deku Theater Right
+  type: Base
+  scene: 0x5B
+  flag: 0x30
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Lost Woods
+  - Forest
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x5B
+  check_type_arg2: 0x01
+  check_group: Lost Woods
+
+
+- name: LW Deku Scrub Grotto Front
+  type: Grotto Scrub
+  scene: 0xF5
+  flag: 0x79
+  vanilla_item: Progressive Nut Capacity
+  categories:
+  - Lost Woods
+  - Forest
+  - Deku Scrub
+  - Deku Scrub Upgrades
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x1F
+  check_type_arg2: 0x0B
+  check_group: Lost Woods
+
+
+- name: LW Deku Scrub Grotto Rear
+  type: Grotto Scrub
+  scene: 0xF5
+  flag: 0x33
+  vanilla_item: Buy Deku Seeds 30
+  categories:
+  - Lost Woods
+  - Forest
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x1F
+  check_type_arg2: 0x04
+  check_group: Lost Woods
+
+
+- name: LW GS Bean Patch Near Bridge
+  type: GS Token
+  scene: 0x0D
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lost Woods
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x01
+  check_group: Lost Woods
+
+
+- name: LW GS Bean Patch Near Theater
+  type: GS Token
+  scene: 0x0D
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lost Woods
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x02
+  check_group: Lost Woods
+
+
+- name: LW GS Above Theater
+  type: GS Token
+  scene: 0x0D
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lost Woods
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x04
+  check_group: Lost Woods
+
+
+- name: SFM Wolfos Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x11
+  vanilla_item: Purple Rupee
+  categories:
+  - Sacred Forest Meadow
+  - Forest
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x11
+  check_group: Lost Woods
+
+
+- name: SFM Deku Scrub Grotto Front
+  type: Grotto Scrub
+  scene: 0xEE
+  flag: 0x3A
+  vanilla_item: Buy Green Potion
+  categories:
+  - Sacred Forest Meadow
+  - Forest
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x18
+  check_type_arg2: 0x09
+  check_group: Lost Woods
+
+
+- name: SFM Deku Scrub Grotto Rear
+  type: Grotto Scrub
+  scene: 0xEE
+  flag: 0x39
+  vanilla_item: Buy Red Potion 30
+  categories:
+  - Sacred Forest Meadow
+  - Forest
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x18
+  check_type_arg2: 0x08
+  check_group: Lost Woods
+
+
+- name: SFM GS
+  type: GS Token
+  scene: 0x0D
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Sacred Forest Meadow
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x08
+  check_group: Lost Woods
+
+
+- name: HF Ocarina of Time Item
+  type: Base
+  scene: 0x51
+  flag: 0x0C
+  vanilla_item: Progressive Ocarina
+  categories:
+  - Hyrule Field
+  - Need Spiritual Stones
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x43
+  check_group: Hyrule Field
+
+
+- name: HF Near Market Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x00
+  vanilla_item: Blue Rupee
+  categories:
+  - Hyrule Field
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x00
+  check_group: Hyrule Field
+
+
+- name: HF Tektite Grotto Freestanding PoH
+  type: Collectable
+  scene: 0x3E
+  flag: 0x01
+  vanilla_item: Piece of Heart
+  categories:
+  - Hyrule Field
+  - Grotto
+  check_type: Collectable
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x01
+  check_group: Hyrule Field
+
+
+- name: HF Southeast Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x02
+  vanilla_item: Red Rupee
+  categories:
+  - Hyrule Field
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x02
+  check_group: Hyrule Field
+
+
+- name: HF Open Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x03
+  vanilla_item: Blue Rupee
+  categories:
+  - Hyrule Field
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x03
+  check_group: Hyrule Field
+
+
+- name: HF Deku Scrub Grotto
+  type: Grotto Scrub
+  scene: 0xE6
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Hyrule Field
+  - Deku Scrub
+  - Deku Scrub Upgrades
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x10
+  check_type_arg2: 0x03
+  check_group: Hyrule Field
+
+
+- name: HF Cow Grotto Cow
+  type: Base
+  scene: 0x3E
+  flag: 0x16
+  vanilla_item: Milk
+  categories:
+  - Hyrule Field
+  - Cow
+  - Grotto
+  check_type: Cow
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x16
+  check_group: Hyrule Field
+
+
+- name: HF GS Cow Grotto
+  type: GS Token
+  scene: 0x0A
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Hyrule Field
+  - Skulltula
+  - Grotto
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0A
+  check_type_arg2: 0x01
+  check_group: Hyrule Field
+
+
+- name: HF GS Near Kak Grotto
+  type: GS Token
+  scene: 0x0A
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Hyrule Field
+  - Skulltula
+  - Grotto
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0A
+  check_type_arg2: 0x02
+  check_group: Hyrule Field
+
+
+- name: Market Shooting Gallery Reward
+  type: Base
+  scene: 0x42
+  flag: 0x60
+  vanilla_item: Progressive Slingshot
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x05
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Bowling First Prize
+  type: Base
+  scene: 0x4B
+  flag: 0x33
+  vanilla_item: Progressive Bomb Bag
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x19
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Bowling Second Prize
+  type: Base
+  scene: 0x4B
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x1A
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Bowling Bombchus
+  type: Base
+  scene: 0x4B
+  flag: 0xFF
+  vanilla_item: Bombchu Drop
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Market Lost Dog
+  type: Base
+  scene: 0x35
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Inner Market
+  - Market
+  check_type: Inf Table
+  check_type_arg1: 0x19
+  check_type_arg2: 0x09
+  check_group: Hyrule Castle
+
+
+- name: Market Treasure Chest Game Reward
+  type: Chest
+  scene: 0x10
+  flag: 0x0A
+  vanilla_item: Treasure Game Heart
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x13
+  check_group: Hyrule Castle
+
+
+- name: Market Chest Game First Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x01
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x01
+  check_group: Hyrule Castle
+
+
+- name: Market Chest Game Second Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x03
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x03
+  check_group: Hyrule Castle
+
+
+- name: Market Chest Game Third Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x05
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x05
+  check_group: Hyrule Castle
+
+
+- name: Market Chest Game Fourth Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x07
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x07
+  check_group: Hyrule Castle
+
+
+- name: Market Chest Game Fifth Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x09
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x09
+  check_group: Hyrule Castle
+
+
+- name: Market 10 Big Poes
+  type: Base
+  scene: 0x4D
+  flag: 0x0F
+  vanilla_item: Empty Bottle
+  categories:
+  - Inner Market
+  - Market
+  check_type: Poe Points
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: Hyrule Castle
+
+
+- name: Market GS Guard House
+  type: GS Token
+  scene: 0x0E
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Inner Market
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0E
+  check_type_arg2: 0x08
+  check_group: Hyrule Castle
+
+
+- name: Market Bazaar Item 1
+  type: Base
+  scene: 0x2C
+  flag: 0x30
+  vanilla_item: Buy Hylian Shield
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2C
+  check_type_arg2: 0x00
+  check_group: Hyrule Castle
+
+
+- name: Market Bazaar Item 2
+  type: Base
+  scene: 0x2C
+  flag: 0x31
+  vanilla_item: Buy Bombs 5 35
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2C
+  check_type_arg2: 0x01
+  check_group: Hyrule Castle
+
+
+- name: Market Bazaar Item 3
+  type: Base
+  scene: 0x2C
+  flag: 0x32
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2C
+  check_type_arg2: 0x02
+  check_group: Hyrule Castle
+
+
+- name: Market Bazaar Item 4
+  type: Base
+  scene: 0x2C
+  flag: 0x33
+  vanilla_item: Buy Heart
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2C
+  check_type_arg2: 0x03
+  check_group: Hyrule Castle
+
+
+- name: Market Bazaar Item 5
+  type: Base
+  scene: 0x2C
+  flag: 0x34
+  vanilla_item: Buy Arrows 10
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2C
+  check_type_arg2: 0x04
+  check_group: Hyrule Castle
+
+
+- name: Market Bazaar Item 6
+  type: Base
+  scene: 0x2C
+  flag: 0x35
+  vanilla_item: Buy Arrows 50
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2C
+  check_type_arg2: 0x05
+  check_group: Hyrule Castle
+
+
+- name: Market Bazaar Item 7
+  type: Base
+  scene: 0x2C
+  flag: 0x36
+  vanilla_item: Buy Deku Stick 1
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2C
+  check_type_arg2: 0x06
+  check_group: Hyrule Castle
+
+
+- name: Market Bazaar Item 8
+  type: Base
+  scene: 0x2C
+  flag: 0x37
+  vanilla_item: Buy Arrows 30
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2C
+  check_type_arg2: 0x07
+  check_group: Hyrule Castle
+
+
+- name: Market Potion Shop Item 1
+  type: Base
+  scene: 0x31
+  flag: 0x30
+  vanilla_item: Buy Green Potion
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x31
+  check_type_arg2: 0x00
+  check_group: Hyrule Castle
+
+
+- name: Market Potion Shop Item 2
+  type: Base
+  scene: 0x31
+  flag: 0x31
+  vanilla_item: Buy Blue Fire
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x31
+  check_type_arg2: 0x01
+  check_group: Hyrule Castle
+
+
+- name: Market Potion Shop Item 3
+  type: Base
+  scene: 0x31
+  flag: 0x32
+  vanilla_item: Buy Red Potion 30
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x31
+  check_type_arg2: 0x02
+  check_group: Hyrule Castle
+
+
+- name: Market Potion Shop Item 4
+  type: Base
+  scene: 0x31
+  flag: 0x33
+  vanilla_item: Buy Fairys Spirit
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x31
+  check_type_arg2: 0x03
+  check_group: Hyrule Castle
+
+
+- name: Market Potion Shop Item 5
+  type: Base
+  scene: 0x31
+  flag: 0x34
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x31
+  check_type_arg2: 0x04
+  check_group: Hyrule Castle
+
+
+- name: Market Potion Shop Item 6
+  type: Base
+  scene: 0x31
+  flag: 0x35
+  vanilla_item: Buy Bottle Bug
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x31
+  check_type_arg2: 0x05
+  check_group: Hyrule Castle
+
+
+- name: Market Potion Shop Item 7
+  type: Base
+  scene: 0x31
+  flag: 0x36
+  vanilla_item: Buy Poe
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x31
+  check_type_arg2: 0x06
+  check_group: Hyrule Castle
+
+
+- name: Market Potion Shop Item 8
+  type: Base
+  scene: 0x31
+  flag: 0x37
+  vanilla_item: Buy Fish
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x31
+  check_type_arg2: 0x07
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Shop Item 1
+  type: Base
+  scene: 0x32
+  flag: 0x30
+  vanilla_item: Buy Bombchu 5
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x32
+  check_type_arg2: 0x00
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Shop Item 2
+  type: Base
+  scene: 0x32
+  flag: 0x31
+  vanilla_item: Buy Bombchu 10
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x32
+  check_type_arg2: 0x01
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Shop Item 3
+  type: Base
+  scene: 0x32
+  flag: 0x32
+  vanilla_item: Buy Bombchu 10
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x32
+  check_type_arg2: 0x02
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Shop Item 4
+  type: Base
+  scene: 0x32
+  flag: 0x33
+  vanilla_item: Buy Bombchu 10
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x32
+  check_type_arg2: 0x03
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Shop Item 5
+  type: Base
+  scene: 0x32
+  flag: 0x34
+  vanilla_item: Buy Bombchu 20
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x32
+  check_type_arg2: 0x04
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Shop Item 6
+  type: Base
+  scene: 0x32
+  flag: 0x35
+  vanilla_item: Buy Bombchu 20
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x32
+  check_type_arg2: 0x05
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Shop Item 7
+  type: Base
+  scene: 0x32
+  flag: 0x36
+  vanilla_item: Buy Bombchu 20
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x32
+  check_type_arg2: 0x06
+  check_group: Hyrule Castle
+
+
+- name: Market Bombchu Shop Item 8
+  type: Base
+  scene: 0x32
+  flag: 0x37
+  vanilla_item: Buy Bombchu 20
+  categories:
+  - Inner Market
+  - Market
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x32
+  check_type_arg2: 0x07
+  check_group: Hyrule Castle
+
+
+- name: ToT Light Arrows Cutscene
+  type: Delayed
+  scene: 0xFF
+  flag: 0x01
+  vanilla_item: Light Arrows
+  categories:
+  - Temple of Time
+  - Market
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xC4
+  check_group: Hyrule Castle
+
+
+- name: HC Malon Egg
+  type: Base
+  scene: 0x5F
+  flag: 0x47
+  vanilla_item: Weird Egg
+  categories:
+  - Hyrule Castle
+  - Market
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x12
+  check_group: Hyrule Castle
+
+
+- name: HC Zeldas Letter
+  type: Base
+  scene: 0x4A
+  flag: 0x0B
+  vanilla_item: Zeldas Letter
+  categories:
+  - Hyrule Castle
+  - Market
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x40
+  check_group: Hyrule Castle
+
+
+- name: HC Great Fairy Reward
+  type: Delayed
+  scene: 0xFF
+  flag: 0x11
+  vanilla_item: Dins Fire
+  categories:
+  - Hyrule Castle
+  - Market
+  - Fairies
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x11
+  check_group: Hyrule Castle
+
+
+- name: HC GS Tree
+  type: GS Token
+  scene: 0x0E
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Hyrule Castle
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0E
+  check_type_arg2: 0x04
+  check_group: Hyrule Castle
+
+
+- name: HC GS Storms Grotto
+  type: GS Token
+  scene: 0x0E
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Hyrule Castle
+  - Skulltula
+  - Grotto
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0E
+  check_type_arg2: 0x02
+  check_group: Hyrule Castle
+
+
+- name: LLR Talons Chickens
+  type: Base
+  scene: 0x4C
+  flag: 0x14
+  vanilla_item: Bottle with Milk
+  categories:
+  - Lon Lon Ranch
+  - Minigame
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x0A
+  check_group: Lon Lon Ranch
+
+
+- name: LLR Freestanding PoH
+  type: Collectable
+  scene: 0x4C
+  flag: 0x01
+  vanilla_item: Piece of Heart
+  categories:
+  - Lon Lon Ranch
+  check_type: Collectable
+  check_type_arg1: 0x4C
+  check_type_arg2: 0x01
+  check_group: Lon Lon Ranch
+
+
+- name: LLR Deku Scrub Grotto Left
+  type: Grotto Scrub
+  scene: 0xFC
+  flag: 0x30
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Lon Lon Ranch
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x26
+  check_type_arg2: 0x01
+  check_group: Lon Lon Ranch
+
+
+- name: LLR Deku Scrub Grotto Center
+  type: Grotto Scrub
+  scene: 0xFC
+  flag: 0x33
+  vanilla_item: Buy Deku Seeds 30
+  categories:
+  - Lon Lon Ranch
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x26
+  check_type_arg2: 0x04
+  check_group: Lon Lon Ranch
+
+
+- name: LLR Deku Scrub Grotto Right
+  type: Grotto Scrub
+  scene: 0xFC
+  flag: 0x37
+  vanilla_item: Buy Bombs 5 35
+  categories:
+  - Lon Lon Ranch
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x26
+  check_type_arg2: 0x06
+  check_group: Lon Lon Ranch
+
+
+- name: LLR Stables Left Cow
+  type: Base
+  scene: 0x36
+  flag: 0x16
+  vanilla_item: Milk
+  categories:
+  - Lon Lon Ranch
+  - Cow
+  check_type: Cow
+  check_type_arg1: 0x36
+  check_type_arg2: 0x16
+  check_group: Lon Lon Ranch
+
+
+- name: LLR Stables Right Cow
+  type: Base
+  scene: 0x36
+  flag: 0x15
+  vanilla_item: Milk
+  categories:
+  - Lon Lon Ranch
+  - Cow
+  check_type: Cow
+  check_type_arg1: 0x36
+  check_type_arg2: 0x15
+  check_group: Lon Lon Ranch
+
+
+- name: LLR Tower Left Cow
+  type: Base
+  scene: 0x4C
+  flag: 0x15
+  vanilla_item: Milk
+  categories:
+  - Lon Lon Ranch
+  - Cow
+  check_type: Cow
+  check_type_arg1: 0x4C
+  check_type_arg2: 0x16
+  check_group: Lon Lon Ranch
+
+
+- name: LLR Tower Right Cow
+  type: Base
+  scene: 0x4C
+  flag: 0x16
+  vanilla_item: Milk
+  categories:
+  - Lon Lon Ranch
+  - Cow
+  check_type: Cow
+  check_type_arg1: 0x4C
+  check_type_arg2: 0x15
+  check_group: Lon Lon Ranch
+
+
+- name: LLR GS House Window
+  type: GS Token
+  scene: 0x0B
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lon Lon Ranch
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x04
+  check_group: Lon Lon Ranch
+
+
+- name: LLR GS Tree
+  type: GS Token
+  scene: 0x0B
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lon Lon Ranch
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x08
+  check_group: Lon Lon Ranch
+
+
+- name: LLR GS Rain Shed
+  type: GS Token
+  scene: 0x0B
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lon Lon Ranch
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x02
+  check_group: Lon Lon Ranch
+
+
+- name: LLR GS Back Wall
+  type: GS Token
+  scene: 0x0B
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lon Lon Ranch
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x01
+  check_group: Lon Lon Ranch
+
+
+- name: Kak Anju as Child
+  type: Base
+  scene: 0x52
+  flag: 0x0F
+  vanilla_item: Empty Bottle
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Minigame
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x04
+  check_group: Kakariko
+
+
+- name: Kak Anju as Adult
+  type: Base
+  scene: 0x52
+  flag: 0x1D
+  vanilla_item: Claim Check
+  categories:
+  - Kakariko Village
+  - Kakariko
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x24
+  check_group: Kakariko
+
+
+- name: Kak Trade Pocket Cucco
+  type: Base
+  scene: 0x52
+  flag: 0x0E
+  vanilla_item: Cojiro
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Adult Trade
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x26
+  check_group: Kakariko
+
+
+- name: Kak Impas House Freestanding PoH
+  type: Collectable
+  scene: 0x37
+  flag: 0x01
+  vanilla_item: Piece of Heart
+  categories:
+  - Kakariko Village
+  - Kakariko
+  check_type: Collectable
+  check_type_arg1: 0x37
+  check_type_arg2: 0x01
+  check_group: Kakariko
+
+
+- name: Kak Windmill Freestanding PoH
+  type: Collectable
+  scene: 0x48
+  flag: 0x01
+  vanilla_item: Piece of Heart
+  categories:
+  - Kakariko Village
+  - Kakariko
+  check_type: Collectable
+  check_type_arg1: 0x48
+  check_type_arg2: 0x01
+  check_group: Kakariko
+
+
+- name: Kak Man on Roof
+  type: Base
+  scene: 0x52
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Kakariko Village
+  - Kakariko
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x1D
+  check_group: Kakariko
+
+
+- name: Kak Open Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x08
+  vanilla_item: Red Rupee
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x08
+  check_group: Kakariko
+
+
+- name: Kak Redead Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x0A
+  vanilla_item: Huge Rupee
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x0A
+  check_group: Kakariko
+
+
+- name: Kak Shooting Gallery Reward
+  type: Base
+  scene: 0x42
+  flag: 0x30
+  vanilla_item: Progressive Bow
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Minigame
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x06
+  check_group: Kakariko
+
+
+- name: Kak Trade Odd Mushroom
+  type: Base
+  scene: 0x4E
+  flag: 0x20
+  vanilla_item: Odd Poultice
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Adult Trade
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x38
+  check_group: Kakariko
+
+
+- name: Kak 10 Gold Skulltula Reward
+  type: Base
+  scene: 0x50
+  flag: 0x45
+  vanilla_item: Progressive Wallet
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Skulltula House
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xDA
+  check_group: Kakariko
+
+
+- name: Kak 20 Gold Skulltula Reward
+  type: Base
+  scene: 0x50
+  flag: 0x39
+  vanilla_item: Shard of Agony
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Skulltula House
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xDB
+  check_group: Kakariko
+
+
+- name: Kak 30 Gold Skulltula Reward
+  type: Base
+  scene: 0x50
+  flag: 0x46
+  vanilla_item: Progressive Wallet
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Skulltula House
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xDC
+  check_group: Kakariko
+
+
+- name: Kak 40 Gold Skulltula Reward
+  type: Base
+  scene: 0x50
+  flag: 0x03
+  vanilla_item: Bombchus 10
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Skulltula House
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xDD
+  check_group: Kakariko
+
+
+- name: Kak 50 Gold Skulltula Reward
+  type: Base
+  scene: 0x50
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Skulltula House
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xDE
+  check_group: Kakariko
+
+
+- name: Kak Impas House Cow
+  type: Base
+  scene: 0x37
+  flag: 0x15
+  vanilla_item: Milk
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Cow
+  check_type: Cow
+  check_type_arg1: 0x37
+  check_type_arg2: 0x15
+  check_group: Kakariko
+
+
+- name: Kak GS Tree
+  type: GS Token
+  scene: 0x10
+  flag: 0x20
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Kakariko Village
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x10
+  check_type_arg2: 0x20
+  check_group: Kakariko
+
+
+- name: Kak GS Guards House
+  type: GS Token
+  scene: 0x10
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Kakariko Village
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x10
+  check_type_arg2: 0x02
+  check_group: Kakariko
+
+
+- name: Kak GS Watchtower
+  type: GS Token
+  scene: 0x10
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Kakariko Village
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x10
+  check_type_arg2: 0x04
+  check_group: Kakariko
+
+
+- name: Kak GS Skulltula House
+  type: GS Token
+  scene: 0x10
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Kakariko Village
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x10
+  check_type_arg2: 0x10
+  check_group: Kakariko
+
+
+- name: Kak GS House Under Construction
+  type: GS Token
+  scene: 0x10
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Kakariko Village
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x10
+  check_type_arg2: 0x08
+  check_group: Kakariko
+
+
+- name: Kak GS Above Impas House
+  type: GS Token
+  scene: 0x10
+  flag: 0x40
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Kakariko Village
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x10
+  check_type_arg2: 0x40
+  check_group: Kakariko
+
+
+- name: Kak Bazaar Item 1
+  type: Base
+  scene: 0x2C
+  flag: 0x38
+  vanilla_item: Buy Hylian Shield
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x33
+  check_type_arg2: 0x00
+  check_group: Kakariko
+
+
+- name: Kak Bazaar Item 2
+  type: Base
+  scene: 0x2C
+  flag: 0x39
+  vanilla_item: Buy Bombs 5 35
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x33
+  check_type_arg2: 0x01
+  check_group: Kakariko
+
+
+- name: Kak Bazaar Item 3
+  type: Base
+  scene: 0x2C
+  flag: 0x3A
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x33
+  check_type_arg2: 0x02
+  check_group: Kakariko
+
+
+- name: Kak Bazaar Item 4
+  type: Base
+  scene: 0x2C
+  flag: 0x3B
+  vanilla_item: Buy Heart
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x33
+  check_type_arg2: 0x03
+  check_group: Kakariko
+
+
+- name: Kak Bazaar Item 5
+  type: Base
+  scene: 0x2C
+  flag: 0x3C
+  vanilla_item: Buy Arrows 10
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x33
+  check_type_arg2: 0x04
+  check_group: Kakariko
+
+
+- name: Kak Bazaar Item 6
+  type: Base
+  scene: 0x2C
+  flag: 0x3D
+  vanilla_item: Buy Arrows 50
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x33
+  check_type_arg2: 0x05
+  check_group: Kakariko
+
+
+- name: Kak Bazaar Item 7
+  type: Base
+  scene: 0x2C
+  flag: 0x3E
+  vanilla_item: Buy Deku Stick 1
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x33
+  check_type_arg2: 0x06
+  check_group: Kakariko
+
+
+- name: Kak Bazaar Item 8
+  type: Base
+  scene: 0x2C
+  flag: 0x3F
+  vanilla_item: Buy Arrows 30
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x33
+  check_type_arg2: 0x07
+  check_group: Kakariko
+
+
+- name: Kak Potion Shop Item 1
+  type: Base
+  scene: 0x30
+  flag: 0x30
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x30
+  check_type_arg2: 0x00
+  check_group: Kakariko
+
+
+- name: Kak Potion Shop Item 2
+  type: Base
+  scene: 0x30
+  flag: 0x31
+  vanilla_item: Buy Fish
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x30
+  check_type_arg2: 0x01
+  check_group: Kakariko
+
+
+- name: Kak Potion Shop Item 3
+  type: Base
+  scene: 0x30
+  flag: 0x32
+  vanilla_item: Buy Red Potion 30
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x30
+  check_type_arg2: 0x02
+  check_group: Kakariko
+
+
+- name: Kak Potion Shop Item 4
+  type: Base
+  scene: 0x30
+  flag: 0x33
+  vanilla_item: Buy Green Potion
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x30
+  check_type_arg2: 0x03
+  check_group: Kakariko
+
+
+- name: Kak Potion Shop Item 5
+  type: Base
+  scene: 0x30
+  flag: 0x34
+  vanilla_item: Buy Blue Fire
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x30
+  check_type_arg2: 0x04
+  check_group: Kakariko
+
+
+- name: Kak Potion Shop Item 6
+  type: Base
+  scene: 0x30
+  flag: 0x35
+  vanilla_item: Buy Bottle Bug
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x30
+  check_type_arg2: 0x05
+  check_group: Kakariko
+
+
+- name: Kak Potion Shop Item 7
+  type: Base
+  scene: 0x30
+  flag: 0x36
+  vanilla_item: Buy Poe
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x30
+  check_type_arg2: 0x06
+  check_group: Kakariko
+
+
+- name: Kak Potion Shop Item 8
+  type: Base
+  scene: 0x30
+  flag: 0x37
+  vanilla_item: Buy Fairys Spirit
+  categories:
+  - Kakariko Village
+  - Kakariko
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x30
+  check_type_arg2: 0x07
+  check_group: Kakariko
+
+
+- name: Graveyard Shield Grave Chest
+  type: Chest
+  scene: 0x40
+  flag: 0x00
+  vanilla_item: Hylian Shield
+  categories:
+  - Graveyard
+  - Kakariko
+  check_type: Chest
+  check_type_arg1: 0x40
+  check_type_arg2: 0x00
+  check_group: Kakariko
+
+
+- name: Graveyard Heart Piece Grave Chest
+  type: Chest
+  scene: 0x3F
+  flag: 0x00
+  vanilla_item: Piece of Heart
+  categories:
+  - Graveyard
+  - Kakariko
+  check_type: Chest
+  check_type_arg1: 0x3F
+  check_type_arg2: 0x00
+  check_group: Kakariko
+
+
+- name: Graveyard Royal Familys Tomb Chest
+  type: Chest
+  scene: 0x41
+  flag: 0x00
+  vanilla_item: Bombs 5
+  categories:
+  - Graveyard
+  - Kakariko
+  check_type: Chest
+  check_type_arg1: 0x41
+  check_type_arg2: 0x00
+  check_group: Kakariko
+
+
+- name: Graveyard Freestanding PoH
+  type: Collectable
+  scene: 0x53
+  flag: 0x04
+  vanilla_item: Piece of Heart
+  categories:
+  - Graveyard
+  - Kakariko
+  check_type: Collectable
+  check_type_arg1: 0x53
+  check_type_arg2: 0x04
+  check_group: Kakariko
+
+
+- name: Graveyard Dampe Gravedigging Tour
+  type: Collectable
+  scene: 0x53
+  flag: 0x08
+  vanilla_item: Piece of Heart
+  categories:
+  - Graveyard
+  - Kakariko
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x14
+  check_group: Kakariko
+
+
+- name: Graveyard Hookshot Chest
+  type: Chest
+  scene: 0x48
+  flag: 0x00
+  vanilla_item: Progressive Hookshot
+  categories:
+  - Graveyard
+  - Kakariko
+  check_type: Chest
+  check_type_arg1: 0x48
+  check_type_arg2: 0x00
+  check_group: Kakariko
+
+
+- name: Graveyard Dampe Race Freestanding PoH
+  type: Collectable
+  scene: 0x48
+  flag: 0x07
+  vanilla_item: Piece of Heart
+  categories:
+  - Graveyard
+  - Kakariko
+  - Minigame
+  check_type: Collectable
+  check_type_arg1: 0x48
+  check_type_arg2: 0x07
+  check_group: Kakariko
+
+
+- name: Graveyard GS Bean Patch
+  type: GS Token
+  scene: 0x10
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Graveyard
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x10
+  check_type_arg2: 0x01
+  check_group: Kakariko
+
+
+- name: Graveyard GS Wall
+  type: GS Token
+  scene: 0x10
+  flag: 0x80
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Graveyard
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x10
+  check_type_arg2: 0x80
+  check_group: Kakariko
+
+
+- name: DMT Freestanding PoH
+  type: Collectable
+  scene: 0x60
+  flag: 0x1E
+  vanilla_item: Piece of Heart
+  categories:
+  - Death Mountain Trail
+  - Death Mountain
+  check_type: Collectable
+  check_type_arg1: 0x60
+  check_type_arg2: 0x1E
+  check_group: Death Mountain
+
+
+- name: DMT Chest
+  type: Chest
+  scene: 0x60
+  flag: 0x01
+  vanilla_item: Purple Rupee
+  categories:
+  - Death Mountain Trail
+  - Death Mountain
+  check_type: Chest
+  check_type_arg1: 0x60
+  check_type_arg2: 0x01
+  check_group: Death Mountain
+
+
+- name: DMT Storms Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x17
+  vanilla_item: Huge Rupee
+  categories:
+  - Death Mountain Trail
+  - Death Mountain
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x17
+  check_group: Death Mountain
+
+
+- name: DMT Great Fairy Reward
+  type: Delayed
+  scene: 0xFF
+  flag: 0x13
+  vanilla_item: Progressive Magic Meter
+  categories:
+  - Death Mountain Trail
+  - Death Mountain
+  - Fairies
+  check_type: Chest
+  check_type_arg1: 0x3B
+  check_type_arg2: 0x00
+  check_group: Death Mountain
+
+
+- name: DMT Trade Broken Sword
+  type: Base
+  scene: 0x60
+  flag: 0x23
+  vanilla_item: Prescription
+  categories:
+  - Death Mountain Trail
+  - Death Mountain
+  - Adult Trade
+  check_type: Biggoron
+  check_type_arg1: 0x00
+  check_type_arg2: 0x04
+  check_group: Death Mountain
+
+
+- name: DMT Trade Eyedrops
+  type: Base
+  scene: 0x60
+  flag: 0x26
+  vanilla_item: Claim Check
+  categories:
+  - Death Mountain Trail
+  - Death Mountain
+  - Adult Trade
+  check_type: Biggoron
+  check_type_arg1: 0x00
+  check_type_arg2: 0x02
+  check_group: Death Mountain
+
+
+- name: DMT Trade Claim Check
+  type: Base
+  scene: 0x60
+  flag: 0x57
+  vanilla_item: Biggorons Sword
+  categories:
+  - Death Mountain Trail
+  - Death Mountain
+  check_type: Biggoron
+  check_type_arg1: 0x00
+  check_type_arg2: 0x01
+  check_group: Death Mountain
+
+
+- name: DMT Cow Grotto Cow
+  type: Base
+  scene: 0x3E
+  flag: 0x15
+  vanilla_item: Milk
+  categories:
+  - Death Mountain Trail
+  - Death Mountain
+  - Cow
+  - Grotto
+  check_type: Cow
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x15
+  check_group: Death Mountain
+
+
+- name: DMT GS Near Kak
+  type: GS Token
+  scene: 0x0F
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Death Mountain Trail
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0F
+  check_type_arg2: 0x04
+  check_group: Death Mountain
+
+
+- name: DMT GS Bean Patch
+  type: GS Token
+  scene: 0x0F
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Death Mountain Trail
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0F
+  check_type_arg2: 0x02
+  check_group: Death Mountain
+
+
+- name: DMT GS Above Dodongos Cavern
+  type: GS Token
+  scene: 0x0F
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Death Mountain Trail
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0F
+  check_type_arg2: 0x08
+  check_group: Death Mountain
+
+
+- name: DMT GS Falling Rocks Path
+  type: GS Token
+  scene: 0x0F
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Death Mountain Trail
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0F
+  check_type_arg2: 0x10
+  check_group: Death Mountain
+
+
+- name: GC Darunias Joy
+  type: Base
+  scene: 0x62
+  flag: 0x54
+  vanilla_item: Progressive Strength Upgrade
+  categories:
+  - Goron City
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x36
+  check_group: Goron City
+
+
+- name: GC Pot Freestanding PoH
+  type: Collectable
+  scene: 0x62
+  flag: 0x1F
+  vanilla_item: Piece of Heart
+  categories:
+  - Goron City
+  check_type: Collectable
+  check_type_arg1: 0x62
+  check_type_arg2: 0x1F
+  check_group: Goron City
+
+
+- name: GC Rolling Goron as Child
+  type: Base
+  scene: 0x62
+  flag: 0x34
+  vanilla_item: Progressive Bomb Bag
+  categories:
+  - Goron City
+  check_type: Inf Table
+  check_type_arg1: 0x11
+  check_type_arg2: 0x06
+  check_group: Goron City
+
+
+- name: GC Rolling Goron as Adult
+  type: Base
+  scene: 0x62
+  flag: 0x2C
+  vanilla_item: Goron Tunic
+  categories:
+  - Goron City
+  check_type: Inf Table
+  check_type_arg1: 0x10
+  check_type_arg2: 0x01
+  check_group: Goron City
+
+
+- name: GC Medigoron
+  type: Base
+  scene: 0x62
+  flag: 0x51
+  vanilla_item: Giants Knife
+  categories:
+  - Goron City
+  - Merchant
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x35
+  check_group: Goron City
+
+
+- name: GC Maze Left Chest
+  type: Chest
+  scene: 0x62
+  flag: 0x00
+  vanilla_item: Huge Rupee
+  categories:
+  - Goron City
+  check_type: Chest
+  check_type_arg1: 0x62
+  check_type_arg2: 0x00
+  check_group: Goron City
+
+
+- name: GC Maze Right Chest
+  type: Chest
+  scene: 0x62
+  flag: 0x01
+  vanilla_item: Purple Rupee
+  categories:
+  - Goron City
+  check_type: Chest
+  check_type_arg1: 0x62
+  check_type_arg2: 0x01
+  check_group: Goron City
+
+
+- name: GC Maze Center Chest
+  type: Chest
+  scene: 0x62
+  flag: 0x02
+  vanilla_item: Purple Rupee
+  categories:
+  - Goron City
+  check_type: Chest
+  check_type_arg1: 0x62
+  check_type_arg2: 0x02
+  check_group: Goron City
+
+
+- name: GC Deku Scrub Grotto Left
+  type: Grotto Scrub
+  scene: 0xFB
+  flag: 0x30
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Goron City
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x25
+  check_type_arg2: 0x01
+  check_group: Goron City
+
+
+- name: GC Deku Scrub Grotto Center
+  type: Grotto Scrub
+  scene: 0xFB
+  flag: 0x33
+  vanilla_item: Buy Arrows 30
+  categories:
+  - Goron City
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x25
+  check_type_arg2: 0x04
+  check_group: Goron City
+
+
+- name: GC Deku Scrub Grotto Right
+  type: Grotto Scrub
+  scene: 0xFB
+  flag: 0x37
+  vanilla_item: Buy Bombs 5 35
+  categories:
+  - Goron City
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x25
+  check_type_arg2: 0x06
+  check_group: Goron City
+
+
+- name: GC GS Center Platform
+  type: GS Token
+  scene: 0x0F
+  flag: 0x20
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Goron City
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0F
+  check_type_arg2: 0x20
+  check_group: Goron City
+
+
+- name: GC GS Boulder Maze
+  type: GS Token
+  scene: 0x0F
+  flag: 0x40
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Goron City
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0F
+  check_type_arg2: 0x40
+  check_group: Goron City
+
+
+- name: GC Shop Item 1
+  type: Base
+  scene: 0x2E
+  flag: 0x30
+  vanilla_item: Buy Bombs 5 25
+  categories:
+  - Goron City
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2E
+  check_type_arg2: 0x00
+  check_group: Goron City
+
+
+- name: GC Shop Item 2
+  type: Base
+  scene: 0x2E
+  flag: 0x31
+  vanilla_item: Buy Bombs 10
+  categories:
+  - Goron City
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2E
+  check_type_arg2: 0x01
+  check_group: Goron City
+
+
+- name: GC Shop Item 3
+  type: Base
+  scene: 0x2E
+  flag: 0x32
+  vanilla_item: Buy Bombs 20
+  categories:
+  - Goron City
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2E
+  check_type_arg2: 0x02
+  check_group: Goron City
+
+
+- name: GC Shop Item 4
+  type: Base
+  scene: 0x2E
+  flag: 0x33
+  vanilla_item: Buy Bombs 30
+  categories:
+  - Goron City
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2E
+  check_type_arg2: 0x03
+  check_group: Goron City
+
+
+- name: GC Shop Item 5
+  type: Base
+  scene: 0x2E
+  flag: 0x34
+  vanilla_item: Buy Goron Tunic
+  categories:
+  - Goron City
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2E
+  check_type_arg2: 0x04
+  check_group: Goron City
+
+
+- name: GC Shop Item 6
+  type: Base
+  scene: 0x2E
+  flag: 0x35
+  vanilla_item: Buy Heart
+  categories:
+  - Goron City
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2E
+  check_type_arg2: 0x05
+  check_group: Goron City
+
+
+- name: GC Shop Item 7
+  type: Base
+  scene: 0x2E
+  flag: 0x36
+  vanilla_item: Buy Red Potion 40
+  categories:
+  - Goron City
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2E
+  check_type_arg2: 0x06
+  check_group: Goron City
+
+
+- name: GC Shop Item 8
+  type: Base
+  scene: 0x2E
+  flag: 0x37
+  vanilla_item: Buy Heart
+  categories:
+  - Goron City
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2E
+  check_type_arg2: 0x07
+  check_group: Goron City
+
+
+- name: DMC Volcano Freestanding PoH
+  type: Collectable
+  scene: 0x61
+  flag: 0x08
+  vanilla_item: Piece of Heart
+  categories:
+  - Death Mountain Crater
+  - Death Mountain
+  check_type: Collectable
+  check_type_arg1: 0x61
+  check_type_arg2: 0x08
+  check_group: Death Mountain
+
+
+- name: DMC Wall Freestanding PoH
+  type: Collectable
+  scene: 0x61
+  flag: 0x02
+  vanilla_item: Piece of Heart
+  categories:
+  - Death Mountain Crater
+  - Death Mountain
+  check_type: Collectable
+  check_type_arg1: 0x61
+  check_type_arg2: 0x02
+  check_group: Death Mountain
+
+
+- name: DMC Upper Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x1A
+  vanilla_item: Bombs 20
+  categories:
+  - Death Mountain Crater
+  - Death Mountain
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x1A
+  check_group: Death Mountain
+
+
+- name: DMC Great Fairy Reward
+  type: Delayed
+  scene: 0xFF
+  flag: 0x14
+  vanilla_item: Progressive Magic Meter
+  categories:
+  - Death Mountain Crater
+  - Death Mountain
+  - Fairies
+  check_type: Chest
+  check_type_arg1: 0x3B
+  check_type_arg2: 0x01
+  check_group: Death Mountain
+
+
+- name: DMC Deku Scrub
+  type: Base
+  scene: 0x61
+  flag: 0x37
+  vanilla_item: Buy Bombs 5 35
+  categories:
+  - Death Mountain Crater
+  - Death Mountain
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x61
+  check_type_arg2: 0x06
+  check_group: Death Mountain
+
+
+- name: DMC Deku Scrub Grotto Left
+  type: Grotto Scrub
+  scene: 0xF9
+  flag: 0x30
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Death Mountain Crater
+  - Death Mountain
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x23
+  check_type_arg2: 0x01
+  check_group: Death Mountain
+
+
+- name: DMC Deku Scrub Grotto Center
+  type: Grotto Scrub
+  scene: 0xF9
+  flag: 0x33
+  vanilla_item: Buy Arrows 30
+  categories:
+  - Death Mountain Crater
+  - Death Mountain
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x23
+  check_type_arg2: 0x04
+  check_group: Death Mountain
+
+
+- name: DMC Deku Scrub Grotto Right
+  type: Grotto Scrub
+  scene: 0xF9
+  flag: 0x37
+  vanilla_item: Buy Bombs 5 35
+  categories:
+  - Death Mountain Crater
+  - Death Mountain
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x23
+  check_type_arg2: 0x06
+  check_group: Death Mountain
+
+
+- name: DMC GS Crate
+  type: GS Token
+  scene: 0x0F
+  flag: 0x80
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Death Mountain Crater
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0F
+  check_type_arg2: 0x80
+  check_group: Death Mountain
+
+
+- name: DMC GS Bean Patch
+  type: GS Token
+  scene: 0x0F
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Death Mountain Crater
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0F
+  check_type_arg2: 0x01
+  check_group: Death Mountain
+
+
+- name: ZR Magic Bean Salesman
+  type: Base
+  scene: 0x54
+  flag: 0x16
+  vanilla_item: Magic Bean
+  categories:
+  - Zoras River
+  check_type: Magic Beans
+  check_type_arg1: 0x54
+  check_type_arg2: 0x01
+  check_group: Zoras River
+
+
+- name: ZR Open Grotto Chest
+  type: Chest
+  scene: 0x3E
+  flag: 0x09
+  vanilla_item: Red Rupee
+  categories:
+  - Zoras River
+  - Grotto
+  check_type: Chest
+  check_type_arg1: 0x3E
+  check_type_arg2: 0x09
+  check_group: Zoras River
+
+
+- name: ZR Frogs in the Rain
+  type: Base
+  scene: 0x54
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Zoras River
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xD6
+  check_group: Zoras River
+
+
+- name: ZR Frogs Ocarina Game
+  type: Base
+  scene: 0x54
+  flag: 0x76
+  vanilla_item: Piece of Heart
+  categories:
+  - Zoras River
+  - Minigame
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xD0
+  check_group: Zoras River
+
+
+- name: ZR Near Open Grotto Freestanding PoH
+  type: Collectable
+  scene: 0x54
+  flag: 0x04
+  vanilla_item: Piece of Heart
+  categories:
+  - Zoras River
+  check_type: Collectable
+  check_type_arg1: 0x54
+  check_type_arg2: 0x04
+  check_group: Zoras River
+
+
+- name: ZR Near Domain Freestanding PoH
+  type: Collectable
+  scene: 0x54
+  flag: 0x0B
+  vanilla_item: Piece of Heart
+  categories:
+  - Zoras River
+  check_type: Collectable
+  check_type_arg1: 0x54
+  check_type_arg2: 0x0B
+  check_group: Zoras River
+
+
+- name: ZR Deku Scrub Grotto Front
+  type: Grotto Scrub
+  scene: 0xEB
+  flag: 0x3A
+  vanilla_item: Buy Green Potion
+  categories:
+  - Zoras River
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x15
+  check_type_arg2: 0x09
+  check_group: Zoras River
+
+
+- name: ZR Deku Scrub Grotto Rear
+  type: Grotto Scrub
+  scene: 0xEB
+  flag: 0x39
+  vanilla_item: Buy Red Potion 30
+  categories:
+  - Zoras River
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x15
+  check_type_arg2: 0x08
+  check_group: Zoras River
+
+
+- name: ZR GS Tree
+  type: GS Token
+  scene: 0x11
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Zoras River
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x11
+  check_type_arg2: 0x02
+  check_group: Zoras River
+
+
+- name: ZR GS Ladder
+  type: GS Token
+  scene: 0x11
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Zoras River
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x11
+  check_type_arg2: 0x01
+  check_group: Zoras River
+
+
+- name: ZR GS Near Raised Grottos
+  type: GS Token
+  scene: 0x11
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Zoras River
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x11
+  check_type_arg2: 0x10
+  check_group: Zoras River
+
+
+- name: ZR GS Above Bridge
+  type: GS Token
+  scene: 0x11
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Zoras River
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x11
+  check_type_arg2: 0x08
+  check_group: Zoras River
+
+
+- name: ZD Diving Minigame
+  type: Base
+  scene: 0x58
+  flag: 0x37
+  vanilla_item: Progressive Scale
+  categories:
+  - Zoras Domain
+  - Minigame
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x38
+  check_group: Zoras Domain
+
+
+- name: ZD Chest
+  type: Chest
+  scene: 0x58
+  flag: 0x00
+  vanilla_item: Piece of Heart
+  categories:
+  - Zoras Domain
+  check_type: Chest
+  check_type_arg1: 0x58
+  check_type_arg2: 0x00
+  check_group: Zoras Domain
+
+
+- name: ZD King Zora Thawed
+  type: Base
+  scene: 0x58
+  flag: 0x2D
+  vanilla_item: Zora Tunic
+  categories:
+  - Zoras Domain
+  check_type: Inf Table
+  check_type_arg1: 0x13
+  check_type_arg2: 0x01
+  check_group: Zoras Domain
+
+
+- name: ZD Trade Prescription
+  type: Base
+  scene: 0x58
+  flag: 0x24
+  vanilla_item: Eyeball Frog
+  categories:
+  - Zoras Domain
+  - Adult Trade
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x3C
+  check_group: Zoras Domain
+
+
+- name: ZD GS Frozen Waterfall
+  type: GS Token
+  scene: 0x11
+  flag: 0x40
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Zoras Domain
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x11
+  check_type_arg2: 0x40
+  check_group: Zoras Domain
+
+
+- name: ZD Shop Item 1
+  type: Base
+  scene: 0x2F
+  flag: 0x30
+  vanilla_item: Buy Zora Tunic
+  categories:
+  - Zoras Domain
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2F
+  check_type_arg2: 0x00
+  check_group: Zoras Domain
+
+
+- name: ZD Shop Item 2
+  type: Base
+  scene: 0x2F
+  flag: 0x31
+  vanilla_item: Buy Arrows 10
+  categories:
+  - Zoras Domain
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2F
+  check_type_arg2: 0x01
+  check_group: Zoras Domain
+
+
+- name: ZD Shop Item 3
+  type: Base
+  scene: 0x2F
+  flag: 0x32
+  vanilla_item: Buy Heart
+  categories:
+  - Zoras Domain
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2F
+  check_type_arg2: 0x02
+  check_group: Zoras Domain
+
+
+- name: ZD Shop Item 4
+  type: Base
+  scene: 0x2F
+  flag: 0x33
+  vanilla_item: Buy Arrows 30
+  categories:
+  - Zoras Domain
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2F
+  check_type_arg2: 0x03
+  check_group: Zoras Domain
+
+
+- name: ZD Shop Item 5
+  type: Base
+  scene: 0x2F
+  flag: 0x34
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Zoras Domain
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2F
+  check_type_arg2: 0x04
+  check_group: Zoras Domain
+
+
+- name: ZD Shop Item 6
+  type: Base
+  scene: 0x2F
+  flag: 0x35
+  vanilla_item: Buy Arrows 50
+  categories:
+  - Zoras Domain
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2F
+  check_type_arg2: 0x05
+  check_group: Zoras Domain
+
+
+- name: ZD Shop Item 7
+  type: Base
+  scene: 0x2F
+  flag: 0x36
+  vanilla_item: Buy Fish
+  categories:
+  - Zoras Domain
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2F
+  check_type_arg2: 0x06
+  check_group: Zoras Domain
+
+
+- name: ZD Shop Item 8
+  type: Base
+  scene: 0x2F
+  flag: 0x37
+  vanilla_item: Buy Red Potion 50
+  categories:
+  - Zoras Domain
+  - Shop
+  check_type: Shop Item
+  check_type_arg1: 0x2F
+  check_type_arg2: 0x07
+  check_group: Zoras Domain
+
+
+- name: ZF Great Fairy Reward
+  type: Delayed
+  scene: 0xFF
+  flag: 0x10
+  vanilla_item: Farores Wind
+  categories:
+  - Zoras Fountain
+  - Fairies
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x10
+  check_group: Zoras Domain
+
+
+- name: ZF Iceberg Freestanding PoH
+  type: Collectable
+  scene: 0x59
+  flag: 0x01
+  vanilla_item: Piece of Heart
+  categories:
+  - Zoras Fountain
+  check_type: Collectable
+  check_type_arg1: 0x59
+  check_type_arg2: 0x01
+  check_group: Zoras Domain
+
+
+- name: ZF Bottom Freestanding PoH
+  type: Collectable
+  scene: 0x59
+  flag: 0x14
+  vanilla_item: Piece of Heart
+  categories:
+  - Zoras Fountain
+  check_type: Collectable
+  check_type_arg1: 0x59
+  check_type_arg2: 0x14
+  check_group: Zoras Domain
+
+
+- name: ZF GS Above the Log
+  type: GS Token
+  scene: 0x11
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Zoras Fountain
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x11
+  check_type_arg2: 0x04
+  check_group: Zoras Domain
+
+
+- name: ZF GS Tree
+  type: GS Token
+  scene: 0x11
+  flag: 0x80
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Zoras Fountain
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x11
+  check_type_arg2: 0x80
+  check_group: Zoras Domain
+
+
+- name: ZF GS Hidden Cave
+  type: GS Token
+  scene: 0x11
+  flag: 0x20
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Zoras Fountain
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x11
+  check_type_arg2: 0x20
+  check_group: Zoras Domain
+
+
+- name: LH Underwater Item
+  type: Base
+  scene: 0x57
+  flag: 0x15
+  vanilla_item: Rutos Letter
+  categories:
+  - Lake Hylia
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x31
+  check_group: Lake Hylia
+
+
+- name: LH Child Fishing
+  type: Base
+  scene: 0x49
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Lake Hylia
+  - Minigame
+  check_type: Minigame
+  check_type_arg1: 0x00
+  check_type_arg2: 0x02
+  check_group: Lake Hylia
+
+
+- name: LH Adult Fishing
+  type: Base
+  scene: 0x49
+  flag: 0x38
+  vanilla_item: Progressive Scale
+  categories:
+  - Lake Hylia
+  - Minigame
+  check_type: Minigame
+  check_type_arg1: 0x00
+  check_type_arg2: 0x03
+  check_group: Lake Hylia
+
+
+- name: LH Lab Dive
+  type: Base
+  scene: 0x38
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Lake Hylia
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x18
+  check_group: Lake Hylia
+
+
+- name: LH Lab Trade Eyeball Frog
+  type: Base
+  scene: 0x38
+  flag: 0x25
+  vanilla_item: Worlds Finest Eyedrops
+  categories:
+  - Lake Hylia
+  - Adult Trade
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x3D
+  check_group: Lake Hylia
+
+
+- name: LH Freestanding PoH
+  type: Collectable
+  scene: 0x57
+  flag: 0x1E
+  vanilla_item: Piece of Heart
+  categories:
+  - Lake Hylia
+  check_type: Collectable
+  check_type_arg1: 0x57
+  check_type_arg2: 0x1E
+  check_group: Lake Hylia
+
+
+- name: LH Sun
+  type: Base
+  scene: 0x57
+  flag: 0x58
+  vanilla_item: Fire Arrows
+  categories:
+  - Lake Hylia
+  check_type: Chest
+  check_type_arg1: 0x57
+  check_type_arg2: 0x00
+  check_group: Lake Hylia
+
+
+- name: LH Deku Scrub Grotto Left
+  type: Grotto Scrub
+  scene: 0xEF
+  flag: 0x30
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Lake Hylia
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x19
+  check_type_arg2: 0x01
+  check_group: Lake Hylia
+
+
+- name: LH Deku Scrub Grotto Center
+  type: Grotto Scrub
+  scene: 0xEF
+  flag: 0x33
+  vanilla_item: Buy Deku Seeds 30
+  categories:
+  - Lake Hylia
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x19
+  check_type_arg2: 0x04
+  check_group: Lake Hylia
+
+
+- name: LH Deku Scrub Grotto Right
+  type: Grotto Scrub
+  scene: 0xEF
+  flag: 0x37
+  vanilla_item: Buy Bombs 5 35
+  categories:
+  - Lake Hylia
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x19
+  check_type_arg2: 0x06
+  check_group: Lake Hylia
+
+
+- name: LH GS Bean Patch
+  type: GS Token
+  scene: 0x12
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lake Hylia
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x12
+  check_type_arg2: 0x01
+  check_group: Lake Hylia
+
+
+- name: LH GS Lab Wall
+  type: GS Token
+  scene: 0x12
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lake Hylia
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x12
+  check_type_arg2: 0x04
+  check_group: Lake Hylia
+
+
+- name: LH GS Small Island
+  type: GS Token
+  scene: 0x12
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lake Hylia
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x12
+  check_type_arg2: 0x02
+  check_group: Lake Hylia
+
+
+- name: LH GS Lab Crate
+  type: GS Token
+  scene: 0x12
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lake Hylia
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x12
+  check_type_arg2: 0x08
+  check_group: Lake Hylia
+
+
+- name: LH GS Tree
+  type: GS Token
+  scene: 0x12
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Lake Hylia
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x12
+  check_type_arg2: 0x10
+  check_group: Lake Hylia
+
+
+- name: GV Crate Freestanding PoH
+  type: Collectable
+  scene: 0x5A
+  flag: 0x02
+  vanilla_item: Piece of Heart
+  categories:
+  - Gerudo Valley
+  - Gerudo
+  check_type: Collectable
+  check_type_arg1: 0x5A
+  check_type_arg2: 0x02
+  check_group: Gerudo Valley
+
+
+- name: GV Waterfall Freestanding PoH
+  type: Collectable
+  scene: 0x5A
+  flag: 0x01
+  vanilla_item: Piece of Heart
+  categories:
+  - Gerudo Valley
+  - Gerudo
+  check_type: Collectable
+  check_type_arg1: 0x5A
+  check_type_arg2: 0x01
+  check_group: Gerudo Valley
+
+
+- name: GV Chest
+  type: Chest
+  scene: 0x5A
+  flag: 0x00
+  vanilla_item: Purple Rupee
+  categories:
+  - Gerudo Valley
+  - Gerudo
+  check_type: Chest
+  check_type_arg1: 0x5A
+  check_type_arg2: 0x00
+  check_group: Gerudo Valley
+
+
+- name: GV Trade Saw
+  type: Base
+  scene: 0x5A
+  flag: 0x22
+  vanilla_item: Broken Gorons Sword
+  categories:
+  - Gerudo Valley
+  - Gerudo
+  - Adult Trade
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x3A
+  check_group: Gerudo Valley
+
+
+- name: GV Deku Scrub Grotto Front
+  type: Grotto Scrub
+  scene: 0xF0
+  flag: 0x3A
+  vanilla_item: Buy Green Potion
+  categories:
+  - Gerudo Valley
+  - Gerudo
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x1A
+  check_type_arg2: 0x09
+  check_group: Gerudo Valley
+
+
+- name: GV Deku Scrub Grotto Rear
+  type: Grotto Scrub
+  scene: 0xF0
+  flag: 0x39
+  vanilla_item: Buy Red Potion 30
+  categories:
+  - Gerudo Valley
+  - Gerudo
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x1A
+  check_type_arg2: 0x08
+  check_group: Gerudo Valley
+
+
+- name: GV Cow
+  type: Base
+  scene: 0x5A
+  flag: 0x15
+  vanilla_item: Milk
+  categories:
+  - Gerudo Valley
+  - Gerudo
+  - Cow
+  check_type: Cow
+  check_type_arg1: 0x5A
+  check_type_arg2: 0x15
+  check_group: Gerudo Valley
+
+
+- name: GV GS Small Bridge
+  type: GS Token
+  scene: 0x13
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Gerudo Valley
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x13
+  check_type_arg2: 0x02
+  check_group: Gerudo Valley
+
+
+- name: GV GS Bean Patch
+  type: GS Token
+  scene: 0x13
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Gerudo Valley
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x13
+  check_type_arg2: 0x01
+  check_group: Gerudo Valley
+
+
+- name: GV GS Behind Tent
+  type: GS Token
+  scene: 0x13
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Gerudo Valley
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x13
+  check_type_arg2: 0x08
+  check_group: Gerudo Valley
+
+
+- name: GV GS Pillar
+  type: GS Token
+  scene: 0x13
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Gerudo Valley
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x13
+  check_type_arg2: 0x04
+  check_group: Gerudo Valley
+
+
+- name: Hideout Jail Guard 1 Torch
+  type: Collectable
+  scene: 0x0C
+  flag: 0x0C
+  vanilla_item: Thieves Hideout Small Key
+  categories:
+  - Thieves Hideout
+  - Gerudo
+  - Vanilla TH Small Key
+  check_type: Collectable
+  check_type_arg1: 0x0C
+  check_type_arg2: 0x0C
+  check_group: Gerudo Valley
+
+
+- name: Hideout Jail Guard 3 Torches
+  type: Collectable
+  scene: 0x0C
+  flag: 0x0A
+  vanilla_item: Thieves Hideout Small Key
+  categories:
+  - Thieves Hideout
+  - Gerudo
+  - Vanilla TH Small Key
+  check_type: Collectable
+  check_type_arg1: 0x0C
+  check_type_arg2: 0x0A
+  check_group: Gerudo Valley
+
+
+- name: Hideout Jail Guard 4 Torches
+  type: Collectable
+  scene: 0x0C
+  flag: 0x0E
+  vanilla_item: Thieves Hideout Small Key
+  categories:
+  - Thieves Hideout
+  - Gerudo
+  - Vanilla TH Small Key
+  check_type: Collectable
+  check_type_arg1: 0x0C
+  check_type_arg2: 0x0E
+  check_group: Gerudo Valley
+
+
+- name: Hideout Jail Guard 4 Torches
+  type: Collectable
+  scene: 0x0C
+  flag: 0x0F
+  vanilla_item: Thieves Hideout Small Key
+  categories:
+  - Thieves Hideout
+  - Gerudo
+  - Vanilla TH Small Key
+  check_type: Collectable
+  check_type_arg1: 0x0C
+  check_type_arg2: 0x0F
+  check_group: Gerudo Valley
+
+
+- name: Hideout Gerudo Token
+  type: Base
+  scene: 0x0C
+  flag: 0x3A
+  vanilla_item: Gerudo Token
+  categories:
+  - Thieves Hideout
+  - Gerudo
+  check_type: Gerudo Token
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: Gerudo Valley
+
+
+- name: GF Chest
+  type: Chest
+  scene: 0x5D
+  flag: 0x00
+  vanilla_item: Piece of Heart
+  categories:
+  - Gerudo Fortress
+  - Gerudo
+  check_type: Chest
+  check_type_arg1: 0x5D
+  check_type_arg2: 0x00
+  check_group: Gerudo Valley
+
+
+- name: GF HBA 1000 Points
+  type: Base
+  scene: 0x5D
+  flag: 0x3E
+  vanilla_item: Piece of Heart
+  categories:
+  - Gerudo Fortress
+  - Gerudo
+  - Minigame
+  check_type: Inf Table
+  check_type_arg1: 0x19
+  check_type_arg2: 0x08
+  check_group: Gerudo Valley
+
+
+- name: GF HBA 1500 Points
+  type: Base
+  scene: 0x5D
+  flag: 0x30
+  vanilla_item: Progressive Bow
+  categories:
+  - Gerudo Fortress
+  - Gerudo
+  - Minigame
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x07
+  check_group: Gerudo Valley
+
+
+- name: GF GS Top Floor
+  type: GS Token
+  scene: 0x14
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Gerudo Fortress
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x14
+  check_type_arg2: 0x02
+  check_group: Gerudo Valley
+
+
+- name: GF GS Archery Range
+  type: GS Token
+  scene: 0x14
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Gerudo Fortress
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x14
+  check_type_arg2: 0x01
+  check_group: Gerudo Valley
+
+
+- name: Wasteland Bombchu Salesman
+  type: Base
+  scene: 0x5E
+  flag: 0x03
+  vanilla_item: Bombchus 10
+  categories:
+  - Haunted Wasteland
+  - Merchant
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x34
+  check_group: Gerudo Valley
+
+
+- name: Wasteland Chest
+  type: Chest
+  scene: 0x5E
+  flag: 0x00
+  vanilla_item: Purple Rupee
+  categories:
+  - Haunted Wasteland
+  check_type: Chest
+  check_type_arg1: 0x5E
+  check_type_arg2: 0x00
+  check_group: Gerudo Valley
+
+
+- name: Wasteland GS
+  type: GS Token
+  scene: 0x15
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Haunted Wasteland
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x15
+  check_type_arg2: 0x02
+  check_group: Gerudo Valley
+
+
+- name: Colossus Great Fairy Reward
+  type: Delayed
+  scene: 0xFF
+  flag: 0x12
+  vanilla_item: Nayrus Love
+  categories:
+  - Desert Colossus
+  - Fairies
+  check_type: Item Get Inf
+  check_type_arg1: 0x00
+  check_type_arg2: 0x12
+  check_group: Gerudo Valley
+
+
+- name: Colossus Freestanding PoH
+  type: Collectable
+  scene: 0x5C
+  flag: 0x0D
+  vanilla_item: Piece of Heart
+  categories:
+  - Desert Colossus
+  check_type: Collectable
+  check_type_arg1: 0x5C
+  check_type_arg2: 0x0D
+  check_group: Gerudo Valley
+
+
+- name: Colossus Deku Scrub Grotto Front
+  type: Grotto Scrub
+  scene: 0xFD
+  flag: 0x3A
+  vanilla_item: Buy Green Potion
+  categories:
+  - Desert Colossus
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x27
+  check_type_arg2: 0x09
+  check_group: Gerudo Valley
+
+
+- name: Colossus Deku Scrub Grotto Rear
+  type: Grotto Scrub
+  scene: 0xFD
+  flag: 0x39
+  vanilla_item: Buy Red Potion 30
+  categories:
+  - Desert Colossus
+  - Deku Scrub
+  - Grotto
+  check_type: Scrub
+  check_type_arg1: 0x27
+  check_type_arg2: 0x08
+  check_group: Gerudo Valley
+
+
+- name: Colossus GS Bean Patch
+  type: GS Token
+  scene: 0x15
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Desert Colossus
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x15
+  check_type_arg2: 0x01
+  check_group: Gerudo Valley
+
+
+- name: Colossus GS Tree
+  type: GS Token
+  scene: 0x15
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Desert Colossus
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x15
+  check_type_arg2: 0x08
+  check_group: Gerudo Valley
+
+
+- name: Colossus GS Hill
+  type: GS Token
+  scene: 0x15
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Desert Colossus
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x15
+  check_type_arg2: 0x04
+  check_group: Gerudo Valley
+
+
+- name: OGC Great Fairy Reward
+  type: Delayed
+  scene: 0xFF
+  flag: 0x15
+  vanilla_item: Double Defense
+  categories:
+  - Outside Ganons Castle
+  - Fairies
+  check_type: Chest
+  check_type_arg1: 0x3B
+  check_type_arg2: 0x02
+  check_group: Ganons Castle
+
+
+- name: OGC GS
+  type: GS Token
+  scene: 0x0E
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Outside Ganons Castle
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x0E
+  check_type_arg2: 0x01
+  check_group: Ganons Castle
+
+
+- name: Deku Tree Map Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x03
+  vanilla_item: Deku Tree Map
+  categories:
+  - Deku Tree
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x03
+  check_group: Deku Tree
+
+
+- name: Deku Tree Slingshot Room Side Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x05
+  vanilla_item: Recovery Heart
+  categories:
+  - Deku Tree
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x05
+  check_group: Deku Tree
+
+
+- name: Deku Tree Slingshot Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x01
+  vanilla_item: Progressive Slingshot
+  categories:
+  - Deku Tree
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x01
+  check_group: Deku Tree
+
+
+- name: Deku Tree Compass Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x02
+  vanilla_item: Deku Tree Compass
+  categories:
+  - Deku Tree
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x02
+  check_group: Deku Tree
+
+
+- name: Deku Tree Compass Room Side Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x06
+  vanilla_item: Recovery Heart
+  categories:
+  - Deku Tree
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x06
+  check_group: Deku Tree
+
+
+- name: Deku Tree Basement Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x04
+  vanilla_item: Recovery Heart
+  categories:
+  - Deku Tree
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x04
+  check_group: Deku Tree
+
+
+- name: Deku Tree GS Compass Room
+  type: GS Token
+  scene: 0x00
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Deku Tree
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x00
+  check_type_arg2: 0x08
+  check_group: Deku Tree
+
+
+- name: Deku Tree GS Basement Vines
+  type: GS Token
+  scene: 0x00
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Deku Tree
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x00
+  check_type_arg2: 0x04
+  check_group: Deku Tree
+
+
+- name: Deku Tree GS Basement Gate
+  type: GS Token
+  scene: 0x00
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Deku Tree
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x00
+  check_type_arg2: 0x02
+  check_group: Deku Tree
+
+
+- name: Deku Tree GS Basement Back Room
+  type: GS Token
+  scene: 0x00
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Deku Tree
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x00
+  check_type_arg2: 0x01
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ Map Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x03
+  vanilla_item: Deku Tree Map
+  categories:
+  - Deku Tree
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x03
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ Slingshot Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x06
+  vanilla_item: Progressive Slingshot
+  categories:
+  - Deku Tree
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x06
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ Slingshot Room Back Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x02
+  vanilla_item: Deku Shield
+  categories:
+  - Deku Tree
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x02
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ Compass Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x01
+  vanilla_item: Deku Tree Compass
+  categories:
+  - Deku Tree
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x01
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ Basement Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x04
+  vanilla_item: Deku Shield
+  categories:
+  - Deku Tree
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x04
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ Before Spinning Log Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x05
+  vanilla_item: Recovery Heart
+  categories:
+  - Deku Tree
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x05
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ After Spinning Log Chest
+  type: Chest
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Purple Rupee
+  categories:
+  - Deku Tree
+  check_type: Chest
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ Deku Scrub
+  type: Base
+  scene: 0x00
+  flag: 0x34
+  vanilla_item: Buy Deku Shield
+  categories:
+  - Deku Tree
+  check_type: Scrub
+  check_type_arg1: 0x00
+  check_type_arg2: 0x05
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ GS Lobby
+  type: GS Token
+  scene: 0x00
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Deku Tree
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x00
+  check_type_arg2: 0x02
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ GS Compass Room
+  type: GS Token
+  scene: 0x00
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Deku Tree
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x00
+  check_type_arg2: 0x08
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ GS Basement Graves Room
+  type: GS Token
+  scene: 0x00
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Deku Tree
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x00
+  check_type_arg2: 0x04
+  check_group: Deku Tree
+
+
+- name: Deku Tree MQ GS Basement Back Room
+  type: GS Token
+  scene: 0x00
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Deku Tree
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x00
+  check_type_arg2: 0x01
+  check_group: Deku Tree
+
+
+- name: Deku Tree Queen Gohma Heart
+  type: Base
+  scene: 0x11
+  flag: 0x4F
+  vanilla_item: Heart Container
+  categories:
+  - Deku Tree
+  - Boss Heart
+  - Song Dungeon Reward
+  check_type: Collectable
+  check_type_arg1: 0x11
+  check_type_arg2: 0x1F
+  check_group: Deku Tree
+
+
+- name: Dodongos Cavern Map Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x08
+  vanilla_item: Dodongos Cavern Map
+  categories:
+  - Dodongos Cavern
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x08
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern Compass Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x05
+  vanilla_item: Dodongos Cavern Compass
+  categories:
+  - Dodongos Cavern
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x05
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern Bomb Flower Platform Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x06
+  vanilla_item: Red Rupee
+  categories:
+  - Dodongos Cavern
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x06
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern Bomb Bag Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x04
+  vanilla_item: Progressive Bomb Bag
+  categories:
+  - Dodongos Cavern
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x04
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern End of Bridge Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x0A
+  vanilla_item: Deku Shield
+  categories:
+  - Dodongos Cavern
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x0A
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern Deku Scrub Side Room Near Dodongos
+  type: Base
+  scene: 0x01
+  flag: 0x31
+  vanilla_item: Buy Deku Stick 1
+  categories:
+  - Dodongos Cavern
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x01
+  check_type_arg2: 0x02
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern Deku Scrub Lobby
+  type: Base
+  scene: 0x01
+  flag: 0x34
+  vanilla_item: Buy Deku Shield
+  categories:
+  - Dodongos Cavern
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x01
+  check_type_arg2: 0x05
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern Deku Scrub Near Bomb Bag Left
+  type: Base
+  scene: 0x01
+  flag: 0x30
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Dodongos Cavern
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x01
+  check_type_arg2: 0x01
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern Deku Scrub Near Bomb Bag Right
+  type: Base
+  scene: 0x01
+  flag: 0x33
+  vanilla_item: Buy Deku Seeds 30
+  categories:
+  - Dodongos Cavern
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x01
+  check_type_arg2: 0x04
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern GS Side Room Near Lower Lizalfos
+  type: GS Token
+  scene: 0x01
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x10
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern GS Scarecrow
+  type: GS Token
+  scene: 0x01
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x02
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern GS Alcove Above Stairs
+  type: GS Token
+  scene: 0x01
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x04
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern GS Vines Above Stairs
+  type: GS Token
+  scene: 0x01
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x01
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern GS Back Room
+  type: GS Token
+  scene: 0x01
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x08
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Map Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x00
+  vanilla_item: Dodongos Cavern Map
+  categories:
+  - Dodongos Cavern
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x00
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Bomb Bag Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x04
+  vanilla_item: Progressive Bomb Bag
+  categories:
+  - Dodongos Cavern
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x04
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Torch Puzzle Room Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x03
+  vanilla_item: Blue Rupee
+  categories:
+  - Dodongos Cavern
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x03
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Larvae Room Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x02
+  vanilla_item: Deku Shield
+  categories:
+  - Dodongos Cavern
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x02
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Compass Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x05
+  vanilla_item: Dodongos Cavern Compass
+  categories:
+  - Dodongos Cavern
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x05
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Under Grave Chest
+  type: Chest
+  scene: 0x01
+  flag: 0x01
+  vanilla_item: Hylian Shield
+  categories:
+  - Dodongos Cavern
+  check_type: Chest
+  check_type_arg1: 0x01
+  check_type_arg2: 0x01
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Deku Scrub Lobby Front
+  type: Base
+  scene: 0x01
+  flag: 0x33
+  vanilla_item: Buy Deku Seeds 30
+  categories:
+  - Dodongos Cavern
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x01
+  check_type_arg2: 0x04
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Deku Scrub Lobby Rear
+  type: Base
+  scene: 0x01
+  flag: 0x31
+  vanilla_item: Buy Deku Stick 1
+  categories:
+  - Dodongos Cavern
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x01
+  check_type_arg2: 0x02
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Deku Scrub Side Room Near Lower Lizalfos
+  type: Base
+  scene: 0x01
+  flag: 0x39
+  vanilla_item: Buy Red Potion 30
+  categories:
+  - Dodongos Cavern
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x01
+  check_type_arg2: 0x08
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ Deku Scrub Staircase
+  type: Base
+  scene: 0x01
+  flag: 0x34
+  vanilla_item: Buy Deku Shield
+  categories:
+  - Dodongos Cavern
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x01
+  check_type_arg2: 0x05
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ GS Scrub Room
+  type: GS Token
+  scene: 0x01
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x02
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ GS Larvae Room
+  type: GS Token
+  scene: 0x01
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x10
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ GS Lizalfos Room
+  type: GS Token
+  scene: 0x01
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x04
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ GS Song of Time Block Room
+  type: GS Token
+  scene: 0x01
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x08
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern MQ GS Back Area
+  type: GS Token
+  scene: 0x01
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Dodongos Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x01
+  check_type_arg2: 0x01
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern Boss Room Chest
+  type: Chest
+  scene: 0x12
+  flag: 0x00
+  vanilla_item: Bombs 5
+  categories:
+  - Dodongos Cavern
+  check_type: Chest
+  check_type_arg1: 0x12
+  check_type_arg2: 0x00
+  check_group: Dodongos Cavern
+
+
+- name: Dodongos Cavern King Dodongo Heart
+  type: Base
+  scene: 0x12
+  flag: 0x4F
+  vanilla_item: Heart Container
+  categories:
+  - Dodongos Cavern
+  - Boss Heart
+  - Song Dungeon Reward
+  check_type: Collectable
+  check_type_arg1: 0x12
+  check_type_arg2: 0x1F
+  check_group: Dodongos Cavern
+
+
+- name: Jabu Jabus Belly Boomerang Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x01
+  vanilla_item: Boomerang
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x01
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly Map Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x02
+  vanilla_item: Jabu Jabus Belly Map
+  categories:
+  - Jabu Jabus Belly
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x02
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly Compass Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x04
+  vanilla_item: Jabu Jabus Belly Compass
+  categories:
+  - Jabu Jabus Belly
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x04
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly Deku Scrub
+  type: Base
+  scene: 0x02
+  flag: 0x30
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Jabu Jabus Belly
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x02
+  check_type_arg2: 0x01
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly GS Water Switch Room
+  type: GS Token
+  scene: 0x02
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Jabu Jabus Belly
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x02
+  check_type_arg2: 0x08
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly GS Lobby Basement Lower
+  type: GS Token
+  scene: 0x02
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Jabu Jabus Belly
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x02
+  check_type_arg2: 0x01
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly GS Lobby Basement Upper
+  type: GS Token
+  scene: 0x02
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Jabu Jabus Belly
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x02
+  check_type_arg2: 0x02
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly GS Near Boss
+  type: GS Token
+  scene: 0x02
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Jabu Jabus Belly
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x02
+  check_type_arg2: 0x04
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Map Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x03
+  vanilla_item: Jabu Jabus Belly Map
+  categories:
+  - Jabu Jabus Belly
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x03
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ First Room Side Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x05
+  vanilla_item: Deku Nuts 5
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x05
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Second Room Lower Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x02
+  vanilla_item: Deku Nuts 5
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x02
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Compass Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x00
+  vanilla_item: Jabu Jabus Belly Compass
+  categories:
+  - Jabu Jabus Belly
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x00
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Basement Near Switches Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x08
+  vanilla_item: Deku Nuts 5
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x08
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Basement Near Vines Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x04
+  vanilla_item: Bombchus 10
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x04
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Boomerang Room Small Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x01
+  vanilla_item: Deku Nuts 5
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x01
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Boomerang Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x06
+  vanilla_item: Boomerang
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x06
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Falling Like Like Room Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x09
+  vanilla_item: Deku Stick 1
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x09
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Second Room Upper Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x07
+  vanilla_item: Recovery Heart
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x07
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Near Boss Chest
+  type: Chest
+  scene: 0x02
+  flag: 0x0A
+  vanilla_item: Deku Shield
+  categories:
+  - Jabu Jabus Belly
+  check_type: Chest
+  check_type_arg1: 0x02
+  check_type_arg2: 0x0A
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ Cow
+  type: Base
+  scene: 0x02
+  flag: 0x15
+  vanilla_item: Milk
+  categories:
+  - Jabu Jabus Belly
+  - Cow
+  check_type: Cow
+  check_type_arg1: 0x02
+  check_type_arg2: 0x15
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ GS Boomerang Chest Room
+  type: GS Token
+  scene: 0x02
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Jabu Jabus Belly
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x02
+  check_type_arg2: 0x01
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ GS Tailpasaran Room
+  type: GS Token
+  scene: 0x02
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Jabu Jabus Belly
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x02
+  check_type_arg2: 0x04
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ GS Invisible Enemies Room
+  type: GS Token
+  scene: 0x02
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Jabu Jabus Belly
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x02
+  check_type_arg2: 0x08
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly MQ GS Near Boss
+  type: GS Token
+  scene: 0x02
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Jabu Jabus Belly
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x02
+  check_type_arg2: 0x02
+  check_group: Jabu Jabus Belly
+
+
+- name: Jabu Jabus Belly Barinade Heart
+  type: Base
+  scene: 0x13
+  flag: 0x4F
+  vanilla_item: Heart Container
+  categories:
+  - Jabu Jabus Belly
+  - Boss Heart
+  - Song Dungeon Reward
+  check_type: Collectable
+  check_type_arg1: 0x13
+  check_type_arg2: 0x1F
+  check_group: Jabu Jabus Belly
+
+
+- name: Bottom of the Well Front Left Fake Wall Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x08
+  vanilla_item: Bottom of the Well Small Key
+  categories:
+  - Bottom of the Well
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x08
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Front Center Bombable Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x02
+  vanilla_item: Bombchus 10
+  categories:
+  - Bottom of the Well
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x02
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Back Left Bombable Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x04
+  vanilla_item: Deku Nuts 10
+  categories:
+  - Bottom of the Well
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x04
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Underwater Left Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x09
+  vanilla_item: Recovery Heart
+  categories:
+  - Bottom of the Well
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x09
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Freestanding Key
+  type: Collectable
+  scene: 0x08
+  flag: 0x01
+  vanilla_item: Bottom of the Well Small Key
+  categories:
+  - Bottom of the Well
+  - Vanilla Small Key
+  check_type: Collectable
+  check_type_arg1: 0x08
+  check_type_arg2: 0x01
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Compass Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x01
+  vanilla_item: Bottom of the Well Compass
+  categories:
+  - Bottom of the Well
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x01
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Center Skulltula Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x0E
+  vanilla_item: Deku Nuts 5
+  categories:
+  - Bottom of the Well
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x0E
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Right Bottom Fake Wall Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x05
+  vanilla_item: Bottom of the Well Small Key
+  categories:
+  - Bottom of the Well
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x05
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Fire Keese Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x0A
+  vanilla_item: Deku Shield
+  categories:
+  - Bottom of the Well
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x0A
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Like Like Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x0C
+  vanilla_item: Hylian Shield
+  categories:
+  - Bottom of the Well
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x0C
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Map Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x07
+  vanilla_item: Bottom of the Well Map
+  categories:
+  - Bottom of the Well
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x07
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Underwater Front Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x10
+  vanilla_item: Bombs 10
+  categories:
+  - Bottom of the Well
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x10
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Invisible Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x14
+  vanilla_item: Huge Rupee
+  categories:
+  - Bottom of the Well
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x14
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well Lens of Truth Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x03
+  vanilla_item: Lens of Truth
+  categories:
+  - Bottom of the Well
+  - Song Dungeon Reward
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x03
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well GS West Inner Room
+  type: GS Token
+  scene: 0x08
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Bottom of the Well
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x08
+  check_type_arg2: 0x04
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well GS East Inner Room
+  type: GS Token
+  scene: 0x08
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Bottom of the Well
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x08
+  check_type_arg2: 0x02
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well GS Like Like Cage
+  type: GS Token
+  scene: 0x08
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Bottom of the Well
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x08
+  check_type_arg2: 0x01
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well MQ Map Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x03
+  vanilla_item: Bottom of the Well Map
+  categories:
+  - Bottom of the Well
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x03
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well MQ East Inner Room Freestanding Key
+  type: Collectable
+  scene: 0x08
+  flag: 0x01
+  vanilla_item: Bottom of the Well Small Key
+  categories:
+  - Bottom of the Well
+  - Vanilla Small Key
+  check_type: Collectable
+  check_type_arg1: 0x08
+  check_type_arg2: 0x01
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well MQ Compass Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x02
+  vanilla_item: Bottom of the Well Compass
+  categories:
+  - Bottom of the Well
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x02
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well MQ Dead Hand Freestanding Key
+  type: Collectable
+  scene: 0x08
+  flag: 0x02
+  vanilla_item: Bottom of the Well Small Key
+  categories:
+  - Bottom of the Well
+  - Vanilla Small Key
+  check_type: Collectable
+  check_type_arg1: 0x08
+  check_type_arg2: 0x02
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well MQ Lens of Truth Chest
+  type: Chest
+  scene: 0x08
+  flag: 0x01
+  vanilla_item: Lens of Truth
+  categories:
+  - Bottom of the Well
+  - Song Dungeon Reward
+  check_type: Chest
+  check_type_arg1: 0x08
+  check_type_arg2: 0x01
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well MQ GS Coffin Room
+  type: GS Token
+  scene: 0x08
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Bottom of the Well
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x08
+  check_type_arg2: 0x04
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well MQ GS West Inner Room
+  type: GS Token
+  scene: 0x08
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Bottom of the Well
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x08
+  check_type_arg2: 0x02
+  check_group: Bottom of the Well
+
+
+- name: Bottom of the Well MQ GS Basement
+  type: GS Token
+  scene: 0x08
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Bottom of the Well
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x08
+  check_type_arg2: 0x01
+  check_group: Bottom of the Well
+
+
+- name: Forest Temple First Room Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x03
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x03
+  check_group: Forest Temple
+
+
+- name: Forest Temple First Stalfos Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x00
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x00
+  check_group: Forest Temple
+
+
+- name: Forest Temple Raised Island Courtyard Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x05
+  vanilla_item: Recovery Heart
+  categories:
+  - Forest Temple
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x05
+  check_group: Forest Temple
+
+
+- name: Forest Temple Map Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x01
+  vanilla_item: Forest Temple Map
+  categories:
+  - Forest Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x01
+  check_group: Forest Temple
+
+
+- name: Forest Temple Well Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x09
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x09
+  check_group: Forest Temple
+
+
+- name: Forest Temple Eye Switch Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x04
+  vanilla_item: Arrows 30
+  categories:
+  - Forest Temple
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x04
+  check_group: Forest Temple
+
+
+- name: Forest Temple Boss Key Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0E
+  vanilla_item: Forest Temple Boss Key
+  categories:
+  - Forest Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0E
+  check_group: Forest Temple
+
+
+- name: Forest Temple Floormaster Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x02
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x02
+  check_group: Forest Temple
+
+
+- name: Forest Temple Red Poe Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0D
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0D
+  check_group: Forest Temple
+
+
+- name: Forest Temple Bow Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0C
+  vanilla_item: Progressive Bow
+  categories:
+  - Forest Temple
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0C
+  check_group: Forest Temple
+
+
+- name: Forest Temple Blue Poe Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0F
+  vanilla_item: Forest Temple Compass
+  categories:
+  - Forest Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0F
+  check_group: Forest Temple
+
+
+- name: Forest Temple Falling Ceiling Room Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x07
+  vanilla_item: Arrows 10
+  categories:
+  - Forest Temple
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x07
+  check_group: Forest Temple
+
+
+- name: Forest Temple Basement Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0B
+  vanilla_item: Arrows 5
+  categories:
+  - Forest Temple
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0B
+  check_group: Forest Temple
+
+
+- name: Forest Temple GS First Room
+  type: GS Token
+  scene: 0x03
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x02
+  check_group: Forest Temple
+
+
+- name: Forest Temple GS Lobby
+  type: GS Token
+  scene: 0x03
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x08
+  check_group: Forest Temple
+
+
+- name: Forest Temple GS Raised Island Courtyard
+  type: GS Token
+  scene: 0x03
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x01
+  check_group: Forest Temple
+
+
+- name: Forest Temple GS Level Island Courtyard
+  type: GS Token
+  scene: 0x03
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x04
+  check_group: Forest Temple
+
+
+- name: Forest Temple GS Basement
+  type: GS Token
+  scene: 0x03
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x10
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ First Room Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x03
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x03
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Wolfos Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x00
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x00
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Well Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x09
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x09
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Raised Island Courtyard Lower Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x01
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x01
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Raised Island Courtyard Upper Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x05
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x05
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Boss Key Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0E
+  vanilla_item: Forest Temple Boss Key
+  categories:
+  - Forest Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0E
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Redead Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x02
+  vanilla_item: Forest Temple Small Key
+  categories:
+  - Forest Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x02
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Map Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0D
+  vanilla_item: Forest Temple Map
+  categories:
+  - Forest Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0D
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Bow Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0C
+  vanilla_item: Progressive Bow
+  categories:
+  - Forest Temple
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0C
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Compass Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0F
+  vanilla_item: Forest Temple Compass
+  categories:
+  - Forest Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0F
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Falling Ceiling Room Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x06
+  vanilla_item: Arrows 5
+  categories:
+  - Forest Temple
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x06
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ Basement Chest
+  type: Chest
+  scene: 0x03
+  flag: 0x0B
+  vanilla_item: Arrows 5
+  categories:
+  - Forest Temple
+  check_type: Chest
+  check_type_arg1: 0x03
+  check_type_arg2: 0x0B
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ GS First Hallway
+  type: GS Token
+  scene: 0x03
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x02
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ GS Raised Island Courtyard
+  type: GS Token
+  scene: 0x03
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x01
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ GS Level Island Courtyard
+  type: GS Token
+  scene: 0x03
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x04
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ GS Well
+  type: GS Token
+  scene: 0x03
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x08
+  check_group: Forest Temple
+
+
+- name: Forest Temple MQ GS Block Push Room
+  type: GS Token
+  scene: 0x03
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Forest Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x03
+  check_type_arg2: 0x10
+  check_group: Forest Temple
+
+
+- name: Forest Temple Phantom Ganon Heart
+  type: Base
+  scene: 0x14
+  flag: 0x4F
+  vanilla_item: Heart Container
+  categories:
+  - Forest Temple
+  - Boss Heart
+  - Song Dungeon Reward
+  check_type: Collectable
+  check_type_arg1: 0x14
+  check_type_arg2: 0x1F
+  check_group: Forest Temple
+
+
+- name: Fire Temple Near Boss Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x01
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x01
+  check_group: Fire Temple
+
+
+- name: Fire Temple Flare Dancer Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x00
+  vanilla_item: Bombs 10
+  categories:
+  - Fire Temple
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x00
+  check_group: Fire Temple
+
+
+- name: Fire Temple Boss Key Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x0C
+  vanilla_item: Fire Temple Boss Key
+  categories:
+  - Fire Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x0C
+  check_group: Fire Temple
+
+
+- name: Fire Temple Big Lava Room Lower Open Door Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x04
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x04
+  check_group: Fire Temple
+
+
+- name: Fire Temple Big Lava Room Blocked Door Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x02
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x02
+  check_group: Fire Temple
+
+
+- name: Fire Temple Boulder Maze Lower Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x03
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x03
+  check_group: Fire Temple
+
+
+- name: Fire Temple Boulder Maze Side Room Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x08
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x08
+  check_group: Fire Temple
+
+
+- name: Fire Temple Map Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x0A
+  vanilla_item: Fire Temple Map
+  categories:
+  - Fire Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x0A
+  check_group: Fire Temple
+
+
+- name: Fire Temple Boulder Maze Shortcut Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x0B
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x0B
+  check_group: Fire Temple
+
+
+- name: Fire Temple Boulder Maze Upper Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x06
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x06
+  check_group: Fire Temple
+
+
+- name: Fire Temple Scarecrow Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x0D
+  vanilla_item: Huge Rupee
+  categories:
+  - Fire Temple
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x0D
+  check_group: Fire Temple
+
+
+- name: Fire Temple Compass Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x07
+  vanilla_item: Fire Temple Compass
+  categories:
+  - Fire Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x07
+  check_group: Fire Temple
+
+
+- name: Fire Temple Megaton Hammer Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x05
+  vanilla_item: Megaton Hammer
+  categories:
+  - Fire Temple
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x05
+  check_group: Fire Temple
+
+
+- name: Fire Temple Highest Goron Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x09
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x09
+  check_group: Fire Temple
+
+
+- name: Fire Temple GS Boss Key Loop
+  type: GS Token
+  scene: 0x04
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x02
+  check_group: Fire Temple
+
+
+- name: Fire Temple GS Song of Time Room
+  type: GS Token
+  scene: 0x04
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x01
+  check_group: Fire Temple
+
+
+- name: Fire Temple GS Boulder Maze
+  type: GS Token
+  scene: 0x04
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x04
+  check_group: Fire Temple
+
+
+- name: Fire Temple GS Scarecrow Climb
+  type: GS Token
+  scene: 0x04
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x10
+  check_group: Fire Temple
+
+
+- name: Fire Temple GS Scarecrow Top
+  type: GS Token
+  scene: 0x04
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x08
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Map Room Side Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x02
+  vanilla_item: Hylian Shield
+  categories:
+  - Fire Temple
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x02
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Megaton Hammer Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x00
+  vanilla_item: Megaton Hammer
+  categories:
+  - Fire Temple
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x00
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Map Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x0C
+  vanilla_item: Fire Temple Map
+  categories:
+  - Fire Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x0C
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Near Boss Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x07
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x07
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Big Lava Room Blocked Door Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x01
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x01
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Boss Key Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x04
+  vanilla_item: Fire Temple Boss Key
+  categories:
+  - Fire Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x04
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Lizalfos Maze Side Room Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x08
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x08
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Compass Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x0B
+  vanilla_item: Fire Temple Compass
+  categories:
+  - Fire Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x0B
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Lizalfos Maze Upper Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x06
+  vanilla_item: Bombs 10
+  categories:
+  - Fire Temple
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x06
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Lizalfos Maze Lower Chest
+  type: Chest
+  scene: 0x04
+  flag: 0x03
+  vanilla_item: Bombs 10
+  categories:
+  - Fire Temple
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x03
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Freestanding Key
+  type: Collectable
+  scene: 0x04
+  flag: 0x1C
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Collectable
+  check_type_arg1: 0x04
+  check_type_arg2: 0x1C
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ Chest on Fire
+  type: Chest
+  scene: 0x04
+  flag: 0x05
+  vanilla_item: Fire Temple Small Key
+  categories:
+  - Fire Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x04
+  check_type_arg2: 0x05
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ GS Big Lava Room Open Door
+  type: GS Token
+  scene: 0x04
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x01
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ GS Skull on Fire
+  type: GS Token
+  scene: 0x04
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x04
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ GS Fire Wall Maze Center
+  type: GS Token
+  scene: 0x04
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x08
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ GS Fire Wall Maze Side Room
+  type: GS Token
+  scene: 0x04
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x10
+  check_group: Fire Temple
+
+
+- name: Fire Temple MQ GS Above Fire Wall Maze
+  type: GS Token
+  scene: 0x04
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Fire Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x04
+  check_type_arg2: 0x02
+  check_group: Fire Temple
+
+
+- name: Fire Temple Volvagia Heart
+  type: Base
+  scene: 0x15
+  flag: 0x4F
+  vanilla_item: Heart Container
+  categories:
+  - Fire Temple
+  - Boss Heart
+  - Song Dungeon Reward
+  check_type: Collectable
+  check_type_arg1: 0x15
+  check_type_arg2: 0x1F
+  check_group: Fire Temple
+
+
+- name: Water Temple Compass Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x09
+  vanilla_item: Water Temple Compass
+  categories:
+  - Water Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x09
+  check_group: Water Temple
+
+
+- name: Water Temple Map Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x02
+  vanilla_item: Water Temple Map
+  categories:
+  - Water Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x02
+  check_group: Water Temple
+
+
+- name: Water Temple Cracked Wall Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x00
+  vanilla_item: Water Temple Small Key
+  categories:
+  - Water Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x00
+  check_group: Water Temple
+
+
+- name: Water Temple Torches Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x01
+  vanilla_item: Water Temple Small Key
+  categories:
+  - Water Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x01
+  check_group: Water Temple
+
+
+- name: Water Temple Boss Key Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x05
+  vanilla_item: Water Temple Boss Key
+  categories:
+  - Water Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x05
+  check_group: Water Temple
+
+
+- name: Water Temple Central Pillar Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x06
+  vanilla_item: Water Temple Small Key
+  categories:
+  - Water Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x06
+  check_group: Water Temple
+
+
+- name: Water Temple Central Bow Target Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x08
+  vanilla_item: Water Temple Small Key
+  categories:
+  - Water Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x08
+  check_group: Water Temple
+
+
+- name: Water Temple Longshot Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x07
+  vanilla_item: Progressive Hookshot
+  categories:
+  - Water Temple
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x07
+  check_group: Water Temple
+
+
+- name: Water Temple River Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x03
+  vanilla_item: Water Temple Small Key
+  categories:
+  - Water Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x03
+  check_group: Water Temple
+
+
+- name: Water Temple Dragon Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x0A
+  vanilla_item: Water Temple Small Key
+  categories:
+  - Water Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x0A
+  check_group: Water Temple
+
+
+- name: Water Temple GS Behind Gate
+  type: GS Token
+  scene: 0x05
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x01
+  check_group: Water Temple
+
+
+- name: Water Temple GS Near Boss Key Chest
+  type: GS Token
+  scene: 0x05
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x08
+  check_group: Water Temple
+
+
+- name: Water Temple GS Central Pillar
+  type: GS Token
+  scene: 0x05
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x04
+  check_group: Water Temple
+
+
+- name: Water Temple GS Falling Platform Room
+  type: GS Token
+  scene: 0x05
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x02
+  check_group: Water Temple
+
+
+- name: Water Temple GS River
+  type: GS Token
+  scene: 0x05
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x10
+  check_group: Water Temple
+
+
+- name: Water Temple MQ Longshot Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x00
+  vanilla_item: Progressive Hookshot
+  categories:
+  - Water Temple
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x00
+  check_group: Water Temple
+
+
+- name: Water Temple MQ Map Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x02
+  vanilla_item: Water Temple Map
+  categories:
+  - Water Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x02
+  check_group: Water Temple
+
+
+- name: Water Temple MQ Compass Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x01
+  vanilla_item: Water Temple Compass
+  categories:
+  - Water Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x01
+  check_group: Water Temple
+
+
+- name: Water Temple MQ Central Pillar Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x06
+  vanilla_item: Water Temple Small Key
+  categories:
+  - Water Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x06
+  check_group: Water Temple
+
+
+- name: Water Temple MQ Boss Key Chest
+  type: Chest
+  scene: 0x05
+  flag: 0x05
+  vanilla_item: Water Temple Boss Key
+  categories:
+  - Water Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x05
+  check_type_arg2: 0x05
+  check_group: Water Temple
+
+
+- name: Water Temple MQ Freestanding Key
+  type: Collectable
+  scene: 0x05
+  flag: 0x01
+  vanilla_item: Water Temple Small Key
+  categories:
+  - Water Temple
+  - Vanilla Small Key
+  check_type: Collectable
+  check_type_arg1: 0x05
+  check_type_arg2: 0x01
+  check_group: Water Temple
+
+
+- name: Water Temple MQ GS Lizalfos Hallway
+  type: GS Token
+  scene: 0x05
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x01
+  check_group: Water Temple
+
+
+- name: Water Temple MQ GS Before Upper Water Switch
+  type: GS Token
+  scene: 0x05
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x04
+  check_group: Water Temple
+
+
+- name: Water Temple MQ GS River
+  type: GS Token
+  scene: 0x05
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x02
+  check_group: Water Temple
+
+
+- name: Water Temple MQ GS Freestanding Key Area
+  type: GS Token
+  scene: 0x05
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x08
+  check_group: Water Temple
+
+
+- name: Water Temple MQ GS Triple Wall Torch
+  type: GS Token
+  scene: 0x05
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Water Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x05
+  check_type_arg2: 0x10
+  check_group: Water Temple
+
+
+- name: Water Temple Morpha Heart
+  type: Base
+  scene: 0x16
+  flag: 0x4F
+  vanilla_item: Heart Container
+  categories:
+  - Water Temple
+  - Boss Heart
+  - Song Dungeon Reward
+  check_type: Collectable
+  check_type_arg1: 0x16
+  check_type_arg2: 0x1F
+  check_group: Water Temple
+
+
+- name: Shadow Temple Map Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x01
+  vanilla_item: Shadow Temple Map
+  categories:
+  - Shadow Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x01
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Hover Boots Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x07
+  vanilla_item: Hover Boots
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x07
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Compass Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x03
+  vanilla_item: Shadow Temple Compass
+  categories:
+  - Shadow Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x03
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Early Silver Rupee Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x02
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x02
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Invisible Blades Visible Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0C
+  vanilla_item: Blue Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0C
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Invisible Blades Invisible Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x16
+  vanilla_item: Arrows 30
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x16
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Falling Spikes Lower Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x05
+  vanilla_item: Arrows 10
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x05
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Falling Spikes Upper Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x06
+  vanilla_item: Blue Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x06
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Falling Spikes Switch Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x04
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x04
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Invisible Spikes Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x09
+  vanilla_item: Blue Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x09
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Freestanding Key
+  type: Collectable
+  scene: 0x07
+  flag: 0x01
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Collectable
+  check_type_arg1: 0x07
+  check_type_arg2: 0x01
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Wind Hint Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x15
+  vanilla_item: Arrows 10
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x15
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple After Wind Enemy Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x08
+  vanilla_item: Blue Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x08
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple After Wind Hidden Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x14
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x14
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Spike Walls Left Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0A
+  vanilla_item: Blue Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0A
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Boss Key Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0B
+  vanilla_item: Shadow Temple Boss Key
+  categories:
+  - Shadow Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0B
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Invisible Floormaster Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0D
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0D
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple GS Like Like Room
+  type: GS Token
+  scene: 0x07
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x08
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple GS Falling Spikes Room
+  type: GS Token
+  scene: 0x07
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x02
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple GS Single Giant Pot
+  type: GS Token
+  scene: 0x07
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x01
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple GS Near Ship
+  type: GS Token
+  scene: 0x07
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x10
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple GS Triple Giant Pot
+  type: GS Token
+  scene: 0x07
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x04
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Early Gibdos Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x03
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x03
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Map Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x02
+  vanilla_item: Shadow Temple Map
+  categories:
+  - Shadow Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x02
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Near Ship Invisible Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0E
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0E
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Compass Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x01
+  vanilla_item: Shadow Temple Compass
+  categories:
+  - Shadow Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x01
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Hover Boots Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x07
+  vanilla_item: Hover Boots
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x07
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Invisible Blades Invisible Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x16
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x16
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Invisible Blades Visible Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0C
+  vanilla_item: Blue Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0C
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Beamos Silver Rupees Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0F
+  vanilla_item: Arrows 5
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0F
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Falling Spikes Lower Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x05
+  vanilla_item: Arrows 10
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x05
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Falling Spikes Upper Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x06
+  vanilla_item: Arrows 5
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x06
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Falling Spikes Switch Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x04
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x04
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Invisible Spikes Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x09
+  vanilla_item: Blue Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x09
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Stalfos Room Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x10
+  vanilla_item: Red Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x10
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Wind Hint Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x15
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x15
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ After Wind Hidden Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x14
+  vanilla_item: Arrows 5
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x14
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ After Wind Enemy Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x08
+  vanilla_item: Blue Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x08
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Boss Key Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0B
+  vanilla_item: Shadow Temple Boss Key
+  categories:
+  - Shadow Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0B
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Spike Walls Left Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0A
+  vanilla_item: Blue Rupee
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0A
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Freestanding Key
+  type: Collectable
+  scene: 0x07
+  flag: 0x06
+  vanilla_item: Shadow Temple Small Key
+  categories:
+  - Shadow Temple
+  - Vanilla Small Key
+  check_type: Collectable
+  check_type_arg1: 0x07
+  check_type_arg2: 0x06
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ Bomb Flower Chest
+  type: Chest
+  scene: 0x07
+  flag: 0x0D
+  vanilla_item: Arrows 10
+  categories:
+  - Shadow Temple
+  check_type: Chest
+  check_type_arg1: 0x07
+  check_type_arg2: 0x0D
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ GS Falling Spikes Room
+  type: GS Token
+  scene: 0x07
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x02
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ GS Wind Hint Room
+  type: GS Token
+  scene: 0x07
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x01
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ GS After Wind
+  type: GS Token
+  scene: 0x07
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x08
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ GS After Ship
+  type: GS Token
+  scene: 0x07
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x10
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple MQ GS Near Boss
+  type: GS Token
+  scene: 0x07
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Shadow Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x07
+  check_type_arg2: 0x04
+  check_group: Shadow Temple
+
+
+- name: Shadow Temple Bongo Bongo Heart
+  type: Base
+  scene: 0x18
+  flag: 0x4F
+  vanilla_item: Heart Container
+  categories:
+  - Shadow Temple
+  - Boss Heart
+  - Song Dungeon Reward
+  check_type: Collectable
+  check_type_arg1: 0x18
+  check_type_arg2: 0x1F
+  check_group: Shadow Temple
+
+
+- name: Spirit Temple Child Bridge Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x08
+  vanilla_item: Deku Shield
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x08
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Child Early Torches Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x00
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x00
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Child Climb North Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x06
+  vanilla_item: Bombchus 10
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x06
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Child Climb East Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x0C
+  vanilla_item: Deku Shield
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x0C
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Map Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x03
+  vanilla_item: Spirit Temple Map
+  categories:
+  - Spirit Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x03
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Sun Block Room Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x01
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x01
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Entrance Front Left Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x1A
+  vanilla_item: Bombchus 10
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x1A
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Entrance Back Right Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x1F
+  vanilla_item: Bombchus 10
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x1F
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Entrance Front Right Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x1B
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x1B
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Entrance Back Left Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x1E
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x1E
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Map Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x00
+  vanilla_item: Spirit Temple Map
+  categories:
+  - Spirit Temple
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x00
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Map Room Enemy Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x08
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x08
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Child Climb North Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x06
+  vanilla_item: Bombchus 10
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x06
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Child Climb South Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x0C
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x0C
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Compass Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x03
+  vanilla_item: Spirit Temple Compass
+  categories:
+  - Spirit Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x03
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Silver Block Hallway Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x1C
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x1C
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Sun Block Room Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x01
+  vanilla_item: Recovery Heart
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x01
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Silver Gauntlets Chest
+  type: Chest
+  scene: 0x5C
+  flag: 0x0B
+  vanilla_item: Progressive Strength Upgrade
+  categories:
+  - Spirit Temple
+  - Desert Colossus
+  check_type: Chest
+  check_type_arg1: 0x5C
+  check_type_arg2: 0x0B
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Compass Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x04
+  vanilla_item: Spirit Temple Compass
+  categories:
+  - Spirit Temple
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x04
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Early Adult Right Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x07
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x07
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple First Mirror Left Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x0D
+  vanilla_item: Ice Trap
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x0D
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple First Mirror Right Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x0E
+  vanilla_item: Recovery Heart
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x0E
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Statue Room Northeast Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x0F
+  vanilla_item: Blue Rupee
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x0F
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Statue Room Hand Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x02
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x02
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Near Four Armos Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x05
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x05
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Hallway Right Invisible Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x14
+  vanilla_item: Recovery Heart
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x14
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Hallway Left Invisible Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x15
+  vanilla_item: Recovery Heart
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x15
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Child Hammer Switch Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x1D
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x1D
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Statue Room Lullaby Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x0F
+  vanilla_item: Blue Rupee
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x0F
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Statue Room Invisible Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x02
+  vanilla_item: Recovery Heart
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x02
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Leever Room Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x04
+  vanilla_item: Purple Rupee
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x04
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Symphony Room Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x07
+  vanilla_item: Purple Rupee
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x07
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Beamos Room Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x19
+  vanilla_item: Recovery Heart
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x19
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Chest Switch Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x18
+  vanilla_item: Ice Trap
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x18
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Boss Key Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x05
+  vanilla_item: Spirit Temple Boss Key
+  categories:
+  - Spirit Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x05
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Mirror Shield Chest
+  type: Chest
+  scene: 0x5C
+  flag: 0x09
+  vanilla_item: Mirror Shield
+  categories:
+  - Spirit Temple
+  - Desert Colossus
+  check_type: Chest
+  check_type_arg1: 0x5C
+  check_type_arg2: 0x09
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Boss Key Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x0A
+  vanilla_item: Spirit Temple Boss Key
+  categories:
+  - Spirit Temple
+  - Vanilla Boss Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x0A
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Topmost Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x12
+  vanilla_item: Bombs 20
+  categories:
+  - Spirit Temple
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x12
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ Mirror Puzzle Invisible Chest
+  type: Chest
+  scene: 0x06
+  flag: 0x12
+  vanilla_item: Spirit Temple Small Key
+  categories:
+  - Spirit Temple
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x06
+  check_type_arg2: 0x12
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple GS Metal Fence
+  type: GS Token
+  scene: 0x06
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x10
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple GS Sun on Floor Room
+  type: GS Token
+  scene: 0x06
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x08
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple GS Hall After Sun Block Room
+  type: GS Token
+  scene: 0x06
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x01
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple GS Lobby
+  type: GS Token
+  scene: 0x06
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x04
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple GS Boulder Room
+  type: GS Token
+  scene: 0x06
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x02
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ GS Sun Block Room
+  type: GS Token
+  scene: 0x06
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x01
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ GS Leever Room
+  type: GS Token
+  scene: 0x06
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x02
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ GS Symphony Room
+  type: GS Token
+  scene: 0x06
+  flag: 0x08
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x08
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ GS Nine Thrones Room West
+  type: GS Token
+  scene: 0x06
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x04
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple MQ GS Nine Thrones Room North
+  type: GS Token
+  scene: 0x06
+  flag: 0x10
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Spirit Temple
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x06
+  check_type_arg2: 0x10
+  check_group: Spirit Temple
+
+
+- name: Spirit Temple Twinrova Heart
+  type: Base
+  scene: 0x17
+  flag: 0x4F
+  vanilla_item: Heart Container
+  categories:
+  - Spirit Temple
+  - Boss Heart
+  - Song Dungeon Reward
+  check_type: Collectable
+  check_type_arg1: 0x17
+  check_type_arg2: 0x1F
+  check_group: Spirit Temple
+
+
+- name: Ice Cavern Map Chest
+  type: Chest
+  scene: 0x09
+  flag: 0x00
+  vanilla_item: Ice Cavern Map
+  categories:
+  - Ice Cavern
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x09
+  check_type_arg2: 0x00
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern Compass Chest
+  type: Chest
+  scene: 0x09
+  flag: 0x01
+  vanilla_item: Ice Cavern Compass
+  categories:
+  - Ice Cavern
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x09
+  check_type_arg2: 0x01
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern Freestanding PoH
+  type: Collectable
+  scene: 0x09
+  flag: 0x01
+  vanilla_item: Piece of Heart
+  categories:
+  - Ice Cavern
+  check_type: Collectable
+  check_type_arg1: 0x09
+  check_type_arg2: 0x01
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern Iron Boots Chest
+  type: Chest
+  scene: 0x09
+  flag: 0x02
+  vanilla_item: Iron Boots
+  categories:
+  - Ice Cavern
+  check_type: Chest
+  check_type_arg1: 0x09
+  check_type_arg2: 0x02
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern GS Spinning Scythe Room
+  type: GS Token
+  scene: 0x09
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Ice Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x09
+  check_type_arg2: 0x02
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern GS Heart Piece Room
+  type: GS Token
+  scene: 0x09
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Ice Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x09
+  check_type_arg2: 0x04
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern GS Push Block Room
+  type: GS Token
+  scene: 0x09
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Ice Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x09
+  check_type_arg2: 0x01
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern MQ Map Chest
+  type: Chest
+  scene: 0x09
+  flag: 0x01
+  vanilla_item: Ice Cavern Map
+  categories:
+  - Ice Cavern
+  - Vanilla Map
+  check_type: Chest
+  check_type_arg1: 0x09
+  check_type_arg2: 0x01
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern MQ Compass Chest
+  type: Chest
+  scene: 0x09
+  flag: 0x00
+  vanilla_item: Ice Cavern Compass
+  categories:
+  - Ice Cavern
+  - Vanilla Compass
+  check_type: Chest
+  check_type_arg1: 0x09
+  check_type_arg2: 0x00
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern MQ Freestanding PoH
+  type: Collectable
+  scene: 0x09
+  flag: 0x01
+  vanilla_item: Piece of Heart
+  categories:
+  - Ice Cavern
+  check_type: Collectable
+  check_type_arg1: 0x09
+  check_type_arg2: 0x01
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern MQ Iron Boots Chest
+  type: Chest
+  scene: 0x09
+  flag: 0x02
+  vanilla_item: Iron Boots
+  categories:
+  - Ice Cavern
+  check_type: Chest
+  check_type_arg1: 0x09
+  check_type_arg2: 0x02
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern MQ GS Red Ice
+  type: GS Token
+  scene: 0x09
+  flag: 0x02
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Ice Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x09
+  check_type_arg2: 0x02
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern MQ GS Ice Block
+  type: GS Token
+  scene: 0x09
+  flag: 0x04
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Ice Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x09
+  check_type_arg2: 0x04
+  check_group: Ice Cavern
+
+
+- name: Ice Cavern MQ GS Scarecrow
+  type: GS Token
+  scene: 0x09
+  flag: 0x01
+  vanilla_item: Gold Skulltula Token
+  categories:
+  - Ice Cavern
+  - Skulltula
+  check_type: Gold Skulltula
+  check_type_arg1: 0x09
+  check_type_arg2: 0x01
+  check_group: Ice Cavern
+
+
+- name: Gerudo Training Ground Lobby Left Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x13
+  vanilla_item: Blue Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x13
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Lobby Right Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x07
+  vanilla_item: Arrows 10
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x07
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Stalfos Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x00
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x00
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Before Heavy Block Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x11
+  vanilla_item: Arrows 30
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x11
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Heavy Block First Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0F
+  vanilla_item: Huge Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0F
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Heavy Block Second Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0E
+  vanilla_item: Blue Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0E
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Heavy Block Third Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x14
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x14
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Heavy Block Fourth Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x02
+  vanilla_item: Ice Trap
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x02
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Eye Statue Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x03
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x03
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Near Scarecrow Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x04
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x04
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Hammer Room Clear Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x12
+  vanilla_item: Arrows 10
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x12
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Hammer Room Switch Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x10
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x10
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Freestanding Key
+  type: Collectable
+  scene: 0x0B
+  flag: 0x01
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Collectable
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x01
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Maze Right Central Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x05
+  vanilla_item: Bombchus 5
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x05
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Maze Right Side Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x08
+  vanilla_item: Arrows 30
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x08
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Underwater Silver Rupee Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0D
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0D
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Beamos Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x01
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x01
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Hidden Ceiling Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0B
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0B
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Maze Path First Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x06
+  vanilla_item: Purple Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x06
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Maze Path Second Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0A
+  vanilla_item: Red Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0A
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Maze Path Third Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x09
+  vanilla_item: Arrows 30
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x09
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground Maze Path Final Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0C
+  vanilla_item: Ice Arrows
+  categories:
+  - Gerudo Training Ground
+  - Song Dungeon Reward
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0C
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Lobby Left Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x13
+  vanilla_item: Arrows 10
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x13
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Lobby Right Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x07
+  vanilla_item: Bombchus 5
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x07
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ First Iron Knuckle Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x00
+  vanilla_item: Blue Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x00
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Before Heavy Block Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x11
+  vanilla_item: Arrows 10
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x11
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Heavy Block Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x02
+  vanilla_item: Purple Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x02
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Eye Statue Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x03
+  vanilla_item: Bombchus 10
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x03
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Ice Arrows Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x04
+  vanilla_item: Ice Arrows
+  categories:
+  - Gerudo Training Ground
+  - Song Dungeon Reward
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x04
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Second Iron Knuckle Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x12
+  vanilla_item: Arrows 10
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x12
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Flame Circle Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0E
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0E
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Maze Right Central Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x05
+  vanilla_item: Blue Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x05
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Maze Right Side Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x08
+  vanilla_item: Treasure Game Green Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x08
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Underwater Silver Rupee Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0D
+  vanilla_item: Treasure Game Green Rupee
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0D
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Dinolfos Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x01
+  vanilla_item: Gerudo Training Ground Small Key
+  categories:
+  - Gerudo Training Ground
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x01
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Hidden Ceiling Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0B
+  vanilla_item: Purple Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0B
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Maze Path First Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x06
+  vanilla_item: Green Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x06
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Maze Path Third Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x09
+  vanilla_item: Treasure Game Green Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x09
+  check_group: Gerudo Training Ground
+
+
+- name: Gerudo Training Ground MQ Maze Path Second Chest
+  type: Chest
+  scene: 0x0B
+  flag: 0x0A
+  vanilla_item: Red Rupee
+  categories:
+  - Gerudo Training Ground
+  check_type: Chest
+  check_type_arg1: 0x0B
+  check_type_arg2: 0x0A
+  check_group: Gerudo Training Ground
+
+
+- name: Ganons Castle Forest Trial Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x09
+  vanilla_item: Blue Rupee
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x09
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Water Trial Left Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x07
+  vanilla_item: Ice Trap
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x07
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Water Trial Right Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x06
+  vanilla_item: Recovery Heart
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x06
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Shadow Trial Front Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x08
+  vanilla_item: Blue Rupee
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x08
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Shadow Trial Golden Gauntlets Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x05
+  vanilla_item: Progressive Strength Upgrade
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x05
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Light Trial First Left Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x0C
+  vanilla_item: Blue Rupee
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x0C
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Light Trial Second Left Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x0B
+  vanilla_item: Ice Trap
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x0B
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Light Trial Third Left Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x0D
+  vanilla_item: Recovery Heart
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x0D
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Light Trial First Right Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x0E
+  vanilla_item: Ice Trap
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x0E
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Light Trial Second Right Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x0A
+  vanilla_item: Arrows 30
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x0A
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Light Trial Third Right Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x0F
+  vanilla_item: Ice Trap
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x0F
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Light Trial Invisible Enemies Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x10
+  vanilla_item: Ganons Castle Small Key
+  categories:
+  - Ganons Castle
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x10
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Light Trial Lullaby Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x11
+  vanilla_item: Ganons Castle Small Key
+  categories:
+  - Ganons Castle
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x11
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Spirit Trial Crystal Switch Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x12
+  vanilla_item: Bombchus 20
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x12
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Spirit Trial Invisible Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x14
+  vanilla_item: Arrows 10
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x14
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Deku Scrub Left
+  type: Base
+  scene: 0x0D
+  flag: 0x3A
+  vanilla_item: Buy Green Potion
+  categories:
+  - Ganons Castle
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x09
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Deku Scrub Center Left
+  type: Base
+  scene: 0x0D
+  flag: 0x37
+  vanilla_item: Buy Bombs 5 35
+  categories:
+  - Ganons Castle
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x06
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Deku Scrub Center Right
+  type: Base
+  scene: 0x0D
+  flag: 0x33
+  vanilla_item: Buy Arrows 30
+  categories:
+  - Ganons Castle
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x04
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle Deku Scrub Right
+  type: Base
+  scene: 0x0D
+  flag: 0x39
+  vanilla_item: Buy Red Potion 30
+  categories:
+  - Ganons Castle
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x08
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Forest Trial Freestanding Key
+  type: Collectable
+  scene: 0x0D
+  flag: 0x01
+  vanilla_item: Ganons Castle Small Key
+  categories:
+  - Ganons Castle
+  - Vanilla Small Key
+  check_type: Collectable
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x01
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Forest Trial Eye Switch Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x02
+  vanilla_item: Arrows 10
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x02
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Forest Trial Frozen Eye Switch Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x03
+  vanilla_item: Bombs 5
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x03
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Water Trial Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x01
+  vanilla_item: Red Rupee
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x01
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Shadow Trial Bomb Flower Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x00
+  vanilla_item: Arrows 10
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x00
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Shadow Trial Eye Switch Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x05
+  vanilla_item: Ganons Castle Small Key
+  categories:
+  - Ganons Castle
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x05
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Light Trial Lullaby Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x04
+  vanilla_item: Recovery Heart
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x04
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Spirit Trial First Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x0A
+  vanilla_item: Bombchus 10
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x0A
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Spirit Trial Invisible Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x14
+  vanilla_item: Arrows 10
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x14
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Spirit Trial Sun Front Left Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x09
+  vanilla_item: Recovery Heart
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x09
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Spirit Trial Sun Back Left Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x08
+  vanilla_item: Ganons Castle Small Key
+  categories:
+  - Ganons Castle
+  - Vanilla Small Key
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x08
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Spirit Trial Sun Back Right Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x07
+  vanilla_item: Recovery Heart
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x07
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Spirit Trial Golden Gauntlets Chest
+  type: Chest
+  scene: 0x0D
+  flag: 0x06
+  vanilla_item: Progressive Strength Upgrade
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x06
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Deku Scrub Left
+  type: Base
+  scene: 0x0D
+  flag: 0x3A
+  vanilla_item: Buy Green Potion
+  categories:
+  - Ganons Castle
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x09
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Deku Scrub Center Left
+  type: Base
+  scene: 0x0D
+  flag: 0x37
+  vanilla_item: Buy Bombs 5 35
+  categories:
+  - Ganons Castle
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x06
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Deku Scrub Center
+  type: Base
+  scene: 0x0D
+  flag: 0x33
+  vanilla_item: Buy Arrows 30
+  categories:
+  - Ganons Castle
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x04
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Deku Scrub Center Right
+  type: Base
+  scene: 0x0D
+  flag: 0x39
+  vanilla_item: Buy Red Potion 30
+  categories:
+  - Ganons Castle
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x08
+  check_group: Ganons Castle
+
+
+- name: Ganons Castle MQ Deku Scrub Right
+  type: Base
+  scene: 0x0D
+  flag: 0x30
+  vanilla_item: Buy Deku Nut 5
+  categories:
+  - Ganons Castle
+  - Deku Scrub
+  check_type: Scrub
+  check_type_arg1: 0x0D
+  check_type_arg2: 0x01
+  check_group: Ganons Castle
+
+
+- name: Ganons Tower Boss Key Chest
+  type: Chest
+  scene: 0x0A
+  flag: 0x0B
+  vanilla_item: Ganons Castle Boss Key
+  categories:
+  - Ganons Castle
+  check_type: Chest
+  check_type_arg1: 0x0A
+  check_type_arg2: 0x0B
+  check_group: Ganons Castle

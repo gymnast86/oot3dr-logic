@@ -1,0 +1,1446 @@
+- name: Kokiri Sword
+  spanish: Espada Kokiri
+  french: Épée Kokiri
+  type: Item
+  get_item_id: 0x27
+  advancement: true
+
+
+- name: Giants Knife
+  spanish: Espada de Biggoron
+  french: Lame de géant
+  type: Item
+  get_item_id: 0x28
+  advancement: false
+
+
+- name: Biggorons Sword
+  spanish: Espada de Biggoron
+  french: Épée de Grogoron
+  type: Item
+  get_item_id: 0x57
+  advancement: true
+
+
+- name: Deku Shield
+  spanish: Escudo deku
+  french: Bouclier Mojo
+  type: Item
+  get_item_id: 0x29
+  advancement: false
+
+
+- name: Hylian Shield
+  spanish: Escudo hyliano
+  french: Bouclier Hylien
+  type: Item
+  get_item_id: 0x2A
+  advancement: false
+
+
+- name: Mirror Shield
+  spanish: Escudo espejo
+  french: Bouclier miroir
+  type: Item
+  get_item_id: 0x2B
+  advancement: true
+
+
+- name: Goron Tunic
+  spanish: Sayo goron
+  french: Tunique Goron
+  type: Item
+  get_item_id: 0x2C
+  advancement: true
+
+
+- name: Zora Tunic
+  spanish: Sayo zora
+  french: Tunique Zora
+  type: Item
+  get_item_id: 0x2D
+  advancement: true
+
+
+- name: Iron Boots
+  spanish: Botas de hierro
+  french: Bottes de plomb
+  type: Item
+  get_item_id: 0x2E
+  advancement: true
+
+
+- name: Hover Boots
+  spanish: Botas voladoras
+  french: Bottes des airs
+  type: Item
+  get_item_id: 0x2F
+  advancement: true
+
+
+- name: Weird Egg
+  spanish: Huevo extraño
+  french: Œuf curieux
+  type: Item
+  get_item_id: 0x47
+  advancement: true
+
+
+- name: Zeldas Letter
+  spanish: Carta de Zelda
+  french: Lettre de Zelda
+  type: Item
+  get_item_id: 0x0B
+  advancement: true
+
+
+- name: Boomerang
+  spanish: Búmeran
+  french: Boomerang
+  type: Item
+  get_item_id: 0x06
+  advancement: true
+
+
+- name: Lens of Truth
+  spanish: Lupa de la Verdad
+  french: Loupe de vérité
+  type: Item
+  get_item_id: 0x0A
+  advancement: true
+
+
+- name: Megaton Hammer
+  spanish: Martillo Megatón
+  french: Masse des titans
+  type: Item
+  get_item_id: 0x0D
+  advancement: true
+
+
+- name: Shard of Agony
+  spanish: Piedra de la Agonía
+  french: Fragment de souffrance
+  type: Item
+  get_item_id: 0x39
+  advancement: true
+
+
+- name: Dins Fire
+  spanish: Fuego de Din
+  french: Feu de Din
+  type: Item
+  get_item_id: 0x5C
+  advancement: true
+
+
+- name: Farores Wind
+  spanish: Viento de Farore
+  french: Vent de Farore
+  type: Item
+  get_item_id: 0x5D
+  advancement: true
+
+
+- name: Nayrus Love
+  spanish: Amor de Nayru
+  french: Amour de Nayru
+  type: Item
+  get_item_id: 0x5E
+  advancement: true
+
+
+- name: Fire Arrows
+  spanish: Flecha de fuego
+  french: Flèche de feu
+  type: Item
+  get_item_id: 0x58
+  advancement: true
+
+
+- name: Ice Arrows
+  spanish: Flecha de hielo
+  french: Flèche de glace
+  type: Item
+  get_item_id: 0x59
+  advancement: true
+
+
+- name: Light Arrows
+  spanish: Flecha de luz
+  french: Flèche de lumière
+  type: Item
+  get_item_id: 0x5A
+  advancement: true
+
+
+- name: Gerudo Token
+  spanish: Pase de socio gerudo
+  french: Carte Gerudo
+  type: Item
+  get_item_id: 0x3A
+  advancement: true
+
+
+- name: Magic Bean
+  spanish: Habichuelas mágicas
+  french: Haricot magique
+  type: Item
+  get_item_id: 0x16
+  advancement: true
+
+
+- name: Magic Bean Pack
+  spanish: Lote de habichuelas mágicas
+  french: Paquet de haricots magiques
+  type: Item
+  get_item_id: 0xC9
+  advancement: true
+
+
+- name: Double Defense
+  spanish: Doble poder defensivo
+  french: Double défence
+  type: Item
+  get_item_id: 0xB8
+  advancement: true
+
+
+- name: Gold Skulltula Token
+  spanish: Símbolo de skulltula dorada
+  french: Jeton de Skulltula dorée
+  type: Token
+  get_item_id: 0x5B
+  advancement: true
+
+
+- name: Pocket Egg
+  spanish: Huevo de bolsillo
+  french: Œuf de poche
+  type: Item
+  get_item_id: 0x1D
+  advancement: true
+
+
+- name: Cojiro
+  spanish: Cojiro
+  french: P'tit Poulet
+  type: Item
+  get_item_id: 0x0E
+  advancement: true
+
+
+- name: Odd Mushroom
+  spanish: Champiñón extraño
+  french: Champignon suspect
+  type: Item
+  get_item_id: 0x1F
+  advancement: true
+
+
+- name: Odd Poultice
+  spanish: Medicina rara
+  french: Mixture suspecte
+  type: Item
+  get_item_id: 0x20
+  advancement: true
+
+
+- name: Poachers Saw
+  spanish: Sierra del furtivo
+  french: Scie du chasseur
+  type: Item
+  get_item_id: 0x21
+  advancement: true
+
+
+- name: Broken Gorons Sword
+  spanish: Espada goron rota
+  french: Épée brisée de Goron
+  type: Item
+  get_item_id: 0x22
+  advancement: true
+
+
+- name: Prescription
+  spanish: Receta
+  french: Ordonnance
+  type: Item
+  get_item_id: 0x23
+  advancement: true
+
+
+- name: Eyeball Frog
+  spanish: Rana de ojos saltones
+  french: Crapaud-qui-louche
+  type: Item
+  get_item_id: 0x24
+  advancement: true
+
+
+- name: Worlds Finest Eyedrops
+  spanish: Supergotas oculares
+  french: Super gouttes
+  type: Item
+  get_item_id: 0x25
+  advancement: true
+
+
+- name: Claim Check
+  spanish: Recibo
+  french: Certificat
+  type: Item
+  get_item_id: 0x26
+  advancement: true
+
+
+- name: Progressive Hookshot
+  spanish: Gancho progresivo
+  french: Grappin (prog.)
+  type: Item
+  get_item_id: 0x80
+  advancement: true
+
+
+- name: Progressive Strength Upgrade
+  spanish: Fuerza progresiva
+  french: Amélioration de force (prog.)
+  type: Item
+  get_item_id: 0x81
+  advancement: true
+
+
+- name: Progressive Bomb Bag
+  spanish: Saco de bombas progresivo
+  french: Sac de bombes (prog.)
+  type: Item
+  get_item_id: 0x82
+  advancement: true
+
+
+- name: Progressive Bow
+  spanish: Arco progresivo
+  french: Arc (prog.)
+  type: Item
+  get_item_id: 0x83
+  advancement: true
+
+
+- name: Progressive Slingshot
+  spanish: Resortera progresiva
+  french: Lance-pierre (prog.)
+  type: Item
+  get_item_id: 0x84
+  advancement: true
+
+
+- name: Progressive Wallet
+  spanish: Bolsa de rupias progresiva
+  french: Bourse (prog.)
+  type: Item
+  get_item_id: 0x85
+  advancement: true
+
+
+- name: Progressive Scale
+  spanish: Escama progresiva
+  french: Écaille (prog.)
+  type: Item
+  get_item_id: 0x86
+  advancement: true
+
+
+- name: Progressive Nut Capacity
+  spanish: Capacidad de nueces deku progresiva
+  french: Capacité de noix (prog.)
+  type: Item
+  get_item_id: 0x87
+  advancement: false
+
+
+- name: Progressive Stick Capacity
+  spanish: Capacidad de palos deku progresiva
+  french: Capacité de bâtons (prog.)
+  type: Item
+  get_item_id: 0x88
+  advancement: false
+
+
+- name: Progressive Magic Meter
+  spanish: Poder mágico progresivo
+  french: Jauge de magie (prog.)
+  type: Item
+  get_item_id: 0x8A
+  advancement: true
+
+
+- name: Progressive Ocarina
+  spanish: Ocarina progresiva
+  french: Ocarina (prog.)
+  type: Item
+  get_item_id: 0x8B
+  advancement: true
+
+
+- name: Progressive Bombchus
+  spanish: Bombchus progresivos
+  french: Bombchus (prog.)
+  type: Item
+  get_item_id: 0x89
+  advancement: true
+
+
+- name: Progressive Goron Sword
+  spanish: Espada Goron progresiva
+  french: Épée Goron (prog.)
+  type: Item
+  get_item_id: 0xD4
+  advancement: true
+
+
+- name: Empty Bottle
+  spanish: Botella vacía
+  french: Flacon vide
+  type: Item
+  get_item_id: 0x0F
+  advancement: true
+
+
+- name: Bottle with Milk
+  spanish: Botella de leche Lon Lon
+  french: Flacon de lait
+  type: Item
+  get_item_id: 0x14
+  advancement: true
+
+
+- name: Bottle with Red Potion
+  spanish: Botella de poción roja
+  french: Flacon de potion rouge
+  type: Item
+  get_item_id: 0x8C
+  advancement: true
+
+
+- name: Bottle with Green Potion
+  spanish: Botella de poción verde
+  french: Flacon de potion verte
+  type: Item
+  get_item_id: 0x8D
+  advancement: true
+
+
+- name: Bottle with Blue Potion
+  spanish: Botella de poción azul
+  french: Flacon de potion bleue
+  type: Item
+  get_item_id: 0x8E
+  advancement: true
+
+
+- name: Bottle with Fairy
+  spanish: Hada en una botella
+  french: Flacon avec une fée
+  type: Item
+  get_item_id: 0x8F
+  advancement: true
+
+
+- name: Bottle with Fish
+  spanish: Pez en una botella
+  french: Flacon avec un poisson
+  type: Item
+  get_item_id: 0x90
+  advancement: true
+
+
+- name: Bottle with Blue Fire
+  spanish: Botella de fuego azul
+  french: Flacon de flamme bleue
+  type: Item
+  get_item_id: 0x91
+  advancement: true
+
+
+- name: Bottle with Bugs
+  spanish: Insecto en una botella
+  french: Flacon d'insectes
+  type: Item
+  get_item_id: 0x92
+  advancement: true
+
+
+- name: Bottle with Poe
+  spanish: Poe en una botella
+  french: Flacon avec un Esprit
+  type: Item
+  get_item_id: 0x94
+  advancement: true
+
+
+- name: Bottle with Big Poe
+  spanish: Gran Poe en una botella
+  french: Flacon avec une Âme
+  type: Item
+  get_item_id: 0x93
+  advancement: true
+
+
+- name: Rutos Letter
+  spanish: Carta de Ruto
+  french: Flacon avec une lettre
+  type: Item
+  get_item_id: 0x15
+  advancement: true
+
+
+- name: Zeldas Lullaby
+  spanish: Nana de Zelda
+  french: Berceuse de Zelda
+  type: Song
+  get_item_id: 0xC1
+  advancement: true
+
+
+- name: Eponas Song
+  spanish: Canción de Epona
+  french: Chant d'Épona
+  type: Song
+  get_item_id: 0xC2
+  advancement: true
+
+
+- name: Sarias Song
+  spanish: Canción de Saria
+  french: Chant de Saria
+  type: Song
+  get_item_id: 0xC3
+  advancement: true
+
+
+- name: Suns Song
+  spanish: Canción del Sol
+  french: Chant du soleil
+  type: Song
+  get_item_id: 0xC4
+  advancement: true
+
+
+- name: Song of Time
+  spanish: Canción del tiempo
+  french: Chant du temps
+  type: Song
+  get_item_id: 0xC5
+  advancement: true
+
+
+- name: Song of Storms
+  spanish: Canción de la tormenta
+  french: Chant des tempêtes
+  type: Song
+  get_item_id: 0xC6
+  advancement: true
+
+
+- name: Minuet of Forest
+  spanish: Minueto del bosque
+  french: Menuet de la forêt
+  type: Song
+  get_item_id: 0xBB
+  advancement: true
+
+
+- name: Bolero of Fire
+  spanish: Bolero del fuego
+  french: Boléro du feu
+  type: Song
+  get_item_id: 0xBC
+  advancement: true
+
+
+- name: Serenade of Water
+  spanish: Serenata del agua
+  french: Sérénade de l'eau
+  type: Song
+  get_item_id: 0xBD
+  advancement: true
+
+
+- name: Requiem of Spirit
+  spanish: Réquiem del espíritu
+  french: Requiem des esprits
+  type: Song
+  get_item_id: 0xBE
+  advancement: true
+
+
+- name: Nocturne of Shadow
+  spanish: Nocturno de la sombra
+  french: Nocturne de l'ombre
+  type: Song
+  get_item_id: 0xBF
+  advancement: true
+
+
+- name: Prelude of Light
+  spanish: Preludio de la luz
+  french: Prélude de la lumière
+  type: Song
+  get_item_id: 0xC0
+  advancement: true
+
+
+- name: Deku Tree Map
+  spanish: Mapa del Gran Árbol Deku
+  french: Carte de l'arbre Mojo
+  type: Map
+  get_item_id: 0xA5
+  advancement: false
+
+
+- name: Dodongos Cavern Map
+  spanish: Mapa de la Cueva de los Dodongos
+  french: Carte de la grotte Dodongo
+  type: Map
+  get_item_id: 0xA6
+  advancement: false
+
+
+- name: Jabu Jabus Belly Map
+  spanish: Mapa de la tripa de Jabu-Jabu
+  french: Carte de Jabu-Jabu
+  type: Map
+  get_item_id: 0xA7
+  advancement: false
+
+
+- name: Forest Temple Map
+  spanish: Mapa del Templo del Bosque
+  french: Carte du temple de la forêt
+  type: Map
+  get_item_id: 0xA8
+  advancement: false
+
+
+- name: Fire Temple Map
+  spanish: Mapa del Templo del Fuego
+  french: Carte du temple du feu
+  type: Map
+  get_item_id: 0xA9
+  advancement: false
+
+
+- name: Water Temple Map
+  spanish: Mapa del Templo del Agua
+  french: Carte du temple de l'eau
+  type: Map
+  get_item_id: 0xAA
+  advancement: false
+
+
+- name: Spirit Temple Map
+  spanish: Mapa del Templo del Espíritu
+  french: Carte du temple de l'esprit
+  type: Map
+  get_item_id: 0xAB
+  advancement: false
+
+
+- name: Shadow Temple Map
+  spanish: Mapa del Templo de la Sombra
+  french: Carte du temple de l'ombre
+  type: Map
+  get_item_id: 0xAC
+  advancement: false
+
+
+- name: Bottom of the Well Map
+  spanish: Mapa del fondo del pozo
+  french: Carte du fond du puits
+  type: Map
+  get_item_id: 0xAD
+  advancement: false
+
+
+- name: Ice Cavern Map
+  spanish: Mapa de la caverna de hielo
+  french: Carte de la caverne polaire
+  type: Map
+  get_item_id: 0xAE
+  advancement: false
+
+
+- name: Deku Tree Compass
+  spanish: Brújula del Gran Árbol Deku
+  french: Boussole de l'arbre Mojo
+  type: Compass
+  get_item_id: 0x9B
+  advancement: false
+
+
+- name: Dodongos Cavern Compass
+  spanish: Brújula de la Cueva de los Dodongos
+  french: Boussole de la grotte Dodongo
+  type: Compass
+  get_item_id: 0x9C
+  advancement: false
+
+
+- name: Jabu Jabus Belly Compass
+  spanish: Brújula de la tripa de Jabu-Jabu
+  french: Boussole de Jabu-Jabu
+  type: Compass
+  get_item_id: 0x9D
+  advancement: false
+
+
+- name: Forest Temple Compass
+  spanish: Brújula del Templo del Bosque
+  french: Boussole du temple de la forêt
+  type: Compass
+  get_item_id: 0x9E
+  advancement: false
+
+
+- name: Fire Temple Compass
+  spanish: Brújula del Templo del Fuego
+  french: Boussole du temple du feu
+  type: Compass
+  get_item_id: 0x9F
+  advancement: false
+
+
+- name: Water Temple Compass
+  spanish: Brújula del Templo del Agua
+  french: Boussole du temple de l'eau
+  type: Compass
+  get_item_id: 0xA0
+  advancement: false
+
+
+- name: Spirit Temple Compass
+  spanish: Brújula del Templo del Espíritu
+  french: Boussole du temple de l'esprit
+  type: Compass
+  get_item_id: 0xA1
+  advancement: false
+
+
+- name: Shadow Temple Compass
+  spanish: Brújula del Templo de las Sombras
+  french: Boussole du temple de l'ombre
+  type: Compass
+  get_item_id: 0xA2
+  advancement: false
+
+
+- name: Bottom of the Well Compass
+  spanish: Brújula del fondo del pozo
+  french: Boussole du fond du puits
+  type: Compass
+  get_item_id: 0xA3
+  advancement: false
+
+
+- name: Ice Cavern Compass
+  spanish: Brújula de la caverna de hielo
+  french: Boussole de la caverne polaire
+  type: Compass
+  get_item_id: 0xA4
+  advancement: false
+
+
+- name: Forest Temple Boss Key
+  spanish: Gran llave del Templo del Bosque
+  french: Clé d'or du temple de la forêt
+  type: Boss Key
+  get_item_id: 0x95
+  advancement: true
+
+
+- name: Fire Temple Boss Key
+  spanish: Gran llave del Templo del Fuego
+  french: Clé d'or du temple du feu
+  type: Boss Key
+  get_item_id: 0x96
+  advancement: true
+
+
+- name: Water Temple Boss Key
+  spanish: Gran llave del Templo del Agua
+  french: Clé d'or du temple de l'eau
+  type: Boss Key
+  get_item_id: 0x97
+  advancement: true
+
+
+- name: Spirit Temple Boss Key
+  spanish: Gran llave del Templo del Espíritu
+  french: Clé d'or du temple de l'esprit
+  type: Boss Key
+  get_item_id: 0x98
+  advancement: true
+
+
+- name: Shadow Temple Boss Key
+  spanish: Gran llave del Templo de las Sombras
+  french: Clé d'or du temple de l'ombre
+  type: Boss Key
+  get_item_id: 0x99
+  advancement: true
+
+
+- name: Ganons Castle Boss Key
+  spanish: Gran llave del Castillo de Ganon
+  french: Clé d'or du château de Ganon
+  type: Boss Key
+  get_item_id: 0x9A
+  advancement: true
+
+
+- name: Forest Temple Small Key
+  spanish: Llave del Templo del Bosque
+  french: Petite clé du temple de la forêt
+  type: Small Key
+  get_item_id: 0xAF
+  advancement: true
+
+
+- name: Fire Temple Small Key
+  spanish: Llave del Templo del Fuego
+  french: Petite clé du temple du feu
+  type: Small Key
+  get_item_id: 0xB0
+  advancement: true
+
+
+- name: Water Temple Small Key
+  spanish: Llave del Templo del Agua
+  french: Petite clé du temple de l'eau
+  type: Small Key
+  get_item_id: 0xB1
+  advancement: true
+
+
+- name: Spirit Temple Small Key
+  spanish: Llave del Templo del Espíritu
+  french: Petite clé du temple de l'esprit
+  type: Small Key
+  get_item_id: 0xB2
+  advancement: true
+
+
+- name: Shadow Temple Small Key
+  spanish: Llave del Templo de las Sombras
+  french: Petite clé du temple de l'ombre
+  type: Small Key
+  get_item_id: 0xB3
+  advancement: true
+
+
+- name: Bottom of the Well Small Key
+  spanish: Llave del fondo del pozo
+  french: Petite clé du fond du puits
+  type: Small Key
+  get_item_id: 0xB4
+  advancement: true
+
+
+- name: Gerudo Training Ground Small Key
+  spanish: Llave del Centro de Instrucción
+  french: Petite clé du gymnase Gerudo
+  type: Small Key
+  get_item_id: 0xB5
+  advancement: true
+
+
+- name: Thieves Hideout Small Key
+  spanish: Llave de la Fortaleza Gerudo
+  french: Petite clé du repaire Gerudo
+  type: Fortress Small Key
+  get_item_id: 0xB6
+  advancement: true
+
+
+- name: Ganons Castle Small Key
+  spanish: Llave del Castillo de Ganon
+  french: Petite clé du château de Ganon
+  type: Small Key
+  get_item_id: 0xB7
+  advancement: true
+
+
+- name: Chest Game Small Key
+  spanish: Llave del Cofre del Tesoro
+  french: Clé de la chasse-aux-trésors
+  type: Item
+  get_item_id: 0xD5
+  advancement: true
+
+
+- name: Kokiri Emerald
+  spanish: Esmeralda de los Kokiri
+  french: Émeraude Kokiri
+  type: Dungeon Reward
+  get_item_id: 0xCB
+  advancement: true
+
+
+- name: Goron Ruby
+  spanish: Rubí de los Goron
+  french: Rubis Goron
+  type: Dungeon Reward
+  get_item_id: 0xCC
+  advancement: true
+
+
+- name: Zora Sapphire
+  spanish: Zafiro de los Zora
+  french: Saphir Zora
+  type: Dungeon Reward
+  get_item_id: 0xCD
+  advancement: true
+
+
+- name: Forest Medallion
+  spanish: Medallón del Bosque
+  french: Médaillon de la forêt
+  type: Dungeon Reward
+  get_item_id: 0xCE
+  advancement: true
+
+
+- name: Fire Medallion
+  spanish: Medallón del Fuego
+  french: Médaillon du feu
+  type: Dungeon Reward
+  get_item_id: 0xCF
+  advancement: true
+
+
+- name: Water Medallion
+  spanish: Medallón del Agua
+  french: Médaillon de l'eau
+  type: Dungeon Reward
+  get_item_id: 0xD0
+  advancement: true
+
+
+- name: Spirit Medallion
+  spanish: Medallón del Espíritu
+  french: Médaillon de l'esprit
+  type: Dungeon Reward
+  get_item_id: 0xD1
+  advancement: true
+
+
+- name: Shadow Medallion
+  spanish: Medallón de la Sombra
+  french: Médaillon de l'ombre
+  type: Dungeon Reward
+  get_item_id: 0xD2
+  advancement: true
+
+
+- name: Light Medallion
+  spanish: Medallón de la Luz
+  french: Médaillon de la lumière
+  type: Dungeon Reward
+  get_item_id: 0xD3
+  advancement: true
+
+
+- name: Recovery Heart
+  spanish: Corazón
+  french: Cœur d'énergie
+  type: Item
+  get_item_id: 0x48
+  advancement: false
+
+
+- name: Green Rupee
+  spanish: Rupia verde
+  french: Rubis vert
+  type: Item
+  get_item_id: 0x4C
+  advancement: false
+
+
+- name: Blue Rupee
+  spanish: Rupia azul
+  french: Rubis bleu
+  type: Item
+  get_item_id: 0x4D
+  advancement: false
+
+
+- name: Red Rupee
+  spanish: Rupia roja
+  french: Rubis rouge
+  type: Item
+  get_item_id: 0x4E
+  advancement: false
+
+
+- name: Purple Rupee
+  spanish: Rupia morada
+  french: Rubis pourpre
+  type: Item
+  get_item_id: 0x55
+  advancement: false
+
+
+- name: Huge Rupee
+  spanish: Rupia gigante
+  french: Énorme rubis
+  type: Item
+  get_item_id: 0x56
+  advancement: false
+
+
+- name: Piece of Heart
+  spanish: Pieza de corazón
+  french: Quart de cœur
+  type: Item
+  get_item_id: 0x3E
+  advancement: false
+
+
+- name: Heart Container
+  spanish: Contenedor de corazón
+  french: Réceptacle de cœur
+  type: Item
+  get_item_id: 0x4F
+  advancement: false
+
+
+- name: Ice Trap
+  spanish: Trampa de hielo
+  french: Piège de glace
+  type: Item
+  get_item_id: 0x7C
+  advancement: false
+
+
+- name: Milk
+  spanish: Leche Lon Lon
+  french: Lait
+  type: Item
+  get_item_id: 0x50
+  advancement: false
+
+
+- name: Bombs 5
+  spanish: Bombas (5)
+  french: Bombes (5)
+  type: Refill
+  get_item_id: 0x01
+  advancement: false
+
+
+- name: Bombs 10
+  spanish: Bombas (10)
+  french: Bombes (10)
+  type: Refill
+  get_item_id: 0x66
+  advancement: false
+
+
+- name: Bombs 20
+  spanish: Bombas (20)
+  french: Bombes (20)
+  type: Refill
+  get_item_id: 0x67
+  advancement: false
+
+
+- name: Bombchus 5
+  spanish: Bombchus (5)
+  french: Bombchus (5)
+  type: Refill
+  get_item_id: 0x6A
+  advancement: true
+
+
+- name: Bombchus 10
+  spanish: Bombchus (10)
+  french: Bombchus (10)
+  type: Refill
+  get_item_id: 0x03
+  advancement: true
+
+
+- name: Bombchus 20
+  spanish: Bombchus (20)
+  french: Bombchus (20)
+  type: Refill
+  get_item_id: 0x6B
+  advancement: true
+
+
+- name: Bombchu Drop
+  spanish: Bombchus
+  french: Bombchus
+  type: Drop
+  get_item_id: 0x03
+  advancement: true
+
+
+- name: Arrows 5
+  spanish: Flechas (5)
+  french: Flèches (5)
+  type: Refill
+  get_item_id: 0x49
+  advancement: false
+
+
+- name: Arrows 10
+  spanish: Flechas (10)
+  french: Flèches (10)
+  type: Refill
+  get_item_id: 0x4A
+  advancement: false
+
+
+- name: Arrows 30
+  spanish: Flechas (30)
+  french: Flèches (30)
+  type: Refill
+  get_item_id: 0x4B
+  advancement: false
+
+
+- name: Deku Nuts 5
+  spanish: Nueces deku (5)
+  french: Noix Mojo (5)
+  type: Refill
+  get_item_id: 0x02
+  advancement: false
+
+
+- name: Deku Nuts 10
+  spanish: Nueces deku (10)
+  french: Noix Mojo (10)
+  type: Refill
+  get_item_id: 0x64
+  advancement: false
+
+
+- name: Deku Seeds 30
+  spanish: Semillas deku (30)
+  french: Graines Mojo (30)
+  type: Refill
+  get_item_id: 0x69
+  advancement: false
+
+
+- name: Deku Stick 1
+  spanish: Palo deku (1)
+  french: Bâton Mojo (1)
+  type: Refill
+  get_item_id: 0x07
+  advancement: false
+
+
+- name: Red Potion Refill
+  spanish: Recarga de poción roja
+  french: Potion rouge
+  type: Refill
+  get_item_id: 0x10
+  advancement: false
+
+
+- name: Green Potion Refill
+  spanish: Recarga de poción verde
+  french: Potion verte
+  type: Refill
+  get_item_id: 0x11
+  advancement: false
+
+
+- name: Blue Potion Refill
+  spanish: Recarga de poción azul
+  french: Potion bleue
+  type: Refill
+  get_item_id: 0x12
+  advancement: false
+
+
+- name: Treasure Game Heart
+  spanish: Pieza de corazón (Cofre del Tesoro)
+  french: Quart de cœur (Chasse-aux-trésors)
+  type: Item
+  get_item_id: 0x76
+  advancement: false
+
+
+- name: Treasure Game Green Rupee
+  spanish: Rupia Verde (Cofre del Tesoro)
+  french: Rubis vert (Chasse-aux-trésors)
+  type: Item
+  get_item_id: 0x72
+  advancement: false
+
+
+- name: Triforce
+  spanish: Trifuerza
+  french: Triforce
+  type: Event
+  get_item_id: 0x74
+  advancement: false
+
+
+- name: Hint
+  spanish: Pista
+  french: Indice
+  type: Event
+  get_item_id: 0x73
+  advancement: false
+
+
+- name: Buy Deku Nut 5
+  spanish: Comprar nueces deku (5)
+  french: "Acheter: Noix Mojo (5)"
+  type: Shop
+  get_item_id: 0x00
+  advancement: true
+
+
+- name: Buy Arrows 30
+  spanish: Comprar flechas (30)
+  french: "Acheter: Flèches (30)"
+  type: Shop
+  get_item_id: 0x01
+  advancement: true
+
+
+- name: Buy Arrows 50
+  spanish: Comprar flechas (50)
+  french: "Acheter: Flèches (50)"
+  type: Shop
+  get_item_id: 0x02
+  advancement: true
+
+
+- name: Buy Bombs 5 25
+  spanish: Comprar bombas (5) [25]
+  french: "Acheter: Bombes (5) [25]"
+  type: Shop
+  get_item_id: 0x03
+  advancement: true
+
+
+- name: Buy Deku Nut 10
+  spanish: Comprar Nueces deku (10)
+  french: "Acheter: Noix Mojo (10)"
+  type: Shop
+  get_item_id: 0x04
+  advancement: true
+
+
+- name: Buy Deku Stick 1
+  spanish: Comprar palos deku (1)
+  french: "Acheter: Bâton Mojo (1)"
+  type: Shop
+  get_item_id: 0x05
+  advancement: true
+
+
+- name: Buy Bombs 10
+  spanish: Comprar Bombas (10)
+  french: "Acheter: Bombes (10)"
+  type: Shop
+  get_item_id: 0x06
+  advancement: true
+
+
+- name: Buy Fish
+  spanish: Comprar pez
+  french: "Acheter: Poisson"
+  type: Shop
+  get_item_id: 0x07
+  advancement: true
+
+
+- name: Buy Red Potion 30
+  spanish: Comprar poción roja [30]
+  french: "Acheter: Potion rouge [30]"
+  type: Shop
+  get_item_id: 0x08
+  advancement: false
+
+
+- name: Buy Green Potion
+  spanish: Comprar poción verde
+  french: "Acheter: Potion verte"
+  type: Shop
+  get_item_id: 0x09
+  advancement: true
+
+
+- name: Buy Blue Potion
+  spanish: Comprar poción azul
+  french: "Acheter: Potion bleue"
+  type: Shop
+  get_item_id: 0x0A
+  advancement: true
+
+
+- name: Buy Hylian Shield
+  spanish: Comprar escudo hyliano
+  french: "Acheter: Bouclier Hylien"
+  type: Shop
+  get_item_id: 0x0C
+  advancement: true
+
+
+- name: Buy Deku Shield
+  spanish: Comprar escudo deku
+  french: "Acheter: Bouclier Mojo"
+  type: Shop
+  get_item_id: 0x0D
+  advancement: true
+
+
+- name: Buy Goron Tunic
+  spanish: Comprar sayo goron
+  french: "Acheter: Tunique Goron"
+  type: Shop
+  get_item_id: 0x0E
+  advancement: true
+
+
+- name: Buy Zora Tunic
+  spanish: Comprar sayo zora
+  french: "Acheter: Tunique Zora"
+  type: Shop
+  get_item_id: 0x0F
+  advancement: true
+
+
+- name: Buy Heart
+  spanish: Comprar corazón
+  french: "Acheter: Coeur d'énergie"
+  type: Shop
+  get_item_id: 0x10
+  advancement: false
+
+
+- name: Buy Bombchu 10
+  spanish: Comprar bombchus (10)
+  french: "Acheter: Bombchus (10)"
+  type: Shop
+  get_item_id: 0x15
+  advancement: true
+
+
+- name: Buy Bombchu 20
+  spanish: Comprar bombchus (20)
+  french: "Acheter: Bombchus (20)"
+  type: Shop
+  get_item_id: 0x16
+  advancement: true
+
+
+- name: Buy Bombchu 5
+  spanish: Comprar bombchus (5)
+  french: "Acheter: Bombchus (5)"
+  type: Shop
+  get_item_id: 0x18
+  advancement: true
+
+
+- name: Buy Deku Seeds 30
+  spanish: Comprar semillas deku (30)
+  french: "Acheter: Graines Mojo (30)"
+  type: Shop
+  get_item_id: 0x1D
+  advancement: true
+
+
+- name: Sold Out
+  spanish: Vendido
+  french: Vendu
+  type: Shop
+  get_item_id: 0x26
+  advancement: false
+
+
+- name: Buy Blue Fire
+  spanish: Comprar fuego azul
+  french: "Acheter: Flamme bleue"
+  type: Shop
+  get_item_id: 0x27
+  advancement: true
+
+
+- name: Buy Bottle Bug
+  spanish: Comprar bichos
+  french: "Acheter: Insectes en flacon"
+  type: Shop
+  get_item_id: 0x28
+  advancement: true
+
+
+- name: Buy Poe
+  spanish: Comprar Poe
+  french: "Acheter: Esprit"
+  type: Shop
+  get_item_id: 0x2A
+  advancement: false
+
+
+- name: Buy Fairys Spirit
+  spanish: Comprar hada
+  french: "Acheter: Fée"
+  type: Shop
+  get_item_id: 0x2B
+  advancement: true
+
+
+- name: Buy Arrows 10
+  spanish: Comprar flechas (10)
+  french: "Acheter: Flèches (10)"
+  type: Shop
+  get_item_id: 0x2C
+  advancement: true
+
+
+- name: Buy Bombs 20
+  spanish: Comprar bombas (20)
+  french: "Acheter: Bombes (20)"
+  type: Shop
+  get_item_id: 0x2D
+  advancement: true
+
+
+- name: Buy Bombs 30
+  spanish: Comprar bombas (30)
+  french: "Acheter: Bombes (30)"
+  type: Shop
+  get_item_id: 0x2E
+  advancement: true
+
+
+- name: Buy Bombs 5 35
+  spanish: Comprar bombas (5) [35]
+  french: "Acheter: Bombes (5) [35]"
+  type: Shop
+  get_item_id: 0x2F
+  advancement: true
+
+
+- name: Buy Red Potion 40
+  spanish: Comprar poción roja [40]
+  french: "Acheter: Potion rouge [40]"
+  type: Shop
+  get_item_id: 0x30
+  advancement: false
+
+
+- name: Buy Red Potion 50
+  spanish: Comprar poción roja [50]
+  french: "Acheter: Potion rouge [50]"
+  type: Shop
+  get_item_id: 0x31
+  advancement: false
