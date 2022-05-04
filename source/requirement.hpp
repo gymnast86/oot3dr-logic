@@ -2,6 +2,7 @@
 
 #include "item.hpp"
 #include "area_id.hpp"
+#include "settings.hpp"
 
 #include <vector>
 #include <variant>
@@ -9,7 +10,6 @@
 
 struct Requirement;
 using LogicHelperMap = std::unordered_map<std::string, Requirement>;
-using SettingsMap = std::unordered_map<std::string, std::string>;
 
 enum struct RequirementType
 {

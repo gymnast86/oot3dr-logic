@@ -766,6 +766,8 @@ LocationID NameToLocationID(const std::string& name)
     return nameLocationMap.at(name);
 }
 
+Location::Location() {}
+
 Location::Location(const LocationID& id_, std::string name_, World* world_, Area* area_) :
                       id(id_), name(std::move(name_)), world(world_), area(area_) {}
 

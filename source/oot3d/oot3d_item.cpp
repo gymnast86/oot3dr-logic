@@ -4,8 +4,9 @@
 
 Oot3dItem::Oot3dItem() {}
 
-Oot3dItem::Oot3dItem(std::string name_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_)
+Oot3dItem::Oot3dItem(const ItemID& id_, std::string name_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_)
 {
+    id = id_;
     name = std::move(name_);
     type = type_;
     getItemId = getItemId_;

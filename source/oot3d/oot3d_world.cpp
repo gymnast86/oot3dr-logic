@@ -7,14 +7,15 @@
 
 #define BUILD_ERROR_CHECK(err) if (err != WorldBuildingError::NONE) {return err;}
 #define FILE_READ_CHECK(retVal) if (retVal != 0) {return WorldBuildingError::COULD_NOT_LOAD_FILE;}
-#define YAML_FIELD_CHECK(ref, field, err) if(!ref.has_child(field)) {std::cout << "ERROR: Unable to find field \"" << field << "\" in YAML object" << std::endl; PrintObjectFields(ref); return err;}
-#define VALID_ITEM_CHECK(ref, itemName) if (NameToItemID(itemName) == ItemID::INVALID) {std::replace(itemName.begin(), itemName.end(), '_', ' '); std::cout << "ERROR: Unknown item name \"" << itemName << "\" in YAML object:" << std::endl; PrintObjectFields(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
-#define VALID_ITEM_TYPE(ref, typeStr) if (NameToOot3dItemType(typeStr) == ItemType::INVALID) {std::cout << "ERROR: Unknown item type \"" << typeStr << "\" in YAML object:" << std::endl; PrintObjectFields(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
-#define VALID_GET_ITEM_ID(ref, getItemIdStr) if (std::strtoul(getItemIdStr.c_str(), nullptr, 0) > 0xFF) {std::cout << "ERROR: Get Item ID value is greater than 0xFF in YAML object: " << std::endl; PrintObjectFields(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
-#define VALID_ADVANCEMENT(ref, advancementStr) if (advancementStr != "true" && advancementStr != "false") {std::cout << "ERROR: Unknown advancement value \"" << advancementStr << "\" in YAML object:" << std::endl; PrintObjectFields(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
-#define VALID_LOCATION_CHECK(ref, locName) if (NameToLocationID(locName) == LocationID::INVALID) {std::cout << "ERROR: Unknown location name \"" << locName << "\" in YAML object:" << std::endl; PrintObjectFields(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
-
-std::unordered_map<ItemID, Oot3dItem> Oot3dWorld::itemTable;
+#define YAML_FIELD_CHECK(ref, field, err) if(!ref.has_child(field)) {std::cout << "ERROR: Unable to find field \"" << field << "\" in YAML object" << std::endl; PrintYAML(ref); return err;}
+#define VALID_ITEM_CHECK(ref, itemName) if (NameToItemID(itemName) == ItemID::INVALID) {std::replace(itemName.begin(), itemName.end(), '_', ' '); std::cout << "ERROR: Unknown item name \"" << itemName << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
+#define VALID_ITEM_TYPE(ref, typeStr) if (NameToOot3dItemType(typeStr) == ItemType::INVALID) {std::cout << "ERROR: Unknown item type \"" << typeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
+#define VALID_UINT8_T(ref, getItemIdStr, valueName) if (std::strtoul(getItemIdStr.c_str(), nullptr, 0) > 0xFF) {std::cout << "ERROR: " << valueName << " value is greater than 0xFF in YAML object: " << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
+#define VALID_ADVANCEMENT(ref, advancementStr) if (advancementStr != "true" && advancementStr != "false") {std::cout << "ERROR: Unknown advancement value \"" << advancementStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
+#define VALID_LOCATION_CHECK(ref, locName) if (NameToLocationID(locName) == LocationID::INVALID) {std::cout << "ERROR: Unknown location name \"" << locName << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
+#define VALID_LOCATION_TYPE(ref, typeStr) if (NameToOot3dLocationType(typeStr) == LocationType::INVALID) {std::cout << "ERROR: Unknown location type \"" << typeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
+#define VALID_CHECK_TYPE(ref, checkTypeStr) if (NameToOot3dSpoilerCheckType(checkTypeStr) == SpoilerCollectionCheckType::SPOILER_CHK_INVALID) {std::cout << "Unknown location check_type \"" << checkTypeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
+#define VALID_CHECK_GROUP(ref, checkGroupStr) if (NameToOot3dSpoilerCheckGroup(checkGroupStr) == SpoilerCollectionCheckGroup::GROUP_INVALID) {std::cout << "Unknown location check_group \"" << checkGroupStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
 
 Oot3dWorld::Oot3dWorld() {}
 
@@ -36,6 +37,8 @@ WorldBuildingError CheckValidItemFields(const ryml::NodeRef& item)
 
 WorldBuildingError CheckValidLocationFields(const ryml::NodeRef& location)
 {
+    // Trying to get this to work with iteration was a pain, so we'll just define
+    // them all for now
     YAML_FIELD_CHECK(location, "name", WorldBuildingError::MISSING_LOCATION_FIELD);
     YAML_FIELD_CHECK(location, "type", WorldBuildingError::MISSING_LOCATION_FIELD);
     YAML_FIELD_CHECK(location, "scene", WorldBuildingError::MISSING_LOCATION_FIELD);
@@ -62,6 +65,7 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
         WorldBuildingError err = CheckValidItemFields(item);
         BUILD_ERROR_CHECK(err);
 
+        // Get the field strings
               std::string name = SubstrToString(item["name"].val());
         const std::string typeStr = SubstrToString(item["type"].val());
         const std::string getItemIdStr = SubstrToString(item["get_item_id"].val());
@@ -73,15 +77,17 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
         // Check each field for proper values
         VALID_ITEM_CHECK(item, name);
         VALID_ITEM_TYPE(item, typeStr);
-        VALID_GET_ITEM_ID(item, getItemIdStr);
+        VALID_UINT8_T(item, getItemIdStr, "get_item_id");
         VALID_ADVANCEMENT(item, advancementStr);
 
+        // Get the values
         auto itemId = NameToItemID(name);
         ItemType type = NameToOot3dItemType(name);
         uint8_t getItemId = std::strtoul(getItemIdStr.c_str(), nullptr, 0);
         bool advancement = advancementStr == "true";
 
-        itemTable.try_emplace(itemId, name, type, getItemId, advancement, this);
+        // Insert the values into the item table
+        itemTable.try_emplace(itemId, itemId, name, type, getItemId, advancement, this);
     }
     return WorldBuildingError::NONE;
 }
@@ -99,6 +105,7 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         WorldBuildingError err = CheckValidLocationFields(location);
         BUILD_ERROR_CHECK(err);
 
+        // Get the field strings
         const std::string name = SubstrToString(location["name"].val());
         const std::string typeStr = SubstrToString(location["type"].val());
         const std::string sceneStr = SubstrToString(location["scene"].val());
@@ -114,19 +121,37 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
 
         // Check each field for proper values
         VALID_LOCATION_CHECK(location, name);
+        VALID_LOCATION_TYPE(location, typeStr);
+        VALID_UINT8_T(location, sceneStr, "scene");
+        VALID_UINT8_T(location, flagStr, "flag");
         VALID_ITEM_CHECK(location, vanillaItemStr);
+        VALID_CHECK_TYPE(location, checkTypeStr);
+        VALID_UINT8_T(location, arg1Str, "check_type_arg1");
+        VALID_UINT8_T(location, arg2Str, "check_type_arg2");
+        VALID_CHECK_GROUP(location, checkGroupStr);
 
-        //
-        // auto itemId = NameToItemID(name);
-        // ItemType type = NameToOot3dItemType(name);
-        // uint8_t getItemId = std::strtoul(getItemIdStr.c_str(), nullptr, 0);
-        // bool advancement = advancementStr == "true";
-        //
-        // itemTable.try_emplace(itemId, name, type, getItemId, advancement, this);
+        // Get the values
+        auto locationId = NameToLocationID(name);
+        auto type = NameToOot3dLocationType(typeStr);
+        uint8_t scene = std::strtoul(sceneStr.c_str(), nullptr, 0);
+        uint8_t flag = std::strtoul(flagStr.c_str(), nullptr, 0);
+        auto vanillaItem = NameToItemID(vanillaItemStr);
+        auto checkType = NameToOot3dSpoilerCheckType(checkTypeStr);
+        uint8_t arg1 = std::strtoul(arg1Str.c_str(), nullptr, 0);
+        uint8_t arg2 = std::strtoul(arg2Str.c_str(), nullptr, 0);
+        auto checkGroup = NameToOot3dSpoilerCheckGroup(checkGroupStr);
+
+        // Create the Spoiler Check object
+        auto collectionCheck = SpoilerCollectionCheck(checkType, arg1, arg2);
+
+        // Create the location
+        Location loc = Oot3dLocation(locationId, name, type, scene, flag, vanillaItem, collectionCheck, checkGroup, this);
+
+        // insert the Location into the locations map
+        locations.emplace(locationId, loc);
     }
     return WorldBuildingError::NONE;
 }
-
 
 WorldBuildingError Oot3dWorld::LoadLogicHelpers()
 {
@@ -168,44 +193,42 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
     else
     {
         const ryml::Tree overworldTree = ryml::parse_in_place(ryml::to_substr(overworldStr));
-        for (const ryml::NodeRef& object : overworldTree.rootref().children())
+        for (const ryml::NodeRef& area : overworldTree.rootref().children())
         {
-            const std::string name = SubstrToString(object["region_name"].val());
+            const std::string name = SubstrToString(area["region_name"].val());
+            const AreaID areaId = NameToAreaID(name);
+
+            // Create area
             Area newArea;
+            newArea.id = areaId;
             newArea.name = name;
-            newArea.id = NameToAreaID(name);
-            if (object.has_child("font_color"))
+
+            if (area.has_child("font_color"))
             {
-                const std::string font_color = SubstrToString(object["font_color"].val());
+                const std::string font_color = SubstrToString(area["font_color"].val());
             }
-            if (object.has_child("scene"))
+            if (area.has_child("scene"))
             {
-                const std::string scene = SubstrToString(object["scene"].val());
+                const std::string scene = SubstrToString(area["scene"].val());
             }
-            if (object.has_child("hint"))
+            if (area.has_child("hint"))
             {
-                const std::string hint = SubstrToString(object["hint"].val());
+                const std::string hint = SubstrToString(area["hint"].val());
             }
-            if (object.has_child("events"))
+            if (area.has_child("events"))
             {
-                for (const ryml::NodeRef& event : object["events"].children())
+                for (const ryml::NodeRef& event : area["events"].children())
                 {
                     const std::string eventName = SubstrToString(event.key());
                     const std::string reqStr = SubstrToString(event.val());
                 }
             }
-            if (object.has_child("locations"))
+            if (area.has_child("locations"))
             {
-                for (const ryml::NodeRef& location : object["locations"].children())
+                for (const ryml::NodeRef& location : area["locations"].children())
                 {
                     const std::string locationName = SubstrToString(location.key());
                     const std::string reqStr = SubstrToString(location.val());
-
-                    // location name access
-                    // auto locationId = NameToLocationID(locationName);
-
-                    //world.locations.emplace_back(locationId, Location());
-
 
                     Requirement req;
                     RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings);
@@ -214,16 +237,22 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                         std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl;
                         return WorldBuildingError::BAD_REQUIREMENT;
                     }
+
+                    auto locationId = NameToLocationID(locationName);
+                    Location* locationPtr = locations[locationId];
+                    newArea.locations.emplace_back(locationPtr, req);
                 }
             }
-            if (object.has_child("exits"))
+            if (area.has_child("exits"))
             {
-                for (const ryml::NodeRef& exit : object["exits"].children())
+                for (const ryml::NodeRef& exit : area["exits"].children())
                 {
                     const std::string exitName = SubstrToString(exit.key());
                     const std::string requirement = SubstrToString(exit.val());
                 }
             }
+
+            areas.emplace(areaId, newArea);
         }
     }
     return WorldBuildingError::NONE;

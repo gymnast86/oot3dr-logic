@@ -1,8 +1,11 @@
 #pragma once
 
+#include "oot3d_item.hpp"
+#include "oot3d_location.hpp"
+
 #include "../world.hpp"
 #include "../requirement.hpp"
-#include "oot3d_item.hpp"
+
 
 #include <unordered_map>
 
@@ -15,7 +18,7 @@ public:
 
     WorldBuildingError Build() override;
 
-    static std::unordered_map<ItemID, Oot3dItem> itemTable;
+    std::unordered_map<ItemID, Oot3dItem> itemTable;
 
 private:
 

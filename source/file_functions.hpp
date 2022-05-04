@@ -31,7 +31,7 @@ std::string SubstrToString(const ryml::csubstr& substr)
     return std::string(substr.data(), substr.size());
 }
 
-void PrintObjectFields(const ryml::NodeRef& object, int nestingLevel = 1)
+void PrintYAML(const ryml::NodeRef& object, int nestingLevel = 1)
 {
     std::string spaces (nestingLevel * 2, ' ');
     for (const auto& field : object.children())
@@ -39,7 +39,7 @@ void PrintObjectFields(const ryml::NodeRef& object, int nestingLevel = 1)
         if (!field.has_val())
         {
             std::cout << spaces << SubstrToString(field.key()) << ":" << std::endl;
-            PrintObjectFields(field, nestingLevel + 1);
+            PrintYAML(field, nestingLevel + 1);
         }
         else if (!field.has_key())
         {

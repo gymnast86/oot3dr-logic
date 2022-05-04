@@ -25,7 +25,7 @@ enum class ItemType {
 class Oot3dItem : public Item {
 public:
     Oot3dItem();
-    Oot3dItem(std::string name_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_);
+    Oot3dItem(const ItemID& id_, std::string name_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_);
     ~Oot3dItem();
 
     ItemOverride_Value Value() const;
