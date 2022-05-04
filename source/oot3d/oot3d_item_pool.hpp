@@ -1,3 +1,5 @@
 #pragma once
 
-#include "../item_pool.hpp"
+#include "../general_item_pool.hpp"
+
+ItemIDPool GenerateOot3dItemPool(const SettingsMap& settings);

@@ -89,6 +89,7 @@ enum class AreaID : uint32_t
     KakWindmill,
     KakBazaar,
     KakShootingGallery,
+    KakPotionShopFront,
     KakPotionShopBack,
     KakOddMedicineBuilding,
     Graveyard,
@@ -106,6 +107,7 @@ enum class AreaID : uint32_t
     GCWoodsWarp,
     GCDaruniasChamber,
     GCGrottoPlatform,
+    GCShop,
     DMCUpperNearby,
     DMCUpperLocal,
     DMCLadderAreaNearby,
@@ -176,7 +178,7 @@ enum class AreaID : uint32_t
     IceCavernBeginning,
     BottomOfTheWell,
     GerudoTrainingGroundLobby,
-
+    GanonsCastleLobby,
     INVALID
 };
 

@@ -18,6 +18,7 @@ struct LocationAccess {
     Requirement requirement;
 };
 
+class World;
 class Area {
 public:
 
@@ -30,5 +31,6 @@ public:
     std::list<LocationAccess> locations;
     std::list<Entrance> exits;
     std::list<Entrance*> entrances;
+    World* world = nullptr;
 
 };

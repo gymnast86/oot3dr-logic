@@ -105,12 +105,12 @@
       #repeatable access.
       Deku Baba Sticks: (is_adult and not entrance_shuffle) or can_use(Kokiri_Sword) or can_use(Boomerang)
       Deku Baba Nuts: is_adult and not entrance_shuffle
-      KF Deku Tree Gossip Stone (Left): 'True'
-      KF Deku Tree Gossip Stone (Right): 'True'
+      KF Deku Tree Gossip Stone Left: 'True'
+      KF Deku Tree Gossip Stone Right: 'True'
   exits:
       Deku Tree Lobby:
           is_child or
-          (shuffle_dungeon_entrances and (open_forest == open or 'Showed Mido Sword & Shield'))
+          (shuffle_dungeon_entrances and (open_forest == open or Showed_Mido_Sword_And_Shield))
       Kokiri Forest: is_adult or open_forest == open or Showed_Mido_Sword_And_Shield
 
 
@@ -178,9 +178,6 @@
   font_color: Green
   scene: Lost Woods
   hint: the Lost Woods
-  events:
-      Odd Mushroom Access: is_adult and ('Cojiro Access' or Cojiro)
-      Poachers Saw Access: is_adult and 'Odd Potion Access'
   locations:
       LW Skull Kid: is_child and can_play(Sarias_Song)
       LW Trade Cojiro: is_adult and Cojiro
@@ -199,7 +196,7 @@
       LW Bridge: is_adult and (can_use(Hover_Boots) or can_use(Longshot) or here(can_plant_bean)
           or logic_lost_woods_bridge)
       Zora River: can_leave_forest and (can_dive or can_use(Iron_Boots))
-      LW Beyond Mido: is_child or logic_mido_backflip or can_play(Sarias_Song)
+      LW Beyond Mido: is_child or can_play(Sarias_Song)
       LW Near Shortcuts Grotto: here(can_blast_or_smash)
 
 
@@ -216,7 +213,7 @@
               (logic_lost_woods_gs_bean and can_use(Hookshot) and
               (can_use(Longshot) or can_use(Bow) or has_bombchus or can_use(Dins_Fire))))
       LW GS Bean Patch Near Theater: can_plant_bugs and (can_child_attack or (shuffle_scrubs
-          == 'off' and Buy_Deku_Shield))
+          == off and Buy_Deku_Shield))
       Butterfly Fairy: can_use(Sticks) and has_bottle
   exits:
       LW Forest Exit: 'True'
@@ -252,8 +249,8 @@
       Song from Saria: is_child and Zeldas_Letter
       Sheik in Forest: is_adult
       SFM GS: can_use(Hookshot) and at_night
-      SFM Maze Gossip Stone (Lower): 'True'
-      SFM Maze Gossip Stone (Upper): 'True'
+      SFM Maze Gossip Stone Lower: 'True'
+      SFM Maze Gossip Stone Upper: 'True'
       SFM Saria Gossip Stone: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
   exits:
@@ -338,8 +335,8 @@
       LH GS Small Island: is_child and can_child_attack and at_night
       LH GS Tree: can_use(Longshot) and at_night
       LH Lab Gossip Stone: 'True'
-      LH Gossip Stone (Southeast): 'True'
-      LH Gossip Stone (Southwest): 'True'
+      LH Gossip Stone Southeast: 'True'
+      LH Gossip Stone Southwest: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
@@ -349,8 +346,7 @@
       Zoras Domain: is_child and can_dive
       LH Owl Flight: is_child
       LH Lab: 'True'
-      LH Fishing Island: is_child or can_use(Scarecrow) or here(can_plant_bean) or 'Water
-          Temple Clear'
+      LH Fishing Island: is_child or can_use(Scarecrow) or here(can_plant_bean) or Water_Temple_Clear
       Water Temple Lobby: can_use(Hookshot) and (can_use(Iron_Boots) or ((can_use(Longshot)
           or logic_water_hookshot_entry) and count(Progressive_Scale, 2)))
       LH Grotto: 'True'
@@ -404,7 +400,7 @@
       GV Crate Ledge: is_child or can_use(Longshot)
       GV Grotto Ledge: 'True'
       GV Fortress Side: is_adult and (can_ride_epona or can_use(Longshot) or gerudo_fortress
-          == 'open' or 'Carpenter Rescue')
+          == open or Carpenter_Rescue)
 
 
 - region_name: GV Upper Stream
@@ -459,8 +455,6 @@
   scene: Gerudo Valley
   hint: Gerudo Valley
   time_passes: true
-  events:
-      Broken Sword Access: is_adult and ('Poachers Saw Access' or Poachers_Saw)
   locations:
       GV Chest: can_use(Megaton_Hammer)
       GV GS Behind Tent: can_use(Hookshot) and at_night
@@ -470,7 +464,7 @@
       GV Upper Stream: 'True'
       GV Crate Ledge: logic_valley_crate_hovers and can_use(Hover_Boots) and can_take_damage
       Gerudo Valley: is_child or can_ride_epona or can_use(Longshot) or gerudo_fortress
-          == 'open' or 'Carpenter Rescue'
+          == open or Carpenter_Rescue
       GV Carpenter Tent: is_adult
       GV Storms Grotto: is_adult and can_open_storm_grotto
 
@@ -486,24 +480,24 @@
   scene: Gerudo Fortress
   hint: Gerudo's Fortress
   events:
-      Carpenter Rescue: can_finish_GerudoFortress
-      GF Gate Open: is_adult and Gerudo_Token
+      Carpenter_Rescue: can_finish_GerudoFortress
+      GF_Gate_Open: is_adult and Gerudo_Token
   locations:
       GF Chest: can_use(Hover_Boots) or can_use(Scarecrow) or can_use(Longshot)
       GF HBA 1000 Points: Gerudo_Token and can_ride_epona and Bow and at_day
       GF HBA 1500 Points: Gerudo_Token and can_ride_epona and Bow and at_day
-      Hideout Jail Guard (1 Torch): is_adult or Kokiri_Sword
-      Hideout Jail Guard (2 Torches): is_adult or Kokiri_Sword
-      Hideout Jail Guard (3 Torches): "(is_adult or Kokiri_Sword) and (Gerudo_Token
+      Hideout Jail Guard 1 Torch: is_adult or Kokiri_Sword
+      Hideout Jail Guard 2 Torches: is_adult or Kokiri_Sword
+      Hideout Jail Guard 3 Torches: "(is_adult or Kokiri_Sword) and (Gerudo_Token
           or can_use(Bow) or can_use(Hookshot) or can_use(Hover_Boots) or logic_gerudo_kitchen)"
-      Hideout Jail Guard (4 Torches): is_adult or Kokiri_Sword
-      Hideout Gerudo Membership Card: can_finish_GerudoFortress
+      Hideout Jail Guard 4 Torches: is_adult or Kokiri_Sword
+      Hideout Gerudo Token: can_finish_GerudoFortress
       GF GS Archery Range: can_use(Hookshot) and Gerudo_Token and at_night
       GF GS Top Floor: is_adult and at_night and (Gerudo_Token or can_use(Bow)
           or can_use(Hookshot) or can_use(Hover_Boots) or logic_gerudo_kitchen)
   exits:
       GV Fortress Side: 'True'
-      GF Outside Gate: "'GF Gate Open'"
+      GF Outside Gate: GF_Gate_Open
       Gerudo Training Ground Lobby: Gerudo_Token and is_adult
       GF Storms Grotto: is_adult and can_open_storm_grotto
 
@@ -513,7 +507,7 @@
   scene: Gerudo Fortress
   hint: Gerudo's Fortress
   exits:
-      Gerudo Fortress: is_adult or (shuffle_overworld_entrances and 'GF Gate Open')
+      Gerudo Fortress: is_adult or (shuffle_overworld_entrances and GF_Gate_Open)
       Wasteland Near Fortress: 'True'
 
 
@@ -631,10 +625,10 @@
   scene: ToT Entrance
   hint: the Market
   locations:
-      ToT Gossip Stone (Left): 'True'
-      ToT Gossip Stone (Left-Center): 'True'
-      ToT Gossip Stone (Right): 'True'
-      ToT Gossip Stone (Right-Center): 'True'
+      ToT Gossip Stone Left: 'True'
+      ToT Gossip Stone Left Center: 'True'
+      ToT Gossip Stone Right: 'True'
+      ToT Gossip Stone Right Center: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
   exits:
       Market: 'True'
@@ -743,7 +737,7 @@
 - region_name: Market Guard House
   scene: Market Guard House
   events:
-      Sell Big Poe: is_adult and Bottle_with_Big_Poe
+      Sell_Big_Poe: is_adult and Bottle_with_Big_Poe
   locations:
       Market 10 Big Poes: is_adult and (Big_Poe or count(Bottle_with_Big_Poe, big_poe_count))
       Market GS Guard House: is_child
@@ -852,8 +846,7 @@
   scene: Kakariko Village
   hint: Kakariko Village
   events:
-      Cojiro Access: is_adult and 'Wake Up Adult Talon'
-      Kakariko Village Gate Open: is_child and (Zeldas_Letter or open_kakariko == 'open')
+      Kakariko_Village_Gate_Open: is_child and (Zeldas_Letter or open_kakariko == open)
   locations:
       Sheik in Kakariko: is_adult and Forest_Medallion and Fire_Medallion and Water_Medallion
       Kak Anju as Adult: is_adult and at_day
@@ -883,7 +876,7 @@
           or Kokiri_Sword) and can_take_damage)))
       Kak Backyard: is_adult or at_day
       Graveyard: 'True'
-      Kak Behind Gate: is_adult or 'Kakariko Village Gate Open'
+      Kak Behind Gate: is_adult or Kakariko_Village_Gate_Open
 
 
 - region_name: Kak Impas Ledge
@@ -931,7 +924,7 @@
 - region_name: Kak Carpenter Boss House
   scene: Kak Carpenter Boss House
   events:
-      Wake Up Adult Talon: is_adult and (Pocket_Egg or Pocket_Cucco)
+      Wake_Up_Adult_Talon: is_adult and (Pocket_Egg or Pocket_Cucco)
   exits:
       Kakariko Village: 'True'
 
@@ -1030,8 +1023,6 @@
 
 - region_name: Kak Odd Medicine Building
   scene: Kak Odd Medicine Building
-  events:
-      Odd Potion Access: is_adult and ('Odd Mushroom Access' or (Odd_Mushroom and disable_trade_revert))
   exits:
       Kak Backyard: 'True'
 
@@ -1122,8 +1113,8 @@
   scene: Kakariko Village
   hint: Kakariko Village
   exits:
-      Kakariko Village: is_adult or logic_visible_collisions or 'Kakariko Village Gate
-          Open' or open_kakariko == 'open'
+      Kakariko Village: is_adult or logic_visible_collisions or Kakariko_Village_Gate_Open
+          or open_kakariko == open
       Death Mountain: 'True'
 
 
@@ -1157,7 +1148,7 @@
   hint: Death Mountain Trail
   time_passes: true
   locations:
-      DMT Biggoron: is_adult and Claim_Check
+      DMT Trade Claim Check: is_adult and Claim_Check
       DMT GS Falling Rocks Path: is_adult and can_use(Megaton_Hammer) and at_night
       DMT Gossip Stone: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
@@ -1213,10 +1204,10 @@
       GC Darunias Chamber: "(is_adult and Stop_GC_Rolling_Goron_as_Adult) or (is_child
           and can_play(Zeldas_Lullaby))"
       GC Grotto Platform: is_adult and ((can_play(Song_of_Time) and ((damage_multiplier
-          != 'ohko' and damage_multiplier != 'quadruple') or can_use(Goron_Tunic) or can_use(Longshot)
-          or can_use(Nayrus_Love))) or (can_use(Hookshot) and ((damage_multiplier != 'ohko'
-          and can_use(Goron_Tunic)) or can_use(Nayrus_Love) or (damage_multiplier != 'ohko'
-          and damage_multiplier != 'quadruple' and logic_goron_grotto))))
+          != ohko and damage_multiplier != quadruple) or can_use(Goron_Tunic) or can_use(Longshot)
+          or can_use(Nayrus_Love))) or (can_use(Hookshot) and ((damage_multiplier != ohko
+          and can_use(Goron_Tunic)) or can_use(Nayrus_Love) or (damage_multiplier != ohko
+          and damage_multiplier != quadruple and logic_goron_grotto))))
 
 
 - region_name: GC Woods Warp
@@ -1249,7 +1240,7 @@
   hint: Goron City
   exits:
       GC Grotto: 'True'
-      Goron City: "(damage_multiplier != 'ohko' and damage_multiplier != 'quadruple')
+      Goron City: "(damage_multiplier != ohko and damage_multiplier != quadruple)
           or can_use(Goron_Tunic) or can_use(Nayrus_Love) or (can_play(Song_of_Time) and
           can_use(Longshot))"
 
@@ -1293,7 +1284,7 @@
       DMC Upper Nearby: 'True'
       DMC Ladder Area Nearby: 'True'
       DMC Central Nearby: can_use(Goron_Tunic) and can_use(Longshot) and ((damage_multiplier
-          != 'ohko' and damage_multiplier != 'quadruple') or (Fairy and not entrance_shuffle)
+          != ohko and damage_multiplier != quadruple) or (Fairy and not entrance_shuffle)
           or can_use(Nayrus_Love))
 
 
@@ -1455,7 +1446,7 @@
   locations:
       ZD Diving Minigame: is_child
       ZD Chest: can_use(Sticks)
-      Deliver Rutos Letter: is_child and Rutos_Letter and zora_fountain != 'open'
+      Deliver Rutos Letter: is_child and Rutos_Letter and zora_fountain != open
       ZD King Zora Thawed: King_Zora_Thawed
       ZD GS Frozen Waterfall: is_adult and at_night and (Progressive_Hookshot or Bow
           or Magic_Meter or logic_domain_gs)
@@ -1467,8 +1458,8 @@
   exits:
       ZR Behind Waterfall: 'True'
       Lake Hylia: is_child and can_dive
-      ZD Behind King Zora: Deliver_Letter or zora_fountain == 'open' or (zora_fountain
-          == 'adult' and is_adult) or (logic_king_zora_skip and is_adult)
+      ZD Behind King Zora: Deliver_Letter or zora_fountain == open or (zora_fountain
+          == adult and is_adult) or (logic_king_zora_skip and is_adult)
       ZD Shop: is_child or Blue_Fire
       ZD Storms Grotto: can_open_storm_grotto
 
@@ -1478,7 +1469,7 @@
   scene: Zoras Domain
   hint: Zora's Domain
   exits:
-      Zoras Domain: Deliver_Letter or zora_fountain == 'open' or (zora_fountain == 'adult'
+      Zoras Domain: Deliver_Letter or zora_fountain == open or (zora_fountain == adult
           and is_adult)
       Zoras Fountain: 'True'
 

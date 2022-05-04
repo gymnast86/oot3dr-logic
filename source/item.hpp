@@ -224,7 +224,13 @@ enum class ItemID : uint32_t
     GoronCityChildFire,
     GCWoodsWarpOpen,
     StopGCRollingGoronAsAdult,
+    DeliverLetter,
     KingZoraThawed,
+    CarpenterRescue,
+    GFGateOpen,
+    SellBigPoe,
+    KakarikoVillageGateOpen,
+    WakeUpAdultTalon,
     Hint,
     INVALID,
 };

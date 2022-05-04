@@ -7,6 +7,7 @@
 
 #define BUILD_ERROR_CHECK(err) if (err != WorldBuildingError::NONE) {return err;}
 #define FILE_READ_CHECK(retVal) if (retVal != 0) {return WorldBuildingError::COULD_NOT_LOAD_FILE;}
+#define VALID_REQUIREMENT(err, reqStr) if (err != RequirementError::NONE) {std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl; return WorldBuildingError::BAD_REQUIREMENT;}
 #define YAML_FIELD_CHECK(ref, field, err) if(!ref.has_child(field)) {std::cout << "ERROR: Unable to find field \"" << field << "\" in YAML object" << std::endl; PrintYAML(ref); return err;}
 #define VALID_ITEM_CHECK(ref, itemName) if (NameToItemID(itemName) == ItemID::INVALID) {std::replace(itemName.begin(), itemName.end(), '_', ' '); std::cout << "ERROR: Unknown item name \"" << itemName << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
 #define VALID_ITEM_TYPE(ref, typeStr) if (NameToOot3dItemType(typeStr) == ItemType::INVALID) {std::cout << "ERROR: Unknown item type \"" << typeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
@@ -16,6 +17,7 @@
 #define VALID_LOCATION_TYPE(ref, typeStr) if (NameToOot3dLocationType(typeStr) == LocationType::INVALID) {std::cout << "ERROR: Unknown location type \"" << typeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
 #define VALID_CHECK_TYPE(ref, checkTypeStr) if (NameToOot3dSpoilerCheckType(checkTypeStr) == SpoilerCollectionCheckType::SPOILER_CHK_INVALID) {std::cout << "Unknown location check_type \"" << checkTypeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
 #define VALID_CHECK_GROUP(ref, checkGroupStr) if (NameToOot3dSpoilerCheckGroup(checkGroupStr) == SpoilerCollectionCheckGroup::GROUP_INVALID) {std::cout << "Unknown location check_group \"" << checkGroupStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
+#define VALID_AREA_CHECK(ref, areaName) if (NameToAreaID(areaName) == AreaID::INVALID) {std::cout << "ERROR: Unknown area name " << areaName << " in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_AREA_VALUE;}
 
 Oot3dWorld::Oot3dWorld() {}
 
@@ -171,11 +173,7 @@ WorldBuildingError Oot3dWorld::LoadLogicHelpers()
             const std::string helperStr = SubstrToString(logicHelper.val());
             Requirement helperReq;
             RequirementError err = ParseRequirementString(helperStr, helperReq, logicHelpers, settings);
-            if (err != RequirementError::NONE)
-            {
-                std::cout << errorToName(err) << " encountered during \n\"" << helperStr << "\"" << std::endl;
-                return WorldBuildingError::BAD_REQUIREMENT;
-            }
+            VALID_REQUIREMENT(err, helperStr);
             logicHelpers.emplace(helperName, helperReq);
         }
     }
@@ -198,10 +196,13 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
             const std::string name = SubstrToString(area["region_name"].val());
             const AreaID areaId = NameToAreaID(name);
 
+            VALID_AREA_CHECK(area, name);
+
             // Create area
             Area newArea;
             newArea.id = areaId;
             newArea.name = name;
+            newArea.world = this;
 
             if (area.has_child("font_color"))
             {
@@ -219,36 +220,58 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
             {
                 for (const ryml::NodeRef& event : area["events"].children())
                 {
-                    const std::string eventName = SubstrToString(event.key());
+                    // Get field strings
+                    std::string eventName = SubstrToString(event.key());
                     const std::string reqStr = SubstrToString(event.val());
+
+                    // Check for valid values
+                    VALID_ITEM_CHECK(area, eventName); // Events are treated as items
+                    Requirement req;
+                    RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings);
+                    VALID_REQUIREMENT(err, reqStr);
+
+                    // Add event to list of events in this area
+                    auto eventId = NameToItemID(eventName);
+                    newArea.events.push_back({eventId, req});
                 }
             }
             if (area.has_child("locations"))
             {
                 for (const ryml::NodeRef& location : area["locations"].children())
                 {
+                    // Get field strings
                     const std::string locationName = SubstrToString(location.key());
                     const std::string reqStr = SubstrToString(location.val());
 
+                    // Check for valid values
+                    VALID_LOCATION_CHECK(area, locationName);
                     Requirement req;
                     RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings);
-                    if (err != RequirementError::NONE)
-                    {
-                        std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl;
-                        return WorldBuildingError::BAD_REQUIREMENT;
-                    }
+                    VALID_REQUIREMENT(err, reqStr);
 
+                    // Add location to list of locations in area
                     auto locationId = NameToLocationID(locationName);
-                    Location* locationPtr = locations[locationId];
-                    newArea.locations.emplace_back(locationPtr, req);
+                    Location* locationPtr = &locations[locationId];
+                    newArea.locations.push_back({locationPtr, req});
                 }
             }
             if (area.has_child("exits"))
             {
                 for (const ryml::NodeRef& exit : area["exits"].children())
                 {
+                    // Get field strings
                     const std::string exitName = SubstrToString(exit.key());
-                    const std::string requirement = SubstrToString(exit.val());
+                    const std::string reqStr = SubstrToString(exit.val());
+
+                    // Check for valid values
+                    VALID_AREA_CHECK(area, exitName);
+                    Requirement req;
+                    RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings);
+                    VALID_REQUIREMENT(err, reqStr);
+
+                    // Add the exit to the list of exits in area
+                    auto exitAreaId = NameToAreaID(exitName);
+                    newArea.exits.emplace_back(newArea.id, exitAreaId, req, this);
                 }
             }
 

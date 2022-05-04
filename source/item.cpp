@@ -233,7 +233,13 @@ ItemID NameToItemID(const std::string& name)
         {"Goron_City_Child_Fire", ItemID::GoronCityChildFire},
         {"GC_Woods_Warp_Open", ItemID::GCWoodsWarpOpen},
         {"Stop_GC_Rolling_Goron_as_Adult", ItemID::StopGCRollingGoronAsAdult},
+        {"Deliver_Letter", ItemID::DeliverLetter},
         {"King_Zora_Thawed", ItemID::KingZoraThawed},
+        {"Carpenter_Rescue", ItemID::CarpenterRescue},
+        {"GF_Gate_Open", ItemID::GFGateOpen},
+        {"Sell_Big_Poe", ItemID::SellBigPoe},
+        {"Kakariko_Village_Gate_Open", ItemID::KakarikoVillageGateOpen},
+        {"Wake_Up_Adult_Talon", ItemID::WakeUpAdultTalon},
         {"Hint", ItemID::Hint},
   	};
 

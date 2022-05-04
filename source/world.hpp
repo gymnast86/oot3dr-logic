@@ -21,6 +21,7 @@ enum struct WorldBuildingError
     MISSING_LOCATION_FIELD,
     BAD_ITEM_VALUE,
     BAD_LOCATION_VALUE,
+    BAD_AREA_VALUE,
 };
 
 class World;
