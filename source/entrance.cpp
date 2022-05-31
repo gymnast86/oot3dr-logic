@@ -1,4 +1,5 @@
 #include "entrance.hpp"
+#include "world.hpp"
 
 Entrance::Entrance() {}
 
@@ -18,9 +19,19 @@ AreaID Entrance::GetParentAreaID() const
     return parentArea;
 }
 
+Area* Entrance::GetParentArea() const
+{
+    return world->areas[parentArea].get();
+}
+
 AreaID Entrance::GetConnectedAreaID() const
 {
     return connectedArea;
+}
+
+Area* Entrance::GetConnectedArea() const
+{
+    return world->areas[connectedArea].get();
 }
 
 std::string Entrance::GetOriginalName() const
@@ -36,4 +47,9 @@ const Requirement& Entrance::GetRequirement() const
 World* Entrance::GetWorld() const
 {
     return world;
+}
+
+bool Entrance::IsShuffled() const
+{
+    return shuffled;
 }

@@ -2,4 +2,4 @@
 
 #include "../general_item_pool.hpp"
 
-ItemIDPool GenerateOot3dItemPool(const SettingsMap& settings);
+ItemIDPool GenerateOot3dItemPool(SettingsMap& settings);

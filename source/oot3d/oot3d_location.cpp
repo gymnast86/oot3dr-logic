@@ -19,6 +19,11 @@ Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, LocationT
 
 Oot3dLocation::~Oot3dLocation() = default;
 
+std::string Oot3dLocation::TypeString() const
+{
+    return "Oot3d Location";
+}
+
 LocationType NameToOot3dLocationType(const std::string& name)
 {
     std::unordered_map<std::string, LocationType> nameLocationTypeMap = {
@@ -31,6 +36,8 @@ LocationType NameToOot3dLocationType(const std::string& name)
         {"Temple Reward", LocationType::TempleReward},
         {"Hint Stone", LocationType::HintStone},
         {"Other Hint", LocationType::OtherHint},
+        {"Event", LocationType::Event},
+        {"Drop", LocationType::Drop},
     };
 
     if (nameLocationTypeMap.count(name) == 0)

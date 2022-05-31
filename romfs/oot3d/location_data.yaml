@@ -1082,6 +1082,86 @@
   check_group: Hyrule Castle
 
 
+- name: Market Chest Game First Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x01
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x01
+  check_group: Hyrule Castle
+
+
+- name: Market Chest Game Second Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x03
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x03
+  check_group: Hyrule Castle
+
+
+- name: Market Chest Game Third Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x05
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x05
+  check_group: Hyrule Castle
+
+
+- name: Market Chest Game Fourth Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x07
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x07
+  check_group: Hyrule Castle
+
+
+- name: Market Chest Game Fifth Room Chest
+  type: Chest
+  scene: 0x10
+  flag: 0x09
+  vanilla_item: Chest Game Small Key
+  categories:
+  - Inner Market
+  - Market
+  - Minigame
+  - Chest Minigame
+  check_type: Chest
+  check_type_arg1: 0x10
+  check_type_arg2: 0x09
+  check_group: Hyrule Castle
+
+
 - name: Market Treasure Chest Game Reward
   type: Chest
   scene: 0x10
@@ -3947,6 +4027,21 @@
   check_group: Gerudo Valley
 
 
+- name: Hideout Jail Guard 2 Torches
+  type: Collectable
+  scene: 0x0C
+  flag: 0x0F
+  vanilla_item: Thieves Hideout Small Key
+  categories:
+  - Thieves Hideout
+  - Gerudo
+  - Vanilla TH Small Key
+  check_type: Collectable
+  check_type_arg1: 0x0C
+  check_type_arg2: 0x0F
+  check_group: Gerudo Valley
+
+
 - name: Hideout Jail Guard 3 Torches
   type: Collectable
   scene: 0x0C
@@ -3974,21 +4069,6 @@
   check_type: Collectable
   check_type_arg1: 0x0C
   check_type_arg2: 0x0E
-  check_group: Gerudo Valley
-
-
-- name: Hideout Jail Guard 4 Torches
-  type: Collectable
-  scene: 0x0C
-  flag: 0x0F
-  vanilla_item: Thieves Hideout Small Key
-  categories:
-  - Thieves Hideout
-  - Gerudo
-  - Vanilla TH Small Key
-  check_type: Collectable
-  check_type_arg1: 0x0C
-  check_type_arg2: 0x0F
   check_group: Gerudo Valley
 
 
@@ -9609,3 +9689,759 @@
   check_type_arg1: 0x0A
   check_type_arg2: 0x0B
   check_group: Ganons Castle
+
+
+- name: Pierre
+  type: Event
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Scarecrow Song
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Deliver Rutos Letter
+  type: Event
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Deliver Letter
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Master Sword Pedestal
+  type: Event
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Time Travel
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Deku Baba Sticks
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Deku Stick Drop
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Deku Baba Nuts
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Deku Nut Drop
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Stick Pot
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Deku Stick Drop
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Nut Pot
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Deku Nut Drop
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Nut Crate
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Deku Nut Drop
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Blue Fire
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Blue Fire
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Lone Fish
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Fish
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Fish Group
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Fish
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Bug Rock
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Bugs
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Bug Shrub
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Bugs
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Wandering Bugs
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Bugs
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Fairy Pot
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Fairy
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Free Fairies
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Fairy
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Wall Fairy
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Fairy
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Butterfly Fairy
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Fairy
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Gossip Stone Fairy
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Fairy
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Bean Plant Fairy
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Fairy
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Fairy Pond
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Fairy
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Big Poe Kill
+  type: Drop
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: Big Poe
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: KF Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x1E
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: KF Deku Tree Gossip Stone Left
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x1F
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: KF Deku Tree Gossip Stone Right
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x20
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: KF Storms Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x3C
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: LW Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x1D
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: LW Near Shortcuts Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x34
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: SFM Maze Gossip Stone Lower
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x16
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: SFM Maze Gossip Stone Upper
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x17
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: SFM Saria Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x1C
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: HF Cow Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x1B
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: HF Near Market Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x30
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: HF Southeast Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x32
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: HF Open Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x33
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ToT Gossip Stone Left
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x06
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ToT Gossip Stone Left Center
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x0E
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ToT Gossip Stone Right Center
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x10
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ToT Gossip Stone Right
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x07
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: HC Malon Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x12
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: HC Rock Wall Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x0B
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: HC Storms Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x0B
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Kak Open Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x38
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Graveyard Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x0A
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: DMT Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x04
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: DMT Storms Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x37
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: DMC Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x05
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: DMC Upper Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x3A
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: GC Maze Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x15
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: GC Medigoron Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x19
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Dodongos Cavern Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x14
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ZR Near Grottos Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x0D
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ZR Near Domain Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x0C
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ZR Open Grotto Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x0D
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ZD Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x09
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ZF Fairy Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x01
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: ZF Jabu Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x02
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: LH Lab Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x03
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: LH Gossip Stone Southeast
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x0F
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: LH Gossip Stone Southwest
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x08
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: GV Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x11
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Colossus Gossip Stone
+  type: Hint Stone
+  scene: 0x00
+  flag: 0x1A
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
+- name: Ganondorf Hint
+  type: Other Hint
+  scene: 0x00
+  flag: 0x00
+  vanilla_item: None
+  categories:
+  check_type: None
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None

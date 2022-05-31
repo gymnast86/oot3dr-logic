@@ -4,7 +4,7 @@
 LocationID NameToLocationID(const std::string& name)
 {
     static std::unordered_map<std::string, LocationID> nameLocationMap = {
-        {"NONE", LocationID::NONE},
+        {"None", LocationID::NONE},
         {"Links Pocket", LocationID::LinksPocket},
         {"Queen Gohma", LocationID::QueenGohma},
         {"King Dodongo", LocationID::KingDodongo},
@@ -768,8 +768,11 @@ LocationID NameToLocationID(const std::string& name)
 
 Location::Location() {}
 
-Location::Location(const LocationID& id_, std::string name_, World* world_, Area* area_) :
-                      id(id_), name(std::move(name_)), world(world_), area(area_) {}
+Location::Location(const LocationID& id_, std::string name_, World* world_) :
+                      id(id_), name(std::move(name_)), world(world_)
+{
+    currentItem = Item(ItemID::NONE, world);
+}
 
 Location::~Location() = default;
 
@@ -788,12 +791,12 @@ World* Location::GetWorld() const
     return world;
 }
 
-Area* Location::GetArea() const
-{
-    return area;
-}
-
 Item Location::GetCurrentItem() const
 {
     return currentItem;
+}
+
+std::string Location::TypeString() const
+{
+    return "Generic Location";
 }

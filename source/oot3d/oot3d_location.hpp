@@ -14,6 +14,8 @@ enum class LocationType {
     TempleReward,
     HintStone,
     OtherHint,
+    Event,
+    Drop,
     INVALID,
 };
 
@@ -97,6 +99,8 @@ public:
     Oot3dLocation();
     Oot3dLocation(const LocationID& id_, std::string name, LocationType type_, uint8_t scene_, uint8_t flag_, const ItemID& vanillaItem, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_);
     ~Oot3dLocation();
+
+    std::string TypeString() const override;
 
     LocationType type;
     uint8_t scene = 0;

@@ -3,6 +3,9 @@
 #include "item.hpp"
 
 #include <string>
+#include <memory>
+#include <vector>
+#include <unordered_set>
 
 enum class LocationID : uint32_t
 {
@@ -773,19 +776,19 @@ class Location {
 public:
 
     Location();
-    Location(const LocationID& id_, std::string name_, World* world_, Area* area_);
+    Location(const LocationID& id_, std::string name_, World* world_);
     ~Location();
 
     LocationID GetID() const;
     std::string GetName() const;
     World* GetWorld() const;
-    Area* GetArea() const;
     Item GetCurrentItem() const;
+
+    virtual std::string TypeString() const;
 
     LocationID id = LocationID::INVALID;
     std::string name = "";
     World* world = nullptr;
-    Area* area = nullptr;
     Item currentItem;
 
 };
@@ -800,3 +803,6 @@ struct std::hash<LocationID>
         return static_cast<std::underlying_type<LocationID>::type>(locationId);
     }
 };
+
+using LocationPool = std::vector<Location*>;
+using LocationSet = std::unordered_set<Location*>;

@@ -23,13 +23,13 @@ enum struct RequirementType
     TRUE,
     FALSE,
     // OoT3D Specific types
-    CAN_USE,
-    IS_CHILD,
-    IS_ADULT,
+    CHILD_DAY,
+    CHILD_NIGHT,
+    ADULT_DAY,
+    ADULT_NIGHT,
     HAS_STONES,
     HAS_MEDALLIONS,
     HAS_REWARDS,
-    HAS_BOTTLE,
 
     INVALID
 };
@@ -41,6 +41,7 @@ enum struct RequirementError
     LOGIC_SYMBOL_DOES_NOT_EXIST,
     SAME_NESTING_LEVEL,
     COULD_NOT_DETERMINE_TYPE,
+    UNKNOWN_AREA_NAME,
 };
 
 struct Requirement
@@ -52,6 +53,10 @@ struct Requirement
 
 // std::string printRequirement(Requirement& req, int nestingLevel = 0);
 
-RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings);
+RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId);
+
+std::string RequirementStr(Requirement& req, int nestingLevel = 0);
 
 std::string errorToName(RequirementError err);
+
+std::string RequirementToName(RequirementType type);

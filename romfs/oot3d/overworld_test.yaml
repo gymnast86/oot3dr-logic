@@ -1,0 +1,161 @@
+- region_name: Root
+  hint: Link's Pocket
+  locations:
+      Links Pocket: 'True'
+      # Gift from Sages: can_receive_ganon_bosskey
+  exits:
+      Root Exits: 'True'
+      # HC Garden Locations: skip_child_zelda
+
+
+- region_name: Root Exits
+  exits:
+      Child Spawn: is_child
+      Adult Spawn: is_adult
+      # Prelude of Light Warp: can_play(Prelude_of_Light) and can_leave_forest
+      # Minuet of Forest Warp: can_play(Minuet_of_Forest)
+      # Bolero of Fire Warp: can_play(Bolero_of_Fire) and can_leave_forest
+      # Serenade of Water Warp: can_play(Serenade_of_Water) and can_leave_forest
+      # Nocturne of Shadow Warp: can_play(Nocturne_of_Shadow) and can_leave_forest
+      # Requiem of Spirit Warp: can_play(Requiem_of_Spirit) and can_leave_forest
+
+
+- region_name: Child Spawn
+  exits:
+      KF Links House: 'True'
+
+
+- region_name: Adult Spawn
+  exits:
+      Temple of Time: 'True'
+
+
+- region_name: Prelude of Light Warp
+  exits:
+      Temple of Time: 'True'
+
+
+- region_name: Minuet of Forest Warp
+  exits:
+      Sacred Forest Meadow: 'True'
+
+
+- region_name: Bolero of Fire Warp
+  exits:
+      DMC Central Local: 'True'
+
+
+- region_name: Serenade of Water Warp
+  exits:
+      Lake Hylia: 'True'
+
+
+- region_name: Nocturne of Shadow Warp
+  exits:
+      Graveyard Warp Pad Region: 'True'
+
+
+- region_name: Requiem of Spirit Warp
+  exits:
+      Desert Colossus: 'True'
+
+
+- region_name: Kokiri Forest
+  font_color: Green
+  scene: Kokiri Forest
+  hint: Kokiri Forest
+  events:
+      Showed_Mido_Sword_And_Shield: is_child and Kokiri_Sword and Buy_Deku_Shield
+  locations:
+      KF Kokiri Sword Chest: is_child
+      KF GS Know It All House: child_night and can_child_attack
+      KF GS Bean Patch: can_plant_bugs and can_child_attack
+      KF GS House of Twins: adult_night and can_use(Hookshot)
+      KF Gossip Stone: 'True'
+      Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
+      Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
+  exits:
+      KF Links House: 'True'
+      KF Midos House: 'True'
+      KF Sarias House: 'True'
+      KF House of Twins: 'True'
+      KF Know It All House: 'True'
+      KF Kokiri Shop: 'True'
+      KF Outside Deku Tree: is_adult or open_forest == open or Showed_Mido_Sword_And_Shield
+      # Lost Woods: 'True'
+      # LW Bridge From Forest: can_leave_forest
+      # KF Storms Grotto: can_open_storm_grotto
+
+
+- region_name: KF Outside Deku Tree
+  font_color: Green
+  scene: Kokiri Forest
+  hint: Kokiri Forest
+  events:
+      Showed_Mido_Sword_And_Shield: is_child and Kokiri_Sword and Buy_Deku_Shield
+  locations:
+      #The Babas despawn for Adult on forest temple completion. For vanilla forest temple
+      #placement this is not an issue as Adult can go back to forest for the Baba's there.
+      #Entrance rando cannot rely on this for the case forest completion was done on non
+      #repeatable access.
+      Deku Baba Sticks: (is_adult and not entrance_shuffle) or can_use(Kokiri_Sword) or can_use(Boomerang)
+      Deku Baba Nuts: is_adult and not entrance_shuffle
+      KF Deku Tree Gossip Stone Left: 'True'
+      KF Deku Tree Gossip Stone Right: 'True'
+  exits:
+      # Deku Tree Lobby:
+      #     is_child or
+      #     (shuffle_dungeon_entrances and (open_forest == open or Showed_Mido_Sword_And_Shield))
+      Kokiri Forest: is_adult or open_forest == open or Showed_Mido_Sword_And_Shield
+
+
+- region_name: KF Links House
+  scene: KF Links House
+  locations:
+      KF Links House Cow: is_adult and can_play(Eponas_Song) and Links_Cow
+  exits:
+      Kokiri Forest: 'True'
+
+
+- region_name: KF Midos House
+  scene: KF Midos House
+  locations:
+      KF Midos Top Left Chest: 'True'
+      KF Midos Top Right Chest: 'True'
+      KF Midos Bottom Left Chest: 'True'
+      KF Midos Bottom Right Chest: 'True'
+  exits:
+      Kokiri Forest: 'True'
+
+
+- region_name: KF Sarias House
+  scene: KF Sarias House
+  exits:
+      Kokiri Forest: 'True'
+
+
+- region_name: KF House of Twins
+  scene: KF House of Twins
+  exits:
+      Kokiri Forest: 'True'
+
+
+- region_name: KF Know It All House
+  scene: KF Know it All House
+  exits:
+      Kokiri Forest: 'True'
+
+
+- region_name: KF Kokiri Shop
+  scene: KF Kokiri Shop
+  locations:
+      KF Shop Item 1: 'True'
+      KF Shop Item 2: 'True'
+      KF Shop Item 3: 'True'
+      KF Shop Item 4: 'True'
+      KF Shop Item 5: 'True'
+      KF Shop Item 6: 'True'
+      KF Shop Item 7: 'True'
+      KF Shop Item 8: 'True'
+  exits:
+      Kokiri Forest: 'True'

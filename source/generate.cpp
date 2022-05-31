@@ -1,5 +1,7 @@
 #include "generate.hpp"
 #include "timing.hpp"
+#include "fill.hpp"
+#include "random.hpp"
 #include "oot3d/oot3d_world.hpp"
 
 #include <unordered_map>
@@ -9,9 +11,13 @@
 
 void GenerateRandomizer()
 {
-    StartTiming();
+
+
+    Random_Init(1); // This eventually has to go where deciding random settings
+
     SettingsMap settings1 = {
         {"world_type", "oot3d"},
+        {"starting_age", "child"},
         {"player_num", "1"},
         {"bombchus_in_logic", "On"},
         {"logic_rules", "glitchless"},
@@ -40,14 +46,17 @@ void GenerateRandomizer()
         {"entrance_shuffle", "On"},
         {"shuffle_scrubs", "off"},
         {"shuffle_weird_egg", "Off"},
+        {"shuffle_gerudo_token", "Off"},
+        {"shuffle_chest_game", "off"},
         {"shuffle_dungeon_entrances", "On"},
         {"shuffle_overworld_entrances", "On"},
         {"free_scarecrow", "Off"},
         {"big_poe_count", "2"},
         {"zora_fountain", "normal"},
         {"open_kakariko", "open"},
-        {"open_door_of_time", "Off"},
+        {"open_door_of_time", "open"},
         {"skip_child_zelda", "Off"},
+        {"night_gs_expect_suns", "Off"},
 
         {"logic_grottos_without_agony", "Off"},
         {"logic_gerudo_kitchen", "Off"},
@@ -86,7 +95,7 @@ void GenerateRandomizer()
         {"logic_king_zora_skip", "On"},
         {"logic_castle_storms_gs", "On"},
     };
-    std::vector<SettingsMap> settingsVector = {settings1};
+    std::vector<SettingsMap> settingsVector = {settings1, settings1};
     WorldPool worlds;
     worlds.resize(settingsVector.size());
 
@@ -96,31 +105,36 @@ void GenerateRandomizer()
         auto& settings = settingsVector[i];
         if (settings["world_type"] == "oot3d")
         {
-            std::cout << "Building oot3d world..." << std::endl;
+            //std::cout << "Building oot3d world..." << std::endl;
             auto world = std::make_unique<Oot3dWorld>(settings);
             worlds[i] = std::move(world);
         }
         else if (settings["world_type"] == "mm3d")
         {
-            // worlds.push_back(std::make_unique<Mm3dWorld());
-            // worlds.back()->settings = settings;
-            // worlds.back()->Build();
+            // Make MM3D world
         }
         else
         {
-            std::cout << "ERROR: No world type defined in settings" << std::endl;
+            std::cout << "ERROR: No world type defined in settings for world " << std::to_string(i) << std::endl;
             return;
         }
         worlds[i]->worldId = i;
         if (worlds[i]->Build() != WorldBuildingError::NONE)
         {
-            std::cout << "when building world " << std::to_string(i) << " of type " << settings["world_type"] << std::endl;
+            std::cout << " when building world " << std::to_string(i) << " of type " << settings["world_type"] << std::endl;
             return;
         }
+        // std::cout << "Done building world " << std::to_string(i) << std::endl;
     }
+
+    StartTiming();
+    std::cout << "Filling Worlds..." << std::endl;
+    FillError err = FillWorlds(worlds);
+
 
     EndTiming();
     PrintTiming();
+    DebugLog("Total Evals: " + std::to_string(TotalWorldEvals(worlds)));
 }
 
 void BKey()

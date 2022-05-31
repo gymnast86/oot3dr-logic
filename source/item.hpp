@@ -93,7 +93,7 @@ enum class ItemID : uint32_t
     DekuTreeMap,
     DodongosCavernMap,
     JabuJabusBellyMap,
-    ForesTempleMap,
+    ForestTempleMap,
     FireTempleMap,
     WaterTempleMap,
     SpiritTempleMap,
@@ -103,7 +103,7 @@ enum class ItemID : uint32_t
     DekuTreeCompass,
     DodongosCavernCompass,
     JabuJabusBellyCompass,
-    ForesTempleCompass,
+    ForestTempleCompass,
     FireTempleCompass,
     WaterTempleCompass,
     SpiritTempleCompass,
@@ -123,7 +123,7 @@ enum class ItemID : uint32_t
     ShadowTempleSmallKey,
     BottomOfTheWellSmallKey,
     GerudoTrainingGroundSmallKey,
-    GerudoFortressSmallKey,
+    ThievesHideoutSmallKey,
     GanonsCastleSmallKey,
     ChestGameSmallKey,
     KokiriEmerald,
@@ -228,14 +228,25 @@ enum class ItemID : uint32_t
     KingZoraThawed,
     CarpenterRescue,
     GFGateOpen,
+    GTGGateOpen,
     SellBigPoe,
     KakarikoVillageGateOpen,
     WakeUpAdultTalon,
     Hint,
+    // Extra stuff for logic parsing
+    Hookshot,
+    Longshot,
+    SilverGauntlets,
+    GoldGauntlets,
+    Scarecrow,
+    DistantScarecrow,
+    Sticks,
     INVALID,
 };
 
 ItemID NameToItemID(const std::string& name);
+
+std::string ItemIDToName(const ItemID& itemId);
 
 class World;
 class Item {
@@ -243,7 +254,6 @@ public:
 
     Item();
     Item(const ItemID& id_, World* world_);
-    Item(const ItemID& id_, std::string name_, World* world_);
     ~Item();
 
     ItemID GetID() const;

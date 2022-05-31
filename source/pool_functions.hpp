@@ -10,7 +10,7 @@ static void erase_if(std::vector<T>& vector, Predicate pred) {
 }
 
 template <typename T, typename Predicate>
-std::vector<T> filterFromPool(std::vector<T>& vector, Predicate pred, bool eraseAfterFilter = false) {
+std::vector<T> FilterFromPool(std::vector<T>& vector, Predicate pred, bool eraseAfterFilter = false) {
   std::vector<T> filteredPool = {};
   std::copy_if(vector.begin(), vector.end(), std::back_inserter(filteredPool), pred);
 
@@ -22,19 +22,19 @@ std::vector<T> filterFromPool(std::vector<T>& vector, Predicate pred, bool erase
 }
 
 template <typename T, typename Predicate>
-std::vector<T> filterAndEraseFromPool(std::vector<T>& vector, Predicate pred) {
-  return filterFromPool(vector, pred, true);
+std::vector<T> FilterAndEraseFromPool(std::vector<T>& vector, Predicate pred) {
+  return FilterFromPool(vector, pred, true);
 }
 
 // Helper function for combining two item pools
 template <typename T, typename FromPool>
-void addElementsToPool(std::vector<T>& toPool, const FromPool& fromPool)
+void AddElementsToPool(std::vector<T>& toPool, const FromPool& fromPool)
 {
     toPool.insert(toPool.end(), fromPool.begin(), fromPool.end());
 }
 
 template <typename T>
-void addElementToPool(std::vector<T>& toPool, T element, int numberToAdd = 1)
+void AddElementToPool(std::vector<T>& toPool, T element, int numberToAdd = 1)
 {
     for (int i = 0; i < numberToAdd; i++)
     {
@@ -43,19 +43,19 @@ void addElementToPool(std::vector<T>& toPool, T element, int numberToAdd = 1)
 }
 
 template <typename T, typename Container>
-bool elementInPool(T element, const Container& container)
+bool ElementInPool(T element, const Container& container)
 {
     return std::find(container.begin(), container.end(), element) != container.end();
 }
 
 template <typename T, typename Container>
-size_t elementCountInPool(T& element, const Container& container)
+size_t ElementCountInPool(T& element, const Container& container)
 {
     return std::count(container.begin(), container.end(), element);
 }
 
 template <typename T, typename Container>
-void removeElementFromPool( Container& container, T element, int numberToRemove = 1)
+void RemoveElementFromPool( Container& container, T element, int numberToRemove = 1)
 {
     for (int i = 0; i < numberToRemove; i++)
     {

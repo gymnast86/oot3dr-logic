@@ -7,15 +7,18 @@
 
 #include <string>
 #include <list>
+#include <memory>
 
 struct Event {
     ItemID item;
     Requirement requirement;
+    Area* area;
 };
 
 struct LocationAccess {
     Location* location;
     Requirement requirement;
+    Area* area;
 };
 
 class World;
@@ -23,13 +26,16 @@ class Area {
 public:
 
     Area();
-    ~Area();
+    virtual ~Area();
+
+    bool operator==(const Area& rhs) const;
+    bool operator<(const Area& rhs) const;
 
     AreaID id = AreaID::INVALID;
     std::string name = "";
     std::list<Event> events;
     std::list<LocationAccess> locations;
-    std::list<Entrance> exits;
+    std::list<std::unique_ptr<Entrance>> exits;
     std::list<Entrance*> entrances;
     World* world = nullptr;
 

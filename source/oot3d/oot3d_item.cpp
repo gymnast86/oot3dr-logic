@@ -1,17 +1,19 @@
 #include "oot3d_item.hpp"
+#include "../world.hpp"
 
 #include <unordered_map>
 
 Oot3dItem::Oot3dItem() {}
 
-Oot3dItem::Oot3dItem(const ItemID& id_, std::string name_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_)
+Oot3dItem::Oot3dItem(const ItemID& id_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_)
 {
     id = id_;
-    name = std::move(name_);
+    name = ItemIDToName(id_);
     type = type_;
     getItemId = getItemId_;
     advancement = advancement_;
     world = world_;
+    worldId = world->GetWorldID();
 }
 
 Oot3dItem::~Oot3dItem() = default;
@@ -19,7 +21,7 @@ Oot3dItem::~Oot3dItem() = default;
 ItemType NameToOot3dItemType(const std::string& name)
 {
     std::unordered_map<std::string, ItemType> nameTypeMap = {
-        {"NONE", ItemType::NONE},
+        {"None", ItemType::NONE},
         {"Item", ItemType::Item},
         {"Map", ItemType::Map},
         {"Compass", ItemType::Compass},

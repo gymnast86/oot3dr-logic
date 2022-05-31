@@ -1,14 +1,16 @@
 #include "requirement.hpp"
-#include "pool_functions.hpp"\
+#include "pool_functions.hpp"
 
 #include <iostream>
 
 #define STR_HAS(str, substr) str.find(substr) != std::string::npos
+#define AREA_VALID_CHECK(name, reqStr) if (NameToAreaID(name) == AreaID::INVALID) {std::cout << "ERROR: Unknown area name " << name << " in requirement string: \"" << reqStr << "\"" << std::endl; return RequirementError::UNKNOWN_AREA_NAME;}
+#define REQ_ERROR_CHECK(err) if (err != RequirementError::NONE) {return err;}
 
 // Takes a logic expression string and stores it as a requirement within the passed in Requirement
 // object. This means we only have to parse the string once and then evaluating it many times
 // later is a lot faster. An example of a logic expression string is: "Hookshot and (Bow or Bombs)"
-RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings)
+RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId)
 {
 
     RequirementError err = RequirementError::NONE;
@@ -46,7 +48,6 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
     // expression is invalid.
     if (nestingLevel != 1)
     {
-        std::cout << "Extra or missing parenthesis within expression: \"" << str << "\"" << std::endl;
         return RequirementError::EXTRA_OR_MISSING_PARENTHESIS;
     }
 
@@ -103,37 +104,69 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             req.args.push_back(NameToItemID(argStr));
             return RequirementError::NONE;
         }
-        // Then a can_use check
-        else if (STR_HAS(argStr, "can_use"))
+        // Then the time/age checks...
+        else if (STR_HAS(argStr, "child_day"))
         {
-            req.type = RequirementType::CAN_USE;
-            // Get rid of parenthesis
-            std::string itemStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
-            auto item = NameToItemID(itemStr);
-            req.args.push_back(item);
+            req.type = RequirementType::CHILD_DAY;
             return RequirementError::NONE;
         }
-        // Then a child check...
-        else if (STR_HAS(argStr, "is_child"))
+        else if (STR_HAS(argStr, "child_night"))
         {
-            req.type = RequirementType::IS_CHILD;
+            req.type = RequirementType::CHILD_NIGHT;
             return RequirementError::NONE;
         }
-        else if (STR_HAS(argStr, "is_adult"))
+        else if (STR_HAS(argStr, "adult_day"))
         {
-            req.type = RequirementType::IS_ADULT;
+            req.type = RequirementType::ADULT_DAY;
             return RequirementError::NONE;
         }
-        // Then an adult check...
-        // Then an at check...
-        else if (STR_HAS(argStr, "at") || STR_HAS(argStr, "here"))
+        else if (STR_HAS(argStr, "adult_night"))
+        {
+            req.type = RequirementType::ADULT_NIGHT;
+            return RequirementError::NONE;
+        }
+
+        // Then an at/here check...
+        else if (STR_HAS(argStr, "at(") || STR_HAS(argStr, "here("))
         {
             req.type = RequirementType::AT;
+            AreaID argArea;
+            Requirement areaReq;
+            std::string areaReqStr;
+            if (STR_HAS(argStr, "here"))
+            {
+                argArea = areaId;
+                // Get rid of parenthesis
+                areaReqStr = std::string (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
+            }
+            else // if argStr has "at"
+            {
+                // Get rid of parenthesis
+                std::string countArgs (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
+                // Erase any quotation marks
+                countArgs.erase(std::remove(countArgs.begin(), countArgs.end(), '\''), countArgs.end());
 
-            std::string areaName (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
-            AreaID argArea = NameToAreaID(areaName);
-            //AREA_VALID_CHECK(argArea, "Area " << areaName << " does not exist");
+                // Split up the arguments
+                pos = 0;
+                splitLogicStr = {};
+                while ((pos = countArgs.find(",")) != std::string::npos)
+                {
+                    splitLogicStr.push_back(countArgs.substr(0, pos));
+                    countArgs.erase(0, pos + 1);
+                }
+                splitLogicStr.push_back(countArgs);
+                // Get the arguments
+                std::string areaName = splitLogicStr[0];
+                // Get rid of the leading space if it exists
+                areaReqStr = splitLogicStr[1][0] == ' ' ? splitLogicStr[1].substr(1, splitLogicStr[1].length() - 1) : splitLogicStr[1];
+                argArea = NameToAreaID(areaName);
+            }
+            std::string areaName = AreaIDToName(argArea);
+            AREA_VALID_CHECK(areaName, argStr);
+            err = ParseRequirementString(areaReqStr, areaReq, logicMap, settings, argArea);
+            REQ_ERROR_CHECK(err);
             req.args.push_back(argArea);
+            req.args.push_back(areaReq);
             return RequirementError::NONE;
         }
         // Then a count...
@@ -184,15 +217,11 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             req.type = RequirementType::AND;
             std::string songStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
             auto song = NameToItemID(songStr);
-            req.args.push_back(ItemID::ProgressiveOcarina);
-            req.args.push_back(song);
+            Requirement ocarinaReq = {RequirementType::ITEM, {ItemID::ProgressiveOcarina}};
+            Requirement songReq = {RequirementType::ITEM, {song}};
+            req.args.push_back(ocarinaReq);
+            req.args.push_back(songReq);
 
-            return RequirementError::NONE;
-        }
-        // Then the bottle check
-        else if (STR_HAS(argStr, "has_bottle"))
-        {
-            req.type = RequirementType::HAS_BOTTLE;
             return RequirementError::NONE;
         }
         // Then a settings check...
@@ -257,7 +286,12 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             req.args.push_back(count);
             return RequirementError::NONE;
         }
-        std::cout << "Unrecognized logic symbol: \"" << argStr << "\" ";
+        else if (STR_HAS(argStr, "False"))
+        {
+            req.type = RequirementType::FALSE;
+            return RequirementError::NONE;
+        }
+        std::cout << "Unrecognized logic symbol: \"" << argStr << "\"" << std::endl;
         return RequirementError::LOGIC_SYMBOL_DOES_NOT_EXIST;
     }
 
@@ -278,19 +312,19 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
                 reqStr = reqStr.substr(1, reqStr.length() - 2);
             }
             // Evaluate the deeper expression and add it to the requirement object if it's valid
-            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings)) != RequirementError::NONE) return err;
+            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId)) != RequirementError::NONE) return err;
         }
         else
         {
-            std::cout << "Unrecognized 2 part expression: " << str << " ";
+            std::cout << "Unrecognized 2 part expression: \"" << str << "\"" << std::endl;
             return RequirementError::LOGIC_SYMBOL_DOES_NOT_EXIST;
         }
     }
 
     // If we have more than two parts to our expression, then we have either "and"
     // or "or".
-    bool andType = elementInPool("and", splitLogicStr);
-    bool orType = elementInPool("or", splitLogicStr);
+    bool andType = ElementInPool("and", splitLogicStr);
+    bool orType = ElementInPool("or", splitLogicStr);
 
     // If we have both of them, there's a problem with the logic expression
     if (andType && orType)
@@ -313,7 +347,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
 
         // Once we know the type, we can erase the "and"s or "or"s and are left with just the deeper
         // expressions to be logically operated on.
-        filterAndEraseFromPool(splitLogicStr, [](const std::string& arg){return arg == "and" || arg == "or";});
+        FilterAndEraseFromPool(splitLogicStr, [](const std::string& arg){return arg == "and" || arg == "or";});
 
         // If we have any deeper "not" expressions, we have to recombine them here since they got separated
         // by the delimeter earlier
@@ -336,7 +370,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             {
                 reqStr = reqStr.substr(1, reqStr.length() - 2);
             }
-            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings)) != RequirementError::NONE) return err;
+            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId)) != RequirementError::NONE) return err;
         }
     }
 
@@ -350,6 +384,80 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
     {
         std::cout << "Could not determine logical operator type from expression: \"" << str << "\"" << std::endl;
         return RequirementError::COULD_NOT_DETERMINE_TYPE;
+    }
+}
+
+// Helper function for printing requirements
+static std::string tabs(int numTabs)
+{
+    std::string returnStr = "";
+    for (int i = 0; i < numTabs; i++)
+    {
+        returnStr += "\t";
+    }
+    return returnStr;
+}
+
+std::string RequirementStr(Requirement& req, int nestingLevel /*= 0*/)
+{
+    std::string returnStr = "";
+    uint32_t expectedCount = 0;
+    ItemID itemId;
+    Requirement nestedReq;
+    returnStr += tabs(nestingLevel);
+    switch(req.type)
+    {
+        case RequirementType::TRUE:
+            returnStr += "True\n";
+            return returnStr;
+        case RequirementType::FALSE:
+            returnStr += "False\n";
+            return returnStr;
+        case RequirementType::OR:
+            returnStr += "or\n";
+            for (Requirement::Argument& arg : req.args)
+            {
+                nestedReq = std::get<Requirement>(arg);
+                returnStr += RequirementStr(nestedReq, nestingLevel + 1);
+            }
+            return returnStr;
+        case RequirementType::AND:
+            returnStr += "and\n";
+            for (Requirement::Argument& arg : req.args)
+            {
+                nestedReq = std::get<Requirement>(arg);
+                returnStr += RequirementStr(nestedReq, nestingLevel + 1);
+            }
+            return returnStr;
+        case RequirementType::NOT:
+            returnStr += "not\n";
+            returnStr += RequirementStr(std::get<Requirement>(req.args[0]), nestingLevel + 1);
+            return returnStr;
+        case RequirementType::ITEM:
+            itemId = std::get<ItemID>(req.args[0]);
+            returnStr += ItemIDToName(itemId) + "\n";
+            return returnStr;
+        case RequirementType::COUNT:
+            returnStr += "count: ";
+            expectedCount = std::get<int>(req.args[0]);
+            itemId = std::get<ItemID>(req.args[1]);
+            returnStr += std::to_string(expectedCount) + " " + ItemIDToName(itemId) + "\n";
+            return returnStr;
+        case RequirementType::CHILD_DAY:
+            returnStr += "child_day";
+            return returnStr;
+        case RequirementType::CHILD_NIGHT:
+            returnStr += "child_night";
+            return returnStr;
+        case RequirementType::ADULT_DAY:
+            returnStr += "adult_day";
+            return returnStr;
+        case RequirementType::ADULT_NIGHT:
+            returnStr += "adult_night";
+            return returnStr;
+        // Add other types later
+        default:
+            return returnStr;
     }
 }
 
@@ -367,7 +475,49 @@ std::string errorToName(RequirementError err)
             return "SAME_NESTING_LEVEL";
         case RequirementError::COULD_NOT_DETERMINE_TYPE:
             return "COULD_NOT_DETERMINE_TYPE";
+        case RequirementError::UNKNOWN_AREA_NAME:
+            return "UNKNOWN_AREA_NAME";
         default:
             return "UNKNOWN";
     }
+}
+
+std::string RequirementToName(RequirementType type)
+{
+    switch(type)
+    {
+        case RequirementType::TRUE:
+            return "True";
+        case RequirementType::FALSE:
+            return "False";
+        case RequirementType::OR:
+            return "Or";
+        case RequirementType::AND:
+            return "And";
+        case RequirementType::NOT:
+            return "Not";
+        case RequirementType::ITEM:
+            return "Item";
+        case RequirementType::COUNT:
+            return "Count";
+        case RequirementType::CHILD_DAY:
+            return "Child_Day";
+        case RequirementType::CHILD_NIGHT:
+            return "Child_Night";
+        case RequirementType::ADULT_DAY:
+            return "Adult_Day";
+        case RequirementType::ADULT_NIGHT:
+            return "Adult_Night";
+        case RequirementType::AT:
+            return "At";
+        case RequirementType::HAS_STONES:
+            return "Has_Stones";
+        case RequirementType::HAS_MEDALLIONS:
+            return "HAS_MEDALLIONS";
+        case RequirementType::HAS_REWARDS:
+            return "HAS_REWARDS";
+        default:
+            return "Unknown Type";
+    }
+    return "Unknown Type";
 }

@@ -5,16 +5,23 @@
 #include <iostream>
 #include <fstream>
 
-static std::ofstream logger;
+std::ofstream logger;
 
 void DebugLog(const std::string& msg /*= ""*/)
 {
     #ifdef NON_3DS
-        logger << msg << std::endl;
+        if (logger.is_open())
+        {
+            logger << msg << std::endl;
+        }
+        else
+        {
+            std::cout << "debug_logger not opened" << std::endl;
+        }
     #endif
 }
 
-void PpenDebugLog(const std::string& seed)
+void OpenDebugLog(const std::string& seed)
 {
     #ifdef NON_3DS
         logger.open(LOGS_PATH"/debug_logger" + seed + ".txt");
