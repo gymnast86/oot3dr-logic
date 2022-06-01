@@ -7,9 +7,9 @@ Oot3dLogic::Oot3dLogic() {};
 
 Oot3dLogic::~Oot3dLogic() {};
 
-Oot3dLogic::GetLogicalAssignment(const ItemID& itemId)
+uint16_t* Oot3dLogic::GetLogicalAssignment(const ItemID& itemId)
 {
-    std::unordered_map<ItemID, *uint16_t> itemLogicMap = {
+    std::unordered_map<ItemID, uint16_t*> itemLogicMap = {
         {ItemID::KokiriSword, &KokiriSword},
         {ItemID::MasterSword, &MasterSword},
         {ItemID::GiantsKnife, &GiantsKnife},
@@ -200,7 +200,7 @@ Oot3dLogic::GetLogicalAssignment(const ItemID& itemId)
         {ItemID::BuyBombs535, &BuyBombs535},
         {ItemID::BuyRedPotion40, &BuyRedPotion40},
         {ItemID::BuyRedPotion50, &BuyRedPotion50},
-        {ItemID::// Events &// Event}s
+        // Events
         {ItemID::Epona, &Epona},
         {ItemID::LinksCow, &LinksCow},
         {ItemID::Bonooru, &Bonooru},
@@ -238,7 +238,7 @@ Oot3dLogic::GetLogicalAssignment(const ItemID& itemId)
         {ItemID::KakarikoVillageGateOpen, &KakarikoVillageGateOpen},
         {ItemID::WakeUpAdultTalon, &WakeUpAdultTalon},
         {ItemID::Hint, &Hint},
-        {ItemID::// Extra stuff for logic parsing &// Extra stuff for logic parsin}g
+        // Extra stuff for logic parsing
         {ItemID::Hookshot, &Hookshot},
         {ItemID::Longshot, &Longshot},
         {ItemID::SilverGauntlets, &SilverGauntlets},
@@ -253,5 +253,5 @@ Oot3dLogic::GetLogicalAssignment(const ItemID& itemId)
         std::cout << "WARNING: assigned nullptr in GetLogicalAssignment for " << ItemIDToName(itemId) << std::endl;
         return nullptr;
     }
-    return itemNameMap.at(itemId);
+    return itemLogicMap.at(itemId);
 }
