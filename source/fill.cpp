@@ -37,7 +37,7 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
             searches.push_back(baseSearch);
             baseSearch.ownedItems.insert(item);
             int oldNum = TotalWorldEvals(worlds);
-            baseSearch.FindLocations();
+            baseSearch.FindLocations(item.GetWorld()->GetWorldID());
             DebugLog("base search iteration: " + std::to_string(TotalWorldEvals(worlds) - oldNum));
         }
 
