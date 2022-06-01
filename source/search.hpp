@@ -23,7 +23,7 @@ public:
     Search(const SearchMode& searchMode_, WorldPool* worlds_, const ItemPool& items, const int worldToSearch_ = -1);
     ~Search();
 
-    void FindLocations();
+    void FindLocations(int worldToSearch = -1);
     void DumpSearchGraph(size_t worldId, const std::string filename);
 private:
     void SetStartingProperties(World* world);

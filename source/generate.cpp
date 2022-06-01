@@ -95,7 +95,7 @@ void GenerateRandomizer()
         {"logic_king_zora_skip", "On"},
         {"logic_castle_storms_gs", "On"},
     };
-    std::vector<SettingsMap> settingsVector = {settings1, settings1};
+    std::vector<SettingsMap> settingsVector = {settings1, settings1, settings1, settings1};
     WorldPool worlds;
     worlds.resize(settingsVector.size());
 

@@ -92,7 +92,7 @@ void Search::SetStartingProperties(World* world)
     }
 }
 
-void Search::FindLocations()
+void Search::FindLocations(int worldToSearch /*= -1*/)
 {
     bool newThingsFound = false;
 
@@ -115,6 +115,12 @@ void Search::FindLocations()
             auto event = *eventItr;
             auto area = event->area;
             auto world = area->world;
+            // Ignore the event if it isn't part of the world we're searching
+            if (worldToSearch != -1 && world->GetWorldID() != worldToSearch)
+            {
+                eventItr++;
+                continue;
+            }
             auto& requirement = event->requirement;
             if (world->EvaluateRequirement(requirement, this, event, EvaluateType::Event))
             {
@@ -136,6 +142,12 @@ void Search::FindLocations()
         {
             auto exit = *exitItr;
             auto world = exit->GetWorld();
+            if (worldToSearch != -1 && world->GetWorldID() != worldToSearch)
+            {
+                // Ignore the exit if it isn't part of the world we're searching
+                exitItr++;
+                continue;
+            }
             auto& requirement = exit->GetRequirement();
             // std::cout << "Now exploring [W" << std::to_string(world->GetWorldID()) << "] exit " << exit->GetOriginalName() << std::endl;
             if (world->EvaluateRequirement(requirement, this, exit, EvaluateType::Exit)) {
@@ -169,6 +181,12 @@ void Search::FindLocations()
             auto locAccess = *locItr;
             auto location = locAccess->location;
             auto world = location->GetWorld();
+            // Ignore the location if it isn't part of the world we're searching
+            if (worldToSearch != -1 && world->GetWorldID() != worldToSearch)
+            {
+                locItr++;
+                continue;
+            }
             auto& requirement = locAccess->requirement;
             // std::cout << "Now trying " << location->name << ": ";
             // Erase locations which have already been found. Some item locations
