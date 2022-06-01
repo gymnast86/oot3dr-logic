@@ -8,4 +8,4 @@ add_executable(local_testing main.cpp ../source/generate.cpp ../source/random.cp
                ../source/area_id.cpp ../source/area.cpp ../source/requirement.cpp ../source/debug.cpp ../source/entrance.cpp
                ../source/world.cpp ../source/fill.cpp ../source/search.cpp ../source/oot3d/oot3d_world.cpp ../source/oot3d/oot3d_entrance.cpp
                ../source/oot3d/oot3d_item.cpp ../source/oot3d/oot3d_location.cpp ../source/oot3d/oot3d_area.cpp ../source/oot3d/oot3d_item_pool.cpp
-               ../source/oot3d/oot3d_world_logic.cpp)
+               ../source/oot3d/oot3d_world_logic.cpp, ../source/oot3d/oot3d_logic.cpp)
