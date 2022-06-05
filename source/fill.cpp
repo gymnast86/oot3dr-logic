@@ -82,6 +82,17 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
             auto location = RandomElement(accessibleLocations);
             location->currentItem = std::move(item);
             rollbacks.push_back(location);
+            // If this location is accessible in previous searches, then add it to those searches owned items
+            // Search through the searches backwards and when we hit a search where the location isn't accessible
+            // we can break out since none of the previous ones will have it either
+            for (auto pastSearch = searches.rbegin(); pastSearch != searches.rend(); pastSearch++)
+            {
+                if (pastSearch->accessibleLocations.count(location) == 0)
+                {
+                    break;
+                }
+                pastSearch->ownedItems.insert(item);
+            }
             DebugLog("Placed " + item.GetName() + " at " + location->GetName());
         }
     }
