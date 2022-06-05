@@ -265,11 +265,8 @@ void Oot3dLogic::ResetLogicVariables()
 
 bool Oot3dLogic::Here(const RequirementFn& condition)
 {
-    Oot3dLogicAgeTime oldAgeTime = ageTime;
-    ageTime.childDay   = search->areaTime[area] & OOT3D_CHILD_DAY   ? 1 : 0;
-    ageTime.childNight = search->areaTime[area] & OOT3D_CHILD_NIGHT ? 1 : 0;
-    ageTime.adultDay   = search->areaTime[area] & OOT3D_ADULT_DAY   ? 1 : 0;
-    ageTime.adultNight = search->areaTime[area] & OOT3D_CHILD_NIGHT ? 1 : 0;
+    auto oldAgeTime = ageTime;
+    ageTime = search->areaTime[area];
     bool retVal = condition();
     ageTime = oldAgeTime;
     return retVal;
@@ -293,9 +290,9 @@ bool Oot3dLogic::At(const AreaID& areaId, const RequirementFn& condition)
 std::string Oot3dLogic::AgeTimeStr()
 {
     std::string message = "Logic.ageTime: ";
-    message += ((ageTime.childDay) ? "CD " : "");
-    message += ((ageTime.childNight) ? "CN " : "");
-    message += ((ageTime.adultDay) ? "AD " : "");
-    message += ((ageTime.adultNight) ? "AN" : "");
+    message += ((ageTime & OOT3D_CHILD_DAY) ? "CD " : "");
+    message += ((ageTime & OOT3D_CHILD_NIGHT) ? "CN " : "");
+    message += ((ageTime & OOT3D_ADULT_DAY) ? "AD " : "");
+    message += ((ageTime & OOT3D_ADULT_NIGHT) ? "AN" : "");
     return message;
 }

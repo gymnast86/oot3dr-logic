@@ -31,10 +31,7 @@ bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, v
         case EvaluateType::Event:
             event = (Event*) object;
             logic->area = (Oot3dArea*) event->area;
-            logic->ageTime.childDay   = search->areaTime[logic->area] & OOT3D_CHILD_DAY;
-            logic->ageTime.childNight = search->areaTime[logic->area] & OOT3D_CHILD_NIGHT;
-            logic->ageTime.adultDay   = search->areaTime[logic->area] & OOT3D_ADULT_DAY;
-            logic->ageTime.adultNight = search->areaTime[logic->area] & OOT3D_ADULT_NIGHT;
+            logic->ageTime = search->areaTime[logic->area];
             numEvals++;
             //DebugLog("Eval Event " + logic->AgeTimeStr());
             return req();
@@ -42,10 +39,7 @@ bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, v
             locAccess = (LocationAccess*) object;
             //location = (Oot3dLocation*) locAccess->location;
             logic->area = (Oot3dArea*) locAccess->area;
-            logic->ageTime.childDay   = search->areaTime[logic->area] & OOT3D_CHILD_DAY;
-            logic->ageTime.childNight = search->areaTime[logic->area] & OOT3D_CHILD_NIGHT;
-            logic->ageTime.adultDay   = search->areaTime[logic->area] & OOT3D_ADULT_DAY;
-            logic->ageTime.adultNight = search->areaTime[logic->area] & OOT3D_ADULT_NIGHT;
+            logic->ageTime = search->areaTime[logic->area];
             //std::cout << "ageTime at " << location->name << ": " << std::to_string(parentAreaAgeTime) << std::endl;
             numEvals++;
             //DebugLog("Eval " + logic->AgeTimeStr());
@@ -61,12 +55,8 @@ bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, v
             // Handle exits which don't have any age/time requirements
             if (exitsAgeTimes == OOT3D_NO_AGE_TIME)
             {
-                logic->ageTime.childDay   = 0;
-                logic->ageTime.childNight = 0;
-                logic->ageTime.adultDay   = 0;
-                logic->ageTime.adultNight = 0;
+                logic->ageTime = 0;
                 numEvals++;
-
                 //DebugLog("Eval " + exit->GetOriginalName() + " with no age time: " + logic->AgeTimeStr() + " &logic->ageTime.adultNight=" + std::to_string((uint64_t)&logic->ageTime.adultNight));
                 if (req())
                 {
@@ -88,12 +78,8 @@ bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, v
                 {
                     if (exitsAgeTimes & ageTime && parentAreaAgeTime & ageTime)
                     {
-                        logic->ageTime.childDay   = (ageTime & OOT3D_CHILD_DAY)   ? 1 : 0;
-                        logic->ageTime.childNight = (ageTime & OOT3D_CHILD_NIGHT) ? 1 : 0;
-                        logic->ageTime.adultDay   = (ageTime & OOT3D_ADULT_DAY)   ? 1 : 0;
-                        logic->ageTime.adultNight = (ageTime & OOT3D_ADULT_NIGHT) ? 1 : 0;
+                        logic->ageTime = ageTime;
                         numEvals++;
-
                         //DebugLog("Eval Exit With Age Time" + logic->AgeTimeStr());
                         if (req())
                         {
@@ -189,10 +175,7 @@ void Oot3dWorld::ExpandToDAreas(Search* search, uint8_t ageTimeToExpand)
 {
 
     DebugLog("Expanding " + Oot3dAgeTimeToString(ageTimeToExpand));
-    logic->ageTime.childDay   = (ageTimeToExpand & OOT3D_CHILD_DAY)   ? 1 : 0;
-    logic->ageTime.childNight = (ageTimeToExpand & OOT3D_CHILD_NIGHT) ? 1 : 0;
-    logic->ageTime.adultDay   = (ageTimeToExpand & OOT3D_ADULT_DAY)   ? 1 : 0;
-    logic->ageTime.adultNight = (ageTimeToExpand & OOT3D_ADULT_NIGHT) ? 1 : 0;
+    logic->ageTime = ageTimeToExpand;
     std::unordered_set<Area*> searchedAreas = {};
     std::list<Entrance*> exitQueue = {};
     for (auto& exit : GetRootArea()->exits)
@@ -286,7 +269,7 @@ WorldBuildingError Oot3dWorld::CacheAgeTimeRequirements()
             allowedExitAgeTimes[exit] = 0;
             // First evaluate with items and no agetime to see which exits *require*
             // any specific agetimes
-            logic->ageTime = {0, 0, 0, 0};
+            logic->ageTime = 0;
             logic->area = exit->GetParentArea();
             logic->search = &searchWithItems;
             //DebugLog("Eval " + exit->GetOriginalName() + " with no age time: " + logic->AgeTimeStr() + " &logic->ageTime.adultNight=" + std::to_string((uint64_t)&logic->ageTime.adultNight));
@@ -295,10 +278,7 @@ WorldBuildingError Oot3dWorld::CacheAgeTimeRequirements()
                 //DebugLog("Not Passed");
                 for (const uint8_t& ageTime : allAgeTimes)
                 {
-                    logic->ageTime.childDay   = (ageTime & OOT3D_CHILD_DAY)   ? 1 : 0;
-                    logic->ageTime.childNight = (ageTime & OOT3D_CHILD_NIGHT) ? 1 : 0;
-                    logic->ageTime.adultDay   = (ageTime & OOT3D_ADULT_DAY)   ? 1 : 0;
-                    logic->ageTime.adultNight = (ageTime & OOT3D_ADULT_NIGHT) ? 1 : 0;
+                    logic->ageTime = ageTime;
                     //DebugLog("Eval " + exit->GetOriginalName() + " with age time: " + logic->AgeTimeStr());
                     if (req())
                     {
@@ -319,10 +299,7 @@ WorldBuildingError Oot3dWorld::CacheAgeTimeRequirements()
                 logic->search = &searchWithNoItems;
                 for (const uint8_t& ageTime : allAgeTimes)
                 {
-                    logic->ageTime.childDay   = (ageTime & OOT3D_CHILD_DAY)   ? 1 : 0;
-                    logic->ageTime.childNight = (ageTime & OOT3D_CHILD_NIGHT) ? 1 : 0;
-                    logic->ageTime.adultDay   = (ageTime & OOT3D_ADULT_DAY)   ? 1 : 0;
-                    logic->ageTime.adultNight = (ageTime & OOT3D_ADULT_NIGHT) ? 1 : 0;
+                    logic->ageTime = ageTime;
                     //DebugLog("Eval " + exit->GetOriginalName() + " with age time but no items: " + logic->AgeTimeStr());
                     if (req())
                     {

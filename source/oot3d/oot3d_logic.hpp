@@ -330,13 +330,6 @@ struct Oot3dLogicTricks {
     uint16_t castleStormsGS = OFF;
 };
 
-struct Oot3dLogicAgeTime {
-    int childDay;
-    int childNight;
-    int adultDay;
-    int adultNight;
-};
-
 class Search;
 class Area;
 class Oot3dLogic : public Logic {
@@ -354,7 +347,7 @@ public:
     Oot3dLogicItems items;
     Oot3dLogicSettings settings;
     Oot3dLogicTricks tricks;
-    Oot3dLogicAgeTime ageTime;
+    uint8_t ageTime;
 
     Search* search;
     Area* area;

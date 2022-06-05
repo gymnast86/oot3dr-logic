@@ -53,9 +53,7 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, It
             // (except for this one we're about to place)
 
             // Get the list of accessible locations
-            int oldNum = TotalWorldEvals(worlds);
             search.FindLocations();
-            DebugLog(std::to_string(TotalWorldEvals(worlds) - oldNum));
             auto accessibleLocations = FilterFromPool(allowedLocations, [search](Location* loc){return search.accessibleLocations.count(loc) > 0 && loc->GetCurrentItem().GetID() == ItemID::INVALID;});
 
             if (accessibleLocations.empty())
@@ -82,6 +80,15 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, It
             auto location = RandomElement(accessibleLocations);
             location->currentItem = std::move(item);
             rollbacks.push_back(location);
+            // If this location is accessible in previous searches, then add it to those searches owned items
+            for (auto pastSearch = searches.rbegin(); pastSearch != searches.rend(); pastSearch++)
+            {
+                if (pastSearch->accessibleLocations.count(location) == 0)
+                {
+                    break;
+                }
+                pastSearch->ownedItems.insert(item);
+            }
             DebugLog("Placed " + item.GetName() + " at " + location->GetName());
         }
     }

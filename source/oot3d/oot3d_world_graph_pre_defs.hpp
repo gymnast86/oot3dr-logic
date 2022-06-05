@@ -1,10 +1,10 @@
 /*===============================================
 |              LOGIC DEFINITIONS                |
 ================================================*/
-#define CHILD_DAY                   logic->ageTime.childDay && true
-#define CHILD_NIGHT                 logic->ageTime.childNight && true
-#define ADULT_DAY                   logic->ageTime.adultDay && true
-#define ADULT_NIGHT                 logic->ageTime.adultNight && true
+#define CHILD_DAY                   logic->ageTime & 0b0001 && true
+#define CHILD_NIGHT                 logic->ageTime & 0b0010 && true
+#define ADULT_DAY                   logic->ageTime & 0b0100 && true
+#define ADULT_NIGHT                 logic->ageTime & 0b1000 && true
 #define IS_CHILD                    CHILD_DAY || CHILD_NIGHT
 #define IS_ADULT                    ADULT_DAY || ADULT_NIGHT
 #define AT_DAY                      CHILD_DAY || ADULT_DAY
