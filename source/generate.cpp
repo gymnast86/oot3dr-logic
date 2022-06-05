@@ -127,13 +127,13 @@ void GenerateRandomizer()
         // std::cout << "Done building world " << std::to_string(i) << std::endl;
     }
 
-    StartTiming();
+    StartTiming("general");
     std::cout << "Filling Worlds..." << std::endl;
     FillError err = FillWorlds(worlds);
 
 
-    EndTiming();
-    PrintTiming();
+    EndTiming("general");
+    PrintTiming("general");
     DebugLog("Total Evals: " + std::to_string(TotalWorldEvals(worlds)));
 }
 
