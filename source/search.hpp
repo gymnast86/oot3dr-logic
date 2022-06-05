@@ -24,7 +24,7 @@ public:
     ~Search();
 
     void FindLocations(int worldToSearch = -1);
-    void DumpSearchGraph(size_t worldId, const std::string filename);
+    void DumpSearchGraph(size_t worldId = 0, const std::string filename = "World0");
 private:
     void SetStartingProperties(World* world);
     void Explore(Area* area);

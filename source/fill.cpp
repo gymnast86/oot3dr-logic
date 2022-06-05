@@ -8,7 +8,7 @@
 #define FILL_ERROR_CHECK(err) if (err != FillError::NONE) {return err;}
 #define ENOUGH_SPACE_CHECK(items, locations) if (items.size() > locations.size()) {return FillError::MORE_ITEMS_THAN_LOCATIONS;}
 
-static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, const ItemPool& itemsNotYetPlaced, LocationPool& allowedLocations, int worldToFill = -1)
+static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, ItemPool& itemsNotYetPlaced, LocationPool& allowedLocations, int worldToFill = -1)
 {
     ENOUGH_SPACE_CHECK(itemsToPlaceVector, allowedLocations);
 
@@ -32,13 +32,13 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
         std::list<Search> searches = {};
         auto baseSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
         baseSearch.FindLocations();
+        //baseSearch.DumpSearchGraph();
         for (const auto& item: itemsToPlace)
         {
             searches.push_back(baseSearch);
             baseSearch.ownedItems.insert(item);
-            int oldNum = TotalWorldEvals(worlds);
             baseSearch.FindLocations(item.GetWorld()->GetWorldID());
-            DebugLog("base search iteration: " + std::to_string(TotalWorldEvals(worlds) - oldNum));
+            //DebugLog("base search iteration: " + std::to_string(TotalWorldEvals(worlds) - oldNum));
         }
 
         while (!itemsToPlace.empty())

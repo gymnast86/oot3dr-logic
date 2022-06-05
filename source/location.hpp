@@ -770,6 +770,8 @@ enum class LocationID : uint32_t
 
 LocationID NameToLocationID(const std::string& name);
 
+std::string LocationIDToName(const LocationID& locationId);
+
 class World;
 class Area;
 class Location {

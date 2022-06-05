@@ -95,7 +95,7 @@ void GenerateRandomizer()
         {"logic_king_zora_skip", "On"},
         {"logic_castle_storms_gs", "On"},
     };
-    std::vector<SettingsMap> settingsVector = {settings1, settings1, settings1, settings1};
+    std::vector<SettingsMap> settingsVector = {settings1, settings1};
     WorldPool worlds;
     worlds.resize(settingsVector.size());
 
@@ -127,14 +127,14 @@ void GenerateRandomizer()
         // std::cout << "Done building world " << std::to_string(i) << std::endl;
     }
 
-    StartTiming();
+    StartTiming("general");
     std::cout << "Filling Worlds..." << std::endl;
     FillError err = FillWorlds(worlds);
 
-
-    EndTiming();
-    PrintTiming();
+    EndTiming("general");
+    PrintTiming("general");
     DebugLog("Total Evals: " + std::to_string(TotalWorldEvals(worlds)));
+    std::cout << "Total Evals: " + std::to_string(TotalWorldEvals(worlds)) << std::endl;
 }
 
 void BKey()

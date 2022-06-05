@@ -40,7 +40,7 @@ WorldBuildingError World::Build()
     return WorldBuildingError::NONE;
 }
 
-bool World::EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType /*= EvaluateType::NONE*/)
+bool World::EvaluateRequirement(const RequirementFn& req, Search* search, void* object, EvaluateType evalType /*= EvaluateType::NONE*/)
 {
     std::cout << "Called Generic world evaluate requirement. Something is probably wrong." << std::endl;
     return false;
@@ -62,6 +62,16 @@ int TotalWorldEvals(const WorldPool& worlds)
     for (const auto& world : worlds)
     {
         sum += world->numEvals;
+    }
+    return sum;
+}
+
+double TotalWorldEvalTime(const WorldPool& worlds)
+{
+    double sum = 0;
+    for (const auto& world : worlds)
+    {
+        sum += world->evalTiming;
     }
     return sum;
 }

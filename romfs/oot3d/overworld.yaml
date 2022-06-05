@@ -251,7 +251,7 @@
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
   exits:
       SFM Entryway: 'True'
-      SFM Forest Temple Entrance Ledge: can_use(Hookshot)
+      # SFM Forest Temple Entrance Ledge: can_use(Hookshot)
       SFM Fairy Grotto: 'True'
       SFM Storms Grotto: can_open_storm_grotto
 
@@ -452,6 +452,7 @@
   time_passes: true
   locations:
       GV Chest: can_use(Megaton_Hammer)
+      GV Trade Saw: is_adult and Poachers_Saw
       GV GS Behind Tent: adult_night and Hookshot and can_get_night_time_gs
       GV GS Pillar: adult_night and Hookshot and can_get_night_time_gs
   exits:
@@ -871,6 +872,7 @@
       Sheik in Kakariko: is_adult and Forest_Medallion and Fire_Medallion and Water_Medallion
       Kak Anju as Adult: adult_day
       Kak Anju as Child: child_day
+      Kak Trade Pocket Cucco: adult_day and Pocket_Egg and Wake_Up_Adult_Talon
       Kak GS House Under Construction: child_night
       Kak GS Skulltula House: child_night
       Kak GS Guards House: child_night
@@ -1043,6 +1045,8 @@
 
 - region_name: Kak Odd Medicine Building
   scene: Kak Odd Medicine Building
+  locations:
+      Kak Trade Odd Mushroom: is_adult and Odd_Mushroom
   exits:
       Kak Backyard: 'True'
 
@@ -1067,6 +1071,7 @@
       Graveyard Dampes Grave: is_adult
       Graveyard Dampes House: is_adult or at_night
       Kakariko Village: 'True'
+      Graveyard Warp Pad Region: 'False'
 
 
 - region_name: Graveyard Shield Grave
@@ -1168,6 +1173,8 @@
   hint: Death Mountain Trail
   time_passes: true
   locations:
+      DMT Trade Eyedrops: is_adult and Eyedrops
+      DMT Trade Broken Sword: is_adult and Broken_Gorons_Sword
       DMT Trade Claim Check: is_adult and Claim_Check
       DMT GS Falling Rocks Path: adult_night and can_use(Megaton_Hammer)
       DMT Gossip Stone: 'True'
@@ -1192,6 +1199,7 @@
   scene: Goron City
   hint: Goron City
   events:
+      GC_Darunias_Door_Open_Child: is_child and can_play(Zeldas_Lullaby)
       Goron_City_Child_Fire: is_child and can_use(Dins_Fire)
       GC_Woods_Warp_Open: can_blast_or_smash or can_use(Dins_Fire) or can_use(Bow) or
           Progressive_Strength_Upgrade or Goron_City_Child_Fire
@@ -1306,6 +1314,7 @@
       DMC Central Nearby: can_use(Goron_Tunic) and can_use(Longshot) and ((damage_multiplier
           != ohko and damage_multiplier != quadruple) or (Fairy and not entrance_shuffle)
           or can_use(Nayrus_Love))
+      DMC Lower Nearby: 'False'
 
 
 - region_name: DMC Ladder Area Nearby
@@ -1463,13 +1472,14 @@
   hint: Zora's Domain
   events:
       King_Zora_Thawed: is_adult and Blue_Fire
+      Deliver_Letter: is_child and Rutos_Letter and zora_fountain != open
   locations:
       ZD Diving Minigame: is_child
       ZD Chest: can_use(Sticks)
-      Deliver Rutos Letter: is_child and Rutos_Letter and zora_fountain != open
       ZD King Zora Thawed: King_Zora_Thawed
       ZD GS Frozen Waterfall: adult_night and (Progressive_Hookshot or Bow
           or Magic_Meter or logic_domain_gs)
+      ZD Trade Prescription: King_Zora_Thawed and Prescription
       ZD Gossip Stone: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
       Fish Group: is_child and has_bottle

@@ -19,6 +19,7 @@ build/*
 *.ips
 *.zar
 source/patch_symbols.hpp
+source/oot3d/oot3d_world_graph_defs.hpp
 .DS_Store
 local_testing/*
 !local_testing/CMakeLists.txt

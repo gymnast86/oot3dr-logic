@@ -15,6 +15,7 @@ class Oot3dArea : public Area {
 public:
 
     Oot3dArea();
+    // Oot3dArea(const AreaID& id_, const bool& timePasses_, World* world_, std::unordered_set<Event> events_, std::unordered_set<LocationAccess> locations_, std::unordered_set<std::unique_ptr<Entrance>> exits_);
     ~Oot3dArea();
 
     bool timePasses = false;

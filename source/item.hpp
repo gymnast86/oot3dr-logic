@@ -217,10 +217,17 @@ enum class ItemID : uint32_t
     Bugs,
     BigPoe,
     DekuTreeClear,
+    DodongosCavernClear,
+    JabuJabusBellyClear,
+    ForestTempleClear,
+    FireTempleClear,
     WaterTempleClear,
+    SpiritTempleClear,
+    ShadowTempleClear,
     ShowedMidoSwordAndShield,
     DrainWell,
     DampesWindmillAccess,
+    GCDaruniasDoorOpenChild,
     GoronCityChildFire,
     GCWoodsWarpOpen,
     StopGCRollingGoronAsAdult,
@@ -260,6 +267,8 @@ public:
     std::string GetName() const;
     World* GetWorld() const;
     int GetWorldID() const;
+    void ApplyLogicEffect();
+    void UndoLogicEffect();
 
     bool operator==(const Item& rhs) const;
     bool operator<(const Item& rhs) const;
@@ -268,6 +277,7 @@ public:
     std::string name = "";
     World* world = nullptr;
     int worldId = -1;
+    uint16_t* logicVar = nullptr;
 };
 
 // inject specialization of std::hash<Item> into the std namespace

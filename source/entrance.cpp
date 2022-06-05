@@ -3,7 +3,7 @@
 
 Entrance::Entrance() {}
 
-Entrance::Entrance(const AreaID& parentArea_, const AreaID& connectedArea_, Requirement& requirement_, World* world_) :
+Entrance::Entrance(const AreaID& parentArea_, const AreaID& connectedArea_, const RequirementFn& requirement_, World* world_) :
     parentArea(parentArea_),
     connectedArea(connectedArea_),
     requirement(requirement_),
@@ -39,7 +39,7 @@ std::string Entrance::GetOriginalName() const
     return originalName;
 }
 
-const Requirement& Entrance::GetRequirement() const
+const RequirementFn& Entrance::GetRequirement() const
 {
     return requirement;
 }

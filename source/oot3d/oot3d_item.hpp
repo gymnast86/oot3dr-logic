@@ -25,10 +25,11 @@ enum class ItemType {
 class Oot3dItem : public Item {
 public:
     Oot3dItem();
-    Oot3dItem(const ItemID& id_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_);
+    Oot3dItem(const ItemID& id_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_, uint16_t* logicVar_);
     ~Oot3dItem();
 
     ItemOverride_Value Value() const;
+    void ApplyEffect();
 
     ItemType type = ItemType::NONE;
     uint8_t getItemId = 0;

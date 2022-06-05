@@ -4,6 +4,7 @@
 #include "item.hpp"
 #include "area.hpp"
 #include "location.hpp"
+#include "logic.hpp"
 #include "general_item_pool.hpp"
 
 #include <string>
@@ -24,6 +25,8 @@ enum struct WorldBuildingError
     BAD_AREA_VALUE,
     LOCATION_NOT_DEFINED,
 };
+
+#define BUILD_ERROR_CHECK(err) if (err != WorldBuildingError::NONE) {return err;}
 
 enum class WorldType
 {
@@ -60,7 +63,7 @@ public:
 
     virtual WorldBuildingError Build();
     // object is a pointer to the object the requirement belongs to (event, location, or exit)
-    virtual bool EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE);
+    virtual bool EvaluateRequirement(const RequirementFn& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE);
     virtual void ExpandAreaVariables();
     virtual std::string GetTypeString() const;
 
@@ -73,7 +76,11 @@ public:
     int worldId = -1;
     WorldType worldType = WorldType::NONE;
 
+    std::unique_ptr<Logic> baseLogic;
+
     int numEvals = 0;
+    double evalTiming = 0.0f;
 };
 
 int TotalWorldEvals(const WorldPool& worlds);
+double TotalWorldEvalTime(const WorldPool& worlds);

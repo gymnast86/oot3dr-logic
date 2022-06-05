@@ -7,9 +7,12 @@
 #include <vector>
 #include <variant>
 #include <unordered_map>
+#include <functional>
+
 
 struct Requirement;
 using LogicHelperMap = std::unordered_map<std::string, Requirement>;
+using RequirementFn = std::function<bool()>;
 
 enum struct RequirementType
 {

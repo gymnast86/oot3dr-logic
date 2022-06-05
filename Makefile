@@ -162,6 +162,12 @@ endif
 
 #---------------------------------------------------------------------------------
 all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
+	@if python3 source/oot3d/build_defs.py source/oot3d/; then \
+		echo "Ran build_defs.py" ; \
+	else \
+		python source/oot3d/build_defs.py source/oot3d/; \
+		echo "Ran build_defs.py" ; \
+	fi
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 $(BUILD):

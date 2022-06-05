@@ -5,7 +5,7 @@
 
 Oot3dItem::Oot3dItem() {}
 
-Oot3dItem::Oot3dItem(const ItemID& id_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_)
+Oot3dItem::Oot3dItem(const ItemID& id_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_, uint16_t* logicVar_)
 {
     id = id_;
     name = ItemIDToName(id_);
@@ -14,6 +14,7 @@ Oot3dItem::Oot3dItem(const ItemID& id_, ItemType type_, uint8_t getItemId_, bool
     advancement = advancement_;
     world = world_;
     worldId = world->GetWorldID();
+    logicVar = logicVar_;
 }
 
 Oot3dItem::~Oot3dItem() = default;

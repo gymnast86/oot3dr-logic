@@ -7,7 +7,6 @@
 
 #include <iostream>
 
-#define BUILD_ERROR_CHECK(err) if (err != WorldBuildingError::NONE) {return err;}
 #define FILE_READ_CHECK(retVal) if (retVal != 0) {return WorldBuildingError::COULD_NOT_LOAD_FILE;}
 #define VALID_REQUIREMENT(err, reqStr) if (err != RequirementError::NONE) {std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl; return WorldBuildingError::BAD_REQUIREMENT;}
 #define YAML_FIELD_CHECK(ref, field, err) if(!ref.has_child(field)) {std::cout << "ERROR: Unable to find field \"" << field << "\" in YAML object" << std::endl; PrintYAML(ref); return err;}
@@ -25,12 +24,16 @@
 Oot3dWorld::Oot3dWorld()
 {
     worldType = WorldType::Oot3d;
+    baseLogic = std::make_unique<Oot3dLogic>();
+    logic = (Oot3dLogic*) baseLogic.get();
 }
 
 Oot3dWorld::Oot3dWorld(const SettingsMap& settings_)
 {
     settings = std::move(settings_);
     worldType = WorldType::Oot3d;
+    baseLogic = std::make_unique<Oot3dLogic>();
+    logic = (Oot3dLogic*) baseLogic.get();
 }
 
 Oot3dWorld::~Oot3dWorld() = default;
@@ -64,6 +67,7 @@ WorldBuildingError CheckValidLocationFields(const ryml::NodeRef& location)
 WorldBuildingError Oot3dWorld::BuildItemTable()
 {
     DebugLog("Building Item Table for world " + std::to_string(worldId) + "...");
+    std::cout << "Building Item Table for world " << std::to_string(worldId) << "..." << std::endl;
     std::string itemStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/item_data.yaml", itemStr))
 
@@ -94,15 +98,17 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
         ItemType type = NameToOot3dItemType(name);
         uint8_t getItemId = std::strtoul(getItemIdStr.c_str(), nullptr, 0);
         bool advancement = advancementStr == "true";
+        uint16_t* logicVar = logic->GetLogicalAssignment(itemId);
 
         // Insert the values into the item table
-        itemTable.try_emplace(itemId, itemId, type, getItemId, advancement, this);
+        itemTable.try_emplace(itemId, itemId, type, getItemId, advancement, this, logicVar);
     }
     return WorldBuildingError::NONE;
 }
 
 WorldBuildingError Oot3dWorld::BuildLocationTable()
 {
+    std::cout << "Building Location Table for world " << std::to_string(worldId) << "..." << std::endl;
     DebugLog("Building Location Table for world " + std::to_string(worldId) + "...");
     std::string locationDataStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/location_data.yaml", locationDataStr))
@@ -182,6 +188,7 @@ WorldBuildingError Oot3dWorld::LoadLogicHelpers()
 WorldBuildingError Oot3dWorld::LoadWorldGraph()
 {
     DebugLog("Building World Graph for world " + std::to_string(worldId) + "...");
+    std::cout << "Building World Graph for world " << std::to_string(worldId) << "..." << std::endl;
     std::string overworldDataStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/overworld.yaml", overworldDataStr))
 
@@ -224,9 +231,9 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
 
                 // Check for valid values
                 VALID_ITEM_CHECK(area, eventName); // Events are treated as items
-                Requirement req;
-                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId);
-                VALID_REQUIREMENT(err, reqStr);
+                RequirementFn req = []{return false;};
+                // RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId);
+                // VALID_REQUIREMENT(err, reqStr);
 
                 // Add event to list of events in this area
                 auto itemId = NameToItemID(eventName);
@@ -243,12 +250,13 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
 
                 // Check for valid values
                 VALID_LOCATION_CHECK(area, locationName);
-                Requirement req;
-                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId);
-                VALID_REQUIREMENT(err, reqStr);
+                RequirementFn req = []{return false;};//Requirement req;
+                // RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId);
+                // VALID_REQUIREMENT(err, reqStr);
 
                 auto locationId = NameToLocationID(locationName);
                 VALID_LOCATION_DEFINITION(area, locationId, locations, locationName);
+
                 // Add location to list of locations in area
                 auto locPtr = locations[locationId].get();
                 newArea->locations.push_back({locPtr, req, newArea.get()});
@@ -264,9 +272,9 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
 
                 // Check for valid values
                 VALID_AREA_CHECK(area, exitName);
-                Requirement req;
-                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId);
-                VALID_REQUIREMENT(err, reqStr);
+                RequirementFn req = []{return false;};//Requirement req;
+                // RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId);
+                // VALID_REQUIREMENT(err, reqStr);
 
                 // Add the exit to the list of exits in area
                 auto exitAreaId = NameToAreaID(exitName);
@@ -304,6 +312,8 @@ WorldBuildingError Oot3dWorld::Build()
     err = LoadWorldGraph();
     BUILD_ERROR_CHECK(err);
     err = BuildItemPools();
+    BUILD_ERROR_CHECK(err);
+    err = InitWorldGraph();
     BUILD_ERROR_CHECK(err);
     err = CacheAgeTimeRequirements();
     BUILD_ERROR_CHECK(err);

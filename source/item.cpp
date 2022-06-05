@@ -2,6 +2,7 @@
 #include "world.hpp"
 
 #include <unordered_map>
+#include <iostream>
 
 ItemID NameToItemID(const std::string& name)
 {
@@ -226,10 +227,17 @@ ItemID NameToItemID(const std::string& name)
         {"Bugs", ItemID::Bugs},
         {"Big_Poe", ItemID::BigPoe},
         {"Deku_Tree_Clear", ItemID::DekuTreeClear},
+        {"Dodongos_Cavern_Clear", ItemID::DodongosCavernClear},
+        {"Jabu_Jabus_Belly_Clear", ItemID::JabuJabusBellyClear},
+        {"Forest_Temple_Clear", ItemID::ForestTempleClear},
+        {"Fire_Temple_Clear", ItemID::FireTempleClear},
         {"Water_Temple_Clear", ItemID::WaterTempleClear},
+        {"Spirit_Temple_Clear", ItemID::SpiritTempleClear},
+        {"Shadow_Temple_Clear", ItemID::ShadowTempleClear},
         {"Drain_Well", ItemID::DrainWell},
         {"Showed_Mido_Sword_And_Shield", ItemID::ShowedMidoSwordAndShield},
         {"Dampes_Windmill_Access", ItemID::DampesWindmillAccess},
+        {"GC_Darunias_Door_Open_Child", ItemID::GCDaruniasDoorOpenChild},
         {"Goron_City_Child_Fire", ItemID::GoronCityChildFire},
         {"GC_Woods_Warp_Open", ItemID::GCWoodsWarpOpen},
         {"Stop_GC_Rolling_Goron_as_Adult", ItemID::StopGCRollingGoronAsAdult},
@@ -478,6 +486,7 @@ std::string ItemIDToName(const ItemID& itemId)
         {ItemID::ShowedMidoSwordAndShield, "Showed Mido Sword And Shield"},
         {ItemID::DrainWell, "Drain Well"},
         {ItemID::DampesWindmillAccess, "Dampes Windmill Access"},
+        {ItemID::GCDaruniasDoorOpenChild, "GC Darunias Door Open Child"},
         {ItemID::GoronCityChildFire, "Goron City Child Fire"},
         {ItemID::GCWoodsWarpOpen, "GC Woods Warp Open"},
         {ItemID::StopGCRollingGoronAsAdult, "Stop GC Rolling GoronAs Adult"},
@@ -510,7 +519,7 @@ Item::Item() {}
 
 Item::Item(const ItemID& id_, World* world_) : id(id_), world(world_) {
     worldId = world->GetWorldID();
-    name = ItemIDToName(id_) + "[W" + std::to_string(worldId) + "]";
+    name = ItemIDToName(id_) + "[W" + std::to_string(worldId+1) + "]";
 }
 
 Item::~Item() = default;
@@ -533,6 +542,18 @@ World* Item::GetWorld() const
 int Item::GetWorldID() const
 {
     return worldId;
+}
+
+void Item::ApplyLogicEffect()
+{
+    if (logicVar == nullptr) return;
+    *logicVar += 1;
+}
+
+void Item::UndoLogicEffect()
+{
+    if (logicVar == nullptr) return;
+    *logicVar -= 1;
 }
 
 bool Item::operator==(const Item& rhs) const

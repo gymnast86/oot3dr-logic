@@ -11,13 +11,13 @@
 
 struct Event {
     ItemID item;
-    Requirement requirement;
+    RequirementFn requirement;
     Area* area;
 };
 
 struct LocationAccess {
     Location* location;
-    Requirement requirement;
+    RequirementFn requirement;
     Area* area;
 };
 
@@ -30,6 +30,10 @@ public:
 
     bool operator==(const Area& rhs) const;
     bool operator<(const Area& rhs) const;
+
+    Event* GetEvent(const ItemID& itemId);
+    LocationAccess* GetLocationAccess(const LocationID& locationId);
+    Entrance* GetExit(const AreaID& areaId);
 
     AreaID id = AreaID::INVALID;
     std::string name = "";

@@ -1,6 +1,8 @@
 #ifndef _SETTINGS_H_
 #define _SETTINGS_H_
 
+#define Color_RGBA8 u8
+
 #include "../include/z3D/z3D.h"
 
 typedef enum {
@@ -75,16 +77,16 @@ typedef enum {
 } AgeSetting;
 
 typedef enum {
+  SHUFFLEDUNGEONS_OFF,
+  SHUFFLEDUNGEONS_ON,
+  SHUFFLEDUNGEONS_GANON,
+} ShuffleDungeonEntrancesSetting;
+
+typedef enum {
   SHUFFLEINTERIORS_OFF,
   SHUFFLEINTERIORS_SIMPLE,
   SHUFFLEINTERIORS_ALL,
 } ShuffleInteriorEntrancesSetting;
-
-typedef enum {
-  MIXEDENTRANCES_OFF,
-  MIXEDENTRANCES_INDOOR,
-  MIXEDENTRANCES_ALL,
-} MixedEntraancesSetting;
 
 typedef enum {
   AMMODROPS_VANILLA,
@@ -325,6 +327,27 @@ typedef enum {
   DUNGEON_WOTH,
 } DungeonInfo;
 
+typedef enum {
+  TRAILCOLOR_VANILLAMODE,
+  TRAILCOLOR_FORCEDSIMPLEMODE,
+  TRAILCOLOR_RAINBOW,
+  TRAILCOLOR_RAINBOW_SIMPLEMODE,
+} TrailColorMode;
+
+typedef enum {
+  TRAILDURATION_DISABLED,
+  TRAILDURATION_VERYSHORT,
+  TRAILDURATION_VANILLA,
+  TRAILDURATION_LONG,
+  TRAILDURATION_VERYLONG,
+  TRAILDURATION_LIGHTSABER,
+} TrailDuration;
+
+typedef enum {
+  PLAY_ON_CONSOLE,
+  PLAY_ON_CITRA,
+} PlayOption;
+
 typedef struct {
   u8 hashIndexes[5];
   u8 playOption;
@@ -350,11 +373,6 @@ typedef struct {
   u8 shuffleOverworldEntrances;
   u8 shuffleInteriorEntrances;
   u8 shuffleGrottoEntrances;
-  u8 shuffleOwlDrops;
-  u8 shuffleWarpSongs;
-  u8 shuffleOverworldSpawns;
-  u8 mixedEntrancePools;
-  u8 decoupleEntrances;
   u8 bombchusInLogic;
   u8 ammoDrops;
   u8 heartDropRefill;
@@ -390,6 +408,16 @@ typedef struct {
   u8 lacsDungeonCount;
   u8 lacsTokenCount;
 
+  u8 ringFortress;
+  u8 ringForest;
+  u8 ringFire;
+  u8 ringWater;
+  u8 ringSpirit;
+  u8 ringShadow;
+  u8 ringWell;
+  u8 ringGtg;
+  u8 ringCastle;
+
   u8 skipChildStealth;
   u8 skipTowerEscape;
   u8 skipEponaRace;
@@ -423,8 +451,19 @@ typedef struct {
   u8 stickAsAdult;
   u8 boomerangAsAdult;
   u8 hammerAsChild;
+  u8 slingshotAsAdult;
+  u8 bowAsChild;
+  u8 hookshotAsChild;
   u8 ironbootsAsChild;
+  u8 hoverbootsAsChild;
   u8 masksAsAdult;
+  u8 kokiriSwordAsAdult;
+  u8 masterSwordAsChild;
+  u8 biggoronSwordAsChild;
+  u8 dekuShieldAsAdult;
+  u8 mirrorShieldAsChild;
+  u8 goronTunicAsChild;
+  u8 zoraTunicAsChild;
   u8 gkDurability;
 
   u8 itemPoolValue;
@@ -433,6 +472,7 @@ typedef struct {
 
   u8 mp_Enabled;
   u8 mp_SharedProgress;
+  u8 mp_SyncId;
   u8 mp_SharedHealth;
   u8 mp_SharedRupees;
   u8 mp_SharedAmmo;
@@ -446,6 +486,25 @@ typedef struct {
   u8 ignoreMaskReaction;
 
   u8 customTunicColors;
+  u8 customNaviColors;
+  u8 rainbowIdleNaviInnerColor;
+  u8 rainbowNPCNaviInnerColor;
+  u8 rainbowEnemyNaviInnerColor;
+  u8 rainbowPropNaviInnerColor;
+  u8 rainbowIdleNaviOuterColor;
+  u8 rainbowNPCNaviOuterColor;
+  u8 rainbowEnemyNaviOuterColor;
+  u8 rainbowPropNaviOuterColor;
+  u8 customTrailEffects;
+  u8 rainbowSwordTrailInnerColor;
+  u8 rainbowSwordTrailOuterColor;
+  Color_RGBA8 boomerangTrailColor;
+  u8 boomerangTrailColorMode;
+  u8 boomerangTrailDuration;
+  u8 rainbowChuTrailInnerColor;
+  u8 rainbowChuTrailOuterColor;
+  u8 bombchuTrailDuration;
+
   u8 coloredKeys;
   u8 coloredBossKeys;
   u8 mirrorWorld;
@@ -511,7 +570,7 @@ typedef struct {
   u8 startingBiggoronSword;
   u8 startingMagicMeter;
   u8 startingDoubleDefense;
-  u8 startingHealth;
+  u8 startingHearts;
 
   u32 startingQuestItems;
   u32 startingDungeonReward;

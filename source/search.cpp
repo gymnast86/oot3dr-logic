@@ -94,6 +94,15 @@ void Search::SetStartingProperties(World* world)
 
 void Search::FindLocations(int worldToSearch /*= -1*/)
 {
+    for (auto& world : *worlds)
+    {
+        world->baseLogic->ResetLogicVariables();
+    }
+    for (auto item : ownedItems)
+    {
+        item.ApplyLogicEffect();
+    }
+
     bool newThingsFound = false;
 
     do
@@ -127,6 +136,8 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
                 newThingsFound = true;
                 eventItr = eventsToTry.erase(eventItr);
                 ownedItems.emplace(event->item, world);
+                auto item = Item(event->item, world);
+                item.ApplyLogicEffect();
             }
             else
             {
@@ -149,7 +160,7 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
                 continue;
             }
             auto& requirement = exit->GetRequirement();
-            // std::cout << "Now exploring [W" << std::to_string(world->GetWorldID()) << "] exit " << exit->GetOriginalName() << std::endl;
+            //DebugLog("Now exploring [W" + std::to_string(world->GetWorldID()) + "] exit " + exit->GetOriginalName());
             if (world->EvaluateRequirement(requirement, this, exit, EvaluateType::Exit)) {
                 // If we're generating the playthrough, add it to the entranceSpheres if it's randomized
                 if (searchMode == SearchMode::GeneratePlaythrough && exit->IsShuffled())
@@ -220,6 +231,7 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
             if (currentItem.GetID() != ItemID::NONE)
             {
                 ownedItems.insert(currentItem);
+                currentItem.ApplyLogicEffect();
                 if (searchMode == SearchMode::GeneratePlaythrough /*&& location has major item*/)
                 {
                     playthroughSpheres.back().push_back(location);
@@ -283,6 +295,7 @@ void Search::Explore(Area* area)
         // check for day/night later, depending on the game)
         if (visitedAreas.count(connectedArea) == 0)
         {
+            //DebugLog("Now exploring [W" + std::to_string(world->GetWorldID()) + "] exit " + exit->GetOriginalName());
             if (world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit))
             {
                 visitedAreas.insert(connectedArea);
@@ -319,70 +332,71 @@ LocationPool GetAccessibleLocations(WorldPool& worlds, ItemPool& items, Location
 // https://graphviz.org/download/
 // Use this command to generate the graph: dot -Tsvg <filename> -o world.svg
 // Then, open world.svg in a browser and CTRL + F to find the area of interest
-void Search::DumpSearchGraph(size_t worldId, const std::string filename)
+void Search::DumpSearchGraph(size_t worldId /*= 0*/, const std::string filename /*= "World0"*/)
 {
+    #ifdef NON_3DS
+        std::cout << "Now dumping search graph" << std::endl;
+        bool onlyRandomizedExits = false;
+        std::ofstream worldGraph;
+        std::string fullFilename = WORLD_GRAPHS"/" + filename + ".gv";
+        worldGraph.open (fullFilename);
+        worldGraph << "digraph {\n\tcenter=true;\n";
 
-    std::cout << "Now dumping search graph" << std::endl;
-    bool onlyRandomizedExits = false;
-    std::ofstream worldGraph;
-    std::string fullFilename = WORLD_GRAPHS"/" + filename + ".gv";
-    worldGraph.open (fullFilename);
-    worldGraph << "digraph {\n\tcenter=true;\n";
+        auto world = worlds->at(worldId).get();
+        for (const auto& [areaId, areaPtr] : world->areas) {
 
-    auto world = worlds->at(worldId).get();
-    for (const auto& [areaId, areaPtr] : world->areas) {
+            auto area = areaPtr.get();
+            std::string color = visitedAreas.count(area) > 0 ? "\"black\"" : "\"red\"";
 
-        auto area = areaPtr.get();
-        std::string color = visitedAreas.count(area) > 0 ? "\"black\"" : "\"red\"";
-
-        std::string parentName = AreaIDToName(area->id);
-        std::string timeOfDayStr = "";
-        if (world->GetType() == WorldType::Oot3d)
-        {
-            timeOfDayStr = ":<br/>";
-            auto tod = areaTime[area];
-            if (tod & OOT3D_CHILD_DAY)   timeOfDayStr += " CD";
-            if (tod & OOT3D_CHILD_NIGHT) timeOfDayStr += " CN";
-            if (tod & OOT3D_ADULT_DAY)   timeOfDayStr += " AD";
-            if (tod & OOT3D_ADULT_NIGHT) timeOfDayStr += " AN";
-        }
-
-        worldGraph << "\t\"" << parentName << "\"[label=<" << parentName << timeOfDayStr << "> shape=\"plain\" fontcolor=" << color << "];" << std::endl;
-        // Make edge connections defined by exits
-        for (const auto& exitPtr : area->exits) {
-
-            auto exit = exitPtr.get();
-            // Only dump shuffled exits if set
-            if (!exit->IsShuffled() && onlyRandomizedExits)
+            std::string parentName = AreaIDToName(area->id);
+            std::string timeOfDayStr = "";
+            if (world->GetType() == WorldType::Oot3d)
             {
-                continue;
+                timeOfDayStr = ":<br/>";
+                auto tod = areaTime[area];
+                if (tod & OOT3D_CHILD_DAY)   timeOfDayStr += " CD";
+                if (tod & OOT3D_CHILD_NIGHT) timeOfDayStr += " CN";
+                if (tod & OOT3D_ADULT_DAY)   timeOfDayStr += " AD";
+                if (tod & OOT3D_ADULT_NIGHT) timeOfDayStr += " AN";
             }
-            // Evaluate the exit requirement one more time to ensure if it really isn't accessible
-            world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit);
-            std::string connectedName = AreaIDToName(exit->GetConnectedAreaID());
-            if (parentName != "INVALID" && connectedName != "INVALID"){
-                color = successfulExits.count(exit) > 0 ? "\"black\"" : "\"red\"";
-                worldGraph << "\t\"" << parentName << "\" -> \"" << connectedName << "\"" << "[dir=forward color=" << color << "]" << std::endl;
+
+            worldGraph << "\t\"" << parentName << "\"[label=<" << parentName << timeOfDayStr << "> shape=\"plain\" fontcolor=" << color << "];" << std::endl;
+            // Make edge connections defined by exits
+            for (const auto& exitPtr : area->exits) {
+
+                auto exit = exitPtr.get();
+                // Only dump shuffled exits if set
+                if (!exit->IsShuffled() && onlyRandomizedExits)
+                {
+                    continue;
+                }
+                // Evaluate the exit requirement one more time to ensure if it really isn't accessible
+                world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit);
+                std::string connectedName = AreaIDToName(exit->GetConnectedAreaID());
+                if (parentName != "INVALID" && connectedName != "INVALID"){
+                    color = successfulExits.count(exit) > 0 ? "\"black\"" : "\"red\"";
+                    worldGraph << "\t\"" << parentName << "\" -> \"" << connectedName << "\"" << "[dir=forward color=" << color << "]" << std::endl;
+                }
+            }
+
+            // Make edge connections between areas and their locations
+            for (const auto& [location, req, locArea] : area->locations) {
+                std::string connectedLocation = location->GetName();
+                std::string itemAtLocation = "No Item";
+                if (location->GetCurrentItem().GetID() != ItemID::INVALID)
+                {
+                    itemAtLocation = location->GetCurrentItem().GetName();
+                }
+                color = visitedLocations.count(location) > 0 ? "\"black\"" : "\"red\"";
+                if (parentName != "INVALID" && connectedLocation != "INVALID"){
+                    worldGraph << "\t\"" << connectedLocation << "\"[label=<" << connectedLocation << ":<br/>" << itemAtLocation << "> shape=\"plain\" fontcolor=" << color << "];" << std::endl;
+                    worldGraph << "\t\"" << parentName << "\" -> \"" << connectedLocation << "\"" << "[dir=forward color=" << color << "]" << std::endl;
+                }
             }
         }
 
-        // Make edge connections between areas and their locations
-        for (const auto& [location, req, locArea] : area->locations) {
-            std::string connectedLocation = location->GetName();
-            std::string itemAtLocation = "No Item";
-            if (location->GetCurrentItem().GetID() != ItemID::INVALID)
-            {
-                itemAtLocation = location->GetCurrentItem().GetName() + " [W" + std::to_string(location->GetCurrentItem().GetWorldID() + 1) + "]";
-            }
-            color = visitedLocations.count(location) > 0 ? "\"black\"" : "\"red\"";
-            if (parentName != "INVALID" && connectedLocation != "INVALID"){
-                worldGraph << "\t\"" << connectedLocation << "\"[label=<" << connectedLocation << ":<br/>" << itemAtLocation << "> shape=\"plain\" fontcolor=" << color << "];" << std::endl;
-                worldGraph << "\t\"" << parentName << "\" -> \"" << connectedLocation << "\"" << "[dir=forward color=" << color << "]" << std::endl;
-            }
-        }
-    }
-
-    worldGraph << "}";
-    worldGraph.close();
-    std::cout << "Dumped world graph at " << fullFilename << std::endl;
+        worldGraph << "}";
+        worldGraph.close();
+        std::cout << "Dumped world graph at " << fullFilename << std::endl;
+    #endif
 }
