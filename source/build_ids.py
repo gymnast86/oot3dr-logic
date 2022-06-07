@@ -6,6 +6,7 @@ from pathlib import Path
 import glob
 
 def main():
+    print("Running build_ids.py")
     path =  sys.argv[1]
     data_directory = '../romfs/'
     build_ids(path, data_directory, data_filename='item_data.yaml', type='Item', key='- name: ')

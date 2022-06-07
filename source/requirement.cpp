@@ -98,7 +98,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             return RequirementError::NONE;
         }
         // Then an item...
-        else if (NameToItemID(gamePrefix + " " + argStr) != ItemID::INVALID)
+        else if (NameToItemID(gamePrefix + "_" + argStr) != ItemID::INVALID)
         {
             req.type = RequirementType::ITEM;
             req.args.push_back(NameToItemID(argStr));

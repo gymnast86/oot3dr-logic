@@ -7,7 +7,13 @@ Scarecrow: Hookshot and can_play(Scarecrow_Song)
 Distant_Scarecrow: Longshot and can_play(Scarecrow_Song)
 Silver_Scale: Progressive_Scale
 Gold_Scale: count(Progressive_Scale, 2)
+Ocarina: Progressive_Ocarina
 Ocarina_of_Time: count(Ocarina, 2)
+Slingshot: Progressive_Slingshot
+Bomb_Bag: Progressive_Bomb_Bag
+Bow: Progressive_Bow
+Adults Wallet: Progressive_Wallet
+Magic_Meter: Progressive_Magic_Meter
 
 Goron_Tunic: "Goron_Tunic or Buy_Goron_Tunic"
 Zora_Tunic: "Zora_Tunic or Buy_Zora_Tunic"
@@ -21,7 +27,7 @@ at_night: child_night or adult_night
 # without editing all logic files.
 # Bow: 'Bow',
 # Slingshot: 'Slingshot',
-Bombs: Bomb_Bag
+Bombs: Progressive_Bomb_Bag
 Deku_Shield: Buy_Deku_Shield
 Hylian_Shield: Buy_Hylian_Shield
 Nuts: Buy_Deku_Nut_5 or Buy_Deku_Nut_10 or Deku_Nut_Drop
@@ -33,7 +39,7 @@ Fairy: Fairy or Buy_Fairys_Spirit
 
 can_use(Kokiri_Sword): is_child and Kokiri_Sword
 can_use(Sticks): is_child and Sticks
-can_use(Slingshot): is_child and Slingshot
+can_use(Slingshot): is_child and Progressive_Slingshot
 can_use(Boomerang): is_child and Boomerang
 can_use(Deku_Shield): is_child and Deku_Shield
 can_use(Dins_Fire): Magic_Meter and Dins_Fire
@@ -59,7 +65,7 @@ can_use(Light_Arrows): is_adult and Light_Arrows and Bow and Magic_Meter
 
 hookshot_or_boomerang: can_use(Hookshot) or can_use(Boomerang)
 can_refill_bombchus: Buy_Bombchu_5 or Buy_Bombchu_10 or Buy_Bombchu_20 or Bombchu_Drop
-found_bombchus: "(bombchus_in_logic and (Bombchus or Bombchus_5 or Bombchus_10 or Bombchus_20)) or (not bombchus_in_logic and Bomb_Bag)"
+found_bombchus: "(bombchus_in_logic and (Progressive_Bombchus or Bombchus_5 or Bombchus_10 or Bombchus_20)) or (not bombchus_in_logic and Bomb_Bag)"
 has_bombchus: "(bombchus_in_logic and found_bombchus) or (not bombchus_in_logic and can_refill_bombchus)"
 has_explosives: Bombs or (bombchus_in_logic and has_bombchus)
 has_bottle: Empty_Bottle or Bottle_with_Milk or Bottle_with_Red_Potion or Bottle_with_Green_Potion or Bottle_with_Blue_Potion or

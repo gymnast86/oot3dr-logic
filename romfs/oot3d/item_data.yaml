@@ -1664,6 +1664,104 @@
   get_item_id: 0xFF
   advancement: true
 
+- name: Deku Tree Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Dodongos Cavern Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Jabu Jabus Belly Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Forest Temple Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Fire Temple Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Water Temple Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Spirit Temple Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Shadow Temple Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Forest Trial Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Fire Trial Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Water Trial Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Spirit Trial Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Shadow Trial Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Light Trial Clear
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
 - name: Hint
   spanish: Pista
   french: Indice

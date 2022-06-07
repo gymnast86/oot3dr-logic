@@ -115,11 +115,11 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         BUILD_ERROR_CHECK(err);
 
         // Get the field strings
-        const std::string name = SubstrToString(location["name"].val());
+              std::string name = "Oot3d " + SubstrToString(location["name"].val());
         const std::string typeStr = SubstrToString(location["type"].val());
         const std::string sceneStr = SubstrToString(location["scene"].val());
         const std::string flagStr = SubstrToString(location["flag"].val());
-              std::string vanillaItemStr = "Oot3d " + SubstrToString(location["vanilla_item"].val());
+              std::string vanillaItemStr = SubstrToString(location["vanilla_item"].val());
         const std::string checkTypeStr = SubstrToString(location["check_type"].val());
         const std::string arg1Str = SubstrToString(location["check_type_arg1"].val());
         const std::string arg2Str = SubstrToString(location["check_type_arg2"].val());
@@ -127,6 +127,16 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
 
         // Replace spaces in the vanilla item name with underscores to get proper ItemIDs
         std::replace(vanillaItemStr.begin(), vanillaItemStr.end(), ' ', '_');
+        // Properly set none value
+        if (vanillaItemStr == "None")
+        {
+            vanillaItemStr = "NONE";
+        }
+        else
+        {
+            vanillaItemStr = "Oot3d_" + vanillaItemStr;
+        }
+
 
         // Check each field for proper values
         VALID_LOCATION_CHECK(location, name);
@@ -183,7 +193,7 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
 {
     DebugLog("Building World Graph for world " + std::to_string(worldId) + "...");
     std::string overworldDataStr;
-    FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/overworld.yaml", overworldDataStr))
+    FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/world/overworld_world_graph.yaml", overworldDataStr))
 
     const ryml::Tree overworldTree = ryml::parse_in_place(ryml::to_substr(overworldDataStr));
     for (const ryml::NodeRef& area : overworldTree.rootref().children())
@@ -238,7 +248,7 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
             for (const ryml::NodeRef& location : area["locations"].children())
             {
                 // Get field strings
-                const std::string locationName = SubstrToString(location.key());
+                const std::string locationName = "Oot3d " + SubstrToString(location.key());
                 const std::string reqStr = SubstrToString(location.val());
 
                 // Check for valid values
@@ -259,7 +269,7 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
             for (const ryml::NodeRef& exit : area["exits"].children())
             {
                 // Get field strings
-                const std::string exitName = SubstrToString(exit.key());
+                const std::string exitName = "Oot3d " + SubstrToString(exit.key());
                 const std::string reqStr = SubstrToString(exit.val());
 
                 // Check for valid values
@@ -319,5 +329,5 @@ WorldBuildingError Oot3dWorld::Build()
 
 std::string Oot3dWorld::GetTypeString() const
 {
-    return "oot3d";
+    return "Oot3d";
 }
