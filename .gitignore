@@ -22,3 +22,4 @@ source/patch_symbols.hpp
 .DS_Store
 local_testing/*
 !local_testing/CMakeLists.txt
+source/*_id.*pp
