@@ -162,6 +162,12 @@ endif
 
 #---------------------------------------------------------------------------------
 all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
+	@if python3 source/build_ids.py source/; then \
+		echo "Ran build_ids.py" ; \
+	else \
+    python source/build_ids.py source/; \
+		echo "Ran build_ids.py" ; \
+	fi
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 $(BUILD):

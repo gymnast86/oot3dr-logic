@@ -75,7 +75,7 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
         BUILD_ERROR_CHECK(err);
 
         // Get the field strings
-              std::string name = SubstrToString(item["name"].val());
+              std::string name = "Oot3d " + SubstrToString(item["name"].val());
         const std::string typeStr = SubstrToString(item["type"].val());
         const std::string getItemIdStr = SubstrToString(item["get_item_id"].val());
         const std::string advancementStr = SubstrToString(item["advancement"].val());
@@ -119,7 +119,7 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         const std::string typeStr = SubstrToString(location["type"].val());
         const std::string sceneStr = SubstrToString(location["scene"].val());
         const std::string flagStr = SubstrToString(location["flag"].val());
-              std::string vanillaItemStr = SubstrToString(location["vanilla_item"].val());
+              std::string vanillaItemStr = "Oot3d " + SubstrToString(location["vanilla_item"].val());
         const std::string checkTypeStr = SubstrToString(location["check_type"].val());
         const std::string arg1Str = SubstrToString(location["check_type_arg1"].val());
         const std::string arg2Str = SubstrToString(location["check_type_arg2"].val());
@@ -172,7 +172,7 @@ WorldBuildingError Oot3dWorld::LoadLogicHelpers()
         const std::string helperName = SubstrToString(logicHelper.key());
         const std::string helperStr = SubstrToString(logicHelper.val());
         Requirement helperReq;
-        RequirementError err = ParseRequirementString(helperStr, helperReq, logicHelpers, settings, AreaID::NONE);
+        RequirementError err = ParseRequirementString(helperStr, helperReq, logicHelpers, settings, AreaID::NONE, "Oot3d");
         VALID_REQUIREMENT(err, helperStr);
         logicHelpers.emplace(helperName, helperReq);
     }
@@ -219,13 +219,13 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
             for (const ryml::NodeRef& event : area["events"].children())
             {
                 // Get field strings
-                std::string eventName = SubstrToString(event.key());
+                std::string eventName = "Oot3d " + SubstrToString(event.key());
                 const std::string reqStr = SubstrToString(event.val());
 
                 // Check for valid values
                 VALID_ITEM_CHECK(area, eventName); // Events are treated as items
                 Requirement req;
-                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId);
+                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d");
                 VALID_REQUIREMENT(err, reqStr);
 
                 // Add event to list of events in this area
@@ -244,7 +244,7 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                 // Check for valid values
                 VALID_LOCATION_CHECK(area, locationName);
                 Requirement req;
-                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId);
+                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d");
                 VALID_REQUIREMENT(err, reqStr);
 
                 auto locationId = NameToLocationID(locationName);
@@ -265,7 +265,7 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                 // Check for valid values
                 VALID_AREA_CHECK(area, exitName);
                 Requirement req;
-                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId);
+                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d");
                 VALID_REQUIREMENT(err, reqStr);
 
                 // Add the exit to the list of exits in area
@@ -308,11 +308,11 @@ WorldBuildingError Oot3dWorld::Build()
     err = CacheAgeTimeRequirements();
     BUILD_ERROR_CHECK(err);
 
-    locations[LocationID::MasterSwordPedestal]->currentItem = Item(ItemID::MasterSword, this);
-    locations[LocationID::BigPoeKill]->currentItem = Item(ItemID::BigPoe, this);
-    locations[LocationID::Pierre]->currentItem = Item(ItemID::ScarecrowSong, this);
-    locations[LocationID::BugRock]->currentItem = Item(ItemID::Bugs, this);
-    locations[LocationID::MarketBombchuBowlingBombchus]->currentItem = Item(ItemID::BombchuDrop, this);
+    locations[LocationID::MasterSwordPedestal]->currentItem = Item(ItemID::Oot3dMasterSword, this);
+    locations[LocationID::BigPoeKill]->currentItem = Item(ItemID::Oot3dBigPoe, this);
+    locations[LocationID::Pierre]->currentItem = Item(ItemID::Oot3dScarecrowSong, this);
+    locations[LocationID::BugRock]->currentItem = Item(ItemID::Oot3dBugs, this);
+    locations[LocationID::MarketBombchuBowlingBombchus]->currentItem = Item(ItemID::Oot3dBombchuDrop, this);
 
     return WorldBuildingError::NONE;
 }

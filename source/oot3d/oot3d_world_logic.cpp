@@ -153,28 +153,28 @@ bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* 
             return EvaluateRequirementWithAgeTime(newReq, search, object, evalType, newAgeTime);
         case RequirementType::HAS_STONES:
             expectedCount = std::get<int>(req.args[0]);
-            return search->ownedItems.count(Item(ItemID::KokiriEmerald, this)) +
-                   search->ownedItems.count(Item(ItemID::GoronRuby, this))     +
-                   search->ownedItems.count(Item(ItemID::ZoraSapphire, this))  > expectedCount;
+            return search->ownedItems.count(Item(ItemID::Oot3dKokiriEmerald, this)) +
+                   search->ownedItems.count(Item(ItemID::Oot3dGoronRuby, this))     +
+                   search->ownedItems.count(Item(ItemID::Oot3dZoraSapphire, this))  > expectedCount;
         case RequirementType::HAS_MEDALLIONS:
             expectedCount = std::get<int>(req.args[0]);
-            return search->ownedItems.count(Item(ItemID::ForestMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::FireMedallion, this))   +
-                   search->ownedItems.count(Item(ItemID::WaterMedallion, this))  +
-                   search->ownedItems.count(Item(ItemID::SpiritMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::ShadowMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::LightMedallion, this))  > expectedCount;
+            return search->ownedItems.count(Item(ItemID::Oot3dForestMedallion, this)) +
+                   search->ownedItems.count(Item(ItemID::Oot3dFireMedallion, this))   +
+                   search->ownedItems.count(Item(ItemID::Oot3dWaterMedallion, this))  +
+                   search->ownedItems.count(Item(ItemID::Oot3dSpiritMedallion, this)) +
+                   search->ownedItems.count(Item(ItemID::Oot3dShadowMedallion, this)) +
+                   search->ownedItems.count(Item(ItemID::Oot3dLightMedallion, this))  > expectedCount;
         case RequirementType::HAS_REWARDS:
             expectedCount = std::get<int>(req.args[0]);
-            return search->ownedItems.count(Item(ItemID::KokiriEmerald, this))   +
-                   search->ownedItems.count(Item(ItemID::GoronRuby, this))       +
-                   search->ownedItems.count(Item(ItemID::ZoraSapphire, this))    +
-                   search->ownedItems.count(Item(ItemID::ForestMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::FireMedallion, this))   +
-                   search->ownedItems.count(Item(ItemID::WaterMedallion, this))  +
-                   search->ownedItems.count(Item(ItemID::SpiritMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::ShadowMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::LightMedallion, this))  > expectedCount;
+            return search->ownedItems.count(Item(ItemID::Oot3dKokiriEmerald, this))   +
+                   search->ownedItems.count(Item(ItemID::Oot3dGoronRuby, this))       +
+                   search->ownedItems.count(Item(ItemID::Oot3dZoraSapphire, this))    +
+                   search->ownedItems.count(Item(ItemID::Oot3dForestMedallion, this)) +
+                   search->ownedItems.count(Item(ItemID::Oot3dFireMedallion, this))   +
+                   search->ownedItems.count(Item(ItemID::Oot3dWaterMedallion, this))  +
+                   search->ownedItems.count(Item(ItemID::Oot3dSpiritMedallion, this)) +
+                   search->ownedItems.count(Item(ItemID::Oot3dShadowMedallion, this)) +
+                   search->ownedItems.count(Item(ItemID::Oot3dLightMedallion, this))  > expectedCount;
         default:
             std::cout << "Default hit when evaluating requirement. Something probably went wrong." << std::endl;
             std::cout << "Type: " << RequirementToName(req.type) << std::endl;
@@ -263,7 +263,7 @@ void Oot3dWorld::ExpandToDMasterSword(Search* search, LocationAccess* locAccess)
     auto ageTime = search->areaTime[area];
     if (!(ageTime & OOT3D_IS_ADULT))
     {
-        search->visitedAreas.insert(areas[AreaID::AdultSpawn].get());
+        search->visitedAreas.insert(areas[AreaID::Oot3dAdultSpawn].get());
         if (ageTime & OOT3D_CHILD_DAY) {
             search->areaTime[worldRoot] |= OOT3D_ADULT_DAY;
             ExpandToDAreas(search, OOT3D_ADULT_DAY);
@@ -275,7 +275,7 @@ void Oot3dWorld::ExpandToDMasterSword(Search* search, LocationAccess* locAccess)
     }
     else if (!(ageTime & OOT3D_IS_CHILD))
     {
-        search->visitedAreas.insert(areas[AreaID::ChildSpawn].get());
+        search->visitedAreas.insert(areas[AreaID::Oot3dChildSpawn].get());
         if (ageTime & OOT3D_ADULT_DAY) {
             search->areaTime[worldRoot] |= OOT3D_CHILD_DAY;
             ExpandToDAreas(search, OOT3D_CHILD_DAY);
@@ -292,7 +292,7 @@ WorldBuildingError Oot3dWorld::CacheAgeTimeRequirements()
     DebugLog("Caching Age/Time requirements...");
     Search searchWithItems = Search();
     Search searchWithNoItems = Search();
-    for (uint32_t itemIdint = static_cast<uint32_t>(ItemID::KokiriSword); itemIdint < static_cast<uint32_t>(ItemID::Hint); itemIdint++)
+    for (uint32_t itemIdint = static_cast<uint32_t>(ItemID::Oot3dKokiriSword); itemIdint < static_cast<uint32_t>(ItemID::Oot3dHint); itemIdint++)
     {
         // Insert 10 of each item to account for small keys
         Item item = Item(static_cast<ItemID>(itemIdint), this);

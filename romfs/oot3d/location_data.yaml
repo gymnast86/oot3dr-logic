@@ -9719,7 +9719,7 @@
   type: Event
   scene: 0x00
   flag: 0x00
-  vanilla_item: Time Travel
+  vanilla_item: Master Sword
   categories:
   check_type: None
   check_type_arg1: 0x00

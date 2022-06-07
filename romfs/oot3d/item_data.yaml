@@ -5,6 +5,12 @@
   get_item_id: 0x27
   advancement: true
 
+- name: Master Sword
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0xFF
+  advancement: true
 
 - name: Giants Knife
   spanish: Espada de Biggoron
@@ -293,6 +299,61 @@
   get_item_id: 0x26
   advancement: true
 
+- name: Keaton Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x1A
+  advancement: true
+
+- name: Skull Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x17
+  advancement: true
+
+- name: Spooky Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x18
+  advancement: true
+
+- name: Bunny Hood
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x1B
+  advancement: true
+
+- name: Mask of Truth
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x1C
+  advancement: true
+
+- name: Goron Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x51
+  advancement: true
+
+- name: Zora Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x52
+  advancement: true
+
+- name: Gerudo Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x53
+  advancement: true
 
 - name: Progressive Hookshot
   spanish: Gancho progresivo
@@ -589,6 +650,12 @@
   get_item_id: 0xC0
   advancement: true
 
+- name: Scarecrow Song
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0xFF
+  advancement: true
 
 - name: Deku Tree Map
   spanish: Mapa del Gran Árbol Deku
@@ -1165,6 +1232,54 @@
   get_item_id: 0x12
   advancement: false
 
+- name: Deku Nut Drop
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Deku Stick Drop
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Bugs
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Fish
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Fairy
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Big Poe
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Blue Fire
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
 
 - name: Treasure Game Heart
   spanish: Pieza de corazón (Cofre del Tesoro)
@@ -1187,14 +1302,6 @@
   french: Triforce
   type: Event
   get_item_id: 0x74
-  advancement: false
-
-
-- name: Hint
-  spanish: Pista
-  french: Indice
-  type: Event
-  get_item_id: 0x73
   advancement: false
 
 
@@ -1443,4 +1550,123 @@
   french: "Acheter: Potion rouge [50]"
   type: Shop
   get_item_id: 0x31
+  advancement: false
+
+- name: Bonooru
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Epona
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Links Cow
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Showed Mido Sword And Shield
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Carpenter Rescue
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: GF Gate Open
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: GTG Gate Open
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Kakariko Village Gate Open
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Wake Up Adult Talon
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Drain Well
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Dampes Windmill Access
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: GC Woods Warp Open
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Goron City Child Fir
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Stop GC Rolling as Adult
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Deliver Letter
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: King Zora Thawed
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Hint
+  spanish: Pista
+  french: Indice
+  type: Event
+  get_item_id: 0x73
   advancement: false

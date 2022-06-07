@@ -225,7 +225,7 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
                     playthroughSpheres.back().push_back(location);
                 }
                 // If we found the Master Sword for an Oot3D world, handle the new agetime
-                if (currentItem.GetID() == ItemID::MasterSword && currentItem.GetWorld()->GetType() == WorldType::Oot3d)
+                if (currentItem.GetID() == ItemID::Oot3dMasterSword && currentItem.GetWorld()->GetType() == WorldType::Oot3d)
                 {
                     auto world = currentItem.GetWorld();
                     Oot3dWorld* oot3dWorld = (Oot3dWorld*) world;

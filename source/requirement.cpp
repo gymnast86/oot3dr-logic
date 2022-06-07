@@ -10,7 +10,7 @@
 // Takes a logic expression string and stores it as a requirement within the passed in Requirement
 // object. This means we only have to parse the string once and then evaluating it many times
 // later is a lot faster. An example of a logic expression string is: "Hookshot and (Bow or Bombs)"
-RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId)
+RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId, const std::string& gamePrefix)
 {
 
     RequirementError err = RequirementError::NONE;
@@ -98,7 +98,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             return RequirementError::NONE;
         }
         // Then an item...
-        else if (NameToItemID(argStr) != ItemID::INVALID)
+        else if (NameToItemID(gamePrefix + " " + argStr) != ItemID::INVALID)
         {
             req.type = RequirementType::ITEM;
             req.args.push_back(NameToItemID(argStr));
@@ -163,7 +163,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             }
             std::string areaName = AreaIDToName(argArea);
             AREA_VALID_CHECK(areaName, argStr);
-            err = ParseRequirementString(areaReqStr, areaReq, logicMap, settings, argArea);
+            err = ParseRequirementString(areaReqStr, areaReq, logicMap, settings, argArea, gamePrefix);
             REQ_ERROR_CHECK(err);
             req.args.push_back(argArea);
             req.args.push_back(areaReq);
@@ -217,7 +217,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             req.type = RequirementType::AND;
             std::string songStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
             auto song = NameToItemID(songStr);
-            Requirement ocarinaReq = {RequirementType::ITEM, {ItemID::ProgressiveOcarina}};
+            Requirement ocarinaReq = {RequirementType::ITEM, {ItemID::Oot3dProgressiveOcarina}};
             Requirement songReq = {RequirementType::ITEM, {song}};
             req.args.push_back(ocarinaReq);
             req.args.push_back(songReq);
@@ -312,7 +312,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
                 reqStr = reqStr.substr(1, reqStr.length() - 2);
             }
             // Evaluate the deeper expression and add it to the requirement object if it's valid
-            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId)) != RequirementError::NONE) return err;
+            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId, gamePrefix)) != RequirementError::NONE) return err;
         }
         else
         {
@@ -370,7 +370,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             {
                 reqStr = reqStr.substr(1, reqStr.length() - 2);
             }
-            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId)) != RequirementError::NONE) return err;
+            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId, gamePrefix)) != RequirementError::NONE) return err;
         }
     }
 

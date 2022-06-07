@@ -53,7 +53,7 @@ struct Requirement
 
 // std::string printRequirement(Requirement& req, int nestingLevel = 0);
 
-RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId);
+RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId, const std::string& game_prefix);
 
 std::string RequirementStr(Requirement& req, int nestingLevel = 0);
 
