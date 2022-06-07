@@ -308,11 +308,11 @@ WorldBuildingError Oot3dWorld::Build()
     err = CacheAgeTimeRequirements();
     BUILD_ERROR_CHECK(err);
 
-    locations[LocationID::MasterSwordPedestal]->currentItem = Item(ItemID::Oot3dMasterSword, this);
-    locations[LocationID::BigPoeKill]->currentItem = Item(ItemID::Oot3dBigPoe, this);
-    locations[LocationID::Pierre]->currentItem = Item(ItemID::Oot3dScarecrowSong, this);
-    locations[LocationID::BugRock]->currentItem = Item(ItemID::Oot3dBugs, this);
-    locations[LocationID::MarketBombchuBowlingBombchus]->currentItem = Item(ItemID::Oot3dBombchuDrop, this);
+    locations[LocationID::Oot3dMasterSwordPedestal]->currentItem = Item(ItemID::Oot3dMasterSword, this);
+    locations[LocationID::Oot3dBigPoeKill]->currentItem = Item(ItemID::Oot3dBigPoe, this);
+    locations[LocationID::Oot3dPierre]->currentItem = Item(ItemID::Oot3dScarecrowSong, this);
+    locations[LocationID::Oot3dBugRock]->currentItem = Item(ItemID::Oot3dBugs, this);
+    locations[LocationID::Oot3dMarketBombchuBowlingBombchus]->currentItem = Item(ItemID::Oot3dBombchuDrop, this);
 
     return WorldBuildingError::NONE;
 }

@@ -14,6 +14,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -fomit-frame-pointer -ffunction
 
 add_executable(local_testing main.cpp ../source/generate.cpp ../source/random.cpp ../source/timing.cpp ../source/location.cpp ../source/item.cpp
                ../source/area_id.cpp ../source/area.cpp ../source/requirement.cpp ../source/debug.cpp ../source/entrance.cpp ../source/item_id.cpp
-               ../source/world.cpp ../source/fill.cpp ../source/search.cpp ../source/oot3d/oot3d_world.cpp ../source/oot3d/oot3d_entrance.cpp
+               ../source/location_id.cpp ../source/world.cpp ../source/fill.cpp ../source/search.cpp ../source/oot3d/oot3d_world.cpp ../source/oot3d/oot3d_entrance.cpp
                ../source/oot3d/oot3d_item.cpp ../source/oot3d/oot3d_location.cpp ../source/oot3d/oot3d_area.cpp ../source/oot3d/oot3d_item_pool.cpp
                ../source/oot3d/oot3d_world_logic.cpp)

@@ -9,8 +9,8 @@ def main():
     path =  sys.argv[1]
     data_directory = '../romfs/'
     build_ids(path, data_directory, data_filename='item_data.yaml', type='Item', key='- name: ')
+    build_ids(path, data_directory, data_filename='location_data.yaml', type='Location', key='- name: ')
     build_ids(path, data_directory, data_filename='world/*_world_graph.yaml', type='Area', key='- region_name: ')
-
 
 
 def build_ids(main_path, data_directory, data_filename, type, key):
@@ -57,9 +57,10 @@ def build_ids(main_path, data_directory, data_filename, type, key):
         # matches the checksum in the hpp file. If it matches, then we don't
         # need to recompile
         checksum = str(binascii.crc32(''.join(elements).encode('utf8')))
-        with open(hpp_path) as hpp:
-            if checksum in hpp.readline():
-                return None
+        if hpp_path.is_file():
+            with open(hpp_path) as hpp:
+                if checksum in hpp.readline():
+                    return None
 
         # Generate all the lists of elements we'll need. Each element will
         # need a mapping of:
