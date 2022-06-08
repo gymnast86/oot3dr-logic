@@ -119,24 +119,11 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         const std::string typeStr = SubstrToString(location["type"].val());
         const std::string sceneStr = SubstrToString(location["scene"].val());
         const std::string flagStr = SubstrToString(location["flag"].val());
-              std::string vanillaItemStr = SubstrToString(location["vanilla_item"].val());
+              std::string vanillaItemStr = "Oot3d " + SubstrToString(location["vanilla_item"].val());
         const std::string checkTypeStr = SubstrToString(location["check_type"].val());
         const std::string arg1Str = SubstrToString(location["check_type_arg1"].val());
         const std::string arg2Str = SubstrToString(location["check_type_arg2"].val());
         const std::string checkGroupStr = SubstrToString(location["check_group"].val());
-
-        // Replace spaces in the vanilla item name with underscores to get proper ItemIDs
-        std::replace(vanillaItemStr.begin(), vanillaItemStr.end(), ' ', '_');
-        // Properly set none value
-        if (vanillaItemStr == "None")
-        {
-            vanillaItemStr = "NONE";
-        }
-        else
-        {
-            vanillaItemStr = "Oot3d_" + vanillaItemStr;
-        }
-
 
         // Check each field for proper values
         VALID_LOCATION_CHECK(location, name);
@@ -198,7 +185,7 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
     const ryml::Tree overworldTree = ryml::parse_in_place(ryml::to_substr(overworldDataStr));
     for (const ryml::NodeRef& area : overworldTree.rootref().children())
     {
-        const std::string name = SubstrToString(area["region_name"].val());
+        const std::string name = "Oot3d " + SubstrToString(area["region_name"].val());
         VALID_AREA_CHECK(area, name);
         const AreaID areaId = NameToAreaID(name);
 

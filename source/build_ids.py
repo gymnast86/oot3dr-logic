@@ -21,6 +21,7 @@ def build_ids(main_path, data_directory, data_filename, type, key):
     cpp_path = Path(main_path + type.lower() + '_id.cpp')
     full_data_directory = Path(main_path + data_directory)
 
+    game_prefixes = [game_dir.stem for game_dir in full_data_directory.iterdir() if game_dir.is_dir()]
     all_file_paths = [main_path + data_directory + game_dir.stem + '/' + data_filename for game_dir in full_data_directory.iterdir() if game_dir.is_dir()]
     data_paths = []
     for file_path in all_file_paths:
@@ -49,8 +50,7 @@ def build_ids(main_path, data_directory, data_filename, type, key):
                     else:
                         elements.append(game_prefix + ' ' + element)
 
-        # Append the NONE and INVALID elements
-        elements.insert(0, 'NONE')
+        # Append the INVALID element
         elements.append('INVALID')
 
         # Check if there are any new elements (instead of information of elements
@@ -81,9 +81,27 @@ def build_ids(main_path, data_directory, data_filename, type, key):
                                    .replace(' from ', ' From ') \
                                    .replace(' ','') \
                                    for item in elements]
-        name_to_id_elements = [f'{{{quoted_elements[i]}, {type}ID::{camel_case_elements[i]}}}' for i in range(len(elements))]
-        name_to_id_underscore_elements = [f'{{{quoted_underscored_elements[i]}, {type}ID::{camel_case_elements[i]}}}' for i in range(len(elements))]
-        id_to_name_elements = [f'{{{type}ID::{camel_case_elements[i]}, {quoted_elements[i]}}}' for i in range(len(elements))]
+
+        # Extend prefixes for the NONE Id
+        name_to_id_elements = [f'{{\"{game_prefix[0].upper()+game_prefix[1:]} None\", {type}ID::NONE}}' for game_prefix in game_prefixes]
+        name_to_id_underscore_elements = [f'{{\"{game_prefix[0].upper()+game_prefix[1:]}_None\", {type}ID::NONE}}' for game_prefix in game_prefixes]
+        id_to_name_elements = [f'{{{type}ID::NONE, "None"}}' for i in range(len(game_prefixes))]
+
+        # Extend prefixes for Root and Root Exits if necessary
+        if all([name in elements for name in ['Root', 'Root Exits']]):
+            name_to_id_elements.extend([f'{{\"{game_prefix[0].upper()+game_prefix[1:]} {name}\", {type}ID::{name.replace(" ","")}}}' for game_prefix in game_prefixes for name in ['Root', 'Root Exits']])
+            name_to_id_underscore_elements.extend([f'{{\"{game_prefix[0].upper()+game_prefix[1:]}_{name.replace(" ","_")}\", {type}ID::{name.replace(" ","")}}}' for game_prefix in game_prefixes for name in ['Root', 'Root Exits']])
+            id_to_name_elements.extend([f'{{{type}ID::NONE, "None"}}' for i in range(len(game_prefixes) * len(['Root', 'Root Exits']))])
+
+
+        name_to_id_elements.extend([f'{{{quoted_elements[i]}, {type}ID::{camel_case_elements[i]}}}' for i in range(len(elements))])
+        name_to_id_underscore_elements.extend([f'{{{quoted_underscored_elements[i]}, {type}ID::{camel_case_elements[i]}}}' for i in range(len(elements))])
+        id_to_name_elements.extend([f'{{{type}ID::{camel_case_elements[i]}, {quoted_elements[i]}}}' for i in range(len(elements))])
+
+
+
+
+        camel_case_elements.insert(0, "NONE")
 
         print('Building ' + type + ' files')
         # Generate the {type}_id.hpp file
@@ -103,7 +121,7 @@ def build_ids(main_path, data_directory, data_filename, type, key):
                       f'{type}ID NameTo{type}ID(const std::string& name)\n'+ \
                       f'{{\n'+ \
                       f'      static std::unordered_map<std::string, {type}ID> map = {{\n')
-            for i in range(len(elements)):
+            for i in range(len(name_to_id_elements)):
                 cpp.write('        ' + name_to_id_elements[i] + ',\n')
                 # Only write the underscore form if it actually has underscores
                 if ('_' in name_to_id_underscore_elements[i]):

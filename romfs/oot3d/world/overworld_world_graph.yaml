@@ -65,7 +65,7 @@
   scene: Kokiri Forest
   hint: Kokiri Forest
   events:
-      Showed_Mido_Sword_And_Shield: is_child and Kokiri_Sword and Buy_Deku_Shield
+      Showed Mido Sword And Shield: is_child and Kokiri_Sword and Buy_Deku_Shield
   locations:
       KF Kokiri Sword Chest: is_child
       KF GS Know It All House: child_night and can_child_attack and can_get_night_time_gs
@@ -92,7 +92,7 @@
   scene: Kokiri Forest
   hint: Kokiri Forest
   events:
-      Showed_Mido_Sword_And_Shield: is_child and Kokiri_Sword and Buy_Deku_Shield
+      Showed Mido Sword And Shield: is_child and Kokiri_Sword and Buy_Deku_Shield
   locations:
       #The Babas despawn for Adult on forest temple completion. For vanilla forest temple
       #placement this is not an issue as Adult can go back to forest for the Baba's there.
@@ -474,9 +474,9 @@
   scene: Gerudo Fortress
   hint: Gerudo's Fortress
   events:
-      Carpenter_Rescue: can_finish_GerudoFortress
-      GF_Gate_Open: is_adult and Gerudo_Token
-      GTG_Gate_Open: is_adult and Gerudo_Token
+      Carpenter Rescue: can_finish_GerudoFortress
+      GF Gate Open: is_adult and Gerudo_Token
+      GTG Gate Open: is_adult and Gerudo_Token
   locations:
       GF Chest: can_use(Hover_Boots) or can_use(Scarecrow) or can_use(Longshot)
       GF HBA 1000 Points: Gerudo_Token and can_ride_epona and Bow and adult_day
@@ -503,7 +503,7 @@
   scene: Gerudo Fortress
   hint: Gerudo's Fortress
   events:
-      GF_Gate_Open: is_adult and Gerudo_Token and (shuffle_gerudo_token or shuffle_overworld_entrances)
+      GF Gate Open: is_adult and Gerudo_Token and (shuffle_gerudo_token or shuffle_overworld_entrances)
   exits:
       Gerudo Fortress: is_adult and GF_Gate_Open
       Wasteland Near Fortress: 'True'
@@ -760,8 +760,8 @@
 - region_name: Market Mask Shop
   scene: Market Mask Shop
   events:
-      Skull_Mask: Zeldas_Letter and (complete_mask_quest or at('Kakariko Village', is_child))
-      Mask_of_Truth: Skull_Mask and (complete_mask_quest or (at('Lost Woods', is_child
+      Skull Mask: Zeldas_Letter and (complete_mask_quest or at('Kakariko Village', is_child))
+      Mask of Truth: Skull_Mask and (complete_mask_quest or (at('Lost Woods', is_child
           and can_play(Sarias_Song)) and at('Graveyard', child_day) and at('Hyrule
           Field', is_child and has_all_stones)))
   exits:
@@ -866,7 +866,7 @@
   scene: Kakariko Village
   hint: Kakariko Village
   events:
-      Kakariko_Village_Gate_Open: is_child and (Zeldas_Letter or open_kakariko == open)
+      Kakariko Village Gate Open: is_child and (Zeldas_Letter or open_kakariko == open)
   locations:
       Sheik in Kakariko: is_adult and Forest_Medallion and Fire_Medallion and Water_Medallion
       Kak Anju as Adult: adult_day
@@ -944,7 +944,7 @@
 - region_name: Kak Carpenter Boss House
   scene: Kak Carpenter Boss House
   events:
-      Wake_Up_Adult_Talon: is_adult and (Pocket_Egg or Pocket_Cucco)
+      Wake Up Adult Talon: is_adult and (Pocket_Egg or Pocket_Cucco)
   exits:
       Kakariko Village: 'True'
 
@@ -986,7 +986,7 @@
 - region_name: Kak Windmill
   scene: Windmill and Dampes Grave
   events:
-      Drain_Well: is_child and can_play(Song_of_Storms)
+      Drain Well: is_child and can_play(Song_of_Storms)
   locations:
       Kak Windmill Freestanding PoH: can_use(Boomerang) or (logic_windmill_poh and is_adult)
           or Dampes_Windmill_Access
@@ -1099,7 +1099,7 @@
 - region_name: Graveyard Dampes Grave
   scene: Windmill and Dampes Grave
   events:
-      Dampes_Windmill_Access: is_adult and can_play(Song_of_Time)
+      Dampes Windmill Access: is_adult and can_play(Song_of_Time)
   locations:
       Graveyard Hookshot Chest: 'True'
       Graveyard Dampe Race Freestanding PoH: is_adult or logic_child_dampe_race_poh
@@ -1192,10 +1192,10 @@
   scene: Goron City
   hint: Goron City
   events:
-      Goron_City_Child_Fire: is_child and can_use(Dins_Fire)
-      GC_Woods_Warp_Open: can_blast_or_smash or can_use(Dins_Fire) or can_use(Bow) or
+      Goron City Child Fire: is_child and can_use(Dins_Fire)
+      GC Woods Warp Open: can_blast_or_smash or can_use(Dins_Fire) or can_use(Bow) or
           Progressive_Strength_Upgrade or Goron_City_Child_Fire
-      Stop_GC_Rolling_Goron_as_Adult: is_adult and (Progressive_Strength_Upgrade or
+      Stop GC Rolling Goron as Adult: is_adult and (Progressive_Strength_Upgrade or
           has_explosives or Bow or (logic_link_goron_dins and can_use(Dins_Fire)))
   locations:
       GC Maze Left Chest: can_use(Megaton_Hammer) or can_use(Silver_Gauntlets) or (logic_goron_city_leftmost
@@ -1235,7 +1235,7 @@
   scene: Goron City
   hint: Goron City
   events:
-      GC_Woods_Warp_Open: can_blast_or_smash or can_use(Dins_Fire)
+      GC Woods Warp Open: can_blast_or_smash or can_use(Dins_Fire)
   exits:
       Goron City: can_leave_forest and GC_Woods_Warp_Open
       Lost Woods: 'True'
@@ -1246,7 +1246,7 @@
   scene: Goron City
   hint: Goron City
   events:
-      Goron_City_Child_Fire: can_use(Sticks)
+      Goron City Child Fire: can_use(Sticks)
   locations:
       GC Darunias Joy: is_child and can_play(Sarias_Song)
   exits:
@@ -1462,7 +1462,7 @@
   scene: Zoras Domain
   hint: Zora's Domain
   events:
-      King_Zora_Thawed: is_adult and Blue_Fire
+      King Zora Thawed: is_adult and Blue_Fire
   locations:
       ZD Diving Minigame: is_child
       ZD Chest: can_use(Sticks)
@@ -1563,7 +1563,7 @@
   hint: Lon Lon Ranch
   events:
       Epona: can_play(Eponas_Song) and adult_day
-      Links_Cow: can_play(Eponas_Song) and adult_day
+      Links Cow: can_play(Eponas_Song) and adult_day
   locations:
       Song from Malon: child_day and Zeldas_Letter and Ocarina
       LLR GS Tree: is_child
