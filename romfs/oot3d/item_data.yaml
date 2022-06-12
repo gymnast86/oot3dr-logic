@@ -228,6 +228,14 @@
   advancement: true
 
 
+- name: Pocket Cucco
+  spanish: Cocotte de poche
+  french: Cuco de bolsillo
+  type: Item
+  get_item_id: 0x1E
+  advancement: true
+
+
 - name: Cojiro
   spanish: Cojiro
   french: P'tit Poulet
@@ -1636,14 +1644,21 @@
   get_item_id: 0xFF
   advancement: true
 
-- name: Goron City Child Fir
+- name: Goron City Child Fire
   spanish:
   french:
   type: Event
   get_item_id: 0xFF
   advancement: true
 
-- name: Stop GC Rolling as Adult
+- name: Stop GC Rolling Goron as Adult
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: GC Darunias Door Open Child
   spanish:
   french:
   type: Event
@@ -1658,6 +1673,76 @@
   advancement: true
 
 - name: King Zora Thawed
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Forest Temple Joelle
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Forest Temple Beth
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Forest Temple Amy
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Forest Temple Meg
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Forest Temple Jo and Beth
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Forest Temple Amy and Meg
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Fire Loop Switch
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Water Temple Low
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Water Temple Middle
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+- name: Water Temple High
   spanish:
   french:
   type: Event

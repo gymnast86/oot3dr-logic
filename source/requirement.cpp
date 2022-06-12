@@ -1,16 +1,19 @@
 #include "requirement.hpp"
 #include "pool_functions.hpp"
+#include "debug.hpp"
 
 #include <iostream>
 
 #define STR_HAS(str, substr) str.find(substr) != std::string::npos
 #define AREA_VALID_CHECK(name, reqStr) if (NameToAreaID(name) == AreaID::INVALID) {std::cout << "ERROR: Unknown area name " << name << " in requirement string: \"" << reqStr << "\"" << std::endl; return RequirementError::UNKNOWN_AREA_NAME;}
 #define REQ_ERROR_CHECK(err) if (err != RequirementError::NONE) {return err;}
+#define VALID_NUMBER_CHECK(numberStr) if (numberStr.find_first_not_of("0123456789") != std::string::npos) { std::cout << "ERROR: Cannot convert \"" << numberStr << "\" to a number" << std::endl; return RequirementError::COULD_NOT_PARSE_NUMBER;}
+#define VALID_ITEM_CHECK(itemName, reqStr) if (NameToItemID(itemName) == ItemID::INVALID) {std::cout << "ERROR: Unknown item name " << itemName << " in requirement string: \"" << reqStr << "\"" << std::endl; return RequirementError::UNKNOWN_ITEM_NAME;}
 
 // Takes a logic expression string and stores it as a requirement within the passed in Requirement
 // object. This means we only have to parse the string once and then evaluating it many times
 // later is a lot faster. An example of a logic expression string is: "Hookshot and (Bow or Bombs)"
-RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId, const std::string& gamePrefix)
+RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId, const std::string& gamePrefix, World* world)
 {
 
     RequirementError err = RequirementError::NONE;
@@ -37,7 +40,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
         {
             nestingLevel--;
         }
-
+        // Only replaces spaces on the highest level
         if (nestingLevel == 1 && ch == ' ')
         {
             ch = delimeter;
@@ -78,8 +81,8 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
     // Once we have the different parts of our expression, we can use the number
     // of parts we have to determine what kind of expression it is.
 
-    // If we only have one part, then we have either a logic helper, an item,
-    // an at check, a setting, or a count
+    // If we only have one part, then we have either True/False, a logic helper, an item,
+    // an at/here check, a setting, a count, an agetime, or a dungeon rewards check
     if (splitLogicStr.size() == 1)
     {
         const std::string& argStr = splitLogicStr[0];
@@ -91,7 +94,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             return RequirementError::NONE;
         }
         // Then for a logic helper...
-        if (logicMap.count(argStr) > 0)
+        else if (logicMap.count(argStr) > 0)
         {
             // replace string
             req = logicMap[argStr];
@@ -101,7 +104,9 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
         else if (NameToItemID(gamePrefix + "_" + argStr) != ItemID::INVALID)
         {
             req.type = RequirementType::ITEM;
-            req.args.push_back(NameToItemID(argStr));
+            ItemID itemId = NameToItemID(gamePrefix + "_" + argStr);
+            req.args.push_back(itemId);
+            req.fulfillmentItems.emplace(itemId, world);
             return RequirementError::NONE;
         }
         // Then the time/age checks...
@@ -156,17 +161,18 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
                 }
                 splitLogicStr.push_back(countArgs);
                 // Get the arguments
-                std::string areaName = splitLogicStr[0];
+                std::string areaName = gamePrefix + " " + splitLogicStr[0];
                 // Get rid of the leading space if it exists
                 areaReqStr = splitLogicStr[1][0] == ' ' ? splitLogicStr[1].substr(1, splitLogicStr[1].length() - 1) : splitLogicStr[1];
                 argArea = NameToAreaID(areaName);
             }
             std::string areaName = AreaIDToName(argArea);
             AREA_VALID_CHECK(areaName, argStr);
-            err = ParseRequirementString(areaReqStr, areaReq, logicMap, settings, argArea, gamePrefix);
+            err = ParseRequirementString(areaReqStr, areaReq, logicMap, settings, argArea, gamePrefix, world);
             REQ_ERROR_CHECK(err);
             req.args.push_back(argArea);
             req.args.push_back(areaReq);
+            req.fulfillmentItems.merge(areaReq.fulfillmentItems);
             return RequirementError::NONE;
         }
         // Then a count...
@@ -196,18 +202,21 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             if (settings.count(splitLogicStr[1]) > 0)
             {
                 // If the count depends on a setting
+                VALID_NUMBER_CHECK(settings.at(splitLogicStr[1]));
                 count = std::stoi(settings.at(splitLogicStr[1]));
             }
             else
             {
                 // If the count is hardcoded
+                VALID_NUMBER_CHECK(splitLogicStr[1]);
                 count = std::stoi(splitLogicStr[1]);
             }
-            std::string itemName = splitLogicStr[0];
+            std::string itemName = gamePrefix + "_" + splitLogicStr[0];
+            VALID_ITEM_CHECK(itemName, argStr);
             auto argItem = NameToItemID(itemName);
-            //ITEM_VALID_CHECK(argItem, "Game Item of name \"" << itemName << " Does Not Exist");
             req.args.push_back(count);
             req.args.push_back(argItem);
+            req.fulfillmentItems.emplace(argItem, world);
             return RequirementError::NONE;
         }
         // Then a can_play check...
@@ -221,7 +230,8 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             Requirement songReq = {RequirementType::ITEM, {song}};
             req.args.push_back(ocarinaReq);
             req.args.push_back(songReq);
-
+            req.fulfillmentItems.emplace(ItemID::Oot3dProgressiveOcarina, world);
+            req.fulfillmentItems.emplace(song, world);
             return RequirementError::NONE;
         }
         // Then a settings check...
@@ -236,9 +246,14 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             std::string comparedOption (argStr.begin() + (compPos + 1), argStr.end());
             std::string settingName (argStr.begin(), argStr.begin() + (compPos - 1));
 
+            if (settings.count(settingName) == 0)
+            {
+                std::cout << "Setting \"" << settingName << "\" is not found" << std::endl;
+                return RequirementError::SETTING_NOT_FOUND;
+            }
             std::string& actualOption = settings.at(settingName);
 
-            // If the comparison is true
+            // If the comparison is equal and the option is equal OR the comparison is not equal and the option is not equal
             if ((equalComparison && actualOption == comparedOption) || (!equalComparison && actualOption != comparedOption))
             {
                 req.type = RequirementType::TRUE;
@@ -262,12 +277,87 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             }
             return RequirementError::NONE;
         }
+
+        else if (STR_HAS(argStr, "hearts("))
+        {
+            req.type = RequirementType::HEARTS;
+            // Get the number of hearts argument
+            std::string reqHeartsStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
+            VALID_NUMBER_CHECK(reqHeartsStr);
+
+            int reqHearts = std::stoi(reqHeartsStr);
+            req.args.push_back(reqHearts);
+            return RequirementError::NONE;
+        }
+        else if (STR_HAS(argStr, "fire_timer(") || STR_HAS(argStr, "water_timer("))
+        {
+            if (STR_HAS(argStr, "fire_timer("))
+            {
+                req.type = RequirementType::FIRE_TIMER;
+            }
+            else
+            {
+                req.type = RequirementType::WATER_TIMER;
+            }
+            // Get required timer second
+            std::string numSecondsStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
+            VALID_NUMBER_CHECK(numSecondsStr);
+
+            int numSeconds = std::stoi(numSecondsStr);
+            bool fewerTunicRequirements = settings["logic_fewer_tunic_requirements"] == "On";
+            req.args.push_back(numSeconds);
+            req.args.push_back(fewerTunicRequirements);
+            return RequirementError::NONE;
+        }
+        else if (STR_HAS(argStr, "effective_health("))
+        {
+            req.type = RequirementType::EFFECTIVE_HEALTH;
+            // Get the number of effective health argument
+            std::string effectiveHealthStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
+            VALID_NUMBER_CHECK(effectiveHealthStr);
+
+            int effectiveHealth = std::stoi(effectiveHealthStr);
+            int multiplier = 0;
+            if (settings["damage_multiplier"] == "1x")
+            {
+                multiplier = 1;
+            }
+            else if (settings["damage_multiplier"] == "2x")
+            {
+                multiplier = 2;
+            }
+            else if (settings["damage_multiplier"] == "4x")
+            {
+                multiplier = 3;
+            }
+            else if (settings["damage_multiplier"] == "8x")
+            {
+                multiplier = 4;
+            }
+            else if (settings["damage_multiplier"] == "16x")
+            {
+                multiplier = 5;
+            }
+            else if (settings["damage_multiplier"] == "ohko")
+            {
+                multiplier = 10;
+            }
+            req.args.push_back(effectiveHealth);
+            req.args.push_back(multiplier);
+            return RequirementError::NONE;
+        }
+
         else if (STR_HAS(argStr, "has_stones"))
         {
             req.type = RequirementType::HAS_STONES;
             std::string countStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
             int count = std::stoi(settings.at(countStr));
             req.args.push_back(count);
+            // Add stones to potential fulfillment items
+            for (const ItemID id : {ItemID::Oot3dKokiriEmerald, ItemID::Oot3dGoronRuby, ItemID::Oot3dZoraSapphire})
+            {
+                req.fulfillmentItems.emplace(id, world);
+            }
             return RequirementError::NONE;
         }
         else if (STR_HAS(argStr, "has_medallions"))
@@ -276,6 +366,11 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             std::string countStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
             int count = std::stoi(settings.at(countStr));
             req.args.push_back(count);
+            // Add medallions to potential fulfillment items
+            for (const ItemID id : {ItemID::Oot3dForestMedallion, ItemID::Oot3dFireMedallion, ItemID::Oot3dWaterMedallion, ItemID::Oot3dSpiritMedallion, ItemID::Oot3dShadowMedallion, ItemID::Oot3dLightMedallion})
+            {
+                req.fulfillmentItems.emplace(id, world);
+            }
             return RequirementError::NONE;
         }
         else if (STR_HAS(argStr, "has_dungeon_rewards"))
@@ -285,7 +380,14 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             int count = std::stoi(settings.at(countStr));
             req.args.push_back(count);
             return RequirementError::NONE;
+            // Add dungeon rewards to potential fulfillment items
+            for (const ItemID id : {ItemID::Oot3dForestMedallion, ItemID::Oot3dFireMedallion, ItemID::Oot3dWaterMedallion, ItemID::Oot3dSpiritMedallion, ItemID::Oot3dShadowMedallion, ItemID::Oot3dLightMedallion,
+                                    ItemID::Oot3dKokiriEmerald, ItemID::Oot3dGoronRuby, ItemID::Oot3dZoraSapphire})
+            {
+                req.fulfillmentItems.emplace(id, world);
+            }
         }
+        // False is least common, so it's checked last
         else if (STR_HAS(argStr, "False"))
         {
             req.type = RequirementType::FALSE;
@@ -312,7 +414,9 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
                 reqStr = reqStr.substr(1, reqStr.length() - 2);
             }
             // Evaluate the deeper expression and add it to the requirement object if it's valid
-            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId, gamePrefix)) != RequirementError::NONE) return err;
+            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId, gamePrefix, world)) != RequirementError::NONE) return err;
+            // Merge fulfillment items from recursively deeper requirements up to the top
+            req.fulfillmentItems.merge(std::get<Requirement>(req.args.back()).fulfillmentItems);
         }
         else
         {
@@ -370,7 +474,9 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             {
                 reqStr = reqStr.substr(1, reqStr.length() - 2);
             }
-            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId, gamePrefix)) != RequirementError::NONE) return err;
+            if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId, gamePrefix, world)) != RequirementError::NONE) return err;
+            // Merge fulfillment items from recursively deeper requirements up to the top
+            req.fulfillmentItems.merge(std::get<Requirement>(req.args.back()).fulfillmentItems);
         }
     }
 
@@ -477,6 +583,12 @@ std::string errorToName(RequirementError err)
             return "COULD_NOT_DETERMINE_TYPE";
         case RequirementError::UNKNOWN_AREA_NAME:
             return "UNKNOWN_AREA_NAME";
+        case RequirementError::UNKNOWN_ITEM_NAME:
+            return "UNKNOWN_ITEM_NAME";
+        case RequirementError::COULD_NOT_PARSE_NUMBER:
+            return "COULD_NOT_PARSE_NUMBER";
+        case RequirementError::SETTING_NOT_FOUND:
+            return "SETTING_NOT_FOUND";
         default:
             return "UNKNOWN";
     }

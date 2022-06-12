@@ -70,7 +70,7 @@
       KF Kokiri Sword Chest: is_child
       KF GS Know It All House: child_night and can_child_attack and can_get_night_time_gs
       KF GS Bean Patch: can_plant_bugs and can_child_attack
-      KF GS House of Twins: adult_night and can_use(Hookshot) and can_get_night_time_gs
+      KF GS House of Twins: adult_night and (can_use(Hookshot) or can_use(Boomerang)) and can_get_night_time_gs
       KF Gossip Stone: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
@@ -104,9 +104,8 @@
       KF Deku Tree Gossip Stone Left: 'True'
       KF Deku Tree Gossip Stone Right: 'True'
   exits:
-      # Deku Tree Lobby:
-      #     is_child or
-      #     (shuffle_dungeon_entrances != Off and (open_forest == open or Showed_Mido_Sword_And_Shield))
+      Deku Tree Entryway: is_child or (shuffle_dungeon_entrances != Off and
+          (open_forest == open or Showed_Mido_Sword_And_Shield))
       Kokiri Forest: is_adult or open_forest == open or Showed_Mido_Sword_And_Shield
 
 
@@ -233,7 +232,8 @@
   hint: the Sacred Forest Meadow
   exits:
       LW Beyond Mido: 'True'
-      Sacred Forest Meadow: is_adult or Slingshot or Sticks or Kokiri_Sword or can_use(Dins_Fire)
+      Sacred Forest Meadow: is_adult or Slingshot or Sticks or can_slash_sword or can_use(Dins_Fire) or
+          can_use(Megaton_Hammer)
       SFM Wolfos Grotto: can_open_bomb_grotto
 
 
@@ -244,7 +244,7 @@
   locations:
       Song from Saria: is_child and Zeldas_Letter
       Sheik in Forest: is_adult
-      SFM GS: can_use(Hookshot) and adult_night and can_get_night_time_gs
+      SFM GS: adult_night and hookshot_or_boomerang and can_get_night_time_gs
       SFM Maze Gossip Stone Lower: 'True'
       SFM Maze Gossip Stone Upper: 'True'
       SFM Saria Gossip Stone: 'True'
@@ -262,7 +262,7 @@
   hint: the Sacred Forest Meadow
   exits:
       Sacred Forest Meadow: 'True'
-      # Forest Temple Lobby: 'True'
+      Forest Temple Entryway: 'True'
 
 
 - region_name: LW Bridge From Forest
@@ -337,12 +337,11 @@
       Bug Shrub: is_child and can_cut_shrubs and has_bottle
   exits:
       Hyrule Field: 'True'
-      Zoras Domain: is_child and Silver_Scale
+      Zoras Domain: is_child and (Silver_Scale or can_use(Iron_Boots))
       LH Owl Flight: is_child
       LH Lab: 'True'
       LH Fishing Island: is_child or can_use(Scarecrow) or here(can_plant_bean) or Water_Temple_Clear
-      # Water Temple Lobby: can_use(Hookshot) and (can_use(Iron_Boots) or ((can_use(Longshot)
-      #     or logic_water_hookshot_entry) and count(Progressive_Scale, 2)))
+      Water Temple Entryway: can_use(Hookshot) and (can_use(Iron_Boots) or (can_use(Longshot) and Gold_Scale))
       LH Grotto: 'True'
 
 
@@ -387,15 +386,15 @@
   hint: Gerudo Valley
   time_passes: true
   locations:
-      GV GS Small Bridge: child_night and Boomerang and can_get_night_time_gs
+      GV GS Small Bridge: child_night and hookshot_or_boomerang and can_get_night_time_gs
       Bug Rock: is_child and has_bottle
   exits:
       Hyrule Field: 'True'
       GV Upper Stream: 'True'
       GV Crate Ledge: is_child or can_use(Longshot)
       GV Grotto Ledge: 'True'
-      GV Fortress Side: is_adult and (can_ride_epona or can_use(Longshot) or gerudo_fortress
-          == open or Carpenter_Rescue)
+      GV Fortress Side: "(is_adult and (can_ride_epona or can_use(Longshot) or gerudo_fortress
+          == open or Carpenter_Rescue)) or (is_child and can_use(Hookshot))"
 
 
 - region_name: GV Upper Stream
@@ -451,9 +450,10 @@
   hint: Gerudo Valley
   time_passes: true
   locations:
-      GV Chest: can_use(Megaton_Hammer)
-      GV GS Behind Tent: adult_night and Hookshot and can_get_night_time_gs
-      GV GS Pillar: adult_night and Hookshot and can_get_night_time_gs
+      GV Chest: can_use(Megaton_Hammer) or logic_gv_hammer_chest
+      GV Trade Saw: is_adult and Poachers_Saw
+      GV GS Behind Tent: adult_night and hookshot_or_boomerang and can_get_night_time_gs
+      GV GS Pillar: adult_night and hookshot_or_boomerang and can_get_night_time_gs
   exits:
       Gerudo Fortress: 'True'
       GV Upper Stream: 'True'
@@ -481,20 +481,20 @@
       GF Chest: can_use(Hover_Boots) or can_use(Scarecrow) or can_use(Longshot)
       GF HBA 1000 Points: Gerudo_Token and can_ride_epona and Bow and adult_day
       GF HBA 1500 Points: Gerudo_Token and can_ride_epona and Bow and adult_day
-      Hideout Jail Guard 1 Torch: is_adult or Kokiri_Sword
-      Hideout Jail Guard 2 Torches: is_adult or Kokiri_Sword
-      Hideout Jail Guard 3 Torches: "(is_adult or Kokiri_Sword) and (Gerudo_Token
+      Hideout Jail Guard 1 Torch: is_adult or can_slash_sword
+      Hideout Jail Guard 2 Torches: is_adult or can_slash_sword
+      Hideout Jail Guard 3 Torches: "(is_adult or can_slash_sword) and (Gerudo_Token
           or can_use(Bow) or can_use(Hookshot) or can_use(Hover_Boots) or logic_gerudo_kitchen)"
-      Hideout Jail Guard 4 Torches: is_adult or Kokiri_Sword
+      Hideout Jail Guard 4 Torches: is_adult or can_slash_sword
       Hideout Gerudo Token: can_finish_GerudoFortress
-      GF GS Archery Range: adult_night and can_use(Hookshot) and Gerudo_Token and can_get_night_time_gs
+      GF GS Archery Range: adult_night and hookshot_or_boomerang and Gerudo_Token and can_get_night_time_gs
       GF GS Top Floor: adult_night and (Gerudo_Token or can_use(Bow) or
-          can_use(Hookshot) or can_use(Hover_Boots) or logic_gerudo_kitchen) and
+          hookshot_or_boomerang or can_use(Hover_Boots) or logic_gerudo_kitchen) and
           can_get_night_time_gs
   exits:
       GV Fortress Side: 'True'
       GF Outside Gate: GF_Gate_Open
-      # Gerudo Training Ground Lobby: GTG_Gate_Open and (is_adult or shuffle_dungeon_entrances)
+      Gerudo Training Ground Entryway: GTG_Gate_Open and (is_adult or shuffle_dungeon_entrances)
       GF Storms Grotto: is_adult and can_open_storm_grotto
 
 
@@ -505,7 +505,7 @@
   events:
       GF Gate Open: is_adult and Gerudo_Token and (shuffle_gerudo_token or shuffle_overworld_entrances)
   exits:
-      Gerudo Fortress: is_adult and GF_Gate_Open
+      Gerudo Fortress: GF_Gate_Open or (is_adult and (Hookshot or not shuffle_overworld_entrances))
       Wasteland Near Fortress: 'True'
 
 
@@ -524,7 +524,7 @@
   hint: the Haunted Wasteland
   locations:
       Wasteland Chest: has_fire_source
-      Wasteland Bombchu Salesman: Progressive_Wallet and (is_adult or Sticks or Kokiri_Sword)
+      Wasteland Bombchu Salesman: Adults_Wallet and (is_adult or Sticks or can_slash_sword)
       Wasteland GS: hookshot_or_boomerang
       Fairy Pot: has_bottle
       Nut Pot: 'True'
@@ -550,7 +550,7 @@
   locations:
       Colossus Freestanding PoH: is_adult and here(can_plant_bean)
       Colossus GS Bean Patch: can_plant_bugs and can_child_attack
-      Colossus GS Tree:  adult_night and can_use(Hookshot) and can_get_night_time_gs
+      Colossus GS Tree:  adult_night and hookshot_or_boomerang and can_get_night_time_gs
       Colossus GS Hill: adult_night and (here(can_plant_bean) or can_use(Longshot)
           or (logic_colossus_gs and can_use(Hookshot))) and can_get_night_time_gs
       Colossus Gossip Stone: 'True'
@@ -559,7 +559,7 @@
       Bug Rock: has_bottle
   exits:
       Colossus Great Fairy Fountain: has_explosives
-      # Spirit Temple Lobby: 'True'
+      Spirit Temple Entryway: 'True'
       Wasteland Near Colossus: 'True'
       Colossus Grotto: can_use(Silver_Gauntlets)
 
@@ -651,7 +651,7 @@
   hint: the Temple of Time
   locations:
       Master Sword Pedestal: 'True'
-      Sheik at Temple: Forest_Medallion and is_adult
+      Sheik at Temple: is_adult and Forest_Medallion
   exits:
       Temple of Time: 'True'
 
@@ -660,7 +660,7 @@
   font_color: Light Blue
   scene: Castle Grounds
   hint: the Castle Grounds
-  exits:               # 3D Ganon's Castle Grounds doesn't force at_dampe_time
+  exits:
       Market: 'True'
       Hyrule Castle Grounds: is_child
       Ganons Castle Grounds: is_adult
@@ -682,7 +682,7 @@
   exits:
       Castle Grounds: 'True'
       HC Garden: Weird_Egg or skip_child_zelda or (not shuffle_weird_egg)
-      HC Great Fairy Fountain: has_explosives
+      HC Great Fairy Fountain: can_blast_or_smash
       HC Storms Grotto: can_open_storm_grotto
 
 
@@ -719,10 +719,10 @@
   locations:
       OGC GS: 'True'
   exits:
-      Castle Grounds: 'True'                              # 3D Ganon's Castle Grounds doesn't force at_dampe_time
-      OGC Great Fairy Fountain: can_use(Golden_Gauntlets) # and at_dampe_time
+      Castle Grounds: 'True'
+      OGC Great Fairy Fountain: can_use(Golden_Gauntlets)
       Ganons Castle Tower: can_build_rainbow_bridge
-      # Ganons Castle Lobby: can_build_rainbow_bridge # and at_dampe_time
+      Ganons Castle Entryway: can_build_rainbow_bridge
 
 
 - region_name: OGC Great Fairy Fountain
@@ -869,14 +869,13 @@
       Kakariko Village Gate Open: is_child and (Zeldas_Letter or open_kakariko == open)
   locations:
       Sheik in Kakariko: is_adult and Forest_Medallion and Fire_Medallion and Water_Medallion
-      Kak Anju as Adult: adult_day
       Kak Anju as Child: child_day
+      Kak Anju as Adult: adult_day
       Kak GS House Under Construction: child_night
       Kak GS Skulltula House: child_night
       Kak GS Guards House: child_night
       Kak GS Tree: child_night
-      Kak GS Watchtower: child_night and (Slingshot or has_bombchus or (logic_kakariko_tower_gs
-          and (Sticks or Kokiri_Sword) and can_take_damage))
+      Kak GS Watchtower: child_night and (Slingshot or has_bombchus or can_use(Bow) or can_use(Longshot)) and can_get_night_time_gs
       Bug Rock: has_bottle
   exits:
       Hyrule Field: 'True'
@@ -886,14 +885,13 @@
       Kak Windmill: 'True'
       Kak Bazaar: adult_day
       Kak Shooting Gallery: adult_day
-      # Bottom of the Well: Drain_Well and (is_child or shuffle_dungeon_entrances)
+      Bottom of the Well Entryway: Drain_Well and (is_child or shuffle_dungeon_entrances)
       Kak Potion Shop Front: is_child or at_day
       Kak Redead Grotto: can_open_bomb_grotto
-      Kak Impas Ledge: child_day
+      Kak Impas Ledge: child_day or can_use(Hookshot)
       Kak Impas Rooftop: can_use(Hookshot) or (logic_kakariko_rooftop_gs and can_use(Hover_Boots))
-      Kak Odd Medicine Rooftop: can_use(Hookshot) or (logic_man_on_roof and (is_adult
-          or at_day or Slingshot or has_bombchus or (logic_kakariko_tower_gs and (Sticks
-          or Kokiri_Sword) and can_take_damage)))
+      Kak Odd Poultice Rooftop: can_use(Hookshot) or (logic_man_on_roof and (is_adult
+          or at_day or Slingshot or has_bombchus or can_use(Bow) or can_use(Longshot)))
       Kak Backyard: is_adult or at_day
       Graveyard: 'True'
       Kak Behind Gate: is_adult or Kakariko_Village_Gate_Open
@@ -919,7 +917,7 @@
       Kakariko Village: 'True'
 
 
-- region_name: Kak Odd Medicine Rooftop
+- region_name: Kak Odd Poultice Rooftop
   font_color: Pink
   scene: Kakariko Village
   hint: Kakariko Village
@@ -937,7 +935,7 @@
   exits:
       Kakariko Village: 'True'
       Kak Open Grotto: 'True'
-      Kak Odd Medicine Building: is_adult
+      Kak Odd Poultice Building: is_adult
       Kak Potion Shop Back: adult_day
 
 
@@ -988,7 +986,7 @@
   events:
       Drain Well: is_child and can_play(Song_of_Storms)
   locations:
-      Kak Windmill Freestanding PoH: can_use(Boomerang) or (logic_windmill_poh and is_adult)
+      Kak Windmill Freestanding PoH: can_use(Boomerang) or (logic_windmill_poh_hookshot and can_slash_sword and can_use(Hookshot))
           or Dampes_Windmill_Access
       Song from Windmill: is_adult and Ocarina
   exits:
@@ -1041,8 +1039,10 @@
       Kak Potion Shop Front: 'True'
 
 
-- region_name: Kak Odd Medicine Building
-  scene: Kak Odd Medicine Building
+- region_name: Kak Odd Poultice Building
+  scene: Kak Odd Poultice Building
+  locations:
+      Kak Trade Odd Mushroom: is_adult and Odd_Mushroom
   exits:
       Kak Backyard: 'True'
 
@@ -1052,10 +1052,10 @@
   scene: Graveyard
   hint: the Graveyard
   locations:
-      Graveyard Freestanding PoH: "(is_adult and (here(can_plant_bean) or can_use(Longshot)))
-          or (logic_graveyard_poh and can_use(Boomerang))"
+      Graveyard Freestanding PoH: can_use(Longshot) or (is_adult and here(can_plant_bean)) or
+          (logic_graveyard_poh and can_use(Boomerang))
       Graveyard Dampe Gravedigging Tour: child_night
-      Graveyard GS Wall: child_night and can_use(Boomerang)
+      Graveyard GS Wall: child_night and (can_use(Boomerang) or can_use(Hookshot)) and can_get_night_time_gs
       Graveyard GS Bean Patch: can_plant_bugs and can_child_attack
       Butterfly Fairy: child_day and can_use(Sticks) and has_bottle
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
@@ -1091,7 +1091,7 @@
   locations:
       Graveyard Royal Familys Tomb Chest: has_fire_source
       Song from Royal Familys Tomb: is_adult or (Slingshot or Boomerang or Sticks or
-          has_explosives or Kokiri_Sword)
+          has_explosives or can_slash_sword)
   exits:
       Graveyard: 'True'
 
@@ -1124,8 +1124,8 @@
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
   exits:
       Graveyard: 'True'
-      # Shadow Temple Entryway: can_use(Dins_Fire) or (logic_shadow_fire_arrow_entry and
-      #     can_use(Fire_Arrows))
+      Shadow Temple Entryway: can_use(Dins_Fire) or (logic_shadow_fire_arrow_entry and
+          can_use(Fire_Arrows))
 
 
 - region_name: Kak Behind Gate
@@ -1144,21 +1144,21 @@
   hint: Death Mountain Trail
   time_passes: true
   locations:
-      DMT Chest: can_blast_or_smash or (logic_dmt_bombable and is_child and Progressive_Strength_Upgrade)
+      DMT Chest: can_blast_or_smash or (logic_dmt_bombable and is_child and Goron_Bracelet)
       DMT Freestanding PoH: can_take_damage or can_use(Hover_Boots) or (is_adult and
-          here(can_plant_bean and (has_explosives or Progressive_Strength_Upgrade)))
+          here(can_plant_bean and (has_explosives or Goron_Bracelet)))
       DMT GS Bean Patch: can_plant_bugs and can_child_attack and (has_explosives or
-          Progressive_Strength_Upgrade or (logic_dmt_soil_gs and can_use(Boomerang)))
+          Goron_Bracelet or (logic_dmt_soil_gs and (can_take_damage or can_use(Hover_Boots)) and can_use(Boomerang)))
       DMT GS Near Kak: can_blast_or_smash
-      DMT GS Above Dodongos Cavern: adult_night and can_use(Megaton_Hammer)
+      DMT GS Above Dodongos Cavern: adult_night and can_use(Megaton_Hammer) and can_get_night_time_gs
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle and
-          (has_explosives or Progressive_Strength_Upgrade)
+          (has_explosives or Goron_Bracelet)
   exits:
       Kak Behind Gate: 'True'
       Goron City: 'True'
       Death Mountain Summit: here(can_blast_or_smash) or (is_adult and here(can_plant_bean
-          and Progressive_Strength_Upgrade)) or (logic_dmt_climb_hovers and can_use(Hover_Boots))
-      # Dodongos Cavern Beginning: has_explosives or Progressive_Strength_Upgrade or is_adult
+          and Goron_Bracelet)) or (logic_dmt_climb_hovers and can_use(Hover_Boots))
+      Dodongos Cavern Entryway: has_explosives or Goron_Bracelet or is_adult
       DMT Storms Grotto: can_open_storm_grotto
 
 
@@ -1168,8 +1168,10 @@
   hint: Death Mountain Trail
   time_passes: true
   locations:
+      DMT Trade Broken Sword: is_adult and Broken_Gorons_Sword
+      DMT Trade Eyedrops: is_adult and Worlds_Finest_Eyedrops
       DMT Trade Claim Check: is_adult and Claim_Check
-      DMT GS Falling Rocks Path: adult_night and can_use(Megaton_Hammer)
+      DMT GS Falling Rocks Path: adult_night and can_use(Megaton_Hammer) and can_get_night_time_gs
       DMT Gossip Stone: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Bug Rock: is_child and has_bottle
@@ -1194,40 +1196,38 @@
   events:
       Goron City Child Fire: is_child and can_use(Dins_Fire)
       GC Woods Warp Open: can_blast_or_smash or can_use(Dins_Fire) or can_use(Bow) or
-          Progressive_Strength_Upgrade or Goron_City_Child_Fire
-      Stop GC Rolling Goron as Adult: is_adult and (Progressive_Strength_Upgrade or
+          Goron_Bracelet or Goron_City_Child_Fire
+      GC Darunias Door Open Child: is_child and can_play(Zeldas_Lullaby)
+      Stop GC Rolling Goron as Adult: is_adult and (Goron_Bracelet or
           has_explosives or Bow or (logic_link_goron_dins and can_use(Dins_Fire)))
   locations:
       GC Maze Left Chest: can_use(Megaton_Hammer) or can_use(Silver_Gauntlets) or (logic_goron_city_leftmost
           and has_explosives and can_use(Hover_Boots))
       GC Maze Center Chest: can_blast_or_smash or can_use(Silver_Gauntlets)
       GC Maze Right Chest: can_blast_or_smash or can_use(Silver_Gauntlets)
-      GC Pot Freestanding PoH: is_child and Goron_City_Child_Fire and (Bombs or (Progressive_Strength_Upgrade
+      GC Pot Freestanding PoH: is_child and Goron_City_Child_Fire and (Bombs or (Goron_Bracelet
           and logic_goron_city_pot_with_strength) or (has_bombchus and logic_goron_city_pot))
-      GC Rolling Goron as Child: is_child and (has_explosives or (Progressive_Strength_Upgrade
+      GC Rolling Goron as Child: is_child and (has_explosives or (Goron_Bracelet
           and logic_child_rolling_with_strength))
-      GC Medigoron: is_adult and Progressive_Wallet and (can_blast_or_smash or Progressive_Strength_Upgrade)
       GC Rolling Goron as Adult: Stop_GC_Rolling_Goron_as_Adult
       GC GS Boulder Maze: is_child and has_explosives
       GC GS Center Platform: is_adult
+      GC Medigoron: is_adult and Progressive_Wallet and (can_blast_or_smash or Goron_Bracelet)
       GC Maze Gossip Stone: can_blast_or_smash or can_use(Silver_Gauntlets)
-      GC Medigoron Gossip Stone: can_blast_or_smash or Progressive_Strength_Upgrade
+      GC Medigoron Gossip Stone: can_blast_or_smash or Goron_Bracelet
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle and (can_blast_or_smash
-          or Progressive_Strength_Upgrade)
+          or Goron_Bracelet)
       Bug Rock: (can_blast_or_smash or can_use(Silver_Gauntlets)) and has_bottle
       Stick Pot: is_child
   exits:
       Death Mountain: 'True'
       GC Woods Warp: GC_Woods_Warp_Open
-      GC Shop: "(is_adult and Stop_GC_Rolling_Goron_as_Adult) or (is_child and (has_explosives
-          or Progressive_Strength_Upgrade or Goron_City_Child_Fire))"
-      GC Darunias Chamber: "(is_adult and Stop_GC_Rolling_Goron_as_Adult) or (is_child
-          and can_play(Zeldas_Lullaby))"
-      GC Grotto Platform: is_adult and ((can_play(Song_of_Time) and ((damage_multiplier
-          != ohko and damage_multiplier != quadruple) or can_use(Goron_Tunic) or can_use(Longshot)
-          or can_use(Nayrus_Love))) or (can_use(Hookshot) and ((damage_multiplier != ohko
-          and can_use(Goron_Tunic)) or can_use(Nayrus_Love) or (damage_multiplier != ohko
-          and damage_multiplier != quadruple and logic_goron_grotto))))
+      GC Shop: "(is_adult and Stop_GC_Rolling_Goron_as_Adult) or (is_child and (can_blast_or_smash
+          or Goron_Bracelet or Goron_City_Child_Fire or can_use(Bow)))"
+      GC Darunias Chamber: GC_Darunias_Door_Open_Child or (is_adult and Stop_GC_Rolling_Goron_as_Adult)
+      GC Grotto Platform: is_adult and ((can_play(Song_of_Time) and ((effective_health(3)) or
+          can_use(Goron_Tunic) or can_use(Longshot) or can_use(Nayrus_Love))) or
+          (effective_health(2) and can_use(Goron_Tunic) and can_use(Hookshot)) or (can_use(Nayrus_Love) and can_use(Hookshot)))
 
 
 - region_name: GC Woods Warp
@@ -1260,9 +1260,8 @@
   hint: Goron City
   exits:
       GC Grotto: 'True'
-      Goron City: "(damage_multiplier != ohko and damage_multiplier != quadruple)
-          or can_use(Goron_Tunic) or can_use(Nayrus_Love) or (can_play(Song_of_Time) and
-          can_use(Longshot))"
+      Goron City: effective_health(3) or can_use(Goron_Tunic) or can_use(Nayrus_Love)
+          or ((is_child or can_play(Song_of_Time)) and can_use(Longshot))
 
 
 - region_name: GC Shop
@@ -1285,9 +1284,9 @@
   scene: Death Mountain Crater
   hint: Death Mountain Crater
   exits:
-      DMC Upper Local: can_use(Goron_Tunic)
+      DMC Upper Local: fire_timer(48)
       Death Mountain Summit: 'True'
-      DMC Upper Grotto: here(can_blast_or_smash)
+      DMC Upper Grotto: here(can_blast_or_smash) and (fire_timer(8) or hearts(3))
 
 
 - region_name: DMC Upper Local
@@ -1295,17 +1294,18 @@
   scene: Death Mountain Crater
   hint: Death Mountain Crater
   locations:
-      DMC Wall Freestanding PoH: 'True'
-      DMC GS Crate: is_child and can_child_attack
-      DMC Gossip Stone: has_explosives
+      DMC Wall Freestanding PoH: fire_timer(16) or hearts(3)
+      DMC GS Crate: is_child and can_child_attack and (fire_timer(8) or hearts(3))
+      DMC Gossip Stone: has_explosives and (fire_timer(16) or hearts(3))
       Gossip Stone Fairy: has_explosives and can_summon_gossip_fairy_without_suns and
           has_bottle
   exits:
       DMC Upper Nearby: 'True'
-      DMC Ladder Area Nearby: 'True'
-      DMC Central Nearby: can_use(Goron_Tunic) and can_use(Longshot) and ((damage_multiplier
-          != ohko and damage_multiplier != quadruple) or (Fairy and not entrance_shuffle)
-          or can_use(Nayrus_Love))
+      DMC Ladder Area Nearby: fire_timer(16) or hearts(3)
+      DMC Central Nearby: is_adult and can_use(Goron_Tunic) and can_use(Distant_Scarecrow) and
+          (effective_health(3) or (Fairy and not shuffle_dungeon_entrances) or
+          can_use(Nayrus_Love))
+      DMC Lower Nearby: 'False'
 
 
 - region_name: DMC Ladder Area Nearby
@@ -1315,8 +1315,9 @@
   locations:
       DMC Deku Scrub: is_child and can_stun_deku
   exits:
-      DMC Upper Nearby: is_adult
-      DMC Lower Nearby: can_use(Hover_Boots) or (logic_crater_upper_to_lower and can_use(Megaton_Hammer))
+      DMC Upper Nearby: hearts(3)
+      DMC Lower Nearby: hearts(3) and (can_use(Hover_Boots) or
+          (logic_crater_upper_to_lower and is_adult and can_use(Megaton_Hammer)))
 
 
 - region_name: DMC Lower Nearby
@@ -1324,10 +1325,10 @@
   scene: Death Mountain Crater
   hint: Death Mountain Crater
   exits:
-      DMC Lower Local: can_use(Goron_Tunic)
+      DMC Lower Local: fire_timer(48)
       GC Darunias Chamber: 'True'
       DMC Great Fairy Fountain: can_use(Megaton_Hammer)
-      DMC Hammer Grotto: can_use(Megaton_Hammer)
+      DMC Hammer Grotto: is_adult and can_use(Megaton_Hammer)
 
 
 - region_name: DMC Lower Local
@@ -1337,9 +1338,8 @@
   exits:
       DMC Lower Nearby: 'True'
       DMC Ladder Area Nearby: 'True'
-      DMC Central Nearby: can_use(Hover_Boots) or can_use(Hookshot)
-      DMC Fire Temple Entrance: "(can_use(Hover_Boots) or can_use(Hookshot)) and (logic_fewer_tunic_requirements
-          or can_use(Goron_Tunic))"
+      DMC Central Nearby: "(can_use(Hover_Boots) or can_use(Hookshot)) and (fire_timer(8) or hearts(3))"
+      DMC Fire Temple Entrance: "(can_use(Hover_Boots) or can_use(Hookshot)) and fire_timer(24)"
 
 
 - region_name: DMC Central Nearby
@@ -1347,11 +1347,11 @@
   scene: Death Mountain Crater
   hint: Death Mountain Crater
   locations:
-      DMC Volcano Freestanding PoH: is_adult and (here(can_plant_bean) or (logic_crater_bean_poh_with_hovers
+      DMC Volcano Freestanding PoH: is_adult and hearts(3) and (here(can_plant_bean) or (logic_crater_bean_poh_with_hovers
           and Hover_Boots))
-      Sheik in Crater: is_adult
+      Sheik in Crater: is_adult and (fire_timer(8) or hearts(3))
   exits:
-      DMC Central Local: can_use(Goron_Tunic)
+      DMC Central Local: fire_timer(48)
 
 
 - region_name: DMC Central Local
@@ -1359,14 +1359,14 @@
   scene: Death Mountain Crater
   hint: Death Mountain Crater
   locations:
-      DMC GS Bean Patch: can_plant_bugs and can_child_attack
+      DMC GS Bean Patch: can_plant_bugs and can_child_attack and (fire_timer(8) or hearts(3))
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
   exits:
       DMC Central Nearby: 'True'
       DMC Lower Nearby: is_adult and (can_use(Hover_Boots) or can_use(Hookshot) or here(can_plant_bean))
       DMC Upper Nearby: is_adult and here(can_plant_bean)
-      DMC Fire Temple Entrance: "(is_child and shuffle_dungeon_entrances) or (is_adult
-          and (logic_fewer_tunic_requirements or can_use(Goron_Tunic)))"
+      DMC Fire Temple Entrance: "(is_child and shuffle_dungeon_entrances and hearts(3)) or (is_adult
+          and fire_timer(24))"
 
 
 - region_name: DMC Fire Temple Entrance
@@ -1374,8 +1374,8 @@
   scene: Death Mountain Crater
   hint: Death Mountain Crater
   exits:
-      # Fire Temple Lower: 'True'
-      DMC Central Nearby: can_use(Goron_Tunic)
+      Fire Temple Entryway: 'True'
+      DMC Central Nearby: fire_timer(48)
 
 
 - region_name: DMC Great Fairy Fountain
@@ -1402,7 +1402,7 @@
   locations:
       ZR GS Tree: is_child and can_child_attack
   exits:
-      Zora River: is_adult or has_explosives
+      Zora River: is_adult or can_blast_or_smash
       Hyrule Field: 'True'
 
 
@@ -1421,9 +1421,9 @@
           and logic_zora_river_lower)
       ZR Near Domain Freestanding PoH: is_child or can_use(Hover_Boots) or (is_adult
           and logic_zora_river_upper)
-      ZR GS Ladder: child_night and can_child_attack
-      ZR GS Near Raised Grottos: adult_night and can_use(Hookshot)
-      ZR GS Above Bridge: adult_night and can_use(Hookshot)
+      ZR GS Ladder: child_night and can_child_attack and can_get_night_time_gs
+      ZR GS Near Raised Grottos: adult_night and hookshot_or_boomerang and can_get_night_time_gs
+      ZR GS Above Bridge: adult_night and can_use(Hookshot) and can_get_night_time_gs
       ZR Near Grottos Gossip Stone: 'True'
       ZR Near Domain Gossip Stone: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
@@ -1465,10 +1465,10 @@
       King Zora Thawed: is_adult and Blue_Fire
   locations:
       ZD Diving Minigame: is_child
-      ZD Chest: can_use(Sticks)
+      ZD Chest: is_child and can_use(Sticks)
       Deliver Rutos Letter: is_child and Rutos_Letter and zora_fountain != open
       ZD King Zora Thawed: King_Zora_Thawed
-      ZD GS Frozen Waterfall: adult_night and (Progressive_Hookshot or Bow
+      ZD GS Frozen Waterfall: adult_night and (hookshot_or_boomerang or can_use(Slingshot) or Bow
           or Magic_Meter or logic_domain_gs)
       ZD Gossip Stone: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
@@ -1477,9 +1477,9 @@
       Nut Pot: 'True'
   exits:
       ZR Behind Waterfall: 'True'
-      Lake Hylia: is_child and Silver_Scale
+      Lake Hylia: is_child and (Silver_Scale or can_use(Iron_Boots))
       ZD Behind King Zora: Deliver_Letter or zora_fountain == open or (zora_fountain
-          == adult and is_adult) or (logic_king_zora_skip and is_adult)
+          == adult and is_adult)
       ZD Shop: is_child or Blue_Fire
       ZD Storms Grotto: can_open_storm_grotto
 
@@ -1508,21 +1508,21 @@
   hint: Zora's Fountain
   locations:
       ZF Iceberg Freestanding PoH: is_adult
-      ZF Bottom Freestanding PoH: is_adult and Iron_Boots and (logic_fewer_tunic_requirements
-          or can_use(Zora_Tunic))
+      ZF Bottom Freestanding PoH: is_adult and Iron_Boots and water_timer(24)
       ZF GS Tree: is_child
-      ZF GS Above the Log: child_night and can_use(Boomerang)
+      ZF GS Above the Log: child_night and hookshot_or_boomerang and can_get_night_time_gs
       ZF GS Hidden Cave: adult_night and can_use(Silver_Gauntlets) and can_blast_or_smash
-          and can_use(Hookshot)
+          and hookshot_or_boomerang and can_get_night_time_gs
       ZF Fairy Gossip Stone: 'True'
       ZF Jabu Gossip Stone: 'True'
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
       Butterfly Fairy: can_use(Sticks) and at_day and has_bottle
   exits:
       ZD Behind King Zora: 'True'
-      # Jabu Jabus Belly Beginning: is_child and Fish
+      Jabu Jabus Belly Entryway: is_child and Fish
       ZF Ice Ledge: is_adult
-      ZF Great Fairy Fountain: has_explosives
+      ZF Great Fairy Fountain: has_explosives or (can_use(Silver_Gauntlets) and
+          Megaton_Hammer and logic_zf_great_fairy)
 
 
 - region_name: ZF Ice Ledge
@@ -1531,7 +1531,7 @@
   hint: Zora's Fountain
   exits:
       Zoras Fountain: 'True'
-      # Ice Cavern Beginning: 'True'
+      Ice Cavern Entryway: 'True'
 
 
 - region_name: ZD Shop
@@ -1567,9 +1567,9 @@
   locations:
       Song from Malon: child_day and Zeldas_Letter and Ocarina
       LLR GS Tree: is_child
-      LLR GS Rain Shed: child_night
-      LLR GS House Window: child_night and can_use(Boomerang)
-      LLR GS Back Wall: child_night and can_use(Boomerang)
+      LLR GS Rain Shed: child_night and can_get_night_time_gs
+      LLR GS House Window: child_night and hookshot_or_boomerang and can_get_night_time_gs
+      LLR GS Back Wall: child_night and hookshot_or_boomerang and can_get_night_time_gs
   exits:
       Hyrule Field: 'True'
       LLR Talons House: is_adult or at_day
@@ -1603,14 +1603,6 @@
       LLR Tower Right Cow: can_play(Eponas_Song)
   exits:
       Lon Lon Ranch: 'True'
-
-
-- region_name: Ganons Castle Tower
-  dungeon: Ganons Castle
-  locations:
-      Ganons Tower Boss Key Chest: 'True'
-      Ganondorf Hint: Ganons_Castle_Boss_Key
-      Ganon: Ganons_Castle_Boss_Key and can_use(Light_Arrows)
 
 
 - region_name: GF Storms Grotto
@@ -1787,7 +1779,7 @@
 - region_name: HF Tektite Grotto
   scene: HF Tektite Grotto
   locations:
-      HF Tektite Grotto Freestanding PoH: count(Progressive_Scale, 2) or can_use(Iron_Boots)
+      HF Tektite Grotto Freestanding PoH: Gold_Scale or can_use(Iron_Boots)
   exits:
       Hyrule Field: 'True'
 
@@ -1795,8 +1787,7 @@
 - region_name: HC Storms Grotto
   scene: HC Storms Grotto
   locations:
-      HC GS Storms Grotto: (can_blast_or_smash or (is_child and logic_castle_storms_gs))
-          and (can_use(Boomerang) or can_use(Hookshot))
+      HC GS Storms Grotto: can_blast_or_smash and hookshot_or_boomerang
       HC Storms Grotto Gossip Stone: can_blast_or_smash
       Gossip Stone Fairy: can_blast_or_smash and can_summon_gossip_fairy and has_bottle
       Wandering Bugs: can_blast_or_smash and has_bottle
@@ -1808,7 +1799,8 @@
 - region_name: Kak Redead Grotto
   scene: Kak Redead Grotto
   locations:
-      Kak Redead Grotto Chest: is_adult or (Sticks or Kokiri_Sword or can_use(Dins_Fire))
+      Kak Redead Grotto Chest: is_adult or (Sticks or can_use(Megaton_Hammer) or
+          can_use(Dins_Fire) or can_slash_sword)
   exits:
       Kakariko Village: 'True'
 

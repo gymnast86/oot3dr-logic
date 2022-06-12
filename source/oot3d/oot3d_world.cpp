@@ -6,20 +6,21 @@
 #include "../debug.hpp"
 
 #include <iostream>
+#include <filesystem>
 
 #define BUILD_ERROR_CHECK(err) if (err != WorldBuildingError::NONE) {return err;}
 #define FILE_READ_CHECK(retVal) if (retVal != 0) {return WorldBuildingError::COULD_NOT_LOAD_FILE;}
-#define VALID_REQUIREMENT(err, reqStr) if (err != RequirementError::NONE) {std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl; return WorldBuildingError::BAD_REQUIREMENT;}
+#define VALID_REQUIREMENT(ref, err, reqStr) if (err != RequirementError::NONE) {std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl << "In YAML object: " << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_REQUIREMENT;}
 #define YAML_FIELD_CHECK(ref, field, err) if(!ref.has_child(field)) {std::cout << "ERROR: Unable to find field \"" << field << "\" in YAML object" << std::endl; PrintYAML(ref); return err;}
 #define VALID_ITEM_CHECK(ref, itemName) if (NameToItemID(itemName) == ItemID::INVALID) {std::replace(itemName.begin(), itemName.end(), '_', ' '); std::cout << "ERROR: Unknown item name \"" << itemName << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
 #define VALID_ITEM_TYPE(ref, typeStr) if (NameToOot3dItemType(typeStr) == ItemType::INVALID) {std::cout << "ERROR: Unknown item type \"" << typeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
 #define VALID_UINT8_T(ref, getItemIdStr, valueName) if (std::strtoul(getItemIdStr.c_str(), nullptr, 0) > 0xFF) {std::cout << "ERROR: " << valueName << " value is greater than 0xFF in YAML object: " << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
 #define VALID_ADVANCEMENT(ref, advancementStr) if (advancementStr != "true" && advancementStr != "false") {std::cout << "ERROR: Unknown advancement value \"" << advancementStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
 #define VALID_LOCATION_CHECK(ref, locName) if (NameToLocationID(locName) == LocationID::INVALID) {std::cout << "ERROR: Unknown location name \"" << locName << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
-#define VALID_LOCATION_TYPE(ref, typeStr) if (NameToOot3dLocationType(typeStr) == LocationType::INVALID) {std::cout << "ERROR: Unknown location type \"" << typeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
+#define VALID_LOCATION_TYPE(ref, typeStr) if (NameToOot3dLocationType(typeStr) == Oot3dLocationType::INVALID) {std::cout << "ERROR: Unknown location type \"" << typeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
 #define VALID_CHECK_TYPE(ref, checkTypeStr) if (NameToOot3dSpoilerCheckType(checkTypeStr) == SpoilerCollectionCheckType::SPOILER_CHK_INVALID) {std::cout << "Unknown location check_type \"" << checkTypeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
 #define VALID_CHECK_GROUP(ref, checkGroupStr) if (NameToOot3dSpoilerCheckGroup(checkGroupStr) == SpoilerCollectionCheckGroup::GROUP_INVALID) {std::cout << "Unknown location check_group \"" << checkGroupStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
-#define VALID_AREA_CHECK(ref, areaName) if (NameToAreaID(areaName) == AreaID::INVALID) {std::cout << "ERROR: Unknown area name " << areaName << " in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_AREA_VALUE;}
+#define VALID_AREA_CHECK(ref, areaName) if (NameToAreaID(areaName) == AreaID::INVALID) {std::cout << "ERROR: Unknown area name \"" << areaName << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_AREA_VALUE;}
 #define VALID_LOCATION_DEFINITION(ref, locId, locations, name) if (locations.count(locId) == 0) {std::cout << "ERROR: location \"" << name << "\" not defined"; return WorldBuildingError::LOCATION_NOT_DEFINED;}
 
 Oot3dWorld::Oot3dWorld()
@@ -64,6 +65,7 @@ WorldBuildingError CheckValidLocationFields(const ryml::NodeRef& location)
 WorldBuildingError Oot3dWorld::BuildItemTable()
 {
     DebugLog("Building Item Table for world " + std::to_string(worldId) + "...");
+    // std::cout << "Build Item Table for world " << std::to_string(worldId) << "..." << std::endl;
     std::string itemStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/item_data.yaml", itemStr))
 
@@ -104,6 +106,7 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
 WorldBuildingError Oot3dWorld::BuildLocationTable()
 {
     DebugLog("Building Location Table for world " + std::to_string(worldId) + "...");
+    // std::cout << "Building Location Table for world " << std::to_string(worldId) << "..." << std::endl;
     std::string locationDataStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/location_data.yaml", locationDataStr))
 
@@ -160,6 +163,7 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
 WorldBuildingError Oot3dWorld::LoadLogicHelpers()
 {
     DebugLog("Loading Logic Helpers for world " + std::to_string(worldId) + "...");
+    // std::cout << "Loading Logic Helpers for world " << std::to_string(worldId) << "..." << std::endl;
     std::string logicHelpersStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/logic_helpers.yaml", logicHelpersStr))
 
@@ -169,8 +173,8 @@ WorldBuildingError Oot3dWorld::LoadLogicHelpers()
         const std::string helperName = SubstrToString(logicHelper.key());
         const std::string helperStr = SubstrToString(logicHelper.val());
         Requirement helperReq;
-        RequirementError err = ParseRequirementString(helperStr, helperReq, logicHelpers, settings, AreaID::NONE, "Oot3d");
-        VALID_REQUIREMENT(err, helperStr);
+        RequirementError err = ParseRequirementString(helperStr, helperReq, logicHelpers, settings, AreaID::NONE, "Oot3d", this);
+        VALID_REQUIREMENT(logicHelper, err, helperStr);
         logicHelpers.emplace(helperName, helperReq);
     }
     return WorldBuildingError::NONE;
@@ -179,101 +183,119 @@ WorldBuildingError Oot3dWorld::LoadLogicHelpers()
 WorldBuildingError Oot3dWorld::LoadWorldGraph()
 {
     DebugLog("Building World Graph for world " + std::to_string(worldId) + "...");
-    std::string overworldDataStr;
-    FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/world/overworld_world_graph.yaml", overworldDataStr))
+    // std::cout << "Build World Graph for world " << std::to_string(worldId) << "..." << std::endl;
+    std::string worldGraphDataStr;
 
-    const ryml::Tree overworldTree = ryml::parse_in_place(ryml::to_substr(overworldDataStr));
-    for (const ryml::NodeRef& area : overworldTree.rootref().children())
+    // Loop through all files in the directory with world graph files
+    const std::filesystem::path worldPath {ROMFS"/oot3d/world/"};
+    for (auto const& dirEntry : std::filesystem::directory_iterator{worldPath})
     {
-        const std::string name = "Oot3d " + SubstrToString(area["region_name"].val());
-        VALID_AREA_CHECK(area, name);
-        const AreaID areaId = NameToAreaID(name);
+        // If this isn't a world graph file, then don't process it
+        const std::string filename = dirEntry.path().string();
+        if (filename.find("world_graph.yaml") == std::string::npos)
+        {
+            continue;
+        }
+        FILE_READ_CHECK(GetFileContents(filename, worldGraphDataStr));
 
-        // Create area
-        auto newArea = std::make_unique<Oot3dArea>();
-        newArea->id = areaId;
-        newArea->name = name;
-        newArea->world = this;
+        const ryml::Tree overworldTree = ryml::parse_in_place(ryml::to_substr(worldGraphDataStr));
+        for (const ryml::NodeRef& area : overworldTree.rootref().children())
+        {
+            const std::string name = "Oot3d " + SubstrToString(area["region_name"].val());
+            VALID_AREA_CHECK(area, name);
+            const AreaID areaId = NameToAreaID(name);
 
-        if (area.has_child("font_color"))
-        {
-            const std::string font_color = SubstrToString(area["font_color"].val());
-        }
-        if (area.has_child("scene"))
-        {
-            const std::string scene = SubstrToString(area["scene"].val());
-        }
-        if (area.has_child("hint"))
-        {
-            const std::string hint = SubstrToString(area["hint"].val());
-        }
-        if (area.has_child("time_passes"))
-        {
-            newArea->timePasses = true;
-        }
-        if (area.has_child("events"))
-        {
-            for (const ryml::NodeRef& event : area["events"].children())
+            // Create area
+            auto newArea = std::make_unique<Oot3dArea>();
+            newArea->id = areaId;
+            newArea->name = name;
+            newArea->world = this;
+
+            DebugLog(name);
+
+            if (area.has_child("font_color"))
             {
-                // Get field strings
-                std::string eventName = "Oot3d " + SubstrToString(event.key());
-                const std::string reqStr = SubstrToString(event.val());
-
-                // Check for valid values
-                VALID_ITEM_CHECK(area, eventName); // Events are treated as items
-                Requirement req;
-                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d");
-                VALID_REQUIREMENT(err, reqStr);
-
-                // Add event to list of events in this area
-                auto itemId = NameToItemID(eventName);
-                newArea->events.push_back({itemId, req, newArea.get()});
+                const std::string font_color = SubstrToString(area["font_color"].val());
             }
-        }
-        if (area.has_child("locations"))
-        {
-            for (const ryml::NodeRef& location : area["locations"].children())
+            if (area.has_child("scene"))
             {
-                // Get field strings
-                const std::string locationName = "Oot3d " + SubstrToString(location.key());
-                const std::string reqStr = SubstrToString(location.val());
-
-                // Check for valid values
-                VALID_LOCATION_CHECK(area, locationName);
-                Requirement req;
-                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d");
-                VALID_REQUIREMENT(err, reqStr);
-
-                auto locationId = NameToLocationID(locationName);
-                VALID_LOCATION_DEFINITION(area, locationId, locations, locationName);
-                // Add location to list of locations in area
-                auto locPtr = locations[locationId].get();
-                newArea->locations.push_back({locPtr, req, newArea.get()});
+                const std::string scene = SubstrToString(area["scene"].val());
             }
-        }
-        if (area.has_child("exits"))
-        {
-            for (const ryml::NodeRef& exit : area["exits"].children())
+            if (area.has_child("hint"))
             {
-                // Get field strings
-                const std::string exitName = "Oot3d " + SubstrToString(exit.key());
-                const std::string reqStr = SubstrToString(exit.val());
-
-                // Check for valid values
-                VALID_AREA_CHECK(area, exitName);
-                Requirement req;
-                RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d");
-                VALID_REQUIREMENT(err, reqStr);
-
-                // Add the exit to the list of exits in area
-                auto exitAreaId = NameToAreaID(exitName);
-                auto newExit = std::make_unique<Oot3dEntrance>(newArea->id, exitAreaId, req, this);
-                newArea->exits.push_back(std::move(newExit));
+                const std::string hint = SubstrToString(area["hint"].val());
             }
-        }
+            if (area.has_child("time_passes"))
+            {
+                newArea->timePasses = true;
+            }
+            if (area.has_child("events"))
+            {
+                for (const ryml::NodeRef& event : area["events"].children())
+                {
+                    // Get field strings
+                    std::string eventName = "Oot3d " + SubstrToString(event.key());
+                    const std::string reqStr = SubstrToString(event.val());
 
-        areas.emplace(areaId, std::move(newArea));
+                    // Check for valid values
+                    VALID_ITEM_CHECK(area, eventName); // Events are treated as items
+                    Requirement req;
+                    RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d", this);
+                    VALID_REQUIREMENT(area, err, reqStr);
+
+                    // Add event to list of events in this area
+                    auto itemId = NameToItemID(eventName);
+                    newArea->events.push_back({itemId, req, newArea.get()});
+                }
+            }
+            if (area.has_child("locations"))
+            {
+                for (const ryml::NodeRef& location : area["locations"].children())
+                {
+                    // Get field strings
+                    const std::string locationName = "Oot3d " + SubstrToString(location.key());
+                    const std::string reqStr = SubstrToString(location.val());
+                    DebugLog("\t" + locationName);
+
+                    // Check for valid values
+                    VALID_LOCATION_CHECK(area, locationName);
+                    Requirement req;
+                    RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d", this);
+                    VALID_REQUIREMENT(area, err, reqStr);
+
+                    auto locationId = NameToLocationID(locationName);
+                    VALID_LOCATION_DEFINITION(area, locationId, locations, locationName);
+                    // Add location to list of locations in area
+                    auto locPtr = locations[locationId].get();
+                    newArea->locations.push_back({locPtr, req, newArea.get()});
+                }
+            }
+            if (area.has_child("exits"))
+            {
+                for (const ryml::NodeRef& exit : area["exits"].children())
+                {
+                    // Get field strings
+                    const std::string exitName = "Oot3d " + SubstrToString(exit.key());
+                    const std::string reqStr = SubstrToString(exit.val());
+                    DebugLog("\t" + exitName);
+                    // Check for valid values
+                    VALID_AREA_CHECK(area, exitName);
+                    Requirement req;
+                    RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d", this);
+                    VALID_REQUIREMENT(area, err, reqStr);
+
+                    // Add the exit to the list of exits in area
+                    auto exitAreaId = NameToAreaID(exitName);
+                    auto newExit = std::make_unique<Oot3dEntrance>(newArea->id, exitAreaId, req, this);
+                    newArea->exits.push_back(std::move(newExit));
+                }
+            }
+            DebugLog("\templacing");
+            areas.emplace(areaId, std::move(newArea));
+            DebugLog("...Done");
+        }
     }
+
     return WorldBuildingError::NONE;
 }
 
@@ -310,6 +332,10 @@ WorldBuildingError Oot3dWorld::Build()
     locations[LocationID::Oot3dPierre]->currentItem = Item(ItemID::Oot3dScarecrowSong, this);
     locations[LocationID::Oot3dBugRock]->currentItem = Item(ItemID::Oot3dBugs, this);
     locations[LocationID::Oot3dMarketBombchuBowlingBombchus]->currentItem = Item(ItemID::Oot3dBombchuDrop, this);
+    locations[LocationID::Oot3dBlueFire]->currentItem = Item(ItemID::Oot3dBlueFire, this);
+    locations[LocationID::Oot3dLoneFish]->currentItem = Item(ItemID::Oot3dFish, this);
+    locations[LocationID::Oot3dNutPot]->currentItem = Item(ItemID::Oot3dDekuNutDrop, this);
+    locations[LocationID::Oot3dStickPot]->currentItem = Item(ItemID::Oot3dDekuStickDrop, this);
 
     return WorldBuildingError::NONE;
 }

@@ -1,0 +1,221 @@
+############################
+#    VANILLA/MQ DECIDER    #
+############################
+- region_name: Ganons Castle Entryway
+  dungeon: Ganons Castle
+  exits:
+      Ganons Castle Lobby: ganons_castle_dungeon_mode == vanilla
+      Ganons Castle MQ Lobby: ganons_castle_dungeon_mode == mq
+      Ganons Castle Grounds: 'True'
+
+############################
+#     VANILLA DUNGEON      #
+############################
+- region_name: Ganons Castle Lobby
+  dungeon: Ganons Castle
+  exits:
+      Ganons Castle Entryway: 'True'
+      Ganons Castle Forest Trial: 'True'
+      Ganons Castle Fire Trial: 'True'
+      Ganons Castle Water Trial: 'True'
+      Ganons Castle Shadow Trial: 'True'
+      Ganons Castle Spirit Trial: 'True'
+      Ganons Castle Light Trial: can_use(Golden_Gauntlets)
+      Ganons Castle Tower: "(Forest_Trial_Clear or forest_trial_mode == skipped) and
+                            (Fire_Trial_Clear or fire_trial_mode == skipped) and
+                            (Water_Trial_Clear or water_trial_mode == skipped) and
+                            (Shadow_Trial_Clear or shadow_trial_mode == skipped) and
+                            (Spirit_Trial_Clear or spirit_trial_mode == skipped) and
+                            (Light_Trial_Clear or light_trial_mode == skipped)"
+      Ganons Castle Deku Scrubs: logic_lens_castle or can_use(Lens_of_Truth)
+
+
+- region_name: Ganons Castle Deku Scrubs
+  dungeon: Ganons Castle
+  locations:
+      Ganons Castle Deku Scrub Center Left: can_stun_deku
+      Ganons Castle Deku Scrub Center Right: can_stun_deku
+      Ganons Castle Deku Scrub Right: can_stun_deku
+      Ganons Castle Deku Scrub Left: can_stun_deku
+      Free Fairies: 'True'
+
+
+- region_name: Ganons Castle Forest Trial
+  dungeon: Ganons Castle
+  events:
+      Forest Trial Clear: can_use(Light_Arrows) and (Fire_Arrows or Dins_Fire)
+  locations:
+      Ganons Castle Forest Trial Chest: is_adult or can_child_damage
+
+
+- region_name: Ganons Castle Fire Trial
+  dungeon: Ganons Castle
+  events:
+      Fire Trial Clear: can_use(Goron_Tunic) and can_use(Golden_Gauntlets) and can_use(Light_Arrows) and can_use(Longshot)
+
+
+- region_name: Ganons Castle Water Trial
+  dungeon: Ganons Castle
+  events:
+      Water Trial Clear: Blue_Fire and Megaton_Hammer and can_use(Light_Arrows)
+  locations:
+      Ganons Castle Water Trial Left Chest: 'True'
+      Ganons Castle Water Trial Right Chest: 'True'
+      Blue Fire: has_bottle
+      Fairy Pot: Blue_Fire
+
+
+- region_name: Ganons Castle Shadow Trial
+  dungeon: Ganons Castle
+  events:
+      Shadow Trial Clear: can_use(Light_Arrows) and Megaton_Hammer and ((Fire_Arrows and
+          (logic_lens_castle or can_use(Lens_of_Truth))) or (can_use(Longshot) and
+          (can_use(Hover_Boots) or (Dins_Fire and (logic_lens_castle or can_use(Lens_of_Truth))))))
+  locations:
+      Ganons Castle Shadow Trial Front Chest: can_use(Fire_Arrows) or can_use(Hookshot) or
+          can_use(Hover_Boots) or can_play(Song_of_Time) or is_child
+      Ganons Castle Shadow Trial Golden Gauntlets Chest: can_use(Fire_Arrows) or
+          (can_use(Longshot) and (can_use(Hover_Boots) or can_use(Dins_Fire)))
+
+
+- region_name: Ganons Castle Spirit Trial
+  dungeon: Ganons Castle
+  events:
+      Spirit Trial Clear: can_use(Light_Arrows) and Mirror_Shield and
+          has_bombchus and (logic_spirit_trial_hookshot or can_use(Hookshot))
+  locations:
+      Ganons Castle Spirit Trial Crystal Switch Chest: logic_spirit_trial_hookshot or can_use(Hookshot)
+      Ganons Castle Spirit Trial Invisible Chest: "(logic_spirit_trial_hookshot or
+            can_use(Hookshot)) and has_bombchus and (logic_lens_castle or can_use(Lens_of_Truth))"
+      Nut Pot: "(logic_spirit_trial_hookshot or can_use(Hookshot)) and
+          has_bombchus and Bow and Mirror_Shield and is_adult"
+
+
+- region_name: Ganons Castle Light Trial
+  dungeon: Ganons Castle
+  events:
+      Light Trial Clear: can_use(Light_Arrows) and can_use(Hookshot) and
+          count(Ganons_Castle_Small_Key, 2) and (logic_lens_castle or can_use(Lens_of_Truth))
+  locations:
+      Ganons Castle Light Trial First Left Chest: 'True'
+      Ganons Castle Light Trial Second Left Chest: 'True'
+      Ganons Castle Light Trial Third Left Chest: 'True'
+      Ganons Castle Light Trial First Right Chest: 'True'
+      Ganons Castle Light Trial Second Right Chest: 'True'
+      Ganons Castle Light Trial Third Right Chest: 'True'
+      Ganons Castle Light Trial Invisible Enemies Chest: logic_lens_castle or can_use(Lens_of_Truth)
+      Ganons Castle Light Trial Lullaby Chest: can_play(Zeldas_Lullaby) and count(Ganons_Castle_Small_Key, 1)
+
+
+
+- region_name: Ganons Castle Tower
+  dungeon: Ganons Castle
+  locations:
+      Ganons Tower Boss Key Chest: 'True'
+      Ganondorf Hint: Ganons_Castle_Boss_Key
+      Ganon: Ganons_Castle_Boss_Key and can_use(Light_Arrows)
+
+############################
+#   MASTER QUEST DUNGEON   #
+############################
+
+- region_name: Ganons Castle MQ Lobby
+  dungeon: Ganons Castle
+  exits:
+      Ganons Castle Entryway: is_adult or (has_explosives or ((Nuts or Boomerang) and (Sticks or Kokiri_Sword)))
+      Ganons Castle MQ Forest Trial: 'True'
+      Ganons Castle MQ Fire Trial: 'True'
+      Ganons Castle MQ Water Trial: 'True'
+      Ganons Castle MQ Shadow Trial: 'True'
+      Ganons Castle MQ Spirit Trial: 'True'
+      Ganons Castle MQ Light Trial: can_use(Golden_Gauntlets)
+      Ganons Castle Tower: "(Forest_Trial_Clear or forest_trial_mode == skipped) and
+                            (Fire_Trial_Clear or fire_trial_mode == skipped) and
+                            (Water_Trial_Clear or water_trial_mode == skipped) and
+                            (Shadow_Trial_Clear or shadow_trial_mode == skipped) and
+                            (Spirit_Trial_Clear or spirit_trial_mode == skipped) and
+                            (Light_Trial_Clear or light_trial_mode == skipped)"
+      Ganons Castle MQ Deku Scrubs: logic_lens_castle_mq or can_use(Lens_of_Truth)
+
+
+- region_name: Ganons Castle MQ Deku Scrubs
+  dungeon: Ganons Castle
+  locations:
+      Ganons Castle MQ Deku Scrub Center Left: can_stun_deku
+      Ganons Castle MQ Deku Scrub Center: can_stun_deku
+      Ganons Castle MQ Deku Scrub Center Right: can_stun_deku
+      Ganons Castle MQ Deku Scrub Left: can_stun_deku
+      Ganons Castle MQ Deku Scrub Right: can_stun_deku
+      Free Fairies: 'True'
+
+
+- region_name: Ganons Castle MQ Forest Trial
+  dungeon: Ganons Castle
+  events:
+      Forest Trial Clear: is_adult and can_use(Light_Arrows) and can_play(Song_of_Time)
+  locations:
+      Ganons Castle MQ Forest Trial Eye Switch Chest: "(is_adult and can_use(Bow)) or (is_child and can_use(Slingshot))"
+      Ganons Castle MQ Forest Trial Frozen Eye Switch Chest: has_fire_source
+      Ganons Castle MQ Forest Trial Freestanding Key: hookshot_or_boomerang
+
+
+- region_name: Ganons Castle MQ Fire Trial
+  dungeon: Ganons Castle
+  events:
+      Fire Trial Clear: can_use(Goron_Tunic) and can_use(Golden_Gauntlets) and
+          can_use(Light_Arrows) and (can_use(Longshot) or can_use(Hover_Boots))
+                  #Trick -> can_use(Goron_Tunic) and can_use(Golden_Gauntlets) and can_use(Light_Arrows) and (can_use(Longshot) or Hover_Boots or (logic_fire_trial_mq and can_use(Hookshot)))
+
+
+- region_name: Ganons Castle MQ Water Trial
+  dungeon: Ganons Castle
+  events:
+      Water Trial Clear: Blue_Fire and is_adult and can_use(Light_Arrows) and
+          count(Ganons_Castle_Small_Key, 3)
+  locations:
+      Ganons Castle MQ Water Trial Chest: Blue_Fire and (is_adult or
+          can_use(Sticks) or Kokiri_Sword or can_use_projectile)
+      Blue Fire: has_bottle
+
+
+- region_name: Ganons Castle MQ Shadow Trial
+  dungeon: Ganons Castle
+  events:
+      Shadow Trial Clear: is_adult and can_use(Light_Arrows) and (logic_lens_castle_mq or
+          can_use(Lens_of_Truth)) and (can_use(Hover_Boots) or (can_use(Hookshot) and has_fire_source))
+                  #Trick -> is_adult and can_use(Light_Arrows) and (logic_lens_castle_mq or can_use(Lens_of_Truth)) and (Hover_Boots or (Hookshot and (has_fire_source or logic_shadow_trial_mq)))
+  locations:
+      Ganons Castle MQ Shadow Trial Bomb Flower Chest: is_adult and ((Bow and (can_use(Hookshot) or
+          can_use(Hover_Boots))) or (can_use(Hover_Boots) and (logic_lens_castle_mq or
+          can_use(Lens_of_Truth)) and (has_explosives or Goron_Bracelet or can_use(Dins_Fire))))
+      Ganons Castle MQ Shadow Trial Eye Switch Chest: is_adult and Bow and (logic_lens_castle_mq or
+          can_use(Lens_of_Truth)) and (can_use(Hover_Boots) or (can_use(Hookshot) and has_fire_source))
+                  #Trick -> is_adult and Bow and (logic_lens_castle_mq or can_use(Lens_of_Truth)) and (Hover_Boots or (Hookshot and (has_fire_source or logic_shadow_trial_mq)))
+
+
+- region_name: Ganons Castle MQ Spirit Trial
+  dungeon: Ganons Castle
+  events:
+      Spirit Trial Clear: is_adult and can_use(Light_Arrows) and Megaton_Hammer and has_bombchus and Fire_Arrows and Mirror_Shield
+  locations:
+      Ganons Castle MQ Spirit Trial First Chest: is_adult and Bow and Megaton_Hammer
+      Ganons Castle MQ Spirit Trial Invisible Chest: is_adult and Bow and Megaton_Hammer and
+          has_bombchus and (logic_lens_castle_mq or can_use(Lens_of_Truth))
+      Ganons Castle MQ Spirit Trial Sun Front Left Chest: is_adult and Megaton_Hammer and
+          has_bombchus and can_use(Fire_Arrows) and can_use(Mirror_Shield)
+      Ganons Castle MQ Spirit Trial Sun Back Left Chest: is_adult and Megaton_Hammer and
+          has_bombchus and can_use(Fire_Arrows) and can_use(Mirror_Shield)
+      Ganons Castle MQ Spirit Trial Golden Gauntlets Chest: is_adult and Megaton_Hammer and
+          has_bombchus and can_use(Fire_Arrows) and can_use(Mirror_Shield)
+      Ganons Castle MQ Spirit Trial Sun Back Right Chest: is_adult and Megaton_Hammer and
+          has_bombchus and can_use(Fire_Arrows) and can_use(Mirror_Shield)
+      Nut Pot: Megaton_Hammer and has_bombchus and is_adult and can_use(Fire_Arrows) and Mirror_Shield
+
+
+- region_name: Ganons Castle MQ Light Trial
+  dungeon: Ganons Castle
+  events:
+      Light Trial Clear: is_adult and can_use(Light_Arrows) and count(Ganons_Castle_Small_Key, 3) and (logic_lens_castle_mq or can_use(Lens_of_Truth)) and can_use(Hookshot)
+                  #Trick -> is_adult and can_use(Light_Arrows) and count(Ganons_Castle_Small_Key, 3) and (logic_lens_castle_mq or can_use(Lens_of_Truth)) and (Hookshot or logic_light_trial_mq)
+  locations:
+      Ganons Castle MQ Light Trial Lullaby Chest: can_play(Zeldas_Lullaby)

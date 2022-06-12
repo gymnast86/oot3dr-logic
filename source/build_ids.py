@@ -124,7 +124,7 @@ def build_ids(main_path, data_directory, data_filename, type, key):
             for i in range(len(name_to_id_elements)):
                 cpp.write('        ' + name_to_id_elements[i] + ',\n')
                 # Only write the underscore form if it actually has underscores
-                if ('_' in name_to_id_underscore_elements[i]):
+                if ('_' in name_to_id_underscore_elements[i] and type == 'Item'):
                     cpp.write('        ' + name_to_id_underscore_elements[i] + ',\n')
             cpp.write(f'  	}};\n' + \
                       f'    \n' + \

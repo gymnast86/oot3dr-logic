@@ -7,6 +7,7 @@
 #include <vector>
 #include <variant>
 #include <unordered_map>
+#include <unordered_set>
 
 struct Requirement;
 using LogicHelperMap = std::unordered_map<std::string, Requirement>;
@@ -27,6 +28,10 @@ enum struct RequirementType
     CHILD_NIGHT,
     ADULT_DAY,
     ADULT_NIGHT,
+    HEARTS,
+    EFFECTIVE_HEALTH,
+    FIRE_TIMER,
+    WATER_TIMER,
     HAS_STONES,
     HAS_MEDALLIONS,
     HAS_REWARDS,
@@ -42,6 +47,9 @@ enum struct RequirementError
     SAME_NESTING_LEVEL,
     COULD_NOT_DETERMINE_TYPE,
     UNKNOWN_AREA_NAME,
+    UNKNOWN_ITEM_NAME,
+    COULD_NOT_PARSE_NUMBER,
+    SETTING_NOT_FOUND,
 };
 
 struct Requirement
@@ -49,11 +57,12 @@ struct Requirement
     using Argument = std::variant<int, bool, std::string, Requirement, ItemID, AreaID>;
     RequirementType type = RequirementType::INVALID;
     std::vector<Argument> args;
+    // Set of items that can potentially fulfill this requirement
+    std::unordered_set<Item> fulfillmentItems;
 };
 
-// std::string printRequirement(Requirement& req, int nestingLevel = 0);
-
-RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId, const std::string& game_prefix);
+class World;
+RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId, const std::string& game_prefix, World* world);
 
 std::string RequirementStr(Requirement& req, int nestingLevel = 0);
 

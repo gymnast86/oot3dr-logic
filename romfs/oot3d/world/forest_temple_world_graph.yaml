@@ -1,0 +1,447 @@
+############################
+#    VANILLA/MQ DECIDER    #
+############################
+
+- region_name: Forest Temple Entryway
+  dungeon: Forest Temple
+  exits:
+      Forest Temple First Room: forest_temple_dungeon_mode == vanilla
+      Forest Temple MQ Lobby: forest_temple_dungeon_mode == mq
+      Sacred Forest Meadow: 'True'
+
+############################
+#     VANILLA DUNGEON      #
+############################
+
+- region_name: Forest Temple First Room
+  dungeon: Forest Temple
+  locations:
+      Forest Temple First Room Chest: 'True'
+      Forest Temple GS First Room: "(is_adult and Bombs) or can_use(Bow) or
+          can_use(Hookshot) or can_use(Boomerang) or can_use(Slingshot) or
+          has_bombchus or can_use(Dins_Fire)"
+                                                    #Glitched -> (Bombs and CanDoGlitch(GlitchType::ISG GlitchDifficulty::NOVICE)) or CanDoGlitch(GlitchType::SuperStab GlitchDifficulty::NOVICE))
+  exits:
+      Forest Temple Entryway: 'True'
+      Forest Temple South Corridor: 'True'
+
+
+- region_name: Forest Temple South Corridor
+  dungeon: Forest Temple
+  exits:
+      Forest Temple First Room: 'True'
+      Forest Temple Lobby: is_adult or can_child_attack or Nuts
+                                        #Glitched -> can_use(Megaton_Hammer))
+
+
+- region_name: Forest Temple Lobby
+  dungeon: Forest Temple
+  events:
+      Forest Temple Meg: Forest_Temple_Joelle and Forest_Temple_Beth and Forest_Temple_Amy and can_use(Bow)
+  locations:
+      Forest Temple GS Lobby: hookshot_or_boomerang
+                                            #Glitched -> is_adult and has_bombchus and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE))
+  exits:
+      Forest Temple South Corridor: 'True'
+      Forest Temple North Corridor: 'True'
+      Forest Temple NW Outdoors Lower: can_play(Song_of_Time) or is_child
+                                               #Glitched -> CanDoGlitch(GlitchType::LedgeClip GlitchDifficulty::NOVICE) or (Song_of_Time and (CanDoGlitch(GlitchType::DungeonBombOI GlitchDifficulty::INTERMEDIATE) or
+                                              #                     ((Bugs or Fish) and can_shield and CanDoGlitch(GlitchType::QPA GlitchDifficulty::ADVANCED)) or ((Bugs or Fish) and can_shield and has_bombchus and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED)))))
+      Forest Temple NE Outdoors Lower: can_use(Bow) or can_use(Slingshot)
+      Forest Temple West Corridor: count(Forest_Temple_Small_Key, 5)
+      Forest Temple East Corridor: 'False'
+                                               #Glitched -> CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE))
+      Forest Temple Boss Region: Forest_Temple_Meg
+      Forest Temple Boss Room: 'False'
+                                               #Glitched -> is_adult and (can_use(Hookshot) or can_use(Bow) or can_use(Slingshot)) and GlitchForestBKSkip)
+
+
+- region_name: Forest Temple North Corridor
+  dungeon: Forest Temple
+  exits:
+      Forest Temple Lobby: 'True'
+      Forest Temple Lower Stalfos: 'True'
+
+
+- region_name: Forest Temple Lower Stalfos
+  dungeon: Forest Temple
+  locations:
+      Forest Temple First Stalfos Chest: is_adult or Kokiri_Sword
+                                                       #Glitched -> can_use(Megaton_Hammer))
+      Fairy Pot: has_bottle
+  exits:
+      Forest Temple North Corridor: 'True'
+
+
+- region_name: Forest Temple NW Outdoors Lower
+  dungeon: Forest Temple
+  locations:
+      Forest Temple GS Level Island Courtyard: can_use(Longshot) or here(hookshot_or_boomerang)
+      Deku Baba Sticks: is_adult or Kokiri_Sword or Boomerang
+      Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or has_explosives or can_use(Dins_Fire)
+                                  #Glitched -> can_use(Megaton_Hammer))
+  exits:
+      Forest Temple Lobby: can_play(Song_of_Time)
+                                               #Glitched -> CanDoGlitch(GlitchType::LedgeClip GlitchDifficulty::NOVICE) or (Song_of_Time and (CanDoGlitch(GlitchType::DungeonBombOI GlitchDifficulty::INTERMEDIATE) or
+                                               #                     ((Bugs or Fish) and can_shield and CanDoGlitch(GlitchType::QPA GlitchDifficulty::ADVANCED)) or ((Bugs or Fish) and can_shield and has_bombchus and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED)))))
+      Forest Temple NW Outdoors Upper: 'False'
+                                               #Glitched -> CanDoGlitch(GlitchType::HookshotJump_Boots GlitchDifficulty::INTERMEDIATE) or (is_adult and CanDoGlitch(GlitchType::HoverBoost GlitchDifficulty::NOVICE)) or (Bombs and has_bombchus and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE)))
+      Forest Temple Map Room: 'True'
+      Forest Temple Sewer: Gold_Scale or can_use(Iron_Boots) or at('Forest Temple NE Outdoors Upper', True)
+      Forest Temple Boss Room: 'False'
+                                               #Glitched -> CanDoGlitch(GlitchType::HookshotJump_Boots GlitchDifficulty::INTERMEDIATE))
+
+
+- region_name: Forest Temple NW Outdoors Upper
+  dungeon: Forest Temple
+  locations:
+      Deku Baba Sticks: is_adult or Kokiri_Sword or Boomerang
+      Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or has_explosives or can_use(Dins_Fire)
+                                  #Glitched -> can_use(Megaton_Hammer))
+  exits:
+      Forest Temple NW Outdoors Lower: 'True'
+      Forest Temple Below Boss Key Chest: 'True'
+      Forest Temple Floormaster Room: 'True'
+      Forest Temple Block Push Room: 'True'
+
+
+- region_name: Forest Temple NE Outdoors Lower
+  dungeon: Forest Temple
+  locations:
+      Forest Temple Raised Island Courtyard Chest: can_use(Hookshot) or at('Forest Temple Falling Room', True)
+      Forest Temple GS Raised Island Courtyard: can_use(Hookshot) or
+          (logic_forest_outdoor_east_gs and can_use(Boomerang)) or here(can_use(Bow) or
+          can_use(Slingshot) or can_use(Dins_Fire) or has_explosives)
+      Deku Baba Sticks: is_adult or Kokiri_Sword or Boomerang
+      Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or
+          has_explosives or can_use(Dins_Fire)
+                                      #Glitched -> can_use(Megaton_Hammer))
+  exits:
+      Forest Temple Lobby: 'True'
+      Forest Temple NE Outdoors Upper: can_use(Longshot)
+      Forest Temple Sewer: Gold_Scale or can_use(Iron_Boots) or at('Forest Temple NE Outdoors Upper', True)
+      Forest Temple Falling Room: 'False'
+                                               #Glitched -> Bombs and has_bombchus and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))
+
+
+- region_name: Forest Temple NE Outdoors Upper
+  dungeon: Forest Temple
+  locations:
+      Deku Baba Sticks: is_adult or Kokiri_Sword or Boomerang
+      Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or has_explosives or can_use(Dins_Fire)
+                                  #Glitched -> can_use(Megaton_Hammer))
+  exits:
+      Forest Temple NE Outdoors Lower: 'True'
+      Forest Temple Map Room: 'True'
+      Forest Temple Falling Room: logic_forest_door_frame and can_use(Hover_Boots) and can_use(Scarecrow)
+                                               #Glitched -> CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::EXPERT))
+
+
+- region_name: Forest Temple Map Room
+  dungeon: Forest Temple
+  locations:
+      Forest Temple Map Chest: here(has_explosives or can_use(Megaton_Hammer) or can_use(Bow) or
+                               ((is_adult or Sticks or Kokiri_Sword or Slingshot) and
+                               (Nuts or hookshot_or_boomerang or can_shield)))
+  exits:
+      Forest Temple NW Outdoors Lower: here(has_explosives or can_use(Megaton_Hammer) or
+                                       can_use(Bow) or ((is_adult or Sticks or Kokiri_Sword or Slingshot) and
+                                       (Nuts or hookshot_or_boomerang or can_shield)))
+      Forest Temple NE Outdoors Upper: here(has_explosives or can_use(Megaton_Hammer) or
+                                       can_use(Bow) or ((is_adult or Sticks or Kokiri_Sword or Slingshot) and
+                                       (Nuts or hookshot_or_boomerang or can_shield)))
+
+
+- region_name: Forest Temple Sewer
+  dungeon: Forest Temple
+  locations:
+      Forest Temple Well Chest: at(Forest Temple NE Outdoors Upper, True)
+  exits:
+      Forest Temple NW Outdoors Lower: 'True'
+      Forest Temple NE Outdoors Lower: 'True'
+
+
+- region_name: Forest Temple Below Boss Key Chest
+  dungeon: Forest Temple
+  exits:
+      Forest Temple NW Outdoors Upper: here(has_explosives or can_use(Megaton_Hammer) or
+          can_use(Bow) or ((is_adult or Sticks or Kokiri_Sword or Slingshot) and
+          (Nuts or hookshot_or_boomerang or can_shield)))
+
+
+- region_name: Forest Temple Floormaster Room
+  dungeon: Forest Temple
+  locations:
+      Forest Temple Floormaster Chest: is_adult or can_child_damage
+                                                     #Glitched -> can_use(Megaton_Hammer))
+  exits:
+      Forest Temple NW Outdoors Upper: 'True'
+
+
+- region_name: Forest Temple West Corridor
+  dungeon: Forest Temple
+  exits:
+      Forest Temple Lobby: count(Forest_Temple_Small_Key, 5)
+      Forest Temple Block Push Room: is_adult or can_child_attack or Nuts
+                                             #Glitched -> can_use(Megaton_Hammer))
+
+
+- region_name: Forest Temple Block Push Room
+  dungeon: Forest Temple
+  locations:
+      Forest Temple Eye Switch Chest: Goron_Bracelet and (can_use(Bow) or can_use(Slingshot))
+                                                    #Glitched -> is_adult and (can_use(Bow) or can_use(Slingshot)) and has_bombchus and can_shield and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED))
+  exits:
+      Forest Temple West Corridor: 'True'
+      Forest Temple NW Outdoors Upper: can_use(Hover_Boots) or (logic_forest_outside_backdoor and is_adult and Goron_Bracelet)
+                                                      #Glitched -> CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::NOVICE) or (Bombs and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE)))
+      Forest Temple NW Corridor Twisted: is_adult and Goron_Bracelet and count(Forest_Temple_Small_Key, 2)
+                                                      #Glitched -> ((is_adult and (Bow or Hookshot or can_use(Slingshot)) and has_bombchus and can_shield and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED)) or
+                                                      #                      (Bombs and Goron_Bracelet and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))) and count(Forest_Temple_Small_Key, 2))
+      Forest Temple NW Corridor Straightened: can_use(Bow) and Goron_Bracelet and count(Forest_Temple_Small_Key, 2)
+                                                      #Glitched -> ((is_adult and has_bombchus and can_shield and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED)) or
+                                                      #                      (is_child and Bombs and Goron_Bracelet and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))) and (can_use(Bow) or can_use(Slingshot)) and count(Forest_Temple_Small_Key, 2))
+
+
+- region_name: Forest Temple NW Corridor Twisted
+  dungeon: Forest Temple
+  exits:
+      Forest Temple Block Push Room: count(Forest_Temple_Small_Key, 2)
+      Forest Temple Red Poe Room: count(Forest_Temple_Small_Key, 3)
+
+
+- region_name: Forest Temple NW Corridor Straightened
+  dungeon: Forest Temple
+  locations:
+      Forest Temple Boss Key Chest: 'True'
+  exits:
+      Forest Temple Below Boss Key Chest: 'True'
+      Forest Temple Block Push Room: count(Forest_Temple_Small_Key, 2)
+
+
+- region_name: Forest Temple Red Poe Room
+  dungeon: Forest Temple
+  events:
+      Forest Temple Joelle: can_use(Bow)
+  locations:
+      Forest Temple Red Poe Chest: Forest_Temple_Joelle
+  exits:
+      Forest Temple NW Corridor Twisted: count(Forest_Temple_Small_Key, 3)
+      Forest Temple Upper Stalfos: 'True'
+
+
+- region_name: Forest Temple Upper Stalfos
+  dungeon: Forest Temple
+  locations:
+      Forest Temple Bow Chest: is_adult or Kokiri_Sword
+                                             #Glitched -> can_use(Megaton_Hammer))
+  exits:
+      Forest Temple Red Poe Room: is_adult or Kokiri_Sword
+                                           #Glitched -> can_use(Megaton_Hammer))
+      Forest Temple Blue Poe Room: is_adult or Kokiri_Sword
+                                           #Glitched -> can_use(Megaton_Hammer))
+
+
+- region_name: Forest Temple Blue Poe Room
+  dungeon: Forest Temple
+  events:
+      Forest Temple Beth: can_use(Bow)
+  locations:
+      Forest Temple Blue Poe Chest: Forest_Temple_Beth
+  exits:
+      Forest Temple Upper Stalfos: 'True'
+      Forest Temple NE Corridor Straightened: count(Forest_Temple_Small_Key, 4)
+
+
+- region_name: Forest Temple NE Corridor Straightened
+  dungeon: Forest Temple
+  exits:
+      Forest Temple Blue Poe Room: count(Forest_Temple_Small_Key, 4)
+      Forest Temple Frozen Eye Room: count(Forest_Temple_Small_Key, 5)
+
+
+- region_name: Forest Temple NE Corridor Twisted
+  dungeon: Forest Temple
+  exits:
+      Forest Temple Frozen Eye Room: count(Forest_Temple_Small_Key, 5)
+      Forest Temple Falling Room: 'True'
+
+
+- region_name: Forest Temple Frozen Eye Room
+  dungeon: Forest Temple
+  exits:
+      Forest Temple NE Corridor Straightened: count(Forest_Temple_Small_Key, 5)
+      Forest Temple NE Corridor Twisted: count(Forest_Temple_Small_Key, 5) and (can_use(Bow) or can_use(Dins_Fire))
+
+
+- region_name: Forest Temple Falling Room
+  dungeon: Forest Temple
+  locations:
+      Forest Temple Falling Ceiling Room Chest: 'True'
+  exits:
+      Forest Temple NE Outdoors Lower: 'True'
+      Forest Temple Green Poe Room: 'True'
+
+
+- region_name: Forest Temple Green Poe Room
+  dungeon: Forest Temple
+  events:
+      Forest Temple Amy: can_use(Bow)
+  exits:
+      Forest Temple Falling Room: 'True'
+      Forest Temple East Corridor: Forest_Temple_Amy
+
+
+- region_name: Forest Temple East Corridor
+  dungeon: Forest Temple
+  exits:
+      Forest Temple Lobby: is_adult or can_child_attack or Nuts
+                                            #Glitched -> can_use(Megaton_Hammer))
+      Forest Temple Green Poe Room: is_adult or can_child_attack or Nuts
+                                            #Glitched -> can_use(Megaton_Hammer))
+
+
+- region_name: Forest Temple Boss Region
+  dungeon: Forest Temple
+  locations:
+      Forest Temple Basement Chest: 'True'
+      Forest Temple GS Basement: hookshot_or_boomerang
+                                                  #Glitched -> Bombs and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))
+  exits:
+      Forest Temple Lobby: 'True'
+      Forest Temple Boss Room: Forest_Temple_Boss_Key
+
+
+- region_name: Forest Temple Boss Room
+  dungeon: Forest Temple
+  events:
+      Forest Temple Clear: "(is_adult or Kokiri_Sword) and (can_use(Hookshot) or can_use(Bow) or can_use(Slingshot))"
+  locations:
+      Forest Temple Phantom Ganon Heart: Forest_Temple_Clear
+      Phantom Ganon: Forest_Temple_Clear
+
+############################
+#   MASTER QUEST DUNGEON   #
+############################
+
+- region_name: Forest Temple MQ Lobby
+  dungeon: Forest Temple
+  locations:
+      Forest Temple MQ First Room Chest: is_adult or Bombs or can_use(Sticks) or Nuts or can_use(Boomerang) or can_use(Dins_Fire) or Kokiri_Sword or can_use(Slingshot)
+      Forest Temple MQ GS First Hallway: hookshot_or_boomerang
+  exits:
+      Forest Temple Entryway: 'True'
+      Forest Temple MQ Central Area: count(Forest_Temple_Small_Key, 1) and (is_adult or can_child_attack or Nuts)
+
+
+- region_name: Forest Temple MQ Central Area
+  dungeon: Forest Temple
+  locations:
+      Forest Temple MQ Wolfos Chest: "(can_play(Song_of_Time) or is_child) and (is_adult or can_use(Dins_Fire) or can_use(Sticks) or can_use(Slingshot) or Kokiri_Sword)"
+      Forest Temple MQ GS Block Push Room: is_adult or Kokiri_Sword
+      Fairy Pot: has_bottle
+  exits:
+      Forest Temple MQ NW Outdoors: "(is_adult and can_use(Bow)) or (is_child and can_use(Slingshot))"
+      Forest Temple MQ NE Outdoors: "(is_adult and can_use(Bow)) or (is_child and can_use(Slingshot))" #This is as far as child can get
+      Forest Temple MQ After Block Puzzle: is_adult and Goron_Bracelet
+                  #Trick -> is_adult and (Goron_Bracelet or (logic_forest_mq_block_puzzle and has_bombchus and is_adult and can_use(Hookshot)))
+      Forest Temple MQ Outdoor Ledge: 'False'
+                  #Trick -> (logic_forest_mq_hallway_switch_jumpslash and is_adult and can_use(Hover_Boots)) or (logic_forest_mq_hallway_switch_hookshot and is_adult and can_use(Hookshot))
+      Forest Temple MQ Boss Region: Forest_Temple_Jo_and_Beth and Forest_Temple_Amy_and_Meg
+
+
+- region_name: Forest Temple MQ After Block Puzzle
+  dungeon: Forest Temple
+  locations:
+      Forest Temple MQ Boss Key Chest: count(Forest_Temple_Small_Key, 3)
+  exits:
+      Forest Temple MQ Bow Region: count(Forest_Temple_Small_Key, 4)
+      Forest Temple MQ Outdoor Ledge: count(Forest_Temple_Small_Key, 3)
+                  #Trick -> count(Forest_Temple_Small_Key, 3) or (logic_forest_mq_hallway_switch_jumpslash and ((is_adult and can_use(Hookshot)) or logic_forest_outside_backdoor))
+      Forest Temple MQ NW Outdoors: count(Forest_Temple_Small_Key, 2)
+
+
+- region_name: Forest Temple MQ Outdoor Ledge
+  dungeon: Forest Temple
+  locations:
+      Forest Temple MQ Redead Chest: 'True'
+  exits:
+      Forest Temple MQ NW Outdoors: 'True'
+
+
+- region_name: Forest Temple MQ NW Outdoors
+  dungeon: Forest Temple
+  locations:
+      Forest Temple MQ GS Level Island Courtyard: 'True'
+  exits:
+      Forest Temple MQ NE Outdoors: Gold_Scale or (is_adult and (can_use(Iron_Boots) or can_use(Longshot)))
+                  #Trick -> (is_adult and (can_use(Iron_Boots) or can_use(Longshot) or (logic_forest_mq_well_swim and can_use(Hookshot)))) or Gold_Scale
+      Forest Temple MQ Outdoors Top Ledges: is_adult and can_use(Fire_Arrows)
+
+
+- region_name: Forest Temple MQ NE Outdoors
+  dungeon: Forest Temple
+  locations:
+      Forest Temple MQ Well Chest: "(is_adult and can_use(Bow)) or (is_child and can_use(Slingshot))"
+      Forest Temple MQ GS Raised Island Courtyard: hookshot_or_boomerang or
+          (is_adult and can_use(Fire_Arrows) and (can_play(Song_of_Time) or
+          (can_use(Hover_Boots) and logic_forest_door_frame)))
+      Forest Temple MQ GS Well: "(is_adult and ((can_use(Iron_Boots) and can_use(Hookshot)) or
+          can_use(Bow))) or (is_child and can_use(Slingshot))"
+      Deku Baba Sticks: is_adult or Kokiri_Sword or Boomerang
+      Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or
+          has_explosives or can_use(Dins_Fire)
+  exits:
+      Forest Temple MQ Outdoors Top Ledges: is_adult and can_use(Hookshot) and (can_use(Longshot) or can_use(Hover_Boots) or can_play(Song_of_Time))
+      Forest Temple MQ NE Outdoors Ledge: is_adult and can_use(Longshot)
+
+
+- region_name: Forest Temple MQ Outdoors Top Ledges
+  dungeon: Forest Temple
+  locations:
+      Forest Temple MQ Raised Island Courtyard Upper Chest: 'True'
+  exits:
+      Forest Temple MQ NE Outdoors: 'True'
+      Forest Temple MQ NE Outdoors Ledge: 'False'
+                  #Trick -> logic_forest_outdoors_ledge and is_adult and can_use(Hover_Boots)
+
+
+- region_name: Forest Temple MQ NE Outdoors Ledge
+  dungeon: Forest Temple
+  locations:
+      Forest Temple MQ Raised Island Courtyard Lower Chest: 'True'
+  exits:
+      Forest Temple MQ NE Outdoors: 'True'
+      Forest Temple MQ Falling Room: can_play(Song_of_Time)
+
+
+- region_name: Forest Temple MQ Bow Region
+  dungeon: Forest Temple
+  events:
+      Forest Temple Jo and Beth: is_adult and can_use(Bow)
+  locations:
+      Forest Temple MQ Bow Chest: 'True'
+      Forest Temple MQ Map Chest: is_adult and can_use(Bow)
+      Forest Temple MQ Compass Chest: is_adult and can_use(Bow)
+  exits:
+      Forest Temple MQ Falling Room: count(Forest_Temple_Small_Key, 5) and ((is_adult and can_use(Bow)) or can_use(Dins_Fire))
+
+
+- region_name: Forest Temple MQ Falling Room
+  dungeon: Forest Temple
+  events:
+      Forest Temple Amy and Meg: is_adult and can_use(Bow) and count(Forest_Temple_Small_Key, 6)
+  locations:
+      Forest Temple MQ Falling Ceiling Room Chest: 'True'
+  exits:
+      Forest Temple MQ NE Outdoors Ledge: 'True'
+
+
+- region_name: Forest Temple MQ Boss Region
+  dungeon: Forest Temple
+  events:
+      Forest Temple Clear: Forest_Temple_Boss_Key
+  locations:
+      Forest Temple MQ Basement Chest: 'True'
+      Forest Temple Phantom Ganon Heart: Forest_Temple_Boss_Key
+      Phantom Ganon: Forest_Temple_Boss_Key

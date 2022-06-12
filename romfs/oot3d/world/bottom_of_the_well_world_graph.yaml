@@ -1,0 +1,71 @@
+############################
+#    VANILLA/MQ DECIDER    #
+############################
+- region_name: Bottom of the Well Entryway
+  dungeon: Bottom of the Well
+  exits:
+      Bottom of the Well Main Area: bottom_of_the_well_dungeon_mode == vanilla and is_child and (can_child_attack or Nuts)
+                                               #Glitched -> Dungeon::BottomOfTheWell.IsVanilla() and is_child and can_use(Megaton_Hammer))
+      Bottom of the Well MQ Perimeter: bottom_of_the_well_dungeon_mode == mq and is_child
+                                               #Glitched -> Dungeon::BottomOfTheWell.IsMQ()      and CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::INTERMEDIATE) and Longshot)
+      Kakariko Village: 'True'
+
+############################
+#     VANILLA DUNGEON      #
+############################
+
+- region_name: Bottom of the Well Main Area
+  dungeon: Bottom of the Well
+  locations:
+      Bottom of the Well Front Left Fake Wall Chest: logic_lens_botw or can_use(Lens_of_Truth)
+      Bottom of the Well Front Center Bombable Chest: has_explosives
+      Bottom of the Well Right Bottom Fake Wall Chest: logic_lens_botw or can_use(Lens_of_Truth)
+      Bottom of the Well Compass Chest: logic_lens_botw or can_use(Lens_of_Truth)
+      Bottom of the Well Center Skulltula Chest: logic_lens_botw or can_use(Lens_of_Truth)
+      Bottom of the Well Back Left Bombable Chest: "(logic_lens_botw or can_use(Lens_of_Truth)) and has_explosives"
+      Bottom of the Well Freestanding Key: Sticks or can_use(Dins_Fire)
+      Bottom of the Well Lens of Truth Chest: can_play(Zeldas_Lullaby) and (Kokiri_Sword or (Sticks and logic_child_deadhand))
+      Bottom of the Well Invisible Chest: can_play(Zeldas_Lullaby) and (logic_lens_botw or can_use(Lens_of_Truth))
+      Bottom of the Well Underwater Front Chest: can_play(Zeldas_Lullaby)
+      Bottom of the Well Underwater Left Chest: can_play(Zeldas_Lullaby)
+      Bottom of the Well Map Chest: has_explosives or (((count(Bottom_of_the_Well_Small_Key, 3) and
+          (logic_lens_botw or can_use(Lens_of_Truth))) or can_use(Dins_Fire)) and Goron_Bracelet)
+      Bottom of the Well Fire Keese Chest: count(Bottom_of_the_Well_Small_Key, 3) and (logic_lens_botw or can_use(Lens_of_Truth))
+      Bottom of the Well Like Like Chest: count(Bottom_of_the_Well_Small_Key, 3) and (logic_lens_botw or can_use(Lens_of_Truth))
+      Bottom of the Well GS West Inner Room: Boomerang and (logic_lens_botw or can_use(Lens_of_Truth)) and count(Bottom_of_the_Well_Small_Key, 3)
+      Bottom of the Well GS East Inner Room: Boomerang and (logic_lens_botw or can_use(Lens_of_Truth)) and count(Bottom_of_the_Well_Small_Key, 3)
+      Bottom of the Well GS Like Like Cage: count(Bottom_of_the_Well_Small_Key, 3) and (logic_lens_botw or can_use(Lens_of_Truth)) and Boomerang
+      Stick Pot: 'True'
+      Nut Pot: 'True'
+  exits:
+      Bottom of the Well Entryway: 'True'
+
+############################
+#   MASTER QUEST DUNGEON   #
+############################
+
+- region_name: Bottom of the Well MQ Perimeter
+  dungeon: Bottom of the Well
+  locations:
+      Bottom of the Well MQ Compass Chest: Kokiri_Sword or (Sticks and logic_child_deadhand)
+      Bottom of the Well MQ Dead Hand Freestanding Key: has_explosives
+                  #Trick -> has_explosives or (logic_bot_w_mq_dead_hand_key and Boomerang)
+      Bottom of the Well MQ GS Basement: can_child_attack
+      Bottom of the Well MQ GS Coffin Room: can_child_attack and count(Bottom_of_the_Well_Small_Key, 2)
+      Wall Fairy: Slingshot
+  exits:
+      Bottom of the Well Entryway: 'True'
+      Bottom of the Well MQ Middle: can_play(Zeldas_Lullaby)
+                  #Trick -> can_play(Zeldas_Lullaby) or (logic_bot_w_mq_pits and has_explosives)
+
+
+- region_name: Bottom of the Well MQ Middle
+  dungeon: Bottom of the Well
+  locations:
+      Bottom of the Well MQ Map Chest: 'True'
+      Bottom of the Well MQ Lens of Truth Chest: has_explosives and count(Bottom_of_the_Well_Small_Key, 2)
+      Bottom of the Well MQ East Inner Room Freestanding Key: 'True'
+      Bottom of the Well MQ GS West Inner Room: can_child_attack and has_explosives
+                  #Trick -> can_child_attack and (logic_bot_w_mq_pits or has_explosives)
+  exits:
+      Bottom of the Well MQ Perimeter: 'True'

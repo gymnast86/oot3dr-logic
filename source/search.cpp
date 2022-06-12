@@ -2,6 +2,7 @@
 #include "search.hpp"
 #include "pool_functions.hpp"
 #include "file_system_defs.hpp"
+#include "debug.hpp"
 #include "oot3d/oot3d_world.hpp"
 
 #include <algorithm>
@@ -62,7 +63,6 @@ Search::~Search()
 // Oot3d: Propogate age and time of day combinations
 void Search::SetStartingProperties(World* world)
 {
-    //DebugLog("Setting starting time of day for Oot3d world");
     // Start day/night propogation for oot3d worlds
     if (world->GetType() == WorldType::Oot3d)
     {
@@ -92,8 +92,10 @@ void Search::SetStartingProperties(World* world)
     }
 }
 
-void Search::FindLocations(int worldToSearch /*= -1*/)
+void Search::FindLocations(int tempWorldToSearch /*= -1*/)
 {
+    int oldWorldToSearch = worldToSearch;
+    worldToSearch = tempWorldToSearch;
     bool newThingsFound = false;
 
     do
@@ -127,6 +129,7 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
                 newThingsFound = true;
                 eventItr = eventsToTry.erase(eventItr);
                 ownedItems.emplace(event->item, world);
+                sphereItems.emplace(event->item, world);
             }
             else
             {
@@ -149,6 +152,27 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
                 continue;
             }
             auto& requirement = exit->GetRequirement();
+
+            // If the requirement has a set of fulfillment items, then test to see
+            // if any of those items were found last iteration. If none of them were
+            // then don't test the requirement.
+            if (requirement.fulfillmentItems.size() > 0 && !ageTimeSpread[world])
+            {
+                bool potentialfulfillment = false;
+                for (const auto& item : sphereItems)
+                {
+                    if (requirement.fulfillmentItems.count(item) > 0)
+                    {
+                        potentialfulfillment = true;
+                        break;
+                    }
+                }
+                if (!potentialfulfillment)
+                {
+                    exitItr++;
+                    continue;
+                }
+            }
             // std::cout << "Now exploring [W" << std::to_string(world->GetWorldID()) << "] exit " << exit->GetOriginalName() << std::endl;
             if (world->EvaluateRequirement(requirement, this, exit, EvaluateType::Exit)) {
                 // If we're generating the playthrough, add it to the entranceSpheres if it's randomized
@@ -187,16 +211,40 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
                 locItr++;
                 continue;
             }
-            auto& requirement = locAccess->requirement;
-            // std::cout << "Now trying " << location->name << ": ";
             // Erase locations which have already been found. Some item locations
             // can be accessed from multiple areas, so this check is necessary
             // in those circumstances
             if (visitedLocations.count(location) > 0)
             {
                 locItr = locationsToTry.erase(locItr);
+                continue;
             }
-            else if (world->EvaluateRequirement(requirement, this, locAccess, EvaluateType::Location))
+
+            auto& requirement = locAccess->requirement;
+            // If the requirement has a set of fulfillment items, then test to see
+            // if any of those items were found last iteration. If none of them were
+            // then don't test the requirement.
+            //
+            // NOTE: This is a good idea, but needs to properly account for
+            // agetimes as well. May go back to implement later
+            if (requirement.fulfillmentItems.size() > 0 && sphereItems.size() > 0 && !ageTimeSpread[world])
+            {
+                bool potentialfulfillment = false;
+                for (const auto& item : sphereItems)
+                {
+                    if (requirement.fulfillmentItems.count(item) > 0)
+                    {
+                        potentialfulfillment = true;
+                        break;
+                    }
+                }
+                if (!potentialfulfillment)
+                {
+                    locItr++;
+                    continue;
+                }
+            }
+            if (world->EvaluateRequirement(requirement, this, locAccess, EvaluateType::Location))
             {
                 // std::cout << "\t" + location->GetName() + " in world " + std::to_string(location->GetWorld()->GetWorldID()));
                 newThingsFound = true;
@@ -210,6 +258,10 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
                 locItr++; // Only increment if we don't erase
             }
         }
+
+        // Clear the sphere items and spread age times for the next iteration
+        sphereItems.clear();
+        ageTimeSpread.clear();
         // Now apply any effects of newly accessible locations for the next iteration.
         // This lets us properly keep track of spheres for playthrough generation
         for (auto locAccess : accessibleThisIteration)
@@ -220,6 +272,7 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
             if (currentItem.GetID() != ItemID::NONE)
             {
                 ownedItems.insert(currentItem);
+                sphereItems.insert(currentItem);
                 if (searchMode == SearchMode::GeneratePlaythrough /*&& location has major item*/)
                 {
                     playthroughSpheres.back().push_back(location);
@@ -236,6 +289,7 @@ void Search::FindLocations(int worldToSearch /*= -1*/)
         sphere++;
     }
     while (newThingsFound);
+    worldToSearch = oldWorldToSearch;
 }
 
 // Explore the given area, and recursively explore the area's connected to it as
@@ -246,6 +300,12 @@ void Search::Explore(Area* area)
     for (auto& event : area->events)
     {
         eventsToTry.push_back(&event);
+    }
+    for (auto& locAccess : area->locations)
+    {
+        // Add new locations we come across to try them and potentially account
+        // for any items on the next iteration
+        locationsToTry.push_back(&locAccess);
     }
     for (auto& exitPtr : area->exits)
     {
@@ -295,12 +355,6 @@ void Search::Explore(Area* area)
                 exitsToTry.push_front(exit);
             }
         }
-        for (auto& locAccess : area->locations)
-        {
-            // Add new locations we come across to try them and potentially account
-            // for any items on the next iteration
-            locationsToTry.push_back(&locAccess);
-        }
     }
 }
 
@@ -312,14 +366,14 @@ LocationPool GetAccessibleLocations(WorldPool& worlds, ItemPool& items, Location
     DebugLog(std::to_string(worlds[0]->numEvals - oldNum));
     // search.DumpSearchGraph(0, "World0");
     // Filter to only those locations which are allowed
-    return FilterFromPool(allowedLocations, [search](Location* loc){return search.accessibleLocations.count(loc) > 0 && loc->GetCurrentItem().GetID() == ItemID::INVALID;});
+    return FilterFromPool(allowedLocations, [search](Location* loc){return search.accessibleLocations.count(loc) > 0 && loc->GetCurrentItem().GetID() == ItemID::NONE;});
 }
 
 // Will dump a file which can be turned into a visual graph using graphviz
 // https://graphviz.org/download/
 // Use this command to generate the graph: dot -Tsvg <filename> -o world.svg
 // Then, open world.svg in a browser and CTRL + F to find the area of interest
-void Search::DumpSearchGraph(size_t worldId, const std::string filename)
+void Search::DumpSearchGraph(size_t worldId /*= 0*/, const std::string filename /*= "World0"*/)
 {
 
     std::cout << "Now dumping search graph" << std::endl;
@@ -370,7 +424,7 @@ void Search::DumpSearchGraph(size_t worldId, const std::string filename)
         for (const auto& [location, req, locArea] : area->locations) {
             std::string connectedLocation = location->GetName();
             std::string itemAtLocation = "No Item";
-            if (location->GetCurrentItem().GetID() != ItemID::INVALID)
+            if (location->GetCurrentItem().GetID() != ItemID::NONE)
             {
                 itemAtLocation = location->GetCurrentItem().GetName() + " [W" + std::to_string(location->GetCurrentItem().GetWorldID() + 1) + "]";
             }

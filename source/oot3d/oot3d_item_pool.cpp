@@ -95,11 +95,69 @@ static ItemIDPool alwaysItems = {
     ItemID::Oot3dGoronRuby,
     ItemID::Oot3dZoraSapphire,
 
+    ItemID::Oot3dForestTempleBossKey,
+    ItemID::Oot3dFireTempleBossKey,
+    ItemID::Oot3dWaterTempleBossKey,
+    ItemID::Oot3dSpiritTempleBossKey,
+    ItemID::Oot3dShadowTempleBossKey,
     ItemID::Oot3dGanonsCastleBossKey,
+
     ItemID::Oot3dThievesHideoutSmallKey,
     ItemID::Oot3dThievesHideoutSmallKey,
     ItemID::Oot3dThievesHideoutSmallKey,
     ItemID::Oot3dThievesHideoutSmallKey,
+
+    ItemID::Oot3dForestTempleSmallKey,
+    ItemID::Oot3dForestTempleSmallKey,
+    ItemID::Oot3dForestTempleSmallKey,
+    ItemID::Oot3dForestTempleSmallKey,
+    ItemID::Oot3dForestTempleSmallKey,
+
+    ItemID::Oot3dFireTempleSmallKey,
+    ItemID::Oot3dFireTempleSmallKey,
+    ItemID::Oot3dFireTempleSmallKey,
+    ItemID::Oot3dFireTempleSmallKey,
+    ItemID::Oot3dFireTempleSmallKey,
+    ItemID::Oot3dFireTempleSmallKey,
+    ItemID::Oot3dFireTempleSmallKey,
+    ItemID::Oot3dFireTempleSmallKey,
+
+    ItemID::Oot3dWaterTempleSmallKey,
+    ItemID::Oot3dWaterTempleSmallKey,
+    ItemID::Oot3dWaterTempleSmallKey,
+    ItemID::Oot3dWaterTempleSmallKey,
+    ItemID::Oot3dWaterTempleSmallKey,
+    ItemID::Oot3dWaterTempleSmallKey,
+
+    ItemID::Oot3dShadowTempleSmallKey,
+    ItemID::Oot3dShadowTempleSmallKey,
+    ItemID::Oot3dShadowTempleSmallKey,
+    ItemID::Oot3dShadowTempleSmallKey,
+    ItemID::Oot3dShadowTempleSmallKey,
+
+    ItemID::Oot3dSpiritTempleSmallKey,
+    ItemID::Oot3dSpiritTempleSmallKey,
+    ItemID::Oot3dSpiritTempleSmallKey,
+    ItemID::Oot3dSpiritTempleSmallKey,
+    ItemID::Oot3dSpiritTempleSmallKey,
+
+    ItemID::Oot3dBottomOfTheWellSmallKey,
+    ItemID::Oot3dBottomOfTheWellSmallKey,
+    ItemID::Oot3dBottomOfTheWellSmallKey,
+
+    ItemID::Oot3dGerudoTrainingGroundSmallKey,
+    ItemID::Oot3dGerudoTrainingGroundSmallKey,
+    ItemID::Oot3dGerudoTrainingGroundSmallKey,
+    ItemID::Oot3dGerudoTrainingGroundSmallKey,
+    ItemID::Oot3dGerudoTrainingGroundSmallKey,
+    ItemID::Oot3dGerudoTrainingGroundSmallKey,
+    ItemID::Oot3dGerudoTrainingGroundSmallKey,
+    ItemID::Oot3dGerudoTrainingGroundSmallKey,
+    ItemID::Oot3dGerudoTrainingGroundSmallKey,
+
+    ItemID::Oot3dGanonsCastleSmallKey,
+    ItemID::Oot3dGanonsCastleSmallKey,
+    ItemID::Oot3dGanonsCastleSmallKey,
 };
 
 ItemIDPool GenerateOot3dItemPool(SettingsMap& settings)
@@ -113,7 +171,7 @@ ItemIDPool GenerateOot3dItemPool(SettingsMap& settings)
 
     itemPool.insert(itemPool.end(), alwaysItems.begin(), alwaysItems.end());
 
-    for (int i = 0; i < 50; i++)
+    for (int i = 0; i < 100; i++)
     {
         itemPool.push_back(ItemID::Oot3dGoldSkulltulaToken);
     }

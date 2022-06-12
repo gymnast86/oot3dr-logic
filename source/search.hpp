@@ -23,8 +23,8 @@ public:
     Search(const SearchMode& searchMode_, WorldPool* worlds_, const ItemPool& items, const int worldToSearch_ = -1);
     ~Search();
 
-    void FindLocations(int worldToSearch = -1);
-    void DumpSearchGraph(size_t worldId, const std::string filename);
+    void FindLocations(int tempWorldToSearch = -1);
+    void DumpSearchGraph(size_t worldId = 0, const std::string filename = "World0");
 private:
     void SetStartingProperties(World* world);
     void Explore(Area* area);
@@ -35,6 +35,7 @@ public:
     int worldToSearch = -1;
     int sphere = 0;
     ItemMultiSet ownedItems = {};
+    ItemMultiSet sphereItems = {};
     LocationSet accessibleLocations = {};
     std::list<Event*> eventsToTry = {};
     std::list<Entrance*> exitsToTry = {};
@@ -46,6 +47,7 @@ public:
     // Oot3D Specific Stuff
     // areaTime maps an Area Pointer to what times of day it has
     std::unordered_map<Area*, uint8_t> areaTime = {};
+    std::unordered_map<World*, bool> ageTimeSpread;
 
     // Playthrough spheres
     std::list<std::list<Location*>> playthroughSpheres = {};

@@ -71,6 +71,6 @@
     void PrintTiming(const std::string& name)
     {
         double seconds = (timers[name].end - timers[name].start)/TICKS_PER_SEC;
-        std::cout << "Timing took " << std::to_string(seconds) << " seconds" << std::endl;
+        std::cout << name << " timing took " << std::to_string(seconds) << " seconds" << std::endl;
     }
 #endif

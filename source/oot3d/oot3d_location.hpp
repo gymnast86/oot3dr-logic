@@ -4,7 +4,7 @@
 
 #include "../../patch_code/oot3d/src/spoiler_data.h"
 
-enum class LocationType {
+enum class Oot3dLocationType {
     Base,
     Chest,
     Collectable,
@@ -19,7 +19,7 @@ enum class LocationType {
     INVALID,
 };
 
-enum class LocationCategory {
+enum class Oot3dLocationCategory {
     INVALID,
     KokiriForest,
     Forest,
@@ -97,12 +97,12 @@ class Oot3dLocation : public Location {
 public:
 
     Oot3dLocation();
-    Oot3dLocation(const LocationID& id_, std::string name, LocationType type_, uint8_t scene_, uint8_t flag_, const ItemID& vanillaItem, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_);
+    Oot3dLocation(const LocationID& id_, std::string name, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, const ItemID& vanillaItem, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_);
     ~Oot3dLocation();
 
     std::string TypeString() const override;
 
-    LocationType type;
+    Oot3dLocationType type;
     uint8_t scene = 0;
     uint8_t flag = 0;
     ItemID vanillaItem = ItemID::NONE;
@@ -110,9 +110,9 @@ public:
     SpoilerCollectionCheckGroup collectionCheckGroup;
 };
 
-LocationType NameToOot3dLocationType(const std::string& name);
+Oot3dLocationType NameToOot3dLocationType(const std::string& name);
 
-LocationCategory NameToOot3dLocationCategory(const std::string& name);
+Oot3dLocationCategory NameToOot3dLocationCategory(const std::string& name);
 
 SpoilerCollectionCheckType NameToOot3dSpoilerCheckType(const std::string& name);
 

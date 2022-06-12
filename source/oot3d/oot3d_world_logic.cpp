@@ -10,6 +10,7 @@ static std::list<uint8_t> allAgeTimes = {OOT3D_CHILD_DAY, OOT3D_CHILD_NIGHT, OOT
 
 bool Oot3dWorld::EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType /*= EvaluateType::NONE*/)
 {
+    numEvals++;
     Oot3dArea* parentArea = nullptr;
     Oot3dArea* connectedArea = nullptr;
     Event* event = nullptr;
@@ -49,6 +50,7 @@ bool Oot3dWorld::EvaluateRequirement(const Requirement& req, Search* search, voi
                 {
                     // std::cout << "Spreading ageTime " << std::to_string(ageTime) << " to " << connectedArea->name << std::endl;
                     search->areaTime[connectedArea] |= parentAreaAgeTime;
+                    search->ageTimeSpread[this] = true;
                     exitSuccess = true;
                 }
                 else
@@ -67,6 +69,7 @@ bool Oot3dWorld::EvaluateRequirement(const Requirement& req, Search* search, voi
                         {
                             exitSuccess = true;
                             search->areaTime[connectedArea] |= ageTime;
+                            search->ageTimeSpread[this] = true;
                         }
                     }
                 }
@@ -110,52 +113,105 @@ bool Oot3dWorld::EvaluateRequirement(const Requirement& req, Search* search, voi
 
 bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* search, void* object, EvaluateType evalType, uint8_t ageTime)
 {
-    numEvals++;
     uint32_t expectedCount = 0;
     ItemID itemId;
     Item item;
     AreaID areaId;
     Requirement newReq;
     uint8_t newAgeTime;
+    int reqHearts;
+    int curHearts;
+    bool doubleDefense;
+    int multiplier;
+    int reqEffectiveHealth;
+    int curEffectiveHealth;
+    int reqSeconds;
+    int curMaxSeconds;
+    bool fewerTunicRequirements;
+    bool canUseTunic;
     switch(req.type)
     {
         case RequirementType::TRUE:
             return true;
+
         case RequirementType::FALSE:
             return false;
+
         case RequirementType::OR:
             return std::any_of(req.args.begin(), req.args.end(), [&](const Requirement::Argument& arg){return EvaluateRequirementWithAgeTime(std::get<Requirement>(arg), search, object, evalType, ageTime);});
+
         case RequirementType::AND:
             return std::all_of(req.args.begin(), req.args.end(), [&](const Requirement::Argument& arg){return EvaluateRequirementWithAgeTime(std::get<Requirement>(arg), search, object, evalType, ageTime);});
+
         case RequirementType::NOT:
             return !EvaluateRequirementWithAgeTime(std::get<Requirement>(req.args[0]), search, object, evalType, ageTime);
+
         case RequirementType::ITEM:
             itemId = std::get<ItemID>(req.args[0]);
             item = Item(itemId, this);
             return search->ownedItems.count(item) > 0;
+
         case RequirementType::COUNT:
             expectedCount = std::get<int>(req.args[0]);
             itemId = std::get<ItemID>(req.args[1]);
             item = Item(itemId, this);
             return search->ownedItems.count(item) >= expectedCount;
+
         case RequirementType::CHILD_DAY:
             return ageTime & OOT3D_CHILD_DAY;
+
         case RequirementType::CHILD_NIGHT:
             return ageTime & OOT3D_CHILD_NIGHT;
+
         case RequirementType::ADULT_DAY:
             return ageTime & OOT3D_ADULT_DAY;
+
         case RequirementType::ADULT_NIGHT:
             return ageTime & OOT3D_ADULT_NIGHT;
+
         case RequirementType::AT:
             areaId = std::get<AreaID>(req.args[0]);
             newReq = std::get<Requirement>(req.args[1]);
             newAgeTime = search->areaTime[areas[areaId].get()];
             return EvaluateRequirementWithAgeTime(newReq, search, object, evalType, newAgeTime);
+
+        case RequirementType::HEARTS:
+            reqHearts = std::get<int>(req.args[0]);
+            curHearts = search->ownedItems.count(Item(ItemID::Oot3dHeartContainer, this)) + (search->ownedItems.count(Item(ItemID::Oot3dPieceOfHeart, this)) >> 2); // Heart Containers + (Pieces of Heart / 4)
+            return  curHearts >= reqHearts;
+
+        case RequirementType::EFFECTIVE_HEALTH:
+            reqEffectiveHealth = std::get<int>(req.args[0]);
+            multiplier = std::get<int>(req.args[1]);
+            curHearts = search->ownedItems.count(Item(ItemID::Oot3dHeartContainer, this)) + (search->ownedItems.count(Item(ItemID::Oot3dPieceOfHeart, this)) >> 2); // Heart Containers + (Pieces of Heart / 4)
+            doubleDefense = search->ownedItems.count(Item(ItemID::Oot3dDoubleDefense, this)) > 0;
+            //Number of half heart hits to die, ranges from 1 to 160
+            curEffectiveHealth = ((curHearts << (2 + doubleDefense)) >> multiplier) + ((curHearts << (2 + doubleDefense)) % (1 << multiplier) > 0);
+            return curEffectiveHealth >= reqEffectiveHealth;
+
+        case RequirementType::FIRE_TIMER:
+            [[fallthrough]];
+        case RequirementType::WATER_TIMER:
+            if (req.type == RequirementType::FIRE_TIMER)
+            {
+                canUseTunic = ageTime & OOT3D_IS_ADULT && (search->ownedItems.count(Item(ItemID::Oot3dGoronTunic, this)) || search->ownedItems.count(Item(ItemID::Oot3dBuyGoronTunic, this)));
+            }
+            else
+            {
+                canUseTunic = ageTime & OOT3D_IS_ADULT && (search->ownedItems.count(Item(ItemID::Oot3dZoraTunic, this)) || search->ownedItems.count(Item(ItemID::Oot3dBuyZoraTunic, this)));
+            }
+            reqSeconds = std::get<int>(req.args[0]);
+            fewerTunicRequirements = std::get<bool>(req.args[1]);
+            curHearts = search->ownedItems.count(Item(ItemID::Oot3dHeartContainer, this)) + (search->ownedItems.count(Item(ItemID::Oot3dPieceOfHeart, this)) >> 2);
+            curMaxSeconds = canUseTunic ? 255 : (fewerTunicRequirements) ? (curHearts * 8) : 0;
+            return curMaxSeconds > reqSeconds;
+
         case RequirementType::HAS_STONES:
             expectedCount = std::get<int>(req.args[0]);
             return search->ownedItems.count(Item(ItemID::Oot3dKokiriEmerald, this)) +
                    search->ownedItems.count(Item(ItemID::Oot3dGoronRuby, this))     +
                    search->ownedItems.count(Item(ItemID::Oot3dZoraSapphire, this))  > expectedCount;
+
         case RequirementType::HAS_MEDALLIONS:
             expectedCount = std::get<int>(req.args[0]);
             return search->ownedItems.count(Item(ItemID::Oot3dForestMedallion, this)) +
@@ -164,6 +220,7 @@ bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* 
                    search->ownedItems.count(Item(ItemID::Oot3dSpiritMedallion, this)) +
                    search->ownedItems.count(Item(ItemID::Oot3dShadowMedallion, this)) +
                    search->ownedItems.count(Item(ItemID::Oot3dLightMedallion, this))  > expectedCount;
+
         case RequirementType::HAS_REWARDS:
             expectedCount = std::get<int>(req.args[0]);
             return search->ownedItems.count(Item(ItemID::Oot3dKokiriEmerald, this))   +
@@ -175,6 +232,7 @@ bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* 
                    search->ownedItems.count(Item(ItemID::Oot3dSpiritMedallion, this)) +
                    search->ownedItems.count(Item(ItemID::Oot3dShadowMedallion, this)) +
                    search->ownedItems.count(Item(ItemID::Oot3dLightMedallion, this))  > expectedCount;
+
         default:
             std::cout << "Default hit when evaluating requirement. Something probably went wrong." << std::endl;
             std::cout << "Type: " << RequirementToName(req.type) << std::endl;
@@ -188,6 +246,7 @@ void Oot3dWorld::ExpandTimePassToD(uint8_t connectedAreaAgeTime, uint8_t day, ui
 {
     if (!(connectedAreaAgeTime & day) != !(connectedAreaAgeTime & night))
     {
+        search->ageTimeSpread[this] = true;
         auto connectedArea = exit->GetConnectedArea();
         search->areaTime[connectedArea] |= day | night;
         uint8_t rootAgeTime = search->areaTime[GetRootArea()];
@@ -227,6 +286,7 @@ void Oot3dWorld::ExpandTimePassToD(uint8_t connectedAreaAgeTime, uint8_t day, ui
 void Oot3dWorld::ExpandToDAreas(Search* search, uint8_t ageTimeToExpand)
 {
     DebugLog("Expanding " + Oot3dAgeTimeToString(ageTimeToExpand));
+    search->ageTimeSpread[this] = true;
     std::unordered_set<Area*> searchedAreas = {};
     std::list<Entrance*> exitQueue = {};
     for (auto& exit : GetRootArea()->exits)
