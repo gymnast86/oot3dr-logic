@@ -36,6 +36,7 @@ enum class Oot3dLocationCategory {
     Gerudo,
     GerudoValley,
     GerudoFortress,
+    ThievesHideout,
     HauntedWasteland,
     DesertColossus,
     InnerMarket,
@@ -97,7 +98,8 @@ class Oot3dLocation : public Location {
 public:
 
     Oot3dLocation();
-    Oot3dLocation(const LocationID& id_, std::string name, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, const ItemID& vanillaItem, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_);
+    Oot3dLocation(const LocationID& id_, std::string name, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, std::unordered_set<Oot3dLocationCategory> categories_,
+                  const ItemID& vanillaItem_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_);
     ~Oot3dLocation();
 
     std::string TypeString() const override;
@@ -105,6 +107,7 @@ public:
     Oot3dLocationType type;
     uint8_t scene = 0;
     uint8_t flag = 0;
+    std::unordered_set<Oot3dLocationCategory> categories = {};
     ItemID vanillaItem = ItemID::NONE;
     SpoilerCollectionCheck collectionCheck;
     SpoilerCollectionCheckGroup collectionCheckGroup;

@@ -18,6 +18,7 @@
 #define VALID_ADVANCEMENT(ref, advancementStr) if (advancementStr != "true" && advancementStr != "false") {std::cout << "ERROR: Unknown advancement value \"" << advancementStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
 #define VALID_LOCATION_CHECK(ref, locName) if (NameToLocationID(locName) == LocationID::INVALID) {std::cout << "ERROR: Unknown location name \"" << locName << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
 #define VALID_LOCATION_TYPE(ref, typeStr) if (NameToOot3dLocationType(typeStr) == Oot3dLocationType::INVALID) {std::cout << "ERROR: Unknown location type \"" << typeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
+#define VALID_LOCATION_CATEGORY(ref, catStr) if (NameToOot3dLocationCategory(catStr) == Oot3dLocationCategory::INVALID) {std::cout << "ERROR: Unknown location category \"" << catStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
 #define VALID_CHECK_TYPE(ref, checkTypeStr) if (NameToOot3dSpoilerCheckType(checkTypeStr) == SpoilerCollectionCheckType::SPOILER_CHK_INVALID) {std::cout << "Unknown location check_type \"" << checkTypeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
 #define VALID_CHECK_GROUP(ref, checkGroupStr) if (NameToOot3dSpoilerCheckGroup(checkGroupStr) == SpoilerCollectionCheckGroup::GROUP_INVALID) {std::cout << "Unknown location check_group \"" << checkGroupStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_LOCATION_VALUE;}
 #define VALID_AREA_CHECK(ref, areaName) if (NameToAreaID(areaName) == AreaID::INVALID) {std::cout << "ERROR: Unknown area name \"" << areaName << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_AREA_VALUE;}
@@ -54,7 +55,6 @@ WorldBuildingError CheckValidLocationFields(const ryml::NodeRef& location)
     YAML_FIELD_CHECK(location, "scene", WorldBuildingError::MISSING_LOCATION_FIELD);
     YAML_FIELD_CHECK(location, "flag", WorldBuildingError::MISSING_LOCATION_FIELD);
     YAML_FIELD_CHECK(location, "vanilla_item", WorldBuildingError::MISSING_LOCATION_FIELD);
-    YAML_FIELD_CHECK(location, "categories", WorldBuildingError::MISSING_LOCATION_FIELD);
     YAML_FIELD_CHECK(location, "check_type", WorldBuildingError::MISSING_LOCATION_FIELD);
     YAML_FIELD_CHECK(location, "check_type_arg1", WorldBuildingError::MISSING_LOCATION_FIELD);
     YAML_FIELD_CHECK(location, "check_type_arg2", WorldBuildingError::MISSING_LOCATION_FIELD);
@@ -127,12 +127,22 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         const std::string arg1Str = SubstrToString(location["check_type_arg1"].val());
         const std::string arg2Str = SubstrToString(location["check_type_arg2"].val());
         const std::string checkGroupStr = SubstrToString(location["check_group"].val());
+        std::unordered_set<Oot3dLocationCategory> categories = {};
 
         // Check each field for proper values
         VALID_LOCATION_CHECK(location, name);
         VALID_LOCATION_TYPE(location, typeStr);
         VALID_UINT8_T(location, sceneStr, "scene");
         VALID_UINT8_T(location, flagStr, "flag");
+        if (location.has_child("categories"))
+        {
+            for (const auto& category : location["categories"])
+            {
+                std::string catStr = SubstrToString(category.val());
+                VALID_LOCATION_CATEGORY(location, catStr);
+                categories.insert(NameToOot3dLocationCategory(catStr));
+            }
+        }
         VALID_ITEM_CHECK(location, vanillaItemStr);
         VALID_CHECK_TYPE(location, checkTypeStr);
         VALID_UINT8_T(location, arg1Str, "check_type_arg1");
@@ -153,7 +163,7 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         // Create the Spoiler Check object
         auto collectionCheck = SpoilerCollectionCheck(checkType, arg1, arg2);
         // Create the location
-        auto loc = std::make_unique<Oot3dLocation>(locationId, name, type, scene, flag, vanillaItem, collectionCheck, checkGroup, this);
+        auto loc = std::make_unique<Oot3dLocation>(locationId, name, type, scene, flag, categories, vanillaItem, collectionCheck, checkGroup, this);
         // insert the Location into the locations map
         locations.emplace(locationId, std::move(loc));
     }

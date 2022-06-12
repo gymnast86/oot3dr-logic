@@ -6,7 +6,6 @@
   scene: 0xFF
   flag: 0xFF
   vanilla_item: Light Medallion
-  categories:
   check_type: Always Collected
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -18,7 +17,6 @@
   scene: 0xFF
   flag: 0x00
   vanilla_item: Kokiri Emerald
-  categories:
   check_type: Event Check Inf
   check_type_arg1: 0xFF
   check_type_arg2: 0x09
@@ -30,7 +28,6 @@
   scene: 0xFF
   flag: 0x01
   vanilla_item: Goron Ruby
-  categories:
   check_type: Event Check Inf
   check_type_arg1: 0xFF
   check_type_arg2: 0x25
@@ -42,7 +39,6 @@
   scene: 0xFF
   flag: 0x02
   vanilla_item: Zora Sapphire
-  categories:
   check_type: Event Check Inf
   check_type_arg1: 0xFF
   check_type_arg2: 0x37
@@ -54,7 +50,6 @@
   scene: 0xFF
   flag: 0x03
   vanilla_item: Forest Medallion
-  categories:
   check_type: Event Check Inf
   check_type_arg1: 0xFF
   check_type_arg2: 0x48
@@ -66,7 +61,6 @@
   scene: 0xFF
   flag: 0x04
   vanilla_item: Fire Medallion
-  categories:
   check_type: Event Check Inf
   check_type_arg1: 0xFF
   check_type_arg2: 0x49
@@ -78,7 +72,6 @@
   scene: 0xFF
   flag: 0x05
   vanilla_item: Water Medallion
-  categories:
   check_type: Event Check Inf
   check_type_arg1: 0xFF
   check_type_arg2: 0x4A
@@ -90,7 +83,6 @@
   scene: 0xFF
   flag: 0x07
   vanilla_item: Shadow Medallion
-  categories:
   check_type: Event Check Inf
   check_type_arg1: 0xFF
   check_type_arg2: 0x46
@@ -102,7 +94,6 @@
   scene: 0xFF
   flag: 0x06
   vanilla_item: Spirit Medallion
-  categories:
   check_type: Event Check Inf
   check_type_arg1: 0xFF
   check_type_arg2: 0x47
@@ -114,7 +105,6 @@
   scene: 0xFF
   flag: 0xF0
   vanilla_item: Triforce
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9616,7 +9606,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Scarecrow Song
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9628,7 +9617,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Deliver Letter
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9640,7 +9628,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Master Sword
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9652,7 +9639,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Deku Stick Drop
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9664,7 +9650,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Deku Nut Drop
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9676,7 +9661,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Deku Stick Drop
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9688,7 +9672,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Deku Nut Drop
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9700,7 +9683,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Deku Nut Drop
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9712,7 +9694,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Blue Fire
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9724,7 +9705,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Fish
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9736,7 +9716,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Fish
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9748,7 +9727,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Bugs
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9760,7 +9738,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Bugs
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9772,7 +9749,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Bugs
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9784,7 +9760,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Fairy
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9796,7 +9771,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Fairy
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9808,7 +9782,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Fairy
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9820,7 +9793,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Fairy
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9832,7 +9804,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Fairy
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9844,7 +9815,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Fairy
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9856,7 +9826,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Fairy
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9868,7 +9837,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Big Poe
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9880,7 +9848,6 @@
   scene: 0x00
   flag: 0x1E
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9892,7 +9859,6 @@
   scene: 0x00
   flag: 0x1F
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9904,7 +9870,6 @@
   scene: 0x00
   flag: 0x20
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9916,7 +9881,6 @@
   scene: 0x00
   flag: 0x3C
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9928,7 +9892,6 @@
   scene: 0x00
   flag: 0x1D
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9940,7 +9903,6 @@
   scene: 0x00
   flag: 0x34
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9952,7 +9914,6 @@
   scene: 0x00
   flag: 0x16
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9964,7 +9925,6 @@
   scene: 0x00
   flag: 0x17
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9976,7 +9936,6 @@
   scene: 0x00
   flag: 0x1C
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -9988,7 +9947,6 @@
   scene: 0x00
   flag: 0x1B
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10000,7 +9958,6 @@
   scene: 0x00
   flag: 0x30
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10012,7 +9969,6 @@
   scene: 0x00
   flag: 0x32
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10024,7 +9980,6 @@
   scene: 0x00
   flag: 0x33
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10036,7 +9991,6 @@
   scene: 0x00
   flag: 0x06
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10048,7 +10002,6 @@
   scene: 0x00
   flag: 0x0E
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10060,7 +10013,6 @@
   scene: 0x00
   flag: 0x10
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10072,7 +10024,6 @@
   scene: 0x00
   flag: 0x07
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10084,7 +10035,6 @@
   scene: 0x00
   flag: 0x12
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10096,7 +10046,6 @@
   scene: 0x00
   flag: 0x0B
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10108,7 +10057,6 @@
   scene: 0x00
   flag: 0x0B
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10120,7 +10068,6 @@
   scene: 0x00
   flag: 0x38
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10132,7 +10079,6 @@
   scene: 0x00
   flag: 0x0A
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10144,7 +10090,6 @@
   scene: 0x00
   flag: 0x04
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10156,7 +10101,6 @@
   scene: 0x00
   flag: 0x37
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10168,7 +10112,6 @@
   scene: 0x00
   flag: 0x05
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10180,7 +10123,6 @@
   scene: 0x00
   flag: 0x3A
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10192,7 +10134,6 @@
   scene: 0x00
   flag: 0x15
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10204,7 +10145,6 @@
   scene: 0x00
   flag: 0x19
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10216,7 +10156,6 @@
   scene: 0x00
   flag: 0x14
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10228,7 +10167,6 @@
   scene: 0x00
   flag: 0x0D
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10240,7 +10178,6 @@
   scene: 0x00
   flag: 0x0C
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10252,7 +10189,6 @@
   scene: 0x00
   flag: 0x0D
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10264,7 +10200,6 @@
   scene: 0x00
   flag: 0x09
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10276,7 +10211,6 @@
   scene: 0x00
   flag: 0x01
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10288,7 +10222,6 @@
   scene: 0x00
   flag: 0x02
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10300,7 +10233,6 @@
   scene: 0x00
   flag: 0x03
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10312,7 +10244,6 @@
   scene: 0x00
   flag: 0x0F
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10324,7 +10255,6 @@
   scene: 0x00
   flag: 0x08
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10336,7 +10266,6 @@
   scene: 0x00
   flag: 0x11
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10348,7 +10277,6 @@
   scene: 0x00
   flag: 0x1A
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00
@@ -10360,7 +10288,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: None
-  categories:
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00

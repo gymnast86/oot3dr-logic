@@ -4,7 +4,8 @@
 
 Oot3dLocation::Oot3dLocation() {}
 
-Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, const ItemID& vanillaItem_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_)
+Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, std::unordered_set<Oot3dLocationCategory> categories_,
+                             const ItemID& vanillaItem_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_)
 {
     id = id_;
     name = std::move(name_);
@@ -12,6 +13,7 @@ Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, Oot3dLoca
     scene = scene_;
     flag = flag_;
     vanillaItem = vanillaItem_;
+    categories = categories_;
     collectionCheck = collectionCheck_;
     collectionCheckGroup = collectionCheckGroup_;
     world = world_;
@@ -65,6 +67,7 @@ Oot3dLocationCategory NameToOot3dLocationCategory(const std::string& name)
         {"Gerudo", Oot3dLocationCategory::Gerudo},
         {"Gerudo Valley", Oot3dLocationCategory::GerudoValley},
         {"Gerudo Fortress", Oot3dLocationCategory::GerudoFortress},
+        {"Thieves Hideout", Oot3dLocationCategory::ThievesHideout},
         {"Haunted Wasteland", Oot3dLocationCategory::HauntedWasteland},
         {"Desert Colossus", Oot3dLocationCategory::DesertColossus},
         {"Inner Market", Oot3dLocationCategory::InnerMarket},
