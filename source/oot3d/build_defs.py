@@ -2,16 +2,18 @@ import string
 import re
 import sys
 import os
+from pathlib import Path
 # Short script to hack in proper preprocessor directives for oot3d_world_graph_defs.hpp
 # It expects the relative path to oot3d_world_graph_defs.hpp to be provided as the sole
 # argument
 def main():
 
     # Only build the new defs file if it's older than the pre_defs file
-    pre_defs_path = sys.argv[1] + "oot3d_world_graph_pre_defs.hpp"
-    defs_path = sys.argv[1] + "oot3d_world_graph_defs.hpp"
-    if (os.path.getmtime(pre_defs_path) < os.path.getmtime(defs_path)):
-        return None
+    pre_defs_path = Path(sys.argv[1] + "oot3d_world_graph_pre_defs.hpp")
+    defs_path = Path(sys.argv[1] + "oot3d_world_graph_defs.hpp")
+    if (defs_path.exists()):
+        if (os.path.getmtime(pre_defs_path) < os.path.getmtime(defs_path)):
+            return None
 
     print("Building Logic Defs")
     directives = {}

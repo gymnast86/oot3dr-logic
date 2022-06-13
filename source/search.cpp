@@ -259,6 +259,12 @@ void Search::Explore(Area* area)
     {
         eventsToTry.push_back(&event);
     }
+    for (auto& locAccess : area->locations)
+    {
+        // Add new locations we come across to try them and potentially account
+        // for any items on the next iteration
+        locationsToTry.push_back(&locAccess);
+    }
     for (auto& exitPtr : area->exits)
     {
         auto exit = exitPtr.get();
@@ -307,12 +313,6 @@ void Search::Explore(Area* area)
                 // consider them until the next sphere of iteration
                 exitsToTry.push_front(exit);
             }
-        }
-        for (auto& locAccess : area->locations)
-        {
-            // Add new locations we come across to try them and potentially account
-            // for any items on the next iteration
-            locationsToTry.push_back(&locAccess);
         }
     }
 }
