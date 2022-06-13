@@ -48,8 +48,8 @@ void GenerateRandomizer()
         {"shuffle_weird_egg", "Off"},
         {"shuffle_gerudo_token", "Off"},
         {"shuffle_chest_game", "off"},
-        {"shuffle_dungeon_entrances", "On"},
-        {"shuffle_overworld_entrances", "On"},
+        {"shuffle_dungeon_entrances", "off"},
+        {"shuffle_overworld_entrances", "Off"},
         {"small_keys", "vanilla"},
         {"free_scarecrow", "Off"},
         {"big_poe_count", "2"},
@@ -68,7 +68,7 @@ void GenerateRandomizer()
         {"shadow_temple_dungeon_mode", "vanilla"},
         {"bottom_of_the_well_dungeon_mode", "vanilla"},
         {"ice_cavern_dungeon_mode", "vanilla"},
-        {"gerudo_training_grounds_dungeon_mode", "vanilla"},
+        {"gerudo_training_ground_dungeon_mode", "vanilla"},
         {"ganons_castle_dungeon_mode", "vanilla"},
         {"forest_trial_mode", "not_skipped"},
         {"fire_trial_mode", "not_skipped"},
@@ -223,7 +223,7 @@ void GenerateRandomizer()
         {"logic_shadow_trial_mq", "Off"},
         {"logic_light_trial_mq", "Off"},
     };
-    std::vector<SettingsMap> settingsVector = {settings1, settings1};
+    std::vector<SettingsMap> settingsVector = {settings1};
     WorldPool worlds;
     worlds.resize(settingsVector.size());
 

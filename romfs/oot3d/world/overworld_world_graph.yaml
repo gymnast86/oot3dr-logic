@@ -104,7 +104,7 @@
       KF Deku Tree Gossip Stone Left: 'True'
       KF Deku Tree Gossip Stone Right: 'True'
   exits:
-      Deku Tree Entryway: is_child or (shuffle_dungeon_entrances != Off and
+      Deku Tree Entryway: is_child or (shuffle_dungeon_entrances != off and
           (open_forest == open or Showed_Mido_Sword_And_Shield))
       Kokiri Forest: is_adult or open_forest == open or Showed_Mido_Sword_And_Shield
 
@@ -1303,7 +1303,7 @@
       DMC Upper Nearby: 'True'
       DMC Ladder Area Nearby: fire_timer(16) or hearts(3)
       DMC Central Nearby: is_adult and can_use(Goron_Tunic) and can_use(Distant_Scarecrow) and
-          (effective_health(3) or (Fairy and not shuffle_dungeon_entrances) or
+          (effective_health(3) or (Fairy and shuffle_dungeon_entrances != off) or
           can_use(Nayrus_Love))
       DMC Lower Nearby: 'False'
 

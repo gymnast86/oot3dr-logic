@@ -949,6 +949,86 @@
   spanish: Llave del Cofre del Tesoro
   french: Clé de la chasse-aux-trésors
   type: Item
+  get_item_id: 0xDE
+  advancement: true
+
+
+- name: Forest Temple Key Ring
+  spanish: Llavero del Templo del Bosque
+  french: Trousseau du temple de la forêt
+  type: Small Key
+  get_item_id: 0xD5
+  advancement: true
+
+
+- name: Fire Temple Key Ring
+  spanish: Llavero del Templo del Fuego
+  french: Trousseau du temple du feu
+  type: Small Key
+  get_item_id: 0xD6
+  advancement: true
+
+
+- name: Water Temple Key Ring
+  spanish: Llavero del Templo del Agua
+  french: Trousseau du temple de l'eau
+  type: Small Key
+  get_item_id: 0xD7
+  advancement: true
+
+
+- name: Spirit Temple Key Ring
+  spanish: Llavero del Templo del Espíritu
+  french: Trousseau du temple de l'esprit
+  type: Small Key
+  get_item_id: 0xD8
+  advancement: true
+
+
+- name: Shadow Temple Key Ring
+  spanish: Llavero del Templo de las Sombras
+  french: Trousseau du temple de l'ombre
+  type: Small Key
+  get_item_id: 0xD9
+  advancement: true
+
+
+- name: Bottom of the Well Key Ring
+  spanish: Llavero del fondo del pozo
+  french: Trousseau du fond du puits
+  type: Small Key
+  get_item_id: 0xDA
+  advancement: true
+
+
+- name: Gerudo Training Ground Key Ring
+  spanish: Llavero del Centro de Instrucción
+  french: Trousseau du gymnase Gerudo
+  type: Small Key
+  get_item_id: 0xDB
+  advancement: true
+
+
+- name: Thieves Hideout Key Ring
+  spanish: Llavero de la Fortaleza Gerudo
+  french: Trousseau du repaire Gerudo
+  type: Fortress Small Key
+  get_item_id: 0xDC
+  advancement: true
+
+
+- name: Ganons Castle Key Ring
+  spanish: Llavero del Castillo de Ganon
+  french: Trousseau du château de Ganon
+  type: Small Key
+  get_item_id: 0xDD
+  advancement: true
+
+
+- name: Chest Game Key Ring
+  spanish: Llavero del Cofre del Tesoro
+  french: Clé de la chasse-aux-trésors
+  type: Small Key
   get_item_id: 0xD5
   advancement: true
 

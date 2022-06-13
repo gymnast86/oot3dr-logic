@@ -4,9 +4,9 @@
 
 #include <iostream>
 
+#define REQ_ERROR_CHECK(err) if (err != RequirementError::NONE) {return err;}
 #define STR_HAS(str, substr) str.find(substr) != std::string::npos
 #define AREA_VALID_CHECK(name, reqStr) if (NameToAreaID(name) == AreaID::INVALID) {std::cout << "ERROR: Unknown area name " << name << " in requirement string: \"" << reqStr << "\"" << std::endl; return RequirementError::UNKNOWN_AREA_NAME;}
-#define REQ_ERROR_CHECK(err) if (err != RequirementError::NONE) {return err;}
 #define VALID_NUMBER_CHECK(numberStr) if (numberStr.find_first_not_of("0123456789") != std::string::npos) { std::cout << "ERROR: Cannot convert \"" << numberStr << "\" to a number" << std::endl; return RequirementError::COULD_NOT_PARSE_NUMBER;}
 #define VALID_ITEM_CHECK(itemName, reqStr) if (NameToItemID(itemName) == ItemID::INVALID) {std::cout << "ERROR: Unknown item name " << itemName << " in requirement string: \"" << reqStr << "\"" << std::endl; return RequirementError::UNKNOWN_ITEM_NAME;}
 
@@ -225,6 +225,8 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             // Turn the argument into type AND with the song and Ocarina as arguments
             req.type = RequirementType::AND;
             std::string songStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
+            songStr = gamePrefix + "_" + songStr;
+            VALID_ITEM_CHECK(songStr, argStr)
             auto song = NameToItemID(songStr);
             Requirement ocarinaReq = {RequirementType::ITEM, {ItemID::Oot3dProgressiveOcarina}};
             Requirement songReq = {RequirementType::ITEM, {song}};

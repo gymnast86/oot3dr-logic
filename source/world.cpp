@@ -46,11 +46,6 @@ bool World::EvaluateRequirement(const Requirement& req, Search* search, void* ob
     return false;
 }
 
-void World::ExpandAreaVariables()
-{
-    std::cout << "Called Generic world expand avriables. Something is probably wrong." << std::endl;
-}
-
 std::string World::GetTypeString() const
 {
     return "generic (something is probably wrong)";

@@ -22,6 +22,7 @@ static ItemIDPool alwaysItems = {
     ItemID::Oot3dProgressiveHookshot,
     ItemID::Oot3dProgressiveBombBag,
     ItemID::Oot3dProgressiveBombBag,
+    ItemID::Oot3dProgressiveBombchus,
     ItemID::Oot3dDekuShield,
     ItemID::Oot3dHylianShield,
     ItemID::Oot3dProgressiveStrengthUpgrade,
@@ -158,6 +159,15 @@ static ItemIDPool alwaysItems = {
     ItemID::Oot3dGanonsCastleSmallKey,
     ItemID::Oot3dGanonsCastleSmallKey,
     ItemID::Oot3dGanonsCastleSmallKey,
+
+    ItemID::Oot3dHeartContainer,
+    ItemID::Oot3dHeartContainer,
+    ItemID::Oot3dHeartContainer,
+    ItemID::Oot3dHeartContainer,
+    ItemID::Oot3dHeartContainer,
+    ItemID::Oot3dHeartContainer,
+    ItemID::Oot3dHeartContainer,
+    ItemID::Oot3dHeartContainer,
 };
 
 ItemIDPool GenerateOot3dItemPool(SettingsMap& settings)

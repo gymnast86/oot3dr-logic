@@ -19,7 +19,6 @@ public:
 
     WorldBuildingError Build() override;
     bool EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE) override;
-    void ExpandAreaVariables() override;
     std::string GetTypeString() const override;
 
     void ExpandToDMasterSword(Search* search, LocationAccess* locAccess);
@@ -45,6 +44,6 @@ private:
 
     bool EvaluateRequirementWithAgeTime(const Requirement& req, Search* search, void* object, EvaluateType evalType, uint8_t ageTime);
     void ExpandTimePassToD(uint8_t connectedAreaAgeTime, uint8_t day, uint8_t night, Search* search, Entrance* exit);
-    void ExpandToDAreas(Search* search, uint8_t ageTimeToExpand);
+    void ExpandToDAreas(Search* search, uint8_t ageTimeToExpand, const AreaID& startingArea = AreaID::Root);
 
 };

@@ -32,6 +32,7 @@ add_executable(local_testing main.cpp
                              ../source/timing.cpp
                              ../source/world.cpp
                              ../source/oot3d/oot3d_area.cpp
+                             ../source/oot3d/oot3d_dungeon.cpp
                              ../source/oot3d/oot3d_entrance.cpp
                              ../source/oot3d/oot3d_item_pool.cpp
                              ../source/oot3d/oot3d_item.cpp

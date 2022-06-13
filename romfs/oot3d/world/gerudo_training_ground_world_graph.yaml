@@ -4,8 +4,8 @@
 - region_name: Gerudo Training Ground Entryway
   dungeon: Gerudo Training Ground
   exits:
-      Gerudo Training Ground Lobby: gerudo_training_grounds_dungeon_mode == vanilla
-      Gerudo Training Ground MQ Lobby: gerudo_training_grounds_dungeon_mode == mq
+      Gerudo Training Ground Lobby: gerudo_training_ground_dungeon_mode == vanilla
+      Gerudo Training Ground MQ Lobby: gerudo_training_ground_dungeon_mode == mq
       Gerudo Fortress: 'True'
 
 
@@ -60,7 +60,7 @@
   dungeon: Gerudo Training Ground
   locations:
       Gerudo Training Ground Underwater Silver Rupee Chest: can_use(Hookshot) and
-          can_play(Song_of_Time and IronBoots and water_timer(24))
+          can_play(Song_of_Time) and Iron_Boots and water_timer(24)
   exits:
       Gerudo Training Ground Central Maze Right: can_play(Song_of_Time) or is_child
       Gerudo Training Ground Hammer Room: can_use(Longshot) or (can_use(Hover_Boots) and can_use(Hookshot))

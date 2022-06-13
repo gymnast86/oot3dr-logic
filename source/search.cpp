@@ -98,6 +98,26 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
     worldToSearch = tempWorldToSearch;
     bool newThingsFound = false;
 
+    // If any previous locations which didn't have anything now do have something
+    // then add them back to locationsToTry
+    for (auto locItr = locationsToTryAtEnd.begin(); locItr != locationsToTryAtEnd.end(); )
+    {
+        auto locAccess = *locItr;
+        auto location = locAccess->location;
+
+        if (location->currentItem.GetID() != ItemID::NONE)
+        {
+            // std::cout << "\t" + location->GetName() + " in world " + std::to_string(location->GetWorld()->GetWorldID()));
+            locationsToTry.push_back(locAccess);
+            // Delete locations which now have an item
+            locItr = locationsToTryAtEnd.erase(locItr);
+        }
+        else
+        {
+            locItr++; // Only increment if we don't erase
+        }
+    }
+
     do
     {
         // push_back an empty sphere if we're generating the playthrough
@@ -156,7 +176,7 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
             // If the requirement has a set of fulfillment items, then test to see
             // if any of those items were found last iteration. If none of them were
             // then don't test the requirement.
-            if (requirement.fulfillmentItems.size() > 0 && !ageTimeSpread[world])
+            if (requirement.fulfillmentItems.size() > 0 && sphereItems.size() > 0 && !ageTimeSpread[world])
             {
                 bool potentialfulfillment = false;
                 for (const auto& item : sphereItems)
@@ -216,6 +236,15 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
             // in those circumstances
             if (visitedLocations.count(location) > 0)
             {
+                locItr = locationsToTry.erase(locItr);
+                continue;
+            }
+
+            // If this location does not contain an item, then there's no reason to
+            // evaluate it now. Evaluate it after the searching loop is over
+            if (location->currentItem.GetID() == ItemID::NONE)
+            {
+                locationsToTryAtEnd.insert(locAccess);
                 locItr = locationsToTry.erase(locItr);
                 continue;
             }
@@ -290,6 +319,29 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
     }
     while (newThingsFound);
     worldToSearch = oldWorldToSearch;
+    if (searchMode == SearchMode::AccessibleLocations)
+    {
+        for (auto locItr = locationsToTryAtEnd.begin(); locItr != locationsToTryAtEnd.end(); )
+        {
+            auto locAccess = *locItr;
+            auto location = locAccess->location;
+            auto world = location->GetWorld();
+            auto& requirement = locAccess->requirement;
+
+            if (world->EvaluateRequirement(requirement, this, locAccess, EvaluateType::Location))
+            {
+                // std::cout << "\t" + location->GetName() + " in world " + std::to_string(location->GetWorld()->GetWorldID()));
+                visitedLocations.insert(location);
+                // Delete newly accessible locations from locationsToTryAtEnd
+                accessibleLocations.insert(location);
+                locItr = locationsToTryAtEnd.erase(locItr);
+            }
+            else
+            {
+                locItr++; // Only increment if we don't erase
+            }
+        }
+    }
 }
 
 // Explore the given area, and recursively explore the area's connected to it as
@@ -304,7 +356,7 @@ void Search::Explore(Area* area)
     for (auto& locAccess : area->locations)
     {
         // Add new locations we come across to try them and potentially account
-        // for any items on the next iteration
+        // for any items on the next iteration.
         locationsToTry.push_back(&locAccess);
     }
     for (auto& exitPtr : area->exits)
@@ -341,19 +393,20 @@ void Search::Explore(Area* area)
         // If the connected area is already reachable, then the current exit
         // is ignored since it won't matter for logical access (but might
         // check for day/night later, depending on the game)
-        if (visitedAreas.count(connectedArea) == 0)
+
+        if (world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit))
         {
-            if (world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit))
+            if (visitedAreas.count(connectedArea) == 0)
             {
                 visitedAreas.insert(connectedArea);
                 Explore(connectedArea);
             }
-            else
-            {
-                // Push failed exits to the front so the searching loop doesn't
-                // consider them until the next sphere of iteration
-                exitsToTry.push_front(exit);
-            }
+        }
+        else
+        {
+            // Push failed exits to the front so the searching loop doesn't
+            // consider them until the next sphere of iteration
+            exitsToTry.push_front(exit);
         }
     }
 }
@@ -411,8 +464,12 @@ void Search::DumpSearchGraph(size_t worldId /*= 0*/, const std::string filename 
             {
                 continue;
             }
-            // Evaluate the exit requirement one more time to ensure if it really isn't accessible
-            world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit);
+            // Evaluate exits between mutually accessible areas for a more complete
+            // picture of access
+            if (visitedAreas.count(area) && visitedAreas.count(exit->GetConnectedArea()))
+            {
+                //world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit);
+            }
             std::string connectedName = AreaIDToName(exit->GetConnectedAreaID());
             if (parentName != "INVALID" && connectedName != "INVALID"){
                 color = successfulExits.count(exit) > 0 ? "\"black\"" : "\"red\"";

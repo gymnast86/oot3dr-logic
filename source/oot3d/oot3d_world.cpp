@@ -220,8 +220,35 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
             newArea->id = areaId;
             newArea->name = name;
             newArea->world = this;
-
-            DebugLog(name);
+            // if (area.has_child("dungeon"))
+            // {
+            //     const std::string dungeonName = SubstrToString(area["dungeon"].val());
+            //     std::string dungeonModeSetting = dungeonName + "_dungeon_mode";
+            //     std::replace(dungeonModeSetting.begin(), dungeonModeSetting.end(), ' ', '_');
+            //     for (size_t i = 0; i < dungeonModeSetting.length(); i++)
+            //     {
+            //         dungeonModeSetting[i] = std::tolower(dungeonModeSetting[i]);
+            //     }
+            //     if (settings.count(dungeonModeSetting) == 0)
+            //     {
+            //         std::cout << "ERROR: " << dungeonModeSetting << " is not present in settings" << std::endl;
+            //     }
+            //     // Only process MQ dungeon areas if they're set as mq
+            //     if (settings[dungeonModeSetting] == "mq")
+            //     {
+            //         if (newArea->name.find("MQ") == std::string::npos)
+            //         {
+            //             continue;
+            //         }
+            //     }
+            //     else
+            //     {
+            //         if (newArea->name.find("MQ") != std::string::npos)
+            //         {
+            //             continue;
+            //         }
+            //     }
+            // }
 
             if (area.has_child("font_color"))
             {
@@ -265,7 +292,6 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                     // Get field strings
                     const std::string locationName = "Oot3d " + SubstrToString(location.key());
                     const std::string reqStr = SubstrToString(location.val());
-                    DebugLog("\t" + locationName);
 
                     // Check for valid values
                     VALID_LOCATION_CHECK(area, locationName);
@@ -287,9 +313,9 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                     // Get field strings
                     const std::string exitName = "Oot3d " + SubstrToString(exit.key());
                     const std::string reqStr = SubstrToString(exit.val());
-                    DebugLog("\t" + exitName);
                     // Check for valid values
                     VALID_AREA_CHECK(area, exitName);
+
                     Requirement req;
                     RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d", this);
                     VALID_REQUIREMENT(area, err, reqStr);
@@ -300,9 +326,17 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                     newArea->exits.push_back(std::move(newExit));
                 }
             }
-            DebugLog("\templacing");
             areas.emplace(areaId, std::move(newArea));
-            DebugLog("...Done");
+        }
+    }
+
+    // Set all entrances for each area
+    for (auto& [areaId, area] : areas)
+    {
+        for (const auto& exit : area->exits)
+        {
+            auto connectedArea = exit->GetConnectedArea();
+            connectedArea->entrances.push_back(exit.get());
         }
     }
 

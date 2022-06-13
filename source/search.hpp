@@ -40,6 +40,7 @@ public:
     std::list<Event*> eventsToTry = {};
     std::list<Entrance*> exitsToTry = {};
     std::list<LocationAccess*> locationsToTry = {};
+    std::unordered_set<LocationAccess*> locationsToTryAtEnd = {};
     std::unordered_set<Location*> visitedLocations = {};
     std::unordered_set<Area*> visitedAreas = {};
     std::unordered_set<Entrance*> successfulExits = {};
