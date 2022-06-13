@@ -12,6 +12,8 @@ static std::list<uint8_t> allAgeTimes = {OOT3D_CHILD_DAY, OOT3D_CHILD_NIGHT, OOT
 bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, void* object, EvaluateType evalType /*= EvaluateType::NONE*/)
 {
     //DebugLog("EvalulateRequirement");
+    const int EXIT_PARTIAL_SUCCESS = 1;
+    const int EXIT_COMPLETE_SUCCESS = 2;
     Oot3dArea* parentArea = nullptr;
     Oot3dArea* connectedArea = nullptr;
     Event* event = nullptr;
@@ -20,7 +22,8 @@ bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, v
     uint8_t parentAreaAgeTime = 0;
     uint8_t connectedAreaAgeTime = 0;
     uint8_t exitsAgeTimes = 0;
-    bool exitSuccess = false;
+    uint8_t exitsAgeTimesToTest = 0;
+    int exitSuccess = false;
 
     // Set the current search and world for the logic to refer to
     logic->search = search;
@@ -49,6 +52,7 @@ bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, v
             parentArea = (Oot3dArea*) exit->GetParentArea();
             connectedArea = (Oot3dArea*) exit->GetConnectedArea();
             parentAreaAgeTime = search->areaTime[parentArea];
+            connectedAreaAgeTime = search->areaTime[connectedArea];
             exitsAgeTimes = allowedExitAgeTimes[exit];
             logic->area = (Oot3dArea*) parentArea;
             //std::cout << "Eval [W" << std::to_string(worldId) << "] exit " << exit->GetOriginalName() << std::endl;
@@ -61,13 +65,24 @@ bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, v
                 if (req())
                 {
                     // std::cout << "Spreading ageTime " << std::to_string(ageTime) << " to " << connectedArea->name << std::endl;
-                    search->areaTime[connectedArea] |= parentAreaAgeTime;
-                    exitSuccess = true;
+                    // If the connected area gets new agetimes
+                    if (~connectedAreaAgeTime & parentAreaAgeTime)
+                    {
+                        search->areaTime[connectedArea] |= parentAreaAgeTime;
+                    }
+                    // If the parent area does not have all the agetimes that can pass
+                    // through this exit, it's only a partial success
+                    if (~search->areaTime[connectedArea] & exitsAgeTimes)
+                    {
+                        exitSuccess = EXIT_PARTIAL_SUCCESS;
+                    }
+                    else
+                    {
+                        exitSuccess = EXIT_COMPLETE_SUCCESS;
+                    }
                 }
                 else
                 {
-                    //DebugLog("Evaluation finished");
-                    //DebugLog("Failed");
                     return false;
                 }
             }
@@ -83,16 +98,36 @@ bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, v
                         //DebugLog("Eval Exit With Age Time" + logic->AgeTimeStr());
                         if (req())
                         {
-                            exitSuccess = true;
                             search->areaTime[connectedArea] |= ageTime;
                         }
                     }
+                }
+                // If the connected area does not have all the agetimes
+                // provided by the exit, then it's only a partial success
+                if (~search->areaTime[connectedArea] & exitsAgeTimes)
+                {
+                    exitSuccess = EXIT_PARTIAL_SUCCESS;
+                }
+                else
+                {
+                    exitSuccess = EXIT_COMPLETE_SUCCESS;
                 }
             }
             if (exitSuccess)
             {
                 //std::cout << "Passed" << std::endl;
-                search->successfulExits.insert(exit);
+                if (exitSuccess == EXIT_PARTIAL_SUCCESS)
+                {
+                    // If the exit is only partially successful keep it in exitsTotry
+                    // until it's completely successful or it's not needed anymore
+                    search->partiallySuccessfulExits.insert(exit);
+                    search->exitsToTry.push_front(exit);
+                }
+                else
+                {
+                    search->partiallySuccessfulExits.erase(exit);
+                    search->successfulExits.insert(exit);
+                }
 
                 // Handle finding new agetimes via timePass access
                 if (connectedArea->timePasses)
@@ -119,8 +154,6 @@ bool Oot3dWorld::EvaluateRequirement(const RequirementFn& req, Search* search, v
                     }
                 }
             }
-            //DebugLog("Evaluation finished");
-          //  DebugLog(exitSuccess ? "Passed" : "Failed");
             return exitSuccess;
         default:
             std::cout << "default EvaluateType hit. A dev forgot to specify it somewhere." << std::endl;
@@ -186,7 +219,7 @@ void Oot3dWorld::ExpandToDAreas(Search* search, uint8_t ageTimeToExpand)
     {
         auto connectedArea = exit->GetConnectedArea();
         uint8_t exitsAgeTimes = allowedExitAgeTimes[exit];
-        if (search->visitedAreas.count(connectedArea) > 0 && searchedAreas.count(connectedArea) == 0 && (exitsAgeTimes & ageTimeToExpand || !exitsAgeTimes) && !(search->areaTime[connectedArea] & ageTimeToExpand))
+        if (search->visitedAreas.count(connectedArea) > 0 && searchedAreas.count(connectedArea) == 0 && (exitsAgeTimes & ageTimeToExpand || !exitsAgeTimes) && ~search->areaTime[connectedArea] & ageTimeToExpand)
         {
             logic->area = exit->GetParentArea();
             auto& req = exit->GetRequirement();
@@ -272,17 +305,17 @@ WorldBuildingError Oot3dWorld::CacheAgeTimeRequirements()
             logic->ageTime = 0;
             logic->area = exit->GetParentArea();
             logic->search = &searchWithItems;
-            //DebugLog("Eval " + exit->GetOriginalName() + " with no age time: " + logic->AgeTimeStr() + " &logic->ageTime.adultNight=" + std::to_string((uint64_t)&logic->ageTime.adultNight));
+            DebugLog("Eval " + exit->GetOriginalName() + " with no age time: " + logic->AgeTimeStr());
             if (!req())
             {
-                //DebugLog("Not Passed");
+                DebugLog("Not Passed");
                 for (const uint8_t& ageTime : allAgeTimes)
                 {
                     logic->ageTime = ageTime;
-                    //DebugLog("Eval " + exit->GetOriginalName() + " with age time: " + logic->AgeTimeStr());
+                    DebugLog("Eval " + exit->GetOriginalName() + " with age time: " + logic->AgeTimeStr());
                     if (req())
                     {
-                      //  DebugLog("Passed");
+                        DebugLog("Passed");
                         // std::cout << Oot3dAgeTimeToString(ageTime) << std::endl;
                         allowedExitAgeTimes[exit] |= ageTime;
                     }
@@ -295,29 +328,33 @@ WorldBuildingError Oot3dWorld::CacheAgeTimeRequirements()
             // since it'll be different depending on what items are owned
             else
             {
-                //DebugLog("Passed");
+                DebugLog("Passed");
                 logic->search = &searchWithNoItems;
                 for (const uint8_t& ageTime : allAgeTimes)
                 {
                     logic->ageTime = ageTime;
-                    //DebugLog("Eval " + exit->GetOriginalName() + " with age time but no items: " + logic->AgeTimeStr());
+                    DebugLog("Eval " + exit->GetOriginalName() + " with age time but no items: " + logic->AgeTimeStr());
                     if (req())
                     {
-                        //DebugLog("Passed");
+                        DebugLog("Passed");
                         // std::cout << Oot3dAgeTimeToString(ageTime) << std::endl;
                         allowedExitAgeTimes[exit] |= OOT3D_ALL_TIMES;
                         break;
                     }
+                    else
+                    {
+                        DebugLog("Failed");
+                    }
                 }
             }
-            //DebugLog("Next Exit");
+            DebugLog("Next Exit...");
         }
     }
     // Print out decided allowed age/times (for debugging)
-    // for (const auto& [exit, ageTime] : allowedExitAgeTimes)
-    // {
-    //     std::cout << "Allowed agetimes for " << exit->GetOriginalName() << ": " << Oot3dAgeTimeToString(ageTime) << std::endl;
-    // }
+    for (const auto& [exit, ageTime] : allowedExitAgeTimes)
+    {
+        std::cout << "Allowed agetimes for " << exit->GetOriginalName() << ": " << Oot3dAgeTimeToString(ageTime) << std::endl;
+    }
     return WorldBuildingError::NONE;
 }
 

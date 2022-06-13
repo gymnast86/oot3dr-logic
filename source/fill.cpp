@@ -94,6 +94,10 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, It
     }
     while (unsuccessfulPlacement);
 
+    auto baseSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
+    baseSearch.FindLocations();
+    baseSearch.DumpSearchGraph(0, "World0");
+
     return FillError::NONE;
 }
 

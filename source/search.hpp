@@ -42,6 +42,7 @@ public:
     std::unordered_set<Location*> visitedLocations = {};
     std::unordered_set<Area*> visitedAreas = {};
     std::unordered_set<Entrance*> successfulExits = {};
+    std::unordered_set<Entrance*> partiallySuccessfulExits = {};
 
     // Oot3D Specific Stuff
     // areaTime maps an Area Pointer to what times of day it has
