@@ -86,6 +86,18 @@ static ItemIDPool alwaysItems = {
     ItemID::Oot3dZeldasLetter,
     ItemID::Oot3dMagicBeanPack,
 
+    ItemID::Oot3dPocketEgg,
+    ItemID::Oot3dPocketCucco,
+    ItemID::Oot3dCojiro,
+    ItemID::Oot3dOddMushroom,
+    ItemID::Oot3dOddPoultice,
+    ItemID::Oot3dPoachersSaw,
+    ItemID::Oot3dBrokenGoronsSword,
+    ItemID::Oot3dPrescription,
+    ItemID::Oot3dEyeballFrog,
+    ItemID::Oot3dWorldsFinestEyedrops,
+    ItemID::Oot3dClaimCheck,
+
     ItemID::Oot3dLightMedallion,
     ItemID::Oot3dForestMedallion,
     ItemID::Oot3dFireMedallion,
@@ -168,6 +180,10 @@ static ItemIDPool alwaysItems = {
     ItemID::Oot3dHeartContainer,
     ItemID::Oot3dHeartContainer,
     ItemID::Oot3dHeartContainer,
+
+    ItemID::Oot3dBuyDekuShield,
+    ItemID::Oot3dBuyHylianShield,
+    ItemID::Oot3dRutosLetter,
 };
 
 ItemIDPool GenerateOot3dItemPool(SettingsMap& settings)

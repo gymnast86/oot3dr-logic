@@ -40,6 +40,14 @@ enum class EvaluateType
     Exit,
 };
 
+enum class EvalSuccess
+{
+    NONE = 0,
+    Partial,
+    Complete,
+    Unnecessary,
+};
+
 class World;
 using WorldPool = std::vector<std::unique_ptr<World>>;
 
@@ -60,7 +68,7 @@ public:
 
     virtual WorldBuildingError Build();
     // object is a pointer to the object the requirement belongs to (event, location, or exit)
-    virtual bool EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE);
+    virtual EvalSuccess EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE);
     virtual std::string GetTypeString() const;
 
     SettingsMap settings;
@@ -73,6 +81,7 @@ public:
     WorldType worldType = WorldType::NONE;
 
     int numEvals = 0;
+    double evalTime = 0.0f;
 };
 
 int TotalWorldEvals(const WorldPool& worlds);

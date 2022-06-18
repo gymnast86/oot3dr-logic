@@ -564,7 +564,7 @@
       Colossus Grotto: can_use(Silver_Gauntlets)
 
 
-- region_name: Desert Colossus From Spirit Lobby
+- region_name: Desert Colossus From Spirit Entryway
   font_color: Yellow
   scene: Desert Colossus
   hint: the Desert Colossus

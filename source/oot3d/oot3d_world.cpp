@@ -220,35 +220,25 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
             newArea->id = areaId;
             newArea->name = name;
             newArea->world = this;
-            // if (area.has_child("dungeon"))
-            // {
-            //     const std::string dungeonName = SubstrToString(area["dungeon"].val());
-            //     std::string dungeonModeSetting = dungeonName + "_dungeon_mode";
-            //     std::replace(dungeonModeSetting.begin(), dungeonModeSetting.end(), ' ', '_');
-            //     for (size_t i = 0; i < dungeonModeSetting.length(); i++)
-            //     {
-            //         dungeonModeSetting[i] = std::tolower(dungeonModeSetting[i]);
-            //     }
-            //     if (settings.count(dungeonModeSetting) == 0)
-            //     {
-            //         std::cout << "ERROR: " << dungeonModeSetting << " is not present in settings" << std::endl;
-            //     }
-            //     // Only process MQ dungeon areas if they're set as mq
-            //     if (settings[dungeonModeSetting] == "mq")
-            //     {
-            //         if (newArea->name.find("MQ") == std::string::npos)
-            //         {
-            //             continue;
-            //         }
-            //     }
-            //     else
-            //     {
-            //         if (newArea->name.find("MQ") != std::string::npos)
-            //         {
-            //             continue;
-            //         }
-            //     }
-            // }
+            if (area.has_child("dungeon"))
+            {
+                const std::string dungeonName = SubstrToString(area["dungeon"].val());
+                std::string dungeonModeSetting = dungeonName + "_dungeon_mode";
+                std::replace(dungeonModeSetting.begin(), dungeonModeSetting.end(), ' ', '_');
+                for (size_t i = 0; i < dungeonModeSetting.length(); i++)
+                {
+                    dungeonModeSetting[i] = std::tolower(dungeonModeSetting[i]);
+                }
+                if (settings.count(dungeonModeSetting) != 0)
+                {
+                  // Only process MQ dungeon areas if they're set as mq
+                  if ((settings[dungeonModeSetting] == "mq" && newArea->name.find("MQ") == std::string::npos) ||
+                      (settings[dungeonModeSetting] != "mq" && newArea->name.find("MQ") != std::string::npos))
+                  {
+                      continue;
+                  }
+                }
+            }
 
             if (area.has_child("font_color"))
             {
@@ -311,7 +301,28 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                 for (const ryml::NodeRef& exit : area["exits"].children())
                 {
                     // Get field strings
-                    const std::string exitName = "Oot3d " + SubstrToString(exit.key());
+                    std::string exitName = SubstrToString(exit.key());
+                    // Handle whether MQ exits should exist or not
+                    if (newArea->name.find("Entryway") != std::string::npos)
+                    {
+                        std::string dungeonModeSetting = newArea->name.substr(6, newArea->name.find("Entryway") - 7) + "_dungeon_mode";
+                        std::replace(dungeonModeSetting.begin(), dungeonModeSetting.end(), ' ', '_');
+                        for (size_t i = 0; i < dungeonModeSetting.length(); i++)
+                        {
+                            dungeonModeSetting[i] = std::tolower(dungeonModeSetting[i]);
+                        }
+                        // std::cout << dungeonModeSetting << std::endl;
+                        if (settings.count(dungeonModeSetting) != 0)
+                        {
+                            // Only process MQ dungeon areas if they're set as mq
+                            if ((settings[dungeonModeSetting] != "mq" && exitName.find("MQ") != std::string::npos) ||
+                                (settings[dungeonModeSetting] == "mq" && exitName.find("mq") == std::string::npos))
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                    exitName = "Oot3d " + exitName;
                     const std::string reqStr = SubstrToString(exit.val());
                     // Check for valid values
                     VALID_AREA_CHECK(area, exitName);
@@ -372,6 +383,7 @@ WorldBuildingError Oot3dWorld::Build()
     BUILD_ERROR_CHECK(err);
 
     locations[LocationID::Oot3dMasterSwordPedestal]->currentItem = Item(ItemID::Oot3dMasterSword, this);
+    locations[LocationID::Oot3dDeliverRutosLetter]->currentItem = Item(ItemID::Oot3dDeliverLetter, this);
     locations[LocationID::Oot3dBigPoeKill]->currentItem = Item(ItemID::Oot3dBigPoe, this);
     locations[LocationID::Oot3dPierre]->currentItem = Item(ItemID::Oot3dScarecrowSong, this);
     locations[LocationID::Oot3dBugRock]->currentItem = Item(ItemID::Oot3dBugs, this);

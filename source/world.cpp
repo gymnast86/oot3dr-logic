@@ -40,10 +40,10 @@ WorldBuildingError World::Build()
     return WorldBuildingError::NONE;
 }
 
-bool World::EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType /*= EvaluateType::NONE*/)
+EvalSuccess World::EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType /*= EvaluateType::NONE*/)
 {
     std::cout << "Called Generic world evaluate requirement. Something is probably wrong." << std::endl;
-    return false;
+    return EvalSuccess::NONE;
 }
 
 std::string World::GetTypeString() const

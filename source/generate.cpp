@@ -263,6 +263,7 @@ void GenerateRandomizer()
     EndTiming("Fill");
     PrintTiming("Fill");
     DebugLog("Total Evals: " + std::to_string(TotalWorldEvals(worlds)));
+    std::cout << "Eval Timing took " << std::to_string(worlds[0]->evalTime) << std::endl;
 }
 
 void BKey()

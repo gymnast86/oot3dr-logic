@@ -7,7 +7,7 @@
   exits:
       Spirit Temple Lobby: spirit_temple_dungeon_mode == vanilla
       Spirit Temple MQ Lobby: spirit_temple_dungeon_mode == mq
-      Desert Colossus: 'True'
+      Desert Colossus From Spirit Entryway: 'True'
 
 ############################
 #     VANILLA DUNGEON      #

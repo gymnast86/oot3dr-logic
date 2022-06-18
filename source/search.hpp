@@ -44,11 +44,12 @@ public:
     std::unordered_set<Location*> visitedLocations = {};
     std::unordered_set<Area*> visitedAreas = {};
     std::unordered_set<Entrance*> successfulExits = {};
+    std::unordered_set<Entrance*> partiallySuccessfulExits = {};
 
     // Oot3D Specific Stuff
     // areaTime maps an Area Pointer to what times of day it has
     std::unordered_map<Area*, uint8_t> areaTime = {};
-    std::unordered_map<World*, bool> ageTimeSpread;
+    std::unordered_set<World*> ageTimeSpread;
 
     // Playthrough spheres
     std::list<std::list<Location*>> playthroughSpheres = {};

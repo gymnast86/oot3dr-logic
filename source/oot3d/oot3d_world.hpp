@@ -18,13 +18,13 @@ public:
     ~Oot3dWorld();
 
     WorldBuildingError Build() override;
-    bool EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE) override;
+    EvalSuccess EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE) override;
     std::string GetTypeString() const override;
 
     void ExpandToDMasterSword(Search* search, LocationAccess* locAccess);
 
     std::unordered_map<ItemID, Oot3dItem> itemTable;
-    std::unordered_map<Entrance*, uint8_t> allowedExitAgeTimes;
+    std::unordered_map<Entrance*, uint8_t> possibleExitAgeTimes;
 
 private:
 

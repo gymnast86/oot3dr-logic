@@ -73,7 +73,7 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
                 for (auto location : rollbacks)
                 {
                     itemsToPlace.push_back(location->GetCurrentItem());
-                    location->currentItem = Item(ItemID::NONE, nullptr);
+                    location->currentItem = Item(ItemID::NONE, worlds[0].get());
                 }
                 // Also add back the randomly selected item
                 itemsToPlace.push_back(item);
@@ -108,9 +108,9 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
     }
     while (unsuccessfulPlacement);
 
-    Search newSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
-    newSearch.FindLocations();
-    newSearch.DumpSearchGraph();
+    // Search newSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
+    // newSearch.FindLocations();
+    // newSearch.DumpSearchGraph();
 
     return FillError::NONE;
 }

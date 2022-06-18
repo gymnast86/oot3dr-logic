@@ -144,7 +144,7 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
                 continue;
             }
             auto& requirement = event->requirement;
-            if (world->EvaluateRequirement(requirement, this, event, EvaluateType::Event))
+            if (world->EvaluateRequirement(requirement, this, event, EvaluateType::Event) == EvalSuccess::Complete)
             {
                 newThingsFound = true;
                 eventItr = eventsToTry.erase(eventItr);
@@ -176,7 +176,7 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
             // If the requirement has a set of fulfillment items, then test to see
             // if any of those items were found last iteration. If none of them were
             // then don't test the requirement.
-            if (requirement.fulfillmentItems.size() > 0 && sphereItems.size() > 0 && !ageTimeSpread[world])
+            if (requirement.fulfillmentItems.size() > 0 && sphereItems.size() > 0 && ageTimeSpread.count(world) == 0)
             {
                 bool potentialfulfillment = false;
                 for (const auto& item : sphereItems)
@@ -194,19 +194,33 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
                 }
             }
             // std::cout << "Now exploring [W" << std::to_string(world->GetWorldID()) << "] exit " << exit->GetOriginalName() << std::endl;
-            if (world->EvaluateRequirement(requirement, this, exit, EvaluateType::Exit)) {
+            EvalSuccess evalSuccess = world->EvaluateRequirement(requirement, this, exit, EvaluateType::Exit);
+            if (evalSuccess == EvalSuccess::Unnecessary) {
+                exitItr = exitsToTry.erase(exitItr);
+            }
+            else if (evalSuccess == EvalSuccess::Complete || evalSuccess == EvalSuccess::Partial)
+            {
+                if (evalSuccess == EvalSuccess::Complete)
+                {
+                    exitItr = exitsToTry.erase(exitItr);
+                }
+                else
+                {
+                    exitItr++;
+                }
+
+                newThingsFound = true;
                 // If we're generating the playthrough, add it to the entranceSpheres if it's randomized
                 if (searchMode == SearchMode::GeneratePlaythrough && exit->IsShuffled())
                 {
                     entranceSpheres.back().push_back(exit);
                 }
                 // Erase the exit from the list of exits if we've met its requirement
-                exitItr = exitsToTry.erase(exitItr);
+                // exitItr = exitsToTry.erase(exitItr);
                 // If this exit's connected region has not been explored yet, then explore it
                 auto connectedArea = exit->GetConnectedArea();
                 if (visitedAreas.count(connectedArea) == 0)
                 {
-                    newThingsFound = true;
                     visitedAreas.insert(connectedArea);
                     Explore(connectedArea);
                 }
@@ -256,7 +270,7 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
             //
             // NOTE: This is a good idea, but needs to properly account for
             // agetimes as well. May go back to implement later
-            if (requirement.fulfillmentItems.size() > 0 && sphereItems.size() > 0 && !ageTimeSpread[world])
+            if (requirement.fulfillmentItems.size() > 0 && sphereItems.size() > 0 && ageTimeSpread.count(world) == 0)
             {
                 bool potentialfulfillment = false;
                 for (const auto& item : sphereItems)
@@ -273,7 +287,7 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
                     continue;
                 }
             }
-            if (world->EvaluateRequirement(requirement, this, locAccess, EvaluateType::Location))
+            if (world->EvaluateRequirement(requirement, this, locAccess, EvaluateType::Location) == EvalSuccess::Complete)
             {
                 // std::cout << "\t" + location->GetName() + " in world " + std::to_string(location->GetWorld()->GetWorldID()));
                 newThingsFound = true;
@@ -328,7 +342,7 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
             auto world = location->GetWorld();
             auto& requirement = locAccess->requirement;
 
-            if (world->EvaluateRequirement(requirement, this, locAccess, EvaluateType::Location))
+            if (world->EvaluateRequirement(requirement, this, locAccess, EvaluateType::Location) == EvalSuccess::Complete)
             {
                 // std::cout << "\t" + location->GetName() + " in world " + std::to_string(location->GetWorld()->GetWorldID()));
                 visitedLocations.insert(location);
@@ -382,31 +396,33 @@ void Search::Explore(Area* area)
             //         }
             //     }
             // }
-
-            if (!reverseInPlaythrough && world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit))
-            {
-                entranceSpheres.back().push_back(exit);
-            }
+            //
+            // if (!reverseInPlaythrough && world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit))
+            // {
+            //     entranceSpheres.back().push_back(exit);
+            // }
         }
 
         auto connectedArea = exit->GetConnectedArea();
-        // If the connected area is already reachable, then the current exit
-        // is ignored since it won't matter for logical access (but might
-        // check for day/night later, depending on the game)
-
-        if (world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit))
+        auto evalSuccess = world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit);
+        switch (evalSuccess)
         {
-            if (visitedAreas.count(connectedArea) == 0)
-            {
-                visitedAreas.insert(connectedArea);
-                Explore(connectedArea);
-            }
-        }
-        else
-        {
-            // Push failed exits to the front so the searching loop doesn't
-            // consider them until the next sphere of iteration
-            exitsToTry.push_front(exit);
+            case EvalSuccess::Partial:
+                exitsToTry.push_front(exit);
+                [[fallthrough]];
+            case EvalSuccess::Complete:
+                if (visitedAreas.count(connectedArea) == 0)
+                {
+                    visitedAreas.insert(connectedArea);
+                    Explore(connectedArea);
+                }
+                break;
+            case EvalSuccess::Unnecessary:
+                break;
+            case EvalSuccess::NONE:
+                exitsToTry.push_front(exit);
+            default:
+                break;
         }
     }
 }
@@ -455,6 +471,16 @@ void Search::DumpSearchGraph(size_t worldId /*= 0*/, const std::string filename 
         }
 
         worldGraph << "\t\"" << parentName << "\"[label=<" << parentName << timeOfDayStr << "> shape=\"plain\" fontcolor=" << color << "];" << std::endl;
+
+        // Make edge connections defined by events
+        for (const auto& event : area->events) {
+            color = ownedItems.count(Item(event.item, world)) > 0 ? "\"blue\"" : "\"red\"";
+            std::string connectedName = ItemIDToName(event.item);
+            if (parentName != "INVALID"){
+                worldGraph << "\t\"" << parentName << "\" -> \"" << connectedName << "\"" << "[dir=forward color=" << color << "]" << std::endl;
+            }
+        }
+
         // Make edge connections defined by exits
         for (const auto& exitPtr : area->exits) {
 
@@ -463,12 +489,6 @@ void Search::DumpSearchGraph(size_t worldId /*= 0*/, const std::string filename 
             if (!exit->IsShuffled() && onlyRandomizedExits)
             {
                 continue;
-            }
-            // Evaluate exits between mutually accessible areas for a more complete
-            // picture of access
-            if (visitedAreas.count(area) && visitedAreas.count(exit->GetConnectedArea()))
-            {
-                //world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit);
             }
             std::string connectedName = AreaIDToName(exit->GetConnectedAreaID());
             if (parentName != "INVALID" && connectedName != "INVALID"){
