@@ -68,7 +68,9 @@ public:
 
     virtual WorldBuildingError Build();
     // object is a pointer to the object the requirement belongs to (event, location, or exit)
-    virtual EvalSuccess EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE);
+    virtual EvalSuccess EvaluateEventRequirement(Search* search, Event* exit);
+    virtual EvalSuccess EvaluateLocationRequirement(Search* search, LocationAccess* locAccess);
+    virtual EvalSuccess EvaluateExitRequirement(Search* search, Entrance* exit);
     virtual std::string GetTypeString() const;
 
     SettingsMap settings;

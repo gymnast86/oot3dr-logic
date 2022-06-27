@@ -40,9 +40,21 @@ WorldBuildingError World::Build()
     return WorldBuildingError::NONE;
 }
 
-EvalSuccess World::EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType /*= EvaluateType::NONE*/)
+EvalSuccess World::EvaluateEventRequirement(Search* search, Event* event)
 {
-    std::cout << "Called Generic world evaluate requirement. Something is probably wrong." << std::endl;
+    std::cout << "Called Generic world evaluate event requirement. Something is probably wrong." << std::endl;
+    return EvalSuccess::NONE;
+}
+
+EvalSuccess World::EvaluateLocationRequirement(Search* search, LocationAccess* locAccess)
+{
+    std::cout << "Called Generic world evaluate event requirement. Something is probably wrong." << std::endl;
+    return EvalSuccess::NONE;
+}
+
+EvalSuccess World::EvaluateExitRequirement(Search* search, Entrance* exit)
+{
+    std::cout << "Called Generic world evaluate event requirement. Something is probably wrong." << std::endl;
     return EvalSuccess::NONE;
 }
 

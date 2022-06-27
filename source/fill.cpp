@@ -1,6 +1,7 @@
 #include "fill.hpp"
 #include "random.hpp"
 #include "search.hpp"
+#include "timing.hpp"
 #include "pool_functions.hpp"
 
 #include <iostream>
@@ -14,103 +15,110 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
 
     int retries = 10;
     bool unsuccessfulPlacement = false;
-    do
-    {
-        if (retries <= 0)
-        {
-            std::cout << "Ran out of assumed fill retries" << std::endl;
-            return FillError::RAN_OUT_OF_RETRIES;
-        }
-        retries--;
-        unsuccessfulPlacement = false;
-        ShufflePool(itemsToPlaceVector);
-        std::list<Item> itemsToPlace;
-        itemsToPlace.assign(itemsToPlaceVector.begin(), itemsToPlaceVector.end());
-        LocationPool rollbacks;
-
-        std::list<Search> searches = {};
-        int oldNum = TotalWorldEvals(worlds);
-        auto baseSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
-        baseSearch.FindLocations();
-        // baseSearch.DumpSearchGraph();
-        // DebugLog("\nAdded item: None");
-        // DebugLog("Actual base search iteration: " + std::to_string(TotalWorldEvals(worlds) - oldNum));
-        // DebugLog("available Locations: " + std::to_string(baseSearch.visitedLocations.size()));
-        // DebugLog("exitsToTry: " + std::to_string(baseSearch.exitsToTry.size()) + " locationsToTry: " + std::to_string(baseSearch.locationsToTry.size()));
-        for (const auto& item: itemsToPlace)
-        {
-            searches.push_back(baseSearch);
-            baseSearch.ownedItems.insert(item);
-            baseSearch.sphereItems.insert(item);
-            int oldNum = TotalWorldEvals(worlds);
-            baseSearch.FindLocations(item.GetWorld()->GetWorldID());
-            // DebugLog("\nAdded item: " + item.GetName());
-            // DebugLog("base search iteration: " + std::to_string(TotalWorldEvals(worlds) - oldNum));
-            // DebugLog("available Locations: " + std::to_string(baseSearch.visitedLocations.size()));
-            // DebugLog("exitsToTry: " + std::to_string(baseSearch.exitsToTry.size()) + " locationsToTry: " + std::to_string(baseSearch.locationsToTry.size()));
-        }
-
-        while (!itemsToPlace.empty())
-        {
-            // Get a random item to place
-            auto item = itemsToPlace.back();
-            itemsToPlace.pop_back();
-            auto search = searches.back();
-            searches.pop_back();
-
-            // Assume we have all the items which haven't been placed yet
-            // (except for this one we're about to place)
-
-            // Get the list of accessible locations
-            int oldNum = TotalWorldEvals(worlds);
-            search.FindLocations();
-            DebugLog(std::to_string(TotalWorldEvals(worlds) - oldNum));
-            auto accessibleLocations = FilterFromPool(allowedLocations, [search](Location* loc){return search.accessibleLocations.count(loc) > 0 && loc->GetCurrentItem().GetID() == ItemID::NONE;});
-
-            if (accessibleLocations.empty())
-            {
-                DebugLog("No Accessible Locations to place " + item.GetName() + ". Retrying " + std::to_string(retries) + " more times.");
-                for (auto location : rollbacks)
-                {
-                    itemsToPlace.push_back(location->GetCurrentItem());
-                    location->currentItem = Item(ItemID::NONE, worlds[0].get());
-                }
-                // Also add back the randomly selected item
-                itemsToPlace.push_back(item);
-                rollbacks.clear();
-                // Break out of the item placement loop and flag an unsuccessful
-                // placement attempt to try again.
-                unsuccessfulPlacement = true;
-                break;
-            }
-            // for (auto loc : accessibleLocations)
-            // {
-            //     auto message = "[W" + std::to_string(loc->GetWorld()->GetWorldID()) + "] " + loc->TypeString() + " " + loc->GetName();
-            //     DebugLog(message);
-            // }
-            auto location = RandomElement(accessibleLocations);
-            location->currentItem = std::move(item);
-            rollbacks.push_back(location);
-            // If this location is accessible in previous searches, then add it to those searches owned items
-            // Search through the searches backwards and when we hit a search where the location isn't accessible
-            // we can break out since none of the previous ones will have it either
-            for (auto pastSearch = searches.rbegin(); pastSearch != searches.rend(); pastSearch++)
-            {
-                if (pastSearch->accessibleLocations.count(location) == 0)
-                {
-                    break;
-                }
-                pastSearch->ownedItems.insert(item);
-                pastSearch->sphereItems.insert(item);
-            }
-            DebugLog("Placed " + item.GetName() + " at " + location->GetName());
-        }
-    }
-    while (unsuccessfulPlacement);
-
-    // Search newSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
-    // newSearch.FindLocations();
-    // newSearch.DumpSearchGraph();
+    // do
+    // {
+    //     if (retries <= 0)
+    //     {
+    //         std::cout << "Ran out of assumed fill retries" << std::endl;
+    //         return FillError::RAN_OUT_OF_RETRIES;
+    //     }
+    //     retries--;
+    //     unsuccessfulPlacement = false;
+    //     ShufflePool(itemsToPlaceVector);
+    //     std::list<Item> itemsToPlace;
+    //     itemsToPlace.assign(itemsToPlaceVector.begin(), itemsToPlaceVector.end());
+    //     LocationPool rollbacks;
+    //
+    //     // Create a list of searches
+    //     std::list<Search> searches = {};
+    //     int oldNum = TotalWorldEvals(worlds);
+    //     auto baseSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
+    //     baseSearch.FindLocations();
+    //
+    //     size_t oldAccNum = 0;
+    //     size_t newAccNum = 0;
+    //     int sames = 0;
+    //     for (const auto& item: itemsToPlace)
+    //     {
+    //         searches.push_back(baseSearch);
+    //         baseSearch.ownedItems.insert(item);
+    //         baseSearch.sphereItems.insert(item);
+    //         oldAccNum = baseSearch.accessibleLocations.size();
+    //         baseSearch.FindLocations(item.GetWorld()->GetWorldID());
+    //         newAccNum = baseSearch.accessibleLocations.size();
+    //         // if (oldAccNum == newAccNum)
+    //         // {
+    //         //     std::cout << "No new locations found with " << item.GetName() << "(" << std::to_string(sames++) << ")" << std::endl;
+    //         // }
+    //         // else
+    //         // {
+    //         //     std::cout << std::to_string(newAccNum - oldAccNum) << " new locations from " << item.GetName() << std::endl;
+    //         // }
+    //     }
+    //
+    //     while (!itemsToPlace.empty())
+    //     {
+    //         // Get a random item to place
+    //         auto item = itemsToPlace.back();
+    //         itemsToPlace.pop_back();
+    //         auto search = searches.back();
+    //         searches.pop_back();
+    //
+    //         // Assume we have all the items which haven't been placed yet
+    //         // (except for this one we're about to place)
+    //
+    //         // Get the list of accessible locations
+    //         int oldNum = TotalWorldEvals(worlds);
+    //         search.FindLocations();
+    //         DebugLog(std::to_string(TotalWorldEvals(worlds) - oldNum));
+    //         auto accessibleLocations = FilterFromPool(allowedLocations, [search](Location* loc){return search.accessibleLocations.count(loc) > 0 && loc->GetCurrentItem().GetID() == ItemID::NONE;});
+    //
+    //         if (accessibleLocations.empty())
+    //         {
+    //             DebugLog("No Accessible Locations to place " + item.GetName() + ". Retrying " + std::to_string(retries) + " more times.");
+    //             for (auto location : rollbacks)
+    //             {
+    //                 itemsToPlace.push_back(location->GetCurrentItem());
+    //                 location->currentItem = Item(ItemID::NONE, worlds[0].get());
+    //             }
+    //             // Also add back the randomly selected item
+    //             itemsToPlace.push_back(item);
+    //             rollbacks.clear();
+    //             // Break out of the item placement loop and flag an unsuccessful
+    //             // placement attempt to try again.
+    //             unsuccessfulPlacement = true;
+    //             break;
+    //         }
+    //         // for (auto loc : accessibleLocations)
+    //         // {
+    //         //     auto message = "[W" + std::to_string(loc->GetWorld()->GetWorldID()) + "] " + loc->TypeString() + " " + loc->GetName();
+    //         //     DebugLog(message);
+    //         // }
+    //         auto location = RandomElement(accessibleLocations);
+    //         location->currentItem = std::move(item);
+    //         rollbacks.push_back(location);
+    //         // If this location is accessible in previous searches, then add it to those searches owned items
+    //         // Search through the searches backwards and when we hit a search where the location isn't accessible
+    //         // we can break out since none of the previous ones will have it either
+    //         for (auto pastSearch = searches.rbegin(); pastSearch != searches.rend(); pastSearch++)
+    //         {
+    //             if (pastSearch->accessibleLocations.count(location) == 0)
+    //             {
+    //                 break;
+    //             }
+    //             pastSearch->ownedItems.insert(item);
+    //             pastSearch->sphereItems.insert(item);
+    //         }
+    //         DebugLog("Placed " + item.GetName() + " at " + location->GetName());
+    //     }
+    // }
+    // while (unsuccessfulPlacement);
+    StartTiming("Search");
+    Search newSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
+    newSearch.FindLocations();
+    EndTiming("Search");
+    PrintTiming("Search");
+    newSearch.DumpSearchGraph();
 
     return FillError::NONE;
 }
@@ -137,6 +145,11 @@ FillError FillWorlds(WorldPool& worlds)
 
     err = AssumedFill(worlds, itemPool, otherItems, allLocations);
     FILL_ERROR_CHECK(err);
+
+    if (!GameBeatable(worlds))
+    {
+        return FillError::GAME_NOT_BEATABLE;
+    }
 
     return err;
 }

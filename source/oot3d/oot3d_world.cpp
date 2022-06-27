@@ -382,6 +382,8 @@ WorldBuildingError Oot3dWorld::Build()
     err = CacheAgeTimeRequirements();
     BUILD_ERROR_CHECK(err);
 
+    locations[LocationID::Oot3dGanon]->currentItem = Item(ItemID::Oot3dTriforce, this);
+    locations[LocationID::Oot3dHCZeldasLetter]->currentItem = Item(ItemID::Oot3dZeldasLetter, this);
     locations[LocationID::Oot3dMasterSwordPedestal]->currentItem = Item(ItemID::Oot3dMasterSword, this);
     locations[LocationID::Oot3dDeliverRutosLetter]->currentItem = Item(ItemID::Oot3dDeliverLetter, this);
     locations[LocationID::Oot3dBigPoeKill]->currentItem = Item(ItemID::Oot3dBigPoe, this);

@@ -11,7 +11,7 @@ enum class SearchMode
 {
     INVALID = 0,
     AccessibleLocations,
-    GameBeatable,
+    //GameBeatable,
     AllLocationsReachable,
     GeneratePlaythrough,
 };
@@ -27,6 +27,9 @@ public:
     void DumpSearchGraph(size_t worldId = 0, const std::string filename = "World0");
 private:
     void SetStartingProperties(World* world);
+    void ProcessEvents();
+    void ProcessExits();
+    void ProcessLocations();
     void Explore(Area* area);
 public:
 
@@ -34,6 +37,7 @@ public:
     WorldPool* worlds = nullptr;
     int worldToSearch = -1;
     int sphere = 0;
+    bool newThingsFound = false;
     ItemMultiSet ownedItems = {};
     ItemMultiSet sphereItems = {};
     LocationSet accessibleLocations = {};
@@ -49,7 +53,7 @@ public:
     // Oot3D Specific Stuff
     // areaTime maps an Area Pointer to what times of day it has
     std::unordered_map<Area*, uint8_t> areaTime = {};
-    std::unordered_set<World*> ageTimeSpread;
+    std::unordered_map<Area*, uint8_t> areaTimeSpread = {};
 
     // Playthrough spheres
     std::list<std::list<Location*>> playthroughSpheres = {};
@@ -59,3 +63,5 @@ public:
 };
 
 LocationPool GetAccessibleLocations(WorldPool& worlds, ItemPool& items, LocationPool& allowedLocations, int worldToSearch = -1);
+bool GameBeatable(WorldPool& worlds);
+void GeneratePlaythrough(WorldPool& worlds);

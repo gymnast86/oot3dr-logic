@@ -1,6 +1,7 @@
 #include "generate.hpp"
 #include "timing.hpp"
 #include "fill.hpp"
+#include "search.hpp"
 #include "random.hpp"
 #include "oot3d/oot3d_world.hpp"
 
@@ -11,7 +12,7 @@
 
 void GenerateRandomizer()
 {
-
+    StartTiming("General");
 
     Random_Init(1); // This eventually has to go where deciding random settings
 
@@ -262,8 +263,13 @@ void GenerateRandomizer()
 
     EndTiming("Fill");
     PrintTiming("Fill");
+    // std::cout << "Generating Playthrough..." << std::endl;
+    // GeneratePlaythrough(worlds);
+
     DebugLog("Total Evals: " + std::to_string(TotalWorldEvals(worlds)));
     std::cout << "Eval Timing took " << std::to_string(worlds[0]->evalTime) << std::endl;
+    EndTiming("General");
+    PrintTiming("General");
 }
 
 void BKey()

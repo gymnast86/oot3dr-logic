@@ -18,7 +18,9 @@ public:
     ~Oot3dWorld();
 
     WorldBuildingError Build() override;
-    EvalSuccess EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE) override;
+    EvalSuccess EvaluateEventRequirement(Search* search, Event* event) override;
+    EvalSuccess EvaluateLocationRequirement(Search* search, LocationAccess* locAccess) override;
+    EvalSuccess EvaluateExitRequirement(Search* search, Entrance* exit) override;
     std::string GetTypeString() const override;
 
     void ExpandToDMasterSword(Search* search, LocationAccess* locAccess);
@@ -42,7 +44,7 @@ private:
     bool IsAdultItem(const ItemID& itemId);
     bool CanUse(const ItemID& itemId, const Requirement& req, Search* search, void* object, EvaluateType evalType, uint8_t ageTime);
 
-    bool EvaluateRequirementWithAgeTime(const Requirement& req, Search* search, void* object, EvaluateType evalType, uint8_t ageTime);
+    bool EvaluateRequirementWithAgeTime(const Requirement& req, Search* search, uint8_t ageTime);
     void ExpandTimePassToD(uint8_t connectedAreaAgeTime, uint8_t day, uint8_t night, Search* search, Entrance* exit);
     void ExpandToDAreas(Search* search, uint8_t ageTimeToExpand, const AreaID& startingArea = AreaID::Root);
 

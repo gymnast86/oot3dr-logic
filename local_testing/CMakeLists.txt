@@ -29,6 +29,7 @@ add_executable(local_testing main.cpp
                              ../source/random.cpp
                              ../source/requirement.cpp
                              ../source/search.cpp
+                             ../source/spoiler_log.cpp
                              ../source/timing.cpp
                              ../source/world.cpp
                              ../source/oot3d/oot3d_area.cpp

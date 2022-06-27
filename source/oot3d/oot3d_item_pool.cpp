@@ -30,28 +30,28 @@ static ItemIDPool alwaysItems = {
     ItemID::Oot3dProgressiveStrengthUpgrade,
     ItemID::Oot3dProgressiveScale,
     ItemID::Oot3dProgressiveScale,
-    ItemID::Oot3dRecoveryHeart,
-    ItemID::Oot3dRecoveryHeart,
-    ItemID::Oot3dRecoveryHeart,
-    ItemID::Oot3dRecoveryHeart,
-    ItemID::Oot3dRecoveryHeart,
-    ItemID::Oot3dRecoveryHeart,
+    // ItemID::Oot3dRecoveryHeart,
+    // ItemID::Oot3dRecoveryHeart,
+    // ItemID::Oot3dRecoveryHeart,
+    // ItemID::Oot3dRecoveryHeart,
+    // ItemID::Oot3dRecoveryHeart,
+    // ItemID::Oot3dRecoveryHeart,
     ItemID::Oot3dProgressiveBow,
     ItemID::Oot3dProgressiveBow,
     ItemID::Oot3dProgressiveBow,
     ItemID::Oot3dProgressiveSlingshot,
     ItemID::Oot3dProgressiveSlingshot,
     ItemID::Oot3dProgressiveSlingshot,
-    ItemID::Oot3dBombs5,
-    ItemID::Oot3dBombs5,
-    ItemID::Oot3dBombs10,
-    ItemID::Oot3dBombs20,
-    ItemID::Oot3dArrows5,
-    ItemID::Oot3dArrows10,
-    ItemID::Oot3dArrows10,
-    ItemID::Oot3dArrows10,
-    ItemID::Oot3dArrows10,
-    ItemID::Oot3dArrows10,
+    // ItemID::Oot3dBombs5,
+    // ItemID::Oot3dBombs5,
+    // ItemID::Oot3dBombs10,
+    // ItemID::Oot3dBombs20,
+    // ItemID::Oot3dArrows5,
+    // ItemID::Oot3dArrows10,
+    // ItemID::Oot3dArrows10,
+    // ItemID::Oot3dArrows10,
+    // ItemID::Oot3dArrows10,
+    // ItemID::Oot3dArrows10,
     ItemID::Oot3dProgressiveWallet,
     ItemID::Oot3dProgressiveWallet,
     ItemID::Oot3dProgressiveMagicMeter,
@@ -170,7 +170,6 @@ static ItemIDPool alwaysItems = {
 
     ItemID::Oot3dGanonsCastleSmallKey,
     ItemID::Oot3dGanonsCastleSmallKey,
-    ItemID::Oot3dGanonsCastleSmallKey,
 
     ItemID::Oot3dHeartContainer,
     ItemID::Oot3dHeartContainer,
@@ -197,10 +196,10 @@ ItemIDPool GenerateOot3dItemPool(SettingsMap& settings)
 
     itemPool.insert(itemPool.end(), alwaysItems.begin(), alwaysItems.end());
 
-    for (int i = 0; i < 100; i++)
-    {
-        itemPool.push_back(ItemID::Oot3dGoldSkulltulaToken);
-    }
+    // for (int i = 0; i < 100; i++)
+    // {
+    //     itemPool.push_back(ItemID::Oot3dGoldSkulltulaToken);
+    // }
 
     return itemPool;
 }
