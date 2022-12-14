@@ -8,7 +8,7 @@
 #include <iostream>
 #include <filesystem>
 
-#define BUILD_ERROR_CHECK(err) if (err != WorldBuildingError::NONE) {return err;}
+#define BUILD_ERROR_CHECK(func) err = func; if (err != WorldBuildingError::NONE) {return err;}
 #define FILE_READ_CHECK(retVal) if (retVal != 0) {return WorldBuildingError::COULD_NOT_LOAD_FILE;}
 #define VALID_REQUIREMENT(ref, err, reqStr) if (err != RequirementError::NONE) {std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl << "In YAML object: " << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_REQUIREMENT;}
 #define YAML_FIELD_CHECK(ref, field, err) if(!ref.has_child(field)) {std::cout << "ERROR: Unable to find field \"" << field << "\" in YAML object" << std::endl; PrintYAML(ref); return err;}
@@ -64,7 +64,7 @@ WorldBuildingError CheckValidLocationFields(const ryml::NodeRef& location)
 
 WorldBuildingError Oot3dWorld::BuildItemTable()
 {
-    DebugLog("Building Item Table for world " + std::to_string(worldId) + "...");
+    LOG_TO_DEBUG("Building Item Table for world " + std::to_string(worldId) + "...");
     // std::cout << "Build Item Table for world " << std::to_string(worldId) << "..." << std::endl;
     std::string itemStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/item_data.yaml", itemStr))
@@ -105,8 +105,7 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
 
 WorldBuildingError Oot3dWorld::BuildLocationTable()
 {
-    DebugLog("Building Location Table for world " + std::to_string(worldId) + "...");
-    // std::cout << "Building Location Table for world " << std::to_string(worldId) << "..." << std::endl;
+    LOG_TO_DEBUG("Building Location Table for world " + std::to_string(worldId) + "...");
     std::string locationDataStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/location_data.yaml", locationDataStr))
 
@@ -172,8 +171,7 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
 
 WorldBuildingError Oot3dWorld::LoadLogicHelpers()
 {
-    DebugLog("Loading Logic Helpers for world " + std::to_string(worldId) + "...");
-    // std::cout << "Loading Logic Helpers for world " << std::to_string(worldId) << "..." << std::endl;
+    LOG_TO_DEBUG("Loading Logic Helpers for world " + std::to_string(worldId) + "...");
     std::string logicHelpersStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/logic_helpers.yaml", logicHelpersStr))
 
@@ -192,8 +190,7 @@ WorldBuildingError Oot3dWorld::LoadLogicHelpers()
 
 WorldBuildingError Oot3dWorld::LoadWorldGraph()
 {
-    DebugLog("Building World Graph for world " + std::to_string(worldId) + "...");
-    // std::cout << "Build World Graph for world " << std::to_string(worldId) << "..." << std::endl;
+    LOG_TO_DEBUG("Building World Graph for world " + std::to_string(worldId) + "...");
     std::string worldGraphDataStr;
 
     // Loop through all files in the directory with world graph files
@@ -366,22 +363,11 @@ WorldBuildingError Oot3dWorld::BuildItemPools()
     return WorldBuildingError::NONE;
 }
 
-WorldBuildingError Oot3dWorld::Build()
+WorldBuildingError Oot3dWorld::PlaceVanillaItems()
 {
-    WorldBuildingError err;
-    err = BuildItemTable();
-    BUILD_ERROR_CHECK(err);
-    err = BuildLocationTable();
-    BUILD_ERROR_CHECK(err);
-    err = LoadLogicHelpers();
-    BUILD_ERROR_CHECK(err);
-    err = LoadWorldGraph();
-    BUILD_ERROR_CHECK(err);
-    err = BuildItemPools();
-    BUILD_ERROR_CHECK(err);
-    err = CacheAgeTimeRequirements();
-    BUILD_ERROR_CHECK(err);
-
+    // Hardcoded vanilla locations
+    // Will have to separate out some stuff if other modes like potsanity
+    // are developed
     locations[LocationID::Oot3dGanon]->currentItem = Item(ItemID::Oot3dTriforce, this);
     locations[LocationID::Oot3dHCZeldasLetter]->currentItem = Item(ItemID::Oot3dZeldasLetter, this);
     locations[LocationID::Oot3dMasterSwordPedestal]->currentItem = Item(ItemID::Oot3dMasterSword, this);
@@ -389,11 +375,37 @@ WorldBuildingError Oot3dWorld::Build()
     locations[LocationID::Oot3dBigPoeKill]->currentItem = Item(ItemID::Oot3dBigPoe, this);
     locations[LocationID::Oot3dPierre]->currentItem = Item(ItemID::Oot3dScarecrowSong, this);
     locations[LocationID::Oot3dBugRock]->currentItem = Item(ItemID::Oot3dBugs, this);
+    locations[LocationID::Oot3dBugShrub]->currentItem = Item(ItemID::Oot3dBugs, this);
+    locations[LocationID::Oot3dWanderingBugs]->currentItem = Item(ItemID::Oot3dBugs, this);
     locations[LocationID::Oot3dMarketBombchuBowlingBombchus]->currentItem = Item(ItemID::Oot3dBombchuDrop, this);
     locations[LocationID::Oot3dBlueFire]->currentItem = Item(ItemID::Oot3dBlueFire, this);
     locations[LocationID::Oot3dLoneFish]->currentItem = Item(ItemID::Oot3dFish, this);
+    locations[LocationID::Oot3dFishGroup]->currentItem = Item(ItemID::Oot3dFish, this);
     locations[LocationID::Oot3dNutPot]->currentItem = Item(ItemID::Oot3dDekuNutDrop, this);
+    locations[LocationID::Oot3dNutCrate]->currentItem = Item(ItemID::Oot3dDekuNutDrop, this);
     locations[LocationID::Oot3dStickPot]->currentItem = Item(ItemID::Oot3dDekuStickDrop, this);
+    locations[LocationID::Oot3dDekuBabaSticks]->currentItem = Item(ItemID::Oot3dDekuStickDrop, this);
+    locations[LocationID::Oot3dDekuBabaNuts]->currentItem = Item(ItemID::Oot3dDekuNutDrop, this);
+    locations[LocationID::Oot3dButterflyFairy]->currentItem = Item(ItemID::Oot3dFairy, this);
+    locations[LocationID::Oot3dFreeFairies]->currentItem = Item(ItemID::Oot3dFairy, this);
+    locations[LocationID::Oot3dWallFairy]->currentItem = Item(ItemID::Oot3dFairy, this);
+    locations[LocationID::Oot3dFairyPot]->currentItem = Item(ItemID::Oot3dFairy, this);
+    locations[LocationID::Oot3dBeanPlantFairy]->currentItem = Item(ItemID::Oot3dFairy, this);
+    locations[LocationID::Oot3dGossipStoneFairy]->currentItem = Item(ItemID::Oot3dFairy, this);
+
+    return WorldBuildingError::NONE;
+}
+
+WorldBuildingError Oot3dWorld::Build()
+{
+    WorldBuildingError err;
+    BUILD_ERROR_CHECK(BuildItemTable());
+    BUILD_ERROR_CHECK(BuildLocationTable());
+    BUILD_ERROR_CHECK(LoadLogicHelpers());
+    BUILD_ERROR_CHECK(LoadWorldGraph());
+    BUILD_ERROR_CHECK(BuildItemPools());
+    BUILD_ERROR_CHECK(CacheAgeTimeRequirements());
+    BUILD_ERROR_CHECK(PlaceVanillaItems());
 
     return WorldBuildingError::NONE;
 }

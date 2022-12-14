@@ -36,3 +36,14 @@ struct std::hash<Item>
         return h1 ^ (h2 << 16);
     }
 };
+
+// Template comparator for sets of pointers to be sorted by their data instead of the pointer address.
+// Taken from stack overflow https://stackoverflow.com/questions/67620937/set-of-pointers-to-objects-with-custom-comparator
+template <typename T>
+struct PointerComparator
+{
+    bool operator()(const T * lhs, const T * rhs) const
+    {
+        return *lhs < *rhs;
+    }
+};

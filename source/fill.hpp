@@ -11,3 +11,4 @@ enum class FillError {
 };
 
 FillError FillWorlds(WorldPool& worlds);
+std::string ErrorToName(FillError err);

@@ -105,8 +105,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
         {
             req.type = RequirementType::ITEM;
             ItemID itemId = NameToItemID(gamePrefix + "_" + argStr);
-            req.args.push_back(itemId);
-            req.fulfillmentItems.emplace(itemId, world);
+            req.args.push_back(Item(itemId, world));
             return RequirementError::NONE;
         }
         // Then the time/age checks...
@@ -172,7 +171,6 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             REQ_ERROR_CHECK(err);
             req.args.push_back(argArea);
             req.args.push_back(areaReq);
-            req.fulfillmentItems.merge(areaReq.fulfillmentItems);
             return RequirementError::NONE;
         }
         // Then a count...
@@ -215,8 +213,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             VALID_ITEM_CHECK(itemName, argStr);
             auto argItem = NameToItemID(itemName);
             req.args.push_back(count);
-            req.args.push_back(argItem);
-            req.fulfillmentItems.emplace(argItem, world);
+            req.args.push_back(Item(argItem, world));
             return RequirementError::NONE;
         }
         // Then a can_play check...
@@ -228,12 +225,10 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             songStr = gamePrefix + "_" + songStr;
             VALID_ITEM_CHECK(songStr, argStr)
             auto song = NameToItemID(songStr);
-            Requirement ocarinaReq = {RequirementType::ITEM, {ItemID::Oot3dProgressiveOcarina}};
-            Requirement songReq = {RequirementType::ITEM, {song}};
+            Requirement ocarinaReq = {RequirementType::ITEM, {Item(ItemID::Oot3dProgressiveOcarina, world)}};
+            Requirement songReq = {RequirementType::ITEM, {Item(song, world)}};
             req.args.push_back(ocarinaReq);
             req.args.push_back(songReq);
-            req.fulfillmentItems.emplace(ItemID::Oot3dProgressiveOcarina, world);
-            req.fulfillmentItems.emplace(song, world);
             return RequirementError::NONE;
         }
         // Then a settings check...
@@ -355,11 +350,6 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             std::string countStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
             int count = std::stoi(settings.at(countStr));
             req.args.push_back(count);
-            // Add stones to potential fulfillment items
-            for (const ItemID id : {ItemID::Oot3dKokiriEmerald, ItemID::Oot3dGoronRuby, ItemID::Oot3dZoraSapphire})
-            {
-                req.fulfillmentItems.emplace(id, world);
-            }
             return RequirementError::NONE;
         }
         else if (STR_HAS(argStr, "has_medallions"))
@@ -368,11 +358,6 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             std::string countStr (argStr.begin() + argStr.find('(') + 1, argStr.end() - 1);
             int count = std::stoi(settings.at(countStr));
             req.args.push_back(count);
-            // Add medallions to potential fulfillment items
-            for (const ItemID id : {ItemID::Oot3dForestMedallion, ItemID::Oot3dFireMedallion, ItemID::Oot3dWaterMedallion, ItemID::Oot3dSpiritMedallion, ItemID::Oot3dShadowMedallion, ItemID::Oot3dLightMedallion})
-            {
-                req.fulfillmentItems.emplace(id, world);
-            }
             return RequirementError::NONE;
         }
         else if (STR_HAS(argStr, "has_dungeon_rewards"))
@@ -382,12 +367,6 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             int count = std::stoi(settings.at(countStr));
             req.args.push_back(count);
             return RequirementError::NONE;
-            // Add dungeon rewards to potential fulfillment items
-            for (const ItemID id : {ItemID::Oot3dForestMedallion, ItemID::Oot3dFireMedallion, ItemID::Oot3dWaterMedallion, ItemID::Oot3dSpiritMedallion, ItemID::Oot3dShadowMedallion, ItemID::Oot3dLightMedallion,
-                                    ItemID::Oot3dKokiriEmerald, ItemID::Oot3dGoronRuby, ItemID::Oot3dZoraSapphire})
-            {
-                req.fulfillmentItems.emplace(id, world);
-            }
         }
         // False is least common, so it's checked last
         else if (STR_HAS(argStr, "False"))
@@ -417,8 +396,6 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             }
             // Evaluate the deeper expression and add it to the requirement object if it's valid
             if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId, gamePrefix, world)) != RequirementError::NONE) return err;
-            // Merge fulfillment items from recursively deeper requirements up to the top
-            req.fulfillmentItems.merge(std::get<Requirement>(req.args.back()).fulfillmentItems);
         }
         else
         {
@@ -477,8 +454,6 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
                 reqStr = reqStr.substr(1, reqStr.length() - 2);
             }
             if ((err = ParseRequirementString(reqStr, std::get<Requirement>(req.args.back()), logicMap, settings, areaId, gamePrefix, world)) != RequirementError::NONE) return err;
-            // Merge fulfillment items from recursively deeper requirements up to the top
-            req.fulfillmentItems.merge(std::get<Requirement>(req.args.back()).fulfillmentItems);
         }
     }
 

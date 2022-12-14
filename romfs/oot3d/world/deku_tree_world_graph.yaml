@@ -1,6 +1,6 @@
-
-#    VANILLA/MQ DECIDER
-
+############################
+#    VANILLA/MQ DECIDER    #
+############################
 
 - region_name: Deku Tree Entryway
   dungeon: Deku Tree
@@ -9,9 +9,9 @@
       Deku Tree MQ Lobby: deku_tree_dungeon_mode == mq
       KF Outside Deku Tree: 'True'
 
-
-#     VANILLA DUNGEON
-
+############################
+#     VANILLA DUNGEON      #
+############################
 
 - region_name: Deku Tree Lobby
   dungeon: Deku Tree
@@ -167,9 +167,9 @@
       Deku Tree Outside Boss Room: 'True'
       Deku Tree Entryway: Deku_Tree_Clear
 
-
-#   MASTER QUEST DUNGEON
-
+############################
+#   MASTER QUEST DUNGEON   #
+############################
 
 - region_name: Deku Tree MQ Lobby
   dungeon: Deku Tree

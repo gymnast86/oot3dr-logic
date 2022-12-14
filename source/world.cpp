@@ -62,13 +62,3 @@ std::string World::GetTypeString() const
 {
     return "generic (something is probably wrong)";
 }
-
-int TotalWorldEvals(const WorldPool& worlds)
-{
-    int sum = 0;
-    for (const auto& world : worlds)
-    {
-        sum += world->numEvals;
-    }
-    return sum;
-}

@@ -23,9 +23,7 @@ void DebugLog(const std::string& msg /*= ""*/)
 
 void OpenDebugLog(const std::string& seed)
 {
-    #ifdef NON_3DS
-        logger.open(LOGS_PATH"/debug_logger" + seed + ".txt");
-    #endif
+    logger.open(LOGS_PATH"/debug_logger" + seed + ".txt");
 }
 
 void CloseDebugLog()

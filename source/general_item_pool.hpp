@@ -4,8 +4,8 @@
 #include "settings.hpp"
 
 #include <vector>
-#include <unordered_set>
+#include <set>
 
 using ItemPool = std::vector<Item>;
 using ItemIDPool = std::vector<ItemID>;
-using ItemMultiSet = std::unordered_multiset<Item>;
+using ItemMultiSet = std::multiset<Item>;

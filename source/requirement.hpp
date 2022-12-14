@@ -15,19 +15,19 @@ using LogicHelperMap = std::unordered_map<std::string, Requirement>;
 enum struct RequirementType
 {
     NONE = 0,
+    TRUE,
+    FALSE,
     OR,
     AND,
     NOT,
     ITEM,
     COUNT,
-    AT,
-    TRUE,
-    FALSE,
     // OoT3D Specific types
     CHILD_DAY,
     CHILD_NIGHT,
     ADULT_DAY,
     ADULT_NIGHT,
+    AT,
     HEARTS,
     EFFECTIVE_HEALTH,
     FIRE_TIMER,
@@ -54,11 +54,9 @@ enum struct RequirementError
 
 struct Requirement
 {
-    using Argument = std::variant<int, bool, std::string, Requirement, ItemID, AreaID>;
+    using Argument = std::variant<int, bool, std::string, Requirement, ItemID, AreaID, Item>;
     RequirementType type = RequirementType::INVALID;
     std::vector<Argument> args;
-    // Set of items that can potentially fulfill this requirement
-    std::unordered_set<Item> fulfillmentItems;
 };
 
 class World;

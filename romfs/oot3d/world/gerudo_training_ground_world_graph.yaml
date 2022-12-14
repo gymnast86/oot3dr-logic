@@ -1,5 +1,6 @@
-#    VANILLA/MQ DECIDER
-
+############################
+#    VANILLA/MQ DECIDER    #
+############################
 
 - region_name: Gerudo Training Ground Entryway
   dungeon: Gerudo Training Ground
@@ -8,9 +9,9 @@
       Gerudo Training Ground MQ Lobby: gerudo_training_ground_dungeon_mode == mq
       Gerudo Fortress: 'True'
 
-
-#     VANILLA DUNGEON
-
+############################
+#     VANILLA DUNGEON      #
+############################
 
 - region_name: Gerudo Training Ground Lobby
   dungeon: Gerudo Training Ground
@@ -111,8 +112,9 @@
       Gerudo Training Ground Heavy Block Third Chest: 'True'
       Gerudo Training Ground Heavy Block Fourth Chest: 'True'
 
-
-#   MASTER QUEST DUNGEON
+############################
+#   MASTER QUEST DUNGEON   #
+############################
 
 - region_name: Gerudo Training Ground MQ Lobby
   dungeon: Gerudo Training Ground

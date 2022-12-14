@@ -5,7 +5,7 @@ Item::Item() {}
 
 Item::Item(const ItemID& id_, World* world_) : id(id_), world(world_) {
     worldId = world->GetWorldID();
-    name = ItemIDToName(id_) + "[W" + std::to_string(worldId) + "]";
+    name = ItemIDToName(id_);
 }
 
 Item::~Item() = default;

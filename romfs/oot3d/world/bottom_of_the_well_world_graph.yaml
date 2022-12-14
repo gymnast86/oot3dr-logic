@@ -1,6 +1,7 @@
 ############################
 #    VANILLA/MQ DECIDER    #
 ############################
+
 - region_name: Bottom of the Well Entryway
   dungeon: Bottom of the Well
   exits:

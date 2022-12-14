@@ -2,6 +2,7 @@
 *vs/*
 backup/*
 build/*
+build*
 *.txt
 *.bin
 *.elf
@@ -22,4 +23,5 @@ source/patch_symbols.hpp
 .DS_Store
 local_testing/*
 !local_testing/CMakeLists.txt
+!gui/CMakeLists.txt
 source/*_id.*pp

@@ -8,8 +8,10 @@
 
 #include <string>
 #include <list>
+#include <set>
 #include <vector>
 #include <unordered_map>
+#include <map>
 #include <memory>
 
 enum struct WorldBuildingError
@@ -67,14 +69,13 @@ public:
     Area* GetRootArea();
 
     virtual WorldBuildingError Build();
-    // object is a pointer to the object the requirement belongs to (event, location, or exit)
     virtual EvalSuccess EvaluateEventRequirement(Search* search, Event* exit);
     virtual EvalSuccess EvaluateLocationRequirement(Search* search, LocationAccess* locAccess);
     virtual EvalSuccess EvaluateExitRequirement(Search* search, Entrance* exit);
     virtual std::string GetTypeString() const;
 
     SettingsMap settings;
-    std::unordered_map<LocationID, std::unique_ptr<Location>> locations;
+    std::map<LocationID, std::unique_ptr<Location>> locations;
     std::unordered_map<AreaID, std::unique_ptr<Area>> areas;
     LogicHelperMap logicHelpers;
     ItemPool itemPool;
@@ -82,8 +83,9 @@ public:
     int worldId = -1;
     WorldType worldType = WorldType::NONE;
 
-    int numEvals = 0;
     double evalTime = 0.0f;
-};
 
-int TotalWorldEvals(const WorldPool& worlds);
+    // Store playthroughs in world 0 for now
+    std::list<std::set<Location*, PointerComparator<Location>>> playthroughSpheres = {};
+    std::list<std::list<Entrance*>> entranceSpheres = {};
+};

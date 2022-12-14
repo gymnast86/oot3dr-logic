@@ -34,3 +34,13 @@ std::string Location::TypeString() const
 {
     return "Generic Location";
 }
+
+bool Location::operator==(const Location& rhs) const
+{
+		return id == rhs.id && world == rhs.world;
+}
+
+bool Location::operator<(const Location& rhs) const
+{
+		return (world == rhs.world) ? id < rhs.id : world < rhs.world;
+}

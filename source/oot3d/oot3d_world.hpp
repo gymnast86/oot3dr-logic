@@ -23,7 +23,7 @@ public:
     EvalSuccess EvaluateExitRequirement(Search* search, Entrance* exit) override;
     std::string GetTypeString() const override;
 
-    void ExpandToDMasterSword(Search* search, LocationAccess* locAccess);
+    void ExpandToDMasterSword(Search* search);
 
     std::unordered_map<ItemID, Oot3dItem> itemTable;
     std::unordered_map<Entrance*, uint8_t> possibleExitAgeTimes;
@@ -36,13 +36,7 @@ private:
     WorldBuildingError LoadWorldGraph();
     WorldBuildingError BuildItemPools();
     WorldBuildingError CacheAgeTimeRequirements();
-
-    // Logic Helper functions
-    bool IsMagicArrow(const ItemID& itemId);
-    bool IsMagicItem(const ItemID& itemId);
-    bool IsChildItem(const ItemID& itemId);
-    bool IsAdultItem(const ItemID& itemId);
-    bool CanUse(const ItemID& itemId, const Requirement& req, Search* search, void* object, EvaluateType evalType, uint8_t ageTime);
+    WorldBuildingError PlaceVanillaItems();
 
     bool EvaluateRequirementWithAgeTime(const Requirement& req, Search* search, uint8_t ageTime);
     void ExpandTimePassToD(uint8_t connectedAreaAgeTime, uint8_t day, uint8_t night, Search* search, Entrance* exit);

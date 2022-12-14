@@ -3,6 +3,7 @@
 #include "fill.hpp"
 #include "search.hpp"
 #include "random.hpp"
+#include "spoiler_log.hpp"
 #include "oot3d/oot3d_world.hpp"
 
 #include <unordered_map>
@@ -10,7 +11,7 @@
 #include <vector>
 #include <unordered_set>
 
-void GenerateRandomizer()
+int GenerateRandomizer()
 {
     StartTiming("General");
 
@@ -27,7 +28,7 @@ void GenerateRandomizer()
         {"damage_multiplier", "1x"},
         {"hints", "none"},
         {"plant_beans", "Off"},
-        {"bridge", "open"},
+        {"bridge", "medallions"},
         {"lacs_condition", "vanilla"},
         {"shuffle_ganon_bosskey", "medallions"},
         {"bridge_tokens", "10"},
@@ -245,31 +246,36 @@ void GenerateRandomizer()
         else
         {
             std::cout << "ERROR: No world type defined in settings for world " << std::to_string(i) << std::endl;
-            return;
+            return 1;
         }
         worlds[i]->worldId = i;
         if (worlds[i]->Build() != WorldBuildingError::NONE)
         {
             std::cout << " when building world " << std::to_string(i) << " of type " << settings["world_type"] << std::endl;
-            return;
+            return 1;
         }
-        // std::cout << "Done building world " << std::to_string(i) << std::endl;
     }
 
     StartTiming("Fill");
     std::cout << "Filling Worlds..." << std::endl;
     FillError err = FillWorlds(worlds);
-
+    if (err != FillError::NONE)
+    {
+        std::cout << ErrorToName(err) << std::endl;
+        return 1;
+    }
 
     EndTiming("Fill");
     PrintTiming("Fill");
-    // std::cout << "Generating Playthrough..." << std::endl;
-    // GeneratePlaythrough(worlds);
+    std::cout << "Generating Playthrough..." << std::endl;
+    GeneratePlaythrough(worlds);
 
-    DebugLog("Total Evals: " + std::to_string(TotalWorldEvals(worlds)));
-    std::cout << "Eval Timing took " << std::to_string(worlds[0]->evalTime) << std::endl;
+    GenerateSpoilerLog(worlds);
+
     EndTiming("General");
     PrintTiming("General");
+
+    return 0;
 }
 
 void BKey()

@@ -28,7 +28,7 @@ def build_ids(main_path, data_directory, data_filename, type, key):
         data_paths.extend([Path(file) for file in glob.glob(file_path)])
 
     # If any of the data files have changed since the last generation, then regenerate them
-    if (not (hpp_path.exists() and cpp_path.exists())) or any([os.path.getmtime(hpp_path) < os.path.getmtime(data_file) or os.path.getmtime(cpp_path) < os.path.getmtime(data_file) for data_file in data_paths] + [True]):
+    if (not (hpp_path.exists() and cpp_path.exists())) or any([os.path.getmtime(hpp_path) < os.path.getmtime(data_file) or os.path.getmtime(cpp_path) < os.path.getmtime(data_file) for data_file in data_paths]):
 
         # Get all the elements in the appropriate data yaml files
         elements = []

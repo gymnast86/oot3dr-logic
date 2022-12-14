@@ -31,11 +31,6 @@ Search::Search(const SearchMode& searchMode_, WorldPool* worlds_, const ItemPool
     }
 
     ownedItems = ItemMultiSet(items.begin(), items.end());
-    // // DebugLog("Owned items:");
-    // for (const auto& item : ownedItems)
-    // {
-    //     // DebugLog("\t" + item.GetName());
-    // }
     for (auto& world : *worlds)
     {
         if (worldToSearch == -1 || worldToSearch == world->GetWorldID())
@@ -45,10 +40,6 @@ Search::Search(const SearchMode& searchMode_, WorldPool* worlds_, const ItemPool
             for (auto& exit : world->GetRootArea()->exits)
             {
                 exitsToTry.push_back(exit.get());
-            }
-            for (auto& locAccess : world->GetRootArea()->locations)
-            {
-                locationsToTry.push_back(&locAccess);
             }
         }
     }
@@ -93,36 +84,44 @@ void Search::SetStartingProperties(World* world)
     }
 }
 
-void Search::FindLocations(int tempWorldToSearch /*= -1*/)
+void Search::SearchWorlds(int tempWorldToSearch /*= -1*/, bool oneIteration /*= false*/)
 {
     int oldWorldToSearch = worldToSearch;
     worldToSearch = tempWorldToSearch;
-    newThingsFound = false;
 
-    // If any previous locations which didn't have anything now do have something
-    // then add them back to locationsToTry
-    for (auto locItr = locationsToTryAtEnd.begin(); locItr != locationsToTryAtEnd.end(); )
+    // Get all locations which currently have items to test on each iteration
+    std::set<LocationAccess*, LocationAccessComparator> itemLocations = {};
+    //LOG_TO_DEBUG("[");
+    for (auto& world : *worlds)
     {
-        auto locAccess = *locItr;
-        auto location = locAccess->location;
-
-        if (location->currentItem.GetID() != ItemID::NONE && (worldToSearch == -1 || location->world->GetWorldID() == worldToSearch))
+        for (auto& [id, area] : world->areas)
         {
-            // std::cout << "\t" + location->GetName() + " in world " + std::to_string(location->GetWorld()->GetWorldID()));
-            locationsToTry.push_back(locAccess);
-            // Delete locations which now have an item
-            locItr = locationsToTryAtEnd.erase(locItr);
-        }
-        else
-        {
-            locItr++; // Only increment if we don't erase
+            for (auto& locAccess : area->locations)
+            {
+                // if (searchMode == SearchMode::GameBeatable)
+                // {
+                //     LOG_TO_DEBUG("\t" + locAccess.location->GetName() + " " + std::to_string(locAccess.location->GetCurrentItem().GetID() != ItemID::NONE) + std::to_string(visitedLocations.count(locAccess.location) == 0));
+                // }
+                if (locAccess.location->GetCurrentItem().GetID() != ItemID::NONE && visitedLocations.count(locAccess.location) == 0)
+                {
+                    itemLocations.insert(&locAccess);
+                    // if (searchMode == SearchMode::GameBeatable)
+                    // {
+                    //     LOG_TO_DEBUG("\t\tAdded");
+                    // }
+                }
+            }
         }
     }
+    //LOG_TO_DEBUG("]");
 
     // Main searching loop
     do
     {
-        // DebugLog("Begin Search Loop");
+        // Variable to keep track of making logical progress. We want to keep
+        // looping as long as we're finding new things on each iteration
+        newThingsFound = false;
+
         // push_back an empty sphere if we're generating the playthrough
         if (searchMode == SearchMode::GeneratePlaythrough)
         {
@@ -130,50 +129,13 @@ void Search::FindLocations(int tempWorldToSearch /*= -1*/)
             entranceSpheres.push_back({});
         }
 
-        // Variable to keep track of making logical progress. We want to keep
-        // looping as long as we're finding new things on each iteration
-        newThingsFound = false;
-
         ProcessExits();
         ProcessEvents();
-        ProcessLocations();
+        ProcessLocations(itemLocations);
 
-        sphere++;
-        // DebugLog(std::string("End Search Loop: ") + (newThingsFound ? "continuing" : "not continuing"));
+        sphereNum++;
     }
-    while (newThingsFound);
-    if (searchMode == SearchMode::AccessibleLocations)
-    {
-        // DebugLog("Processing End Locations");
-        for (auto locItr = locationsToTryAtEnd.begin(); locItr != locationsToTryAtEnd.end(); )
-        {
-            auto locAccess = *locItr;
-            auto location = locAccess->location;
-            auto world = location->GetWorld();
-            // DebugLog("\t\tTesting location " + location->GetName());
-            if (worldToSearch != -1 && world->GetWorldID() != worldToSearch)
-            {
-                // DebugLog("\t\t\tNot part of current world");
-                locItr++;
-                continue;
-            }
-            if (world->EvaluateLocationRequirement(this, locAccess) == EvalSuccess::Complete)
-            {
-                // DebugLog("\t\t\tSuccess");
-                // std::cout << "\t" + location->GetName() + " in world " + std::to_string(location->GetWorld()->GetWorldID()));
-                visitedLocations.insert(location);
-                // Delete newly accessible locations from locationsToTryAtEnd
-                accessibleLocations.insert(location);
-                locItr = locationsToTryAtEnd.erase(locItr);
-            }
-            else
-            {
-                // DebugLog("\t\t\tFailure");
-                locItr++; // Only increment if we don't erase
-            }
-        }
-        // DebugLog("End Locations Done");
-    }
+    while (newThingsFound && !((searchMode == SearchMode::GeneratePlaythrough || searchMode == SearchMode::GameBeatable) && isBeatable));
     worldToSearch = oldWorldToSearch;
 }
 
@@ -184,15 +146,8 @@ void Search::Explore(Area* area)
     auto world = area->world;
     for (auto& event : area->events)
     {
-        // DebugLog("\t\tFound Event " + ItemIDToName(event.item));
+        // LOG_TO_DEBUG("\t\tFound Event " + ItemIDToName(event.item));
         eventsToTry.push_back(&event);
-    }
-    for (auto& locAccess : area->locations)
-    {
-        // Add new locations we come across to try them and potentially account
-        // for any items on the next iteration.
-        // DebugLog("\t\tFound Location " + locAccess.location->GetName());
-        locationsToTry.push_back(&locAccess);
     }
     for (auto& exitPtr : area->exits)
     {
@@ -200,56 +155,53 @@ void Search::Explore(Area* area)
         // std::cout << "Found [W" << std::to_string(world->GetWorldID()) << "] exit " << exit->GetOriginalName() << std::endl;
         // If we're generating the playthrough, evaluate the entrance requirement
         // if it's shuffled to potentially add it to the entrance spheres
-        if (searchMode == SearchMode::GeneratePlaythrough && exit->IsShuffled())
-        {
-            // If entrances are not decoupled we only want to add the first entrance
-            // of a bound two way entrance to the entrance playthrough for
-            // spoiler log simplicity
-            bool reverseInPlaythrough = false;
-            // if (!worlds[exit.getWorldId()].getSettings().decouple_entrances && exit.getReplaces()->getReverse() != nullptr)
-            // {
-            //     for (auto& sphere : worlds[0].entranceSpheres)
-            //     {
-            //         if (std::find(sphere.begin(), sphere.end(), exit.getReplaces()->getReverse()) != sphere.end())
-            //         {
-            //             reverseInPlaythrough = true;
-            //             break;
-            //         }
-            //     }
-            // }
-            //
-            // if (!reverseInPlaythrough && world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit))
-            // {
-            //     entranceSpheres.back().push_back(exit);
-            // }
-        }
+        // if (searchMode == SearchMode::GeneratePlaythrough && exit->IsShuffled())
+        // {
+        //     // If entrances are not decoupled we only want to add the first entrance
+        //     // of a bound two way entrance to the entrance playthrough for
+        //     // spoiler log simplicity
+        //     bool reverseInPlaythrough = false;
+        //     if (!worlds[exit.getWorldId()].getSettings().decouple_entrances && exit.getReplaces()->getReverse() != nullptr)
+        //     {
+        //         for (auto& sphere : worlds[0].entranceSpheres)
+        //         {
+        //             if (std::find(sphere.begin(), sphere.end(), exit.getReplaces()->getReverse()) != sphere.end())
+        //             {
+        //                 reverseInPlaythrough = true;
+        //                 break;
+        //             }
+        //         }
+        //     }
+        //
+        //     if (!reverseInPlaythrough && world->EvaluateRequirement(exit->GetRequirement(), this, exit, EvaluateType::Exit))
+        //     {
+        //         entranceSpheres.back().push_back(exit);
+        //     }
+        // }
 
         auto connectedArea = exit->GetConnectedArea();
 
-        StartTiming("Exit");
         auto evalSuccess = world->EvaluateExitRequirement(this, exit);
-        auto timing = GetTiming("Exit");
-        DebugLog("\t\tTesting exploration exit " + exit->GetOriginalName() + " " + std::to_string(timing) + " seconds");
         switch (evalSuccess)
         {
             case EvalSuccess::Partial:
-                exitsToTry.push_front(exit);
+                exitsToTry.push_back(exit);
                 [[fallthrough]];
             case EvalSuccess::Complete:
-                // DebugLog("\t\t\tSuccess");
+                if (evalSuccess == EvalSuccess::Complete)
+                {
+                    successfulExits.insert(exit);
+                }
                 if (visitedAreas.count(connectedArea) == 0)
                 {
-                    // DebugLog("\t\t\tConnected Area is new, exploring");
                     visitedAreas.insert(connectedArea);
                     Explore(connectedArea);
                 }
                 break;
             case EvalSuccess::Unnecessary:
-                // DebugLog("\t\t\tUnnecessary");
                 break;
             case EvalSuccess::NONE:
-                // DebugLog("\t\t\tFailure");
-                exitsToTry.push_front(exit);
+                exitsToTry.push_back(exit);
             default:
                 break;
         }
@@ -260,7 +212,6 @@ void Search::ProcessEvents()
 {
     // Loop through and see if there are any events that we are now accessible.
     // Add them to the ownedItems list if they are.
-    // DebugLog("\tProcessing Events");
     for (auto eventItr = eventsToTry.begin(); eventItr != eventsToTry.end(); )
     {
         auto event = *eventItr;
@@ -270,13 +221,11 @@ void Search::ProcessEvents()
         // Ignore the event if it isn't part of the world we're searching
         if (worldToSearch != -1 && world->GetWorldID() != worldToSearch)
         {
-            eventItr++;
+            eventItr++; // Only increment if we don't erase
             continue;
         }
-        // DebugLog("\t\tTesting event " + ItemIDToName(event->item) + " in area " + area->name);
         if (world->EvaluateEventRequirement(this, event) == EvalSuccess::Complete)
         {
-            // DebugLog("\t\t\tSuccess");
             newThingsFound = true;
             eventItr = eventsToTry.erase(eventItr);
             ownedItems.emplace(event->item, world);
@@ -284,73 +233,36 @@ void Search::ProcessEvents()
         }
         else
         {
-            // DebugLog("\t\t\tFailure");
             eventItr++; // Only increment if we don't erase
         }
     }
-    // DebugLog("\tEvents Done");
 }
 
 void Search::ProcessExits()
 {
     // Search each exit in the exitsToTry list and explore any new areas found as well.
     // For any exits which we try and don't meet the requirements for, put them
-    // into exitsToTry for the next iteration. Any locations we come across will
-    // be added to locationsToTry.
-    // DebugLog("\tProcessing Exits");
-    for (auto exitItr = exitsToTry.begin(); exitItr != exitsToTry.end(); )
+    // into exitsToTry for the next iteration.
+    for (auto exitItr = exitsToTry.begin(); exitItr != exitsToTry.end(); exitItr++)
     {
         auto exit = *exitItr;
-        auto world = exit->GetWorld();
-        // DebugLog("\t\tTesting exit " + exit->GetOriginalName());
-        if (worldToSearch != -1 && world->GetWorldID() != worldToSearch)
+        if (successfulExits.count(exit) > 0 || (worldToSearch != -1 && exit->GetWorld()->GetWorldID() != worldToSearch))
         {
-            // Ignore the exit if it isn't part of the world we're searching
-            // DebugLog("\t\t\tNot part of current world");
-            exitItr++;
+            // Ignore the exit if it we've already completed it, or we're not searching
+            // its world at the moment
             continue;
         }
-
-        // If the requirement has a set of fulfillment items, then test to see
-        // if any of those items were found last iteration. If none of them were
-        // then don't test the requirement.
-        auto& requirement = exit->GetRequirement();
-        if (requirement.fulfillmentItems.size() > 0 && sphereItems.size() > 0 && areaTimeSpread.count(exit->GetParentArea()) == 0)
-        {
-            bool potentialfulfillment = false;
-            for (const auto& item : sphereItems)
-            {
-                if (requirement.fulfillmentItems.count(item) > 0)
-                {
-                    potentialfulfillment = true;
-                    break;
-                }
-            }
-            if (!potentialfulfillment)
-            {
-                // DebugLog("\t\t\tNo potential fulfillment items, ignoring");
-                exitItr++;
-                continue;
-            }
-        }
         // std::cout << "Now exploring [W" << std::to_string(world->GetWorldID()) << "] exit " << exit->GetOriginalName() << std::endl;
-
+        auto world = exit->GetWorld();
         EvalSuccess evalSuccess = world->EvaluateExitRequirement(this, exit);
         if (evalSuccess == EvalSuccess::Unnecessary) {
-            // DebugLog("\t\t\tUnnecessary");
-            exitItr = exitsToTry.erase(exitItr);
+            successfulExits.insert(exit);
         }
         else if (evalSuccess == EvalSuccess::Complete || evalSuccess == EvalSuccess::Partial)
         {
             if (evalSuccess == EvalSuccess::Complete)
             {
-                // DebugLog("\t\t\tComplete Success");
-                exitItr = exitsToTry.erase(exitItr);
-            }
-            else
-            {
-                // DebugLog("\t\t\tPartial Success");
-                exitItr++;
+                successfulExits.insert(exit);
             }
 
             newThingsFound = true;
@@ -359,212 +271,195 @@ void Search::ProcessExits()
             {
                 entranceSpheres.back().push_back(exit);
             }
-            // Erase the exit from the list of exits if we've met its requirement
-            // exitItr = exitsToTry.erase(exitItr);
+
             // If this exit's connected region has not been explored yet, then explore it
             auto connectedArea = exit->GetConnectedArea();
             if (visitedAreas.count(connectedArea) == 0)
             {
                 visitedAreas.insert(connectedArea);
-                // DebugLog("\t\t\tConnected Area is new, now exploring");
                 Explore(connectedArea);
             }
         }
-        else
-        {
-            // DebugLog("\t\t\tFailure");
-            exitItr++; // Only increment if we don't erase
-        }
     }
-    // DebugLog("\tExits Done");
+
+    // if (searchMode == SearchMode::GameBeatable)
+    // {
+    //     LOG_TO_DEBUG("]");
+    // }
 }
 
-void Search::ProcessLocations()
+void Search::ProcessLocation(Location* location)
 {
-    // Note which locations are now accessible on this iteration
-    std::list<LocationAccess*> accessibleThisIteration = {};
-    // std::cout << "New Locations Accessible:" << std::endl;
-    // DebugLog("\tProcessing Locations");
-    for (auto locItr = locationsToTry.begin(); locItr != locationsToTry.end(); )
+    ownedItems.insert(location->GetCurrentItem());
+    // Set appropriate new ageTimes if we found the master sword in oot3d
+    if (location->GetCurrentItem().GetID() == ItemID::Oot3dMasterSword && location->GetWorld()->GetType() == WorldType::Oot3d)
     {
-        auto locAccess = *locItr;
+        Oot3dWorld* oot3dWorld = (Oot3dWorld*) location->GetWorld();
+        oot3dWorld->ExpandToDMasterSword(this);
+    }
+    if (searchMode == SearchMode::GeneratePlaythrough)
+    {
+        playthroughSpheres.back().insert(location);
+    }
+    // If we're generating a playthrough or just checking for beatability then we can
+    // stop searching early by checking if we've found all game beating items for each
+    // world
+    if (searchMode == SearchMode::GeneratePlaythrough || searchMode == SearchMode::GameBeatable)
+    {
+        // If we've found the item at the final boss for all worlds, then return early
+        if (location->GetCurrentItem().GetID() == ItemID::Oot3dTriforce /*or ItemID::Mm3dMajoraBeatable*/)
+        {
+            if (std::count_if(ownedItems.begin(), ownedItems.end(), [](const Item& item){return item.GetID() == ItemID::Oot3dTriforce /* || ItemID::Mm3dMajoraBeatable*/;}) == (int) worlds->size())
+            {
+                // If this is the playthrough, then disregard any items found in the current sphere
+                // and just put the final boss item there.
+                if (searchMode == SearchMode::GeneratePlaythrough)
+                {
+                    playthroughSpheres.back().clear();
+                    playthroughSpheres.back().insert(location);
+                }
+                isBeatable = true;
+            }
+        }
+    }
+}
+
+void Search::ProcessLocations(std::set<LocationAccess*, LocationAccessComparator>& itemLocations)
+{
+
+    LocationPool accessibleThisIteration = {};
+
+    for (auto locAccess : itemLocations)
+    {
         auto location = locAccess->location;
         auto world = location->GetWorld();
-        // DebugLog("\t\tTesting location " + location->GetName());
-        // Ignore the location if it isn't part of the world we're searching
-        if (worldToSearch != -1 && world->GetWorldID() != worldToSearch)
+        // if (searchMode == SearchMode::GameBeatable)
+        // {
+        //    LOG_TO_DEBUG("Evaluating location " + locAccess->location->GetName());
+        // }
+        if (visitedLocations.count(location) > 0 || visitedAreas.count(locAccess->area) == 0 || (worldToSearch != -1 && world->GetWorldID() != worldToSearch))
         {
-            // DebugLog("\t\t\tNot part of current world");
-            locItr++;
-            continue;
-        }
-        // Erase locations which have already been found. Some item locations
-        // can be accessed from multiple areas, so this check is necessary
-        // in those circumstances
-        if (visitedLocations.count(location) > 0)
-        {
-            // DebugLog("\t\t\tLocation already found");
-            locItr = locationsToTry.erase(locItr);
+            // if (searchMode == SearchMode::GameBeatable)
+            // {
+            //    LOG_TO_DEBUG("Continued " + std::to_string(visitedLocations.count(location) > 0) + " " + std::to_string(visitedAreas.count(locAccess->area) == 0) + " " + std::to_string((worldToSearch != -1 && world->GetWorldID() != worldToSearch)));
+            // }
             continue;
         }
 
-        // If this location does not contain an item, then there's no reason to
-        // evaluate it now. Evaluate it after the searching loop is over
-        if (location->currentItem.GetID() == ItemID::NONE)
-        {
-            // DebugLog("\t\t\tNo Item at location, evaluating later");
-            locationsToTryAtEnd.insert(locAccess);
-            locItr = locationsToTry.erase(locItr);
-            continue;
-        }
-
-        // If the requirement has a set of fulfillment items, then test to see
-        // if any of those items were found last iteration. If none of them were
-        // then don't test the requirement.
-        auto& requirement = locAccess->requirement;
-        if (requirement.fulfillmentItems.size() > 0 && sphereItems.size() > 0 && areaTimeSpread.count(locAccess->area) == 0)
-        {
-            bool potentialfulfillment = false;
-            for (const auto& item : sphereItems)
-            {
-                if (requirement.fulfillmentItems.count(item) > 0)
-                {
-                    potentialfulfillment = true;
-                    break;
-                }
-            }
-            if (!potentialfulfillment)
-            {
-                // DebugLog("\t\t\tNo fulfillment items");
-                locItr++;
-                continue;
-            }
-        }
         if (world->EvaluateLocationRequirement(this, locAccess) == EvalSuccess::Complete)
         {
-            // DebugLog("\t\t\tSuccess");
-            // std::cout << "\t" + location->GetName() + " in world " + std::to_string(location->GetWorld()->GetWorldID()));
-            newThingsFound = true;
+            // if (searchMode == SearchMode::GameBeatable)
+            // {
+            //    LOG_TO_DEBUG("\t\tSuccess");
+            // }
             visitedLocations.insert(location);
-            // Delete newly accessible locations from locationsToTry
-            accessibleThisIteration.push_back(locAccess);
-            locItr = locationsToTry.erase(locItr);
+            newThingsFound = true;
+            if (searchMode == SearchMode::GeneratePlaythrough)
+            {
+                accessibleThisIteration.push_back(location);
+            }
+            else
+            {
+                ProcessLocation(location);
+            }
+        }
+    }
+
+    // If we're generating the playthrough, then process locations after we've
+    // found all that are available this iteration
+    for (auto location : accessibleThisIteration)
+    {
+        ProcessLocation(location);
+        if (isBeatable)
+        {
+            return;
+        }
+    }
+
+}
+
+void Search::RemoveEmptySpheres()
+{
+    // Get rid of any empty spheres in both the item playthrough and entrance playthrough
+    // based only on if the item playthrough has empty spheres. Both the playthroughs
+    // will have the same number of spheres, so we only need to conditionally
+    // check one of them.
+    auto itemItr = playthroughSpheres.begin();
+    auto entranceItr = entranceSpheres.begin();
+    while (itemItr != playthroughSpheres.end())
+    {
+        if (itemItr->empty() && entranceItr->empty())
+        {
+            itemItr = playthroughSpheres.erase(itemItr);
+            entranceItr = entranceSpheres.erase(entranceItr);
         }
         else
         {
-            // DebugLog("\t\t\tFailure");
-            locItr++; // Only increment if we don't erase
+            itemItr++;     // Only incremement if we don't erase
+            entranceItr++;
         }
     }
-
-    // Clear the sphere items and spread age times for the next iteration
-    sphereItems.clear();
-    areaTimeSpread.clear();
-    // Now apply any effects of newly accessible locations for the next iteration.
-    // This lets us properly keep track of spheres for playthrough generation
-    for (auto locAccess : accessibleThisIteration)
-    {
-        auto location = locAccess->location;
-        accessibleLocations.insert(location);
-        Item currentItem = location->GetCurrentItem();
-        if (currentItem.GetID() != ItemID::NONE)
-        {
-            ownedItems.insert(currentItem);
-            sphereItems.insert(currentItem);
-            if (searchMode == SearchMode::GeneratePlaythrough /*&& location has major item*/)
-            {
-                playthroughSpheres.back().push_back(location);
-            }
-            // If we found the Master Sword for an Oot3D world, handle the new agetime
-            if (currentItem.GetID() == ItemID::Oot3dMasterSword && currentItem.GetWorld()->GetType() == WorldType::Oot3d)
-            {
-                auto world = currentItem.GetWorld();
-                Oot3dWorld* oot3dWorld = (Oot3dWorld*) world;
-                oot3dWorld->ExpandToDMasterSword(this, locAccess);
-            }
-        }
-    }
-    // DebugLog("\tLocations Done");
-}
-
-LocationPool GetAccessibleLocations(WorldPool& worlds, ItemPool& items, LocationPool& allowedLocations, int worldToSearch /*= -1*/)
-{
-    int oldNum = worlds[0]->numEvals;
-    auto search = Search(SearchMode::AccessibleLocations, &worlds, items, worldToSearch);
-    search.FindLocations();
-    // DebugLog(std::to_string(worlds[0]->numEvals - oldNum));
-    // search.DumpSearchGraph(0, "World0");
-    // Filter to only those locations which are allowed
-    return FilterFromPool(allowedLocations, [search](Location* loc){return search.accessibleLocations.count(loc) > 0 && loc->GetCurrentItem().GetID() == ItemID::NONE;});
 }
 
 bool GameBeatable(WorldPool& worlds)
 {
-    ItemPool noItemsToPlace = {};
-    auto search = Search(SearchMode::AccessibleLocations, &worlds, noItemsToPlace, -1);
-    search.FindLocations();
-    auto worldsBeatable = std::count_if(search.accessibleLocations.begin(), search.accessibleLocations.end(), [](Location* loc){return loc->currentItem.GetID() == ItemID::Oot3dTriforce /* || ItemID::Mm3dMajoraBeatable*/;});
-    return worldsBeatable == (int) worlds.size();
+    auto search = Search(SearchMode::GameBeatable, &worlds);
+    search.SearchWorlds();
+    return search.isBeatable;
 }
 
 void GeneratePlaythrough(WorldPool& worlds)
 {
-    ItemPool noItemsToPlace = {};
-    auto search = Search(SearchMode::GeneratePlaythrough, &worlds, noItemsToPlace, -1);
-    search.FindLocations();
+    // Generate initial Playthrough
+    auto playthroughSearch = Search(SearchMode::GeneratePlaythrough, &worlds);
+    playthroughSearch.SearchWorlds();
+    std::list<Search> playthroughSearches = {};
 
     // Pare down playthrough
-    auto& playthroughSpheres = search.playthroughSpheres;
-    auto& entranceSpheres = search.entranceSpheres;
+    auto& playthroughSpheres = playthroughSearch.playthroughSpheres;
+    auto& entranceSpheres = playthroughSearch.entranceSpheres;
 
     // Keep track of all locations we temporarily take items away from to give them back
     // after the playthrough calculation
-    std::unordered_map<Location*, Item> nonRequiredLocations = {};
+    std::unordered_map<Location*, Item> tempEmptyLocations = {};
 
     for (auto sphereItr = playthroughSpheres.rbegin(); sphereItr != playthroughSpheres.rend(); sphereItr++)
     {
         auto& sphere = *sphereItr;
-        for (auto loc = sphere.begin(); loc != sphere.end(); )
+        for (auto location : sphere)
         {
             // Remove the item at the current location and check if the game is still beatable
-            auto location = *loc;
             auto itemAtLocation = location->currentItem;
             location->currentItem = Item(ItemID::NONE, worlds[0].get());
-            if (GameBeatable(worlds))
+            auto search = Search(SearchMode::GameBeatable, &worlds);
+            search.SearchWorlds();
+
+            // Check if the game is beatable
+            if (search.isBeatable)
             {
                 // If the game is still beatable, then this item is not required
-                // and we can erase it from the playthrough
-                loc = sphere.erase(loc);
-                nonRequiredLocations.insert({location, itemAtLocation});
+                tempEmptyLocations.insert({location, itemAtLocation});
             }
             else
             {
                 location->currentItem = itemAtLocation;
-                loc++; // Only increment if we don't erase
             }
         }
     }
 
     // Now regenerate the playthrough with only the required locations incase
     // some spheres were flattened by non-required locations having progress items
-    search = Search(SearchMode::GeneratePlaythrough, &worlds, noItemsToPlace, -1);
-    search.FindLocations();
+    auto newSearch = Search(SearchMode::GeneratePlaythrough, &worlds);
+    newSearch.SearchWorlds();
+    newSearch.RemoveEmptySpheres();
 
-    // Give back nonrequired items
-    for (auto& [location, item] : nonRequiredLocations)
+    worlds[0]->playthroughSpheres = newSearch.playthroughSpheres;
+    worlds[0]->entranceSpheres = newSearch.entranceSpheres;
+
+    // Give items back to empty locations
+    for (auto& [location, item] : tempEmptyLocations)
     {
         location->currentItem = item;
-    }
-
-    int sphere = 0;
-    std::cout << "Printing Playthrough..." << std::endl;
-    for (auto sphereItr = playthroughSpheres.begin(); sphereItr != playthroughSpheres.end(); sphereItr++)
-    {
-        // DebugLog("Sphere " + std::to_string(sphere++) + ": ");
-        for (auto location : *sphereItr)
-        {
-            // DebugLog("\t" + location->GetName() + ": " + location->currentItem.GetName());
-        }
     }
 }
 

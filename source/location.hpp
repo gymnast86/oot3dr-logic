@@ -28,6 +28,9 @@ public:
     World* world = nullptr;
     Item currentItem;
 
+    bool operator==(const Location& rhs) const;
+    bool operator<(const Location& rhs) const;
+
 };
 
 // inject specialization of std::hash<LocationID> into the std namespace

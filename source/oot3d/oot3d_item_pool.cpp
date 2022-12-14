@@ -83,7 +83,7 @@ static ItemIDPool alwaysItems = {
     ItemID::Oot3dProgressiveOcarina,
     ItemID::Oot3dGerudoToken,
     ItemID::Oot3dWeirdEgg,
-    ItemID::Oot3dZeldasLetter,
+    //ItemID::Oot3dZeldasLetter,
     ItemID::Oot3dMagicBeanPack,
 
     ItemID::Oot3dPocketEgg,
@@ -196,10 +196,10 @@ ItemIDPool GenerateOot3dItemPool(SettingsMap& settings)
 
     itemPool.insert(itemPool.end(), alwaysItems.begin(), alwaysItems.end());
 
-    // for (int i = 0; i < 100; i++)
-    // {
-    //     itemPool.push_back(ItemID::Oot3dGoldSkulltulaToken);
-    // }
+    for (int i = 0; i < 100; i++)
+    {
+        itemPool.push_back(ItemID::Oot3dGoldSkulltulaToken);
+    }
 
     return itemPool;
 }

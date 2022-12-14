@@ -6,5 +6,5 @@
 #include <stdlib.h>
 #include <string.h>
 
-void GenerateRandomizer();
+int GenerateRandomizer();
 void BKey();

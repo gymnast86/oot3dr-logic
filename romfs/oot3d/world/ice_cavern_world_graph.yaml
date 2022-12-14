@@ -1,4 +1,7 @@
-# VANILLA/MQ DECIDER
+############################
+#    VANILLA/MQ DECIDER    #
+############################
+
 - region_name: Ice Cavern Entryway
   dungeon: Ice Cavern
   exits:
@@ -6,8 +9,10 @@
       Ice Cavern MQ Beginning: ice_cavern_dungeon_mode == mq
       Zoras Fountain: 'True'
 
+############################
+#     VANILLA DUNGEON      #
+############################
 
-# VANILLA DUNGEON
 - region_name: Ice Cavern Beginning
   dungeon: Ice Cavern
   exits:
@@ -28,8 +33,10 @@
       Ice Cavern GS Push Block Room: Blue_Fire and hookshot_or_boomerang
       Blue Fire: is_adult and has_bottle
 
+############################
+#   MASTER QUEST DUNGEON   #
+############################
 
-# MASTER QUEST DUNGEON
 - region_name: Ice Cavern MQ Beginning
   dungeon: Ice Cavern
   locations:
