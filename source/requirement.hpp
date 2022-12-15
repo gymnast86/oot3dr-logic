@@ -62,7 +62,7 @@ struct Requirement
 class World;
 RequirementError ParseRequirementString(const std::string& str, Requirement& req, LogicHelperMap& logicMap, SettingsMap& settings, AreaID areaId, const std::string& game_prefix, World* world);
 
-std::string RequirementStr(Requirement& req, int nestingLevel = 0);
+std::string RequirementStr(const Requirement& req, int nestingLevel = 0);
 
 std::string errorToName(RequirementError err);
 

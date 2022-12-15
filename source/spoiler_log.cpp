@@ -3,6 +3,7 @@
 #include "file_system_defs.hpp"
 
 #include <fstream>
+#include <iostream>
 
 static std::string GetSpoilerFormatLocation(Location* location, const size_t& longestNameLength, const WorldPool& worlds)
 {
@@ -13,7 +14,7 @@ static std::string GetSpoilerFormatLocation(Location* location, const size_t& lo
     std::string spaces (numSpaces, ' ');
 
     // Don't say which player the item is for if there's only 1 world
-    std::string itemWorldNumber = worlds.size() > 1 ? " [W" + std::to_string(location->currentItem.GetWorld()->GetWorldID() + 1) + "]" : "";
+    std::string itemWorldNumber = worlds.size() > 1 && location->currentItem.GetWorld() != nullptr ? " [W" + std::to_string(location->currentItem.GetWorld()->GetWorldID() + 1) + "]" : "";
     std::string itemName = location->currentItem.GetName() + (worlds.size() > 1 ? itemWorldNumber : "");
 
     return location->GetName() + locWorldNumber + ":" + spaces + itemName;

@@ -80,6 +80,7 @@ install(TARGETS Z3DR
 
 add_subdirectory("../source" "source")
 add_subdirectory("../source/oot3d" "source/oot3d")
+add_subdirectory("../source/utility" "source/utility")
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(Z3DR)

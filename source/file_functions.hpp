@@ -1,7 +1,6 @@
 #pragma once
 
-#define RYML_SINGLE_HDR_DEFINE_NOW
-#include "../include/ryml.hpp"
+#include "utility/Yaml.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -25,29 +24,31 @@ int GetFileContents(const std::string& filename, std::string& fileContents)
     return 0;
 }
 
-// Helper function for dealing with YAML library strings
-std::string SubstrToString(const ryml::csubstr& substr)
-{
-    return std::string(substr.data(), substr.size());
-}
-
-void PrintYAML(const ryml::NodeRef& object, int nestingLevel = 1)
+void PrintYAML(const Yaml::Node& node, int nestingLevel = 1)
 {
     std::string spaces (nestingLevel * 2, ' ');
-    for (const auto& field : object.children())
+    auto fieldIt = node.End();
+    do
     {
-        if (!field.has_val())
+        fieldIt--;
+        auto field = *fieldIt;
+        if (field.second.IsScalar())
         {
-            std::cout << spaces << SubstrToString(field.key()) << ":" << std::endl;
-            PrintYAML(field, nestingLevel + 1);
+            std::cout << spaces << field.first << ": " << field.second.As<std::string>() << std::endl;
         }
-        else if (!field.has_key())
+        else if (field.second.IsSequence())
         {
-            std::cout << spaces << SubstrToString(field.val()) << std::endl;
+            std::cout << spaces << field.first << ": " << std::endl;
+            for (auto it = field.second.Begin(); it != field.second.End(); it++)
+            {
+                std::cout << spaces << "  - " << (*it).second.As<std::string>() << std::endl;
+            }
         }
-        else
+        else if (field.second.IsMap())
         {
-            std::cout << spaces << SubstrToString(field.key()) << ": " << SubstrToString(field.val()) << std::endl;
+            std::cout << spaces << field.first << ": " << std::endl;
+            PrintYAML(field.second, nestingLevel + 1);
         }
     }
+    while (fieldIt != node.Begin());
 }

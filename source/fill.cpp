@@ -48,6 +48,9 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
         LocationPool rollbacks;
 
         // Create a list of searches
+        // This optimization is too memory intensive for the 3DS and typically
+        // causes it to crash.
+        #ifdef NON_3DS
         std::list<Search> searches = {};
         auto baseSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
         baseSearch.SearchWorlds();
@@ -58,12 +61,15 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
             baseSearch.ownedItems.insert(item);
             baseSearch.SearchWorlds(item.GetWorld()->GetWorldID());
         }
+        #endif
 
         while (!itemsToPlace.empty())
         {
             // Get a random item to place
             auto& item = itemsToPlace.back();
+            #ifdef NON_3DS
             auto& search = searches.back();
+            #endif
 
             ShufflePool(validLocations);
 
@@ -71,6 +77,9 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
             // (except for this one we're about to place)
 
             // Get the list of accessible locations
+            #ifndef NON_3DS
+            auto search = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
+            #endif
             search.SearchWorlds();
             Location* spotToFill = nullptr;
 
@@ -108,6 +117,7 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
             // If this location is accessible in previous searches, then add it to those searches owned items
             // Search through the searches backwards and when we hit a search where the location isn't accessible
             // we can break out since none of the previous ones will have it either
+            #ifdef NON_3DS
             for (auto pastSearch = searches.rbegin(); pastSearch != searches.rend(); pastSearch++)
             {
                 if (pastSearch->visitedLocations.count(spotToFill) == 0)
@@ -117,9 +127,12 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
                 pastSearch->ownedItems.insert(item);
                 pastSearch->sphereItems.insert(item);
             }
+            #endif
             LOG_TO_DEBUG("Placed " + item.GetName() + " at " + spotToFill->GetName());
             itemsToPlace.pop_back();
+            #ifdef NON_3DS
             searches.pop_back();
+            #endif
         }
     }
     while (unsuccessfulPlacement);

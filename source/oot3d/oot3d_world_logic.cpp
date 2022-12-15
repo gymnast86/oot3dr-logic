@@ -219,7 +219,8 @@ bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* 
 
         default:
             std::cout << "Default hit when evaluating requirement. Something probably went wrong." << std::endl;
-            std::cout << "Type: " << RequirementToName(req.type) << std::endl;
+            std::cout << "Type: " << RequirementToName(req.type) << " Value: " << std::to_string(static_cast<int>(req.type)) << std::endl;
+            std::cout << "Requirement: " << std::endl << RequirementStr(req) << std::endl;
             return false;
     }
 }

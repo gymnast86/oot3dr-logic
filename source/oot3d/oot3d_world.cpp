@@ -4,6 +4,7 @@
 #include "../file_functions.hpp"
 #include "../file_system_defs.hpp"
 #include "../debug.hpp"
+#include "../utility/string_util.hpp"
 
 #include <iostream>
 #include <filesystem>
@@ -11,7 +12,8 @@
 #define BUILD_ERROR_CHECK(func) err = func; if (err != WorldBuildingError::NONE) {return err;}
 #define FILE_READ_CHECK(retVal) if (retVal != 0) {return WorldBuildingError::COULD_NOT_LOAD_FILE;}
 #define VALID_REQUIREMENT(ref, err, reqStr) if (err != RequirementError::NONE) {std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl << "In YAML object: " << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_REQUIREMENT;}
-#define YAML_FIELD_CHECK(ref, field, err) if(!ref.has_child(field)) {std::cout << "ERROR: Unable to find field \"" << field << "\" in YAML object" << std::endl; PrintYAML(ref); return err;}
+#define VALID_HELPER_CHECK(helperName, err, reqStr) if (err != RequirementError::NONE) {std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl << "In YAML object: " << std::endl << helperName << ": " << helperStr << std::endl; return WorldBuildingError::BAD_REQUIREMENT;}
+#define YAML_FIELD_CHECK(ref, field, err) if(ref[field].IsNone()) {std::cout << "ERROR: Unable to find field \"" << field << "\" in YAML object" << std::endl; PrintYAML(ref); return err;}
 #define VALID_ITEM_CHECK(ref, itemName) if (NameToItemID(itemName) == ItemID::INVALID) {std::replace(itemName.begin(), itemName.end(), '_', ' '); std::cout << "ERROR: Unknown item name \"" << itemName << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
 #define VALID_ITEM_TYPE(ref, typeStr) if (NameToOot3dItemType(typeStr) == ItemType::INVALID) {std::cout << "ERROR: Unknown item type \"" << typeStr << "\" in YAML object:" << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
 #define VALID_UINT8_T(ref, getItemIdStr, valueName) if (std::strtoul(getItemIdStr.c_str(), nullptr, 0) > 0xFF) {std::cout << "ERROR: " << valueName << " value is greater than 0xFF in YAML object: " << std::endl; PrintYAML(ref); return WorldBuildingError::BAD_ITEM_VALUE;}
@@ -37,7 +39,7 @@ Oot3dWorld::Oot3dWorld(const SettingsMap& settings_)
 
 Oot3dWorld::~Oot3dWorld() = default;
 
-WorldBuildingError CheckValidItemFields(const ryml::NodeRef& item)
+WorldBuildingError CheckValidItemFields(Yaml::Node& item)
 {
     YAML_FIELD_CHECK(item, "name", WorldBuildingError::MISSING_ITEM_FIELD);
     YAML_FIELD_CHECK(item, "type", WorldBuildingError::MISSING_ITEM_FIELD);
@@ -46,7 +48,7 @@ WorldBuildingError CheckValidItemFields(const ryml::NodeRef& item)
     return WorldBuildingError::NONE;
 }
 
-WorldBuildingError CheckValidLocationFields(const ryml::NodeRef& location)
+WorldBuildingError CheckValidLocationFields(Yaml::Node& location)
 {
     // Trying to get this to work with iteration was a pain, so we'll just define
     // them all for now
@@ -66,21 +68,24 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
 {
     LOG_TO_DEBUG("Building Item Table for world " + std::to_string(worldId) + "...");
     // std::cout << "Build Item Table for world " << std::to_string(worldId) << "..." << std::endl;
-    std::string itemStr;
-    FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/item_data.yaml", itemStr))
+    std::string itemDataStr;
+    FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/item_data.yaml", itemDataStr))
+    itemDataStr = Utility::Str::InsertUnicodeReplacements(itemDataStr);
 
-    const ryml::Tree itemsTree = ryml::parse_in_place(ryml::to_substr(itemStr));
-    for (const ryml::NodeRef& item : itemsTree.rootref().children())
+    Yaml::Node itemDataTree;
+    Yaml::Parse(itemDataTree, itemDataStr);
+    for (auto itemIt = itemDataTree.Begin(); itemIt != itemDataTree.End(); itemIt++)
     {
+        Yaml::Node& item = (*itemIt).second;
         // Check that all the appropriate fields exist
         WorldBuildingError err = CheckValidItemFields(item);
         BUILD_ERROR_CHECK(err);
 
         // Get the field strings
-              std::string name = "Oot3d " + SubstrToString(item["name"].val());
-        const std::string typeStr = SubstrToString(item["type"].val());
-        const std::string getItemIdStr = SubstrToString(item["get_item_id"].val());
-        const std::string advancementStr = SubstrToString(item["advancement"].val());
+              std::string name           = Utility::Str::RemoveUnicodeReplacements("Oot3d " + item["name"].As<std::string>());
+        const std::string typeStr        = Utility::Str::RemoveUnicodeReplacements(item["type"].As<std::string>());
+        const std::string getItemIdStr   = Utility::Str::RemoveUnicodeReplacements(item["get_item_id"].As<std::string>());
+        const std::string advancementStr = Utility::Str::RemoveUnicodeReplacements(item["advancement"].As<std::string>());
 
         // Replace spaces in the item name with underscores to get proper ItemIDs
         std::replace(name.begin(), name.end(), ' ', '_');
@@ -108,24 +113,27 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
     LOG_TO_DEBUG("Building Location Table for world " + std::to_string(worldId) + "...");
     std::string locationDataStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/location_data.yaml", locationDataStr))
+    locationDataStr = Utility::Str::InsertUnicodeReplacements(locationDataStr);
 
-    const ryml::Tree itemsTree = ryml::parse_in_place(ryml::to_substr(locationDataStr));
-    for (const ryml::NodeRef& location : itemsTree.rootref().children())
+    Yaml::Node locationDataTree;
+    Yaml::Parse(locationDataTree, locationDataStr);
+    for (auto locationIt = locationDataTree.Begin(); locationIt != locationDataTree.End(); locationIt++)
     {
+        auto& location = (*locationIt).second;
         // Check that all the appropriate fields exist
         WorldBuildingError err = CheckValidLocationFields(location);
         BUILD_ERROR_CHECK(err);
 
         // Get the field strings
-              std::string name = "Oot3d " + SubstrToString(location["name"].val());
-        const std::string typeStr = SubstrToString(location["type"].val());
-        const std::string sceneStr = SubstrToString(location["scene"].val());
-        const std::string flagStr = SubstrToString(location["flag"].val());
-              std::string vanillaItemStr = "Oot3d " + SubstrToString(location["vanilla_item"].val());
-        const std::string checkTypeStr = SubstrToString(location["check_type"].val());
-        const std::string arg1Str = SubstrToString(location["check_type_arg1"].val());
-        const std::string arg2Str = SubstrToString(location["check_type_arg2"].val());
-        const std::string checkGroupStr = SubstrToString(location["check_group"].val());
+              std::string name           = "Oot3d " + Utility::Str::RemoveUnicodeReplacements(location["name"].As<std::string>());
+        const std::string typeStr        = Utility::Str::RemoveUnicodeReplacements(location["type"].As<std::string>());
+        const std::string sceneStr       = Utility::Str::RemoveUnicodeReplacements(location["scene"].As<std::string>());
+        const std::string flagStr        = Utility::Str::RemoveUnicodeReplacements(location["flag"].As<std::string>());
+              std::string vanillaItemStr = "Oot3d " + Utility::Str::RemoveUnicodeReplacements(location["vanilla_item"].As<std::string>());
+        const std::string checkTypeStr   = Utility::Str::RemoveUnicodeReplacements(location["check_type"].As<std::string>());
+        const std::string arg1Str        = Utility::Str::RemoveUnicodeReplacements(location["check_type_arg1"].As<std::string>());
+        const std::string arg2Str        = Utility::Str::RemoveUnicodeReplacements(location["check_type_arg2"].As<std::string>());
+        const std::string checkGroupStr  = Utility::Str::RemoveUnicodeReplacements(location["check_group"].As<std::string>());
         std::unordered_set<Oot3dLocationCategory> categories = {};
 
         // Check each field for proper values
@@ -133,11 +141,12 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         VALID_LOCATION_TYPE(location, typeStr);
         VALID_UINT8_T(location, sceneStr, "scene");
         VALID_UINT8_T(location, flagStr, "flag");
-        if (location.has_child("categories"))
+        if (!location["categories"].IsNone())
         {
-            for (const auto& category : location["categories"])
+            for (auto categoryIt = location["categories"].Begin(); categoryIt != location["categories"].End(); categoryIt++)
             {
-                std::string catStr = SubstrToString(category.val());
+                auto category = (*categoryIt);
+                std::string catStr = category.second.As<std::string>();
                 VALID_LOCATION_CATEGORY(location, catStr);
                 categories.insert(NameToOot3dLocationCategory(catStr));
             }
@@ -175,15 +184,31 @@ WorldBuildingError Oot3dWorld::LoadLogicHelpers()
     std::string logicHelpersStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/logic_helpers.yaml", logicHelpersStr))
 
-    const ryml::Tree logicHelpersTree = ryml::parse_in_place(ryml::to_substr(logicHelpersStr));
-    for (const ryml::NodeRef& logicHelper : logicHelpersTree.rootref().children())
+    // Yaml CPP doesn't preserve keys in the order they're read in, but we want
+    // to preserve this order when making logic helpers (since some logic helpers
+    // rely on previous logic helpers). So first we read the logic_helpers file
+    // and store the helpers in the order they're read first.
+    std::list<std::string> helperList;
+    auto lines = Utility::Str::split(logicHelpersStr, '\n');
+    for (auto& line : lines)
     {
-        const std::string helperName = SubstrToString(logicHelper.key());
-        const std::string helperStr = SubstrToString(logicHelper.val());
+        if (line[0] == '#' || line.find(':') == std::string::npos)
+        {
+            continue;
+        }
+        auto helper = line.substr(0, line.find(':'));
+        helperList.push_back(helper);
+    }
+
+    Yaml::Node logicHelpersTree;
+    Yaml::Parse(logicHelpersTree, logicHelpersStr);
+    for (auto& helperName : helperList)
+    {
+        const std::string helperStr = logicHelpersTree[helperName].As<std::string>();
         Requirement helperReq;
         RequirementError err = ParseRequirementString(helperStr, helperReq, logicHelpers, settings, AreaID::NONE, "Oot3d", this);
-        VALID_REQUIREMENT(logicHelper, err, helperStr);
-        logicHelpers.emplace(helperName, helperReq);
+        VALID_HELPER_CHECK(helperName, err, helperStr);
+        logicHelpers[helperName] = helperReq;
     }
     return WorldBuildingError::NONE;
 }
@@ -205,10 +230,12 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
         }
         FILE_READ_CHECK(GetFileContents(filename, worldGraphDataStr));
 
-        const ryml::Tree overworldTree = ryml::parse_in_place(ryml::to_substr(worldGraphDataStr));
-        for (const ryml::NodeRef& area : overworldTree.rootref().children())
+        Yaml::Node worldGraphTree;
+        Yaml::Parse(worldGraphTree, worldGraphDataStr);
+        for (auto areaIt = worldGraphTree.Begin(); areaIt != worldGraphTree.End(); areaIt++)
         {
-            const std::string name = "Oot3d " + SubstrToString(area["region_name"].val());
+            auto& area = (*areaIt).second;
+            const std::string name = "Oot3d " + area["region_name"].As<std::string>();
             VALID_AREA_CHECK(area, name);
             const AreaID areaId = NameToAreaID(name);
 
@@ -217,9 +244,9 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
             newArea->id = areaId;
             newArea->name = name;
             newArea->world = this;
-            if (area.has_child("dungeon"))
+            if (!area["dungeon"].IsNone())
             {
-                const std::string dungeonName = SubstrToString(area["dungeon"].val());
+                const std::string dungeonName = area["dungeon"].As<std::string>();
                 std::string dungeonModeSetting = dungeonName + "_dungeon_mode";
                 std::replace(dungeonModeSetting.begin(), dungeonModeSetting.end(), ' ', '_');
                 for (size_t i = 0; i < dungeonModeSetting.length(); i++)
@@ -228,7 +255,8 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                 }
                 if (settings.count(dungeonModeSetting) != 0)
                 {
-                  // Only process MQ dungeon areas if they're set as mq
+                  // Only process the MQ dungeon or the vanilla one depending on
+                  // settings
                   if ((settings[dungeonModeSetting] == "mq" && newArea->name.find("MQ") == std::string::npos) ||
                       (settings[dungeonModeSetting] != "mq" && newArea->name.find("MQ") != std::string::npos))
                   {
@@ -237,29 +265,30 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                 }
             }
 
-            if (area.has_child("font_color"))
+            if (!area["font_color"].IsNone())
             {
-                const std::string font_color = SubstrToString(area["font_color"].val());
+                const std::string font_color = area["font_color"].As<std::string>();
             }
-            if (area.has_child("scene"))
+            if (!area["scene"].IsNone())
             {
-                const std::string scene = SubstrToString(area["scene"].val());
+                const std::string scene = area["scene"].As<std::string>();
             }
-            if (area.has_child("hint"))
+            if (!area["hint"].IsNone())
             {
-                const std::string hint = SubstrToString(area["hint"].val());
+                const std::string hint = area["hint"].As<std::string>();
             }
-            if (area.has_child("time_passes"))
+            if (!area["time_passes"].IsNone())
             {
                 newArea->timePasses = true;
             }
-            if (area.has_child("events"))
+            if (!area["events"].IsNone())
             {
-                for (const ryml::NodeRef& event : area["events"].children())
+                for (auto eventIt = area["events"].Begin(); eventIt != area["events"].End(); eventIt++)
                 {
+                    auto event = *eventIt;
                     // Get field strings
-                    std::string eventName = "Oot3d " + SubstrToString(event.key());
-                    const std::string reqStr = SubstrToString(event.val());
+                    std::string eventName = "Oot3d " + event.first;
+                    const std::string reqStr = event.second.As<std::string>();
 
                     // Check for valid values
                     VALID_ITEM_CHECK(area, eventName); // Events are treated as items
@@ -272,13 +301,14 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                     newArea->events.push_back({itemId, req, newArea.get()});
                 }
             }
-            if (area.has_child("locations"))
+            if (!area["locations"].IsNone())
             {
-                for (const ryml::NodeRef& location : area["locations"].children())
+                for (auto locationIt = area["locations"].Begin(); locationIt != area["locations"].End(); locationIt++)
                 {
+                    auto location = *locationIt;
                     // Get field strings
-                    const std::string locationName = "Oot3d " + SubstrToString(location.key());
-                    const std::string reqStr = SubstrToString(location.val());
+                    const std::string locationName = "Oot3d " + location.first;
+                    const std::string reqStr = location.second.As<std::string>();
 
                     // Check for valid values
                     VALID_LOCATION_CHECK(area, locationName);
@@ -293,12 +323,13 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                     newArea->locations.push_back({locPtr, req, newArea.get()});
                 }
             }
-            if (area.has_child("exits"))
+            if (!area["exits"].IsNone())
             {
-                for (const ryml::NodeRef& exit : area["exits"].children())
+                for (auto exitIt = area["exits"].Begin(); exitIt != area["exits"].End(); exitIt++)
                 {
+                    auto exit = *exitIt;
                     // Get field strings
-                    std::string exitName = SubstrToString(exit.key());
+                    std::string exitName = exit.first;
                     // Handle whether MQ exits should exist or not
                     if (newArea->name.find("Entryway") != std::string::npos)
                     {
@@ -320,7 +351,7 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                         }
                     }
                     exitName = "Oot3d " + exitName;
-                    const std::string reqStr = SubstrToString(exit.val());
+                    const std::string reqStr = exit.second.As<std::string>();
                     // Check for valid values
                     VALID_AREA_CHECK(area, exitName);
 

@@ -225,7 +225,7 @@ int GenerateRandomizer()
         {"logic_shadow_trial_mq", "Off"},
         {"logic_light_trial_mq", "Off"},
     };
-    std::vector<SettingsMap> settingsVector = {settings1};
+    std::vector<SettingsMap> settingsVector = {settings1, settings1, settings1, settings1, settings1, settings1, settings1, settings1, settings1, settings1};
     WorldPool worlds;
     worlds.resize(settingsVector.size());
 
@@ -235,7 +235,7 @@ int GenerateRandomizer()
         auto& settings = settingsVector[i];
         if (settings["world_type"] == "oot3d")
         {
-            //std::cout << "Building oot3d world..." << std::endl;
+            LOG_TO_DEBUG("Building oot3d world...")
             auto world = std::make_unique<Oot3dWorld>(settings);
             worlds[i] = std::move(world);
         }

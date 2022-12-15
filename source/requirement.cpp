@@ -458,7 +458,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
     }
 
 
-    if (req.type != RequirementType::NONE)
+    if (req.type != RequirementType::NONE && req.type != RequirementType::INVALID)
     {
         return RequirementError::NONE;
     }
@@ -481,7 +481,7 @@ static std::string tabs(int numTabs)
     return returnStr;
 }
 
-std::string RequirementStr(Requirement& req, int nestingLevel /*= 0*/)
+std::string RequirementStr(const Requirement& req, int nestingLevel /*= 0*/)
 {
     std::string returnStr = "";
     uint32_t expectedCount = 0;
@@ -498,7 +498,7 @@ std::string RequirementStr(Requirement& req, int nestingLevel /*= 0*/)
             return returnStr;
         case RequirementType::OR:
             returnStr += "or\n";
-            for (Requirement::Argument& arg : req.args)
+            for (const Requirement::Argument& arg : req.args)
             {
                 nestedReq = std::get<Requirement>(arg);
                 returnStr += RequirementStr(nestedReq, nestingLevel + 1);
@@ -506,7 +506,7 @@ std::string RequirementStr(Requirement& req, int nestingLevel /*= 0*/)
             return returnStr;
         case RequirementType::AND:
             returnStr += "and\n";
-            for (Requirement::Argument& arg : req.args)
+            for (const Requirement::Argument& arg : req.args)
             {
                 nestedReq = std::get<Requirement>(arg);
                 returnStr += RequirementStr(nestedReq, nestingLevel + 1);

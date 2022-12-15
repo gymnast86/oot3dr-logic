@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <3ds.h>
-#define RYML_SINGLE_HDR_DEFINE_NOW
 #include "generate.hpp"
 
 #define TICKS_PER_SEC 268123480.0

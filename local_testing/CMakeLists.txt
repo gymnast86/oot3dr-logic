@@ -26,3 +26,4 @@ add_executable(Z3DR main.cpp)
 
 add_subdirectory("../source" "source")
 add_subdirectory("../source/oot3d" "source/oot3d")
+add_subdirectory("../source/utility" "source/utility")
