@@ -1,6 +1,6 @@
 #pragma once
 
-#include "utility/debug.hpp"
+#include "utility/log.hpp"
 #include "item.hpp"
 #include "area.hpp"
 #include "location.hpp"

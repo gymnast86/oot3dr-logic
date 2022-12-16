@@ -1,5 +1,5 @@
 #include "location.hpp"
-#include "utility/debug.hpp"
+#include "utility/log.hpp"
 #include "world.hpp"
 
 Location::Location() {}

@@ -1,5 +1,5 @@
 
-#include "debug.hpp"
+#include "log.hpp"
 #include "file_system_defs.hpp"
 
 #include <iostream>

@@ -1,7 +1,7 @@
 #include "oot3d_world.hpp"
 #include "oot3d_entrance.hpp"
 #include "../search.hpp"
-#include "../utility/debug.hpp"
+#include "../utility/log.hpp"
 #include "../utility/timing.hpp"
 
 #include <iostream>

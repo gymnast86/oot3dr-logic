@@ -3,7 +3,7 @@
 #include "oot3d_entrance.hpp"
 #include "../utility/file_functions.hpp"
 #include "../utility/file_system_defs.hpp"
-#include "../utility/debug.hpp"
+#include "../utility/log.hpp"
 #include "../utility/string_util.hpp"
 
 #include <iostream>
