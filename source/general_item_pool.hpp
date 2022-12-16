@@ -9,3 +9,7 @@
 using ItemPool = std::vector<Item>;
 using ItemIDPool = std::vector<ItemID>;
 using ItemMultiSet = std::multiset<Item>;
+
+namespace PresetPools {
+    extern ItemPool NoItems;
+};

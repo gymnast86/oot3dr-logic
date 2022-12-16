@@ -14,7 +14,7 @@ class Oot3dWorld : public World {
 public:
 
     Oot3dWorld();
-    Oot3dWorld(const SettingsMap& settings_);
+    Oot3dWorld(const SettingsMap& settings_, int numWorlds);
     ~Oot3dWorld();
 
     WorldBuildingError Build() override;

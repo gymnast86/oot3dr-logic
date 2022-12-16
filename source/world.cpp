@@ -5,7 +5,7 @@
 
 World::World() {}
 
-World::World(SettingsMap& settings_) : settings(std::move(settings_)) {}
+World::World(SettingsMap& settings_, size_t numWorlds_) : settings(std::move(settings_)), numWorlds(numWorlds_) {}
 
 World::~World() = default;
 
@@ -32,6 +32,40 @@ const SettingsMap& World::GetSettings() const
 Area* World::GetRootArea()
 {
     return areas[AreaID::Root].get();
+}
+
+size_t World::GetNumWorlds() const
+{
+    return numWorlds;
+}
+
+void World::PlaceItemAtLocation(const LocationID& locationId, const Item& item)
+{
+    if (locations.count(locationId) == 0)
+    {
+        std::cout << "ERROR: Location \"" << LocationIDToName(locationId) << "\" is not a part of world " << std::to_string(worldId + 1) << " of type " << GetTypeString() << std::endl;
+        return;
+    }
+    locations[locationId]->SetCurrentItem(item);
+}
+
+void World::PlaceItemAtLocation(const std::string& locationName, const std::string& itemName)
+{
+    auto locationId = NameToLocationID(locationName);
+    auto itemId = NameToItemID(itemName);
+    if (locationId == LocationID::INVALID)
+    {
+        std::cout << "ERROR: Unknown location \"" << locationName << "\"" << std::endl;
+        return;
+    }
+    if (itemId == ItemID::INVALID)
+    {
+        std::cout << "ERROR: Unknown item \"" << itemName << "\"" << std::endl;
+        return;
+    }
+    // Assume the item is for this world if it's a string
+    Item item = Item(itemId, this);
+    PlaceItemAtLocation(locationId, item);
 }
 
 WorldBuildingError World::Build()

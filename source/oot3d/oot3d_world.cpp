@@ -1,9 +1,9 @@
 #include "oot3d_world.hpp"
 #include "oot3d_item_pool.hpp"
 #include "oot3d_entrance.hpp"
-#include "../file_functions.hpp"
-#include "../file_system_defs.hpp"
-#include "../debug.hpp"
+#include "../utility/file_functions.hpp"
+#include "../utility/file_system_defs.hpp"
+#include "../utility/debug.hpp"
 #include "../utility/string_util.hpp"
 
 #include <iostream>
@@ -31,9 +31,10 @@ Oot3dWorld::Oot3dWorld()
     worldType = WorldType::Oot3d;
 }
 
-Oot3dWorld::Oot3dWorld(const SettingsMap& settings_)
+Oot3dWorld::Oot3dWorld(const SettingsMap& settings_, int numWorlds_)
 {
     settings = std::move(settings_);
+    numWorlds = numWorlds_;
     worldType = WorldType::Oot3d;
 }
 
@@ -397,32 +398,37 @@ WorldBuildingError Oot3dWorld::BuildItemPools()
 WorldBuildingError Oot3dWorld::PlaceVanillaItems()
 {
     // Hardcoded vanilla locations
-    // Will have to separate out some stuff if other modes like potsanity
-    // are developed
-    locations[LocationID::Oot3dGanon]->currentItem = Item(ItemID::Oot3dTriforce, this);
-    locations[LocationID::Oot3dHCZeldasLetter]->currentItem = Item(ItemID::Oot3dZeldasLetter, this);
-    locations[LocationID::Oot3dMasterSwordPedestal]->currentItem = Item(ItemID::Oot3dMasterSword, this);
-    locations[LocationID::Oot3dDeliverRutosLetter]->currentItem = Item(ItemID::Oot3dDeliverLetter, this);
-    locations[LocationID::Oot3dBigPoeKill]->currentItem = Item(ItemID::Oot3dBigPoe, this);
-    locations[LocationID::Oot3dPierre]->currentItem = Item(ItemID::Oot3dScarecrowSong, this);
-    locations[LocationID::Oot3dBugRock]->currentItem = Item(ItemID::Oot3dBugs, this);
-    locations[LocationID::Oot3dBugShrub]->currentItem = Item(ItemID::Oot3dBugs, this);
-    locations[LocationID::Oot3dWanderingBugs]->currentItem = Item(ItemID::Oot3dBugs, this);
-    locations[LocationID::Oot3dMarketBombchuBowlingBombchus]->currentItem = Item(ItemID::Oot3dBombchuDrop, this);
-    locations[LocationID::Oot3dBlueFire]->currentItem = Item(ItemID::Oot3dBlueFire, this);
-    locations[LocationID::Oot3dLoneFish]->currentItem = Item(ItemID::Oot3dFish, this);
-    locations[LocationID::Oot3dFishGroup]->currentItem = Item(ItemID::Oot3dFish, this);
-    locations[LocationID::Oot3dNutPot]->currentItem = Item(ItemID::Oot3dDekuNutDrop, this);
-    locations[LocationID::Oot3dNutCrate]->currentItem = Item(ItemID::Oot3dDekuNutDrop, this);
-    locations[LocationID::Oot3dStickPot]->currentItem = Item(ItemID::Oot3dDekuStickDrop, this);
-    locations[LocationID::Oot3dDekuBabaSticks]->currentItem = Item(ItemID::Oot3dDekuStickDrop, this);
-    locations[LocationID::Oot3dDekuBabaNuts]->currentItem = Item(ItemID::Oot3dDekuNutDrop, this);
-    locations[LocationID::Oot3dButterflyFairy]->currentItem = Item(ItemID::Oot3dFairy, this);
-    locations[LocationID::Oot3dFreeFairies]->currentItem = Item(ItemID::Oot3dFairy, this);
-    locations[LocationID::Oot3dWallFairy]->currentItem = Item(ItemID::Oot3dFairy, this);
-    locations[LocationID::Oot3dFairyPot]->currentItem = Item(ItemID::Oot3dFairy, this);
-    locations[LocationID::Oot3dBeanPlantFairy]->currentItem = Item(ItemID::Oot3dFairy, this);
-    locations[LocationID::Oot3dGossipStoneFairy]->currentItem = Item(ItemID::Oot3dFairy, this);
+    std::list<LocationID> vanillaLocations = {
+        LocationID::Oot3dGanon,
+        LocationID::Oot3dHCZeldasLetter,
+        LocationID::Oot3dMasterSwordPedestal,
+        LocationID::Oot3dDeliverRutosLetter,
+        LocationID::Oot3dBigPoeKill,
+        LocationID::Oot3dPierre,
+        LocationID::Oot3dBugRock,
+        LocationID::Oot3dBugShrub,
+        LocationID::Oot3dWanderingBugs,
+        LocationID::Oot3dMarketBombchuBowlingBombchus,
+        LocationID::Oot3dBlueFire,
+        LocationID::Oot3dLoneFish,
+        LocationID::Oot3dFishGroup,
+        LocationID::Oot3dNutPot,
+        LocationID::Oot3dNutCrate,
+        LocationID::Oot3dStickPot,
+        LocationID::Oot3dDekuBabaSticks,
+        LocationID::Oot3dDekuBabaNuts,
+        LocationID::Oot3dButterflyFairy,
+        LocationID::Oot3dFreeFairies,
+        LocationID::Oot3dWallFairy,
+        LocationID::Oot3dFairyPot,
+        LocationID::Oot3dBeanPlantFairy,
+        LocationID::Oot3dGossipStoneFairy,
+    };
+
+    for (auto& locationId : vanillaLocations)
+    {
+        locations[locationId]->SetCurrentItemAsVanilla();
+    }
 
     return WorldBuildingError::NONE;
 }

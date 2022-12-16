@@ -11,7 +11,7 @@ public:
     ~Item();
 
     ItemID GetID() const;
-    std::string GetName() const;
+    std::string GetName();
     World* GetWorld() const;
     int GetWorldID() const;
 

@@ -5,14 +5,14 @@
 Oot3dLocation::Oot3dLocation() {}
 
 Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, std::unordered_set<Oot3dLocationCategory> categories_,
-                             const ItemID& vanillaItem_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_)
+                             const ItemID& vanillaItemId_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_)
 {
     id = id_;
     name = std::move(name_);
     type = type_;
     scene = scene_;
     flag = flag_;
-    vanillaItem = vanillaItem_;
+    vanillaItemId = vanillaItemId_;
     categories = categories_;
     collectionCheck = collectionCheck_;
     collectionCheckGroup = collectionCheckGroup_;

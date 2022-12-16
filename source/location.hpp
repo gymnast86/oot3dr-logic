@@ -17,19 +17,24 @@ public:
     ~Location();
 
     LocationID GetID() const;
-    std::string GetName() const;
+    std::string GetName();
     World* GetWorld() const;
     Item GetCurrentItem() const;
+    void SetCurrentItem(Item item);
+    void SetCurrentItemAsVanilla();
+    void RemoveCurrentItem();
+    ItemID GetVanillaItemID() const;
 
     virtual std::string TypeString() const;
+
+    bool operator==(const Location& rhs) const;
+    bool operator<(const Location& rhs) const;
 
     LocationID id = LocationID::INVALID;
     std::string name = "";
     World* world = nullptr;
     Item currentItem;
-
-    bool operator==(const Location& rhs) const;
-    bool operator<(const Location& rhs) const;
+    ItemID vanillaItemId = ItemID::NONE;
 
 };
 

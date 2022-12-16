@@ -1,6 +1,6 @@
 #include "requirement.hpp"
-#include "pool_functions.hpp"
-#include "debug.hpp"
+#include "utility/pool_functions.hpp"
+#include "utility/debug.hpp"
 
 #include <iostream>
 

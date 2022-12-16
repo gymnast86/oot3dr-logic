@@ -15,9 +15,9 @@ ItemID Item::GetID() const
     return id;
 }
 
-std::string Item::GetName() const
+std::string Item::GetName()
 {
-    return name;
+    return name + (world != nullptr && world->GetNumWorlds() > 1 ? " [W" + std::to_string(world->GetWorldID() + 1) + "]" : "");
 }
 
 World* Item::GetWorld() const

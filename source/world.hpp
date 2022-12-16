@@ -1,6 +1,6 @@
 #pragma once
 
-#include "debug.hpp"
+#include "utility/debug.hpp"
 #include "item.hpp"
 #include "area.hpp"
 #include "location.hpp"
@@ -58,7 +58,7 @@ class World {
 public:
 
     World();
-    World(SettingsMap& settings_);
+    World(SettingsMap& settings_, size_t numWorlds);
 
     virtual ~World();
 
@@ -67,6 +67,9 @@ public:
     WorldType GetType() const;
     const SettingsMap& GetSettings() const;
     Area* GetRootArea();
+    size_t GetNumWorlds() const;
+    void PlaceItemAtLocation(const LocationID& locationId, const Item& item);
+    void PlaceItemAtLocation(const std::string& location, const std::string& item);
 
     virtual WorldBuildingError Build();
     virtual EvalSuccess EvaluateEventRequirement(Search* search, Event* exit);
@@ -81,9 +84,8 @@ public:
     ItemPool itemPool;
     ItemPool startingItems;
     int worldId = -1;
+    size_t numWorlds = -1;
     WorldType worldType = WorldType::NONE;
-
-    double evalTime = 0.0f;
 
     // Store playthroughs in world 0 for now
     std::list<std::set<Location*, PointerComparator<Location>>> playthroughSpheres = {};

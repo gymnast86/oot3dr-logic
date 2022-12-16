@@ -1,4 +1,6 @@
 #include "location.hpp"
+#include "utility/debug.hpp"
+#include "world.hpp"
 
 Location::Location() {}
 
@@ -15,9 +17,10 @@ LocationID Location::GetID() const
     return id;
 }
 
-std::string Location::GetName() const
+std::string Location::GetName()
 {
-    return name;
+    // Include [W#] if more than 1 world
+    return name + (world->GetNumWorlds() > 1 ? " [W" + std::to_string(world->GetWorldID() + 1) + "]" : "");
 }
 
 World* Location::GetWorld() const
@@ -28,6 +31,28 @@ World* Location::GetWorld() const
 Item Location::GetCurrentItem() const
 {
     return currentItem;
+}
+
+void Location::SetCurrentItem(Item item)
+{
+    currentItem = item;
+    LOG_TO_DEBUG("Placed " + currentItem.GetName() + " at " + this->GetName());
+}
+
+void Location::SetCurrentItemAsVanilla()
+{
+    SetCurrentItem(Item(vanillaItemId, world));
+}
+
+void Location::RemoveCurrentItem()
+{
+    LOG_TO_DEBUG("Removed " + currentItem.GetName() + " from " + this->GetName());
+    currentItem = Item(ItemID::NONE, world);
+}
+
+ItemID Location::GetVanillaItemID() const
+{
+    return vanillaItemId;
 }
 
 std::string Location::TypeString() const

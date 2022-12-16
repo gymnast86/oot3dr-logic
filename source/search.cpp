@@ -1,10 +1,10 @@
 
 #include "search.hpp"
-#include "pool_functions.hpp"
-#include "file_system_defs.hpp"
-#include "debug.hpp"
-#include "timing.hpp"
 #include "oot3d/oot3d_world.hpp"
+#include "utility/pool_functions.hpp"
+#include "utility/file_system_defs.hpp"
+#include "utility/debug.hpp"
+#include "utility/timing.hpp"
 
 #include <algorithm>
 #include <iostream>

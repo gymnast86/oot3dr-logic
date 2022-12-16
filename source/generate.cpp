@@ -1,10 +1,10 @@
 #include "generate.hpp"
-#include "timing.hpp"
 #include "fill.hpp"
 #include "search.hpp"
-#include "random.hpp"
 #include "spoiler_log.hpp"
 #include "oot3d/oot3d_world.hpp"
+#include "utility/random.hpp"
+#include "utility/timing.hpp"
 
 #include <unordered_map>
 #include <array>
@@ -15,7 +15,7 @@ int GenerateRandomizer()
 {
     StartTiming("General");
 
-    Random_Init(1); // This eventually has to go where deciding random settings
+    Random_Init(3); // This eventually has to go where deciding random settings
 
     SettingsMap settings1 = {
         {"world_type", "oot3d"},
@@ -225,7 +225,7 @@ int GenerateRandomizer()
         {"logic_shadow_trial_mq", "Off"},
         {"logic_light_trial_mq", "Off"},
     };
-    std::vector<SettingsMap> settingsVector = {settings1, settings1, settings1, settings1, settings1, settings1, settings1, settings1, settings1, settings1};
+    std::vector<SettingsMap> settingsVector = {settings1};
     WorldPool worlds;
     worlds.resize(settingsVector.size());
 
@@ -236,7 +236,7 @@ int GenerateRandomizer()
         if (settings["world_type"] == "oot3d")
         {
             LOG_TO_DEBUG("Building oot3d world...")
-            auto world = std::make_unique<Oot3dWorld>(settings);
+            auto world = std::make_unique<Oot3dWorld>(settings, settingsVector.size());
             worlds[i] = std::move(world);
         }
         else if (settings["world_type"] == "mm3d")

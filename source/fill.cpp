@@ -1,8 +1,8 @@
 #include "fill.hpp"
-#include "random.hpp"
 #include "search.hpp"
-#include "timing.hpp"
-#include "pool_functions.hpp"
+#include "utility/timing.hpp"
+#include "utility/random.hpp"
+#include "utility/pool_functions.hpp"
 
 #include <iostream>
 
@@ -36,7 +36,7 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
     {
         if (retries <= 0)
         {
-            std::cout << "Ran out of assumed fill retries" << std::endl;
+            LOG_TO_DEBUG("Ran out of assumed fill retries");
             return FillError::RAN_OUT_OF_RETRIES;
         }
         retries--;
@@ -47,39 +47,20 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
         itemsToPlace.assign(itemsToPlaceVector.begin(), itemsToPlaceVector.end());
         LocationPool rollbacks;
 
-        // Create a list of searches
-        // This optimization is too memory intensive for the 3DS and typically
-        // causes it to crash.
-        #ifdef NON_3DS
-        std::list<Search> searches = {};
-        auto baseSearch = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
-        baseSearch.SearchWorlds();
-
-        for (const auto& item: itemsToPlace)
-        {
-            searches.push_back(baseSearch);
-            baseSearch.ownedItems.insert(item);
-            baseSearch.SearchWorlds(item.GetWorld()->GetWorldID());
-        }
-        #endif
-
         while (!itemsToPlace.empty())
         {
             // Get a random item to place
-            auto& item = itemsToPlace.back();
-            #ifdef NON_3DS
-            auto& search = searches.back();
-            #endif
+            auto item = itemsToPlace.back();
+            itemsToPlace.pop_back();
 
             ShufflePool(validLocations);
 
+            // Get the list of accessible locations
             // Assume we have all the items which haven't been placed yet
             // (except for this one we're about to place)
-
-            // Get the list of accessible locations
-            #ifndef NON_3DS
-            auto search = Search(SearchMode::AccessibleLocations, &worlds, itemsNotYetPlaced, worldToFill);
-            #endif
+            ItemPool assumedItems = itemsNotYetPlaced;
+            AddElementsToPool(assumedItems, itemsToPlace);
+            auto search = Search(SearchMode::AccessibleLocations, &worlds, assumedItems, worldToFill);
             search.SearchWorlds();
             Location* spotToFill = nullptr;
 
@@ -102,9 +83,10 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
                 for (auto location : rollbacks)
                 {
                     itemsToPlace.push_back(location->GetCurrentItem());
-                    location->currentItem = Item(ItemID::NONE, worlds[0].get());
+                    location->RemoveCurrentItem();
                 }
                 // Also add back the randomly selected item
+                itemsToPlace.push_back(item);
                 rollbacks.clear();
                 // Break out of the item placement loop and flag an unsuccessful
                 // placement attempt to try again.
@@ -112,27 +94,8 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
                 break;
             }
 
-            spotToFill->currentItem = std::move(item);
+            spotToFill->SetCurrentItem(item);
             rollbacks.push_back(spotToFill);
-            // If this location is accessible in previous searches, then add it to those searches owned items
-            // Search through the searches backwards and when we hit a search where the location isn't accessible
-            // we can break out since none of the previous ones will have it either
-            #ifdef NON_3DS
-            for (auto pastSearch = searches.rbegin(); pastSearch != searches.rend(); pastSearch++)
-            {
-                if (pastSearch->visitedLocations.count(spotToFill) == 0)
-                {
-                    break;
-                }
-                pastSearch->ownedItems.insert(item);
-                pastSearch->sphereItems.insert(item);
-            }
-            #endif
-            LOG_TO_DEBUG("Placed " + item.GetName() + " at " + spotToFill->GetName());
-            itemsToPlace.pop_back();
-            #ifdef NON_3DS
-            searches.pop_back();
-            #endif
         }
     }
     while (unsuccessfulPlacement);
@@ -160,7 +123,7 @@ FillError FillWorlds(WorldPool& worlds)
     ItemPool otherItems = {};
     // Get Progression Locations
 
-    FILL_ERROR_CHECK(AssumedFill(worlds, itemPool, otherItems, allLocations));
+    FILL_ERROR_CHECK(AssumedFill(worlds, itemPool, PresetPools::NoItems, allLocations));
 
     if (!GameBeatable(worlds))
     {
