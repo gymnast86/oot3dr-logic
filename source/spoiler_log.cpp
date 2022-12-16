@@ -1,5 +1,4 @@
 #include "spoiler_log.hpp"
-#include "utility/file_system_defs.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -14,7 +13,7 @@ static std::string GetSpoilerFormatLocation(Location* location, const size_t& lo
 
 void GenerateSpoilerLog(WorldPool& worlds)
 {
-    std::ofstream log(LOGS_PATH "/Spoiler-Log.txt");
+    std::ofstream log(LOGS_PATH "Spoiler-Log.txt");
 
     // Playthroughs are stored in world 1 for the time being, regardless of how
     // many worlds there are.

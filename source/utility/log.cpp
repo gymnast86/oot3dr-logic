@@ -1,34 +1,87 @@
-
 #include "log.hpp"
-#include "file_system_defs.hpp"
 
 #include <iostream>
 #include <fstream>
 
-std::ofstream logger;
-
-void DebugLog(const std::string& msg /*= ""*/)
+ErrorLog::ErrorLog()
 {
-    #ifdef NON_3DS
-        if (logger.is_open())
-        {
-            logger << msg << std::endl;
-        }
-        else
-        {
-            std::cout << "debug_logger not opened" << std::endl;
-        }
+    #ifdef ENABLE_DEBUG
+        output.open(LOGS_PATH "Error Log.txt");
+
+        output << "Z3DR Version " << RANDOMIZER_VERSION << std::endl;
+
+        output << std::endl << std::endl;
     #endif
 }
 
-void OpenDebugLog(const std::string& seed)
-{
-    logger.open(LOGS_PATH"/debug_logger" + seed + ".txt");
+ErrorLog::~ErrorLog() { }
+
+ErrorLog& ErrorLog::getInstance() {
+    static ErrorLog s_Instance;
+    return s_Instance;
 }
 
-void CloseDebugLog()
+void ErrorLog::log(const std::string& msg) {
+    output << msg << std::endl;
+    lastErrors.push_back(msg);
+    if (lastErrors.size() > MAX_ERRORS)
+    {
+        lastErrors.pop_front();
+    }
+}
+
+std::string ErrorLog::getLastErrors() const
 {
-    #ifdef NON_3DS
-        logger.close();
+    std::string errStr = "";
+    for (auto& error : lastErrors)
+    {
+        errStr += error + "\n";
+    }
+    return errStr;
+}
+
+void ErrorLog::clearLastErrors()
+{
+    lastErrors.clear();
+}
+
+void ErrorLog::close()
+{
+    output.close();
+}
+
+DebugLog::DebugLog() {
+    #ifdef ENABLE_DEBUG
+        output.open(LOGS_PATH "Debug Log.txt");
+
+        output << "Z3DR Version " << RANDOMIZER_VERSION << std::endl;
+
+        output << std::endl << std::endl;
     #endif
+}
+
+DebugLog::~DebugLog() {
+
+}
+
+DebugLog& DebugLog::getInstance() {
+    static DebugLog s_Instance;
+    return s_Instance;
+}
+
+void DebugLog::log(const std::string& msg) {
+    #ifdef ENABLE_DEBUG
+        output << msg << std::endl;
+    #endif
+}
+
+void DebugLog::close()
+{
+    output.close();
+}
+
+void CloseLogs()
+{
+    DebugLog::getInstance().close();
+    ErrorLog::getInstance().close();
 }

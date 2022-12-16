@@ -2,7 +2,6 @@
 #include "search.hpp"
 #include "oot3d/oot3d_world.hpp"
 #include "utility/pool_functions.hpp"
-#include "utility/file_system_defs.hpp"
 #include "utility/log.hpp"
 #include "utility/timing.hpp"
 
@@ -473,7 +472,7 @@ void Search::DumpSearchGraph(size_t worldId /*= 0*/, const std::string filename 
     std::cout << "Now dumping search graph" << std::endl;
     bool onlyRandomizedExits = false;
     std::ofstream worldGraph;
-    std::string fullFilename = WORLD_GRAPHS"/" + filename + ".gv";
+    std::string fullFilename = LOGS_PATH + filename + ".gv";
     worldGraph.open (fullFilename);
     worldGraph << "digraph {\n\tcenter=true;\n";
 

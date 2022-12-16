@@ -1,13 +1,26 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
+/*==============================================|
+|                NON-3DS MAIN                   |
+|==============================================*/
+#ifdef NON_3DS
+#include "../source/generate.hpp"
+#include "../source/utility/log.hpp"
+
+int main()
+{
+    GenerateRandomizer();
+    CloseLogs();
+}
+#endif
+
+/*==============================================|
+|                   3DS MAIN                    |
+|==============================================*/
+#ifdef __3DS__
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <3ds.h>
 #include "generate.hpp"
-
-#define TICKS_PER_SEC 268123480.0
 
 int main(int argc, char* argv[])
 {
@@ -44,3 +57,4 @@ int main(int argc, char* argv[])
   	gfxExit();
   	return 0;
 }
+#endif

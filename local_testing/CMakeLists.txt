@@ -22,7 +22,11 @@ else()
  add_compile_options(-O3)
 endif()
 
-add_executable(Z3DR main.cpp)
+file(COPY "../romfs" DESTINATION "${CMAKE_BINARY_DIR}")
+add_compile_definitions(ROMFS="./romfs/" LOGS_PATH="./")
+add_compile_definitions(RANDOMIZER_VERSION="1.0")
+
+add_executable(Z3DR ../source/main.cpp)
 
 add_subdirectory("../source" "source")
 add_subdirectory("../source/oot3d" "source/oot3d")

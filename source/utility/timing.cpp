@@ -51,8 +51,6 @@
 #ifndef NON_3DS
     #include <3ds.h>
 
-    #define TICKS_PER_SEC 268123480.0
-
     struct TimingStruct {
         u64 lastTimePoint;
         u64 totalTime;

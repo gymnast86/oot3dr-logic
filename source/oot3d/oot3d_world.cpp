@@ -2,7 +2,6 @@
 #include "oot3d_item_pool.hpp"
 #include "oot3d_entrance.hpp"
 #include "../utility/file_functions.hpp"
-#include "../utility/file_system_defs.hpp"
 #include "../utility/log.hpp"
 #include "../utility/string_util.hpp"
 
@@ -70,7 +69,7 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
     LOG_TO_DEBUG("Building Item Table for world " + std::to_string(worldId) + "...");
     // std::cout << "Build Item Table for world " << std::to_string(worldId) << "..." << std::endl;
     std::string itemDataStr;
-    FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/item_data.yaml", itemDataStr))
+    FILE_READ_CHECK(GetFileContents(ROMFS"oot3d/item_data.yaml", itemDataStr))
     itemDataStr = Utility::Str::InsertUnicodeReplacements(itemDataStr);
 
     Yaml::Node itemDataTree;
@@ -113,7 +112,7 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
 {
     LOG_TO_DEBUG("Building Location Table for world " + std::to_string(worldId) + "...");
     std::string locationDataStr;
-    FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/location_data.yaml", locationDataStr))
+    FILE_READ_CHECK(GetFileContents(ROMFS"oot3d/location_data.yaml", locationDataStr))
     locationDataStr = Utility::Str::InsertUnicodeReplacements(locationDataStr);
 
     Yaml::Node locationDataTree;
@@ -183,7 +182,7 @@ WorldBuildingError Oot3dWorld::LoadLogicHelpers()
 {
     LOG_TO_DEBUG("Loading Logic Helpers for world " + std::to_string(worldId) + "...");
     std::string logicHelpersStr;
-    FILE_READ_CHECK(GetFileContents(ROMFS"/oot3d/logic_helpers.yaml", logicHelpersStr))
+    FILE_READ_CHECK(GetFileContents(ROMFS"oot3d/logic_helpers.yaml", logicHelpersStr))
 
     // Yaml CPP doesn't preserve keys in the order they're read in, but we want
     // to preserve this order when making logic helpers (since some logic helpers
@@ -220,7 +219,7 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
     std::string worldGraphDataStr;
 
     // Loop through all files in the directory with world graph files
-    const std::filesystem::path worldPath {ROMFS"/oot3d/world/"};
+    const std::filesystem::path worldPath {ROMFS"oot3d/world/"};
     for (auto const& dirEntry : std::filesystem::directory_iterator{worldPath})
     {
         // If this isn't a world graph file, then don't process it

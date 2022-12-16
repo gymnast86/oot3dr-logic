@@ -23,6 +23,10 @@ else()
   add_compile_options(-O3)
 endif()
 
+file(COPY "../romfs" DESTINATION "${CMAKE_BINARY_DIR}")
+add_compile_definitions(ROMFS="./romfs/" LOGS_PATH="./")
+add_compile_definitions(RANDOMIZER_VERSION="1.0")
+
 # Qt Stuff
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
