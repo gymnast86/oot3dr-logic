@@ -7,4 +7,3 @@
 #include <string.h>
 
 int GenerateRandomizer();
-void BKey();

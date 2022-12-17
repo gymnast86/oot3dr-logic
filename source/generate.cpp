@@ -245,13 +245,13 @@ int GenerateRandomizer()
         }
         else
         {
-            std::cout << "ERROR: No world type defined in settings for world " << std::to_string(i) << std::endl;
+            LOG_TO_ERROR("ERROR: No world type defined in settings for world " + std::to_string(i));
             return 1;
         }
         worlds[i]->worldId = i;
         if (worlds[i]->Build() != WorldBuildingError::NONE)
         {
-            std::cout << " when building world " << std::to_string(i) << " of type " << settings["world_type"] << std::endl;
+            LOG_TO_ERROR("when building world " + std::to_string(i) + " of type " + settings["world_type"]);
             return 1;
         }
     }
@@ -261,7 +261,7 @@ int GenerateRandomizer()
     FillError err = FillWorlds(worlds);
     if (err != FillError::NONE)
     {
-        std::cout << ErrorToName(err) << std::endl;
+        LOG_TO_ERROR("ERROR: " + ErrorToName(err) + " when attempting to fill worlds");
         return 1;
     }
 
@@ -276,88 +276,4 @@ int GenerateRandomizer()
     PrintTiming("General");
 
     return 0;
-}
-
-void BKey()
-{
-  // SettingsMap settings = {
-  //     {"world_type", "oot3d"},
-  //     {"bombchus_in_logic", "On"},
-  //     {"logic_rules", "glitchless"},
-  //     {"open_forest", "open"},
-  //     {"gerudo_fortress", "normal"},
-  //     {"damage_multiplier", "1x"},
-  //     {"hints", "none"},
-  //     {"plant_beans", "Off"},
-  //     {"bridge", "open"},
-  //     {"lacs_condition", "vanilla"},
-  //     {"shuffle_ganon_bosskey", "medallions"},
-  //     {"bridge_tokens", "10"},
-  //     {"bridge_stones", "3"},
-  //     {"bridge_medallions", "6"},
-  //     {"bridge_rewards", "9"},
-  //     {"lacs_tokens", "10"},
-  //     {"lacs_stones", "3"},
-  //     {"lacs_medallions", "6"},
-  //     {"lacs_rewards", "9"},
-  //     {"ganon_bosskey_stones", "3"},
-  //     {"ganon_bosskey_tokens", "10"},
-  //     {"ganon_bosskey_rewards", "9"},
-  //     {"ganon_bosskey_medallions", "6"},
-  //     {"had_night_start", "Off"},
-  //     {"entrance_shuffle", "On"},
-  //     {"shuffle_scrubs", "off"},
-  //     {"shuffle_weird_egg", "Off"},
-  //     {"shuffle_dungeon_entrances", "On"},
-  //     {"shuffle_overworld_entrances", "On"},
-  //     {"free_scarecrow", "Off"},
-  //     {"big_poe_count", "2"},
-  //     {"zora_fountain", "normal"},
-  //
-  //     {"logic_grottos_without_agony", "Off"},
-  //     {"logic_gerudo_kitchen", "Off"},
-  //     {"logic_adult_kokiri_gs", "On"},
-  //     {"logic_lost_woods_gs_bean", "Off"},
-  //     {"logic_lab_wall_gs", "On"},
-  //     {"logic_lab_diving", "Off"},
-  //     {"logic_colossus_gs", "Off"},
-  //     {"logic_kakariko_tower_gs", "On"},
-  //     {"logic_windmill_poh", "On"},
-  //     {"logic_graveyard_poh", "On"},
-  //     {"logic_child_dampe_race_poh", "On"},
-  //     {"logic_shadow_fire_arrow_entry", "Off"},
-  //     {"logic_visible_collisions", "Off"},
-  //     {"logic_dmt_bombable", "On"},
-  //     {"logic_dmt_soil_gs", "Off"},
-  //     {"logic_dmt_climb_hovers", "Off"},
-  //     {"logic_link_goron_dins", "On"},
-  //     {"logic_goron_city_leftmost", "Off"},
-  //     {"logic_goron_city_pot_with_strength", "On"},
-  //     {"logic_goron_city_pot", "On"},
-  //     {"logic_child_rolling_with_strength", "On"},
-  //     {"logic_goron_grotto", "Off"},
-  //     {"logic_crater_upper_to_lower", "On"},
-  //     {"logic_fewer_tunic_requirements", "On"},
-  //     {"logic_crater_bean_poh_with_hovers", "On"},
-  //     {"logic_zora_river_lower", "Off"},
-  //     {"logic_zora_river_upper", "On"},
-  //     {"logic_domain_gs", "On"},
-  //     {"logic_king_zora_skip", "On"},
-  //     {"logic_castle_storms_gs", "On"},
-  // };
-  //
-  // WorldPool worlds;
-  //
-  // if (settings["world_type"] == "oot3d")
-  // {
-  //     auto world = std::make_unique<Oot3dWorld>();
-  //     worlds.push_back(std::move(world));
-  // }
-  // else
-  // {
-  //     std::cout << "ERROR: No world type defined in settings" << std::endl;
-  //     return;
-  // }
-  //
-  // worlds.back()->Build();
 }

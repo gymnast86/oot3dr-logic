@@ -1,5 +1,5 @@
 /*==============================================|
-|                NON-3DS MAIN                   |
+|                 NON-3DS MAIN                  |
 |==============================================*/
 #ifdef NON_3DS
 #include "../source/generate.hpp"
@@ -7,7 +7,11 @@
 
 int main()
 {
-    GenerateRandomizer();
+    int retVal = GenerateRandomizer();
+    if (retVal != 0)
+    {
+        std::cout << ErrorLog::getInstance().getLastErrors() << std::endl;
+    }
     CloseLogs();
 }
 #endif
