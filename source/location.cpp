@@ -23,6 +23,11 @@ std::string Location::GetName()
     return name + (world->GetNumWorlds() > 1 ? " [W" + std::to_string(world->GetWorldID() + 1) + "]" : "");
 }
 
+std::string Location::GetDungeon()
+{
+    return dungeon;
+}
+
 World* Location::GetWorld() const
 {
     return world;
@@ -39,9 +44,10 @@ void Location::SetCurrentItem(Item item)
     LOG_TO_DEBUG("Placed " + currentItem.GetName() + " at " + this->GetName());
 }
 
-void Location::SetCurrentItemAsVanilla()
+void Location::SetVanillaItemAsCurrentItem()
 {
     SetCurrentItem(Item(vanillaItemId, world));
+    hasKnownVanillaItem = true;
 }
 
 void Location::RemoveCurrentItem()

@@ -90,29 +90,19 @@ void Search::SearchWorlds(int tempWorldToSearch /*= -1*/, bool oneIteration /*= 
 
     // Get all locations which currently have items to test on each iteration
     std::set<LocationAccess*, LocationAccessComparator> itemLocations = {};
-    //LOG_TO_DEBUG("[");
     for (auto& world : *worlds)
     {
         for (auto& [id, area] : world->areas)
         {
             for (auto& locAccess : area->locations)
             {
-                // if (searchMode == SearchMode::GameBeatable)
-                // {
-                //     LOG_TO_DEBUG("\t" + locAccess.location->GetName() + " " + std::to_string(locAccess.location->GetCurrentItem().GetID() != ItemID::NONE) + std::to_string(visitedLocations.count(locAccess.location) == 0));
-                // }
                 if (locAccess.location->GetCurrentItem().GetID() != ItemID::NONE && visitedLocations.count(locAccess.location) == 0)
                 {
                     itemLocations.insert(&locAccess);
-                    // if (searchMode == SearchMode::GameBeatable)
-                    // {
-                    //     LOG_TO_DEBUG("\t\tAdded");
-                    // }
                 }
             }
         }
     }
-    //LOG_TO_DEBUG("]");
 
     // Main searching loop
     do
@@ -251,7 +241,7 @@ void Search::ProcessExits()
             // its world at the moment
             continue;
         }
-        // std::cout << "Now exploring [W" << std::to_string(world->GetWorldID()) << "] exit " << exit->GetOriginalName() << std::endl;
+
         auto world = exit->GetWorld();
         EvalSuccess evalSuccess = world->EvaluateExitRequirement(this, exit);
         if (evalSuccess == EvalSuccess::Unnecessary) {
@@ -527,7 +517,7 @@ void Search::DumpSearchGraph(size_t worldId /*= 0*/, const std::string filename 
             std::string itemAtLocation = "No Item";
             if (location->GetCurrentItem().GetID() != ItemID::NONE)
             {
-                itemAtLocation = location->GetCurrentItem().GetName() + " [W" + std::to_string(location->GetCurrentItem().GetWorldID() + 1) + "]";
+                itemAtLocation = location->GetCurrentItem().GetName();
             }
             color = visitedLocations.count(location) > 0 ? "\"black\"" : "\"red\"";
             if (parentName != "INVALID" && connectedLocation != "INVALID"){

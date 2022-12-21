@@ -2,8 +2,8 @@
 #include <iostream>
 #include <unordered_map>
 
-// TIMING FOR LOCAL SYSTEM TESTING
-#ifdef NON_3DS
+// TIMING FOR LOCAL SYSTEM TESTING/QT GUI
+#ifndef __3DS__
     #include <chrono>
 
     struct TimingStruct {
@@ -48,7 +48,7 @@
 #endif
 
 // TIMING FOR 3DS SYSTEM
-#ifndef NON_3DS
+#ifdef __3DS__
     #include <3ds.h>
 
     struct TimingStruct {

@@ -21,6 +21,8 @@
   check_type_arg1: 0xFF
   check_type_arg2: 0x09
   check_group: Deku Tree
+  dungeon: Deku Tree
+  dungeon_type: Shared
 
 
 - name: King Dodongo
@@ -32,6 +34,8 @@
   check_type_arg1: 0xFF
   check_type_arg2: 0x25
   check_group: Dodongos Cavern
+  dungeon: Dodongos Cavern
+  dungeon_type: Shared
 
 
 - name: Barinade
@@ -43,6 +47,8 @@
   check_type_arg1: 0xFF
   check_type_arg2: 0x37
   check_group: Jabu Jabus Belly
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Shared
 
 
 - name: Phantom Ganon
@@ -54,6 +60,8 @@
   check_type_arg1: 0xFF
   check_type_arg2: 0x48
   check_group: Forest Temple
+  dungeon: Forest Temple
+  dungeon_type: Shared
 
 
 - name: Volvagia
@@ -65,6 +73,8 @@
   check_type_arg1: 0xFF
   check_type_arg2: 0x49
   check_group: Fire Temple
+  dungeon: Fire Temple
+  dungeon_type: Shared
 
 
 - name: Morpha
@@ -76,6 +86,8 @@
   check_type_arg1: 0xFF
   check_type_arg2: 0x4A
   check_group: Water Temple
+  dungeon: Water Temple
+  dungeon_type: Shared
 
 
 - name: Bongo Bongo
@@ -87,6 +99,8 @@
   check_type_arg1: 0xFF
   check_type_arg2: 0x46
   check_group: Shadow Temple
+  dungeon: Shadow Temple
+  dungeon_type: Shared
 
 
 - name: Twinrova
@@ -98,6 +112,8 @@
   check_type_arg1: 0xFF
   check_type_arg2: 0x47
   check_group: Spirit Temple
+  dungeon: Spirit Temple
+  dungeon_type: Shared
 
 
 - name: Ganon
@@ -109,6 +125,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x00
   check_group: Ganons Castle
+  dungeon: Ganons Castle
+  dungeon_type: Shared
 
 
 - name: Song from Impa
@@ -705,7 +723,7 @@
   type: Base
   scene: 0x5B
   flag: 0x31
-  vanilla_item: Buy Deku Stick 1
+  vanilla_item: Deku Stick 1
   categories:
     - Lost Woods
     - Forest
@@ -720,7 +738,7 @@
   type: Base
   scene: 0x5B
   flag: 0x30
-  vanilla_item: Buy Deku Nut 5
+  vanilla_item: Deku Nuts 5
   categories:
     - Lost Woods
     - Forest
@@ -752,7 +770,7 @@
   type: Grotto Scrub
   scene: 0xF5
   flag: 0x33
-  vanilla_item: Buy Deku Seeds 30
+  vanilla_item: Deku Seeds 30
   categories:
     - Lost Woods
     - Forest
@@ -825,7 +843,7 @@
   type: Grotto Scrub
   scene: 0xEE
   flag: 0x3A
-  vanilla_item: Buy Green Potion
+  vanilla_item: Green Potion Refill
   categories:
     - Sacred Forest Meadow
     - Forest
@@ -841,7 +859,7 @@
   type: Grotto Scrub
   scene: 0xEE
   flag: 0x39
-  vanilla_item: Buy Red Potion 30
+  vanilla_item: Red Potion Refill
   categories:
     - Sacred Forest Meadow
     - Forest
@@ -1555,6 +1573,17 @@
   check_group: Hyrule Castle
 
 
+- name: ToT Master Sword
+  type: Delayed
+  scene: 0xFF
+  flag: 0x00
+  vanilla_item: Master Sword
+  check_type: Master Sword
+  check_type_arg1: 0x00
+  check_type_arg2: 0x00
+  check_group: None
+
+
 - name: ToT Light Arrows Cutscene
   type: Delayed
   scene: 0xFF
@@ -1672,7 +1701,7 @@
   type: Grotto Scrub
   scene: 0xFC
   flag: 0x30
-  vanilla_item: Buy Deku Nut 5
+  vanilla_item: Deku Nuts 5
   categories:
     - Lon Lon Ranch
     - Deku Scrub
@@ -1687,7 +1716,7 @@
   type: Grotto Scrub
   scene: 0xFC
   flag: 0x33
-  vanilla_item: Buy Deku Seeds 30
+  vanilla_item: Deku Seeds 30
   categories:
     - Lon Lon Ranch
     - Deku Scrub
@@ -1702,7 +1731,7 @@
   type: Grotto Scrub
   scene: 0xFC
   flag: 0x37
-  vanilla_item: Buy Bombs 5 35
+  vanilla_item: Bombs 5
   categories:
     - Lon Lon Ranch
     - Deku Scrub
@@ -2795,7 +2824,7 @@
   type: Grotto Scrub
   scene: 0xFB
   flag: 0x30
-  vanilla_item: Buy Deku Nut 5
+  vanilla_item: Deku Nuts 5
   categories:
     - Goron City
     - Deku Scrub
@@ -2810,7 +2839,7 @@
   type: Grotto Scrub
   scene: 0xFB
   flag: 0x33
-  vanilla_item: Buy Arrows 30
+  vanilla_item: Arrows 30
   categories:
     - Goron City
     - Deku Scrub
@@ -2825,7 +2854,7 @@
   type: Grotto Scrub
   scene: 0xFB
   flag: 0x37
-  vanilla_item: Buy Bombs 5 35
+  vanilla_item: Bombs 5
   categories:
     - Goron City
     - Deku Scrub
@@ -3038,7 +3067,7 @@
   type: Base
   scene: 0x61
   flag: 0x37
-  vanilla_item: Buy Bombs 5 35
+  vanilla_item: Bombs 5
   categories:
     - Death Mountain Crater
     - Death Mountain
@@ -3053,7 +3082,7 @@
   type: Grotto Scrub
   scene: 0xF9
   flag: 0x30
-  vanilla_item: Buy Deku Nut 5
+  vanilla_item: Deku Nuts 5
   categories:
     - Death Mountain Crater
     - Death Mountain
@@ -3069,7 +3098,7 @@
   type: Grotto Scrub
   scene: 0xF9
   flag: 0x33
-  vanilla_item: Buy Arrows 30
+  vanilla_item: Arrows 30
   categories:
     - Death Mountain Crater
     - Death Mountain
@@ -3085,7 +3114,7 @@
   type: Grotto Scrub
   scene: 0xF9
   flag: 0x37
-  vanilla_item: Buy Bombs 5 35
+  vanilla_item: Bombs 5
   categories:
     - Death Mountain Crater
     - Death Mountain
@@ -3152,6 +3181,76 @@
   check_group: Zoras River
 
 
+- name: ZR Frogs Zeldas Lullaby
+  type: Base
+  scene: 0x54
+  flag: 0x01
+  vanilla_item: Purple Rupee
+  categories:
+    - Zoras River
+    - Frog Rupees
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xD1
+  check_group: Zoras River
+
+
+- name: ZR Frogs Eponas Song
+  type: Base
+  scene: 0x54
+  flag: 0x02
+  vanilla_item: Purple Rupee
+  categories:
+    - Zoras River
+    - Frog Rupees
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xD2
+  check_group: Zoras River
+
+
+- name: ZR Frogs Sarias Song
+  type: Base
+  scene: 0x54
+  flag: 0x03
+  vanilla_item: Purple Rupee
+  categories:
+    - Zoras River
+    - Frog Rupees
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xD3
+  check_group: Zoras River
+
+
+- name: ZR Frogs Suns Song
+  type: Base
+  scene: 0x54
+  flag: 0x04
+  vanilla_item: Purple Rupee
+  categories:
+    - Zoras River
+    - Frog Rupees
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xD4
+  check_group: Zoras River
+
+
+- name: ZR Frogs Song of Time
+  type: Base
+  scene: 0x54
+  flag: 0x05
+  vanilla_item: Purple Rupee
+  categories:
+    - Zoras River
+    - Frog Rupees
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0xD5
+  check_group: Zoras River
+
+
 - name: ZR Frogs in the Rain
   type: Base
   scene: 0x54
@@ -3209,7 +3308,7 @@
   type: Grotto Scrub
   scene: 0xEB
   flag: 0x3A
-  vanilla_item: Buy Green Potion
+  vanilla_item: Green Potion Refill
   categories:
     - Zoras River
     - Deku Scrub
@@ -3224,7 +3323,7 @@
   type: Grotto Scrub
   scene: 0xEB
   flag: 0x39
-  vanilla_item: Buy Red Potion 30
+  vanilla_item: Red Potion Refill
   categories:
     - Zoras River
     - Deku Scrub
@@ -3651,7 +3750,7 @@
   type: Grotto Scrub
   scene: 0xEF
   flag: 0x30
-  vanilla_item: Buy Deku Nut 5
+  vanilla_item: Deku Nuts 5
   categories:
     - Lake Hylia
     - Deku Scrub
@@ -3666,7 +3765,7 @@
   type: Grotto Scrub
   scene: 0xEF
   flag: 0x33
-  vanilla_item: Buy Deku Seeds 30
+  vanilla_item: Deku Seeds 30
   categories:
     - Lake Hylia
     - Deku Scrub
@@ -3681,7 +3780,7 @@
   type: Grotto Scrub
   scene: 0xEF
   flag: 0x37
-  vanilla_item: Buy Bombs 5 35
+  vanilla_item: Bombs 5
   categories:
     - Lake Hylia
     - Deku Scrub
@@ -3823,7 +3922,7 @@
   type: Grotto Scrub
   scene: 0xF0
   flag: 0x3A
-  vanilla_item: Buy Green Potion
+  vanilla_item: Green Potion Refill
   categories:
     - Gerudo Valley
     - Gerudo
@@ -3839,7 +3938,7 @@
   type: Grotto Scrub
   scene: 0xF0
   flag: 0x39
-  vanilla_item: Buy Red Potion 30
+  vanilla_item: Red Potion Refill
   categories:
     - Gerudo Valley
     - Gerudo
@@ -4140,7 +4239,7 @@
   type: Grotto Scrub
   scene: 0xFD
   flag: 0x3A
-  vanilla_item: Buy Green Potion
+  vanilla_item: Green Potion Refill
   categories:
     - Desert Colossus
     - Deku Scrub
@@ -4155,7 +4254,7 @@
   type: Grotto Scrub
   scene: 0xFD
   flag: 0x39
-  vanilla_item: Buy Red Potion 30
+  vanilla_item: Red Potion Refill
   categories:
     - Desert Colossus
     - Deku Scrub
@@ -4248,7 +4347,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x03
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree Slingshot Room Side Chest
   type: Chest
@@ -4261,7 +4361,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x05
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree Slingshot Chest
   type: Chest
@@ -4274,7 +4375,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x01
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree Compass Chest
   type: Chest
@@ -4288,7 +4390,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x02
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree Compass Room Side Chest
   type: Chest
@@ -4301,7 +4404,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x06
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree Basement Chest
   type: Chest
@@ -4314,7 +4418,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x04
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree GS Compass Room
   type: GS Token
@@ -4328,7 +4433,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x08
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree GS Basement Vines
   type: GS Token
@@ -4342,7 +4448,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x04
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree GS Basement Gate
   type: GS Token
@@ -4356,7 +4463,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x02
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree GS Basement Back Room
   type: GS Token
@@ -4370,7 +4478,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x01
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Vanilla
 
 - name: Deku Tree MQ Map Chest
   type: Chest
@@ -4384,7 +4493,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x03
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ Slingshot Chest
   type: Chest
@@ -4397,7 +4507,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x06
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ Slingshot Room Back Chest
   type: Chest
@@ -4410,7 +4521,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x02
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ Compass Chest
   type: Chest
@@ -4424,7 +4536,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x01
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ Basement Chest
   type: Chest
@@ -4437,7 +4550,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x04
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ Before Spinning Log Chest
   type: Chest
@@ -4450,7 +4564,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x05
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ After Spinning Log Chest
   type: Chest
@@ -4463,7 +4578,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x00
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ Deku Scrub
   type: Base
@@ -4476,7 +4592,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x05
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ GS Lobby
   type: GS Token
@@ -4490,7 +4607,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x02
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ GS Compass Room
   type: GS Token
@@ -4504,7 +4622,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x08
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ GS Basement Graves Room
   type: GS Token
@@ -4518,7 +4637,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x04
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree MQ GS Basement Back Room
   type: GS Token
@@ -4532,7 +4652,8 @@
   check_type_arg1: 0x00
   check_type_arg2: 0x01
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: MQ
 
 - name: Deku Tree Queen Gohma Heart
   type: Base
@@ -4547,7 +4668,8 @@
   check_type_arg1: 0x11
   check_type_arg2: 0x1F
   check_group: Deku Tree
-
+  dungeon: Deku Tree
+  dungeon_type: Shared
 
 - name: Dodongos Cavern Map Chest
   type: Chest
@@ -4561,7 +4683,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x08
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern Compass Chest
   type: Chest
@@ -4575,7 +4698,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x05
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern Bomb Flower Platform Chest
   type: Chest
@@ -4588,7 +4712,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x06
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern Bomb Bag Chest
   type: Chest
@@ -4601,7 +4726,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x04
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern End of Bridge Chest
   type: Chest
@@ -4614,13 +4740,14 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x0A
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern Deku Scrub Side Room Near Dodongos
   type: Base
   scene: 0x01
   flag: 0x31
-  vanilla_item: Buy Deku Stick 1
+  vanilla_item: Deku Stick 1
   categories:
     - Dodongos Cavern
     - Deku Scrub
@@ -4628,13 +4755,14 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x02
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern Deku Scrub Lobby
   type: Base
   scene: 0x01
   flag: 0x34
-  vanilla_item: Buy Deku Shield
+  vanilla_item: Deku Shield
   categories:
     - Dodongos Cavern
     - Deku Scrub
@@ -4642,13 +4770,14 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x05
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern Deku Scrub Near Bomb Bag Left
   type: Base
   scene: 0x01
   flag: 0x30
-  vanilla_item: Buy Deku Nut 5
+  vanilla_item: Deku Nuts 5
   categories:
     - Dodongos Cavern
     - Deku Scrub
@@ -4656,13 +4785,14 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x01
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern Deku Scrub Near Bomb Bag Right
   type: Base
   scene: 0x01
   flag: 0x33
-  vanilla_item: Buy Deku Seeds 30
+  vanilla_item: Deku Seeds 30
   categories:
     - Dodongos Cavern
     - Deku Scrub
@@ -4670,7 +4800,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x04
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern GS Side Room Near Lower Lizalfos
   type: GS Token
@@ -4684,7 +4815,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x10
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern GS Scarecrow
   type: GS Token
@@ -4698,7 +4830,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x02
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern GS Alcove Above Stairs
   type: GS Token
@@ -4712,7 +4845,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x04
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern GS Vines Above Stairs
   type: GS Token
@@ -4726,7 +4860,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x01
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern GS Back Room
   type: GS Token
@@ -4740,7 +4875,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x08
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Vanilla
 
 - name: Dodongos Cavern MQ Map Chest
   type: Chest
@@ -4754,7 +4890,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x00
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ Bomb Bag Chest
   type: Chest
@@ -4767,7 +4904,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x04
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ Torch Puzzle Room Chest
   type: Chest
@@ -4780,7 +4918,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x03
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ Larvae Room Chest
   type: Chest
@@ -4793,7 +4932,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x02
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ Compass Chest
   type: Chest
@@ -4807,7 +4947,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x05
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ Under Grave Chest
   type: Chest
@@ -4820,13 +4961,14 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x01
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ Deku Scrub Lobby Front
   type: Base
   scene: 0x01
   flag: 0x33
-  vanilla_item: Buy Deku Seeds 30
+  vanilla_item: Deku Seeds 30
   categories:
     - Dodongos Cavern
     - Deku Scrub
@@ -4834,13 +4976,14 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x04
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ Deku Scrub Lobby Rear
   type: Base
   scene: 0x01
   flag: 0x31
-  vanilla_item: Buy Deku Stick 1
+  vanilla_item: Deku Stick 1
   categories:
     - Dodongos Cavern
     - Deku Scrub
@@ -4848,13 +4991,14 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x02
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ Deku Scrub Side Room Near Lower Lizalfos
   type: Base
   scene: 0x01
   flag: 0x39
-  vanilla_item: Buy Red Potion 30
+  vanilla_item: Red Potion Refill
   categories:
     - Dodongos Cavern
     - Deku Scrub
@@ -4862,13 +5006,14 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x08
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ Deku Scrub Staircase
   type: Base
   scene: 0x01
   flag: 0x34
-  vanilla_item: Buy Deku Shield
+  vanilla_item: Deku Shield
   categories:
     - Dodongos Cavern
     - Deku Scrub
@@ -4876,7 +5021,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x05
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ GS Scrub Room
   type: GS Token
@@ -4890,7 +5036,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x02
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ GS Larvae Room
   type: GS Token
@@ -4904,7 +5051,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x10
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ GS Lizalfos Room
   type: GS Token
@@ -4918,7 +5066,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x04
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ GS Song of Time Block Room
   type: GS Token
@@ -4932,7 +5081,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x08
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern MQ GS Back Area
   type: GS Token
@@ -4946,7 +5096,8 @@
   check_type_arg1: 0x01
   check_type_arg2: 0x01
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: MQ
 
 - name: Dodongos Cavern Boss Room Chest
   type: Chest
@@ -4959,7 +5110,8 @@
   check_type_arg1: 0x12
   check_type_arg2: 0x00
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Shared
 
 - name: Dodongos Cavern King Dodongo Heart
   type: Base
@@ -4974,7 +5126,8 @@
   check_type_arg1: 0x12
   check_type_arg2: 0x1F
   check_group: Dodongos Cavern
-
+  dungeon: Dodongos Cavern
+  dungeon_type: Shared
 
 - name: Jabu Jabus Belly Boomerang Chest
   type: Chest
@@ -4987,7 +5140,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x01
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Vanilla
 
 - name: Jabu Jabus Belly Map Chest
   type: Chest
@@ -5001,7 +5155,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x02
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Vanilla
 
 - name: Jabu Jabus Belly Compass Chest
   type: Chest
@@ -5015,13 +5170,14 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x04
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Vanilla
 
 - name: Jabu Jabus Belly Deku Scrub
   type: Base
   scene: 0x02
   flag: 0x30
-  vanilla_item: Buy Deku Nut 5
+  vanilla_item: Deku Nuts 5
   categories:
     - Jabu Jabus Belly
     - Deku Scrub
@@ -5029,7 +5185,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x01
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Vanilla
 
 - name: Jabu Jabus Belly GS Water Switch Room
   type: GS Token
@@ -5043,7 +5200,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x08
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Vanilla
 
 - name: Jabu Jabus Belly GS Lobby Basement Lower
   type: GS Token
@@ -5057,7 +5215,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x01
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Vanilla
 
 - name: Jabu Jabus Belly GS Lobby Basement Upper
   type: GS Token
@@ -5071,7 +5230,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x02
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Vanilla
 
 - name: Jabu Jabus Belly GS Near Boss
   type: GS Token
@@ -5085,7 +5245,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x04
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Vanilla
 
 - name: Jabu Jabus Belly MQ Map Chest
   type: Chest
@@ -5099,7 +5260,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x03
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ First Room Side Chest
   type: Chest
@@ -5112,7 +5274,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x05
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Second Room Lower Chest
   type: Chest
@@ -5125,7 +5288,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x02
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Compass Chest
   type: Chest
@@ -5139,7 +5303,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x00
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Basement Near Switches Chest
   type: Chest
@@ -5152,7 +5317,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x08
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Basement Near Vines Chest
   type: Chest
@@ -5165,7 +5331,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x04
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Boomerang Room Small Chest
   type: Chest
@@ -5178,7 +5345,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x01
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Boomerang Chest
   type: Chest
@@ -5191,7 +5359,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x06
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Falling Like Like Room Chest
   type: Chest
@@ -5204,7 +5373,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x09
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Second Room Upper Chest
   type: Chest
@@ -5217,7 +5387,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x07
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Near Boss Chest
   type: Chest
@@ -5230,7 +5401,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x0A
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ Cow
   type: Base
@@ -5244,7 +5416,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x15
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ GS Boomerang Chest Room
   type: GS Token
@@ -5258,7 +5431,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x01
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ GS Tailpasaran Room
   type: GS Token
@@ -5272,7 +5446,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x04
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ GS Invisible Enemies Room
   type: GS Token
@@ -5286,7 +5461,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x08
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly MQ GS Near Boss
   type: GS Token
@@ -5300,7 +5476,8 @@
   check_type_arg1: 0x02
   check_type_arg2: 0x02
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: MQ
 
 - name: Jabu Jabus Belly Barinade Heart
   type: Base
@@ -5315,7 +5492,8 @@
   check_type_arg1: 0x13
   check_type_arg2: 0x1F
   check_group: Jabu Jabus Belly
-
+  dungeon: Jabu Jabus Belly
+  dungeon_type: Shared
 
 - name: Bottom of the Well Front Left Fake Wall Chest
   type: Chest
@@ -5329,7 +5507,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x08
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Front Center Bombable Chest
   type: Chest
@@ -5342,7 +5521,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x02
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Back Left Bombable Chest
   type: Chest
@@ -5355,7 +5535,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x04
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Underwater Left Chest
   type: Chest
@@ -5368,7 +5549,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x09
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Freestanding Key
   type: Collectable
@@ -5382,7 +5564,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x01
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Compass Chest
   type: Chest
@@ -5396,7 +5579,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x01
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Center Skulltula Chest
   type: Chest
@@ -5409,7 +5593,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x0E
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Right Bottom Fake Wall Chest
   type: Chest
@@ -5423,7 +5608,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x05
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Fire Keese Chest
   type: Chest
@@ -5436,7 +5622,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x0A
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Like Like Chest
   type: Chest
@@ -5449,7 +5636,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x0C
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Map Chest
   type: Chest
@@ -5463,7 +5651,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x07
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Underwater Front Chest
   type: Chest
@@ -5476,7 +5665,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x10
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Invisible Chest
   type: Chest
@@ -5489,7 +5679,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x14
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well Lens of Truth Chest
   type: Chest
@@ -5503,7 +5694,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x03
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well GS West Inner Room
   type: GS Token
@@ -5517,7 +5709,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x04
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well GS East Inner Room
   type: GS Token
@@ -5531,7 +5724,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x02
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well GS Like Like Cage
   type: GS Token
@@ -5545,7 +5739,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x01
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: Vanilla
 
 - name: Bottom of the Well MQ Map Chest
   type: Chest
@@ -5559,7 +5754,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x03
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: MQ
 
 - name: Bottom of the Well MQ East Inner Room Freestanding Key
   type: Collectable
@@ -5573,7 +5769,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x01
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: MQ
 
 - name: Bottom of the Well MQ Compass Chest
   type: Chest
@@ -5587,7 +5784,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x02
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: MQ
 
 - name: Bottom of the Well MQ Dead Hand Freestanding Key
   type: Collectable
@@ -5601,7 +5799,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x02
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: MQ
 
 - name: Bottom of the Well MQ Lens of Truth Chest
   type: Chest
@@ -5615,7 +5814,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x01
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: MQ
 
 - name: Bottom of the Well MQ GS Coffin Room
   type: GS Token
@@ -5629,7 +5829,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x04
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: MQ
 
 - name: Bottom of the Well MQ GS West Inner Room
   type: GS Token
@@ -5643,7 +5844,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x02
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: MQ
 
 - name: Bottom of the Well MQ GS Basement
   type: GS Token
@@ -5657,7 +5859,8 @@
   check_type_arg1: 0x08
   check_type_arg2: 0x01
   check_group: Bottom of the Well
-
+  dungeon: Bottom of the Well
+  dungeon_type: MQ
 
 - name: Forest Temple First Room Chest
   type: Chest
@@ -5671,7 +5874,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x03
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple First Stalfos Chest
   type: Chest
@@ -5685,7 +5889,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x00
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Raised Island Courtyard Chest
   type: Chest
@@ -5698,7 +5903,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x05
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Map Chest
   type: Chest
@@ -5712,7 +5918,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x01
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Well Chest
   type: Chest
@@ -5726,7 +5933,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x09
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Eye Switch Chest
   type: Chest
@@ -5739,7 +5947,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x04
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Boss Key Chest
   type: Chest
@@ -5753,7 +5962,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0E
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Floormaster Chest
   type: Chest
@@ -5767,7 +5977,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x02
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Red Poe Chest
   type: Chest
@@ -5781,7 +5992,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0D
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Bow Chest
   type: Chest
@@ -5794,7 +6006,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0C
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Blue Poe Chest
   type: Chest
@@ -5808,7 +6021,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0F
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Falling Ceiling Room Chest
   type: Chest
@@ -5821,7 +6035,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x07
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple Basement Chest
   type: Chest
@@ -5834,7 +6049,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0B
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple GS First Room
   type: GS Token
@@ -5848,7 +6064,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x02
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple GS Lobby
   type: GS Token
@@ -5862,7 +6079,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x08
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple GS Raised Island Courtyard
   type: GS Token
@@ -5876,7 +6094,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x01
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple GS Level Island Courtyard
   type: GS Token
@@ -5890,7 +6109,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x04
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple GS Basement
   type: GS Token
@@ -5904,7 +6124,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x10
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Vanilla
 
 - name: Forest Temple MQ First Room Chest
   type: Chest
@@ -5918,7 +6139,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x03
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Wolfos Chest
   type: Chest
@@ -5932,7 +6154,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x00
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Well Chest
   type: Chest
@@ -5946,7 +6169,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x09
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Raised Island Courtyard Lower Chest
   type: Chest
@@ -5960,7 +6184,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x01
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Raised Island Courtyard Upper Chest
   type: Chest
@@ -5974,7 +6199,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x05
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Boss Key Chest
   type: Chest
@@ -5988,7 +6214,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0E
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Redead Chest
   type: Chest
@@ -6002,7 +6229,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x02
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Map Chest
   type: Chest
@@ -6016,7 +6244,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0D
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Bow Chest
   type: Chest
@@ -6029,7 +6258,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0C
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Compass Chest
   type: Chest
@@ -6043,7 +6273,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0F
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Falling Ceiling Room Chest
   type: Chest
@@ -6056,7 +6287,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x06
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ Basement Chest
   type: Chest
@@ -6069,7 +6301,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x0B
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ GS First Hallway
   type: GS Token
@@ -6083,7 +6316,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x02
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ GS Raised Island Courtyard
   type: GS Token
@@ -6097,7 +6331,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x01
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ GS Level Island Courtyard
   type: GS Token
@@ -6111,7 +6346,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x04
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ GS Well
   type: GS Token
@@ -6125,7 +6361,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x08
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple MQ GS Block Push Room
   type: GS Token
@@ -6139,7 +6376,8 @@
   check_type_arg1: 0x03
   check_type_arg2: 0x10
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: MQ
 
 - name: Forest Temple Phantom Ganon Heart
   type: Base
@@ -6154,7 +6392,8 @@
   check_type_arg1: 0x14
   check_type_arg2: 0x1F
   check_group: Forest Temple
-
+  dungeon: Forest Temple
+  dungeon_type: Shared
 
 - name: Fire Temple Near Boss Chest
   type: Chest
@@ -6168,7 +6407,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x01
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Flare Dancer Chest
   type: Chest
@@ -6181,7 +6421,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x00
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Boss Key Chest
   type: Chest
@@ -6195,7 +6436,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x0C
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Big Lava Room Lower Open Door Chest
   type: Chest
@@ -6209,7 +6451,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x04
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Big Lava Room Blocked Door Chest
   type: Chest
@@ -6223,7 +6466,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x02
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Boulder Maze Lower Chest
   type: Chest
@@ -6237,7 +6481,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x03
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Boulder Maze Side Room Chest
   type: Chest
@@ -6251,7 +6496,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x08
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Map Chest
   type: Chest
@@ -6265,7 +6511,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x0A
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Boulder Maze Shortcut Chest
   type: Chest
@@ -6279,7 +6526,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x0B
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Boulder Maze Upper Chest
   type: Chest
@@ -6293,7 +6541,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x06
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Scarecrow Chest
   type: Chest
@@ -6306,7 +6555,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x0D
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Compass Chest
   type: Chest
@@ -6320,7 +6570,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x07
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Megaton Hammer Chest
   type: Chest
@@ -6333,7 +6584,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x05
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple Highest Goron Chest
   type: Chest
@@ -6347,7 +6599,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x09
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple GS Boss Key Loop
   type: GS Token
@@ -6361,7 +6614,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x02
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple GS Song of Time Room
   type: GS Token
@@ -6375,7 +6629,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x01
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple GS Boulder Maze
   type: GS Token
@@ -6389,7 +6644,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x04
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple GS Scarecrow Climb
   type: GS Token
@@ -6403,7 +6659,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x10
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple GS Scarecrow Top
   type: GS Token
@@ -6417,7 +6674,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x08
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Vanilla
 
 - name: Fire Temple MQ Map Room Side Chest
   type: Chest
@@ -6430,7 +6688,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x02
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Megaton Hammer Chest
   type: Chest
@@ -6443,7 +6702,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x00
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Map Chest
   type: Chest
@@ -6457,7 +6717,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x0C
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Near Boss Chest
   type: Chest
@@ -6471,7 +6732,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x07
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Big Lava Room Blocked Door Chest
   type: Chest
@@ -6485,7 +6747,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x01
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Boss Key Chest
   type: Chest
@@ -6499,7 +6762,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x04
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Lizalfos Maze Side Room Chest
   type: Chest
@@ -6513,7 +6777,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x08
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Compass Chest
   type: Chest
@@ -6527,7 +6792,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x0B
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Lizalfos Maze Upper Chest
   type: Chest
@@ -6540,7 +6806,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x06
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Lizalfos Maze Lower Chest
   type: Chest
@@ -6553,7 +6820,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x03
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Freestanding Key
   type: Collectable
@@ -6567,7 +6835,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x1C
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ Chest on Fire
   type: Chest
@@ -6581,7 +6850,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x05
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ GS Big Lava Room Open Door
   type: GS Token
@@ -6595,7 +6865,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x01
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ GS Skull on Fire
   type: GS Token
@@ -6609,7 +6880,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x04
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ GS Fire Wall Maze Center
   type: GS Token
@@ -6623,7 +6895,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x08
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ GS Fire Wall Maze Side Room
   type: GS Token
@@ -6637,7 +6910,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x10
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple MQ GS Above Fire Wall Maze
   type: GS Token
@@ -6651,7 +6925,8 @@
   check_type_arg1: 0x04
   check_type_arg2: 0x02
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: MQ
 
 - name: Fire Temple Volvagia Heart
   type: Base
@@ -6666,7 +6941,8 @@
   check_type_arg1: 0x15
   check_type_arg2: 0x1F
   check_group: Fire Temple
-
+  dungeon: Fire Temple
+  dungeon_type: Shared
 
 - name: Water Temple Compass Chest
   type: Chest
@@ -6680,7 +6956,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x09
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple Map Chest
   type: Chest
@@ -6694,7 +6971,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x02
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple Cracked Wall Chest
   type: Chest
@@ -6708,7 +6986,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x00
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple Torches Chest
   type: Chest
@@ -6722,7 +7001,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x01
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple Boss Key Chest
   type: Chest
@@ -6736,7 +7016,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x05
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple Central Pillar Chest
   type: Chest
@@ -6750,7 +7031,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x06
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple Central Bow Target Chest
   type: Chest
@@ -6764,7 +7046,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x08
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple Longshot Chest
   type: Chest
@@ -6777,7 +7060,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x07
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple River Chest
   type: Chest
@@ -6791,7 +7075,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x03
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple Dragon Chest
   type: Chest
@@ -6805,7 +7090,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x0A
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple GS Behind Gate
   type: GS Token
@@ -6819,7 +7105,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x01
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple GS Near Boss Key Chest
   type: GS Token
@@ -6833,7 +7120,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x08
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple GS Central Pillar
   type: GS Token
@@ -6847,7 +7135,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x04
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple GS Falling Platform Room
   type: GS Token
@@ -6861,7 +7150,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x02
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple GS River
   type: GS Token
@@ -6875,7 +7165,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x10
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Vanilla
 
 - name: Water Temple MQ Longshot Chest
   type: Chest
@@ -6888,7 +7179,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x00
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ Map Chest
   type: Chest
@@ -6902,7 +7194,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x02
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ Compass Chest
   type: Chest
@@ -6916,7 +7209,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x01
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ Central Pillar Chest
   type: Chest
@@ -6930,7 +7224,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x06
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ Boss Key Chest
   type: Chest
@@ -6944,7 +7239,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x05
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ Freestanding Key
   type: Collectable
@@ -6958,7 +7254,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x01
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ GS Lizalfos Hallway
   type: GS Token
@@ -6972,7 +7269,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x01
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ GS Before Upper Water Switch
   type: GS Token
@@ -6986,7 +7284,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x04
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ GS River
   type: GS Token
@@ -7000,7 +7299,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x02
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ GS Freestanding Key Area
   type: GS Token
@@ -7014,7 +7314,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x08
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple MQ GS Triple Wall Torch
   type: GS Token
@@ -7028,7 +7329,8 @@
   check_type_arg1: 0x05
   check_type_arg2: 0x10
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: MQ
 
 - name: Water Temple Morpha Heart
   type: Base
@@ -7043,7 +7345,8 @@
   check_type_arg1: 0x16
   check_type_arg2: 0x1F
   check_group: Water Temple
-
+  dungeon: Water Temple
+  dungeon_type: Shared
 
 - name: Shadow Temple Map Chest
   type: Chest
@@ -7057,7 +7360,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x01
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Hover Boots Chest
   type: Chest
@@ -7070,7 +7374,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x07
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Compass Chest
   type: Chest
@@ -7084,7 +7389,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x03
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Early Silver Rupee Chest
   type: Chest
@@ -7098,7 +7404,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x02
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Invisible Blades Visible Chest
   type: Chest
@@ -7111,7 +7418,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0C
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Invisible Blades Invisible Chest
   type: Chest
@@ -7124,7 +7432,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x16
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Falling Spikes Lower Chest
   type: Chest
@@ -7137,7 +7446,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x05
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Falling Spikes Upper Chest
   type: Chest
@@ -7150,7 +7460,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x06
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Falling Spikes Switch Chest
   type: Chest
@@ -7164,7 +7475,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x04
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Invisible Spikes Chest
   type: Chest
@@ -7177,7 +7489,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x09
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Freestanding Key
   type: Collectable
@@ -7191,7 +7504,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x01
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Wind Hint Chest
   type: Chest
@@ -7204,7 +7518,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x15
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple After Wind Enemy Chest
   type: Chest
@@ -7217,7 +7532,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x08
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple After Wind Hidden Chest
   type: Chest
@@ -7231,7 +7547,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x14
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Spike Walls Left Chest
   type: Chest
@@ -7244,7 +7561,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0A
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Boss Key Chest
   type: Chest
@@ -7258,7 +7576,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0B
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple Invisible Floormaster Chest
   type: Chest
@@ -7272,7 +7591,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0D
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple GS Like Like Room
   type: GS Token
@@ -7286,7 +7606,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x08
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple GS Falling Spikes Room
   type: GS Token
@@ -7300,7 +7621,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x02
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple GS Single Giant Pot
   type: GS Token
@@ -7314,7 +7636,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x01
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple GS Near Ship
   type: GS Token
@@ -7328,7 +7651,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x10
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple GS Triple Giant Pot
   type: GS Token
@@ -7342,7 +7666,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x04
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Vanilla
 
 - name: Shadow Temple MQ Early Gibdos Chest
   type: Chest
@@ -7356,7 +7681,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x03
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Map Chest
   type: Chest
@@ -7370,7 +7696,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x02
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Near Ship Invisible Chest
   type: Chest
@@ -7384,7 +7711,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0E
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Compass Chest
   type: Chest
@@ -7398,7 +7726,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x01
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Hover Boots Chest
   type: Chest
@@ -7411,7 +7740,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x07
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Invisible Blades Invisible Chest
   type: Chest
@@ -7425,7 +7755,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x16
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Invisible Blades Visible Chest
   type: Chest
@@ -7438,7 +7769,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0C
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Beamos Silver Rupees Chest
   type: Chest
@@ -7451,7 +7783,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0F
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Falling Spikes Lower Chest
   type: Chest
@@ -7464,7 +7797,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x05
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Falling Spikes Upper Chest
   type: Chest
@@ -7477,7 +7811,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x06
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Falling Spikes Switch Chest
   type: Chest
@@ -7491,7 +7826,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x04
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Invisible Spikes Chest
   type: Chest
@@ -7504,7 +7840,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x09
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Stalfos Room Chest
   type: Chest
@@ -7517,7 +7854,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x10
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Wind Hint Chest
   type: Chest
@@ -7531,7 +7869,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x15
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ After Wind Hidden Chest
   type: Chest
@@ -7544,7 +7883,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x14
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ After Wind Enemy Chest
   type: Chest
@@ -7557,7 +7897,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x08
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Boss Key Chest
   type: Chest
@@ -7571,7 +7912,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0B
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Spike Walls Left Chest
   type: Chest
@@ -7584,7 +7926,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0A
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Freestanding Key
   type: Collectable
@@ -7598,7 +7941,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x06
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ Bomb Flower Chest
   type: Chest
@@ -7611,7 +7955,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x0D
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ GS Falling Spikes Room
   type: GS Token
@@ -7625,7 +7970,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x02
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ GS Wind Hint Room
   type: GS Token
@@ -7639,7 +7985,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x01
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ GS After Wind
   type: GS Token
@@ -7653,7 +8000,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x08
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ GS After Ship
   type: GS Token
@@ -7667,7 +8015,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x10
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple MQ GS Near Boss
   type: GS Token
@@ -7681,7 +8030,8 @@
   check_type_arg1: 0x07
   check_type_arg2: 0x04
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: MQ
 
 - name: Shadow Temple Bongo Bongo Heart
   type: Base
@@ -7696,7 +8046,8 @@
   check_type_arg1: 0x18
   check_type_arg2: 0x1F
   check_group: Shadow Temple
-
+  dungeon: Shadow Temple
+  dungeon_type: Shared
 
 - name: Spirit Temple Child Bridge Chest
   type: Chest
@@ -7709,7 +8060,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x08
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Child Early Torches Chest
   type: Chest
@@ -7723,7 +8075,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x00
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Child Climb North Chest
   type: Chest
@@ -7736,7 +8089,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x06
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Child Climb East Chest
   type: Chest
@@ -7749,7 +8103,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x0C
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Map Chest
   type: Chest
@@ -7763,7 +8118,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x03
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Sun Block Room Chest
   type: Chest
@@ -7777,7 +8133,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x01
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple MQ Entrance Front Left Chest
   type: Chest
@@ -7790,7 +8147,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x1A
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Entrance Back Right Chest
   type: Chest
@@ -7803,7 +8161,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x1F
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Entrance Front Right Chest
   type: Chest
@@ -7817,7 +8176,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x1B
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Entrance Back Left Chest
   type: Chest
@@ -7831,7 +8191,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x1E
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Map Chest
   type: Chest
@@ -7845,7 +8206,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x00
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Map Room Enemy Chest
   type: Chest
@@ -7859,7 +8221,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x08
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Child Climb North Chest
   type: Chest
@@ -7872,7 +8235,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x06
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Child Climb South Chest
   type: Chest
@@ -7886,7 +8250,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x0C
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Compass Chest
   type: Chest
@@ -7900,7 +8265,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x03
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Silver Block Hallway Chest
   type: Chest
@@ -7914,7 +8280,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x1C
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Sun Block Room Chest
   type: Chest
@@ -7927,7 +8294,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x01
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple Silver Gauntlets Chest
   type: Chest
@@ -7941,7 +8309,8 @@
   check_type_arg1: 0x5C
   check_type_arg2: 0x0B
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Shared
 
 - name: Spirit Temple Compass Chest
   type: Chest
@@ -7955,7 +8324,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x04
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Early Adult Right Chest
   type: Chest
@@ -7969,7 +8339,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x07
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple First Mirror Left Chest
   type: Chest
@@ -7982,7 +8353,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x0D
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple First Mirror Right Chest
   type: Chest
@@ -7995,7 +8367,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x0E
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Statue Room Northeast Chest
   type: Chest
@@ -8008,7 +8381,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x0F
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Statue Room Hand Chest
   type: Chest
@@ -8022,7 +8396,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x02
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Near Four Armos Chest
   type: Chest
@@ -8036,7 +8411,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x05
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Hallway Right Invisible Chest
   type: Chest
@@ -8049,7 +8425,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x14
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Hallway Left Invisible Chest
   type: Chest
@@ -8062,7 +8439,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x15
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple MQ Child Hammer Switch Chest
   type: Chest
@@ -8076,7 +8454,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x1D
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Statue Room Lullaby Chest
   type: Chest
@@ -8089,7 +8468,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x0F
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Statue Room Invisible Chest
   type: Chest
@@ -8102,7 +8482,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x02
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Leever Room Chest
   type: Chest
@@ -8115,7 +8496,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x04
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Symphony Room Chest
   type: Chest
@@ -8128,7 +8510,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x07
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Beamos Room Chest
   type: Chest
@@ -8141,7 +8524,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x19
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Chest Switch Chest
   type: Chest
@@ -8154,7 +8538,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x18
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ Boss Key Chest
   type: Chest
@@ -8168,7 +8553,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x05
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple Mirror Shield Chest
   type: Chest
@@ -8182,7 +8568,8 @@
   check_type_arg1: 0x5C
   check_type_arg2: 0x09
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Shared
 
 - name: Spirit Temple Boss Key Chest
   type: Chest
@@ -8196,7 +8583,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x0A
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple Topmost Chest
   type: Chest
@@ -8209,7 +8597,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x12
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple MQ Mirror Puzzle Invisible Chest
   type: Chest
@@ -8223,7 +8612,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x12
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple GS Metal Fence
   type: GS Token
@@ -8237,7 +8627,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x10
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple GS Sun on Floor Room
   type: GS Token
@@ -8251,7 +8642,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x08
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple GS Hall After Sun Block Room
   type: GS Token
@@ -8265,7 +8657,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x01
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple GS Lobby
   type: GS Token
@@ -8279,7 +8672,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x04
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple GS Boulder Room
   type: GS Token
@@ -8293,7 +8687,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x02
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Vanilla
 
 - name: Spirit Temple MQ GS Sun Block Room
   type: GS Token
@@ -8307,7 +8702,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x01
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ GS Leever Room
   type: GS Token
@@ -8321,7 +8717,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x02
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ GS Symphony Room
   type: GS Token
@@ -8335,7 +8732,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x08
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ GS Nine Thrones Room West
   type: GS Token
@@ -8349,7 +8747,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x04
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple MQ GS Nine Thrones Room North
   type: GS Token
@@ -8363,7 +8762,8 @@
   check_type_arg1: 0x06
   check_type_arg2: 0x10
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: MQ
 
 - name: Spirit Temple Twinrova Heart
   type: Base
@@ -8378,7 +8778,8 @@
   check_type_arg1: 0x17
   check_type_arg2: 0x1F
   check_group: Spirit Temple
-
+  dungeon: Spirit Temple
+  dungeon_type: Shared
 
 - name: Ice Cavern Map Chest
   type: Chest
@@ -8392,7 +8793,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x00
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: Vanilla
 
 - name: Ice Cavern Compass Chest
   type: Chest
@@ -8406,7 +8808,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x01
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: Vanilla
 
 - name: Ice Cavern Freestanding PoH
   type: Collectable
@@ -8419,7 +8822,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x01
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: Vanilla
 
 - name: Ice Cavern Iron Boots Chest
   type: Chest
@@ -8432,7 +8836,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x02
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: Vanilla
 
 - name: Ice Cavern GS Spinning Scythe Room
   type: GS Token
@@ -8446,7 +8851,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x02
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: Vanilla
 
 - name: Ice Cavern GS Heart Piece Room
   type: GS Token
@@ -8460,7 +8866,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x04
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: Vanilla
 
 - name: Ice Cavern GS Push Block Room
   type: GS Token
@@ -8474,7 +8881,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x01
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: Vanilla
 
 - name: Ice Cavern MQ Map Chest
   type: Chest
@@ -8488,7 +8896,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x01
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: MQ
 
 - name: Ice Cavern MQ Compass Chest
   type: Chest
@@ -8502,7 +8911,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x00
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: MQ
 
 - name: Ice Cavern MQ Freestanding PoH
   type: Collectable
@@ -8515,7 +8925,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x01
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: MQ
 
 - name: Ice Cavern MQ Iron Boots Chest
   type: Chest
@@ -8528,7 +8939,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x02
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: MQ
 
 - name: Ice Cavern MQ GS Red Ice
   type: GS Token
@@ -8542,7 +8954,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x02
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: MQ
 
 - name: Ice Cavern MQ GS Ice Block
   type: GS Token
@@ -8556,7 +8969,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x04
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: MQ
 
 - name: Ice Cavern MQ GS Scarecrow
   type: GS Token
@@ -8570,7 +8984,8 @@
   check_type_arg1: 0x09
   check_type_arg2: 0x01
   check_group: Ice Cavern
-
+  dungeon: Ice Cavern
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground Lobby Left Chest
   type: Chest
@@ -8583,7 +8998,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x13
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Lobby Right Chest
   type: Chest
@@ -8596,7 +9012,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x07
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Stalfos Chest
   type: Chest
@@ -8610,7 +9027,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x00
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Before Heavy Block Chest
   type: Chest
@@ -8623,7 +9041,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x11
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Heavy Block First Chest
   type: Chest
@@ -8636,7 +9055,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0F
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Heavy Block Second Chest
   type: Chest
@@ -8649,7 +9069,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0E
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Heavy Block Third Chest
   type: Chest
@@ -8663,7 +9084,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x14
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Heavy Block Fourth Chest
   type: Chest
@@ -8676,7 +9098,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x02
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Eye Statue Chest
   type: Chest
@@ -8690,7 +9113,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x03
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Near Scarecrow Chest
   type: Chest
@@ -8704,7 +9128,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x04
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Hammer Room Clear Chest
   type: Chest
@@ -8717,7 +9142,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x12
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Hammer Room Switch Chest
   type: Chest
@@ -8731,7 +9157,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x10
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Freestanding Key
   type: Collectable
@@ -8745,7 +9172,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x01
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Maze Right Central Chest
   type: Chest
@@ -8758,7 +9186,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x05
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Maze Right Side Chest
   type: Chest
@@ -8771,7 +9200,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x08
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Underwater Silver Rupee Chest
   type: Chest
@@ -8785,7 +9215,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0D
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Beamos Chest
   type: Chest
@@ -8799,7 +9230,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x01
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Hidden Ceiling Chest
   type: Chest
@@ -8813,7 +9245,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0B
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Maze Path First Chest
   type: Chest
@@ -8826,7 +9259,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x06
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Maze Path Second Chest
   type: Chest
@@ -8839,7 +9273,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0A
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Maze Path Third Chest
   type: Chest
@@ -8852,7 +9287,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x09
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground Maze Path Final Chest
   type: Chest
@@ -8866,7 +9302,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0C
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: Vanilla
 
 - name: Gerudo Training Ground MQ Lobby Left Chest
   type: Chest
@@ -8879,7 +9316,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x13
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Lobby Right Chest
   type: Chest
@@ -8892,7 +9330,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x07
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ First Iron Knuckle Chest
   type: Chest
@@ -8905,7 +9344,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x00
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Before Heavy Block Chest
   type: Chest
@@ -8918,7 +9358,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x11
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Heavy Block Chest
   type: Chest
@@ -8931,7 +9372,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x02
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Eye Statue Chest
   type: Chest
@@ -8944,7 +9386,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x03
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Ice Arrows Chest
   type: Chest
@@ -8958,7 +9401,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x04
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Second Iron Knuckle Chest
   type: Chest
@@ -8971,7 +9415,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x12
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Flame Circle Chest
   type: Chest
@@ -8985,7 +9430,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0E
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Maze Right Central Chest
   type: Chest
@@ -8998,7 +9444,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x05
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Maze Right Side Chest
   type: Chest
@@ -9011,7 +9458,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x08
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Underwater Silver Rupee Chest
   type: Chest
@@ -9025,7 +9473,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0D
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Dinolfos Chest
   type: Chest
@@ -9039,7 +9488,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x01
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Hidden Ceiling Chest
   type: Chest
@@ -9052,7 +9502,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0B
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Maze Path First Chest
   type: Chest
@@ -9065,7 +9516,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x06
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Maze Path Third Chest
   type: Chest
@@ -9078,7 +9530,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x09
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Gerudo Training Ground MQ Maze Path Second Chest
   type: Chest
@@ -9091,7 +9544,8 @@
   check_type_arg1: 0x0B
   check_type_arg2: 0x0A
   check_group: Gerudo Training Ground
-
+  dungeon: Gerudo Training Ground
+  dungeon_type: MQ
 
 - name: Ganons Castle Forest Trial Chest
   type: Chest
@@ -9104,7 +9558,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x09
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Water Trial Left Chest
   type: Chest
@@ -9117,7 +9572,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x07
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Water Trial Right Chest
   type: Chest
@@ -9130,7 +9586,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x06
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Shadow Trial Front Chest
   type: Chest
@@ -9143,7 +9600,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x08
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Shadow Trial Golden Gauntlets Chest
   type: Chest
@@ -9156,7 +9614,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x05
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Light Trial First Left Chest
   type: Chest
@@ -9169,7 +9628,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x0C
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Light Trial Second Left Chest
   type: Chest
@@ -9182,7 +9642,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x0B
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Light Trial Third Left Chest
   type: Chest
@@ -9195,7 +9656,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x0D
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Light Trial First Right Chest
   type: Chest
@@ -9208,7 +9670,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x0E
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Light Trial Second Right Chest
   type: Chest
@@ -9221,7 +9684,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x0A
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Light Trial Third Right Chest
   type: Chest
@@ -9234,7 +9698,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x0F
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Light Trial Invisible Enemies Chest
   type: Chest
@@ -9248,7 +9713,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x10
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Light Trial Lullaby Chest
   type: Chest
@@ -9262,7 +9728,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x11
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Spirit Trial Crystal Switch Chest
   type: Chest
@@ -9275,7 +9742,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x12
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Spirit Trial Invisible Chest
   type: Chest
@@ -9288,13 +9756,14 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x14
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Deku Scrub Left
   type: Base
   scene: 0x0D
   flag: 0x3A
-  vanilla_item: Buy Green Potion
+  vanilla_item: Green Potion Refill
   categories:
     - Ganons Castle
     - Deku Scrub
@@ -9302,13 +9771,14 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x09
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Deku Scrub Center Left
   type: Base
   scene: 0x0D
   flag: 0x37
-  vanilla_item: Buy Bombs 5 35
+  vanilla_item: Bombs 5
   categories:
     - Ganons Castle
     - Deku Scrub
@@ -9316,13 +9786,14 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x06
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Deku Scrub Center Right
   type: Base
   scene: 0x0D
   flag: 0x33
-  vanilla_item: Buy Arrows 30
+  vanilla_item: Arrows 30
   categories:
     - Ganons Castle
     - Deku Scrub
@@ -9330,13 +9801,14 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x04
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle Deku Scrub Right
   type: Base
   scene: 0x0D
   flag: 0x39
-  vanilla_item: Buy Red Potion 30
+  vanilla_item: Red Potion Refill
   categories:
     - Ganons Castle
     - Deku Scrub
@@ -9344,7 +9816,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x08
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Vanilla
 
 - name: Ganons Castle MQ Forest Trial Freestanding Key
   type: Collectable
@@ -9358,7 +9831,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x01
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Forest Trial Eye Switch Chest
   type: Chest
@@ -9371,7 +9845,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x02
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Forest Trial Frozen Eye Switch Chest
   type: Chest
@@ -9384,7 +9859,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x03
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Water Trial Chest
   type: Chest
@@ -9397,7 +9873,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x01
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Shadow Trial Bomb Flower Chest
   type: Chest
@@ -9410,7 +9887,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x00
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Shadow Trial Eye Switch Chest
   type: Chest
@@ -9424,7 +9902,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x05
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Light Trial Lullaby Chest
   type: Chest
@@ -9437,7 +9916,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x04
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Spirit Trial First Chest
   type: Chest
@@ -9450,7 +9930,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x0A
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Spirit Trial Invisible Chest
   type: Chest
@@ -9463,7 +9944,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x14
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Spirit Trial Sun Front Left Chest
   type: Chest
@@ -9476,7 +9958,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x09
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Spirit Trial Sun Back Left Chest
   type: Chest
@@ -9490,7 +9973,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x08
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Spirit Trial Sun Back Right Chest
   type: Chest
@@ -9503,7 +9987,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x07
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Spirit Trial Golden Gauntlets Chest
   type: Chest
@@ -9516,13 +10001,14 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x06
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Deku Scrub Left
   type: Base
   scene: 0x0D
   flag: 0x3A
-  vanilla_item: Buy Green Potion
+  vanilla_item: Green Potion Refill
   categories:
     - Ganons Castle
     - Deku Scrub
@@ -9530,13 +10016,14 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x09
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Deku Scrub Center Left
   type: Base
   scene: 0x0D
   flag: 0x37
-  vanilla_item: Buy Bombs 5 35
+  vanilla_item: Bombs 5
   categories:
     - Ganons Castle
     - Deku Scrub
@@ -9544,13 +10031,14 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x06
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Deku Scrub Center
   type: Base
   scene: 0x0D
   flag: 0x33
-  vanilla_item: Buy Arrows 30
+  vanilla_item: Arrows 30
   categories:
     - Ganons Castle
     - Deku Scrub
@@ -9558,13 +10046,14 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x04
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Deku Scrub Center Right
   type: Base
   scene: 0x0D
   flag: 0x39
-  vanilla_item: Buy Red Potion 30
+  vanilla_item: Red Potion Refill
   categories:
     - Ganons Castle
     - Deku Scrub
@@ -9572,13 +10061,14 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x08
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Castle MQ Deku Scrub Right
   type: Base
   scene: 0x0D
   flag: 0x30
-  vanilla_item: Buy Deku Nut 5
+  vanilla_item: Deku Nuts 5
   categories:
     - Ganons Castle
     - Deku Scrub
@@ -9586,7 +10076,8 @@
   check_type_arg1: 0x0D
   check_type_arg2: 0x01
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: MQ
 
 - name: Ganons Tower Boss Key Chest
   type: Chest
@@ -9599,7 +10090,8 @@
   check_type_arg1: 0x0A
   check_type_arg2: 0x0B
   check_group: Ganons Castle
-
+  dungeon: Ganons Castle
+  dungeon_type: Shared
 
 - name: Pierre
   type: Event
@@ -9617,17 +10109,6 @@
   scene: 0x00
   flag: 0x00
   vanilla_item: Deliver Letter
-  check_type: None
-  check_type_arg1: 0x00
-  check_type_arg2: 0x00
-  check_group: None
-
-
-- name: Master Sword Pedestal
-  type: Event
-  scene: 0x00
-  flag: 0x00
-  vanilla_item: Master Sword
   check_type: None
   check_type_arg1: 0x00
   check_type_arg2: 0x00

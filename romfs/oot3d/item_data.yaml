@@ -671,6 +671,7 @@
   type: Map
   get_item_id: 0xA5
   advancement: false
+  dungeon_map: Deku Tree
 
 
 - name: Dodongos Cavern Map
@@ -679,6 +680,7 @@
   type: Map
   get_item_id: 0xA6
   advancement: false
+  dungeon_map: Dodongos Cavern
 
 
 - name: Jabu Jabus Belly Map
@@ -687,6 +689,7 @@
   type: Map
   get_item_id: 0xA7
   advancement: false
+  dungeon_map: Jabu Jabus Belly
 
 
 - name: Forest Temple Map
@@ -695,6 +698,7 @@
   type: Map
   get_item_id: 0xA8
   advancement: false
+  dungeon_map: Forest Temple
 
 
 - name: Fire Temple Map
@@ -703,6 +707,7 @@
   type: Map
   get_item_id: 0xA9
   advancement: false
+  dungeon_map: Fire Temple
 
 
 - name: Water Temple Map
@@ -711,6 +716,7 @@
   type: Map
   get_item_id: 0xAA
   advancement: false
+  dungeon_map: Water Temple
 
 
 - name: Spirit Temple Map
@@ -719,6 +725,7 @@
   type: Map
   get_item_id: 0xAB
   advancement: false
+  dungeon_map: Spirit Temple
 
 
 - name: Shadow Temple Map
@@ -727,6 +734,7 @@
   type: Map
   get_item_id: 0xAC
   advancement: false
+  dungeon_map: Shadow Temple
 
 
 - name: Bottom of the Well Map
@@ -735,6 +743,7 @@
   type: Map
   get_item_id: 0xAD
   advancement: false
+  dungeon_map: Bottom of the Well
 
 
 - name: Ice Cavern Map
@@ -743,6 +752,7 @@
   type: Map
   get_item_id: 0xAE
   advancement: false
+  dungeon_map: Ice Cavern
 
 
 - name: Deku Tree Compass
@@ -751,6 +761,7 @@
   type: Compass
   get_item_id: 0x9B
   advancement: false
+  dungeon_compass: Deku Tree
 
 
 - name: Dodongos Cavern Compass
@@ -759,6 +770,7 @@
   type: Compass
   get_item_id: 0x9C
   advancement: false
+  dungeon_compass: Dodongos Cavern
 
 
 - name: Jabu Jabus Belly Compass
@@ -767,6 +779,7 @@
   type: Compass
   get_item_id: 0x9D
   advancement: false
+  dungeon_compass: Jabu Jabus Belly
 
 
 - name: Forest Temple Compass
@@ -775,6 +788,7 @@
   type: Compass
   get_item_id: 0x9E
   advancement: false
+  dungeon_compass: Forest Temple
 
 
 - name: Fire Temple Compass
@@ -783,6 +797,7 @@
   type: Compass
   get_item_id: 0x9F
   advancement: false
+  dungeon_compass: Fire Temple
 
 
 - name: Water Temple Compass
@@ -791,6 +806,7 @@
   type: Compass
   get_item_id: 0xA0
   advancement: false
+  dungeon_compass: Water Temple
 
 
 - name: Spirit Temple Compass
@@ -799,6 +815,7 @@
   type: Compass
   get_item_id: 0xA1
   advancement: false
+  dungeon_compass: Spirit Temple
 
 
 - name: Shadow Temple Compass
@@ -807,6 +824,7 @@
   type: Compass
   get_item_id: 0xA2
   advancement: false
+  dungeon_compass: Shadow Temple
 
 
 - name: Bottom of the Well Compass
@@ -815,6 +833,7 @@
   type: Compass
   get_item_id: 0xA3
   advancement: false
+  dungeon_compass: Bottom of the Well
 
 
 - name: Ice Cavern Compass
@@ -823,6 +842,7 @@
   type: Compass
   get_item_id: 0xA4
   advancement: false
+  dungeon_compass: Ice Cavern
 
 
 - name: Forest Temple Boss Key
@@ -831,6 +851,7 @@
   type: Boss Key
   get_item_id: 0x95
   advancement: true
+  dungeon_boss_key: Forest Temple
 
 
 - name: Fire Temple Boss Key
@@ -839,6 +860,7 @@
   type: Boss Key
   get_item_id: 0x96
   advancement: true
+  dungeon_boss_key: Fire Temple
 
 
 - name: Water Temple Boss Key
@@ -847,6 +869,7 @@
   type: Boss Key
   get_item_id: 0x97
   advancement: true
+  dungeon_boss_key: Water Temple
 
 
 - name: Spirit Temple Boss Key
@@ -855,6 +878,7 @@
   type: Boss Key
   get_item_id: 0x98
   advancement: true
+  dungeon_boss_key: Spirit Temple
 
 
 - name: Shadow Temple Boss Key
@@ -863,6 +887,7 @@
   type: Boss Key
   get_item_id: 0x99
   advancement: true
+  dungeon_boss_key: Shadow Temple
 
 
 - name: Ganons Castle Boss Key
@@ -871,6 +896,7 @@
   type: Boss Key
   get_item_id: 0x9A
   advancement: true
+  dungeon_boss_key: Ganons Castle
 
 
 - name: Forest Temple Small Key
@@ -879,6 +905,10 @@
   type: Small Key
   get_item_id: 0xAF
   advancement: true
+  dungeon_small_key: Forest Temple
+  key_count:
+      vanilla: 5
+      mq: 6
 
 
 - name: Fire Temple Small Key
@@ -887,6 +917,10 @@
   type: Small Key
   get_item_id: 0xB0
   advancement: true
+  dungeon_small_key: Fire Temple
+  key_count:
+      vanilla: 8
+      mq: 5
 
 
 - name: Water Temple Small Key
@@ -895,7 +929,10 @@
   type: Small Key
   get_item_id: 0xB1
   advancement: true
-
+  dungeon_small_key: Water Temple
+  key_count:
+      vanilla: 6
+      mq: 2
 
 - name: Spirit Temple Small Key
   spanish: Llave del Templo del Espíritu
@@ -903,6 +940,10 @@
   type: Small Key
   get_item_id: 0xB2
   advancement: true
+  dungeon_small_key: Spirit Temple
+  key_count:
+      vanilla: 5
+      mq: 7
 
 
 - name: Shadow Temple Small Key
@@ -911,6 +952,10 @@
   type: Small Key
   get_item_id: 0xB3
   advancement: true
+  dungeon_small_key: Shadow Temple
+  key_count:
+      vanilla: 5
+      mq: 6
 
 
 - name: Bottom of the Well Small Key
@@ -919,6 +964,10 @@
   type: Small Key
   get_item_id: 0xB4
   advancement: true
+  dungeon_small_key: Bottom of the Well
+  key_count:
+      vanilla: 2
+      mq: 2
 
 
 - name: Gerudo Training Ground Small Key
@@ -927,6 +976,10 @@
   type: Small Key
   get_item_id: 0xB5
   advancement: true
+  dungeon_small_key: Gerudo Training Ground
+  key_count:
+      vanilla: 9
+      mq: 3
 
 
 - name: Thieves Hideout Small Key
@@ -943,6 +996,10 @@
   type: Small Key
   get_item_id: 0xB7
   advancement: true
+  dungeon_small_key: Ganons Castle
+  key_count:
+      vanilla: 2
+      mq: 3
 
 
 - name: Chest Game Small Key
@@ -959,6 +1016,7 @@
   type: Small Key
   get_item_id: 0xD5
   advancement: true
+  dungeon_key_ring: Forest Temple
 
 
 - name: Fire Temple Key Ring
@@ -967,6 +1025,7 @@
   type: Small Key
   get_item_id: 0xD6
   advancement: true
+  dungeon_key_ring: Fire Temple
 
 
 - name: Water Temple Key Ring
@@ -975,6 +1034,7 @@
   type: Small Key
   get_item_id: 0xD7
   advancement: true
+  dungeon_key_ring: Water Temple
 
 
 - name: Spirit Temple Key Ring
@@ -983,6 +1043,7 @@
   type: Small Key
   get_item_id: 0xD8
   advancement: true
+  dungeon_key_ring: Spirit Temple
 
 
 - name: Shadow Temple Key Ring
@@ -991,6 +1052,7 @@
   type: Small Key
   get_item_id: 0xD9
   advancement: true
+  dungeon_key_ring: Shadow Temple
 
 
 - name: Bottom of the Well Key Ring
@@ -999,6 +1061,7 @@
   type: Small Key
   get_item_id: 0xDA
   advancement: true
+  dungeon_key_ring: Bottom of the Well
 
 
 - name: Gerudo Training Ground Key Ring
@@ -1007,6 +1070,7 @@
   type: Small Key
   get_item_id: 0xDB
   advancement: true
+  dungeon_key_ring: Gerudo Training Ground
 
 
 - name: Thieves Hideout Key Ring
@@ -1023,6 +1087,7 @@
   type: Small Key
   get_item_id: 0xDD
   advancement: true
+  dungeon_key_ring: Ganons Castle
 
 
 - name: Chest Game Key Ring

@@ -1,5 +1,4 @@
 #include "oot3d_world.hpp"
-#include "oot3d_item_pool.hpp"
 #include "oot3d_entrance.hpp"
 #include "../utility/file_functions.hpp"
 #include "../utility/log.hpp"
@@ -64,6 +63,29 @@ WorldBuildingError CheckValidLocationFields(Yaml::Node& location)
     return WorldBuildingError::NONE;
 }
 
+WorldBuildingError Oot3dWorld::CreateDungeons()
+{
+    std::list<std::string> dungeonNames = {
+        "Deku Tree",
+        "Dodongos Cavern",
+        "Jabu Jabus Belly",
+        "Forest Temple",
+        "Fire Temple",
+        "Water Temple",
+        "Spirit Temple",
+        "Shadow Temple",
+        "Bottom of the Well",
+        "Ice Cavern",
+        "Gerudo Training Ground",
+        "Ganons Castle",
+    };
+    for (auto& dungeonName: dungeonNames)
+    {
+        dungeons[dungeonName] = std::make_unique<Oot3dDungeon>();
+    }
+    return WorldBuildingError::NONE;
+}
+
 WorldBuildingError Oot3dWorld::BuildItemTable()
 {
     LOG_TO_DEBUG("Building Item Table for world " + std::to_string(worldId) + "...");
@@ -82,10 +104,10 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
         BUILD_ERROR_CHECK(err);
 
         // Get the field strings
-              std::string name           = Utility::Str::RemoveUnicodeReplacements("Oot3d " + item["name"].As<std::string>());
-        const std::string typeStr        = Utility::Str::RemoveUnicodeReplacements(item["type"].As<std::string>());
-        const std::string getItemIdStr   = Utility::Str::RemoveUnicodeReplacements(item["get_item_id"].As<std::string>());
-        const std::string advancementStr = Utility::Str::RemoveUnicodeReplacements(item["advancement"].As<std::string>());
+              std::string name           = "Oot3d " + YAML_FIELD(item["name"]);
+        const std::string typeStr        = YAML_FIELD(item["type"]);
+        const std::string getItemIdStr   = YAML_FIELD(item["get_item_id"]);
+        const std::string advancementStr = YAML_FIELD(item["advancement"]);
 
         // Replace spaces in the item name with underscores to get proper ItemIDs
         std::replace(name.begin(), name.end(), ' ', '_');
@@ -104,6 +126,46 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
 
         // Insert the values into the item table
         itemTable.try_emplace(itemId, itemId, type, getItemId, advancement, this);
+
+        // If this is a dungeon item handle that here as well
+        if (!item["dungeon_small_key"].IsNone())
+        {
+            YAML_FIELD_CHECK(item, "key_count", WorldBuildingError::MISSING_ITEM_FIELD);
+            YAML_FIELD_CHECK(item["key_count"], "vanilla", WorldBuildingError::MISSING_ITEM_FIELD);
+            YAML_FIELD_CHECK(item["key_count"], "mq", WorldBuildingError::MISSING_ITEM_FIELD);
+
+            const std::string dungeonName   = YAML_FIELD(item["dungeon_small_key"]);
+            const std::string keyCountStr   = YAML_FIELD(item["key_count"]["vanilla"]);
+            const std::string mqKeyCountStr = YAML_FIELD(item["key_count"]["mq"]);
+
+            int keyCount   = std::strtol(keyCountStr.c_str(), nullptr, 0);
+            int mqKeyCount = std::strtol(mqKeyCountStr.c_str(), nullptr, 0);
+
+            Oot3dDungeon* dungeon = dungeons[dungeonName].get();
+            dungeon->SetSmallKeyCount(keyCount);
+            dungeon->SetMQSmallKeyCount(mqKeyCount);
+            dungeon->SetSmallKeyItemID(itemId);
+        }
+        else if (!item["dungeon_boss_key"].IsNone())
+        {
+            auto dungeonName = YAML_FIELD(item["dungeon_boss_key"]);
+            dungeons[dungeonName].get()->SetBossKeyItemID(itemId);
+        }
+        else if (!item["dungeon_key_ring"].IsNone())
+        {
+            auto dungeonName = YAML_FIELD(item["dungeon_key_ring"]);
+            dungeons[dungeonName].get()->SetKeyRingItemID(itemId);
+        }
+        else if (!item["dungeon_map"].IsNone())
+        {
+            auto dungeonName = YAML_FIELD(item["dungeon_map"]);
+            dungeons[dungeonName].get()->SetMapItemID(itemId);
+        }
+        else if (!item["dungeon_compass"].IsNone())
+        {
+            auto dungeonName = YAML_FIELD(item["dungeon_compass"]);
+            dungeons[dungeonName].get()->SetCompassItemID(itemId);
+        }
     }
     return WorldBuildingError::NONE;
 }
@@ -123,6 +185,35 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         // Check that all the appropriate fields exist
         WorldBuildingError err = CheckValidLocationFields(location);
         BUILD_ERROR_CHECK(err);
+
+        // If this location is in a dungeon, only include it if the dungeon type
+        // for it (Vanilla/MQ) is set
+        std::string dungeonName = "None";
+        std::string dungeonType;
+        Oot3dDungeon* dungeon = nullptr;
+        if (!location["dungeon"].IsNone())
+        {
+            YAML_FIELD_CHECK(location, "dungeon_type", WorldBuildingError::MISSING_LOCATION_FIELD);
+            dungeonName = Utility::Str::RemoveUnicodeReplacements(location["dungeon"].As<std::string>());
+            dungeonType = Utility::Str::RemoveUnicodeReplacements(location["dungeon_type"].As<std::string>());
+            dungeon = dungeons[dungeonName].get();
+
+            if (dungeonType != "Shared")
+            {
+                auto dungeonModeStr = Utility::Str::ToLower(dungeonName);
+                std::replace(dungeonModeStr.begin(), dungeonModeStr.end(), ' ', '_');
+                dungeonModeStr += "_dungeon_mode";
+                if (settings[dungeonModeStr] != Utility::Str::ToLower(dungeonType))
+                {
+                    continue;
+                }
+                // Set dungeon mode for dungeon object
+                if (dungeonType == "MQ")
+                {
+                    dungeon->SetAsMQ();
+                }
+            }
+        }
 
         // Get the field strings
               std::string name           = "Oot3d " + Utility::Str::RemoveUnicodeReplacements(location["name"].As<std::string>());
@@ -171,9 +262,14 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         // Create the Spoiler Check object
         auto collectionCheck = SpoilerCollectionCheck(checkType, arg1, arg2);
         // Create the location
-        auto loc = std::make_unique<Oot3dLocation>(locationId, name, type, scene, flag, categories, vanillaItem, collectionCheck, checkGroup, this);
+        auto loc = std::make_unique<Oot3dLocation>(locationId, name, type, scene, flag, categories, vanillaItem, collectionCheck, checkGroup, dungeonName, this);
         // insert the Location into the locations map
         locations.emplace(locationId, std::move(loc));
+        // Add the location to the current dungeon if applicable
+        if (dungeon != nullptr)
+        {
+            dungeon->AddLocation(locations[locationId].get());
+        }
     }
     return WorldBuildingError::NONE;
 }
@@ -339,7 +435,6 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                         {
                             dungeonModeSetting[i] = std::tolower(dungeonModeSetting[i]);
                         }
-                        // std::cout << dungeonModeSetting << std::endl;
                         if (settings.count(dungeonModeSetting) != 0)
                         {
                             // Only process MQ dungeon areas if they're set as mq
@@ -384,23 +479,18 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
 
 WorldBuildingError Oot3dWorld::BuildItemPools()
 {
-    auto itemIdPool = GenerateOot3dItemPool(settings);
-
-    for (const auto& itemId : itemIdPool)
-    {
-        itemPool.push_back(itemTable[itemId]);
-    }
+    WorldBuildingError err;
+    BUILD_ERROR_CHECK(GenerateOot3dItemPool());
 
     return WorldBuildingError::NONE;
 }
 
-WorldBuildingError Oot3dWorld::PlaceVanillaItems()
+WorldBuildingError Oot3dWorld::PlaceHardcodedItems()
 {
     // Hardcoded vanilla locations
     std::list<LocationID> vanillaLocations = {
         LocationID::Oot3dGanon,
         LocationID::Oot3dHCZeldasLetter,
-        LocationID::Oot3dMasterSwordPedestal,
         LocationID::Oot3dDeliverRutosLetter,
         LocationID::Oot3dBigPoeKill,
         LocationID::Oot3dPierre,
@@ -426,7 +516,7 @@ WorldBuildingError Oot3dWorld::PlaceVanillaItems()
 
     for (auto& locationId : vanillaLocations)
     {
-        locations[locationId]->SetCurrentItemAsVanilla();
+        locations[locationId]->SetVanillaItemAsCurrentItem();
     }
 
     return WorldBuildingError::NONE;
@@ -435,13 +525,14 @@ WorldBuildingError Oot3dWorld::PlaceVanillaItems()
 WorldBuildingError Oot3dWorld::Build()
 {
     WorldBuildingError err;
+    BUILD_ERROR_CHECK(CreateDungeons());
     BUILD_ERROR_CHECK(BuildItemTable());
     BUILD_ERROR_CHECK(BuildLocationTable());
     BUILD_ERROR_CHECK(LoadLogicHelpers());
     BUILD_ERROR_CHECK(LoadWorldGraph());
     BUILD_ERROR_CHECK(BuildItemPools());
     BUILD_ERROR_CHECK(CacheAgeTimeRequirements());
-    BUILD_ERROR_CHECK(PlaceVanillaItems());
+    BUILD_ERROR_CHECK(PlaceHardcodedItems());
 
     return WorldBuildingError::NONE;
 }

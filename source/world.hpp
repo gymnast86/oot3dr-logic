@@ -1,10 +1,11 @@
 #pragma once
 
-#include "utility/log.hpp"
 #include "item.hpp"
 #include "area.hpp"
+#include "dungeon.hpp"
 #include "location.hpp"
 #include "general_item_pool.hpp"
+#include "utility/log.hpp"
 
 #include <string>
 #include <list>
@@ -13,6 +14,7 @@
 #include <unordered_map>
 #include <map>
 #include <memory>
+#include <functional>
 
 enum struct WorldBuildingError
 {
@@ -25,6 +27,7 @@ enum struct WorldBuildingError
     BAD_LOCATION_VALUE,
     BAD_AREA_VALUE,
     LOCATION_NOT_DEFINED,
+    BAD_ITEM_NAME,
 };
 
 enum class WorldType
@@ -70,6 +73,8 @@ public:
     size_t GetNumWorlds() const;
     void PlaceItemAtLocation(const LocationID& locationId, const Item& item);
     void PlaceItemAtLocation(const std::string& location, const std::string& item);
+    void SetLocationAsVanilla(const std::string& location);
+    void SetLocationsWithVanillaItem(const std::string& itemName);
 
     virtual WorldBuildingError Build();
     virtual EvalSuccess EvaluateEventRequirement(Search* search, Event* exit);
@@ -90,4 +95,18 @@ public:
     // Store playthroughs in world 0 for now
     std::list<std::set<Location*, PointerComparator<Location>>> playthroughSpheres = {};
     std::list<std::list<Entrance*>> entranceSpheres = {};
+
+    // Takes a lambda function which filters which locations to set as vanilla
+    // based on arbitrary criteria
+    template<typename Lambda>
+    void SetTheseLocationsAsVanilla(Lambda locationCriteria)
+    {
+        for (auto& [id, loc] : locations)
+        {
+            if (locationCriteria(loc.get()))
+            {
+                loc->SetVanillaItemAsCurrentItem();
+            }
+        }
+    }
 };

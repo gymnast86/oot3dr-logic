@@ -16,12 +16,14 @@ ErrorLog::ErrorLog()
 
 ErrorLog::~ErrorLog() { }
 
-ErrorLog& ErrorLog::getInstance() {
+ErrorLog& ErrorLog::getInstance()
+{
     static ErrorLog s_Instance;
     return s_Instance;
 }
 
-void ErrorLog::log(const std::string& msg) {
+void ErrorLog::log(const std::string& msg)
+{
     output << msg << std::endl;
     lastErrors.push_back(msg);
     if (lastErrors.size() > MAX_ERRORS)
@@ -50,7 +52,8 @@ void ErrorLog::close()
     output.close();
 }
 
-DebugLog::DebugLog() {
+DebugLog::DebugLog()
+{
     #ifdef ENABLE_DEBUG
         output.open(LOGS_PATH "Debug Log.txt");
 
@@ -60,16 +63,16 @@ DebugLog::DebugLog() {
     #endif
 }
 
-DebugLog::~DebugLog() {
+DebugLog::~DebugLog() { }
 
-}
-
-DebugLog& DebugLog::getInstance() {
+DebugLog& DebugLog::getInstance()
+{
     static DebugLog s_Instance;
     return s_Instance;
 }
 
-void DebugLog::log(const std::string& msg) {
+void DebugLog::log(const std::string& msg)
+{
     #ifdef ENABLE_DEBUG
         output << msg << std::endl;
     #endif

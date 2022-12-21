@@ -1,23 +1,31 @@
 #pragma once
 
+#include "../dungeon.hpp"
 #include "oot3d_item.hpp"
 #include "oot3d_location.hpp"
 
-class Oot3dDungeon {
+class Oot3dDungeon : public Dungeon {
 public:
 
     Oot3dDungeon();
-    Oot3dDungeon(const std::string& name);
     ~Oot3dDungeon();
 
-    std::string name = "";
-    ItemID map = ItemID::NONE;
-    ItemID compass = ItemID::NONE;
-    ItemID smallKey = ItemID::NONE;
-    ItemID smallKeyRing = ItemID::NONE;
-    ItemID bossKey = ItemID::NONE;
-    std::unordered_set<Location*> vanillaLocations = {};
-    std::unordered_set<Location*> mqLocations = {};
-    std::unordered_set<Location*> sharedLocations = {};
+    void   SetKeyRingItemID(const ItemID& itemId);
+    ItemID GetKeyRingItemID() const;
+    void   SetUsingKeyRing(bool value);
+    bool   IsUsingKeyRing() const;
+    void   SetMQSmallKeyCount(const int& keyCount_);
+    int    GetMQSmallKeyCount() const;
+    void   SetAsMQ();
+    bool   IsMQ() const;
+    void   SetAsVanilla();
+    bool   IsVanilla() const;
+
+    int    GetSmallKeyCount() const override;
+
+    ItemID keyRing = ItemID::NONE;
+    bool usingKeyRing = false;
+    int mqKeyCount = -1;
+    bool isMq;
 
 };

@@ -422,7 +422,7 @@ typedef struct GlobalContext {
     /* 0x5C78 */ CollisionCheckContext colChkCtx;
     //TODO
 } GlobalContext; // size = 0x5F14 TODO
-#ifndef NON_3DS
+#ifdef __3DS__
     _Static_assert(sizeof(GlobalContext) == 0x5F14, "Global Context size");
 #endif
 
@@ -487,7 +487,7 @@ typedef enum {
     DUNGEON_JABUJABUS_BELLY_BOSS_ROOM,
 } DungeonId;
 
-#ifndef NON_3DS
+#ifdef __3DS__
 
 extern GlobalContext* gGlobalContext;
 extern const u32 ItemSlots[];
@@ -594,6 +594,6 @@ typedef u32 (*Flags_GetSwitch_proc)(GlobalContext* globalCtx, u32 flag);
 typedef u32 (*Flags_GetCollectible_proc)(GlobalContext* globalCtx, u32 flag);
 #define Flags_GetCollectible_addr 0x36405C
 #define Flags_GetCollectible ((Flags_GetCollectible_proc)Flags_GetCollectible_addr)
-#endif // NON_3DS
+#endif // __3DS__
 
 #endif //_Z3D_H_

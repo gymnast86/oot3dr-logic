@@ -3,11 +3,14 @@
 #include "oot3d_item.hpp"
 #include "oot3d_location.hpp"
 #include "oot3d_area.hpp"
+#include "oot3d_dungeon.hpp"
 
 #include "../world.hpp"
 #include "../requirement.hpp"
 
 #include <unordered_map>
+
+#define OOT3D_LOCATIONS_LAMDA(func) [](Location* loc) {auto location = dynamic_cast<Oot3dLocation*>(loc); func}
 
 class Search;
 class Oot3dWorld : public World {
@@ -25,19 +28,30 @@ public:
 
     void ExpandToDMasterSword(Search* search);
 
+    std::unordered_map<std::string, std::unique_ptr<Oot3dDungeon>> dungeons;
     std::unordered_map<ItemID, Oot3dItem> itemTable;
     std::unordered_map<Entrance*, uint8_t> possibleExitAgeTimes;
+    std::vector<uint8_t> iceTrapModels;
 
 private:
 
+    // oot3d_world.cpp
+    WorldBuildingError CreateDungeons();
     WorldBuildingError BuildItemTable();
     WorldBuildingError BuildLocationTable();
     WorldBuildingError LoadLogicHelpers();
     WorldBuildingError LoadWorldGraph();
     WorldBuildingError BuildItemPools();
     WorldBuildingError CacheAgeTimeRequirements();
-    WorldBuildingError PlaceVanillaItems();
+    WorldBuildingError PlaceHardcodedItems();
 
+    // oot3d_item_pool.cpp
+    std::string GetJunkItem();
+    std::string GetPendingJunkItem();
+    void ReduceItemMaximum(std::vector<std::string> mainItemPool, const std::string& itemToReplace, int max);
+    WorldBuildingError GenerateOot3dItemPool();
+
+    // oot3d_world_logic.cpp
     bool EvaluateRequirementWithAgeTime(const Requirement& req, Search* search, uint8_t ageTime);
     void ExpandTimePassToD(uint8_t connectedAreaAgeTime, uint8_t day, uint8_t night, Search* search, Entrance* exit);
     void ExpandToDAreas(Search* search, uint8_t ageTimeToExpand, const AreaID& startingArea = AreaID::Root);

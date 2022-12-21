@@ -6,12 +6,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Generate header files for areas, items, and locations
 find_package(PythonInterp REQUIRED)
-add_custom_target(logic_data ALL)
-add_custom_command(TARGET logic_data
-                  PRE_BUILD
-                  COMMAND "${PYTHON_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../source/build_ids.py" "${CMAKE_CURRENT_SOURCE_DIR}/../source/")
-add_custom_command(OUTPUT ../source/item_id.cpp ../source/area_id.cpp ../source/location_id.cpp
-                   COMMAND "${PYTHON_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../source/build_ids.py" "${CMAKE_CURRENT_SOURCE_DIR}/../source/")
+execute_process(COMMAND "${PYTHON_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/../source/build_ids.py" "${CMAKE_CURRENT_SOURCE_DIR}/../source/")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wreorder -DNON_3DS")
 

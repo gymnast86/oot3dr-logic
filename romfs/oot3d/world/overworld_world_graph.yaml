@@ -650,7 +650,7 @@
   scene: Temple of Time
   hint: the Temple of Time
   locations:
-      Master Sword Pedestal: 'True'
+      ToT Master Sword: 'True'
       Sheik at Temple: is_adult and Forest_Medallion
   exits:
       Temple of Time: 'True'

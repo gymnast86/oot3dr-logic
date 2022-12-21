@@ -51,6 +51,7 @@ enum class Oot3dLocationCategory {
     GoronCity,
     DeathMountainCrater,
     ZorasRiver,
+    FrogRupees,
     ZorasDomain,
     ZorasFountain,
     LonLonRanch,
@@ -99,7 +100,7 @@ public:
 
     Oot3dLocation();
     Oot3dLocation(const LocationID& id_, std::string name, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, std::unordered_set<Oot3dLocationCategory> categories_,
-                  const ItemID& vanillaItemId_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_);
+                  const ItemID& vanillaItemId_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, std::string dungeon_, World* world_);
     ~Oot3dLocation();
 
     std::string TypeString() const override;
@@ -110,6 +111,7 @@ public:
     std::unordered_set<Oot3dLocationCategory> categories = {};
     SpoilerCollectionCheck collectionCheck;
     SpoilerCollectionCheckGroup collectionCheckGroup;
+    std::string dungeon = "None";
 };
 
 Oot3dLocationType NameToOot3dLocationType(const std::string& name);

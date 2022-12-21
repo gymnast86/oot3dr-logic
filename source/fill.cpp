@@ -59,7 +59,7 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
             // Assume we have all the items which haven't been placed yet
             // (except for this one we're about to place)
             ItemPool assumedItems = itemsNotYetPlaced;
-            AddElementsToPool(assumedItems, itemsToPlace);
+            MergePools(assumedItems, itemsToPlace);
             auto search = Search(SearchMode::AccessibleLocations, &worlds, assumedItems, worldToFill);
             search.SearchWorlds();
             Location* spotToFill = nullptr;

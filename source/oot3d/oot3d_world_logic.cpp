@@ -61,9 +61,6 @@ EvalSuccess Oot3dWorld::EvaluateExitRequirement(Search* search, Entrance* exit)
     }
     if (evalSuccess != EvalSuccess::NONE)
     {
-
-        search->successfulExits.insert(exit);
-
         // Handle finding new agetimes via timePass access
         if (connectedArea->timePasses)
         {
@@ -217,7 +214,7 @@ bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* 
         default:
             LOG_TO_ERROR("Default case hit when evaluating requirement. Something probably went wrong.");
             LOG_TO_ERROR("Type: " + RequirementToName(req.type) + " Value: " + std::to_string(static_cast<int>(req.type)));
-            LOG_TO_ERROR("Requirement: " + std::endl + RequirementStr(req));
+            LOG_TO_ERROR("Requirement: \n" + RequirementStr(req));
             return false;
     }
 }
@@ -365,7 +362,7 @@ WorldBuildingError Oot3dWorld::CacheAgeTimeRequirements()
     // Uncomment to log decided allowed age/times (for debugging)
     // for (const auto& [exit, ageTime] : possibleExitAgeTimes)
     // {
-    //     LOG_TO_DEBUG("Allowed agetimes for " +  + ": " + );
+    //     LOG_TO_DEBUG("Allowed agetimes for " + exit->GetOriginalName() + ": " + Oot3dAgeTimeToString(ageTime));
     // }
     return WorldBuildingError::NONE;
 }

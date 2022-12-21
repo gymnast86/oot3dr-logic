@@ -1,10 +1,14 @@
 #pragma once
 
 #include "Yaml.hpp"
+#include "string_util.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
+// shorthand for getting yaml field
+#define YAML_FIELD(ref) Utility::Str::RemoveUnicodeReplacements(ref.As<std::string>());
 
 // Short function for getting the string data from a file
 int GetFileContents(const std::string& filename, std::string& fileContents)

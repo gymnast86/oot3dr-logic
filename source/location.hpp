@@ -18,10 +18,11 @@ public:
 
     LocationID GetID() const;
     std::string GetName();
+    std::string GetDungeon();
     World* GetWorld() const;
     Item GetCurrentItem() const;
     void SetCurrentItem(Item item);
-    void SetCurrentItemAsVanilla();
+    void SetVanillaItemAsCurrentItem();
     void RemoveCurrentItem();
     ItemID GetVanillaItemID() const;
 
@@ -32,9 +33,11 @@ public:
 
     LocationID id = LocationID::INVALID;
     std::string name = "";
+    std::string dungeon = "None";
     World* world = nullptr;
     Item currentItem;
     ItemID vanillaItemId = ItemID::NONE;
+    bool hasKnownVanillaItem = false;
 
 };
 

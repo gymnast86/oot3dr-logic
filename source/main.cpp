@@ -1,7 +1,7 @@
 /*==============================================|
 |                 NON-3DS MAIN                  |
 |==============================================*/
-#ifdef NON_3DS
+#ifndef __3DS__
 #include "../source/generate.hpp"
 #include "../source/utility/log.hpp"
 
