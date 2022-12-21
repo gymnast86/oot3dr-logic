@@ -264,7 +264,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
         // Case for boolean setting checks
         else if (settings.count(argStr) > 0)
         {
-            if (settings.at(argStr) == "On")
+            if (settings.at(argStr) == "on")
             {
                 req.type = RequirementType::TRUE;
             }
@@ -301,7 +301,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             VALID_NUMBER_CHECK(numSecondsStr);
 
             int numSeconds = std::stoi(numSecondsStr);
-            bool fewerTunicRequirements = settings["logic_fewer_tunic_requirements"] == "On";
+            bool fewerTunicRequirements = settings["logic_fewer_tunic_requirements"] == "on";
             req.args.push_back(numSeconds);
             req.args.push_back(fewerTunicRequirements);
             return RequirementError::NONE;

@@ -16,6 +16,8 @@
 #include <memory>
 #include <functional>
 
+#define BUILD_ERROR_CHECK(func) err = func; if (err != WorldBuildingError::NONE) {return err;}
+
 enum struct WorldBuildingError
 {
     NONE = 0,
@@ -28,6 +30,8 @@ enum struct WorldBuildingError
     BAD_AREA_VALUE,
     LOCATION_NOT_DEFINED,
     BAD_ITEM_NAME,
+    BAD_LOCATION_NAME,
+    LOCATION_NOT_IN_WORLD,
 };
 
 enum class WorldType
@@ -71,10 +75,11 @@ public:
     const SettingsMap& GetSettings() const;
     Area* GetRootArea();
     size_t GetNumWorlds() const;
-    void PlaceItemAtLocation(const LocationID& locationId, const Item& item);
-    void PlaceItemAtLocation(const std::string& location, const std::string& item);
-    void SetLocationAsVanilla(const std::string& location);
-    void SetLocationsWithVanillaItem(const std::string& itemName);
+    size_t GetNumWorldTypes() const;
+    WorldBuildingError PlaceItemAtLocation(const LocationID& locationId, const Item& item);
+    WorldBuildingError PlaceItemAtLocation(const std::string& location, const std::string& item);
+    WorldBuildingError SetLocationAsVanilla(const std::string& location);
+    WorldBuildingError SetLocationsWithVanillaItem(const std::string& itemName);
 
     virtual WorldBuildingError Build();
     virtual EvalSuccess EvaluateEventRequirement(Search* search, Event* exit);
@@ -89,7 +94,8 @@ public:
     ItemPool itemPool;
     ItemPool startingItems;
     int worldId = -1;
-    size_t numWorlds = -1;
+    size_t numWorlds = 1;
+    size_t numWorldTypes = 1;
     WorldType worldType = WorldType::NONE;
 
     // Store playthroughs in world 0 for now

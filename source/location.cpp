@@ -19,8 +19,8 @@ LocationID Location::GetID() const
 
 std::string Location::GetName()
 {
-    // Include [W#] if more than 1 world
-    return name + (world->GetNumWorlds() > 1 ? " [W" + std::to_string(world->GetWorldID() + 1) + "]" : "");
+    return (world != nullptr && world->GetNumWorldTypes() == 1 ? name.substr(world->GetTypeString().length()) : name) +
+           (world != nullptr && world->GetNumWorlds() > 1 ? " [W" + std::to_string(world->GetWorldID() + 1) + "]" : "");
 }
 
 std::string Location::GetDungeon()

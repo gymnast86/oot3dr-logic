@@ -386,6 +386,7 @@ void Oot3dWorld::ReduceItemMaximum(std::vector<std::string> mainItemPool, const 
 WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
 {
     using namespace std::string_literals;
+    WorldBuildingError err;
     std::vector<std::string> mainItemPool = {};
 
     // Initialize ice trap models to always major items
@@ -426,40 +427,40 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
 
     // Shuffling Kokiri Sword
-    if (settings["shuffle_kokiri_sword"] == "On")
+    if (settings["shuffle_kokiri_sword"] == "on")
     {
         mainItemPool.push_back("Kokiri Sword");
         iceTrapModels.push_back(GI_SWORD_KOKIRI);
     }
     else
     {
-        SetLocationAsVanilla("KF Kokiri Sword Chest");
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("KF Kokiri Sword Chest"));
     }
 
     // Shuffling Master Sword
-    if (settings["shuffle_master_sword"] == "On")
+    if (settings["shuffle_master_sword"] == "on")
     {
         mainItemPool.push_back("Master Sword");
         iceTrapModels.push_back(GI_SWORD_MASTER);
     }
     else
     {
-        SetLocationAsVanilla("ToT Master Sword");
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("ToT Master Sword"));
     }
 
     // Shuffling Weird Egg
-    if (settings["shuffle_werid_egg"] == "On")
+    if (settings["shuffle_werid_egg"] == "on")
     {
         mainItemPool.push_back("Weird Egg");
         iceTrapModels.push_back(GI_WEIRD_EGG);
     }
     else
     {
-        SetLocationAsVanilla("HC Malon Egg");
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("HC Malon Egg"));
     }
 
     // Shuffling Ocarinas
-    if (settings["shuffle_ocarinas"] == "On")
+    if (settings["shuffle_ocarinas"] == "on")
     {
         AddElementToPool(mainItemPool, "Progressive Ocarina"s, 2);
         if (settings["item_pool_value"] == "plentiful")
@@ -470,11 +471,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else
     {
-        SetLocationsWithVanillaItem("Progressive Ocarina");
+        BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Progressive Ocarina"));
     }
 
     // Shuffling Cows
-    if (settings["shuffle_cows"] == "On")
+    if (settings["shuffle_cows"] == "on")
     {
         // 9 total cow locations
         for (uint8_t i = 0; i < 9; i++)
@@ -489,11 +490,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else
     {
-        SetLocationsWithVanillaItem("Milk");
+        BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Milk"));
     }
 
     // Shuffling Magic Beans
-    if (settings["shuffle_magic_beans"] == "On")
+    if (settings["shuffle_magic_beans"] == "on")
     {
         mainItemPool.push_back("Magic Bean Pack");
         if (settings["item_pool_value"] == "plentiful")
@@ -504,17 +505,17 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else
     {
-        SetLocationAsVanilla("ZR Magic Bean Salesman");
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("ZR Magic Bean Salesman"));
     }
 
     // Shuffling Merchants
-    if (settings["shuffle_merchants"] == "On")
+    if (settings["shuffle_merchants"] == "on")
     {
-        if (settings["progressive_goron_sword"] == "Off")
+        if (settings["progressive_goron_sword"] == "off")
         {
             mainItemPool.push_back("Giants Knife");
         }
-        if (settings["bombchus_in_logic"] == "On")
+        if (settings["bombchus_in_logic"] == "on")
         {
             mainItemPool.push_back("Progressive Bombchus");
         }
@@ -525,27 +526,27 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else
     {
-        SetLocationAsVanilla("Kak Grannys Shop");
-        SetLocationAsVanilla("GC Medigoron");
-        SetLocationAsVanilla("Wasteland Bombchu Salesman");
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("Kak Grannys Shop"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("GC Medigoron"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("Wasteland Bombchu Salesman"));
     }
 
     // Frog Song Rupees
-    if (settings["shuffle_frog_song_rupees"] == "On")
+    if (settings["shuffle_frog_song_rupees"] == "on")
     {
         AddElementToPool(mainItemPool, "Purple Rupee"s, 5);
     }
     else
     {
-        SetLocationAsVanilla("ZR Frogs Zeldas Lullaby");
-        SetLocationAsVanilla("ZR Frogs Eponas Song");
-        SetLocationAsVanilla("ZR Frogs Sarias Song");
-        SetLocationAsVanilla("ZR Frogs Suns Song");
-        SetLocationAsVanilla("ZR Frogs Song of Time");
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("ZR Frogs Zeldas Lullaby"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("ZR Frogs Eponas Song"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("ZR Frogs Sarias Song"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("ZR Frogs Suns Song"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("ZR Frogs Song of Time"));
     }
 
     // Adult Trade Quest
-    if (settings["shuffle_adult_trade_quest"] == "On")
+    if (settings["shuffle_adult_trade_quest"] == "on")
     {
         AddElementsToPool(mainItemPool,  "Pocket Egg"s, "Cojiro"s, "Odd Mushroom"s,
                                          "Odd Poultice"s, "Poachers Saw"s,
@@ -554,15 +555,15 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else
     {
-        SetLocationAsVanilla("Kak Trade Pocket Cucco");
-        SetLocationAsVanilla("LW Trade Cojiro");
-        SetLocationAsVanilla("Kak Trade Odd Mushroom");
-        SetLocationAsVanilla("LW Trade Odd Poultice");
-        SetLocationAsVanilla("GV Trade Saw");
-        SetLocationAsVanilla("DMT Trade Broken Sword");
-        SetLocationAsVanilla("ZD Trade Prescription");
-        SetLocationAsVanilla("LH Trade Eyeball Frog");
-        SetLocationAsVanilla("DMT Trade Eyedrops");
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("Kak Trade Pocket Cucco"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("LW Trade Cojiro"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("Kak Trade Odd Mushroom"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("LW Trade Odd Poultice"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("GV Trade Saw"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("DMT Trade Broken Sword"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("ZD Trade Prescription"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("LH Lab Trade Eyeball Frog"));
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("DMT Trade Eyedrops"));
     }
     mainItemPool.push_back("Claim Check");
 
@@ -577,13 +578,13 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else
     {
-        SetLocationsWithVanillaItem("Chest Game Small Key");
+        BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Chest Game Small Key"));
     }
 
     // Tokensanity
-    if (settings["tokensanity"] == "Off")
+    if (settings["tokensanity"] == "off")
     {
-        SetLocationsWithVanillaItem("Gold Skulltula Token");
+        BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Gold Skulltula Token"));
     }
     else if (settings["tokensanity"] == "dungeons")
     {
@@ -619,7 +620,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
 
     // Bombchus in Logic
-    if (settings["bombchus_in_logic"] == "On")
+    if (settings["bombchus_in_logic"] == "on")
     {
         AddElementToPool(mainItemPool, "Progressive Bombchus"s, 5);
     }
@@ -642,24 +643,24 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // Gerudo Fortress
     if (settings["gerudo_fortress"] == "open")
     {
-        PlaceItemAtLocation("GF North F1 Carpenter", "Recovery Heart");
-        PlaceItemAtLocation("GF North F2 Carpenter", "Recovery Heart");
-        PlaceItemAtLocation("GF South F1 Carpenter", "Recovery Heart");
-        PlaceItemAtLocation("GF South F2 Carpenter", "Recovery Heart");
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 1 Torch", "Recovery Heart"));
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 2 Torches", "Recovery Heart"));
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 3 Torches", "Recovery Heart"));
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 4 Torches", "Recovery Heart"));
     }
     else if (settings["gerudo_keys"] != "vanilla")
     {
         if (settings["gerudo_fortress"] == "fast")
         {
             mainItemPool.push_back("Thieves Hideout Small Key");
-            PlaceItemAtLocation("GF North F2 Carpenter", "Recovery Heart");
-            PlaceItemAtLocation("GF South F1 Carpenter", "Recovery Heart");
-            PlaceItemAtLocation("GF South F2 Carpenter", "Recovery Heart");
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 2 Torches", "Recovery Heart"));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 3 Torches", "Recovery Heart"));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 4 Torches", "Recovery Heart"));
         }
         else
         {
             // Only add key ring if 4 Fortress keys necessary
-            if (settings["ring_fortress"] == "On")
+            if (settings["ring_fortress"] == "on")
             {
                 mainItemPool.push_back("Gerudo Fortress Key Ring");
                 // Add junk to make up for missing keys
@@ -677,21 +678,37 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     {
         if (settings["gerudo_fortress"] == "fast")
         {
-            PlaceItemAtLocation("GF North F1 Carpenter", "Thieves Hideout Small Key");
-            PlaceItemAtLocation("GF North F2 Carpenter", "Recovery Heart");
-            PlaceItemAtLocation("GF South F1 Carpenter", "Recovery Heart");
-            PlaceItemAtLocation("GF South F2 Carpenter", "Recovery Heart");
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 1 Torch", "Thieves Hideout Small Key"));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 2 Torches", "Recovery Heart"));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 3 Torches", "Recovery Heart"));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 4 Torches", "Recovery Heart"));
         }
         else
         {
-            SetLocationsWithVanillaItem("Thieves Hideout Small Key");
+            BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Thieves Hideout Small Key"));
         }
+    }
+
+    // Gerudo Token
+    if (settings["shuffle_gerudo_token"] == "on" && settings["gerudo_fortress"] != "open")
+    {
+        mainItemPool.push_back("Gerudo Token");
+        iceTrapModels.push_back(GI_GERUDO_CARD);
+    }
+    else if (settings["shuffle_gerudo_token"] == "on")
+    {
+        pendingJunkPool.push_back("Gerudo Token");
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Gerudo Token", "Ice Trap"));
+    }
+    else
+    {
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("Hideout Gerudo Token"));
     }
 
     // Keys
 
     // For key rings, need to add as manu junk items as "missing" keys
-    if (settings["key_rings"] == "On")
+    if (settings["key_rings"] == "on")
     {
         int ringJunkAmt = 0;
         for (auto& [dungeonName, dungeon] : dungeons)
@@ -709,7 +726,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
 
     if (settings["item_pool_value"] == "plentiful")
     {
-        if (settings["shuffle_gerudo_token"] == "On")
+        if (settings["shuffle_gerudo_token"] == "on")
         {
             pendingJunkPool.push_back("Gerudo Token");
         }
@@ -748,7 +765,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
 
     // Shopsanity
-    if (IsAnyOf(settings["shopsanity"], "Off", "zero"))
+    if (IsAnyOf(settings["shopsanity"], "off", "zero"))
     {
         MERGE_INTO_MAIN_ITEM_POOL(normalRupees);
     }
@@ -758,7 +775,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
 
     // Scrubsanity
-    if (settings["scrubsanity"] != "Off")
+    if (settings["scrubsanity"] != "off")
     {
         // Deku Tree
         if (dungeons["Deku Tree"]->IsMQ())
@@ -807,15 +824,6 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else // Place vanilla scrub items except for the three which sell unique things
     {
-        // for (auto& [id, locationPtr] : locations)
-        // {
-        //     auto location = dynamic_cast<Oot3dLocation*>(locationPtr.get());
-        //     auto& categories = location->categories;
-        //     if (categories.count(Oot3dLocationCategory::DekuScrub) > 0 && categories.count(Oot3dLocationCategory::DekuScrubUpgrades) == 0)
-        //     {
-        //         location->SetVanillaItemAsCurrentItem();
-        //     }
-        // }
         SetTheseLocationsAsVanilla(OOT3D_LOCATIONS_LAMDA(
         {
             // All deku scrubs have the Deku Scrub category, but only the three we
@@ -854,7 +862,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     {
         if (i >= rutoBottles)
         {
-            if ((i == totalBottleCount - 1) && settings["shuffle_merchants"] != "Off")
+            if ((i == totalBottleCount - 1) && settings["shuffle_merchants"] != "off")
             {
                 mainItemPool.push_back("Bottle with Blue Potion");
             }
@@ -942,11 +950,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // If ganons_boss_key is any of the light arrow cutscene options
     if (Utility::Str::StartsWith(settings["ganons_boss_key"], "lacs"))
     {
-        PlaceItemAtLocation("ToT Light Arrows Cutscene", "Ganons Castle Boss Key");
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("ToT Light Arrows Cutscene", "Ganons Castle Boss Key"));
     }
     else if (settings["ganons_boss_key"] == "vanilla")
     {
-        SetLocationAsVanilla("Ganons Tower Boss Key Chest");
+        BUILD_ERROR_CHECK(SetLocationAsVanilla("Ganons Tower Boss Key Chest"));
     }
     else
     {
@@ -965,16 +973,16 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
 
     // There shouldn't be any extra swords in the pool if their locations
     // are already known
-    if (settings["shuffle_kokiri_sword"] == "Off")
+    if (settings["shuffle_kokiri_sword"] == "off")
     {
         ReduceItemMaximum(mainItemPool, "Kokiri Sword", 0);
     }
-    if (settings["shuffle_master_sword"] == "Off")
+    if (settings["shuffle_master_sword"] == "off")
     {
         ReduceItemMaximum(mainItemPool, "Master Sword", 0);
     }
 
-    if (settings["progressive_goron_sword"] == "On")
+    if (settings["progressive_goron_sword"] == "on")
     {
         ReduceItemMaximum(mainItemPool, "Biggoron Sword", 0);
         AddElementToPool(mainItemPool, "Progressive Goron Sword"s, 2);
@@ -986,7 +994,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
 
     // Replace ice traps with junk if necessary
-    if (settings["ice_trap_value"] == "Off")
+    if (settings["ice_trap_value"] == "off")
     {
         ReduceItemMaximum(mainItemPool, "Ice Trap", 0);
     }
@@ -1013,7 +1021,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
             ReduceItemMaximum(mainItemPool, itemName, max);
         }
     }
-    else if (settings["remove_double_defense"] == "On")
+    else if (settings["remove_double_defense"] == "on")
     {
         ReduceItemMaximum(mainItemPool, "Double Defense", 0);
     }

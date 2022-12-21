@@ -2000,6 +2000,21 @@
   check_group: Kakariko
 
 
+- name: Kak Grannys Shop
+  type: Base
+  scene: 0x4E
+  flag: 0x10
+  vanilla_item: Blue Potion Refill
+  categories:
+    - Kakariko Village
+    - Kakariko
+    - Merchant
+  check_type: Event Check Inf
+  check_type_arg1: 0xFF
+  check_type_arg2: 0x32
+  check_group: Kakariko
+
+
 - name: Kak 10 Gold Skulltula Reward
   type: Base
   scene: 0x50

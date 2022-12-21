@@ -60,7 +60,7 @@ void Search::SetStartingProperties(World* world)
         auto root = world->GetRootArea();
         if (world->settings["starting_age"] == "child")
         {
-            if (world->settings["had_night_start"] == "Off")
+            if (world->settings["had_night_start"] == "off")
             {
                 areaTime[root] = OOT3D_CHILD_DAY;
             }
@@ -71,7 +71,7 @@ void Search::SetStartingProperties(World* world)
         }
         else
         {
-            if (world->settings["had_night_start"] == "Off")
+            if (world->settings["had_night_start"] == "off")
             {
                 areaTime[root] = OOT3D_ADULT_DAY;
             }
