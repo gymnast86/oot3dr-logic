@@ -48,7 +48,7 @@
                                                #Glitched -> CanDoGlitch(GlitchType::LedgeClip GlitchDifficulty::NOVICE) or (Song_of_Time and (CanDoGlitch(GlitchType::DungeonBombOI GlitchDifficulty::INTERMEDIATE) or
                                               #                     ((Bugs or Fish) and can_shield and CanDoGlitch(GlitchType::QPA GlitchDifficulty::ADVANCED)) or ((Bugs or Fish) and can_shield and has_bombchus and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED)))))
       Forest Temple NE Outdoors Lower: can_use(Bow) or can_use(Slingshot)
-      Forest Temple West Corridor: count(Forest_Temple_Small_Key, 5)
+      Forest Temple West Corridor: count(Forest_Temple_Small_Key, 1)
       Forest Temple East Corridor: 'False'
                                                #Glitched -> CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE))
       Forest Temple Boss Region: Forest_Temple_Meg

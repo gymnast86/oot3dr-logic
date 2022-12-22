@@ -7,6 +7,7 @@
 
 #include "../world.hpp"
 #include "../requirement.hpp"
+#include "../fill.hpp"
 
 #include <unordered_map>
 
@@ -43,17 +44,22 @@ private:
     WorldBuildingError LoadWorldGraph();
     WorldBuildingError BuildItemPools();
     WorldBuildingError CacheAgeTimeRequirements();
-    WorldBuildingError PlaceHardcodedItems();
 
-    // oot3d_item_pool.cpp
-    std::string GetJunkItem();
-    std::string GetPendingJunkItem();
-    void ReduceItemMaximum(std::vector<std::string> mainItemPool, const std::string& itemToReplace, int max);
-    WorldBuildingError GenerateOot3dItemPool();
+    // oot3d_world_fill.cpp
+    WorldBuildingError PlaceHardcodedItems();
+    WorldBuildingError FillShopItems();
+    WorldBuildingError FillOwnDungeonItems();
+
 
     // oot3d_world_logic.cpp
     bool EvaluateRequirementWithAgeTime(const Requirement& req, Search* search, uint8_t ageTime);
     void ExpandTimePassToD(uint8_t connectedAreaAgeTime, uint8_t day, uint8_t night, Search* search, Entrance* exit);
     void ExpandToDAreas(Search* search, uint8_t ageTimeToExpand, const AreaID& startingArea = AreaID::Root);
 
+    // oot3d_world_item_pool.cpp
+    std::string GetJunkItem();
+    std::string GetPendingJunkItem();
+    void ReduceItemMaximum(std::vector<std::string> mainItemPool, const std::string& itemToReplace, int max);
+    WorldBuildingError GenerateOot3dItemPool();
+    WorldBuildingError GenerateOot3dStartingInventory();
 };

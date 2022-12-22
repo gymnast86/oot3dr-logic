@@ -38,7 +38,7 @@
                                                             #Glitched -> CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::NOVICE) and Longshot)
       Fairy Pot: has_bottle #This fairy pot was added in 3D
   exits:
-      Shadow Temple Huge Pit: has_explosives and is_adult and count(Shadow_Temple_Small_Key, 2)
+      Shadow Temple Huge Pit: has_explosives and is_adult and count(Shadow_Temple_Small_Key, 1)
       Shadow Temple Beyond Boat: 'False'
                                          #Glitched -> CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::NOVICE) and Longshot and can_play(Zeldas_Lullaby))
 

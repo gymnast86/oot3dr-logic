@@ -14,6 +14,8 @@ public:
     std::string GetName();
     World* GetWorld() const;
     int GetWorldID() const;
+    void SetAsMajorItem();
+    bool IsMajorItem() const;
 
     bool operator==(const Item& rhs) const;
     bool operator<(const Item& rhs) const;
@@ -22,6 +24,7 @@ public:
     std::string name = "";
     World* world = nullptr;
     int worldId = -1;
+    bool isMajorItem;
 };
 
 // inject specialization of std::hash<Item> into the std namespace

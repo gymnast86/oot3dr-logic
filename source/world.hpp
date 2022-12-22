@@ -80,6 +80,7 @@ public:
     WorldBuildingError PlaceItemAtLocation(const std::string& location, const std::string& item);
     WorldBuildingError SetLocationAsVanilla(const std::string& location);
     WorldBuildingError SetLocationsWithVanillaItem(const std::string& itemName);
+    LocationPool GetAllItemLocations();
 
     virtual WorldBuildingError Build();
     virtual EvalSuccess EvaluateEventRequirement(Search* search, Event* exit);
@@ -92,7 +93,7 @@ public:
     std::unordered_map<AreaID, std::unique_ptr<Area>> areas;
     LogicHelperMap logicHelpers;
     ItemPool itemPool;
-    ItemPool startingItems;
+    ItemPool startingInventory;
     int worldId = -1;
     size_t numWorlds = 1;
     size_t numWorldTypes = 1;
@@ -102,7 +103,7 @@ public:
     std::list<std::set<Location*, PointerComparator<Location>>> playthroughSpheres = {};
     std::list<std::list<Entrance*>> entranceSpheres = {};
 
-    // Takes a lambda function which filters which locations to set as vanilla
+    // Takes a lambda function meant to evaluate locations to set as vanilla
     // based on arbitrary criteria
     template<typename Lambda>
     void SetTheseLocationsAsVanilla(Lambda locationCriteria)
@@ -114,5 +115,21 @@ public:
                 loc->SetVanillaItemAsCurrentItem();
             }
         }
+    }
+
+    // Takes a lambda function which filters which locations to get based on
+    // arbitrary criteria
+    template<typename Lambda>
+    LocationPool GetTheseLocations(Lambda locationCriteria, const bool& onlyItemLocations = true)
+    {
+        LocationPool pool = {};
+        for (auto& [id, loc] : locations)
+        {
+            if (locationCriteria(loc.get()) && (loc->IsItemLocation() || !onlyItemLocations))
+            {
+                pool.push_back(loc.get());
+            }
+        }
+        return pool;
     }
 };

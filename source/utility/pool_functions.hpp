@@ -79,3 +79,9 @@ bool IsAnyOf(First&& first, T&&... t)
 {
     return ((first == t) || ...);
 }
+
+template <typename First, typename... T>
+bool IsNoneOf(First&& first, T&&... t)
+{
+    return !((first == t) || ...);
+}

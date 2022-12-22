@@ -4,6 +4,8 @@
 #include "../utility/random.hpp"
 #include "../utility/string_util.hpp"
 
+using namespace std::string_literals;
+
 #define MERGE_INTO_MAIN_ITEM_POOL(pool) for (auto& [itemName, amount] : pool) { AddElementToPool(mainItemPool, itemName, amount); }
 #define MERGE_DUNGEON_POOL_INTO_MAIN(dungeonName, abbreviation) if (dungeons[dungeonName]->IsMQ()) {MERGE_INTO_MAIN_ITEM_POOL(abbreviation##_MQ);} else {MERGE_INTO_MAIN_ITEM_POOL(abbreviation##_Vanilla);}
 
@@ -385,7 +387,6 @@ void Oot3dWorld::ReduceItemMaximum(std::vector<std::string> mainItemPool, const 
 
 WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
 {
-    using namespace std::string_literals;
     WorldBuildingError err;
     std::vector<std::string> mainItemPool = {};
 
@@ -1062,6 +1063,104 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
             return WorldBuildingError::BAD_ITEM_NAME;
         }
         itemPool.push_back(itemTable[itemId]);
+        LOG_TO_DEBUG("- " + itemName);
+    }
+
+    return WorldBuildingError::NONE;
+}
+
+WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
+{
+    std::vector<std::string> inventory;
+
+    if (settings["maps_and_compasses"] == "start_with")
+    {
+        for (auto& [name, dungeon] : dungeons)
+        {
+            auto map = dungeon->GetMapItemID();
+            auto compass = dungeon->GetCompassItemID();
+            if (map != ItemID::NONE)
+            {
+                inventory.push_back(ItemIDToName(map));
+            }
+            if (compass != ItemID::NONE)
+            {
+                inventory.push_back(ItemIDToName(compass));
+            }
+        }
+    }
+
+    if (settings["small_keys"] == "start_with")
+    {
+        for (auto& [name, dungeon] : dungeons)
+        {
+            auto smallKey = dungeon->GetSmallKeyItemID();
+            if (smallKey != ItemID::NONE)
+            {
+                AddElementToPool(inventory, ItemIDToName(smallKey), dungeon->GetSmallKeyCount());
+            }
+        }
+    }
+    else if (settings["small_keys"] == "vanilla")
+    {
+        // Logic cannot handle vanilla key layout in some dungeons
+        // this is because vanilla expects the dungeon major item to be
+        // locked behind the keys, which is not always true in rando.
+        // We can resolve this by starting with some extra keys
+        // - OoT Randomizer
+        if (dungeons["Spirit Temple"]->IsMQ())
+        {
+            AddElementToPool(inventory, "Spirit Temple Small Key"s, 3);
+        }
+        if (dungeons["Fire Temple"]->IsVanilla() && IsNoneOf(settings["small_keys"], "any_dungeon", "overworld", "keysanity"))
+        {
+            inventory.push_back("Fire Temple Small Key");
+        }
+    }
+
+    if (settings["boss_keys"] == "start_with")
+    {
+        for (auto& [name, dungeon] : dungeons)
+        {
+            auto bossKey = dungeon->GetBossKeyItemID();
+            if (bossKey != ItemID::NONE && name != "Ganons Castle")
+            {
+                inventory.push_back(ItemIDToName(bossKey));
+            }
+        }
+    }
+
+    if (settings["ganons_boss_key"] == "start_with")
+    {
+        inventory.push_back("Ganons Castle Big Key");
+    }
+
+    if (settings["gerudo_fortress"] == "open" && settings["shuffle_gerudo_token"] == "Off")
+    {
+        inventory.push_back("Gerudo Token");
+    }
+
+    // Finally, add the items to the actual pool
+    LOG_TO_DEBUG("Starting Items for Oot3d World " + std::to_string(worldId + 1) + ":");
+    for (const auto& itemName : inventory)
+    {
+        ItemID itemId;
+        // Don't preppend "Oot3d" if the string already starts with it
+        if (Utility::Str::StartsWith(itemName, "Oot3d"))
+        {
+            itemId = NameToItemID(itemName);
+        }
+        else
+        {
+            itemId = NameToItemID("Oot3d " + itemName);
+        }
+
+        if (itemId == ItemID::INVALID)
+        {
+            LOG_TO_ERROR("ERROR: Unknown item name \"" + itemName + "\"");
+            return WorldBuildingError::BAD_ITEM_NAME;
+        }
+        startingInventory.push_back(itemTable[itemId]);
         LOG_TO_DEBUG("- " + itemName);
     }
 

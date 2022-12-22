@@ -106,6 +106,11 @@ WorldBuildingError World::SetLocationsWithVanillaItem(const std::string& itemNam
     return WorldBuildingError::NONE;
 }
 
+LocationPool World::GetAllItemLocations()
+{
+    return GetTheseLocations([](Location* loc){return true;});
+}
+
 WorldBuildingError World::Build()
 {
     std::cout << "Building generic world. Something is probably wrong." << std::endl;

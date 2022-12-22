@@ -61,16 +61,17 @@ void GenerateSpoilerLog(WorldPool& worlds)
     // Update the longest location name considering all locations
     for (auto& world : worlds)
     {
-        for (auto& [id, location] : world->locations)
+        for (auto location : world->GetAllItemLocations())
         {
             longestNameLength = std::max(longestNameLength, location->GetName().length());
         }
     }
+    // Then print them all to the playthrough
     for (auto& world : worlds)
     {
-        for (auto& [id, location] : world->locations)
+        for (auto location : world->GetAllItemLocations())
         {
-            log << "\t" << GetSpoilerFormatLocation(location.get(), longestNameLength, worlds) << std::endl;
+            log << "\t" << GetSpoilerFormatLocation(location, longestNameLength, worlds) << std::endl;
         }
     }
     log << std::endl;

@@ -9,7 +9,7 @@
 #define FILL_ERROR_CHECK(func) err = func; if (err != FillError::NONE) {return err;}
 #define ENOUGH_SPACE_CHECK(items, locations) if (items.size() > locations.size()) {return FillError::MORE_ITEMS_THAN_LOCATIONS;}
 
-static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, const ItemPool& itemsNotYetPlaced, LocationPool& allowedLocations, int worldToFill = -1)
+FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, const ItemPool& itemsNotYetPlaced, LocationPool& allowedLocations, int worldToFill /*= -1*/)
 {
     ENOUGH_SPACE_CHECK(itemsToPlaceVector, allowedLocations);
 
@@ -103,6 +103,23 @@ static FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, co
     return FillError::NONE;
 }
 
+FillError FastFill(ItemPool& itemsToPlace, LocationPool& allowedLocations)
+{
+    auto emptyAllowedLocations = FilterFromPool(allowedLocations, [](Location* loc){return loc->GetCurrentItem().GetID() == ItemID::NONE;});
+    ENOUGH_SPACE_CHECK(itemsToPlace, emptyAllowedLocations);
+    ShufflePool(emptyAllowedLocations);
+    for (auto location : emptyAllowedLocations)
+    {
+        if (itemsToPlace.empty())
+        {
+            break;
+        }
+        location->SetCurrentItem(PopRandomElement(itemsToPlace));
+    }
+
+    return FillError::NONE;
+}
+
 FillError FillWorlds(WorldPool& worlds)
 {
     FillError err;
@@ -112,18 +129,16 @@ FillError FillWorlds(WorldPool& worlds)
     // Combine all worlds' item pools and location pools
     for (auto& world : worlds)
     {
-        for (auto& [name, location] : world->locations)
-        {
-            allLocations.push_back(location.get());
-        }
+        auto worldItemLocations = world->GetAllItemLocations();
+        MergePools(allLocations, worldItemLocations);
         itemPool.insert(itemPool.end(), world->itemPool.begin(), world->itemPool.end());
     }
 
     // Get Major items
-    ItemPool otherItems = {};
-    // Get Progression Locations
+    auto majorItems = FilterAndEraseFromPool(itemPool, [](const Item& item){return item.IsMajorItem();});
 
-    FILL_ERROR_CHECK(AssumedFill(worlds, itemPool, PresetPools::NoItems, allLocations));
+    FILL_ERROR_CHECK(AssumedFill(worlds, majorItems, itemPool, allLocations));
+    FILL_ERROR_CHECK(FastFill(itemPool, allLocations));
 
     if (!GameBeatable(worlds))
     {

@@ -19,7 +19,7 @@ LocationID Location::GetID() const
 
 std::string Location::GetName()
 {
-    return (world != nullptr && world->GetNumWorldTypes() == 1 ? name.substr(world->GetTypeString().length()) : name) +
+    return (world != nullptr && world->GetNumWorldTypes() == 1 ? name.substr(world->GetTypeString().length() + 1) : name) +
            (world != nullptr && world->GetNumWorlds() > 1 ? " [W" + std::to_string(world->GetWorldID() + 1) + "]" : "");
 }
 
@@ -59,6 +59,16 @@ void Location::RemoveCurrentItem()
 ItemID Location::GetVanillaItemID() const
 {
     return vanillaItemId;
+}
+
+void Location::SetAsItemLocation()
+{
+    isItemLocation = true;
+}
+
+bool Location::IsItemLocation() const
+{
+    return isItemLocation;
 }
 
 std::string Location::TypeString() const

@@ -17,7 +17,7 @@ ItemID Item::GetID() const
 
 std::string Item::GetName()
 {
-    return (world != nullptr && world->GetNumWorldTypes() == 1 ? name.substr(world->GetTypeString().length()) : name) +
+    return (world != nullptr && world->GetNumWorldTypes() == 1 ? name.substr(world->GetTypeString().length() + 1) : name) +
            (world != nullptr && world->GetNumWorlds() > 1 ? " [W" + std::to_string(world->GetWorldID() + 1) + "]" : "");
 }
 
@@ -29,6 +29,16 @@ World* Item::GetWorld() const
 int Item::GetWorldID() const
 {
     return worldId;
+}
+
+void Item::SetAsMajorItem()
+{
+    isMajorItem = true;
+}
+
+bool Item::IsMajorItem() const
+{
+    return isMajorItem;
 }
 
 bool Item::operator==(const Item& rhs) const

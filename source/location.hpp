@@ -25,6 +25,8 @@ public:
     void SetVanillaItemAsCurrentItem();
     void RemoveCurrentItem();
     ItemID GetVanillaItemID() const;
+    void SetAsItemLocation();
+    bool IsItemLocation() const;
 
     virtual std::string TypeString() const;
 
@@ -38,6 +40,10 @@ public:
     Item currentItem;
     ItemID vanillaItemId = ItemID::NONE;
     bool hasKnownVanillaItem = false;
+
+    // Used to differentiate between regular item locations and other logical
+    // locations like hint stones in oot3d
+    bool isItemLocation = false;
 
 };
 
