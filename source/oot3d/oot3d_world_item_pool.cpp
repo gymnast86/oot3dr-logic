@@ -8,353 +8,292 @@ using namespace std::string_literals;
 
 #define MERGE_INTO_MAIN_ITEM_POOL(pool) for (auto& [itemName, amount] : pool) { AddElementToPool(mainItemPool, itemName, amount); }
 #define MERGE_DUNGEON_POOL_INTO_MAIN(dungeonName, abbreviation) if (dungeons[dungeonName]->IsMQ()) {MERGE_INTO_MAIN_ITEM_POOL(abbreviation##_MQ);} else {MERGE_INTO_MAIN_ITEM_POOL(abbreviation##_Vanilla);}
+#define SET_VANILLA_LOCATIONS(itemId) SetTheseLocationsAsVanilla(OOT3D_LOCATIONS_LAMDA({return location->GetVanillaItemID() == itemId;}));
 
-static std::vector<std::string> pendingJunkPool = {};
+static ItemIDPool pendingJunkPool = {};
 static const ItemMap dungeonRewards = {
-    {"Kokiri Emerald", 1},
-    {"Goron Ruby", 1},
-    {"Zora Sapphire", 1},
-    {"Forest Medallion", 1},
-    {"Fire Medallion", 1},
-    {"Water Medallion", 1},
-    {"Spirit Medallion", 1},
-    {"Shadow Medallion", 1},
-    {"Light Medallion", 1},
+    {OOT3D_KOKIRI_EMERALD, 1},
+    {OOT3D_GORON_RUBY, 1},
+    {OOT3D_ZORA_SAPPHIRE, 1},
+    {OOT3D_FOREST_MEDALLION, 1},
+    {OOT3D_FIRE_MEDALLION, 1},
+    {OOT3D_WATER_MEDALLION, 1},
+    {OOT3D_SPIRIT_MEDALLION, 1},
+    {OOT3D_SHADOW_MEDALLION, 1},
+    {OOT3D_LIGHT_MEDALLION, 1},
 };
-static const std::vector<std::string> junkPoolItems = {
-    "Bombs 5",
-    "Bombs 10",
-    "Bombs 20",
-    "Deku Nuts 5",
-    "Deku Stick 1",
-    "Deku Seeds 30",
-    "Recovery Heart",
-    "Arrows 5",
-    "Arrows 10",
-    "Arrows 30",
-    "Blue Rupee",
-    "Red Rupee",
-    "Purple Rupee",
-    "Huge Rupee",
-    "Deku Nuts 10",
-    "Ice Trap",
+static const ItemIDPool junkPoolItems = {
+    OOT3D_BOMBS_5,
+    OOT3D_BOMBS_10,
+    OOT3D_BOMBS_20,
+    OOT3D_DEKU_NUTS_5,
+    OOT3D_DEKU_STICK_1,
+    OOT3D_DEKU_SEEDS_30,
+    OOT3D_RECOVERY_HEART,
+    OOT3D_ARROWS_5,
+    OOT3D_ARROWS_10,
+    OOT3D_ARROWS_30,
+    OOT3D_BLUE_RUPEE,
+    OOT3D_RED_RUPEE,
+    OOT3D_PURPLE_RUPEE,
+    OOT3D_HUGE_RUPEE,
+    OOT3D_DEKU_NUTS_10,
+    OOT3D_ICE_TRAP,
 };
 static const ItemMap alwaysItems = {
-    {"Biggorons Sword", 1},
-    {"Boomerang", 1},
-    {"Lens of Truth", 1},
-    {"Megaton Hammer", 1},
-    {"Iron Boots", 1},
-    {"Hover Boots", 1},
-    {"Goron Tunic", 1},
-    {"Zora Tunic", 1},
-    {"Mirror Shield", 1},
-    {"Shard of Agony", 1},
-    {"Fire Arrows", 1},
-    {"Ice Arrows", 1},
-    {"Light Arrows", 1},
-    {"Dins Fire", 1},
-    {"Farores Wind", 1},
-    {"Nayrus Love", 1},
-    {"Green Rupee", 1},
-    {"Progressive Hookshot", 2},
-    {"Deku Shield", 1},
-    {"Hylian Shield", 1},
-    {"Progressive Strength Upgrade", 3},
-    {"Progressive Scale", 2},
-    {"Progressive Bow", 3},
-    {"Progressive Slingshot", 3},
-    {"Progressive Bomb Bag", 3},
-    // {"Progressive Bombchus", 1},
-    {"Progressive Wallet", 2},
-    {"Progressive Magic Meter", 2},
-    {"Double Defense", 1},
-    {"Progressive Stick Capacity", 2},
-    {"Progressive Nut Capacity", 2},
+    {OOT3D_BIGGORONS_SWORD, 1},
+    {OOT3D_BOOMERANG, 1},
+    {OOT3D_LENS_OF_TRUTH, 1},
+    {OOT3D_MEGATON_HAMMER, 1},
+    {OOT3D_IRON_BOOTS, 1},
+    {OOT3D_HOVER_BOOTS, 1},
+    {OOT3D_GORON_TUNIC, 1},
+    {OOT3D_ZORA_TUNIC, 1},
+    {OOT3D_MIRROR_SHIELD, 1},
+    {OOT3D_SHARD_OF_AGONY, 1},
+    {OOT3D_FIRE_ARROWS, 1},
+    {OOT3D_ICE_ARROWS, 1},
+    {OOT3D_LIGHT_ARROWS, 1},
+    {OOT3D_DINS_FIRE, 1},
+    {OOT3D_FARORES_WIND, 1},
+    {OOT3D_NAYRUS_LOVE, 1},
+    {OOT3D_GREEN_RUPEE, 1},
+    {OOT3D_PROGRESSIVE_HOOKSHOT, 2},
+    {OOT3D_DEKU_SHIELD, 1},
+    {OOT3D_HYLIAN_SHIELD, 1},
+    {OOT3D_PROGRESSIVE_STRENGTH_UPGRADE, 3},
+    {OOT3D_PROGRESSIVE_SCALE, 2},
+    {OOT3D_PROGRESSIVE_BOW, 3},
+    {OOT3D_PROGRESSIVE_SLINGSHOT, 3},
+    {OOT3D_PROGRESSIVE_BOMB_BAG, 3},
+    // {OOT3D_PROGRESSIVE_BOMBCHUS, 1},
+    {OOT3D_PROGRESSIVE_WALLET, 2},
+    {OOT3D_PROGRESSIVE_MAGIC_METER, 2},
+    {OOT3D_DOUBLE_DEFENSE, 1},
+    {OOT3D_PROGRESSIVE_STICK_CAPACITY, 2},
+    {OOT3D_PROGRESSIVE_NUT_CAPACITY, 2},
 
-    {"Recovery Heart", 6},
-    {"Bombs 5", 2},
-    {"Bombs 10", 1},
-    {"Bombs 20", 1},
-    {"Arrows 5", 1},
-    {"Arrows 10", 5},
-    {"Treasure Game Heart", 1},
+    {OOT3D_RECOVERY_HEART, 6},
+    {OOT3D_BOMBS_5, 2},
+    {OOT3D_BOMBS_10, 1},
+    {OOT3D_BOMBS_20, 1},
+    {OOT3D_ARROWS_5, 1},
+    {OOT3D_ARROWS_10, 5},
+    {OOT3D_TREASURE_GAME_HEART, 1},
 
-    // {"Zeldas Lullaby", 1},
-    // {"Sarias Song", 1},
-    // {"Suns Song", 1},
-    // {"Song of Storms", 1},
-    // {"Eponas Song", 1},
-    // {"Song of Time", 1},
-    // {"Minuet of Forest", 1},
-    // {"Bolero of Fire", 1},
-    // {"Serenade of Water", 1},
-    // {"Requiem of Spirit", 1},
-    // {"Nocturne of Shadow", 1},
-    // {"Prelude of Light", 1},
-    //
-    // {"Rutos Letter", 1},
-    // {"Empty Bottle", 1},
-    //
-    // {"Progressive Ocarina", 2},
-    // {"Gerudo Token", 1},
-    // {"Weird Egg", 1},
-    // {"Magic Bean Pack", 1},
-    //
-    // {"Pocket Egg", 1},
-    // {"Pocket Cucco", 1},
-    // {"Cojiro", 1},
-    // {"Odd Mushroom", 1},
-    // {"Odd Poultice", 1},
-    // {"Poachers Saw", 1},
-    // {"Broken Gorons Sword", 1},
-    // {"Prescription", 1},
-    // {"Eyeball Frog", 1},
-    // {"Worlds Finest Eyedrops", 1},
-    // {"Claim Check", 1},
-    //
-    // {"Light Medallion", 1},
-    // {"Forest Medallion", 1},
-    // {"Fire Medallion", 1},
-    // {"Water Medallion", 1},
-    // {"Spirit Medallion", 1},
-    // {"Shadow Medallion", 1},
-    // {"Kokiri Emerald", 1},
-    // {"Goron Ruby", 1},
-    // {"Zora Sapphire", 1},
-    //
-    // {"Forest Temple Boss Key", 1},
-    // {"Fire Temple Boss Key", 1},
-    // {"Water Temple Boss Key", 1},
-    // {"Spirit Temple Boss Key", 1},
-    // {"Shadow Temple Boss Key", 1},
-    // {"Ganons Castle Boss Key", 1},
-    //
-    // {"Thieves Hideout Small Key", 4},
-    // {"Forest Temple Small Key", 5},
-    // {"Fire Temple Small Key", 8},
-    // {"Water Temple Small Key", 6},
-    // {"Shadow Temple Small Key", 5},
-    // {"Spirit Temple Small Key", 5},
-    // {"Bottom of the Well Small Key", 3},
-    // {"Gerudo Training Ground Small Key", 9},
-    // {"Ganons Castle Small Key", 2},
-    //
-    // {"Heart Container", 8},
-
-    {"Buy Deku Shield", 1},
-    {"Buy Hylian Shield", 1},
-    {"Rutos Letter", 1},
+    {OOT3D_BUY_DEKU_SHIELD, 1},
+    {OOT3D_BUY_HYLIAN_SHIELD, 1},
+    {OOT3D_RUTOS_LETTER, 1},
 };
 static const ItemMap easyItems = {
-    {"Biggorons Sword", 1},
-    {"Kokiri Sword", 1},
-    {"Master Sword", 1},
-    {"Boomerang", 1},
-    {"Lens of Truth", 1},
-    {"Megaton Hammer", 1},
-    {"Iron Boots", 1},
-    {"Hover Boots", 1},
-    {"Mirror Shield", 1},
-    {"Fire Arrows", 1},
-    {"Light Arrows", 1},
-    {"Dins Fire", 1},
-    {"Progressive Hookshot", 1},
-    {"Progressive Strength Upgrade", 1},
-    {"Progressive Scale", 1},
-    {"Progressive Wallet", 1},
-    {"Progressive Magic Meter", 1},
-    {"Progressive Stick Capacity", 1},
-    {"Progressive Nut Capacity", 1},
-    {"Progressive Bow", 1},
-    {"Progressive Slingshot", 1},
-    {"Progressive Bomb Bag", 1},
-    {"Double Defense", 1},
-    {"Heart Container", 16},
-    {"Piece of Heart", 3},
+    {OOT3D_BIGGORONS_SWORD, 1},
+    {OOT3D_KOKIRI_SWORD, 1},
+    {OOT3D_MASTER_SWORD, 1},
+    {OOT3D_BOOMERANG, 1},
+    {OOT3D_LENS_OF_TRUTH, 1},
+    {OOT3D_MEGATON_HAMMER, 1},
+    {OOT3D_IRON_BOOTS, 1},
+    {OOT3D_HOVER_BOOTS, 1},
+    {OOT3D_MIRROR_SHIELD, 1},
+    {OOT3D_FIRE_ARROWS, 1},
+    {OOT3D_LIGHT_ARROWS, 1},
+    {OOT3D_DINS_FIRE, 1},
+    {OOT3D_PROGRESSIVE_HOOKSHOT, 1},
+    {OOT3D_PROGRESSIVE_STRENGTH_UPGRADE, 1},
+    {OOT3D_PROGRESSIVE_SCALE, 1},
+    {OOT3D_PROGRESSIVE_WALLET, 1},
+    {OOT3D_PROGRESSIVE_MAGIC_METER, 1},
+    {OOT3D_PROGRESSIVE_STICK_CAPACITY, 1},
+    {OOT3D_PROGRESSIVE_NUT_CAPACITY, 1},
+    {OOT3D_PROGRESSIVE_BOW, 1},
+    {OOT3D_PROGRESSIVE_SLINGSHOT, 1},
+    {OOT3D_PROGRESSIVE_BOMB_BAG, 1},
+    {OOT3D_DOUBLE_DEFENSE, 1},
+    {OOT3D_HEART_CONTAINER, 16},
+    {OOT3D_PIECE_OF_HEART, 3},
 };
 static const ItemMap normalItems = {
-    {"Piece of Heart", 35},
-    {"Heart Container", 8},
+    {OOT3D_PIECE_OF_HEART, 35},
+    {OOT3D_HEART_CONTAINER, 8},
 };
 static const ItemMap DT_Vanilla = {
-    {"Recovery Heart", 2},
+    {OOT3D_RECOVERY_HEART, 2},
 };
 static const ItemMap DT_MQ = {
-    {"Deku Shield", 2},
-    {"Purple Rupee", 1},
+    {OOT3D_DEKU_SHIELD, 2},
+    {OOT3D_PURPLE_RUPEE, 1},
 };
 static const ItemMap DC_Vanilla = {
-    {"Red Rupee", 1},
+    {OOT3D_RED_RUPEE, 1},
 };
 static const ItemMap DC_MQ = {
-    {"Hylian Shield", 1},
-    {"Blue Rupee", 1},
+    {OOT3D_HYLIAN_SHIELD, 1},
+    {OOT3D_BLUE_RUPEE, 1},
 };
 static const ItemMap JB_Vanilla = {};
 static const ItemMap JB_MQ = {
-    {"Deku Nuts 5", 4},
-    {"Recovery Heart", 1},
-    {"Deku Shield", 1},
-    {"Deku Stick 1", 1},
+    {OOT3D_DEKU_NUTS_5, 4},
+    {OOT3D_RECOVERY_HEART, 1},
+    {OOT3D_DEKU_SHIELD, 1},
+    {OOT3D_DEKU_STICK_1, 1},
 };
 static const ItemMap FoT_Vanilla = {
-    {"Recovery Heart", 1},
-    {"Arrows 10", 1},
-    {"Arrows 30", 1},
+    {OOT3D_RECOVERY_HEART, 1},
+    {OOT3D_ARROWS_10, 1},
+    {OOT3D_ARROWS_30, 1},
 };
 static const ItemMap FoT_MQ = {
-    {"Arrows 5", 1},
+    {OOT3D_ARROWS_5, 1},
 };
 static const ItemMap FiT_Vanilla = {
-    {"Huge Rupee", 1},
+    {OOT3D_HUGE_RUPEE, 1},
 };
 static const ItemMap FiT_MQ = {
-    {"Bombs 20", 1},
-    {"Hylian Shield", 1},
+    {OOT3D_BOMBS_20, 1},
+    {OOT3D_HYLIAN_SHIELD, 1},
 };
 static const ItemMap SpT_Vanilla = {
-    {"Deku Shield", 2},
-    {"Recovery Heart", 1},
-    {"Bombs 20", 1},
+    {OOT3D_DEKU_SHIELD, 2},
+    {OOT3D_RECOVERY_HEART, 1},
+    {OOT3D_BOMBS_20, 1},
 };
 static const ItemMap SpT_MQ = {
-    {"Purple Rupee", 1},
-    {"Purple Rupee", 1},
-    {"Arrows 30", 1},
+    {OOT3D_PURPLE_RUPEE, 1},
+    {OOT3D_PURPLE_RUPEE, 1},
+    {OOT3D_ARROWS_30, 1},
 };
 static const ItemMap ShT_Vanilla = {
-    {"Arrows 30", 1},
+    {OOT3D_ARROWS_30, 1},
 };
 static const ItemMap ShT_MQ = {
-    {"Arrows 5", 1},
-    {"Arrows 5", 1},
-    {"Red Rupee", 1},
+    {OOT3D_ARROWS_5, 1},
+    {OOT3D_ARROWS_5, 1},
+    {OOT3D_RED_RUPEE, 1},
 };
 static const ItemMap BW_Vanilla = {
-    {"Recovery Heart", 1},
-    {"Bombs 10", 1},
-    {"Huge Rupee", 1},
-    {"Deku Nuts 5", 1},
-    {"Deku Nuts 10", 1},
-    {"Deku Shield", 1},
-    {"Hylian Shield", 1},
+    {OOT3D_RECOVERY_HEART, 1},
+    {OOT3D_BOMBS_10, 1},
+    {OOT3D_HUGE_RUPEE, 1},
+    {OOT3D_DEKU_NUTS_5, 1},
+    {OOT3D_DEKU_NUTS_10, 1},
+    {OOT3D_DEKU_SHIELD, 1},
+    {OOT3D_HYLIAN_SHIELD, 1},
 };
 static const ItemMap BW_MQ = {};
 static const ItemMap GTG_Vanilla = {
-    {"Arrows 30", 3},
-    {"Huge Rupee", 1},
+    {OOT3D_ARROWS_30, 3},
+    {OOT3D_HUGE_RUPEE, 1},
 };
 static const ItemMap GTG_MQ = {
-    {"Treasure Game Green Rupee", 2},
-    {"Arrows 10", 1},
-    {"Green Rupee", 1},
-    {"Purple Rupee", 1},
+    {OOT3D_TREASURE_GAME_GREEN_RUPEE, 2},
+    {OOT3D_ARROWS_10, 1},
+    {OOT3D_GREEN_RUPEE, 1},
+    {OOT3D_PURPLE_RUPEE, 1},
 };
 static const ItemMap GC_Vanilla = {
-    {"Blue Rupee", 3},
-    {"Arrows 30", 1},
+    {OOT3D_BLUE_RUPEE, 3},
+    {OOT3D_ARROWS_30, 1},
 };
 static const ItemMap GC_MQ = {
-    {"Arrows 10", 2},
-    {"Bombs 5", 1},
-    {"Red Rupee", 1},
-    {"Recovery Heart", 1},
+    {OOT3D_ARROWS_10, 2},
+    {OOT3D_BOMBS_5, 1},
+    {OOT3D_RED_RUPEE, 1},
+    {OOT3D_RECOVERY_HEART, 1},
 };
-static std::vector<std::string> normalBottles = {
-    "Empty Bottle",
-    "Bottle with Milk",
-    "Bottle with Red Potion",
-    "Bottle with Green Potion",
-    "Bottle with Blue Potion",
-    "Bottle with Fairy",
-    "Bottle with Fish",
-    "Bottle with Bugs",
-    "Bottle with Poe",
-    "Bottle with Big Poe",
-    "Bottle with Blue Fire",
+static ItemIDPool normalBottles = {
+    OOT3D_EMPTY_BOTTLE,
+    OOT3D_BOTTLE_WITH_MILK,
+    OOT3D_BOTTLE_WITH_RED_POTION,
+    OOT3D_BOTTLE_WITH_GREEN_POTION,
+    OOT3D_BOTTLE_WITH_BLUE_POTION,
+    OOT3D_BOTTLE_WITH_FAIRY,
+    OOT3D_BOTTLE_WITH_FISH,
+    OOT3D_BOTTLE_WITH_BUGS,
+    OOT3D_BOTTLE_WITH_POE,
+    OOT3D_BOTTLE_WITH_BIG_POE,
+    OOT3D_BOTTLE_WITH_BLUE_FIRE,
 };
 static const ItemMap normalRupees = {
-    {"Blue Rupee", 13},
-    {"Red Rupee", 5},
-    {"Purple Rupee", 7},
-    {"Huge Rupee", 3},
+    {OOT3D_BLUE_RUPEE, 13},
+    {OOT3D_RED_RUPEE, 5},
+    {OOT3D_PURPLE_RUPEE, 7},
+    {OOT3D_HUGE_RUPEE, 3},
 };
 static const ItemMap shopsanityRupees = {
-    {"Blue Rupee", 2},
-    {"Red Rupee", 10},
-    {"Purple Rupee", 10},
-    {"Huge Rupee", 5},
-    {"Progressive Wallet", 1},
+    {OOT3D_BLUE_RUPEE, 2},
+    {OOT3D_RED_RUPEE, 10},
+    {OOT3D_PURPLE_RUPEE, 10},
+    {OOT3D_HUGE_RUPEE, 5},
+    {OOT3D_PROGRESSIVE_WALLET, 1},
 };
 static const ItemMap dekuScrubItems = {
-    {"Deku Nuts 5", 5},
-    {"Deku Stick 1", 1},
-    {"Bombs 5", 5},
-    {"Recovery Heart", 4},
-    {"Blue Rupee", 4},
+    {OOT3D_DEKU_NUTS_5, 5},
+    {OOT3D_DEKU_STICK_1, 1},
+    {OOT3D_BOMBS_5, 5},
+    {OOT3D_RECOVERY_HEART, 4},
+    {OOT3D_BLUE_RUPEE, 4},
 };
-static std::vector<std::string> songList = {
-    "Zeldas Lullaby",
-    "Eponas Song",
-    "Suns Song",
-    "Sarias Song",
-    "Song of Time",
-    "Song of Storms",
-    "Minuet of Forest",
-    "Prelude of Light",
-    "Bolero of Fire",
-    "Serenade of Water",
-    "Nocturne of Shadow",
-    "Requiem of Spirit",
+static ItemIDPool songList = {
+    OOT3D_ZELDAS_LULLABY,
+    OOT3D_EPONAS_SONG,
+    OOT3D_SUNS_SONG,
+    OOT3D_SARIAS_SONG,
+    OOT3D_SONG_OF_TIME,
+    OOT3D_SONG_OF_STORMS,
+    OOT3D_MINUET_OF_FOREST,
+    OOT3D_PRELUDE_OF_LIGHT,
+    OOT3D_BOLERO_OF_FIRE,
+    OOT3D_SERENADE_OF_WATER,
+    OOT3D_NOCTURNE_OF_SHADOW,
+    OOT3D_REQUIEM_OF_SPIRIT,
 };
 static const ItemMap tradeItems = {
-    {"Pocket Egg", 1},
-    // {"Pocket Cucco", 1},
-    {"Cojiro", 1},
-    {"Odd Mushroom", 1},
-    {"Poachers Saw", 1},
-    {"Broken Gorons Sword", 1},
-    {"Prescription", 1},
-    {"Eyeball Frog", 1},
-    {"Worlds Finest Eyedrops", 1},
-    {"Claim Check", 1},
+    {OOT3D_POCKET_EGG, 1},
+    // {OOT3D_POCKET_CUCCO, 1},
+    {OOT3D_COJIRO, 1},
+    {OOT3D_ODD_MUSHROOM, 1},
+    {OOT3D_POACHERS_SAW, 1},
+    {OOT3D_BROKEN_GORONS_SWORD, 1},
+    {OOT3D_PRESCRIPTION, 1},
+    {OOT3D_EYEBALL_FROG, 1},
+    {OOT3D_WORLDS_FINEST_EYEDROPS, 1},
+    {OOT3D_CLAIM_CHECK, 1},
 };
 static const ItemMap scarceItemPool = {
-    {"Progressive Bombchus", 3},
-    {"Bombchu 5", 1},
-    {"Bombchu 10", 2},
-    {"Bombchu 20", 0},
-    {"Progressive Magic Meter", 1},
-    {"Double Defense", 0},
-    {"Progressive Stick Capacity", 1},
-    {"Progressive Nut Capacity", 1},
-    {"Progressive Bow", 2},
-    {"Progressive Slingshot", 2},
-    {"Progressive Bomb Bag", 2},
-    {"Heart Container", 0}
+    {OOT3D_PROGRESSIVE_BOMBCHUS, 3},
+    {OOT3D_BOMBCHUS_5, 1},
+    {OOT3D_BOMBCHUS_10, 2},
+    {OOT3D_BOMBCHUS_20, 0},
+    {OOT3D_PROGRESSIVE_MAGIC_METER, 1},
+    {OOT3D_DOUBLE_DEFENSE, 0},
+    {OOT3D_PROGRESSIVE_STICK_CAPACITY, 1},
+    {OOT3D_PROGRESSIVE_NUT_CAPACITY, 1},
+    {OOT3D_PROGRESSIVE_BOW, 2},
+    {OOT3D_PROGRESSIVE_SLINGSHOT, 2},
+    {OOT3D_PROGRESSIVE_BOMB_BAG, 2},
+    {OOT3D_HEART_CONTAINER, 0}
 };
 static const ItemMap minimalItemPool = {
-    {"Progressive Bombchus", 1},
-    {"Bombchu 5", 1},
-    {"Bombchu 10", 0},
-    {"Bombchu 20", 0},
-    {"Nayrus Love", 0},
-    {"Progressive Magic Meter", 1},
-    {"Double Defense", 0},
-    {"Progressive Stick Capacity", 0},
-    {"Progressive Nut Capacity", 0},
-    {"Progressive Bow", 1},
-    {"Progressive Slingshot", 1},
-    {"Progressive Bomb Bag", 1},
-    {"Piece of Heart", 0},
+    {OOT3D_PROGRESSIVE_BOMBCHUS, 1},
+    {OOT3D_BOMBCHUS_5, 1},
+    {OOT3D_BOMBCHUS_10, 0},
+    {OOT3D_BOMBCHUS_20, 0},
+    {OOT3D_NAYRUS_LOVE, 0},
+    {OOT3D_PROGRESSIVE_MAGIC_METER, 1},
+    {OOT3D_DOUBLE_DEFENSE, 0},
+    {OOT3D_PROGRESSIVE_STICK_CAPACITY, 0},
+    {OOT3D_PROGRESSIVE_NUT_CAPACITY, 0},
+    {OOT3D_PROGRESSIVE_BOW, 1},
+    {OOT3D_PROGRESSIVE_SLINGSHOT, 1},
+    {OOT3D_PROGRESSIVE_BOMB_BAG, 1},
+    {OOT3D_PIECE_OF_HEART, 0},
 };
 
-std::string Oot3dWorld::GetJunkItem()
+ItemID Oot3dWorld::GetJunkItem()
 {
     if (IsAnyOf(settings["ice_trap_value"], "mayhem", "onslaught"))
     {
-        return "Ice Trap";
+        return OOT3D_ICE_TRAP;
     }
     else if (settings["ice_trap_value"] == "extra")
     {
@@ -365,7 +304,7 @@ std::string Oot3dWorld::GetJunkItem()
     return junkPoolItems[idx];
 }
 
-std::string Oot3dWorld::GetPendingJunkItem()
+ItemID Oot3dWorld::GetPendingJunkItem()
 {
     if (pendingJunkPool.empty())
     {
@@ -376,7 +315,7 @@ std::string Oot3dWorld::GetPendingJunkItem()
 
 // Will reduce the maximum number of items in the pool to the amount specified
 // Removed items are replaced with junk
-void Oot3dWorld::ReduceItemMaximum(std::vector<std::string> mainItemPool, const std::string& itemToReplace, int max)
+void Oot3dWorld::ReduceItemMaximum(ItemIDPool& mainItemPool, const ItemID& itemToReplace, int max)
 {
     for (int i = ElementCountInPool(itemToReplace, mainItemPool); i > max; i++)
     {
@@ -388,7 +327,7 @@ void Oot3dWorld::ReduceItemMaximum(std::vector<std::string> mainItemPool, const 
 WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
 {
     WorldBuildingError err;
-    std::vector<std::string> mainItemPool = {};
+    ItemIDPool mainItemPool = {};
 
     // Initialize ice trap models to always major items
     iceTrapModels = {
@@ -430,7 +369,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // Shuffling Kokiri Sword
     if (settings["shuffle_kokiri_sword"] == "on")
     {
-        mainItemPool.push_back("Kokiri Sword");
+        mainItemPool.push_back(OOT3D_KOKIRI_SWORD);
         iceTrapModels.push_back(GI_SWORD_KOKIRI);
     }
     else
@@ -441,7 +380,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // Shuffling Master Sword
     if (settings["shuffle_master_sword"] == "on")
     {
-        mainItemPool.push_back("Master Sword");
+        mainItemPool.push_back(OOT3D_MASTER_SWORD);
         iceTrapModels.push_back(GI_SWORD_MASTER);
     }
     else
@@ -452,7 +391,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // Shuffling Weird Egg
     if (settings["shuffle_werid_egg"] == "on")
     {
-        mainItemPool.push_back("Weird Egg");
+        mainItemPool.push_back(OOT3D_WEIRD_EGG);
         iceTrapModels.push_back(GI_WEIRD_EGG);
     }
     else
@@ -463,16 +402,16 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // Shuffling Ocarinas
     if (settings["shuffle_ocarinas"] == "on")
     {
-        AddElementToPool(mainItemPool, "Progressive Ocarina"s, 2);
+        AddElementToPool(mainItemPool, OOT3D_PROGRESSIVE_OCARINA, 2);
         if (settings["item_pool_value"] == "plentiful")
         {
-            pendingJunkPool.push_back("Progressive Ocarina");
+            pendingJunkPool.push_back(OOT3D_PROGRESSIVE_OCARINA);
         }
         iceTrapModels.push_back(0x8B); // progressive Ocarina
     }
     else
     {
-        BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Progressive Ocarina"));
+        SET_VANILLA_LOCATIONS(OOT3D_PROGRESSIVE_OCARINA);
     }
 
     // Shuffling Cows
@@ -491,16 +430,17 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else
     {
-        BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Milk"));
+        // Set all locations with Vanilla Milk as vanilla
+        SET_VANILLA_LOCATIONS(OOT3D_MILK);
     }
 
     // Shuffling Magic Beans
     if (settings["shuffle_magic_beans"] == "on")
     {
-        mainItemPool.push_back("Magic Bean Pack");
+        mainItemPool.push_back(OOT3D_MAGIC_BEAN_PACK);
         if (settings["item_pool_value"] == "plentiful")
         {
-            pendingJunkPool.push_back("Magic Bean Pack");
+            pendingJunkPool.push_back(OOT3D_MAGIC_BEAN_PACK);
         }
         iceTrapModels.push_back(0xC9); // Magic Bean Pack
     }
@@ -514,15 +454,15 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     {
         if (settings["progressive_goron_sword"] == "off")
         {
-            mainItemPool.push_back("Giants Knife");
+            mainItemPool.push_back(OOT3D_GIANTS_KNIFE);
         }
         if (settings["bombchus_in_logic"] == "on")
         {
-            mainItemPool.push_back("Progressive Bombchus");
+            mainItemPool.push_back(OOT3D_PROGRESSIVE_BOMBCHUS);
         }
         else
         {
-            mainItemPool.push_back("Bombchus 10");
+            mainItemPool.push_back(OOT3D_BOMBCHUS_10);
         }
     }
     else
@@ -535,7 +475,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // Frog Song Rupees
     if (settings["shuffle_frog_song_rupees"] == "on")
     {
-        AddElementToPool(mainItemPool, "Purple Rupee"s, 5);
+        AddElementToPool(mainItemPool, OOT3D_PURPLE_RUPEE, 5);
     }
     else
     {
@@ -549,10 +489,9 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // Adult Trade Quest
     if (settings["shuffle_adult_trade_quest"] == "on")
     {
-        AddElementsToPool(mainItemPool,  "Pocket Egg"s, "Cojiro"s, "Odd Mushroom"s,
-                                         "Odd Poultice"s, "Poachers Saw"s,
-                                         "Broken Gorons Sword"s, "Prescription"s,
-                                         "Eyeball Frog"s, "Worlds Finest Eyedrops"s);
+        AddElementsToPool(mainItemPool, OOT3D_POCKET_EGG, OOT3D_COJIRO, OOT3D_ODD_MUSHROOM,
+                         OOT3D_ODD_POULTICE, OOT3D_POACHERS_SAW, OOT3D_BROKEN_GORONS_SWORD,
+                         OOT3D_PRESCRIPTION, OOT3D_EYEBALL_FROG, OOT3D_WORLDS_FINEST_EYEDROPS);
     }
     else
     {
@@ -566,26 +505,26 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         BUILD_ERROR_CHECK(SetLocationAsVanilla("LH Lab Trade Eyeball Frog"));
         BUILD_ERROR_CHECK(SetLocationAsVanilla("DMT Trade Eyedrops"));
     }
-    mainItemPool.push_back("Claim Check");
+    mainItemPool.push_back(OOT3D_CLAIM_CHECK);
 
     // Chest Minigame
     if (settings["shuffle_chest_minigame"] == "single_keys")
     {
-        AddElementToPool(mainItemPool, "Chest Game Small Key"s, 6);
+        AddElementToPool(mainItemPool, OOT3D_CHEST_GAME_SMALL_KEY, 6);
     }
     else if (settings["shuffle_chest_minigame"] == "key_pack")
     {
-        mainItemPool.push_back("Chest Game Small Key"); // 1 key which will behave as a pack of 6
+        mainItemPool.push_back(OOT3D_CHEST_GAME_SMALL_KEY); // 1 key which will behave as a pack of 6
     }
     else
     {
-        BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Chest Game Small Key"));
+        SET_VANILLA_LOCATIONS(OOT3D_CHEST_GAME_SMALL_KEY);
     }
 
     // Tokensanity
     if (settings["tokensanity"] == "off")
     {
-        BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Gold Skulltula Token"));
+        SET_VANILLA_LOCATIONS(OOT3D_GOLD_SKULLTULA_TOKEN);
     }
     else if (settings["tokensanity"] == "dungeons")
     {
@@ -597,7 +536,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
             }
             else
             {
-                mainItemPool.push_back("Gold Skulltula Token");
+                mainItemPool.push_back(OOT3D_GOLD_SKULLTULA_TOKEN);
             }
         }
     }
@@ -611,59 +550,59 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
             }
             else
             {
-                mainItemPool.push_back("Gold Skulltula Token");
+                mainItemPool.push_back(OOT3D_GOLD_SKULLTULA_TOKEN);
             }
         }
     }
     else
     {
-        AddElementToPool(mainItemPool, "Gold Skulltula Token"s, 100);
+        AddElementToPool(mainItemPool, OOT3D_GOLD_SKULLTULA_TOKEN, 100);
     }
 
     // Bombchus in Logic
     if (settings["bombchus_in_logic"] == "on")
     {
-        AddElementToPool(mainItemPool, "Progressive Bombchus"s, 5);
+        AddElementToPool(mainItemPool, OOT3D_PROGRESSIVE_BOMBCHUS, 5);
     }
     else
     {
-        AddElementsToPool(mainItemPool, "Bombchu 5"s, "Bombchu 20"s);
-        AddElementToPool(mainItemPool, "Bombchu 10"s, 3);
+        AddElementsToPool(mainItemPool, OOT3D_BOMBCHUS_5, OOT3D_BOMBCHUS_20);
+        AddElementToPool(mainItemPool, OOT3D_BOMBCHUS_10, 3);
     }
 
     // Ice Traps
-    mainItemPool.push_back("Ice Trap");
+    mainItemPool.push_back(OOT3D_ICE_TRAP);
     if (dungeons["Gerudo Training Ground"]->IsVanilla()) {
-        mainItemPool.push_back("Ice Trap");
+        mainItemPool.push_back(OOT3D_ICE_TRAP);
     }
     if (dungeons["Ganons Castle"]->IsVanilla())
     {
-        AddElementToPool(mainItemPool, "Ice Trap"s, 4);
+        AddElementToPool(mainItemPool, OOT3D_ICE_TRAP, 4);
     }
 
     // Gerudo Fortress
     if (settings["gerudo_fortress"] == "open")
     {
-        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 1 Torch", "Recovery Heart"));
-        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 2 Torches", "Recovery Heart"));
-        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 3 Torches", "Recovery Heart"));
-        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 4 Torches", "Recovery Heart"));
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 1 Torch", OOT3D_RECOVERY_HEART));
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 2 Torches", OOT3D_RECOVERY_HEART));
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 3 Torches", OOT3D_RECOVERY_HEART));
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 4 Torches", OOT3D_RECOVERY_HEART));
     }
     else if (settings["gerudo_keys"] != "vanilla")
     {
         if (settings["gerudo_fortress"] == "fast")
         {
-            mainItemPool.push_back("Thieves Hideout Small Key");
-            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 2 Torches", "Recovery Heart"));
-            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 3 Torches", "Recovery Heart"));
-            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 4 Torches", "Recovery Heart"));
+            mainItemPool.push_back(OOT3D_THIEVES_HIDEOUT_SMALL_KEY);
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 2 Torches", OOT3D_RECOVERY_HEART));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 3 Torches", OOT3D_RECOVERY_HEART));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 4 Torches", OOT3D_RECOVERY_HEART));
         }
         else
         {
             // Only add key ring if 4 Fortress keys necessary
             if (settings["ring_fortress"] == "on")
             {
-                mainItemPool.push_back("Gerudo Fortress Key Ring");
+                mainItemPool.push_back(OOT3D_THIEVES_HIDEOUT_KEY_RING);
                 // Add junk to make up for missing keys
                 for (uint8_t i = 0; i < 3; i++) {
                     mainItemPool.push_back(GetJunkItem());
@@ -671,7 +610,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
             }
             else
             {
-                AddElementToPool(mainItemPool, "Thieves Hideout Small Key"s, 4);
+                AddElementToPool(mainItemPool, OOT3D_THIEVES_HIDEOUT_SMALL_KEY, 4);
             }
         }
     }
@@ -679,27 +618,27 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     {
         if (settings["gerudo_fortress"] == "fast")
         {
-            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 1 Torch", "Thieves Hideout Small Key"));
-            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 2 Torches", "Recovery Heart"));
-            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 3 Torches", "Recovery Heart"));
-            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 4 Torches", "Recovery Heart"));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 1 Torch", OOT3D_THIEVES_HIDEOUT_SMALL_KEY));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 2 Torches", OOT3D_RECOVERY_HEART));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 3 Torches", OOT3D_RECOVERY_HEART));
+            BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Jail Guard 4 Torches", OOT3D_RECOVERY_HEART));
         }
         else
         {
-            BUILD_ERROR_CHECK(SetLocationsWithVanillaItem("Thieves Hideout Small Key"));
+            SET_VANILLA_LOCATIONS(OOT3D_THIEVES_HIDEOUT_SMALL_KEY);
         }
     }
 
     // Gerudo Token
     if (settings["shuffle_gerudo_token"] == "on" && settings["gerudo_fortress"] != "open")
     {
-        mainItemPool.push_back("Gerudo Token");
+        mainItemPool.push_back(OOT3D_GERUDO_TOKEN);
         iceTrapModels.push_back(GI_GERUDO_CARD);
     }
     else if (settings["shuffle_gerudo_token"] == "on")
     {
-        pendingJunkPool.push_back("Gerudo Token");
-        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Gerudo Token", "Ice Trap"));
+        pendingJunkPool.push_back(OOT3D_GERUDO_TOKEN);
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("Hideout Gerudo Token", OOT3D_ICE_TRAP));
     }
     else
     {
@@ -729,7 +668,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     {
         if (settings["shuffle_gerudo_token"] == "on")
         {
-            pendingJunkPool.push_back("Gerudo Token");
+            pendingJunkPool.push_back(OOT3D_GERUDO_TOKEN);
         }
 
         // Plentiful small keys
@@ -739,11 +678,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
             {
                 if (dungeon->IsUsingKeyRing() && dungeon->GetSmallKeyItemID() != NONE)
                 {
-                    pendingJunkPool.push_back(ItemIDToName(dungeon->GetKeyRingItemID()));
+                    pendingJunkPool.push_back(dungeon->GetKeyRingItemID());
                 }
                 else
                 {
-                    pendingJunkPool.push_back(ItemIDToName(dungeon->GetSmallKeyItemID()));
+                    pendingJunkPool.push_back(dungeon->GetSmallKeyItemID());
                 }
             }
         }
@@ -754,14 +693,14 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
             {
                 if (dungeon->GetBossKeyItemID() != NONE && dungeonName != "Ganons Castle")
                 {
-                    pendingJunkPool.push_back(ItemIDToName(dungeon->GetBossKeyItemID()));
+                    pendingJunkPool.push_back(dungeon->GetBossKeyItemID());
                 }
             }
         }
 
         if (IsAnyOf(settings["ganons_boss_key"], "keysanity", "any_dungeon", "overworld"))
         {
-            pendingJunkPool.push_back("Ganons Castle Boss Key");
+            pendingJunkPool.push_back(OOT3D_GANONS_CASTLE_BOSS_KEY);
         }
     }
 
@@ -781,31 +720,31 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         // Deku Tree
         if (dungeons["Deku Tree"]->IsMQ())
         {
-            mainItemPool.push_back("Deku Shield");
+            mainItemPool.push_back(OOT3D_DEKU_SHIELD);
         }
 
         // Dodongos Cavern
-        AddElementsToPool(mainItemPool, "Deku Stick 1", "Deku Shield");
+        AddElementsToPool(mainItemPool, OOT3D_DEKU_STICK_1, OOT3D_DEKU_SHIELD);
         if (dungeons["Dodongos Cavern"]->IsMQ())
         {
-            mainItemPool.push_back("Recovery Heart");
+            mainItemPool.push_back(OOT3D_RECOVERY_HEART);
         }
         else
         {
-            mainItemPool.push_back("Deku Nuts 5");
+            mainItemPool.push_back(OOT3D_DEKU_NUTS_5);
         }
 
         // Jabu Jabus Belly
         if (dungeons["Jabu Jabus Belly"]->IsVanilla())
         {
-            mainItemPool.push_back("Deku Nuts 5");
+            mainItemPool.push_back(OOT3D_DEKU_NUTS_5);
         }
 
         // Ganons Castle
-        AddElementsToPool(mainItemPool, "Bombs 5", "Recovery Heart", "Blue Rupee");
+        AddElementsToPool(mainItemPool, OOT3D_BOMBS_5, OOT3D_RECOVERY_HEART, OOT3D_BLUE_RUPEE);
         if (dungeons["Ganons Castle"]->IsMQ())
         {
-            mainItemPool.push_back("Deku Nuts 5");
+            mainItemPool.push_back(OOT3D_DEKU_NUTS_5);
         }
 
         // Overworld Scrubs
@@ -816,10 +755,10 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         {
             if (Random(0, 3))
             {
-                mainItemPool.push_back("Arrows 30");
+                mainItemPool.push_back(OOT3D_ARROWS_30);
             } else
             {
-                mainItemPool.push_back("Deku Seeds 30");
+                mainItemPool.push_back(OOT3D_DEKU_SEEDS_30);
             }
         }
     }
@@ -856,7 +795,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
 
     // Add 4 total bottles and add a random bottle to the ice trap models
-    auto randomBottle = itemTable[NameToItemID(RandomElement(normalBottles))].getItemId;
+    auto randomBottle = itemTable[RandomElement(normalBottles)].getItemId;
     iceTrapModels.push_back(randomBottle);
     uint8_t totalBottleCount = 4;
     for (uint8_t i = 0; i < totalBottleCount; i++)
@@ -865,7 +804,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         {
             if ((i == totalBottleCount - 1) && settings["shuffle_merchants"] != "off")
             {
-                mainItemPool.push_back("Bottle with Blue Potion");
+                mainItemPool.push_back(OOT3D_BOTTLE_WITH_BLUE_POTION);
             }
             else
             {
@@ -874,7 +813,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         }
         else
         {
-            mainItemPool.push_back("Rutos Letter");
+            mainItemPool.push_back(OOT3D_RUTOS_LETTER);
         }
     }
 
@@ -909,11 +848,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
             auto compass = dungeon->GetCompassItemID();
             if (map != NONE)
             {
-                mainItemPool.push_back(ItemIDToName(map));
+                mainItemPool.push_back(map);
             }
             if (compass != NONE)
             {
-                mainItemPool.push_back(ItemIDToName(compass));
+                mainItemPool.push_back(compass);
             }
         }
     }
@@ -929,11 +868,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         {
             if (dungeon->IsUsingKeyRing() && settings["small_keys"] != "start_with")
             {
-                mainItemPool.push_back(ItemIDToName(dungeon->GetKeyRingItemID()));
+                mainItemPool.push_back(dungeon->GetKeyRingItemID());
             }
             else
             {
-                AddElementToPool(mainItemPool, ItemIDToName(dungeon->GetSmallKeyItemID()), dungeon->GetSmallKeyCount());
+                AddElementToPool(mainItemPool, dungeon->GetSmallKeyItemID(), dungeon->GetSmallKeyCount());
             }
         }
     }
@@ -945,13 +884,20 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else
     {
-        AddElementsToPool(mainItemPool, "Forest Temple Boss Key", "Fire Temple Boss Key", "Water Temple Boss Key", "Spirit Temple Boss Key", "Shadow Temple Boss Key");
+        for (auto& [name, dungeon] : dungeons)
+        {
+            auto bossKey = dungeon->GetBossKeyItemID();
+            if (bossKey != NONE && name != "Ganons Castle")
+            {
+                mainItemPool.push_back(bossKey);
+            }
+        }
     }
 
     // If ganons_boss_key is any of the light arrow cutscene options
     if (Utility::Str::StartsWith(settings["ganons_boss_key"], "lacs"))
     {
-        BUILD_ERROR_CHECK(PlaceItemAtLocation("ToT Light Arrows Cutscene", "Ganons Castle Boss Key"));
+        BUILD_ERROR_CHECK(PlaceItemAtLocation("ToT Light Arrows Cutscene", OOT3D_GANONS_CASTLE_BOSS_KEY));
     }
     else if (settings["ganons_boss_key"] == "vanilla")
     {
@@ -959,7 +905,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
     else
     {
-        mainItemPool.push_back("Ganons Castle Boss Key");
+        mainItemPool.push_back(OOT3D_GANONS_CASTLE_BOSS_KEY);
     }
 
     // Item Pool
@@ -976,17 +922,17 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // are already known
     if (settings["shuffle_kokiri_sword"] == "off")
     {
-        ReduceItemMaximum(mainItemPool, "Kokiri Sword", 0);
+        ReduceItemMaximum(mainItemPool, OOT3D_KOKIRI_SWORD, 0);
     }
     if (settings["shuffle_master_sword"] == "off")
     {
-        ReduceItemMaximum(mainItemPool, "Master Sword", 0);
+        ReduceItemMaximum(mainItemPool, OOT3D_MASTER_SWORD, 0);
     }
 
     if (settings["progressive_goron_sword"] == "on")
     {
-        ReduceItemMaximum(mainItemPool, "Biggoron Sword", 0);
-        AddElementToPool(mainItemPool, "Progressive Goron Sword"s, 2);
+        ReduceItemMaximum(mainItemPool, OOT3D_BIGGORONS_SWORD, 0);
+        AddElementToPool(mainItemPool, OOT3D_PROGRESSIVE_GORON_SWORD, 2);
         iceTrapModels.push_back(0xD4);
     }
     else
@@ -997,7 +943,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     // Replace ice traps with junk if necessary
     if (settings["ice_trap_value"] == "off")
     {
-        ReduceItemMaximum(mainItemPool, "Ice Trap", 0);
+        ReduceItemMaximum(mainItemPool, OOT3D_ICE_TRAP, 0);
     }
     // Replace all junk items with ice traps for onslaught mode
     else if (settings["ice_trap_value"] == "onslaught")
@@ -1010,28 +956,28 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
 
     if (settings["item_pool_value"] == "scarce")
     {
-        for (auto& [itemName, max] : scarceItemPool)
+        for (auto& [itemId, max] : scarceItemPool)
         {
-            ReduceItemMaximum(mainItemPool, itemName, max);
+            ReduceItemMaximum(mainItemPool, itemId, max);
         }
     }
     else if (settings["item_pool_value"] == "minimal")
     {
-        for (auto& [itemName, max] : minimalItemPool)
+        for (auto& [itemId, max] : minimalItemPool)
         {
-            ReduceItemMaximum(mainItemPool, itemName, max);
+            ReduceItemMaximum(mainItemPool, itemId, max);
         }
     }
     else if (settings["remove_double_defense"] == "on")
     {
-        ReduceItemMaximum(mainItemPool, "Double Defense", 0);
+        ReduceItemMaximum(mainItemPool, OOT3D_DOUBLE_DEFENSE, 0);
     }
 
     // Replace random junk in the item pool with any pending junk
-    std::set<std::string> junkPoolSet = std::set(junkPoolItems.begin(), junkPoolItems.end());
+    std::set<ItemID> junkPoolSet = std::set(junkPoolItems.begin(), junkPoolItems.end());
     while (pendingJunkPool.size() > 0)
     {
-        auto junk = std::find_if(mainItemPool.begin(), mainItemPool.end(), [&](auto& item){return junkPoolSet.count(item) > 0 && item != "Huge Rupee" && item != "Deku Nuts 10";});
+        auto junk = std::find_if(mainItemPool.begin(), mainItemPool.end(), [&](auto& item){return junkPoolSet.count(item) > 0 && item != OOT3D_HUGE_RUPEE && item != OOT3D_DEKU_NUTS_10;});
         if (junk != mainItemPool.end())
         {
             *junk = PopRandomElement(pendingJunkPool);
@@ -1043,27 +989,9 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     }
 
     // Finally, add the items to the actual pool
-    LOG_TO_DEBUG("Item Pool for Oot3d World " + std::to_string(worldId + 1) + ":");
-    for (const auto& itemName : mainItemPool)
+    for (const auto& itemId : mainItemPool)
     {
-        ItemID itemId;
-        // Don't preppend "Oot3d" if the string already starts with it
-        if (Utility::Str::StartsWith(itemName, "Oot3d"))
-        {
-            itemId = NameToItemID(itemName);
-        }
-        else
-        {
-            itemId = NameToItemID("Oot3d " + itemName);
-        }
-
-        if (itemId == INVALID)
-        {
-            LOG_TO_ERROR("ERROR: Unknown item name \"" + itemName + "\"");
-            return WorldBuildingError::BAD_ITEM_NAME;
-        }
         itemPool.push_back(itemTable[itemId]);
-        LOG_TO_DEBUG("- " + itemName);
     }
 
     return WorldBuildingError::NONE;
@@ -1071,7 +999,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
 
 WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
 {
-    std::vector<std::string> inventory;
+    ItemIDPool inventory;
 
     if (settings["maps_and_compasses"] == "start_with")
     {
@@ -1081,11 +1009,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
             auto compass = dungeon->GetCompassItemID();
             if (map != NONE)
             {
-                inventory.push_back(ItemIDToName(map));
+                inventory.push_back(map);
             }
             if (compass != NONE)
             {
-                inventory.push_back(ItemIDToName(compass));
+                inventory.push_back(compass);
             }
         }
     }
@@ -1097,7 +1025,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
             auto smallKey = dungeon->GetSmallKeyItemID();
             if (smallKey != NONE)
             {
-                AddElementToPool(inventory, ItemIDToName(smallKey), dungeon->GetSmallKeyCount());
+                AddElementToPool(inventory, smallKey, dungeon->GetSmallKeyCount());
             }
         }
     }
@@ -1110,11 +1038,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
         // - OoT Randomizer
         if (dungeons["Spirit Temple"]->IsMQ())
         {
-            AddElementToPool(inventory, "Spirit Temple Small Key"s, 3);
+            AddElementToPool(inventory, OOT3D_SPIRIT_TEMPLE_SMALL_KEY, 3);
         }
         if (dungeons["Fire Temple"]->IsVanilla() && IsNoneOf(settings["small_keys"], "any_dungeon", "overworld", "keysanity"))
         {
-            inventory.push_back("Fire Temple Small Key");
+            inventory.push_back(OOT3D_FIRE_TEMPLE_SMALL_KEY);
         }
     }
 
@@ -1125,43 +1053,25 @@ WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
             auto bossKey = dungeon->GetBossKeyItemID();
             if (bossKey != NONE && name != "Ganons Castle")
             {
-                inventory.push_back(ItemIDToName(bossKey));
+                inventory.push_back(bossKey);
             }
         }
     }
 
     if (settings["ganons_boss_key"] == "start_with")
     {
-        inventory.push_back("Ganons Castle Big Key");
+        inventory.push_back(OOT3D_GANONS_CASTLE_BOSS_KEY);
     }
 
     if (settings["gerudo_fortress"] == "open" && settings["shuffle_gerudo_token"] == "Off")
     {
-        inventory.push_back("Gerudo Token");
+        inventory.push_back(OOT3D_GERUDO_TOKEN);
     }
 
     // Finally, add the items to the actual pool
-    LOG_TO_DEBUG("Starting Items for Oot3d World " + std::to_string(worldId + 1) + ":");
-    for (const auto& itemName : inventory)
+    for (const auto& itemId : inventory)
     {
-        ItemID itemId;
-        // Don't preppend "Oot3d" if the string already starts with it
-        if (Utility::Str::StartsWith(itemName, "Oot3d"))
-        {
-            itemId = NameToItemID(itemName);
-        }
-        else
-        {
-            itemId = NameToItemID("Oot3d " + itemName);
-        }
-
-        if (itemId == INVALID)
-        {
-            LOG_TO_ERROR("ERROR: Unknown item name \"" + itemName + "\"");
-            return WorldBuildingError::BAD_ITEM_NAME;
-        }
         startingInventory.push_back(itemTable[itemId]);
-        LOG_TO_DEBUG("- " + itemName);
     }
 
     return WorldBuildingError::NONE;

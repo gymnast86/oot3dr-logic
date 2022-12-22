@@ -57,9 +57,9 @@ private:
     void ExpandToDAreas(Search* search, uint8_t ageTimeToExpand, const AreaID& startingArea = AreaID::Root);
 
     // oot3d_world_item_pool.cpp
-    std::string GetJunkItem();
-    std::string GetPendingJunkItem();
-    void ReduceItemMaximum(std::vector<std::string> mainItemPool, const std::string& itemToReplace, int max);
+    ItemID GetJunkItem();
+    ItemID GetPendingJunkItem();
+    void ReduceItemMaximum(ItemIDPool& mainItemPool, const ItemID& itemToReplace, int max);
     WorldBuildingError GenerateOot3dItemPool();
     WorldBuildingError GenerateOot3dStartingInventory();
 };

@@ -55,20 +55,14 @@ WorldBuildingError World::PlaceItemAtLocation(const LocationID& locationId, cons
     return WorldBuildingError::NONE;
 }
 
-WorldBuildingError World::PlaceItemAtLocation(const std::string& locationName, const std::string& itemName)
+WorldBuildingError World::PlaceItemAtLocation(const std::string& locationName, const ItemID& itemId)
 {
     WorldBuildingError err;
     auto locationId = NameToLocationID(GetTypeString() + " " + locationName);
-    auto itemId = NameToItemID(GetTypeString() + " " + itemName);
     if (locationId == LocationID::INVALID)
     {
         LOG_TO_ERROR("ERROR: Unknown location \"" + locationName + "\"");
         return WorldBuildingError::BAD_LOCATION_NAME;
-    }
-    if (itemId == INVALID)
-    {
-        LOG_TO_ERROR("ERROR: Unknown item \"" + itemName + "\"");
-        return WorldBuildingError::BAD_ITEM_NAME;
     }
     // Assume the item is for this world if it's a string
     Item item = Item(itemId, this);
@@ -85,24 +79,6 @@ WorldBuildingError World::SetLocationAsVanilla(const std::string& locationName)
         return WorldBuildingError::BAD_LOCATION_NAME;
     }
     locations[locationId]->SetVanillaItemAsCurrentItem();
-    return WorldBuildingError::NONE;
-}
-
-WorldBuildingError World::SetLocationsWithVanillaItem(const std::string& itemName)
-{
-    auto itemId = NameToItemID(GetTypeString() + " " + itemName);
-    if (itemId == INVALID)
-    {
-        LOG_TO_ERROR("ERROR: Unknown item \"" + itemName + "\"");
-        return WorldBuildingError::BAD_ITEM_NAME;
-    }
-    for (auto& [id, location] : locations)
-    {
-        if (location->GetVanillaItemID() == itemId)
-        {
-            location->SetVanillaItemAsCurrentItem();
-        }
-    }
     return WorldBuildingError::NONE;
 }
 

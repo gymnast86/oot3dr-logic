@@ -10,7 +10,7 @@
 using ItemPool     = std::vector<Item>;
 using ItemIDPool   = std::vector<ItemID>;
 using ItemMultiSet = std::multiset<Item>;
-using ItemMap      = std::unordered_map<std::string, int>;
+using ItemMap      = std::unordered_map<ItemID, int>;
 
 namespace PresetPools {
     extern ItemPool NoItems;

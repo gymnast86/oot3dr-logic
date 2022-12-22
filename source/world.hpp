@@ -78,9 +78,8 @@ public:
     size_t GetNumWorlds() const;
     size_t GetNumWorldTypes() const;
     WorldBuildingError PlaceItemAtLocation(const LocationID& locationId, const Item& item);
-    WorldBuildingError PlaceItemAtLocation(const std::string& location, const std::string& item);
+    WorldBuildingError PlaceItemAtLocation(const std::string& location, const ItemID& itemId);
     WorldBuildingError SetLocationAsVanilla(const std::string& location);
-    WorldBuildingError SetLocationsWithVanillaItem(const std::string& itemName);
     LocationPool GetAllItemLocations();
 
     virtual WorldBuildingError Build();
