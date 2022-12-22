@@ -160,14 +160,14 @@ bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* 
 
         case RequirementType::HEARTS:
             reqHearts = std::get<int>(req.args[0]);
-            curHearts = search->ownedItems.count(Item(ItemID::Oot3dHeartContainer, this)) + (search->ownedItems.count(Item(ItemID::Oot3dPieceOfHeart, this)) >> 2); // Heart Containers + (Pieces of Heart / 4)
+            curHearts = search->ownedItems.count(Item(OOT3D_HEART_CONTAINER, this)) + (search->ownedItems.count(Item(OOT3D_PIECE_OF_HEART, this)) >> 2); // Heart Containers + (Pieces of Heart / 4)
             return curHearts >= reqHearts;
 
         case RequirementType::EFFECTIVE_HEALTH:
             reqEffectiveHealth = std::get<int>(req.args[0]);
             multiplier = std::get<int>(req.args[1]);
-            curHearts = search->ownedItems.count(Item(ItemID::Oot3dHeartContainer, this)) + (search->ownedItems.count(Item(ItemID::Oot3dPieceOfHeart, this)) >> 2); // Heart Containers + (Pieces of Heart / 4)
-            doubleDefense = search->ownedItems.count(Item(ItemID::Oot3dDoubleDefense, this)) > 0;
+            curHearts = search->ownedItems.count(Item(OOT3D_HEART_CONTAINER, this)) + (search->ownedItems.count(Item(OOT3D_PIECE_OF_HEART, this)) >> 2); // Heart Containers + (Pieces of Heart / 4)
+            doubleDefense = search->ownedItems.count(Item(OOT3D_DOUBLE_DEFENSE, this)) > 0;
             //Number of half heart hits to die, ranges from 1 to 160
             curEffectiveHealth = ((curHearts << (2 + doubleDefense)) >> multiplier) + ((curHearts << (2 + doubleDefense)) % (1 << multiplier) > 0);
             return curEffectiveHealth >= reqEffectiveHealth;
@@ -177,44 +177,44 @@ bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* 
         case RequirementType::WATER_TIMER:
             if (req.type == RequirementType::FIRE_TIMER)
             {
-                canUseTunic = ageTime & OOT3D_IS_ADULT && (search->ownedItems.count(Item(ItemID::Oot3dGoronTunic, this)) || search->ownedItems.count(Item(ItemID::Oot3dBuyGoronTunic, this)));
+                canUseTunic = ageTime & OOT3D_IS_ADULT && (search->ownedItems.count(Item(OOT3D_GORON_TUNIC, this)) || search->ownedItems.count(Item(OOT3D_BUY_GORON_TUNIC, this)));
             }
             else
             {
-                canUseTunic = ageTime & OOT3D_IS_ADULT && (search->ownedItems.count(Item(ItemID::Oot3dZoraTunic, this)) || search->ownedItems.count(Item(ItemID::Oot3dBuyZoraTunic, this)));
+                canUseTunic = ageTime & OOT3D_IS_ADULT && (search->ownedItems.count(Item(OOT3D_ZORA_TUNIC, this)) || search->ownedItems.count(Item(OOT3D_ZORA_TUNIC, this)));
             }
             reqSeconds = std::get<int>(req.args[0]);
             fewerTunicRequirements = std::get<bool>(req.args[1]);
-            curHearts = search->ownedItems.count(Item(ItemID::Oot3dHeartContainer, this)) + (search->ownedItems.count(Item(ItemID::Oot3dPieceOfHeart, this)) >> 2);
+            curHearts = search->ownedItems.count(Item(OOT3D_HEART_CONTAINER, this)) + (search->ownedItems.count(Item(OOT3D_PIECE_OF_HEART, this)) >> 2);
             curMaxSeconds = canUseTunic ? 255 : (fewerTunicRequirements) ? (curHearts * 8) : 0;
             return curMaxSeconds >= reqSeconds;
 
         case RequirementType::HAS_STONES:
             expectedCount = std::get<int>(req.args[0]);
-            return search->ownedItems.count(Item(ItemID::Oot3dKokiriEmerald, this)) +
-                   search->ownedItems.count(Item(ItemID::Oot3dGoronRuby, this))     +
-                   search->ownedItems.count(Item(ItemID::Oot3dZoraSapphire, this))  >= expectedCount;
+            return search->ownedItems.count(Item(OOT3D_KOKIRI_EMERALD, this)) +
+                   search->ownedItems.count(Item(OOT3D_GORON_RUBY, this))     +
+                   search->ownedItems.count(Item(OOT3D_ZORA_SAPPHIRE, this))  >= expectedCount;
 
         case RequirementType::HAS_MEDALLIONS:
             expectedCount = std::get<int>(req.args[0]);
-            return search->ownedItems.count(Item(ItemID::Oot3dForestMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::Oot3dFireMedallion, this))   +
-                   search->ownedItems.count(Item(ItemID::Oot3dWaterMedallion, this))  +
-                   search->ownedItems.count(Item(ItemID::Oot3dSpiritMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::Oot3dShadowMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::Oot3dLightMedallion, this))  >= expectedCount;
+            return search->ownedItems.count(Item(OOT3D_FOREST_MEDALLION, this)) +
+                   search->ownedItems.count(Item(OOT3D_FIRE_MEDALLION, this))   +
+                   search->ownedItems.count(Item(OOT3D_WATER_MEDALLION, this))  +
+                   search->ownedItems.count(Item(OOT3D_SPIRIT_MEDALLION, this)) +
+                   search->ownedItems.count(Item(OOT3D_SHADOW_MEDALLION, this)) +
+                   search->ownedItems.count(Item(OOT3D_LIGHT_MEDALLION, this))  >= expectedCount;
 
         case RequirementType::HAS_REWARDS:
             expectedCount = std::get<int>(req.args[0]);
-            return search->ownedItems.count(Item(ItemID::Oot3dKokiriEmerald, this))   +
-                   search->ownedItems.count(Item(ItemID::Oot3dGoronRuby, this))       +
-                   search->ownedItems.count(Item(ItemID::Oot3dZoraSapphire, this))    +
-                   search->ownedItems.count(Item(ItemID::Oot3dForestMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::Oot3dFireMedallion, this))   +
-                   search->ownedItems.count(Item(ItemID::Oot3dWaterMedallion, this))  +
-                   search->ownedItems.count(Item(ItemID::Oot3dSpiritMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::Oot3dShadowMedallion, this)) +
-                   search->ownedItems.count(Item(ItemID::Oot3dLightMedallion, this))  >= expectedCount;
+            return search->ownedItems.count(Item(OOT3D_KOKIRI_EMERALD, this))   +
+                   search->ownedItems.count(Item(OOT3D_GORON_RUBY, this))       +
+                   search->ownedItems.count(Item(OOT3D_ZORA_SAPPHIRE, this))    +
+                   search->ownedItems.count(Item(OOT3D_FOREST_MEDALLION, this)) +
+                   search->ownedItems.count(Item(OOT3D_FIRE_MEDALLION, this))   +
+                   search->ownedItems.count(Item(OOT3D_WATER_MEDALLION, this))  +
+                   search->ownedItems.count(Item(OOT3D_SPIRIT_MEDALLION, this)) +
+                   search->ownedItems.count(Item(OOT3D_SHADOW_MEDALLION, this)) +
+                   search->ownedItems.count(Item(OOT3D_LIGHT_MEDALLION, this))  >= expectedCount;
 
         default:
             LOG_TO_ERROR("Default case hit when evaluating requirement. Something probably went wrong.");
@@ -325,7 +325,7 @@ WorldBuildingError Oot3dWorld::CacheAgeTimeRequirements()
 {
     LOG_TO_DEBUG("Caching Age/Time requirements...");
     Search searchWithItems = Search();
-    for (uint32_t itemIdint = static_cast<uint32_t>(ItemID::Oot3dKokiriSword); itemIdint < static_cast<uint32_t>(ItemID::Oot3dHint); itemIdint++)
+    for (uint32_t itemIdint = static_cast<uint32_t>(OOT3D_KOKIRI_SWORD); itemIdint < static_cast<uint32_t>(OOT3D_HINT); itemIdint++)
     {
         // Insert 10 of each item to account for small keys
         Item item = Item(static_cast<ItemID>(itemIdint), this);

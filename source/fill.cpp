@@ -21,7 +21,7 @@ FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, const Ite
         {
             for (auto& locAccess : area->locations)
             {
-                if (locationSet.count(locAccess.location) > 0 && locAccess.location->GetCurrentItem().GetID() == ItemID::NONE)
+                if (locationSet.count(locAccess.location) > 0 && locAccess.location->GetCurrentItem().GetID() == NONE)
                 {
                     validLocations.push_back(&locAccess);
                 }
@@ -66,7 +66,7 @@ FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, const Ite
 
             for (auto locAccess : validLocations)
             {
-                if (locAccess->location->GetCurrentItem().GetID() != ItemID::NONE || search.visitedAreas.count(locAccess->area) == 0)
+                if (locAccess->location->GetCurrentItem().GetID() != NONE || search.visitedAreas.count(locAccess->area) == 0)
                 {
                     continue;
                 }
@@ -105,7 +105,7 @@ FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, const Ite
 
 FillError FastFill(ItemPool& itemsToPlace, LocationPool& allowedLocations)
 {
-    auto emptyAllowedLocations = FilterFromPool(allowedLocations, [](Location* loc){return loc->GetCurrentItem().GetID() == ItemID::NONE;});
+    auto emptyAllowedLocations = FilterFromPool(allowedLocations, [](Location* loc){return loc->GetCurrentItem().GetID() == NONE;});
     ENOUGH_SPACE_CHECK(itemsToPlace, emptyAllowedLocations);
     ShufflePool(emptyAllowedLocations);
     for (auto location : emptyAllowedLocations)
@@ -144,7 +144,7 @@ FillError FillWorlds(WorldPool& worlds)
     {
         return FillError::GAME_NOT_BEATABLE;
     }
-    
+
     return err;
 }
 

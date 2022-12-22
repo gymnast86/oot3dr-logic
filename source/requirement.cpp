@@ -9,7 +9,7 @@
 #define STR_HAS(str, substr) str.find(substr) != std::string::npos
 #define AREA_VALID_CHECK(name, reqStr) if (NameToAreaID(name) == AreaID::INVALID) {std::cout << "ERROR: Unknown area name " << name << " in requirement string: \"" << reqStr << "\"" << std::endl; return RequirementError::UNKNOWN_AREA_NAME;}
 #define VALID_NUMBER_CHECK(numberStr) if (numberStr.find_first_not_of("0123456789") != std::string::npos) { std::cout << "ERROR: Cannot convert \"" << numberStr << "\" to a number" << std::endl; return RequirementError::COULD_NOT_PARSE_NUMBER;}
-#define VALID_ITEM_CHECK(itemName, reqStr) if (NameToItemID(itemName) == ItemID::INVALID) {std::cout << "ERROR: Unknown item name " << itemName << " in requirement string: \"" << reqStr << "\"" << std::endl; return RequirementError::UNKNOWN_ITEM_NAME;}
+#define VALID_ITEM_CHECK(itemName, reqStr) if (NameToItemID(itemName) == INVALID) {std::cout << "ERROR: Unknown item name " << itemName << " in requirement string: \"" << reqStr << "\"" << std::endl; return RequirementError::UNKNOWN_ITEM_NAME;}
 
 // Takes a logic expression string and stores it as a requirement within the passed in Requirement
 // object. This means we only have to parse the string once and then evaluating it many times
@@ -102,7 +102,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             return RequirementError::NONE;
         }
         // Then an item...
-        else if (NameToItemID(gamePrefix + "_" + argStr) != ItemID::INVALID)
+        else if (NameToItemID(gamePrefix + "_" + argStr) != INVALID)
         {
             req.type = RequirementType::ITEM;
             ItemID itemId = NameToItemID(gamePrefix + "_" + argStr);
@@ -238,7 +238,7 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             songStr = gamePrefix + "_" + songStr;
             VALID_ITEM_CHECK(songStr, argStr)
             auto song = NameToItemID(songStr);
-            Requirement ocarinaReq = {RequirementType::ITEM, {Item(ItemID::Oot3dProgressiveOcarina, world)}};
+            Requirement ocarinaReq = {RequirementType::ITEM, {Item(OOT3D_PROGRESSIVE_OCARINA, world)}};
             Requirement songReq = {RequirementType::ITEM, {Item(song, world)}};
             req.args.push_back(ocarinaReq);
             req.args.push_back(songReq);

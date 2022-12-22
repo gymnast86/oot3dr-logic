@@ -65,7 +65,7 @@ WorldBuildingError World::PlaceItemAtLocation(const std::string& locationName, c
         LOG_TO_ERROR("ERROR: Unknown location \"" + locationName + "\"");
         return WorldBuildingError::BAD_LOCATION_NAME;
     }
-    if (itemId == ItemID::INVALID)
+    if (itemId == INVALID)
     {
         LOG_TO_ERROR("ERROR: Unknown item \"" + itemName + "\"");
         return WorldBuildingError::BAD_ITEM_NAME;
@@ -91,7 +91,7 @@ WorldBuildingError World::SetLocationAsVanilla(const std::string& locationName)
 WorldBuildingError World::SetLocationsWithVanillaItem(const std::string& itemName)
 {
     auto itemId = NameToItemID(GetTypeString() + " " + itemName);
-    if (itemId == ItemID::INVALID)
+    if (itemId == INVALID)
     {
         LOG_TO_ERROR("ERROR: Unknown item \"" + itemName + "\"");
         return WorldBuildingError::BAD_ITEM_NAME;

@@ -100,7 +100,7 @@ void Search::SearchWorlds(int tempWorldToSearch /*= -1*/, bool oneIteration /*= 
         {
             for (auto& locAccess : area->locations)
             {
-                if (locAccess.location->GetCurrentItem().GetID() != ItemID::NONE && visitedLocations.count(locAccess.location) == 0)
+                if (locAccess.location->GetCurrentItem().GetID() != NONE && visitedLocations.count(locAccess.location) == 0)
                 {
                     itemLocations.insert(&locAccess);
                 }
@@ -298,9 +298,9 @@ void Search::ProcessLocation(Location* location)
     if (searchMode == SearchMode::GeneratePlaythrough || searchMode == SearchMode::GameBeatable)
     {
         // If we've found the item at the final boss for all worlds, then return early
-        if (location->GetCurrentItem().GetID() == ItemID::Oot3dTriforce /*or ItemID::Mm3dMajoraBeatable*/)
+        if (location->GetCurrentItem().GetID() == OOT3D_TRIFORCE /*or Mm3dMajoraBeatable*/)
         {
-            if (std::count_if(ownedItems.begin(), ownedItems.end(), [](const Item& item){return item.GetID() == ItemID::Oot3dTriforce /* || ItemID::Mm3dMajoraBeatable*/;}) == (int) worlds->size())
+            if (std::count_if(ownedItems.begin(), ownedItems.end(), [](const Item& item){return item.GetID() == OOT3D_TRIFORCE /* || Mm3dMajoraBeatable*/;}) == (int) worlds->size())
             {
                 // If this is the playthrough, then disregard any items found in the current sphere
                 // and just put the final boss item there.
@@ -420,7 +420,7 @@ void GeneratePlaythrough(WorldPool& worlds)
         {
             // Remove the item at the current location and check if the game is still beatable
             auto itemAtLocation = location->currentItem;
-            location->currentItem = Item(ItemID::NONE, worlds[0].get());
+            location->currentItem = Item(NONE, worlds[0].get());
             auto search = Search(SearchMode::GameBeatable, &worlds);
             search.SearchWorlds();
 
@@ -516,7 +516,7 @@ void Search::DumpSearchGraph(size_t worldId /*= 0*/, const std::string filename 
         for (const auto& [location, req, locArea] : area->locations) {
             std::string connectedLocation = location->GetName();
             std::string itemAtLocation = "No Item";
-            if (location->GetCurrentItem().GetID() != ItemID::NONE)
+            if (location->GetCurrentItem().GetID() != NONE)
             {
                 itemAtLocation = location->GetCurrentItem().GetName();
             }

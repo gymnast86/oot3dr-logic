@@ -38,7 +38,7 @@ public:
     std::string dungeon = "None";
     World* world = nullptr;
     Item currentItem;
-    ItemID vanillaItemId = ItemID::NONE;
+    ItemID vanillaItemId = NONE;
     bool hasKnownVanillaItem = false;
 
     // Used to differentiate between regular item locations and other logical

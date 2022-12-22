@@ -23,10 +23,10 @@ public:
     void AddLocation(Location* loc);
 
     int keyCount = -1;
-    ItemID smallKey = ItemID::NONE;
-    ItemID bossKey = ItemID::NONE;
-    ItemID map = ItemID::NONE;
-    ItemID compass = ItemID::NONE;
+    ItemID smallKey = NONE;
+    ItemID bossKey = NONE;
+    ItemID map = NONE;
+    ItemID compass = NONE;
     std::list<Location*> locations = {};
     std::list<Location*> outsideDependentLocations = {}; // Locations which depend on beating the dungeon
     // std::string name = "";

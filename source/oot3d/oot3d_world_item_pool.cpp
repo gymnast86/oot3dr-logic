@@ -591,7 +591,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     {
         for (auto& [id, location] : locations)
         {
-            if (location->GetVanillaItemID() == ItemID::Oot3dGoldSkulltulaToken && location->dungeon != "None")
+            if (location->GetVanillaItemID() == OOT3D_GOLD_SKULLTULA_TOKEN && location->dungeon != "None")
             {
                 location->SetVanillaItemAsCurrentItem();
             }
@@ -605,7 +605,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     {
         for (auto& [id, location] : locations)
         {
-            if (location->GetVanillaItemID() == ItemID::Oot3dGoldSkulltulaToken && location->dungeon == "None")
+            if (location->GetVanillaItemID() == OOT3D_GOLD_SKULLTULA_TOKEN && location->dungeon == "None")
             {
                 location->SetVanillaItemAsCurrentItem();
             }
@@ -737,7 +737,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         {
             for (auto& [dungeonName, dungeon] : dungeons)
             {
-                if (dungeon->IsUsingKeyRing() && dungeon->GetSmallKeyItemID() != ItemID::NONE)
+                if (dungeon->IsUsingKeyRing() && dungeon->GetSmallKeyItemID() != NONE)
                 {
                     pendingJunkPool.push_back(ItemIDToName(dungeon->GetKeyRingItemID()));
                 }
@@ -752,7 +752,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         {
             for (auto& [dungeonName, dungeon] : dungeons)
             {
-                if (dungeon->GetBossKeyItemID() != ItemID::NONE && dungeonName != "Ganons Castle")
+                if (dungeon->GetBossKeyItemID() != NONE && dungeonName != "Ganons Castle")
                 {
                     pendingJunkPool.push_back(ItemIDToName(dungeon->GetBossKeyItemID()));
                 }
@@ -907,11 +907,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         {
             auto map     = dungeon->GetMapItemID();
             auto compass = dungeon->GetCompassItemID();
-            if (map != ItemID::NONE)
+            if (map != NONE)
             {
                 mainItemPool.push_back(ItemIDToName(map));
             }
-            if (compass != ItemID::NONE)
+            if (compass != NONE)
             {
                 mainItemPool.push_back(ItemIDToName(compass));
             }
@@ -1057,7 +1057,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
             itemId = NameToItemID("Oot3d " + itemName);
         }
 
-        if (itemId == ItemID::INVALID)
+        if (itemId == INVALID)
         {
             LOG_TO_ERROR("ERROR: Unknown item name \"" + itemName + "\"");
             return WorldBuildingError::BAD_ITEM_NAME;
@@ -1079,11 +1079,11 @@ WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
         {
             auto map = dungeon->GetMapItemID();
             auto compass = dungeon->GetCompassItemID();
-            if (map != ItemID::NONE)
+            if (map != NONE)
             {
                 inventory.push_back(ItemIDToName(map));
             }
-            if (compass != ItemID::NONE)
+            if (compass != NONE)
             {
                 inventory.push_back(ItemIDToName(compass));
             }
@@ -1095,7 +1095,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
         for (auto& [name, dungeon] : dungeons)
         {
             auto smallKey = dungeon->GetSmallKeyItemID();
-            if (smallKey != ItemID::NONE)
+            if (smallKey != NONE)
             {
                 AddElementToPool(inventory, ItemIDToName(smallKey), dungeon->GetSmallKeyCount());
             }
@@ -1123,7 +1123,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
         for (auto& [name, dungeon] : dungeons)
         {
             auto bossKey = dungeon->GetBossKeyItemID();
-            if (bossKey != ItemID::NONE && name != "Ganons Castle")
+            if (bossKey != NONE && name != "Ganons Castle")
             {
                 inventory.push_back(ItemIDToName(bossKey));
             }
@@ -1155,7 +1155,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dStartingInventory()
             itemId = NameToItemID("Oot3d " + itemName);
         }
 
-        if (itemId == ItemID::INVALID)
+        if (itemId == INVALID)
         {
             LOG_TO_ERROR("ERROR: Unknown item name \"" + itemName + "\"");
             return WorldBuildingError::BAD_ITEM_NAME;

@@ -7,7 +7,7 @@ Location::Location() {}
 Location::Location(const LocationID& id_, std::string name_, World* world_) :
                       id(id_), name(std::move(name_)), world(world_)
 {
-    currentItem = Item(ItemID::NONE, world);
+    currentItem = Item(NONE, world);
 }
 
 Location::~Location() = default;
@@ -53,7 +53,7 @@ void Location::SetVanillaItemAsCurrentItem()
 void Location::RemoveCurrentItem()
 {
     LOG_TO_DEBUG("Removed " + currentItem.GetName() + " from " + this->GetName());
-    currentItem = Item(ItemID::NONE, world);
+    currentItem = Item(NONE, world);
 }
 
 ItemID Location::GetVanillaItemID() const

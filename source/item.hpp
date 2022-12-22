@@ -20,7 +20,7 @@ public:
     bool operator==(const Item& rhs) const;
     bool operator<(const Item& rhs) const;
 
-    ItemID id = ItemID::NONE;
+    ItemID id = NONE;
     std::string name = "";
     World* world = nullptr;
     int worldId = -1;

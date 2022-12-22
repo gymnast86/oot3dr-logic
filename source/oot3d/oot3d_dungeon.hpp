@@ -23,7 +23,7 @@ public:
 
     int    GetSmallKeyCount() const override;
 
-    ItemID keyRing = ItemID::NONE;
+    ItemID keyRing = NONE;
     bool usingKeyRing = false;
     int mqKeyCount = -1;
     bool isMq;
