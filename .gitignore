@@ -25,3 +25,4 @@ local_testing/*
 !local_testing/CMakeLists.txt
 !gui/CMakeLists.txt
 source/*_id.*pp
+source/item_id.h
