@@ -1,5 +1,5 @@
 #include "oot3d_world.hpp"
-#include "../general_item_pool.hpp"
+#include "../item_pool.hpp"
 #include "../utility/pool_functions.hpp"
 #include "../utility/random.hpp"
 #include "../utility/string_util.hpp"

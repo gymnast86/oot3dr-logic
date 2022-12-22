@@ -7,7 +7,7 @@
   exits:
       Dodongos Cavern Beginning: dodongos_cavern_dungeon_mode == vanilla
       Dodongos Cavern MQ Beginning: dodongos_cavern_dungeon_mode == mq
-      Death Mountain: 'True'
+      Death Mountain: "True"
 
 ############################
 #     VANILLA DUNGEON      #
@@ -15,7 +15,7 @@
 - region_name: Dodongos Cavern Beginning
   dungeon: Dodongos Cavern
   exits:
-      Dodongos Cavern Entryway: 'True'
+      Dodongos Cavern Entryway: "True"
       Dodongos Cavern Lobby: here(can_blast_or_smash or Goron_Bracelet)
                                         #Glitched -> here(GlitchBlue_FireWall and Blue_Fire))
 
@@ -31,7 +31,7 @@
       Gossip Stone Fairy: can_summon_gossip_fairy and here(can_blast_or_smash or Goron_Bracelet) and has_bottle
                                             #Glitched -> can_summon_gossip_fairy and here(GlitchBlue_FireWall and Blue_Fire))
   exits:
-      Dodongos Cavern Beginning: 'True'
+      Dodongos Cavern Beginning: "True"
       Dodongos Cavern Lobby Switch: is_adult
                                             #Glitched -> CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE) or (has_explosives and (can_use(Slingshot) or can_use(Hookshot) or can_use(Bow)) and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED)) or (can_shield and Goron_Bracelet and GlitchModernHalfie) or ((Kokiri_Sword or Sticks or can_use(Megaton_Hammer)) and (Bombs or Goron_Bracelet) and Fairy and GlitchClassicHalfie))
       Dodongos Cavern SE Corridor: here(can_blast_or_smash or Goron_Bracelet)
@@ -40,15 +40,15 @@
       Dodongos Cavern Far Bridge: at('Dodongos Cavern Far Bridge', True)
                                             #Glitched -> CanDoGlitch(GlitchType::HookshotJump_Boots GlitchDifficulty::INTERMEDIATE))
       Dodongos Cavern Boss Area: here(has_explosives)
-      Dodongos Cavern Boss Room: 'False'
+      Dodongos Cavern Boss Room: "False"
                                             #Glitched -> CanDoGlitch(GlitchType::HookshotJump_Boots GlitchDifficulty::ADVANCED))
 
 
 - region_name: Dodongos Cavern Lobby Switch
   dungeon: Dodongos Cavern
   exits:
-      Dodongos Cavern Lobby: 'True'
-      Dodongos Cavern Dodongo Room: 'True'
+      Dodongos Cavern Lobby: "True"
+      Dodongos Cavern Dodongo Room: "True"
 
 
 - region_name: Dodongos Cavern SE Corridor
@@ -57,10 +57,10 @@
       Dodongos Cavern GS Scarecrow: can_use(Scarecrow) or (is_adult and can_use(Longshot)) or (logic_dc_scarecrow_gs and (is_adult or can_child_attack))
                                                   #Glitched -> CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) or (can_use(Longshot) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE)))
   exits:
-      Dodongos Cavern Lobby: 'True'
+      Dodongos Cavern Lobby: "True"
       Dodongos Cavern SE Room: here(can_blast_or_smash or is_adult or can_child_attack or (can_take_damage and can_shield))
                                                    #Glitched -> here((GlitchBlue_FireWall and Blue_Fire)))
-      Dodongos Cavern Near Lower Lizalfos: 'True'
+      Dodongos Cavern Near Lower Lizalfos: "True"
 
 
 - region_name: Dodongos Cavern SE Room
@@ -69,14 +69,14 @@
       Dodongos Cavern GS Side Room Near Lower Lizalfos: is_adult or can_child_attack
                                                    #Glitched -> can_use(Megaton_Hammer))
   exits:
-      Dodongos Cavern SE Corridor: 'True'
+      Dodongos Cavern SE Corridor: "True"
 
 
 - region_name: Dodongos Cavern Near Lower Lizalfos
   dungeon: Dodongos Cavern
   exits:
-      Dodongos Cavern SE Corridor: 'True'
-      Dodongos Cavern Lower Lizalfos: 'True'
+      Dodongos Cavern SE Corridor: "True"
+      Dodongos Cavern Lower Lizalfos: "True"
 
 
 - region_name: Dodongos Cavern Lower Lizalfos
@@ -92,7 +92,7 @@
   dungeon: Dodongos Cavern
   exits:
       Dodongos Cavern Lobby Switch: has_fire_source_with_torch
-      Dodongos Cavern Lower Lizalfos: 'True'
+      Dodongos Cavern Lower Lizalfos: "True"
       Dodongos Cavern Near Dodongo Room: here(can_blast_or_smash or Goron_Bracelet)
                                                  #Glitched -> here(GlitchBlue_FireWall and Blue_Fire))
 
@@ -102,13 +102,13 @@
   locations:
       Dodongos Cavern Deku Scrub Side Room Near Dodongos: can_stun_deku
   exits:
-      Dodongos Cavern Dodongo Room: 'True'
+      Dodongos Cavern Dodongo Room: "True"
 
 
 - region_name: Dodongos Cavern Stairs Lower
   dungeon: Dodongos Cavern
   exits:
-      Dodongos Cavern Lobby: 'True'
+      Dodongos Cavern Lobby: "True"
       Dodongos Cavern Stairs Upper: has_explosives or Goron_Bracelet or can_use(Dins_Fire) or (logic_dc_staircase and can_use(Bow))
       Dodongos Cavern Compass Room: here(can_blast_or_smash or Goron_Bracelet)
                                             #Glitched -> here(GlitchBlue_FireWall and Blue_Fire))
@@ -121,14 +121,14 @@
                                                             #Glitched -> CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) or (CanDoGlitch(GlitchType::HammerSlide GlitchDifficulty::NOVICE) and hookshot_or_boomerang))
       Dodongos Cavern GS Vines Above Stairs: is_adult or can_child_attack
   exits:
-      Dodongos Cavern Stairs Lower: 'True'
-      Dodongos Cavern Armos Room: 'True'
+      Dodongos Cavern Stairs Lower: "True"
+      Dodongos Cavern Armos Room: "True"
 
 
 - region_name: Dodongos Cavern Compass Room
   dungeon: Dodongos Cavern
   locations:
-      Dodongos Cavern Compass Chest: 'True'
+      Dodongos Cavern Compass Chest: "True"
   exits:
       Dodongos Cavern Stairs Lower: is_adult or has_explosives or Goron_Bracelet
                                             #Glitched -> can_use(Megaton_Hammer))
@@ -137,14 +137,14 @@
 - region_name: Dodongos Cavern Armos Room
   dungeon: Dodongos Cavern
   exits:
-      Dodongos Cavern Stairs Upper: 'True'
-      Dodongos Cavern Bomb Room Lower: 'True'
+      Dodongos Cavern Stairs Upper: "True"
+      Dodongos Cavern Bomb Room Lower: "True"
 
 
 - region_name: Dodongos Cavern Bomb Room Lower
   dungeon: Dodongos Cavern
   locations:
-      Dodongos Cavern Bomb Flower Platform Chest: 'True'
+      Dodongos Cavern Bomb Flower Platform Chest: "True"
   exits:
       Dodongos Cavern 2F Side Room: here(can_blast_or_smash)
                                                     #Glitched -> here((GlitchBlue_FireWall and Blue_Fire) or (can_use(Sticks) and CanDoGlitch(GlitchType::QPA GlitchDifficulty::ADVANCED))))
@@ -161,13 +161,13 @@
       Dodongos Cavern Deku Scrub Near Bomb Bag Left: can_stun_deku
       Dodongos Cavern Deku Scrub Near Bomb Bag Right: can_stun_deku
   exits:
-      Dodongos Cavern Bomb Room Lower: 'True'
+      Dodongos Cavern Bomb Room Lower: "True"
 
 
 - region_name: Dodongos Cavern First Slingshot Room
   dungeon: Dodongos Cavern
   exits:
-      Dodongos Cavern Bomb Room Lower: 'True'
+      Dodongos Cavern Bomb Room Lower: "True"
       Dodongos Cavern Upper Lizalfos: can_use(Slingshot) or can_use(Bow) or logic_dc_slingshot_skip
                                                #Glitched -> CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) or (is_adult and can_use(Hookshot) and has_bombchus and can_shield and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED)))
 
@@ -175,7 +175,7 @@
 - region_name: Dodongos Cavern Upper Lizalfos
   dungeon: Dodongos Cavern
   exits:
-      Dodongos Cavern Lower Lizalfos: 'True'
+      Dodongos Cavern Lower Lizalfos: "True"
       Dodongos Cavern First Slingshot Room: here(is_adult or Slingshot or Sticks or Kokiri_Sword or has_explosives)
                                                      #Glitched -> can_use(Megaton_Hammer))
       Dodongos Cavern Second Slingshot Room: here(is_adult or Slingshot or Sticks or Kokiri_Sword or has_explosives)
@@ -185,7 +185,7 @@
 - region_name: Dodongos Cavern Second Slingshot Room
   dungeon: Dodongos Cavern
   exits:
-      Dodongos Cavern Upper Lizalfos: 'True'
+      Dodongos Cavern Upper Lizalfos: "True"
       Dodongos Cavern Bomb Room Upper: can_use(Slingshot) or can_use(Bow) or logic_dc_slingshot_skip
                                                #Glitched -> CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) or (is_adult and can_use(Hookshot) and has_bombchus and can_shield and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED)))
 
@@ -193,11 +193,11 @@
 - region_name: Dodongos Cavern Bomb Room Upper
   dungeon: Dodongos Cavern
   locations:
-      Dodongos Cavern Bomb Bag Chest: 'True'
+      Dodongos Cavern Bomb Bag Chest: "True"
   exits:
-      Dodongos Cavern Bomb Room Lower: 'True'
-      Dodongos Cavern Second Slingshot Room: 'True'
-      Dodongos Cavern Far Bridge: 'True'
+      Dodongos Cavern Bomb Room Lower: "True"
+      Dodongos Cavern Second Slingshot Room: "True"
+      Dodongos Cavern Far Bridge: "True"
 
 
 - region_name: Dodongos Cavern Far Bridge
@@ -207,8 +207,8 @@
                                                          #Glitched -> here((can_use(Sticks) and CanDoGlitch(GlitchType::QPA GlitchDifficulty::ADVANCED))) or
                                                         #                     CanDoGlitch(GlitchType::HookshotJump_Boots GlitchDifficulty::INTERMEDIATE) or CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::NOVICE))
   exits:
-      Dodongos Cavern Lobby: 'True'
-      Dodongos Cavern Bomb Room Upper: 'True'
+      Dodongos Cavern Lobby: "True"
+      Dodongos Cavern Bomb Room Upper: "True"
 
 
 - region_name: Dodongos Cavern Boss Area
@@ -216,10 +216,10 @@
   locations:
       Fairy Pot: has_bottle
   exits:
-      Dodongos Cavern Lobby: 'True'
+      Dodongos Cavern Lobby: "True"
       Dodongos Cavern Back Room: here(can_blast_or_smash)
                                          #Glitched -> here((GlitchBlue_FireWall and Blue_Fire) or (can_use(Sticks) and CanDoGlitch(GlitchType::QPA GlitchDifficulty::ADVANCED))))
-      Dodongos Cavern Boss Room: 'True'
+      Dodongos Cavern Boss Room: "True"
 
 
 - region_name: Dodongos Cavern Back Room
@@ -228,7 +228,7 @@
       Dodongos Cavern GS Back Room: is_adult or can_child_attack
                                                   #Glitched -> can_use(Megaton_Hammer))
   exits:
-      Dodongos Cavern Boss Area: 'True'
+      Dodongos Cavern Boss Area: "True"
 
 
 - region_name: Dodongos Cavern Boss Room
@@ -237,12 +237,12 @@
       Dodongos Cavern Clear: here(has_explosives or (can_use(Megaton_Hammer) and can_shield)) and (Bombs or Goron_Bracelet) and (is_adult or Sticks or Kokiri_Sword)
                                        #Glitched -> here(has_explosives or (can_use(Megaton_Hammer) and can_shield) or (GlitchBlue_FireWall and Blue_Fire)) and (has_explosives or Goron_Bracelet) and (is_adult or Sticks or Kokiri_Sword or can_use(Megaton_Hammer)))
   locations:
-      Dodongos Cavern Boss Room Chest: 'True'
-      Dodongos Cavern King Dodongo Heart: Dodongos_Cavern_Clear
-      King Dodongo: Dodongos_Cavern_Clear
+      Dodongos Cavern Boss Room Chest: "True"
+      Dodongos Cavern King Dodongo Heart: "'Dodongos_Cavern_Clear'"
+      King Dodongo: "'Dodongos_Cavern_Clear'"
   exits:
-      Dodongos Cavern Boss Area: 'True'
-      Dodongos Cavern Entryway: Dodongos_Cavern_Clear
+      Dodongos Cavern Boss Area: "True"
+      Dodongos Cavern Entryway: "'Dodongos_Cavern_Clear'"
 
 ############################
 #   MASTER QUEST DUNGEON   #
@@ -251,14 +251,14 @@
 - region_name: Dodongos Cavern MQ Beginning
   dungeon: Dodongos Cavern
   exits:
-      Dodongos Cavern Entryway: 'True'
+      Dodongos Cavern Entryway: "True"
       Dodongos Cavern MQ Lobby: here(can_blast_or_smash or Goron_Bracelet)
 
 
 - region_name: Dodongos Cavern MQ Lobby
   dungeon: Dodongos Cavern
   locations:
-      Dodongos Cavern MQ Map Chest: 'True'
+      Dodongos Cavern MQ Map Chest: "True"
       Dodongos Cavern MQ Compass Chest: is_adult or can_child_attack or Nuts
       Dodongos Cavern MQ Larvae Room Chest: "(is_child and can_use(Sticks)) or has_fire_source"
       Dodongos Cavern MQ Torch Puzzle Room Chest: can_blast_or_smash or (is_child and can_use(Sticks)) or can_use(Dins_Fire) or (is_adult and (logic_dc_jump or Hover_Boots or Hookshot))
@@ -268,7 +268,7 @@
       Dodongos Cavern MQ Deku Scrub Lobby Rear: can_stun_deku
       Dodongos Cavern MQ Deku Scrub Lobby Front: can_stun_deku
       Dodongos Cavern MQ Deku Scrub Staircase: can_stun_deku
-      Dodongos Cavern Gossip Stone: 'True'
+      Dodongos Cavern Gossip Stone: "True"
       Deku Baba Sticks: is_adult or Kokiri_Sword or Boomerang
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
   exits:
@@ -291,11 +291,11 @@
 - region_name: Dodongos Cavern MQ Bomb Bag Area
   dungeon: Dodongos Cavern
   locations:
-      Dodongos Cavern MQ Bomb Bag Chest: 'True'
+      Dodongos Cavern MQ Bomb Bag Chest: "True"
       Dodongos Cavern MQ GS Scrub Room: "(here(is_adult and can_use(Bow)) or
           Goron_Bracelet or can_use(Dins_Fire) or has_explosives) and hookshot_or_boomerang"
   exits:
-      Dodongos Cavern MQ Lower Right Side: 'True'
+      Dodongos Cavern MQ Lower Right Side: "True"
 
 
 - region_name: Dodongos Cavern MQ Boss Area
@@ -304,9 +304,9 @@
       Dodongos Cavern Clear: can_blast_or_smash and (Bombs or Goron_Bracelet) and
           (is_adult or Sticks or Kokiri_Sword)
   locations:
-      Dodongos Cavern MQ Under Grave Chest: 'True'
-      Dodongos Cavern Boss Room Chest: 'True'
-      Dodongos Cavern King Dodongo Heart: Dodongos_Cavern_Clear
-      King Dodongo: Dodongos_Cavern_Clear
-      Dodongos Cavern MQ GS Back Area: 'True'
+      Dodongos Cavern MQ Under Grave Chest: "True"
+      Dodongos Cavern Boss Room Chest: "True"
+      Dodongos Cavern King Dodongo Heart: "'Dodongos_Cavern_Clear'"
+      King Dodongo: "'Dodongos_Cavern_Clear'"
+      Dodongos Cavern MQ GS Back Area: "True"
       Fairy Pot: has_bottle

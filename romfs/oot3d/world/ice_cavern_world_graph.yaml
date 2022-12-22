@@ -7,7 +7,7 @@
   exits:
       Ice Cavern Beginning: ice_cavern_dungeon_mode == vanilla
       Ice Cavern MQ Beginning: ice_cavern_dungeon_mode == mq
-      Zoras Fountain: 'True'
+      Zoras Fountain: "True"
 
 ############################
 #     VANILLA DUNGEON      #
@@ -16,7 +16,7 @@
 - region_name: Ice Cavern Beginning
   dungeon: Ice Cavern
   exits:
-      Ice Cavern Entryway: 'True'
+      Ice Cavern Entryway: "True"
       Ice Cavern Main: here(is_adult or has_explosives or can_use(Dins_Fire))
 
 
@@ -42,7 +42,7 @@
   locations:
       Fairy Pot: has_bottle
   exits:
-      Ice Cavern Entryway: 'True'
+      Ice Cavern Entryway: "True"
       Ice Cavern MQ Map Room: is_adult or can_use(Dins_Fire) or (has_explosives and
           (can_use(Sticks) or can_use(Slingshot) or Kokiri_Sword))
       Ice Cavern MQ Compass Room: is_adult and Blue_Fire
@@ -70,7 +70,7 @@
 - region_name: Ice Cavern MQ Compass Room
   dungeon: Ice Cavern
   locations:
-      Ice Cavern MQ Compass Chest: 'True'
+      Ice Cavern MQ Compass Chest: "True"
       Ice Cavern MQ Freestanding PoH: has_explosives
       Ice Cavern MQ GS Red Ice: can_play(Song_of_Time)
                   #Trick -> can_play(Song_of_Time) or logic_ice_mq_red_ice_gs

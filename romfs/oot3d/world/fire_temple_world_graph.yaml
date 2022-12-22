@@ -7,7 +7,7 @@
   exits:
       Fire Temple First Room: fire_temple_dungeon_mode == vanilla
       Fire Temple MQ Lower: fire_temple_dungeon_mode == mq
-      DMC Central Local: 'True'
+      DMC Central Local: "True"
 
 ############################
 #     VANILLA DUNGEON      #
@@ -16,22 +16,22 @@
 - region_name: Fire Temple First Room
   dungeon: Fire Temple
   exits:
-      Fire Temple Entryway: 'True'
+      Fire Temple Entryway: "True"
       Fire Temple Near Boss Room: fire_timer(24)
       Fire Temple Loop Enemies: here(can_use(Megaton_Hammer)) and (count(Fire_Temple_Small_Key, 8) or small_keys == vanilla or small_keys == own_dungeon)
                                           #Glitched -> ((is_adult and CanDoGlitch(GlitchType::TripleSlashClip GlitchDifficulty::EXPERT)) or
                                           #                     (GlitchFireGrunzClip and Bombs and is_adult and can_use(Hover_Boots) and CanSurviveDamage)) and (count(Fire_Temple_Small_Key, 8) or !IsKeysanity))
-      Fire Temple Loop Exit: 'True'
+      Fire Temple Loop Exit: "True"
       Fire Temple Big Lava Room: count(Fire_Temple_Small_Key, 2) and fire_timer(24)
 
 
 - region_name: Fire Temple Near Boss Room
   dungeon: Fire Temple
   locations:
-      Fire Temple Near Boss Chest: 'True'
+      Fire Temple Near Boss Chest: "True"
       Fairy Pot: (can_use(Hover_Boots) or can_use(Hookshot)) and has_bottle
   exits:
-      Fire Temple First Room: 'True'
+      Fire Temple First Room: "True"
       Fire Temple Boss Room: Fire_Temple_Boss_Key and ((is_adult and logic_fire_boss_door_jump) or can_use(Hover_Boots) or here(can_use(Megaton_Hammer)))
                                       #Glitched -> Fire_Temple_Boss_Key and (CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::NOVICE) or
                                       #                     (Bombs and has_bombchus and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))))
@@ -40,14 +40,14 @@
 - region_name: Fire Temple Boss Room
   dungeon: Fire Temple
   events:
-      Fire Temple Clear: Fire_Temple_Clear or (fire_timer(64) and can_use(Megaton_Hammer))
+      Fire Temple Clear: "'Fire_Temple_Clear' or (fire_timer(64) and can_use(Megaton_Hammer))"
                                    #Glitched -> fire_timer(48) and ((can_use(Sticks) and CanDoGlitch(GlitchType::QPA GlitchDifficulty::NOVICE)) or
                                    #                     can_use(Megaton_Hammer)) and Bombs and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))
   locations:
-      Fire Temple Volvagia Heart: Fire_Temple_Clear
-      Volvagia: Fire_Temple_Clear
+      Fire Temple Volvagia Heart: "'Fire_Temple_Clear'"
+      Volvagia: "'Fire_Temple_Clear'"
   exits:
-      Fire Temple Entryway: Fire_Temple_Clear
+      Fire Temple Entryway: "'Fire_Temple_Clear'"
 
 
 - region_name: Fire Temple Loop Enemies
@@ -64,8 +64,8 @@
       Fire Temple GS Boss Key Loop: is_adult or can_child_attack
                                                   #Glitched -> can_use(Megaton_Hammer))
   exits:
-      Fire Temple Loop Enemies: 'True'
-      Fire Temple Loop Flare Dancer: 'True'
+      Fire Temple Loop Enemies: "True"
+      Fire Temple Loop Flare Dancer: "True"
 
 
 - region_name: Fire Temple Loop Flare Dancer
@@ -75,7 +75,7 @@
                                                     #Glitched -> (CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE)) or
                                                     #                     (CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED) and has_bombchus and can_shield and (Slingshot or can_use(Bow) or can_use(Hookshot))))
   exits:
-      Fire Temple Loop Tiles: 'True'
+      Fire Temple Loop Tiles: "True"
       Fire Temple Loop Hammer Switch: here((has_explosives or can_use(Megaton_Hammer) or
           can_use(Hookshot)) and (is_adult or Kokiri_Sword or Slingshot or Boomerang))
 
@@ -86,25 +86,25 @@
       Fire Loop Switch: can_use(Megaton_Hammer)
                                   #Glitched -> CanDoGlitch(GlitchType::QPA GlitchDifficulty::NOVICE) and Bombs and can_take_damage and can_use(Sticks))
   exits:
-      Fire Temple Loop Flare Dancer: 'True'
-      Fire Temple Loop Goron Room: Fire_Loop_Switch
+      Fire Temple Loop Flare Dancer: "True"
+      Fire Temple Loop Goron Room: "'Fire_Loop_Switch'"
                                              #Glitched -> CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::INTERMEDIATE))
 
 
 - region_name: Fire Temple Loop Goron Room
   dungeon: Fire Temple
   locations:
-      Fire Temple Boss Key Chest: 'True'
+      Fire Temple Boss Key Chest: "True"
   exits:
-      Fire Temple Loop Hammer Switch: Fire_Loop_Switch
-      Fire Temple Loop Exit: Fire_Loop_Switch
+      Fire Temple Loop Hammer Switch: "'Fire_Loop_Switch'"
+      Fire Temple Loop Exit: "'Fire_Loop_Switch'"
 
 
 - region_name: Fire Temple Loop Exit
   dungeon: Fire Temple
   exits:
-      Fire Temple First Room: 'True'
-      Fire Temple Loop Goron Room: Fire_Loop_Switch
+      Fire Temple First Room: "True"
+      Fire Temple Loop Goron Room: "'Fire_Loop_Switch'"
                                            #Glitched -> CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::INTERMEDIATE))
 
 
@@ -112,7 +112,7 @@
   dungeon: Fire Temple
   exits:
       Fire Temple First Room: count(Fire_Temple_Small_Key, 2)
-      Fire Temple Big Lava Room North Goron: 'True'
+      Fire Temple Big Lava Room North Goron: "True"
       Fire Temple Big Lava Room North Tiles: is_adult and (can_play(Song_of_Time) or logic_fire_song_of_time)
                                                      #Glitched -> fire_timer(48) and ((CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE)) or
                                                      #                     (is_adult and (Song_of_Time and (CanDoGlitch(GlitchType::DungeonBombOI GlitchDifficulty::INTERMEDIATE) or (CanDoGlitch(GlitchType::QPA GlitchDifficulty::ADVANCED) and (Bugs or Fish) and can_shield))))))
@@ -124,9 +124,9 @@
 - region_name: Fire Temple Big Lava Room North Goron
   dungeon: Fire Temple
   locations:
-      Fire Temple Big Lava Room Lower Open Door Chest: 'True'
+      Fire Temple Big Lava Room Lower Open Door Chest: "True"
   exits:
-      Fire Temple Big Lava Room: 'True'
+      Fire Temple Big Lava Room: "True"
 
 
 - region_name: Fire Temple Big Lava Room North Tiles
@@ -134,15 +134,15 @@
   locations:
       Fire Temple GS Song of Time Room: is_adult
   exits:
-      Fire Temple Big Lava Room: 'True'
+      Fire Temple Big Lava Room: "True"
 
 
 - region_name: Fire Temple Big Lava Room South Goron
   dungeon: Fire Temple
   locations:
-      Fire Temple Big Lava Room Blocked Door Chest: 'True'
+      Fire Temple Big Lava Room Blocked Door Chest: "True"
   exits:
-      Fire Temple Big Lava Room: 'True'
+      Fire Temple Big Lava Room: "True"
 
 
 - region_name: Fire Temple Fire Pillar Room
@@ -170,31 +170,31 @@
 - region_name: Fire Temple Shortcut Climb
   dungeon: Fire Temple
   exits:
-      Fire Temple Shortcut Room: 'True'
-      Fire Temple Boulder Maze Upper: 'True'
+      Fire Temple Shortcut Room: "True"
+      Fire Temple Boulder Maze Upper: "True"
 
 
 - region_name: Fire Temple Boulder Maze Lower
   dungeon: Fire Temple
   locations:
-      Fire Temple Boulder Maze Lower Chest: 'True'
+      Fire Temple Boulder Maze Lower Chest: "True"
       Fire Temple GS Boulder Maze: has_explosives and (is_adult or Boomerang or can_use(Hookshot))
                                                           #Glitched -> (CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE) and Bombs) or
                                                           #                     here(Fire_Temple_Small_Key,_BOULDER_MAZE_UPPER []CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::NOVICE)))
   exits:
-      Fire Temple Shortcut Room: 'True'
-      Fire Temple Boulder Maze Lower Side Room: 'True'
+      Fire Temple Shortcut Room: "True"
+      Fire Temple Boulder Maze Lower Side Room: "True"
       Fire Temple East Central Room: count(Fire_Temple_Small_Key, 7)
-      Fire Temple Boulder Maze Upper: 'False'
+      Fire Temple Boulder Maze Upper: "False"
                                                         #Glitched -> CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE) and Bombs)
 
 
 - region_name: Fire Temple Boulder Maze Lower Side Room
   dungeon: Fire Temple
   locations:
-      Fire Temple Boulder Maze Side Room Chest: 'True'
+      Fire Temple Boulder Maze Side Room Chest: "True"
   exits:
-      Fire Temple Boulder Maze Lower: 'True'
+      Fire Temple Boulder Maze Lower: "True"
 
 
 - region_name: Fire Temple East Central Room
@@ -220,19 +220,19 @@
 - region_name: Fire Temple Map Area
   dungeon: Fire Temple
   locations:
-      Fire Temple Map Chest: 'True'
+      Fire Temple Map Chest: "True"
   exits:
-      Fire Temple East Central Room: 'True'
+      Fire Temple East Central Room: "True"
 
 
 - region_name: Fire Temple Boulder Maze Upper
   dungeon: Fire Temple
   locations:
-      Fire Temple Boulder Maze Upper Chest: 'True'
+      Fire Temple Boulder Maze Upper Chest: "True"
   exits:
       Fire Temple Shortcut Climb: has_explosives
-      Fire Temple Boulder Maze Lower: 'True'
-      Fire Temple Fire Wall Chase: 'True'
+      Fire Temple Boulder Maze Lower: "True"
+      Fire Temple Fire Wall Chase: "True"
       Fire Temple Scarecrow Room: can_use(Scarecrow) or (logic_fire_scarecrow and is_adult and can_use(Longshot))
 
 
@@ -241,17 +241,17 @@
   locations:
       Fire Temple GS Scarecrow Climb: is_adult or can_child_attack
   exits:
-      Fire Temple Boulder Maze Upper: 'True'
-      Fire Temple East Peak: 'True'
+      Fire Temple Boulder Maze Upper: "True"
+      Fire Temple East Peak: "True"
 
 
 - region_name: Fire Temple East Peak
   dungeon: Fire Temple
   locations:
-      Fire Temple Scarecrow Chest: 'True'
+      Fire Temple Scarecrow Chest: "True"
       Fire Temple GS Scarecrow Top: can_use_projectile
   exits:
-      Fire Temple Scarecrow Room: 'True'
+      Fire Temple Scarecrow Room: "True"
       Fire Temple East Central Room: can_take_damage
 
 
@@ -259,16 +259,16 @@
   dungeon: Fire Temple
   exits:
       Fire Temple Fire Wall Chase: count(Fire_Temple_Small_Key, 7)
-      Fire Temple Fire Maze Room: 'True'
+      Fire Temple Fire Maze Room: "True"
 
 
 - region_name: Fire Temple Fire Maze Room
   dungeon: Fire Temple
   exits:
-      Fire Temple Corridor: 'True'
+      Fire Temple Corridor: "True"
       Fire Temple Fire Maze Upper: can_use(Hover_Boots)
                                                #Glitched -> Bombs and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))
-      Fire Temple Fire Maze Side Room: 'True'
+      Fire Temple Fire Maze Side Room: "True"
       Fire Temple West Central Lower: count(Fire_Temple_Small_Key, 8)
       Fire Temple Late Fire Maze: logic_fire_flame_maze
                                                #Glitched -> CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::INTERMEDIATE) or (CanDoGlitch(GlitchType::SuperSlide GlitchDifficulty::ADVANCED) and Bombs and can_shield))
@@ -278,7 +278,7 @@
   dungeon: Fire Temple
   exits:
       Fire Temple Near Boss Room: can_use(Megaton_Hammer)
-      Fire Temple Fire Maze Room: 'True'
+      Fire Temple Fire Maze Room: "True"
       Fire Temple West Central Upper: can_use(Megaton_Hammer)
                                               #Glitched -> can_use(Sticks) and CanDoGlitch(GlitchType::QPA GlitchDifficulty::NOVICE))
 
@@ -286,9 +286,9 @@
 - region_name: Fire Temple Fire Maze Side Room
   dungeon: Fire Temple
   locations:
-      Fire Temple Compass Chest: 'True'
+      Fire Temple Compass Chest: "True"
   exits:
-      Fire Temple Fire Maze Room: 'True'
+      Fire Temple Fire Maze Room: "True"
 
 
 - region_name: Fire Temple West Central Lower
@@ -304,24 +304,24 @@
       Fire Temple West Central Upper: is_adult and can_play(Song_of_Time)
                                               #Glitched -> (is_adult and Song_of_Time and (((Bugs or Fish) and can_shield and (CanSurviveDamage or (can_take_damage and NumBottles(2))) and Bombs and CanDoGlitch(GlitchType::QPA GlitchDifficulty::ADVANCED)) or
                                               #                     (CanDoGlitch(GlitchType::DungeonBombOI GlitchDifficulty::NOVICE)))) or (Bombs and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE)))
-      Fire Temple Late Fire Maze: 'True'
+      Fire Temple Late Fire Maze: "True"
 
 
 - region_name: Fire Temple West Central Upper
   dungeon: Fire Temple
   exits:
-      Fire Temple Boss Room: 'False'
+      Fire Temple Boss Room: "False"
                                 #Glitched -> CanDoGlitch(GlitchType::LedgeClip GlitchDifficulty::INTERMEDIATE))
-      Fire Temple Fire Maze Upper: 'True'
-      Fire Temple West Central Lower: 'True'
+      Fire Temple Fire Maze Upper: "True"
+      Fire Temple West Central Lower: "True"
 
 
 - region_name: Fire Temple Late Fire Maze
   dungeon: Fire Temple
   exits:
-      Fire Temple Fire Maze Room: 'False'
+      Fire Temple Fire Maze Room: "False"
                                 #Glitched -> CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::NOVICE) or (Bombs and can_shield and CanDoGlitch(GlitchType::SuperSlide GlitchDifficulty::ADVANCED)))
-      Fire Temple West Central Lower: 'True'
+      Fire Temple West Central Lower: "True"
       Fire Temple Upper Flare Dancer: has_explosives
 
 
@@ -337,7 +337,7 @@
 - region_name: Fire Temple West Climb
   dungeon: Fire Temple
   exits:
-      Fire Temple Upper Flare Dancer: 'True'
+      Fire Temple Upper Flare Dancer: "True"
       Fire Temple West Peak: can_use_projectile
                                               #Glitched -> CanDoGlitch(GlitchType::SuperStab GlitchDifficulty::NOVICE))
 
@@ -345,10 +345,10 @@
 - region_name: Fire Temple West Peak
   dungeon: Fire Temple
   locations:
-      Fire Temple Megaton Hammer Chest: 'True'
+      Fire Temple Megaton Hammer Chest: "True"
   exits:
       Fire Temple West Central Upper: can_take_damage
-      Fire Temple West Climb: 'True'
+      Fire Temple West Climb: "True"
       Fire Temple Hammer Return Path: can_use(Megaton_Hammer)
 
 
@@ -361,7 +361,7 @@
 - region_name: Fire Temple Above Fire Maze
   dungeon: Fire Temple
   exits:
-      Fire Temple Hammer Return Path: 'True'
+      Fire Temple Hammer Return Path: "True"
       Fire Temple Fire Maze Upper: can_use(Megaton_Hammer)
 
 
@@ -382,7 +382,7 @@
          or can_use(Longshot))))
                   #Trick -> is_adult and (logic_fewer_tunic_requirements or can_use(Goron_Tunic)) and (((can_use(Hover_Boots) or (logic_fire_mq_near_boss and can_use(Bow))) and has_fire_source) or (can_use(Hookshot) and can_use(Fire_Arrows) or (can_use(Dins_Fire) and ((DamageMultiplier.IsNot(DAMAGEMULTIPLIER_OHKO) and DamageMultiplier.IsNot(DAMAGEMULTIPLIER_QUADRUPLE) and DamageMultiplier.IsNot(DAMAGEMULTIPLIER_OCTUPLE) and DamageMultiplier.IsNot(DAMAGEMULTIPLIER_SEXDECUPLE)) or can_use(Goron_Tunic) or can_use(Bow) or can_use(Longshot)))))
   exits:
-      Fire Temple Entryway: 'True'
+      Fire Temple Entryway: "True"
       Fire Temple MQ Boss Room: is_adult and can_use(Goron_Tunic) and can_use(Megaton_Hammer) and
           Fire_Temple_Boss_Key and ((has_fire_source and (logic_fire_boss_door_jump or Hover_Boots)) or
           at('Fire_Temple_MQ_Upper', True))
@@ -405,7 +405,7 @@
                   #Trick -> has_fire_source and (Bow or logic_fire_mq_bk_chest) and is_adult and can_use(Hookshot)
       Fire Temple MQ Big Lava Room Blocked Door Chest: has_fire_source and has_explosives and is_adult and can_use(Hookshot)
                   #Trick -> has_fire_source and has_explosives and is_adult and (can_use(Hookshot) or logic_fire_mq_blocked_chest)
-      Fire Temple MQ GS Big Lava Room Open Door: 'True'
+      Fire Temple MQ GS Big Lava Room Open Door: "True"
       Fairy Pot: has_fire_source and Bow and is_adult and (can_use(Hookshot) or logic_fire_song_of_time)
                   #Trick -> has_fire_source and (Bow or logic_fire_mq_bk_chest) and is_adult and (can_use(Hookshot) or logic_fire_song_of_time)
   exits:
@@ -417,7 +417,7 @@
 - region_name: Fire Temple MQ Lower Maze
   dungeon: Fire Temple
   locations:
-      Fire Temple MQ Lizalfos Maze Lower Chest: 'True'
+      Fire Temple MQ Lizalfos Maze Lower Chest: "True"
       Fire Temple MQ Lizalfos Maze Side Room Chest: has_explosives and at('Fire Temple MQ Upper Maze', True)
                   #Trick -> has_explosives and (logic_fire_mq_maze_side_room or Fire_Temple_Small_Key,_MQ_UPPER_MAZE.Adult())
   exits:
@@ -428,7 +428,7 @@
 - region_name: Fire Temple MQ Upper Maze
   dungeon: Fire Temple
   locations:
-      Fire Temple MQ Lizalfos Maze Upper Chest: 'True'
+      Fire Temple MQ Lizalfos Maze Upper Chest: "True"
       Fire Temple MQ Compass Chest: has_explosives
       Fire Temple MQ GS Skull on Fire: is_adult and ((can_play(Song_of_Time) and can_use(Hookshot) and has_explosives) or can_use(Longshot))
       Wall Fairy: is_adult and ((can_play(Song_of_Time) and can_use(Hookshot) and has_explosives) or can_use(Longshot))
@@ -454,7 +454,7 @@
 - region_name: Fire Temple MQ Boss Room
   dungeon: Fire Temple
   events:
-      Fire Temple Clear: 'True'
+      Fire Temple Clear: "True"
   locations:
-      Fire Temple Volvagia Heart: 'True'
-      Volvagia: 'True'
+      Fire Temple Volvagia Heart: "True"
+      Volvagia: "True"

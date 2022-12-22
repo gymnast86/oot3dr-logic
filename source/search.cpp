@@ -20,16 +20,20 @@ Search::Search(const SearchMode& searchMode_, WorldPool* worlds_, const ItemPool
     worlds = worlds_;
     worldToSearch = worldToSearch_;
 
-    // Add starting inventory items to the pool of items
+    ownedItems = ItemMultiSet(items.begin(), items.end());
+
+    // Add starting inventory items for each world to the pool of items
     for (auto& world : *worlds)
     {
         if (worldToSearch == -1 || worldToSearch == world->GetWorldID())
         {
-            // AddElementsToPool(items, world->GetStartingItems())
+            for (auto& item : world->startingInventory)
+            {
+                ownedItems.insert(item);
+            }
         }
     }
 
-    ownedItems = ItemMultiSet(items.begin(), items.end());
     for (auto& world : *worlds)
     {
         if (worldToSearch == -1 || worldToSearch == world->GetWorldID())
@@ -167,7 +171,6 @@ void Search::Explore(Area* area)
         //         entranceSpheres.back().push_back(exit);
         //     }
         // }
-
         auto connectedArea = exit->GetConnectedArea();
 
         auto evalSuccess = world->EvaluateExitRequirement(this, exit);
@@ -199,7 +202,7 @@ void Search::Explore(Area* area)
 
 void Search::ProcessEvents()
 {
-    // Loop through and see if there are any events that we are now accessible.
+    // Loop through and see if there are any events that are now accessible.
     // Add them to the ownedItems list if they are.
     for (auto eventItr = eventsToTry.begin(); eventItr != eventsToTry.end(); )
     {
@@ -217,8 +220,13 @@ void Search::ProcessEvents()
         {
             newThingsFound = true;
             eventItr = eventsToTry.erase(eventItr);
-            ownedItems.emplace(event->item, world);
-            sphereItems.emplace(event->item, world);
+            ownedEvents.emplace(event->eventId);
+            // Set appropriate new ageTimes if we accessed the MS Pedestal in Oot3d
+            if (world->GetType() == WorldType::Oot3d && world->reverseEventMap[event->eventId] == "Time_Travel")
+            {
+                auto oot3dWorld = dynamic_cast<Oot3dWorld*>(world);
+                oot3dWorld->ExpandToDTimeTravel(this);
+            }
         }
         else
         {
@@ -280,12 +288,6 @@ void Search::ProcessExits()
 void Search::ProcessLocation(Location* location)
 {
     ownedItems.insert(location->GetCurrentItem());
-    // Set appropriate new ageTimes if we found the master sword in oot3d
-    if (location->GetCurrentItem().GetID() == ItemID::Oot3dMasterSword && location->GetWorld()->GetType() == WorldType::Oot3d)
-    {
-        Oot3dWorld* oot3dWorld = (Oot3dWorld*) location->GetWorld();
-        oot3dWorld->ExpandToDMasterSword(this);
-    }
     if (searchMode == SearchMode::GeneratePlaythrough)
     {
         playthroughSpheres.back().insert(location);
@@ -364,7 +366,6 @@ void Search::ProcessLocations(std::set<LocationAccess*, LocationAccessComparator
             return;
         }
     }
-
 }
 
 void Search::RemoveEmptySpheres()
@@ -488,8 +489,8 @@ void Search::DumpSearchGraph(size_t worldId /*= 0*/, const std::string filename 
 
         // Make edge connections defined by events
         for (const auto& event : area->events) {
-            color = ownedItems.count(Item(event.item, world)) > 0 ? "\"blue\"" : "\"red\"";
-            std::string connectedName = ItemIDToName(event.item);
+            color = ownedEvents.count(event.eventId) > 0 ? "\"blue\"" : "\"red\"";
+            std::string connectedName = world->reverseEventMap[event.eventId];
             if (parentName != "INVALID"){
                 worldGraph << "\t\"" << parentName << "\" -> \"" << connectedName << "\"" << "[dir=forward color=" << color << "]" << std::endl;
             }

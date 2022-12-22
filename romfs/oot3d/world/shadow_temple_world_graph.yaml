@@ -11,7 +11,7 @@
       Shadow Temple MQ Beginning: shadow_temple_dungeon_mode == mq and
           (logic_lens_shadow_mq or can_use(Lens_of_Truth)) and (can_use(Hover_Boots) or can_use(Hookshot))
                                           #Glitched -> Dungeon::ShadowTemple.IsMQ()    and (logic_lens_shadow_mq or can_use(Lens_of_Truth)) and CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::INTERMEDIATE))
-      Graveyard Warp Pad Region: 'True'
+      Graveyard Warp Pad Region: "True"
 
 ############################
 #     VANILLA DUNGEON      #
@@ -20,11 +20,11 @@
 - region_name: Shadow Temple Beginning
   dungeon: Shadow Temple
   locations:
-      Shadow Temple Map Chest: 'True'
-      Shadow Temple Hover Boots Chest: 'True'
-      Nut Pot: 'True'
+      Shadow Temple Map Chest: "True"
+      Shadow Temple Hover Boots Chest: "True"
+      Nut Pot: "True"
   exits:
-      Shadow Temple Entryway: 'True'
+      Shadow Temple Entryway: "True"
       Shadow Temple First Beamos: Hover_Boots
                                           #Glitched -> CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::NOVICE))
 
@@ -34,45 +34,45 @@
   locations:
       Shadow Temple Compass Chest: is_adult or Kokiri_Sword or Sticks
       Shadow Temple Early Silver Rupee Chest: can_use(Hover_Boots) or can_use(Hookshot)
-      Shadow Temple GS Near Ship: 'False'
+      Shadow Temple GS Near Ship: "False"
                                                             #Glitched -> CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::NOVICE) and Longshot)
       Fairy Pot: has_bottle #This fairy pot was added in 3D
   exits:
       Shadow Temple Huge Pit: has_explosives and is_adult and count(Shadow_Temple_Small_Key, 1)
-      Shadow Temple Beyond Boat: 'False'
+      Shadow Temple Beyond Boat: "False"
                                          #Glitched -> CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::NOVICE) and Longshot and can_play(Zeldas_Lullaby))
 
 
 - region_name: Shadow Temple Huge Pit
   dungeon: Shadow Temple
   locations:
-      Shadow Temple Invisible Blades Visible Chest: 'True'
-      Shadow Temple Invisible Blades Invisible Chest: 'True'
-      Shadow Temple Falling Spikes Lower Chest: 'True'
+      Shadow Temple Invisible Blades Visible Chest: "True"
+      Shadow Temple Invisible Blades Invisible Chest: "True"
+      Shadow Temple Falling Spikes Lower Chest: "True"
       Shadow Temple Falling Spikes Upper Chest: logic_shadow_umbrella or Goron_Bracelet
       Shadow Temple Falling Spikes Switch Chest: logic_shadow_umbrella or Goron_Bracelet
-      Shadow Temple Invisible Spikes Chest: count(Shadow_Temple_Small_Key, 3) and (logic_lens_shadow_back or can_use(Lens_of_Truth))
-      Shadow Temple Freestanding Key: count(Shadow_Temple_Small_Key, 3) and
+      Shadow Temple Invisible Spikes Chest: count(Shadow_Temple_Small_Key, 2) and (logic_lens_shadow_back or can_use(Lens_of_Truth))
+      Shadow Temple Freestanding Key: count(Shadow_Temple_Small_Key, 2) and
           (logic_lens_shadow_back or can_use(Lens_of_Truth)) and Hookshot and
           (Bombs or Goron_Bracelet or (logic_shadow_freestanding_key and has_bombchus))
-      Shadow Temple GS Like Like Room: 'True'
+      Shadow Temple GS Like Like Room: "True"
       Shadow Temple GS Falling Spikes Room: Hookshot
-      Shadow Temple GS Single Giant Pot: count(Shadow_Temple_Small_Key, 3) and
+      Shadow Temple GS Single Giant Pot: count(Shadow_Temple_Small_Key, 2) and
           (logic_lens_shadow_back or can_use(Lens_of_Truth)) and Hookshot
   exits:
       Shadow Temple Wind Tunnel: "(logic_lens_shadow_back or can_use(Lens_of_Truth)) and
-          Hookshot and count(Shadow_Temple_Small_Key, 4)"
+          Hookshot and count(Shadow_Temple_Small_Key, 3)"
 
 
 - region_name: Shadow Temple Wind Tunnel
   dungeon: Shadow Temple
   locations:
-      Shadow Temple Wind Hint Chest: 'True'
-      Shadow Temple After Wind Enemy Chest: 'True'
-      Shadow Temple After Wind Hidden Chest: 'True'
-      Shadow Temple GS Near Ship: can_use(Longshot) and count(Shadow_Temple_Small_Key, 5)
+      Shadow Temple Wind Hint Chest: "True"
+      Shadow Temple After Wind Enemy Chest: "True"
+      Shadow Temple After Wind Hidden Chest: "True"
+      Shadow Temple GS Near Ship: can_use(Longshot) and count(Shadow_Temple_Small_Key, 4)
   exits:
-      Shadow Temple Beyond Boat: can_play(Zeldas_Lullaby) and count(Shadow_Temple_Small_Key, 5)
+      Shadow Temple Beyond Boat: can_play(Zeldas_Lullaby) and count(Shadow_Temple_Small_Key, 4)
 
 
 - region_name: Shadow Temple Beyond Boat
@@ -83,10 +83,10 @@
   locations:
       Shadow Temple Spike Walls Left Chest: can_use(Dins_Fire)
       Shadow Temple Boss Key Chest: can_use(Dins_Fire)
-      Shadow Temple Invisible Floormaster Chest: 'True'
-      Shadow Temple Bongo Bongo Heart: Shadow_Temple_Clear
-      Bongo Bongo: Shadow_Temple_Clear
-      Shadow Temple GS Triple Giant Pot: 'True'
+      Shadow Temple Invisible Floormaster Chest: "True"
+      Shadow Temple Bongo Bongo Heart: "'Shadow_Temple_Clear'"
+      Bongo Bongo: "'Shadow_Temple_Clear'"
+      Shadow Temple GS Triple Giant Pot: "True"
 
 ############################
 #   MASTER QUEST DUNGEON   #
@@ -95,7 +95,7 @@
 - region_name: Shadow Temple MQ Beginning
   dungeon: Shadow Temple
   exits:
-      Shadow Temple Entryway: 'True'
+      Shadow Temple Entryway: "True"
       Shadow Temple MQ First Beamos: is_adult and (can_use(Fire_Arrows) or can_use(Hover_Boots))
                   #Trick -> is_adult and (can_use(Fire_Arrows) or Hover_Boots or (logic_shadow_mq_gap and can_use(Longshot)))
       Shadow Temple MQ Dead Hand Area: has_explosives and count(Shadow_Temple_Small_Key, 6)
@@ -104,16 +104,16 @@
 - region_name: Shadow Temple MQ Dead Hand Area
   dungeon: Shadow Temple
   locations:
-      Shadow Temple MQ Compass Chest: 'True'
+      Shadow Temple MQ Compass Chest: "True"
       Shadow Temple MQ Hover Boots Chest: can_play(Song_of_Time) and is_adult and can_use(Bow)
 
 
 - region_name: Shadow Temple MQ First Beamos
   dungeon: Shadow Temple
   locations:
-      Shadow Temple MQ Map Chest: 'True'
-      Shadow Temple MQ Early Gibdos Chest: 'True'
-      Shadow Temple MQ Near Ship Invisible Chest: 'True'
+      Shadow Temple MQ Map Chest: "True"
+      Shadow Temple MQ Early Gibdos Chest: "True"
+      Shadow Temple MQ Near Ship Invisible Chest: "True"
   exits:
       Shadow Temple MQ Upper Huge Pit: has_explosives and count(Shadow_Temple_Small_Key, 2)
 
@@ -134,7 +134,7 @@
   dungeon: Shadow Temple
   locations:
       Shadow Temple MQ Beamos Silver Rupees Chest: is_adult and can_use(Longshot)
-      Shadow Temple MQ Falling Spikes Lower Chest: 'True'
+      Shadow Temple MQ Falling Spikes Lower Chest: "True"
       Shadow Temple MQ Falling Spikes Upper Chest: "(logic_shadow_umbrella and Hover_Boots) or Goron_Bracelet"
       Shadow Temple MQ Falling Spikes Switch Chest: "(logic_shadow_umbrella and Hover_Boots) or Goron_Bracelet"
       Shadow Temple MQ Invisible Spikes Chest: Hover_Boots and count(Shadow_Temple_Small_Key, 3) and
@@ -150,12 +150,12 @@
 - region_name: Shadow Temple MQ Wind Tunnel
   dungeon: Shadow Temple
   locations:
-      Shadow Temple MQ Wind Hint Chest: 'True'
-      Shadow Temple MQ After Wind Enemy Chest: 'True'
-      Shadow Temple MQ After Wind Hidden Chest: 'True'
-      Shadow Temple MQ GS Wind Hint Room: 'True'
-      Shadow Temple MQ GS After Wind: 'True'
-      Nut Pot: 'True'
+      Shadow Temple MQ Wind Hint Chest: "True"
+      Shadow Temple MQ After Wind Enemy Chest: "True"
+      Shadow Temple MQ After Wind Hidden Chest: "True"
+      Shadow Temple MQ GS Wind Hint Room: "True"
+      Shadow Temple MQ GS After Wind: "True"
+      Nut Pot: "True"
   exits:
       Shadow Temple MQ Beyond Boat: can_play(Zeldas_Lullaby) and count(Shadow_Temple_Small_Key, 5)
 
@@ -165,9 +165,9 @@
   events:
       Shadow Temple Clear: Shadow_Temple_Boss_Key and (Bow or (logic_shadow_statue and has_bombchus))
   locations:
-      Shadow Temple Bongo Bongo Heart: Shadow_Temple_Clear
-      Bongo Bongo: Shadow_Temple_Clear
-      Shadow Temple MQ GS After Ship: 'True'
+      Shadow Temple Bongo Bongo Heart: "'Shadow_Temple_Clear'"
+      Bongo Bongo: "'Shadow_Temple_Clear'"
+      Shadow Temple MQ GS After Ship: "True"
       Shadow Temple MQ GS Near Boss: Bow or (logic_shadow_statue and has_bombchus)
   exits:
       Shadow Temple MQ Invisible Maze: Bow and can_play(Song_of_Time) and is_adult and can_use(Longshot)
@@ -178,5 +178,5 @@
   locations:
       Shadow Temple MQ Spike Walls Left Chest: can_use(Dins_Fire) and count(Shadow_Temple_Small_Key, 6)
       Shadow Temple MQ Boss Key Chest: can_use(Dins_Fire) and count(Shadow_Temple_Small_Key, 6)
-      Shadow Temple MQ Bomb Flower Chest: 'True'
-      Shadow Temple MQ Freestanding Key: 'True'
+      Shadow Temple MQ Bomb Flower Chest: "True"
+      Shadow Temple MQ Freestanding Key: "True"

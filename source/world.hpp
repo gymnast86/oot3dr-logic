@@ -4,7 +4,7 @@
 #include "area.hpp"
 #include "dungeon.hpp"
 #include "location.hpp"
-#include "general_item_pool.hpp"
+#include "item_pool.hpp"
 #include "utility/log.hpp"
 
 #include <string>
@@ -32,6 +32,7 @@ enum struct WorldBuildingError
     BAD_ITEM_NAME,
     BAD_LOCATION_NAME,
     LOCATION_NOT_IN_WORLD,
+    UNDEFINED_EVENT,
 };
 
 enum class WorldType
@@ -89,6 +90,8 @@ public:
     virtual std::string GetTypeString() const;
 
     SettingsMap settings;
+    std::unordered_map<std::string, EventID> eventMap = {};
+    std::unordered_map<EventID, std::string> reverseEventMap = {};
     std::map<LocationID, std::unique_ptr<Location>> locations;
     std::unordered_map<AreaID, std::unique_ptr<Area>> areas;
     LogicHelperMap logicHelpers;

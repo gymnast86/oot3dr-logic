@@ -1,10 +1,10 @@
 - region_name: Root
   hint: Link's Pocket
   locations:
-      Links Pocket: 'True'
+      Links Pocket: "True"
       # Gift from Sages: can_receive_ganon_bosskey
   exits:
-      Root Exits: 'True'
+      Root Exits: "True"
       # HC Garden Locations: skip_child_zelda
 
 
@@ -22,42 +22,42 @@
 
 - region_name: Child Spawn
   exits:
-      KF Links House: 'True'
+      KF Links House: "True"
 
 
 - region_name: Adult Spawn
   exits:
-      Temple of Time: 'True'
+      Temple of Time: "True"
 
 
 - region_name: Prelude of Light Warp
   exits:
-      Temple of Time: 'True'
+      Temple of Time: "True"
 
 
 - region_name: Minuet of Forest Warp
   exits:
-      Sacred Forest Meadow: 'True'
+      Sacred Forest Meadow: "True"
 
 
 - region_name: Bolero of Fire Warp
   exits:
-      DMC Central Local: 'True'
+      DMC Central Local: "True"
 
 
 - region_name: Serenade of Water Warp
   exits:
-      Lake Hylia: 'True'
+      Lake Hylia: "True"
 
 
 - region_name: Nocturne of Shadow Warp
   exits:
-      Graveyard Warp Pad Region: 'True'
+      Graveyard Warp Pad Region: "True"
 
 
 - region_name: Requiem of Spirit Warp
   exits:
-      Desert Colossus: 'True'
+      Desert Colossus: "True"
 
 
 - region_name: Kokiri Forest
@@ -71,18 +71,18 @@
       KF GS Know It All House: child_night and can_child_attack and can_get_night_time_gs
       KF GS Bean Patch: can_plant_bugs and can_child_attack
       KF GS House of Twins: adult_night and (can_use(Hookshot) or can_use(Boomerang)) and can_get_night_time_gs
-      KF Gossip Stone: 'True'
+      KF Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
   exits:
-      KF Links House: 'True'
-      KF Midos House: 'True'
-      KF Sarias House: 'True'
-      KF House of Twins: 'True'
-      KF Know It All House: 'True'
-      KF Kokiri Shop: 'True'
-      KF Outside Deku Tree: is_adult or open_forest == open or Showed_Mido_Sword_And_Shield
-      Lost Woods: 'True'
+      KF Links House: "True"
+      KF Midos House: "True"
+      KF Sarias House: "True"
+      KF House of Twins: "True"
+      KF Know It All House: "True"
+      KF Kokiri Shop: "True"
+      KF Outside Deku Tree: is_adult or open_forest == open or 'Showed_Mido_Sword_And_Shield'
+      Lost Woods: "True"
       LW Bridge From Forest: can_leave_forest
       KF Storms Grotto: can_open_storm_grotto
 
@@ -101,64 +101,64 @@
       Deku Baba Sticks: (is_adult and not entrance_shuffle) or can_use(Kokiri_Sword) or can_use(Boomerang)
       Deku Baba Nuts: (is_adult and not entrance_shuffle) or can_use(Kokiri_Sword) or can_use(Slingshot) or
                       can_use(Sticks) or can_use(Dins_Fire) or has_explosives
-      KF Deku Tree Gossip Stone Left: 'True'
-      KF Deku Tree Gossip Stone Right: 'True'
+      KF Deku Tree Gossip Stone Left: "True"
+      KF Deku Tree Gossip Stone Right: "True"
   exits:
       Deku Tree Entryway: is_child or (shuffle_dungeon_entrances != off and
-          (open_forest == open or Showed_Mido_Sword_And_Shield))
-      Kokiri Forest: is_adult or open_forest == open or Showed_Mido_Sword_And_Shield
+          (open_forest == open or 'Showed_Mido_Sword_And_Shield'))
+      Kokiri Forest: is_adult or open_forest == open or 'Showed_Mido_Sword_And_Shield'
 
 
 - region_name: KF Links House
   scene: KF Links House
   locations:
-      KF Links House Cow: is_adult and can_play(Eponas_Song) and Links_Cow
+      KF Links House Cow: is_adult and can_play(Eponas_Song) and 'Links_Cow'
   exits:
-      Kokiri Forest: 'True'
+      Kokiri Forest: "True"
 
 
 - region_name: KF Midos House
   scene: KF Midos House
   locations:
-      KF Midos Top Left Chest: 'True'
-      KF Midos Top Right Chest: 'True'
-      KF Midos Bottom Left Chest: 'True'
-      KF Midos Bottom Right Chest: 'True'
+      KF Midos Top Left Chest: "True"
+      KF Midos Top Right Chest: "True"
+      KF Midos Bottom Left Chest: "True"
+      KF Midos Bottom Right Chest: "True"
   exits:
-      Kokiri Forest: 'True'
+      Kokiri Forest: "True"
 
 
 - region_name: KF Sarias House
   scene: KF Sarias House
   exits:
-      Kokiri Forest: 'True'
+      Kokiri Forest: "True"
 
 
 - region_name: KF House of Twins
   scene: KF House of Twins
   exits:
-      Kokiri Forest: 'True'
+      Kokiri Forest: "True"
 
 
 - region_name: KF Know It All House
   scene: KF Know it All House
   exits:
-      Kokiri Forest: 'True'
+      Kokiri Forest: "True"
 
 
 - region_name: KF Kokiri Shop
   scene: KF Kokiri Shop
   locations:
-      KF Shop Item 1: 'True'
-      KF Shop Item 2: 'True'
-      KF Shop Item 3: 'True'
-      KF Shop Item 4: 'True'
-      KF Shop Item 5: 'True'
-      KF Shop Item 6: 'True'
-      KF Shop Item 7: 'True'
-      KF Shop Item 8: 'True'
+      KF Shop Item 1: "True"
+      KF Shop Item 2: "True"
+      KF Shop Item 3: "True"
+      KF Shop Item 4: "True"
+      KF Shop Item 5: "True"
+      KF Shop Item 6: "True"
+      KF Shop Item 7: "True"
+      KF Shop Item 8: "True"
   exits:
-      Kokiri Forest: 'True'
+      Kokiri Forest: "True"
 
 
 - region_name: LW Forest Exit
@@ -166,7 +166,7 @@
   scene: Lost Woods
   hint: the Lost Woods
   exits:
-      Kokiri Forest: 'True'
+      Kokiri Forest: "True"
 
 
 - region_name: Lost Woods
@@ -181,13 +181,13 @@
       LW Target in Woods: can_use(Slingshot)
       LW Deku Scrub Near Bridge: is_child and can_stun_deku
       LW GS Bean Patch Near Bridge: can_plant_bugs and can_child_attack
-      LW Gossip Stone: 'True'
+      LW Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
       Bug Shrub: is_child and can_cut_shrubs and has_bottle
   exits:
-      LW Forest Exit: 'True'
-      GC Woods Warp: 'True'
+      LW Forest Exit: "True"
+      GC Woods Warp: "True"
       LW Bridge: is_adult and (can_use(Hover_Boots) or can_use(Longshot) or here(can_plant_bean))
       Zora River: can_leave_forest and (Silver_Scale or can_use(Iron_Boots))
       LW Beyond Mido: is_child or can_play(Sarias_Song)
@@ -211,10 +211,10 @@
           == off and Deku_Shield))
       Butterfly Fairy: can_use(Sticks) and has_bottle
   exits:
-      LW Forest Exit: 'True'
+      LW Forest Exit: "True"
       Lost Woods: is_child or can_play(Sarias_Song)
-      SFM Entryway: 'True'
-      Deku Theater: 'True'
+      SFM Entryway: "True"
+      Deku Theater: "True"
       LW Scrubs Grotto: here(can_blast_or_smash)
 
 
@@ -223,7 +223,7 @@
   scene: Lost Woods
   hint: the Lost Woods
   exits:
-      Lost Woods: 'True'
+      Lost Woods: "True"
 
 
 - region_name: SFM Entryway
@@ -231,7 +231,7 @@
   scene: Sacred Forest Meadow
   hint: the Sacred Forest Meadow
   exits:
-      LW Beyond Mido: 'True'
+      LW Beyond Mido: "True"
       Sacred Forest Meadow: is_adult or Slingshot or Sticks or can_slash_sword or can_use(Dins_Fire) or
           can_use(Megaton_Hammer)
       SFM Wolfos Grotto: can_open_bomb_grotto
@@ -245,14 +245,14 @@
       Song from Saria: is_child and Zeldas_Letter
       Sheik in Forest: is_adult
       SFM GS: adult_night and hookshot_or_boomerang and can_get_night_time_gs
-      SFM Maze Gossip Stone Lower: 'True'
-      SFM Maze Gossip Stone Upper: 'True'
-      SFM Saria Gossip Stone: 'True'
+      SFM Maze Gossip Stone Lower: "True"
+      SFM Maze Gossip Stone Upper: "True"
+      SFM Saria Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
   exits:
-      SFM Entryway: 'True'
+      SFM Entryway: "True"
       SFM Forest Temple Entrance Ledge: can_use(Hookshot)
-      SFM Fairy Grotto: 'True'
+      SFM Fairy Grotto: "True"
       SFM Storms Grotto: can_open_storm_grotto
 
 
@@ -261,8 +261,8 @@
   scene: Sacred Forest Meadow
   hint: the Sacred Forest Meadow
   exits:
-      Sacred Forest Meadow: 'True'
-      Forest Temple Entryway: 'True'
+      Sacred Forest Meadow: "True"
+      Forest Temple Entryway: "True"
 
 
 - region_name: LW Bridge From Forest
@@ -270,9 +270,9 @@
   scene: Lost Woods
   hint: the Lost Woods
   locations:
-      LW Gift from Saria: 'True'
+      LW Gift from Saria: "True"
   exits:
-      LW Bridge: 'True'
+      LW Bridge: "True"
 
 
 - region_name: LW Bridge
@@ -280,8 +280,8 @@
   scene: Lost Woods
   hint: the Lost Woods
   exits:
-      Kokiri Forest: 'True'
-      Hyrule Field: 'True'
+      Kokiri Forest: "True"
+      Hyrule Field: "True"
       Lost Woods: can_use(Longshot)
 
 
@@ -295,15 +295,15 @@
       Song from Ocarina of Time: is_child and has_all_stones
       Big Poe Kill: can_use(Bow) and can_ride_epona and has_bottle
   exits:
-      LW Bridge: 'True'
-      Lake Hylia: 'True'
-      Gerudo Valley: 'True'
-      Market Entrance: 'True'
-      Kakariko Village: 'True'
-      ZR Front: 'True'
-      Lon Lon Ranch: 'True'
+      LW Bridge: "True"
+      Lake Hylia: "True"
+      Gerudo Valley: "True"
+      Market Entrance: "True"
+      Kakariko Village: "True"
+      ZR Front: "True"
+      Lon Lon Ranch: "True"
       HF Southeast Grotto: here(can_blast_or_smash)
-      HF Open Grotto: 'True'
+      HF Open Grotto: "True"
       HF Inside Fence Grotto: can_open_bomb_grotto
       HF Cow Grotto: (can_use(Megaton_Hammer) or is_child) and can_open_bomb_grotto
       HF Near Market Grotto: here(can_blast_or_smash)
@@ -320,29 +320,29 @@
   events:
       Bonooru: is_child and Ocarina
   locations:
-      Pierre: is_adult and Bonooru and not free_scarecrow
+      Pierre: is_adult and 'Bonooru' and not free_scarecrow
       LH Underwater Item: is_child and Silver_Scale
-      LH Sun: is_adult and Water_Temple_Clear and can_use(Bow)
+      LH Sun: is_adult and 'Water_Temple_Clear' and can_use(Bow)
       LH Freestanding PoH: is_adult and (can_use(Scarecrow) or here(can_plant_bean))
       LH GS Bean Patch: can_plant_bugs and can_child_attack
       LH GS Lab Wall: child_night and (Boomerang or (logic_lab_wall_gs and (Sticks or Kokiri_Sword))) and can_get_night_time_gs
       LH GS Small Island: child_night and can_child_attack
       LH GS Tree: can_use(Longshot) and adult_night and can_get_night_time_gs
-      LH Lab Gossip Stone: 'True'
-      LH Gossip Stone Southeast: 'True'
-      LH Gossip Stone Southwest: 'True'
+      LH Lab Gossip Stone: "True"
+      LH Gossip Stone Southeast: "True"
+      LH Gossip Stone Southwest: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: is_child and can_cut_shrubs and has_bottle
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
       Zoras Domain: is_child and (Silver_Scale or can_use(Iron_Boots))
       LH Owl Flight: is_child
-      LH Lab: 'True'
-      LH Fishing Island: is_child or can_use(Scarecrow) or here(can_plant_bean) or Water_Temple_Clear
+      LH Lab: "True"
+      LH Fishing Island: is_child or can_use(Scarecrow) or here(can_plant_bean) or 'Water_Temple_Clear'
       Water Temple Entryway: can_use(Hookshot) and (can_use(Iron_Boots) or (can_use(Longshot) and Gold_Scale))
-      LH Grotto: 'True'
+      LH Grotto: "True"
 
 
 - region_name: LH Fishing Island
@@ -350,15 +350,15 @@
   scene: Lake Hylia
   hint: Lake Hylia
   exits:
-      Lake Hylia: 'True'
-      LH Fishing Hole: 'True'
+      Lake Hylia: "True"
+      LH Fishing Hole: "True"
 
 
 - region_name: LH Owl Flight
   scene: Lake Hylia
   hint: Lake Hylia
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: LH Lab
@@ -368,7 +368,7 @@
       LH Lab Trade Eyeball Frog: is_adult and Eyeball_Frog
       LH GS Lab Crate: Iron_Boots and can_use(Hookshot)
   exits:
-      Lake Hylia: 'True'
+      Lake Hylia: "True"
 
 
 - region_name: LH Fishing Hole
@@ -377,7 +377,7 @@
       LH Child Fishing: is_child
       LH Adult Fishing: is_adult
   exits:
-      LH Fishing Island: 'True'
+      LH Fishing Island: "True"
 
 
 - region_name: Gerudo Valley
@@ -389,12 +389,12 @@
       GV GS Small Bridge: child_night and hookshot_or_boomerang and can_get_night_time_gs
       Bug Rock: is_child and has_bottle
   exits:
-      Hyrule Field: 'True'
-      GV Upper Stream: 'True'
+      Hyrule Field: "True"
+      GV Upper Stream: "True"
       GV Crate Ledge: is_child or can_use(Longshot)
-      GV Grotto Ledge: 'True'
+      GV Grotto Ledge: "True"
       GV Fortress Side: "(is_adult and (can_ride_epona or can_use(Longshot) or gerudo_fortress
-          == open or Carpenter_Rescue)) or (is_child and can_use(Hookshot))"
+          == open or 'Carpenter_Rescue')) or (is_child and can_use(Hookshot))"
 
 
 - region_name: GV Upper Stream
@@ -403,14 +403,14 @@
   hint: Gerudo Valley
   time_passes: true
   locations:
-      GV Waterfall Freestanding PoH: 'True'
+      GV Waterfall Freestanding PoH: "True"
       GV GS Bean Patch: can_plant_bugs and can_child_attack
       GV Cow: is_child and can_play(Eponas_Song)
-      GV Gossip Stone: 'True'
+      GV Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
   exits:
-      GV Lower Stream: 'True'
+      GV Lower Stream: "True"
 
 
 - region_name: GV Lower Stream
@@ -419,7 +419,7 @@
   hint: Gerudo Valley
   time_passes: true
   exits:
-      Lake Hylia: 'True'
+      Lake Hylia: "True"
 
 
 - region_name: GV Grotto Ledge
@@ -428,7 +428,7 @@
   hint: Gerudo Valley
   time_passes: true
   exits:
-      GV Lower Stream: 'True'
+      GV Lower Stream: "True"
       GV Octorok Grotto: can_use(Silver_Gauntlets)
       GV Crate Ledge: can_use(Longshot)
 
@@ -439,9 +439,9 @@
   hint: Gerudo Valley
   time_passes: true
   locations:
-      GV Crate Freestanding PoH: 'True'
+      GV Crate Freestanding PoH: "True"
   exits:
-      GV Lower Stream: 'True'
+      GV Lower Stream: "True"
 
 
 - region_name: GV Fortress Side
@@ -455,10 +455,10 @@
       GV GS Behind Tent: adult_night and hookshot_or_boomerang and can_get_night_time_gs
       GV GS Pillar: adult_night and hookshot_or_boomerang and can_get_night_time_gs
   exits:
-      Gerudo Fortress: 'True'
-      GV Upper Stream: 'True'
+      Gerudo Fortress: "True"
+      GV Upper Stream: "True"
       Gerudo Valley: is_child or can_ride_epona or can_use(Longshot) or gerudo_fortress
-          == open or Carpenter_Rescue
+          == open or 'Carpenter_Rescue'
       GV Carpenter Tent: is_adult
       GV Storms Grotto: is_adult and can_open_storm_grotto
 
@@ -466,7 +466,7 @@
 - region_name: GV Carpenter Tent
   scene: GV Carpenter Tent
   exits:
-      GV Fortress Side: 'True'
+      GV Fortress Side: "True"
 
 
 - region_name: Gerudo Fortress
@@ -492,9 +492,9 @@
           hookshot_or_boomerang or can_use(Hover_Boots) or logic_gerudo_kitchen) and
           can_get_night_time_gs
   exits:
-      GV Fortress Side: 'True'
-      GF Outside Gate: GF_Gate_Open
-      Gerudo Training Ground Entryway: GTG_Gate_Open and (is_adult or shuffle_dungeon_entrances)
+      GV Fortress Side: "True"
+      GF Outside Gate: "'GF_Gate_Open'"
+      Gerudo Training Ground Entryway: "'GTG_Gate_Open' and (is_adult or shuffle_dungeon_entrances)"
       GF Storms Grotto: is_adult and can_open_storm_grotto
 
 
@@ -505,8 +505,8 @@
   events:
       GF Gate Open: is_adult and Gerudo_Token and (shuffle_gerudo_token or shuffle_overworld_entrances)
   exits:
-      Gerudo Fortress: GF_Gate_Open or (is_adult and (Hookshot or not shuffle_overworld_entrances))
-      Wasteland Near Fortress: 'True'
+      Gerudo Fortress: "'GF_Gate_Open' or (is_adult and (Hookshot or not shuffle_overworld_entrances))"
+      Wasteland Near Fortress: "True"
 
 
 - region_name: Wasteland Near Fortress
@@ -514,7 +514,7 @@
   scene: Haunted Wasteland
   hint: the Haunted Wasteland
   exits:
-      GF Outside Gate: 'True'
+      GF Outside Gate: "True"
       Haunted Wasteland: can_use(Hover_Boots) or can_use(Longshot)
 
 
@@ -527,7 +527,7 @@
       Wasteland Bombchu Salesman: Adults_Wallet and (is_adult or Sticks or can_slash_sword)
       Wasteland GS: hookshot_or_boomerang
       Fairy Pot: has_bottle
-      Nut Pot: 'True'
+      Nut Pot: "True"
   exits:
       Wasteland Near Colossus: logic_lens_wasteland or can_use(Lens_of_Truth)
       Wasteland Near Fortress: can_use(Hover_Boots) or can_use(Longshot)
@@ -538,7 +538,7 @@
   scene: Haunted Wasteland
   hint: the Haunted Wasteland
   exits:
-      Desert Colossus: 'True'
+      Desert Colossus: "True"
       Haunted Wasteland: logic_reverse_wasteland
 
 
@@ -553,14 +553,14 @@
       Colossus GS Tree:  adult_night and hookshot_or_boomerang and can_get_night_time_gs
       Colossus GS Hill: adult_night and (here(can_plant_bean) or can_use(Longshot)
           or (logic_colossus_gs and can_use(Hookshot))) and can_get_night_time_gs
-      Colossus Gossip Stone: 'True'
+      Colossus Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Fairy Pond: can_play(Song_of_Storms) and has_bottle
       Bug Rock: has_bottle
   exits:
       Colossus Great Fairy Fountain: has_explosives
-      Spirit Temple Entryway: 'True'
-      Wasteland Near Colossus: 'True'
+      Spirit Temple Entryway: "True"
+      Wasteland Near Colossus: "True"
       Colossus Grotto: can_use(Silver_Gauntlets)
 
 
@@ -569,9 +569,9 @@
   scene: Desert Colossus
   hint: the Desert Colossus
   locations:
-      Sheik at Colossus: 'True'
+      Sheik at Colossus: "True"
   exits:
-      Desert Colossus: 'True'
+      Desert Colossus: "True"
 
 
 - region_name: Colossus Great Fairy Fountain
@@ -579,7 +579,7 @@
   locations:
       Colossus Great Fairy Reward: can_play(Zeldas_Lullaby)
   exits:
-      Desert Colossus: 'True'
+      Desert Colossus: "True"
 
 
 - region_name: Market Entrance
@@ -587,8 +587,8 @@
   hint: the Market
   exits:
       Hyrule Field: is_adult or at_day
-      Market: 'True'
-      Market Guard House: 'True'
+      Market: "True"
+      Market Guard House: "True"
 
 
 - region_name: Market
@@ -596,9 +596,9 @@
   scene: Market
   hint: the Market
   exits:
-      Market Entrance: 'True'
-      ToT Entrance: 'True'
-      Castle Grounds: 'True'
+      Market Entrance: "True"
+      ToT Entrance: "True"
+      Castle Grounds: "True"
       Market Bazaar: child_day
       Market Mask Shop: child_day
       Market Shooting Gallery: child_day
@@ -613,9 +613,9 @@
   scene: Market
   hint: the Market
   exits:
-      Market: 'True'
+      Market: "True"
       Market Bombchu Shop: at_night
-      Market Dog Lady House: 'True'
+      Market Dog Lady House: "True"
       Market Man in Green House: at_night
 
 
@@ -623,14 +623,14 @@
   scene: ToT Entrance
   hint: the Market
   locations:
-      ToT Gossip Stone Left: 'True'
-      ToT Gossip Stone Left Center: 'True'
-      ToT Gossip Stone Right: 'True'
-      ToT Gossip Stone Right Center: 'True'
+      ToT Gossip Stone Left: "True"
+      ToT Gossip Stone Left Center: "True"
+      ToT Gossip Stone Right: "True"
+      ToT Gossip Stone Right Center: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
   exits:
-      Market: 'True'
-      Temple of Time: 'True'
+      Market: "True"
+      Temple of Time: "True"
 
 
 - region_name: Temple of Time
@@ -640,7 +640,7 @@
   locations:
       ToT Light Arrows Cutscene: is_adult and can_trigger_lacs
   exits:
-      ToT Entrance: 'True'
+      ToT Entrance: "True"
       Beyond Door of Time: open_door_of_time == open or (can_play(Song_of_Time) and
           (open_door_of_time == closed or (has_all_stones and Ocarina_of_Time)))
 
@@ -649,11 +649,13 @@
   font_color: Light Blue
   scene: Temple of Time
   hint: the Temple of Time
+  events:
+      Time Travel: "True"
   locations:
-      ToT Master Sword: 'True'
+      ToT Master Sword: "True"
       Sheik at Temple: is_adult and Forest_Medallion
   exits:
-      Temple of Time: 'True'
+      Temple of Time: "True"
 
 
 - region_name: Castle Grounds
@@ -661,7 +663,7 @@
   scene: Castle Grounds
   hint: the Castle Grounds
   exits:
-      Market: 'True'
+      Market: "True"
       Hyrule Castle Grounds: is_child
       Ganons Castle Grounds: is_adult
 
@@ -672,15 +674,15 @@
   hint: Hyrule Castle
   time_passes: true
   locations:
-      HC Malon Egg: 'True'
+      HC Malon Egg: "True"
       HC GS Tree: can_child_attack
-      HC Malon Gossip Stone: 'True'
-      HC Rock Wall Gossip Stone: 'True'
+      HC Malon Gossip Stone: "True"
+      HC Rock Wall Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Rock: has_bottle
   exits:
-      Castle Grounds: 'True'
+      Castle Grounds: "True"
       HC Garden: Weird_Egg or skip_child_zelda or (not shuffle_weird_egg)
       HC Great Fairy Fountain: can_blast_or_smash
       HC Storms Grotto: can_open_storm_grotto
@@ -691,8 +693,8 @@
   scene: Castle Grounds
   hint: Hyrule Castle
   exits:
-      HC Garden Locations: 'True'
-      Hyrule Castle Grounds: 'True'
+      HC Garden Locations: "True"
+      Hyrule Castle Grounds: "True"
 
 
 - region_name: HC Garden Locations
@@ -700,8 +702,8 @@
   scene: Castle Grounds
   hint: Hyrule Castle
   locations:
-      HC Zeldas Letter: 'True'
-      Song from Impa: 'True'
+      HC Zeldas Letter: "True"
+      Song from Impa: "True"
 
 
 - region_name: HC Great Fairy Fountain
@@ -709,7 +711,7 @@
   locations:
       HC Great Fairy Reward: can_play(Zeldas_Lullaby)
   exits:
-      Castle Grounds: 'True'
+      Castle Grounds: "True"
 
 
 - region_name: Ganons Castle Grounds
@@ -717,9 +719,9 @@
   scene: Castle Grounds
   hint: outside Ganon's Castle
   locations:
-      OGC GS: 'True'
+      OGC GS: "True"
   exits:
-      Castle Grounds: 'True'
+      Castle Grounds: "True"
       OGC Great Fairy Fountain: can_use(Golden_Gauntlets)
       Ganons Castle Tower: can_build_rainbow_bridge
       Ganons Castle Entryway: can_build_rainbow_bridge
@@ -730,7 +732,7 @@
   locations:
       OGC Great Fairy Reward: can_play(Zeldas_Lullaby)
   exits:
-      Castle Grounds: 'True'
+      Castle Grounds: "True"
 
 
 - region_name: Market Guard House
@@ -739,33 +741,33 @@
       Market 10 Big Poes: is_adult and (Big_Poe or count(Bottle_with_Big_Poe, big_poe_count))
       Market GS Guard House: is_child
   exits:
-      Market Entrance: 'True'
+      Market Entrance: "True"
 
 
 - region_name: Market Bazaar
   scene: Market Bazaar
   locations:
-      Market Bazaar Item 1: 'True'
-      Market Bazaar Item 2: 'True'
-      Market Bazaar Item 3: 'True'
-      Market Bazaar Item 4: 'True'
-      Market Bazaar Item 5: 'True'
-      Market Bazaar Item 6: 'True'
-      Market Bazaar Item 7: 'True'
-      Market Bazaar Item 8: 'True'
+      Market Bazaar Item 1: "True"
+      Market Bazaar Item 2: "True"
+      Market Bazaar Item 3: "True"
+      Market Bazaar Item 4: "True"
+      Market Bazaar Item 5: "True"
+      Market Bazaar Item 6: "True"
+      Market Bazaar Item 7: "True"
+      Market Bazaar Item 8: "True"
   exits:
-      Market: 'True'
+      Market: "True"
 
 
 - region_name: Market Mask Shop
   scene: Market Mask Shop
   events:
       Skull Mask: Zeldas_Letter and (complete_mask_quest or at('Kakariko Village', is_child))
-      Mask of Truth: Skull_Mask and (complete_mask_quest or (at('Lost Woods', is_child
+      Mask of Truth: "'Skull_Mask' and (complete_mask_quest or (at('Lost Woods', is_child
           and can_play(Sarias_Song)) and at('Graveyard', child_day) and at('Hyrule
-          Field', is_child and has_all_stones)))
+          Field', is_child and has_all_stones)))"
   exits:
-      Market: 'True'
+      Market: "True"
 
 
 - region_name: Market Shooting Gallery
@@ -773,7 +775,7 @@
   locations:
       Market Shooting Gallery Reward: is_child
   exits:
-      Market: 'True'
+      Market: "True"
 
 
 - region_name: Market Bombchu Bowling
@@ -783,22 +785,22 @@
       Market Bombchu Bowling Second Prize: found_bombchus
       Market Bombchu Bowling Bombchus: found_bombchus
   exits:
-      Market: 'True'
+      Market: "True"
 
 
 - region_name: Market Potion Shop
   scene: Market Potion Shop
   locations:
-      Market Potion Shop Item 1: 'True'
-      Market Potion Shop Item 2: 'True'
-      Market Potion Shop Item 3: 'True'
-      Market Potion Shop Item 4: 'True'
-      Market Potion Shop Item 5: 'True'
-      Market Potion Shop Item 6: 'True'
-      Market Potion Shop Item 7: 'True'
-      Market Potion Shop Item 8: 'True'
+      Market Potion Shop Item 1: "True"
+      Market Potion Shop Item 2: "True"
+      Market Potion Shop Item 3: "True"
+      Market Potion Shop Item 4: "True"
+      Market Potion Shop Item 5: "True"
+      Market Potion Shop Item 6: "True"
+      Market Potion Shop Item 7: "True"
+      Market Potion Shop Item 8: "True"
   exits:
-      Market: 'True'
+      Market: "True"
 
 
 - region_name: Market Treasure Chest Game
@@ -829,22 +831,22 @@
          (shuffle_chest_game == pack and count(Chest_Game_Small_Key, 1)) or
          (can_use(Lens_of_Truth) and shuffle_chest_game == off)"
   exits:
-      Market: 'True'
+      Market: "True"
 
 
 - region_name: Market Bombchu Shop
   scene: Market Bombchu Shop
   locations:
-      Market Bombchu Shop Item 1: 'True'
-      Market Bombchu Shop Item 2: 'True'
-      Market Bombchu Shop Item 3: 'True'
-      Market Bombchu Shop Item 4: 'True'
-      Market Bombchu Shop Item 5: 'True'
-      Market Bombchu Shop Item 6: 'True'
-      Market Bombchu Shop Item 7: 'True'
-      Market Bombchu Shop Item 8: 'True'
+      Market Bombchu Shop Item 1: "True"
+      Market Bombchu Shop Item 2: "True"
+      Market Bombchu Shop Item 3: "True"
+      Market Bombchu Shop Item 4: "True"
+      Market Bombchu Shop Item 5: "True"
+      Market Bombchu Shop Item 6: "True"
+      Market Bombchu Shop Item 7: "True"
+      Market Bombchu Shop Item 8: "True"
   exits:
-      Market Back Alley: 'True'
+      Market Back Alley: "True"
 
 
 - region_name: Market Dog Lady House
@@ -852,13 +854,13 @@
   locations:
       Market Lost Dog: child_night
   exits:
-      Market Back Alley: 'True'
+      Market Back Alley: "True"
 
 
 - region_name: Market Man in Green House
   scene: Market Man in Green House
   exits:
-      Market Back Alley: 'True'
+      Market Back Alley: "True"
 
 
 - region_name: Kakariko Village
@@ -878,14 +880,14 @@
       Kak GS Watchtower: child_night and (Slingshot or has_bombchus or can_use(Bow) or can_use(Longshot)) and can_get_night_time_gs
       Bug Rock: has_bottle
   exits:
-      Hyrule Field: 'True'
-      Kak Carpenter Boss House: 'True'
-      Kak House of Skulltula: 'True'
-      Kak Impas House: 'True'
-      Kak Windmill: 'True'
+      Hyrule Field: "True"
+      Kak Carpenter Boss House: "True"
+      Kak House of Skulltula: "True"
+      Kak Impas House: "True"
+      Kak Windmill: "True"
       Kak Bazaar: adult_day
       Kak Shooting Gallery: adult_day
-      Bottom of the Well Entryway: Drain_Well and (is_child or shuffle_dungeon_entrances)
+      Bottom of the Well Entryway: "'Drain_Well' and (is_child or shuffle_dungeon_entrances)"
       Kak Potion Shop Front: is_child or at_day
       Kak Redead Grotto: can_open_bomb_grotto
       Kak Impas Ledge: child_day or can_use(Hookshot)
@@ -893,8 +895,8 @@
       Kak Odd Poultice Rooftop: can_use(Hookshot) or (logic_man_on_roof and (is_adult
           or at_day or Slingshot or has_bombchus or can_use(Bow) or can_use(Longshot)))
       Kak Backyard: is_adult or at_day
-      Graveyard: 'True'
-      Kak Behind Gate: is_adult or Kakariko_Village_Gate_Open
+      Graveyard: "True"
+      Kak Behind Gate: is_adult or 'Kakariko_Village_Gate_Open'
 
 
 - region_name: Kak Impas Ledge
@@ -902,8 +904,8 @@
   scene: Kakariko Village
   hint: Kakariko Village
   exits:
-      Kak Impas House Back: 'True'
-      Kakariko Village: 'True'
+      Kak Impas House Back: "True"
+      Kakariko Village: "True"
 
 
 - region_name: Kak Impas Rooftop
@@ -913,8 +915,8 @@
   locations:
       Kak GS Above Impas House: adult_night
   exits:
-      Kak Impas Ledge: 'True'
-      Kakariko Village: 'True'
+      Kak Impas Ledge: "True"
+      Kakariko Village: "True"
 
 
 - region_name: Kak Odd Poultice Rooftop
@@ -922,10 +924,10 @@
   scene: Kakariko Village
   hint: Kakariko Village
   locations:
-      Kak Man on Roof: 'True'
+      Kak Man on Roof: "True"
   exits:
-      Kakariko Village: 'True'
-      Kak Backyard: 'True'
+      Kakariko Village: "True"
+      Kak Backyard: "True"
 
 
 - region_name: Kak Backyard
@@ -933,8 +935,8 @@
   scene: Kakariko Village
   hint: Kakariko Village
   exits:
-      Kakariko Village: 'True'
-      Kak Open Grotto: 'True'
+      Kakariko Village: "True"
+      Kak Open Grotto: "True"
       Kak Odd Poultice Building: is_adult
       Kak Potion Shop Back: adult_day
 
@@ -944,7 +946,7 @@
   events:
       Wake Up Adult Talon: is_adult and (Pocket_Egg or Pocket_Cucco)
   exits:
-      Kakariko Village: 'True'
+      Kakariko Village: "True"
 
 
 - region_name: Kak House of Skulltula
@@ -956,23 +958,23 @@
       Kak 40 Gold Skulltula Reward: count(Gold_Skulltula_Token, 40)
       Kak 50 Gold Skulltula Reward: count(Gold_Skulltula_Token, 50)
   exits:
-      Kakariko Village: 'True'
+      Kakariko Village: "True"
 
 
 - region_name: Kak Impas House
   scene: Kak Impas House
   exits:
-      Kakariko Village: 'True'
-      Kak Impas House Near Cow: 'True'
+      Kakariko Village: "True"
+      Kak Impas House Near Cow: "True"
 
 
 - region_name: Kak Impas House Back
   scene: Kak Impas House
   locations:
-      Kak Impas House Freestanding PoH: 'True'
+      Kak Impas House Freestanding PoH: "True"
   exits:
-      Kak Impas Ledge: 'True'
-      Kak Impas House Near Cow: 'True'
+      Kak Impas Ledge: "True"
+      Kak Impas House Near Cow: "True"
 
 
 - region_name: Kak Impas House Near Cow
@@ -987,25 +989,25 @@
       Drain Well: is_child and can_play(Song_of_Storms)
   locations:
       Kak Windmill Freestanding PoH: can_use(Boomerang) or (logic_windmill_poh_hookshot and can_slash_sword and can_use(Hookshot))
-          or Dampes_Windmill_Access
+          or 'Dampes_Windmill_Access'
       Song from Windmill: is_adult and Ocarina
   exits:
-      Kakariko Village: 'True'
+      Kakariko Village: "True"
 
 
 - region_name: Kak Bazaar
   scene: Kak Bazaar
   locations:
-      Kak Bazaar Item 1: 'True'
-      Kak Bazaar Item 2: 'True'
-      Kak Bazaar Item 3: 'True'
-      Kak Bazaar Item 4: 'True'
-      Kak Bazaar Item 5: 'True'
-      Kak Bazaar Item 6: 'True'
-      Kak Bazaar Item 7: 'True'
-      Kak Bazaar Item 8: 'True'
+      Kak Bazaar Item 1: "True"
+      Kak Bazaar Item 2: "True"
+      Kak Bazaar Item 3: "True"
+      Kak Bazaar Item 4: "True"
+      Kak Bazaar Item 5: "True"
+      Kak Bazaar Item 6: "True"
+      Kak Bazaar Item 7: "True"
+      Kak Bazaar Item 8: "True"
   exits:
-      Kakariko Village: 'True'
+      Kakariko Village: "True"
 
 
 - region_name: Kak Shooting Gallery
@@ -1013,7 +1015,7 @@
   locations:
       Kak Shooting Gallery Reward: is_adult and Bow
   exits:
-      Kakariko Village: 'True'
+      Kakariko Village: "True"
 
 
 - region_name: Kak Potion Shop Front
@@ -1028,7 +1030,7 @@
       Kak Potion Shop Item 7: is_adult
       Kak Potion Shop Item 8: is_adult
   exits:
-      Kakariko Village: 'True'
+      Kakariko Village: "True"
       Kak Potion Shop Back: is_adult
 
 
@@ -1036,7 +1038,7 @@
   scene: Kak Potion Shop
   exits:
       Kak Backyard: is_adult
-      Kak Potion Shop Front: 'True'
+      Kak Potion Shop Front: "True"
 
 
 - region_name: Kak Odd Poultice Building
@@ -1044,7 +1046,7 @@
   locations:
       Kak Trade Odd Mushroom: is_adult and Odd_Mushroom
   exits:
-      Kak Backyard: 'True'
+      Kak Backyard: "True"
 
 
 - region_name: Graveyard
@@ -1066,16 +1068,16 @@
       Graveyard Heart Piece Grave: is_adult or at_night
       Graveyard Dampes Grave: is_adult
       Graveyard Dampes House: is_adult or at_night
-      Kakariko Village: 'True'
+      Kakariko Village: "True"
 
 
 - region_name: Graveyard Shield Grave
   scene: Graveyard Shield Grave
   locations:
-      Graveyard Shield Grave Chest: 'True'
+      Graveyard Shield Grave Chest: "True"
       Free Fairies: can_blast_or_smash and has_bottle
   exits:
-      Graveyard: 'True'
+      Graveyard: "True"
 
 
 - region_name: Graveyard Heart Piece Grave
@@ -1083,7 +1085,7 @@
   locations:
       Graveyard Heart Piece Grave Chest: can_play(Suns_Song)
   exits:
-      Graveyard: 'True'
+      Graveyard: "True"
 
 
 - region_name: Graveyard Royal Familys Tomb
@@ -1093,7 +1095,7 @@
       Song from Royal Familys Tomb: is_adult or (Slingshot or Boomerang or Sticks or
           has_explosives or can_slash_sword)
   exits:
-      Graveyard: 'True'
+      Graveyard: "True"
 
 
 - region_name: Graveyard Dampes Grave
@@ -1101,18 +1103,18 @@
   events:
       Dampes Windmill Access: is_adult and can_play(Song_of_Time)
   locations:
-      Graveyard Hookshot Chest: 'True'
+      Graveyard Hookshot Chest: "True"
       Graveyard Dampe Race Freestanding PoH: is_adult or logic_child_dampe_race_poh
-      Nut Pot: 'True'
+      Nut Pot: "True"
   exits:
-      Graveyard: 'True'
+      Graveyard: "True"
       Kak Windmill: is_adult and can_play(Song_of_Time)
 
 
 - region_name: Graveyard Dampes House
   scene: Graveyard Dampes House
   exits:
-      Graveyard: 'True'
+      Graveyard: "True"
 
 
 - region_name: Graveyard Warp Pad Region
@@ -1120,10 +1122,10 @@
   scene: Graveyard
   hint: the Graveyard
   locations:
-      Graveyard Gossip Stone: 'True'
+      Graveyard Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
   exits:
-      Graveyard: 'True'
+      Graveyard: "True"
       Shadow Temple Entryway: can_use(Dins_Fire) or (logic_shadow_fire_arrow_entry and
           can_use(Fire_Arrows))
 
@@ -1133,9 +1135,9 @@
   scene: Kakariko Village
   hint: Kakariko Village
   exits:
-      Kakariko Village: is_adult or logic_visible_collisions or Kakariko_Village_Gate_Open
+      Kakariko Village: is_adult or logic_visible_collisions or 'Kakariko_Village_Gate_Open'
           or open_kakariko == open
-      Death Mountain: 'True'
+      Death Mountain: "True"
 
 
 - region_name: Death Mountain
@@ -1154,8 +1156,8 @@
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle and
           (has_explosives or Goron_Bracelet)
   exits:
-      Kak Behind Gate: 'True'
-      Goron City: 'True'
+      Kak Behind Gate: "True"
+      Goron City: "True"
       Death Mountain Summit: here(can_blast_or_smash) or (is_adult and here(can_plant_bean
           and Goron_Bracelet)) or (logic_dmt_climb_hovers and can_use(Hover_Boots))
       Dodongos Cavern Entryway: has_explosives or Goron_Bracelet or is_adult
@@ -1172,12 +1174,12 @@
       DMT Trade Eyedrops: is_adult and Worlds_Finest_Eyedrops
       DMT Trade Claim Check: is_adult and Claim_Check
       DMT GS Falling Rocks Path: adult_night and can_use(Megaton_Hammer) and can_get_night_time_gs
-      DMT Gossip Stone: 'True'
+      DMT Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Bug Rock: is_child and has_bottle
   exits:
-      Death Mountain: 'True'
-      DMC Upper Local: 'True'
+      Death Mountain: "True"
+      DMC Upper Local: "True"
       DMT Owl Flight: is_child
       DMT Cow Grotto: here(can_blast_or_smash)
       DMT Great Fairy Fountain: here(can_blast_or_smash)
@@ -1186,7 +1188,7 @@
 - region_name: DMT Owl Flight
   scene: Death Mountain
   exits:
-      Kak Impas Rooftop: 'True'
+      Kak Impas Rooftop: "True"
 
 
 - region_name: Goron City
@@ -1196,7 +1198,7 @@
   events:
       Goron City Child Fire: is_child and can_use(Dins_Fire)
       GC Woods Warp Open: can_blast_or_smash or can_use(Dins_Fire) or can_use(Bow) or
-          Goron_Bracelet or Goron_City_Child_Fire
+          Goron_Bracelet or 'Goron_City_Child_Fire'
       GC Darunias Door Open Child: is_child and can_play(Zeldas_Lullaby)
       Stop GC Rolling Goron as Adult: is_adult and (Goron_Bracelet or
           has_explosives or Bow or (logic_link_goron_dins and can_use(Dins_Fire)))
@@ -1205,11 +1207,11 @@
           and has_explosives and can_use(Hover_Boots))
       GC Maze Center Chest: can_blast_or_smash or can_use(Silver_Gauntlets)
       GC Maze Right Chest: can_blast_or_smash or can_use(Silver_Gauntlets)
-      GC Pot Freestanding PoH: is_child and Goron_City_Child_Fire and (Bombs or (Goron_Bracelet
+      GC Pot Freestanding PoH: is_child and 'Goron_City_Child_Fire' and (Bombs or (Goron_Bracelet
           and logic_goron_city_pot_with_strength) or (has_bombchus and logic_goron_city_pot))
       GC Rolling Goron as Child: is_child and (has_explosives or (Goron_Bracelet
           and logic_child_rolling_with_strength))
-      GC Rolling Goron as Adult: Stop_GC_Rolling_Goron_as_Adult
+      GC Rolling Goron as Adult: "'Stop_GC_Rolling_Goron_as_Adult'"
       GC GS Boulder Maze: is_child and has_explosives
       GC GS Center Platform: is_adult
       GC Medigoron: is_adult and Progressive_Wallet and (can_blast_or_smash or Goron_Bracelet)
@@ -1220,11 +1222,11 @@
       Bug Rock: (can_blast_or_smash or can_use(Silver_Gauntlets)) and has_bottle
       Stick Pot: is_child
   exits:
-      Death Mountain: 'True'
-      GC Woods Warp: GC_Woods_Warp_Open
-      GC Shop: "(is_adult and Stop_GC_Rolling_Goron_as_Adult) or (is_child and (can_blast_or_smash
-          or Goron_Bracelet or Goron_City_Child_Fire or can_use(Bow)))"
-      GC Darunias Chamber: GC_Darunias_Door_Open_Child or (is_adult and Stop_GC_Rolling_Goron_as_Adult)
+      Death Mountain: "True"
+      GC Woods Warp: "'GC_Woods_Warp_Open'"
+      GC Shop: "(is_adult and 'Stop_GC_Rolling_Goron_as_Adult') or (is_child and (can_blast_or_smash
+          or Goron_Bracelet or 'Goron_City_Child_Fire' or can_use(Bow)))"
+      GC Darunias Chamber: "'GC_Darunias_Door_Open_Child' or (is_adult and 'Stop_GC_Rolling_Goron_as_Adult')"
       GC Grotto Platform: is_adult and ((can_play(Song_of_Time) and ((effective_health(3)) or
           can_use(Goron_Tunic) or can_use(Longshot) or can_use(Nayrus_Love))) or
           (effective_health(2) and can_use(Goron_Tunic) and can_use(Hookshot)) or (can_use(Nayrus_Love) and can_use(Hookshot)))
@@ -1237,8 +1239,8 @@
   events:
       GC Woods Warp Open: can_blast_or_smash or can_use(Dins_Fire)
   exits:
-      Goron City: can_leave_forest and GC_Woods_Warp_Open
-      Lost Woods: 'True'
+      Goron City: can_leave_forest and 'GC_Woods_Warp_Open'
+      Lost Woods: "True"
 
 
 - region_name: GC Darunias Chamber
@@ -1250,7 +1252,7 @@
   locations:
       GC Darunias Joy: is_child and can_play(Sarias_Song)
   exits:
-      Goron City: 'True'
+      Goron City: "True"
       DMC Lower Local: is_adult
 
 
@@ -1259,7 +1261,7 @@
   scene: Goron City
   hint: Goron City
   exits:
-      GC Grotto: 'True'
+      GC Grotto: "True"
       Goron City: effective_health(3) or can_use(Goron_Tunic) or can_use(Nayrus_Love)
           or ((is_child or can_play(Song_of_Time)) and can_use(Longshot))
 
@@ -1267,16 +1269,16 @@
 - region_name: GC Shop
   scene: GC Shop
   locations:
-      GC Shop Item 1: 'True'
-      GC Shop Item 2: 'True'
-      GC Shop Item 3: 'True'
-      GC Shop Item 4: 'True'
-      GC Shop Item 5: 'True'
-      GC Shop Item 6: 'True'
-      GC Shop Item 7: 'True'
-      GC Shop Item 8: 'True'
+      GC Shop Item 1: "True"
+      GC Shop Item 2: "True"
+      GC Shop Item 3: "True"
+      GC Shop Item 4: "True"
+      GC Shop Item 5: "True"
+      GC Shop Item 6: "True"
+      GC Shop Item 7: "True"
+      GC Shop Item 8: "True"
   exits:
-      Goron City: 'True'
+      Goron City: "True"
 
 
 - region_name: DMC Upper Nearby
@@ -1285,7 +1287,7 @@
   hint: Death Mountain Crater
   exits:
       DMC Upper Local: fire_timer(48)
-      Death Mountain Summit: 'True'
+      Death Mountain Summit: "True"
       DMC Upper Grotto: here(can_blast_or_smash) and (fire_timer(8) or hearts(3))
 
 
@@ -1300,12 +1302,12 @@
       Gossip Stone Fairy: has_explosives and can_summon_gossip_fairy_without_suns and
           has_bottle
   exits:
-      DMC Upper Nearby: 'True'
+      DMC Upper Nearby: "True"
       DMC Ladder Area Nearby: fire_timer(16) or hearts(3)
       DMC Central Nearby: is_adult and can_use(Goron_Tunic) and can_use(Distant_Scarecrow) and
           (effective_health(3) or (Fairy and shuffle_dungeon_entrances != off) or
           can_use(Nayrus_Love))
-      DMC Lower Nearby: 'False'
+      DMC Lower Nearby: "False"
 
 
 - region_name: DMC Ladder Area Nearby
@@ -1326,7 +1328,7 @@
   hint: Death Mountain Crater
   exits:
       DMC Lower Local: fire_timer(48)
-      GC Darunias Chamber: 'True'
+      GC Darunias Chamber: "True"
       DMC Great Fairy Fountain: can_use(Megaton_Hammer)
       DMC Hammer Grotto: is_adult and can_use(Megaton_Hammer)
 
@@ -1336,8 +1338,8 @@
   scene: Death Mountain Crater
   hint: Death Mountain Crater
   exits:
-      DMC Lower Nearby: 'True'
-      DMC Ladder Area Nearby: 'True'
+      DMC Lower Nearby: "True"
+      DMC Ladder Area Nearby: "True"
       DMC Central Nearby: "(can_use(Hover_Boots) or can_use(Hookshot)) and (fire_timer(8) or hearts(3))"
       DMC Fire Temple Entrance: "(can_use(Hover_Boots) or can_use(Hookshot)) and fire_timer(24)"
 
@@ -1362,7 +1364,7 @@
       DMC GS Bean Patch: can_plant_bugs and can_child_attack and (fire_timer(8) or hearts(3))
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
   exits:
-      DMC Central Nearby: 'True'
+      DMC Central Nearby: "True"
       DMC Lower Nearby: is_adult and (can_use(Hover_Boots) or can_use(Hookshot) or here(can_plant_bean))
       DMC Upper Nearby: is_adult and here(can_plant_bean)
       DMC Fire Temple Entrance: "(is_child and shuffle_dungeon_entrances and hearts(3)) or (is_adult
@@ -1374,7 +1376,7 @@
   scene: Death Mountain Crater
   hint: Death Mountain Crater
   exits:
-      Fire Temple Entryway: 'True'
+      Fire Temple Entryway: "True"
       DMC Central Nearby: fire_timer(48)
 
 
@@ -1383,7 +1385,7 @@
   locations:
       DMC Great Fairy Reward: can_play(Zeldas_Lullaby)
   exits:
-      DMC Lower Local: 'True'
+      DMC Lower Local: "True"
 
 
 - region_name: DMT Great Fairy Fountain
@@ -1391,7 +1393,7 @@
   locations:
       DMT Great Fairy Reward: can_play(Zeldas_Lullaby)
   exits:
-      Death Mountain Summit: 'True'
+      Death Mountain Summit: "True"
 
 
 - region_name: ZR Front
@@ -1403,7 +1405,7 @@
       ZR GS Tree: is_child and can_child_attack
   exits:
       Zora River: is_adult or can_blast_or_smash
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: Zora River
@@ -1424,16 +1426,16 @@
       ZR GS Ladder: child_night and can_child_attack and can_get_night_time_gs
       ZR GS Near Raised Grottos: adult_night and hookshot_or_boomerang and can_get_night_time_gs
       ZR GS Above Bridge: adult_night and can_use(Hookshot) and can_get_night_time_gs
-      ZR Near Grottos Gossip Stone: 'True'
-      ZR Near Domain Gossip Stone: 'True'
+      ZR Near Grottos Gossip Stone: "True"
+      ZR Near Domain Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Bean Plant Fairy: can_plant_bean and can_play(Song_of_Storms) and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: "(is_child or can_use(Hover_Boots) or (is_adult and logic_zora_river_lower))
           and can_cut_shrubs and has_bottle"
   exits:
-      ZR Front: 'True'
-      ZR Open Grotto: 'True'
+      ZR Front: "True"
+      ZR Open Grotto: "True"
       ZR Fairy Grotto: here(can_blast_or_smash)
       Lost Woods: Silver_Scale or can_use(Iron_Boots)
       ZR Storms Grotto: can_open_storm_grotto
@@ -1445,8 +1447,8 @@
   scene: Zora River
   hint: Zora's River
   exits:
-      Zora River: 'True'
-      Zoras Domain: 'True'
+      Zora River: "True"
+      Zoras Domain: "True"
 
 
 - region_name: ZR Top of Waterfall
@@ -1454,7 +1456,7 @@
   scene: Zora River
   hint: Zora's River
   exits:
-      Zora River: 'True'
+      Zora River: "True"
 
 
 - region_name: Zoras Domain
@@ -1467,16 +1469,16 @@
       ZD Diving Minigame: is_child
       ZD Chest: is_child and can_use(Sticks)
       Deliver Rutos Letter: is_child and Rutos_Letter and zora_fountain != open
-      ZD King Zora Thawed: King_Zora_Thawed
+      ZD King Zora Thawed: "'King_Zora_Thawed'"
       ZD GS Frozen Waterfall: adult_night and (hookshot_or_boomerang or can_use(Slingshot) or Bow
           or Magic_Meter or logic_domain_gs)
-      ZD Gossip Stone: 'True'
+      ZD Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
       Fish Group: is_child and has_bottle
       Stick Pot: is_child
-      Nut Pot: 'True'
+      Nut Pot: "True"
   exits:
-      ZR Behind Waterfall: 'True'
+      ZR Behind Waterfall: "True"
       Lake Hylia: is_child and (Silver_Scale or can_use(Iron_Boots))
       ZD Behind King Zora: Deliver_Letter or zora_fountain == open or (zora_fountain
           == adult and is_adult)
@@ -1491,7 +1493,7 @@
   exits:
       Zoras Domain: Deliver_Letter or zora_fountain == open or (zora_fountain == adult
           and is_adult)
-      Zoras Fountain: 'True'
+      Zoras Fountain: "True"
 
 
 - region_name: ZD Eyeball Frog Timeout
@@ -1499,7 +1501,7 @@
   scene: Zoras Domain
   hint: Zora's Domain
   exits:
-      Zoras Domain: 'True'
+      Zoras Domain: "True"
 
 
 - region_name: Zoras Fountain
@@ -1513,12 +1515,12 @@
       ZF GS Above the Log: child_night and hookshot_or_boomerang and can_get_night_time_gs
       ZF GS Hidden Cave: adult_night and can_use(Silver_Gauntlets) and can_blast_or_smash
           and hookshot_or_boomerang and can_get_night_time_gs
-      ZF Fairy Gossip Stone: 'True'
-      ZF Jabu Gossip Stone: 'True'
+      ZF Fairy Gossip Stone: "True"
+      ZF Jabu Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy_without_suns and has_bottle
       Butterfly Fairy: can_use(Sticks) and at_day and has_bottle
   exits:
-      ZD Behind King Zora: 'True'
+      ZD Behind King Zora: "True"
       Jabu Jabus Belly Entryway: is_child and Fish
       ZF Ice Ledge: is_adult
       ZF Great Fairy Fountain: has_explosives or (can_use(Silver_Gauntlets) and
@@ -1530,23 +1532,23 @@
   scene: Zoras Fountain
   hint: Zora's Fountain
   exits:
-      Zoras Fountain: 'True'
-      Ice Cavern Entryway: 'True'
+      Zoras Fountain: "True"
+      Ice Cavern Entryway: "True"
 
 
 - region_name: ZD Shop
   scene: ZD Shop
   locations:
-      ZD Shop Item 1: 'True'
-      ZD Shop Item 2: 'True'
-      ZD Shop Item 3: 'True'
-      ZD Shop Item 4: 'True'
-      ZD Shop Item 5: 'True'
-      ZD Shop Item 6: 'True'
-      ZD Shop Item 7: 'True'
-      ZD Shop Item 8: 'True'
+      ZD Shop Item 1: "True"
+      ZD Shop Item 2: "True"
+      ZD Shop Item 3: "True"
+      ZD Shop Item 4: "True"
+      ZD Shop Item 5: "True"
+      ZD Shop Item 6: "True"
+      ZD Shop Item 7: "True"
+      ZD Shop Item 8: "True"
   exits:
-      Zoras Domain: 'True'
+      Zoras Domain: "True"
 
 
 - region_name: ZF Great Fairy Fountain
@@ -1554,7 +1556,7 @@
   locations:
       ZF Great Fairy Reward: can_play(Zeldas_Lullaby)
   exits:
-      Zoras Fountain: 'True'
+      Zoras Fountain: "True"
 
 
 - region_name: Lon Lon Ranch
@@ -1571,10 +1573,10 @@
       LLR GS House Window: child_night and hookshot_or_boomerang and can_get_night_time_gs
       LLR GS Back Wall: child_night and hookshot_or_boomerang and can_get_night_time_gs
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
       LLR Talons House: is_adult or at_day
-      LLR Stables: 'True'
-      LLR Tower: 'True'
+      LLR Stables: "True"
+      LLR Tower: "True"
       LLR Grotto: is_child
 
 
@@ -1583,7 +1585,7 @@
   locations:
       LLR Talons Chickens: child_day and Zeldas_Letter
   exits:
-      Lon Lon Ranch: 'True'
+      Lon Lon Ranch: "True"
 
 
 - region_name: LLR Stables
@@ -1592,7 +1594,7 @@
       LLR Stables Left Cow: can_play(Eponas_Song)
       LLR Stables Right Cow: can_play(Eponas_Song)
   exits:
-      Lon Lon Ranch: 'True'
+      Lon Lon Ranch: "True"
 
 
 - region_name: LLR Tower
@@ -1602,7 +1604,7 @@
       LLR Tower Left Cow: can_play(Eponas_Song)
       LLR Tower Right Cow: can_play(Eponas_Song)
   exits:
-      Lon Lon Ranch: 'True'
+      Lon Lon Ranch: "True"
 
 
 - region_name: GF Storms Grotto
@@ -1610,7 +1612,7 @@
   locations:
       Free Fairies: has_bottle
   exits:
-      Gerudo Fortress: 'True'
+      Gerudo Fortress: "True"
 
 
 - region_name: ZD Storms Grotto
@@ -1618,42 +1620,42 @@
   locations:
       Free Fairies: has_bottle
   exits:
-      Zoras Domain: 'True'
+      Zoras Domain: "True"
 
 
 - region_name: KF Storms Grotto
   scene: KF Storms Grotto
   locations:
-      KF Storms Grotto Chest: 'True'
-      KF Storms Grotto Gossip Stone: 'True'
+      KF Storms Grotto Chest: "True"
+      KF Storms Grotto Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: can_cut_shrubs and has_bottle
       Lone Fish: has_bottle
   exits:
-      Kokiri Forest: 'True'
+      Kokiri Forest: "True"
 
 
 - region_name: LW Near Shortcuts Grotto
   scene: LW Near Shortcuts Grotto
   locations:
-      LW Near Shortcuts Grotto Chest: 'True'
-      LW Near Shortcuts Grotto Gossip Stone: 'True'
+      LW Near Shortcuts Grotto Chest: "True"
+      LW Near Shortcuts Grotto Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: can_cut_shrubs and has_bottle
       Lone Fish: has_bottle
   exits:
-      Lost Woods: 'True'
+      Lost Woods: "True"
 
 
 - region_name: Deku Theater
   scene: Deku Theater
   locations:
-      Deku Theater Skull Mask: is_child and Skull_Mask
-      Deku Theater Mask of Truth: is_child and Mask_of_Truth
+      Deku Theater Skull Mask: is_child and 'Skull_Mask'
+      Deku Theater Mask of Truth: is_child and 'Mask_of_Truth'
   exits:
-      LW Beyond Mido: 'True'
+      LW Beyond Mido: "True"
 
 
 - region_name: LW Scrubs Grotto
@@ -1662,7 +1664,7 @@
       LW Deku Scrub Grotto Rear: can_stun_deku
       LW Deku Scrub Grotto Front: can_stun_deku
   exits:
-      LW Beyond Mido: 'True'
+      LW Beyond Mido: "True"
 
 
 - region_name: SFM Fairy Grotto
@@ -1670,7 +1672,7 @@
   locations:
       Free Fairies: has_bottle
   exits:
-      Sacred Forest Meadow: 'True'
+      Sacred Forest Meadow: "True"
 
 
 - region_name: SFM Storms Grotto
@@ -1679,7 +1681,7 @@
       SFM Deku Scrub Grotto Rear: can_stun_deku
       SFM Deku Scrub Grotto Front: can_stun_deku
   exits:
-      Sacred Forest Meadow: 'True'
+      Sacred Forest Meadow: "True"
 
 
 - region_name: SFM Wolfos Grotto
@@ -1687,7 +1689,7 @@
   locations:
       SFM Wolfos Grotto Chest: is_adult or Slingshot or Sticks or Kokiri_Sword or can_use(Dins_Fire)
   exits:
-      SFM Entryway: 'True'
+      SFM Entryway: "True"
 
 
 - region_name: LLR Grotto
@@ -1697,33 +1699,33 @@
       LLR Deku Scrub Grotto Right: can_stun_deku
       LLR Deku Scrub Grotto Center: can_stun_deku
   exits:
-      Lon Lon Ranch: 'True'
+      Lon Lon Ranch: "True"
 
 
 - region_name: HF Southeast Grotto
   scene: HF Southeast Grotto
   locations:
-      HF Southeast Grotto Chest: 'True'
-      HF Southeast Grotto Gossip Stone: 'True'
+      HF Southeast Grotto Chest: "True"
+      HF Southeast Grotto Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: can_cut_shrubs and has_bottle
       Lone Fish: has_bottle
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: HF Open Grotto
   scene: HF Open Grotto
   locations:
-      HF Open Grotto Chest: 'True'
-      HF Open Grotto Gossip Stone: 'True'
+      HF Open Grotto Chest: "True"
+      HF Open Grotto Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: can_cut_shrubs and has_bottle
       Lone Fish: has_bottle
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: HF Inside Fence Grotto
@@ -1731,7 +1733,7 @@
   locations:
       HF Deku Scrub Grotto: can_stun_deku
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: HF Cow Grotto
@@ -1744,20 +1746,20 @@
       Bug Shrub: has_fire_source and can_cut_shrubs and has_bottle
       Nut Pot: has_fire_source
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: HF Near Market Grotto
   scene: HF Near Market Grotto
   locations:
-      HF Near Market Grotto Chest: 'True'
-      HF Near Market Grotto Gossip Stone: 'True'
+      HF Near Market Grotto Chest: "True"
+      HF Near Market Grotto Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: can_cut_shrubs and has_bottle
       Lone Fish: has_bottle
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: HF Fairy Grotto
@@ -1765,7 +1767,7 @@
   locations:
       Free Fairies: has_bottle
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: HF Near Kak Grotto
@@ -1773,7 +1775,7 @@
   locations:
       HF GS Near Kak Grotto: can_use(Boomerang) or can_use(Hookshot)
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: HF Tektite Grotto
@@ -1781,7 +1783,7 @@
   locations:
       HF Tektite Grotto Freestanding PoH: Gold_Scale or can_use(Iron_Boots)
   exits:
-      Hyrule Field: 'True'
+      Hyrule Field: "True"
 
 
 - region_name: HC Storms Grotto
@@ -1793,7 +1795,7 @@
       Wandering Bugs: can_blast_or_smash and has_bottle
       Nut Pot: can_blast_or_smash
   exits:
-      Castle Grounds: 'True'
+      Castle Grounds: "True"
 
 
 - region_name: Kak Redead Grotto
@@ -1802,20 +1804,20 @@
       Kak Redead Grotto Chest: is_adult or (Sticks or can_use(Megaton_Hammer) or
           can_use(Dins_Fire) or can_slash_sword)
   exits:
-      Kakariko Village: 'True'
+      Kakariko Village: "True"
 
 
 - region_name: Kak Open Grotto
   scene: Kak Open Grotto
   locations:
-      Kak Open Grotto Chest: 'True'
-      Kak Open Grotto Gossip Stone: 'True'
+      Kak Open Grotto Chest: "True"
+      Kak Open Grotto Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: can_cut_shrubs and has_bottle
       Lone Fish: has_bottle
   exits:
-      Kak Backyard: 'True'
+      Kak Backyard: "True"
 
 
 - region_name: DMT Cow Grotto
@@ -1823,20 +1825,20 @@
   locations:
       DMT Cow Grotto Cow: can_play(Eponas_Song)
   exits:
-      Death Mountain Summit: 'True'
+      Death Mountain Summit: "True"
 
 
 - region_name: DMT Storms Grotto
   scene: DMT Storms Grotto
   locations:
-      DMT Storms Grotto Chest: 'True'
-      DMT Storms Grotto Gossip Stone: 'True'
+      DMT Storms Grotto Chest: "True"
+      DMT Storms Grotto Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: can_cut_shrubs and has_bottle
       Lone Fish: has_bottle
   exits:
-      Death Mountain: 'True'
+      Death Mountain: "True"
 
 
 - region_name: GC Grotto
@@ -1846,20 +1848,20 @@
       GC Deku Scrub Grotto Right: can_stun_deku
       GC Deku Scrub Grotto Center: can_stun_deku
   exits:
-      GC Grotto Platform: 'True'
+      GC Grotto Platform: "True"
 
 
 - region_name: DMC Upper Grotto
   scene: DMC Upper Grotto
   locations:
-      DMC Upper Grotto Chest: 'True'
-      DMC Upper Grotto Gossip Stone: 'True'
+      DMC Upper Grotto Chest: "True"
+      DMC Upper Grotto Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: can_cut_shrubs and has_bottle
       Lone Fish: has_bottle
   exits:
-      DMC Upper Local: 'True'
+      DMC Upper Local: "True"
 
 
 - region_name: DMC Hammer Grotto
@@ -1869,20 +1871,20 @@
       DMC Deku Scrub Grotto Right: can_stun_deku
       DMC Deku Scrub Grotto Center: can_stun_deku
   exits:
-      DMC Lower Local: 'True'
+      DMC Lower Local: "True"
 
 
 - region_name: ZR Open Grotto
   scene: ZR Open Grotto
   locations:
-      ZR Open Grotto Chest: 'True'
-      ZR Open Grotto Gossip Stone: 'True'
+      ZR Open Grotto Chest: "True"
+      ZR Open Grotto Gossip Stone: "True"
       Gossip Stone Fairy: can_summon_gossip_fairy and has_bottle
       Butterfly Fairy: can_use(Sticks) and has_bottle
       Bug Shrub: can_cut_shrubs and has_bottle
       Lone Fish: has_bottle
   exits:
-      Zora River: 'True'
+      Zora River: "True"
 
 
 - region_name: ZR Fairy Grotto
@@ -1890,7 +1892,7 @@
   locations:
       Free Fairies: has_bottle
   exits:
-      Zora River: 'True'
+      Zora River: "True"
 
 
 - region_name: ZR Storms Grotto
@@ -1899,7 +1901,7 @@
       ZR Deku Scrub Grotto Rear: can_stun_deku
       ZR Deku Scrub Grotto Front: can_stun_deku
   exits:
-      Zora River: 'True'
+      Zora River: "True"
 
 
 - region_name: LH Grotto
@@ -1909,7 +1911,7 @@
       LH Deku Scrub Grotto Right: can_stun_deku
       LH Deku Scrub Grotto Center: can_stun_deku
   exits:
-      Lake Hylia: 'True'
+      Lake Hylia: "True"
 
 
 - region_name: Colossus Grotto
@@ -1918,13 +1920,13 @@
       Colossus Deku Scrub Grotto Rear: can_stun_deku
       Colossus Deku Scrub Grotto Front: can_stun_deku
   exits:
-      Desert Colossus: 'True'
+      Desert Colossus: "True"
 
 
 - region_name: GV Octorok Grotto
   scene: GV Octorok Grotto
   exits:
-      GV Grotto Ledge: 'True'
+      GV Grotto Ledge: "True"
 
 
 - region_name: GV Storms Grotto
@@ -1933,4 +1935,4 @@
       GV Deku Scrub Grotto Rear: can_stun_deku
       GV Deku Scrub Grotto Front: can_stun_deku
   exits:
-      GV Fortress Side: 'True'
+      GV Fortress Side: "True"

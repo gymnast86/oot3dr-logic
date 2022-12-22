@@ -10,7 +10,7 @@
 #include <memory>
 
 struct Event {
-    ItemID item;
+    EventID eventId;
     Requirement requirement;
     Area* area;
 };

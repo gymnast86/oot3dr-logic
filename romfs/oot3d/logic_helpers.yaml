@@ -86,9 +86,9 @@ can_blast_or_smash: has_explosives or can_use(Megaton_Hammer)
 can_child_attack: is_child and (Slingshot or Boomerang or Sticks or Kokiri_Sword or has_explosives or can_use(Dins_Fire))
 can_child_damage: is_child and (Slingshot or Sticks or Kokiri_Sword or has_explosives or can_use(Dins_Fire))
 can_cut_shrubs: is_adult or Sticks or Kokiri_Sword or Boomerang or has_explosives
-can_leave_forest: open_forest != closed or is_adult or Deku_Tree_Clear
+can_leave_forest: open_forest != closed or is_adult or 'Deku_Tree_Clear'
 can_plant_bugs: is_child and Bugs
-can_ride_epona: is_adult and Epona and (can_play(Eponas_Song) or (is_glitched and can_hover))
+can_ride_epona: is_adult and 'Epona' and (can_play(Eponas_Song) or (is_glitched and can_hover))
 can_stun_deku: is_adult or (Slingshot or Boomerang or Sticks or Kokiri_Sword or has_explosives or can_use(Dins_Fire) or Nuts or Deku_Shield)
 can_summon_gossip_fairy: Ocarina and (Zeldas_Lullaby or Eponas_Song or Song_of_Time or Suns_Song)
 can_summon_gossip_fairy_without_suns: Ocarina and (Zeldas_Lullaby or Eponas_Song or Song_of_Time)

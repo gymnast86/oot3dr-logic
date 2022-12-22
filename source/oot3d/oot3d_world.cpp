@@ -319,6 +319,9 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
     LOG_TO_DEBUG("Building World Graph for world " + std::to_string(worldId) + "...");
     std::string worldGraphDataStr;
 
+    // Check to make sure all events we come across are defined
+    std::set<std::string> definedEvents;
+
     // Loop through all files in the directory with world graph files
     const std::filesystem::path worldPath {ROMFS"oot3d/world/"};
     for (auto const& dirEntry : std::filesystem::directory_iterator{worldPath})
@@ -388,18 +391,23 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
                 {
                     auto event = *eventIt;
                     // Get field strings
-                    std::string eventName = "Oot3d " + event.first;
+                          std::string eventName = event.first;
                     const std::string reqStr = event.second.As<std::string>();
 
+                    // Replace spaces in event names with underscores to match using
+                    // events in a requirement
+                    std::replace(eventName.begin(), eventName.end(), ' ', '_');
+
                     // Check for valid values
-                    VALID_ITEM_CHECK(area, eventName); // Events are treated as items
+                    EVENT_CHECK(eventName, this);
+                    definedEvents.insert(eventName);
                     Requirement req;
                     RequirementError err = ParseRequirementString(reqStr, req, logicHelpers, settings, areaId, "Oot3d", this);
                     VALID_REQUIREMENT(area, err, reqStr);
 
                     // Add event to list of events in this area
-                    auto itemId = NameToItemID(eventName);
-                    newArea->events.push_back({itemId, req, newArea.get()});
+                    auto eventId = eventMap[eventName] + (worldId * 10000);
+                    newArea->events.push_back({eventId, req, newArea.get()});
                 }
             }
             if (!area["locations"].IsNone())
@@ -467,6 +475,19 @@ WorldBuildingError Oot3dWorld::LoadWorldGraph()
             }
             areas.emplace(areaId, std::move(newArea));
         }
+    }
+
+    // Check to make sure all events were properly defined
+    if (eventMap.size() > definedEvents.size())
+    {
+        for (auto& [eventName, eventId] : eventMap)
+        {
+            if (definedEvents.count(eventName) == 0)
+            {
+                LOG_TO_ERROR("ERROR: Event \'" + eventName + "\' is used, but never defined in " + GetTypeString());
+            }
+        }
+        return WorldBuildingError::UNDEFINED_EVENT;
     }
 
     // Set all entrances for each area

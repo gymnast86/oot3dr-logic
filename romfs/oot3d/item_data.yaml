@@ -1223,7 +1223,7 @@
   french: Quart de cœur
   type: Item
   get_item_id: 0x3E
-  advancement: false
+  advancement: true
 
 
 - name: Heart Container
@@ -1231,7 +1231,7 @@
   french: Réceptacle de cœur
   type: Item
   get_item_id: 0x4F
-  advancement: false
+  advancement: true
 
 
 - name: Ice Trap
@@ -1385,12 +1385,14 @@
   get_item_id: 0x12
   advancement: false
 
+
 - name: Deku Nut Drop
   spanish:
   french:
   type: Drop
   get_item_id: 0xFF
   advancement: true
+
 
 - name: Deku Stick Drop
   spanish:
@@ -1399,12 +1401,14 @@
   get_item_id: 0xFF
   advancement: true
 
+
 - name: Bugs
   spanish:
   french:
   type: Drop
   get_item_id: 0xFF
   advancement: true
+
 
 - name: Fish
   spanish:
@@ -1413,12 +1417,14 @@
   get_item_id: 0xFF
   advancement: true
 
+
 - name: Fairy
   spanish:
   french:
   type: Drop
   get_item_id: 0xFF
   advancement: true
+
 
 - name: Big Poe
   spanish:
@@ -1427,6 +1433,7 @@
   get_item_id: 0xFF
   advancement: true
 
+
 - name: Blue Fire
   spanish:
   french:
@@ -1434,12 +1441,13 @@
   get_item_id: 0xFF
   advancement: true
 
+
 - name: Treasure Game Heart
   spanish: Pieza de corazón (Cofre del Tesoro)
   french: Quart de cœur (Chasse-aux-trésors)
   type: Item
   get_item_id: 0x76
-  advancement: false
+  advancement: true
 
 
 - name: Treasure Game Green Rupee
@@ -1705,110 +1713,6 @@
   get_item_id: 0x31
   advancement: false
 
-- name: Bonooru
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Epona
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Links Cow
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Showed Mido Sword And Shield
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Carpenter Rescue
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: GF Gate Open
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: GTG Gate Open
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Kakariko Village Gate Open
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Wake Up Adult Talon
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Drain Well
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Dampes Windmill Access
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: GC Woods Warp Open
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Goron City Child Fire
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Stop GC Rolling Goron as Adult
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: GC Darunias Door Open Child
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
 
 - name: Deliver Letter
   spanish:
@@ -1817,180 +1721,6 @@
   get_item_id: 0xFF
   advancement: true
 
-- name: King Zora Thawed
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Forest Temple Joelle
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Forest Temple Beth
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Forest Temple Amy
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Forest Temple Meg
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Forest Temple Jo and Beth
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Forest Temple Amy and Meg
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Fire Loop Switch
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Water Temple Low
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Water Temple Middle
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Water Temple High
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Deku Tree Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Dodongos Cavern Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Jabu Jabus Belly Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Forest Temple Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Fire Temple Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Water Temple Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Spirit Temple Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Shadow Temple Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Forest Trial Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Fire Trial Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Water Trial Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Spirit Trial Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Shadow Trial Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
-
-- name: Light Trial Clear
-  spanish:
-  french:
-  type: Event
-  get_item_id: 0xFF
-  advancement: true
 
 - name: Hint
   spanish: Pista

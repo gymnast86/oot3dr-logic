@@ -9,8 +9,11 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#define EVENT_CHECK(eventName, world) auto& events = world->eventMap; if (events.count(eventName) == 0) {events[eventName] = events.size(); world->reverseEventMap[events[eventName]] = eventName;}
+
 struct Requirement;
 using LogicHelperMap = std::unordered_map<std::string, Requirement>;
+using EventID = size_t;
 
 enum struct RequirementType
 {
@@ -21,6 +24,7 @@ enum struct RequirementType
     AND,
     NOT,
     ITEM,
+    EVENT,
     COUNT,
     // OoT3D Specific types
     CHILD_DAY,
@@ -54,7 +58,7 @@ enum struct RequirementError
 
 struct Requirement
 {
-    using Argument = std::variant<int, bool, std::string, Requirement, ItemID, AreaID, Item>;
+    using Argument = std::variant<int, bool, std::string, Requirement,  EventID, ItemID, AreaID, Item>;
     RequirementType type = RequirementType::INVALID;
     std::vector<Argument> args;
 };

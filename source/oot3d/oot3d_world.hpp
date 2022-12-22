@@ -27,7 +27,7 @@ public:
     EvalSuccess EvaluateExitRequirement(Search* search, Entrance* exit) override;
     std::string GetTypeString() const override;
 
-    void ExpandToDMasterSword(Search* search);
+    void ExpandToDTimeTravel(Search* search);
 
     std::unordered_map<std::string, std::unique_ptr<Oot3dDungeon>> dungeons;
     std::unordered_map<ItemID, Oot3dItem> itemTable;

@@ -7,7 +7,7 @@
   exits:
       Deku Tree Lobby: deku_tree_dungeon_mode == vanilla
       Deku Tree MQ Lobby: deku_tree_dungeon_mode == mq
-      KF Outside Deku Tree: 'True'
+      KF Outside Deku Tree: "True"
 
 ############################
 #     VANILLA DUNGEON      #
@@ -16,19 +16,19 @@
 - region_name: Deku Tree Lobby
   dungeon: Deku Tree
   locations:
-      Deku Tree Map Chest: 'True'
+      Deku Tree Map Chest: "True"
       Deku Baba Sticks: is_adult or Kokiri_Sword or Boomerang
       Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or has_explosives or can_use(Dins_Fire)
                                            #Glitched -> can_use(Megaton_Hammer))
   exits:
-      Deku Tree Entryway: 'True'
-      Deku Tree 2F Middle Room: 'True'
-      Deku Tree Compass Room: 'True'
+      Deku Tree Entryway: "True"
+      Deku Tree 2F Middle Room: "True"
+      Deku Tree Compass Room: "True"
       Deku Tree Basement Lower: here(is_adult or can_child_attack or Nuts)
                                            #Glitched -> can_use(Megaton_Hammer))
-      Deku Tree Outside Boss Room: 'False'
+      Deku Tree Outside Boss Room: "False"
                                            #Glitched -> CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::NOVICE))
-      Deku Tree Boss Room: 'False'
+      Deku Tree Boss Room: "False"
                                            #Glitched -> is_child and can_use(Kokiri_Sword) and Nuts and CanDoGlitch(GlitchType::SeamWalk GlitchDifficulty::EXPERT))
 
 
@@ -42,8 +42,8 @@
 - region_name: Deku Tree Slingshot Room
   dungeon: Deku Tree
   locations:
-      Deku Tree Slingshot Chest: 'True'
-      Deku Tree Slingshot Room Side Chest: 'True'
+      Deku Tree Slingshot Chest: "True"
+      Deku Tree Slingshot Room Side Chest: "True"
   exits:
       Deku Tree 2F Middle Room: can_use(Slingshot) or can_use(Hover_Boots)
                                         #Glitched -> CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::NOVICE) or CanDoGlitch(GlitchType::HookshotJump_Boots GlitchDifficulty::INTERMEDIATE))
@@ -52,8 +52,8 @@
 - region_name: Deku Tree Compass Room
   dungeon: Deku Tree
   locations:
-      Deku Tree Compass Chest: 'True'
-      Deku Tree Compass Room Side Chest: 'True'
+      Deku Tree Compass Chest: "True"
+      Deku Tree Compass Room Side Chest: "True"
       Deku Tree GS Compass Room: is_adult or can_child_attack
                                           #Glitched -> can_use(Megaton_Hammer))
       Deku Baba Sticks: is_adult or Kokiri_Sword or Boomerang
@@ -61,14 +61,14 @@
                                           #Glitched -> can_use(Megaton_Hammer))
   exits:
       Deku Tree Lobby: has_fire_source_with_torch or can_use(Bow)
-      Deku Tree Boss Room: 'False'
+      Deku Tree Boss Room: "False"
                                    #Glitched -> CanDoGlitch(GlitchType::HookshotJump_Boots GlitchDifficulty::ADVANCED))
 
 
 - region_name: Deku Tree Basement Lower
   dungeon: Deku Tree
   locations:
-      Deku Tree Basement Chest: 'True'
+      Deku Tree Basement Chest: "True"
       Deku Tree GS Basement Gate: is_adult or can_child_attack
                                                  #Glitched -> can_use(Megaton_Hammer))
       Deku Tree GS Basement Vines: can_use_projectile or can_use(Dins_Fire) or
@@ -78,26 +78,26 @@
       Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or has_explosives or can_use(Dins_Fire)
                                  #Glitched -> can_use(Megaton_Hammer))
   exits:
-      Deku Tree Lobby: 'True'
+      Deku Tree Lobby: "True"
       Deku Tree Basement Scrub Room: here(has_fire_source_with_torch or can_use(Bow))
       Deku Tree Basement Upper: is_adult or logic_deku_b1_skip or at('Deku Tree Basement Upper', True)
                                              #Glitched -> CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE))
-      Deku Tree Outside Boss Room: 'False'
+      Deku Tree Outside Boss Room: "False"
                                              #Glitched -> CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::NOVICE))
 
 
 - region_name: Deku Tree Basement Scrub Room
   dungeon: Deku Tree
   exits:
-      Deku Tree Basement Lower: 'True'
+      Deku Tree Basement Lower: "True"
       Deku Tree Basement Water Room: here(can_use(Slingshot) or can_use(Bow))
 
 
 - region_name: Deku Tree Basement Water Room
   dungeon: Deku Tree
   exits:
-      Deku Tree Basement Scrub Room: 'True'
-      Deku Tree Basement Torch Room: 'True'
+      Deku Tree Basement Scrub Room: "True"
+      Deku Tree Basement Torch Room: "True"
 
 
 - region_name: Deku Tree Basement Torch Room
@@ -107,7 +107,7 @@
       Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or has_explosives or can_use(Dins_Fire)
                                   #Glitched -> can_use(Megaton_Hammer))
   exits:
-      Deku Tree Basement Water Room: 'True'
+      Deku Tree Basement Water Room: "True"
       Deku Tree Basement Back Lobby: here(has_fire_source_with_torch or can_use(Bow))
 
 
@@ -119,7 +119,7 @@
                       (is_adult or Kokiri_Sword or Slingshot or Sticks or has_explosives or can_use(Dins_Fire))
                                   #Glitched -> here(has_fire_source_with_torch or can_use(Bow)) and can_use(Megaton_Hammer))
   exits:
-      Deku Tree Basement Torch Room: 'True'
+      Deku Tree Basement Torch Room: "True"
       Deku Tree Basement Back Room: here(has_fire_source_with_torch or can_use(Bow)) and
                                     here(can_blast_or_smash)
                                              #Glitched -> here(has_fire_source_with_torch or can_use(Bow)) and
@@ -133,7 +133,7 @@
       Deku Tree GS Basement Back Room: hookshot_or_boomerang
                                                      #Glitched -> Bombs and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))
   exits:
-      Deku Tree Basement Back Lobby: 'True'
+      Deku Tree Basement Back Lobby: "True"
 
 
 - region_name: Deku Tree Basement Upper
@@ -143,7 +143,7 @@
       Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or has_explosives or can_use(Dins_Fire)
                                   #Glitched -> can_use(Megaton_Hammer))
   exits:
-      Deku Tree Basement Lower: 'True'
+      Deku Tree Basement Lower: "True"
       Deku Tree Basement Back Lobby: is_child
       Deku Tree Outside Boss Room: here(has_fire_source_with_torch or (logic_deku_b1_webs_with_bow and is_adult and can_use(Bow)))
 
@@ -151,7 +151,7 @@
 - region_name: Deku Tree Outside Boss Room
   dungeon: Deku Tree
   exits:
-      Deku Tree Basement Upper: 'True'
+      Deku Tree Basement Upper: "True"
       Deku Tree Boss Room: here(has_shield)
 
 
@@ -161,11 +161,11 @@
       Deku Tree Clear: "(is_adult or Kokiri_Sword or Sticks) and (Nuts or can_use(Slingshot) or can_use(Bow) or hookshot_or_boomerang)"
                                  #Glitched -> CanDoGlitch(GlitchType::ISG GlitchDifficulty::NOVICE))
   locations:
-      Queen Gohma: Deku_Tree_Clear
-      Deku Tree Queen Gohma Heart: Deku_Tree_Clear
+      Queen Gohma: "'Deku_Tree_Clear'"
+      Deku Tree Queen Gohma Heart: "'Deku_Tree_Clear'"
   exits:
-      Deku Tree Outside Boss Room: 'True'
-      Deku Tree Entryway: Deku_Tree_Clear
+      Deku Tree Outside Boss Room: "True"
+      Deku Tree Entryway: "'Deku_Tree_Clear'"
 
 ############################
 #   MASTER QUEST DUNGEON   #
@@ -174,7 +174,7 @@
 - region_name: Deku Tree MQ Lobby
   dungeon: Deku Tree
   locations:
-      Deku Tree MQ Map Chest: 'True'
+      Deku Tree MQ Map Chest: "True"
       Deku Tree MQ Slingshot Chest: is_adult or can_child_attack
       Deku Tree MQ Slingshot Room Back Chest: has_fire_source_with_torch or (is_adult and can_use(Bow))
       Deku Tree MQ Basement Chest: has_fire_source_with_torch or (is_adult and can_use(Bow))
@@ -182,7 +182,7 @@
       Deku Baba Sticks: is_adult or Kokiri_Sword or Boomerang
       Deku Baba Nuts: is_adult or Kokiri_Sword or Slingshot or Sticks or has_explosives or can_use(Dins_Fire)
   exits:
-      Deku Tree Entryway: 'True'
+      Deku Tree Entryway: "True"
       Deku Tree MQ Compass Room: here((is_child and can_use(Slingshot)) or (is_adult and can_use(Bow))) and
                                  here(has_fire_source_with_torch or (is_adult and can_use(Bow)))
       Deku Tree MQ Basement Water Room Front: here((is_child and can_use(Slingshot)) or (is_adult and can_use(Bow))) and
@@ -193,22 +193,22 @@
 - region_name: Deku Tree MQ Compass Room
   dungeon: Deku Tree
   locations:
-      Deku Tree MQ Compass Chest: 'True'
+      Deku Tree MQ Compass Chest: "True"
       Deku Tree MQ GS Compass Room: hookshot_or_boomerang and here(has_bombchus or
                                     (Bombs and (can_play(Song_of_Time) or is_adult)) or
                                     (is_adult and can_use(Megaton_Hammer) and (can_play(Song_of_Time)))) # /*or logic_deku_mq_compass_gs*/
   exits:
-      Deku Tree MQ Lobby: 'True'
+      Deku Tree MQ Lobby: "True"
 
 
 - region_name: Deku Tree MQ Basement Water Room Front
   dungeon: Deku Tree
   locations:
-      Deku Tree MQ Before Spinning Log Chest: 'True'
+      Deku Tree MQ Before Spinning Log Chest: "True"
   exits:                                     # /*logic_deku_mq_log or */
       Deku Tree MQ Basement Water Room Back: "(is_child and (Deku_Shield or Hylian_Shield)) or
                                              (is_adult and (can_use(Longshot) or (can_use(Hookshot) and can_use(Iron_Boots))))"
-      Deku Tree MQ Lobby: 'True'
+      Deku Tree MQ Lobby: "True"
 
 
 - region_name: Deku Tree MQ Basement Water Room Back
@@ -219,7 +219,7 @@
       Deku Tree MQ Basement Back Room: here((is_child and can_use(Sticks)) or can_use(Dins_Fire) or
                                        here(is_adult and can_use(Fire_Arrows))) and
                                        here(is_adult or Kokiri_Sword or can_use_projectile or (Nuts and Sticks))
-      Deku Tree MQ Basement Water Room Front: 'True'
+      Deku Tree MQ Basement Water Room Front: "True"
 
 
 - region_name: Deku Tree MQ Basement Back Room
@@ -242,8 +242,8 @@
                        (Nuts or can_use(Slingshot) or can_use(Bow) or hookshot_or_boomerang)
   locations:
       Deku Tree MQ Deku Scrub: can_stun_deku
-      Deku Tree Queen Gohma Heart: Deku_Tree_Clear # Not correct
-      Queen Gohma: Deku_Tree_Clear # Not correct
+      Deku Tree Queen Gohma Heart: "'Deku_Tree_Clear'" # Not correct
+      Queen Gohma: "'Deku_Tree_Clear'" # Not correct
   exits:
       Deku Tree MQ Basement Back Room: is_child
-      Deku Tree MQ Lobby: 'True'
+      Deku Tree MQ Lobby: "True"

@@ -1,4 +1,5 @@
 #include "requirement.hpp"
+#include "world.hpp"
 #include "utility/pool_functions.hpp"
 #include "utility/log.hpp"
 
@@ -106,6 +107,18 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
             req.type = RequirementType::ITEM;
             ItemID itemId = NameToItemID(gamePrefix + "_" + argStr);
             req.args.push_back(Item(itemId, world));
+            return RequirementError::NONE;
+        }
+        // Then an event...
+        if (argStr[0] == '\'')
+        {
+            req.type = RequirementType::EVENT;
+            std::string eventName (argStr.begin() + 1, argStr.end() - 1); // Remove quotes
+            EVENT_CHECK(eventName, world);
+
+            EventID eventId = world->eventMap[eventName] + (world->GetWorldID() * 10000); // Let worlds have a maximum of 10000 events
+
+            req.args.push_back(eventId);
             return RequirementError::NONE;
         }
         // Then the time/age checks...

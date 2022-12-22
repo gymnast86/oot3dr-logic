@@ -96,6 +96,7 @@ bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* 
 {
     uint32_t expectedCount = 0;
     Item item;
+    EventID eventId;
     AreaID areaId;
     Requirement newReq;
     uint8_t newAgeTime;
@@ -134,6 +135,10 @@ bool Oot3dWorld::EvaluateRequirementWithAgeTime(const Requirement& req, Search* 
             expectedCount = std::get<int>(req.args[0]);
             item = std::get<Item>(req.args[1]);
             return search->ownedItems.count(item) >= expectedCount;
+
+        case RequirementType::EVENT:
+            eventId = std::get<EventID>(req.args[0]);
+            return search->ownedEvents.count(eventId) > 0;
 
         case RequirementType::CHILD_DAY:
             return ageTime & OOT3D_CHILD_DAY;
@@ -283,8 +288,8 @@ void Oot3dWorld::ExpandToDAreas(Search* search, uint8_t ageTimeToExpand, const A
     }
 }
 
-// Expand agetime specifically when obtaining the Master Sword
-void Oot3dWorld::ExpandToDMasterSword(Search* search)
+// Expand agetime specifically when accessing the MS Pedestal
+void Oot3dWorld::ExpandToDTimeTravel(Search* search)
 {
     auto worldRoot = GetRootArea();
     auto ageTime = search->areaTime[worldRoot];
@@ -312,7 +317,6 @@ void Oot3dWorld::ExpandToDMasterSword(Search* search)
             ExpandToDAreas(search, OOT3D_CHILD_NIGHT);
         }
     }
-
 }
 
 // Cache the agetime requirements for each exit so that we don't waste time
@@ -326,6 +330,10 @@ WorldBuildingError Oot3dWorld::CacheAgeTimeRequirements()
         // Insert 10 of each item to account for small keys
         Item item = Item(static_cast<ItemID>(itemIdint), this);
         searchWithItems.ownedItems.insert({item, item, item, item, item, item, item, item, item, item});
+    }
+    for (auto& [name, event] : eventMap)
+    {
+        searchWithItems.ownedEvents.insert(event);
     }
     for (auto& [areaId, areaPtr] : areas)
     {

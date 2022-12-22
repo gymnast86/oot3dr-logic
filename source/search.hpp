@@ -9,6 +9,8 @@
 #include <set>
 #include <queue>
 
+using EventSet = std::set<EventID>;
+
 enum class SearchMode
 {
     INVALID = 0,
@@ -16,9 +18,8 @@ enum class SearchMode
     GameBeatable,
     AllLocationsReachable,
     GeneratePlaythrough,
+    TestSearch,
 };
-
-const ItemPool emptyItemPool = {};
 
 struct LocationAccessComparator
 {
@@ -32,7 +33,7 @@ class Search
 {
 public:
     Search();
-    Search(const SearchMode& searchMode_, WorldPool* worlds_, const ItemPool& items = emptyItemPool, const int worldToSearch_ = -1);
+    Search(const SearchMode& searchMode_, WorldPool* worlds_, const ItemPool& items = PresetPools::NoItems, const int worldToSearch_ = -1);
     ~Search();
 
     void SearchWorlds(int tempWorldToSearch = -1, bool oneIteration = false);
@@ -55,6 +56,7 @@ public:
     int sphereNum = 0;
     bool newThingsFound = false;
     bool isBeatable = false;
+    EventSet ownedEvents = {};
     ItemMultiSet ownedItems = {};
     ItemMultiSet sphereItems = {};
     std::list<Event*> eventsToTry = {};

@@ -7,7 +7,7 @@
   exits:
       Gerudo Training Ground Lobby: gerudo_training_ground_dungeon_mode == vanilla
       Gerudo Training Ground MQ Lobby: gerudo_training_ground_dungeon_mode == mq
-      Gerudo Fortress: 'True'
+      Gerudo Fortress: "True"
 
 ############################
 #     VANILLA DUNGEON      #
@@ -21,10 +21,10 @@
       Gerudo Training Ground Stalfos Chest: is_adult or Kokiri_Sword
       Gerudo Training Ground Beamos Chest: has_explosives and (is_adult or Kokiri_Sword)
   exits:
-      Gerudo Training Ground Entryway: 'True'
+      Gerudo Training Ground Entryway: "True"
       Gerudo Training Ground Heavy Block Room: "(is_adult or Kokiri_Sword) and (can_use(Hookshot) or logic_gtg_without_hookshot)"
       Gerudo Training Ground Lava Room: here((is_adult or Kokiri_Sword) and has_explosives)
-      Gerudo Training Ground Central Maze: 'True'
+      Gerudo Training Ground Central Maze: "True"
 
 
 - region_name: Gerudo Training Ground Central Maze
@@ -49,12 +49,12 @@
 - region_name: Gerudo Training Ground Central Maze Right
   dungeon: Gerudo Training Ground
   locations:
-      Gerudo Training Ground Maze Right Central Chest: 'True'
-      Gerudo Training Ground Maze Right Side Chest: 'True'
-      Gerudo Training Ground Freestanding Key: 'True'
+      Gerudo Training Ground Maze Right Central Chest: "True"
+      Gerudo Training Ground Maze Right Side Chest: "True"
+      Gerudo Training Ground Freestanding Key: "True"
   exits:
       Gerudo Training Ground Hammer Room: can_use(Hookshot)
-      Gerudo Training Ground Lava Room: 'True'
+      Gerudo Training Ground Lava Room: "True"
 
 
 - region_name: Gerudo Training Ground Lava Room
@@ -70,11 +70,11 @@
 - region_name: Gerudo Training Ground Hammer Room
   dungeon: Gerudo Training Ground
   locations:
-      Gerudo Training Ground Hammer Room Clear Chest: 'True'
+      Gerudo Training Ground Hammer Room Clear Chest: "True"
       Gerudo Training Ground Hammer Room Switch Chest: can_use(Megaton_Hammer) or (can_take_damage and logic_flaming_chests)
   exits:
       Gerudo Training Ground Eye Statue Lower: can_use(Megaton_Hammer) and Bow
-      Gerudo Training Ground Lava Room: 'True'
+      Gerudo Training Ground Lava Room: "True"
 
 
 - region_name: Gerudo Training Ground Eye Statue Lower
@@ -82,7 +82,7 @@
   locations:
       Gerudo Training Ground Eye Statue Chest: can_use(Bow)
   exits:
-      Gerudo Training Ground Hammer Room: 'True'
+      Gerudo Training Ground Hammer Room: "True"
 
 
 - region_name: Gerudo Training Ground Eye Statue Upper
@@ -90,13 +90,13 @@
   locations:
       Gerudo Training Ground Near Scarecrow Chest: can_use(Bow)
   exits:
-      Gerudo Training Ground Eye Statue Lower: 'True'
+      Gerudo Training Ground Eye Statue Lower: "True"
 
 
 - region_name: Gerudo Training Ground Heavy Block Room
   dungeon: Gerudo Training Ground
   locations:
-      Gerudo Training Ground Before Heavy Block Chest: 'True'
+      Gerudo Training Ground Before Heavy Block Chest: "True"
   exits:
       Gerudo Training Ground Eye Statue Upper: "(logic_lens_gtg or can_use(Lens_of_Truth)) and
           (can_use(Hookshot) or (logic_gtg_fake_wall and can_use(Hover_Boots)))"
@@ -107,10 +107,10 @@
 - region_name: Gerudo Training Ground Like Like Room
   dungeon: Gerudo Training Ground
   locations:
-      Gerudo Training Ground Heavy Block First Chest: 'True'
-      Gerudo Training Ground Heavy Block Second Chest: 'True'
-      Gerudo Training Ground Heavy Block Third Chest: 'True'
-      Gerudo Training Ground Heavy Block Fourth Chest: 'True'
+      Gerudo Training Ground Heavy Block First Chest: "True"
+      Gerudo Training Ground Heavy Block Second Chest: "True"
+      Gerudo Training Ground Heavy Block Third Chest: "True"
+      Gerudo Training Ground Heavy Block Fourth Chest: "True"
 
 ############################
 #   MASTER QUEST DUNGEON   #
@@ -119,14 +119,14 @@
 - region_name: Gerudo Training Ground MQ Lobby
   dungeon: Gerudo Training Ground
   locations:
-      Gerudo Training Ground MQ Lobby Left Chest: 'True'
-      Gerudo Training Ground MQ Lobby Right Chest: 'True'
+      Gerudo Training Ground MQ Lobby Left Chest: "True"
+      Gerudo Training Ground MQ Lobby Right Chest: "True"
       Gerudo Training Ground MQ Hidden Ceiling Chest: logic_lens_gtg_mq or can_use(Lens_of_Truth)
-      Gerudo Training Ground MQ Maze Path First Chest: 'True'
-      Gerudo Training Ground MQ Maze Path Second Chest: 'True'
+      Gerudo Training Ground MQ Maze Path First Chest: "True"
+      Gerudo Training Ground MQ Maze Path Second Chest: "True"
       Gerudo Training Ground MQ Maze Path Third Chest: count(Gerudo_Training_Ground_Small_Key, 1)
   exits:
-      Gerudo Training Ground Entryway: 'True'
+      Gerudo Training Ground Entryway: "True"
       Gerudo Training Ground MQ Left Side: here(has_fire_source)
       Gerudo Training Ground MQ Right Side: here((is_adult and can_use(Bow)) or (is_child and can_use(Slingshot)))
 
@@ -171,7 +171,7 @@
   dungeon: Gerudo Training Ground
   locations:
       Gerudo Training Ground MQ Eye Statue Chest: Bow
-      Gerudo Training Ground MQ Second Iron Knuckle Chest: 'True'
+      Gerudo Training Ground MQ Second Iron Knuckle Chest: "True"
       Gerudo Training Ground MQ Flame Circle Chest: can_use(Hookshot) or Bow or has_explosives
   exits:
       Gerudo Training Ground MQ Central Maze Right: Megaton_Hammer
@@ -181,8 +181,8 @@
 - region_name: Gerudo Training Ground MQ Central Maze Right
   dungeon: Gerudo Training Ground
   locations:
-      Gerudo Training Ground MQ Maze Right Central Chest: 'True'
-      Gerudo Training Ground MQ Maze Right Side Chest: 'True'
+      Gerudo Training Ground MQ Maze Right Central Chest: "True"
+      Gerudo Training Ground MQ Maze Right Side Chest: "True"
       Gerudo Training Ground MQ Ice Arrows Chest: count(Gerudo_Training_Ground_Small_Key, 3)
   exits:
       Gerudo Training Ground MQ Underwater: is_adult and (can_use(Longshot) or (can_use(Hookshot) and Bow))
