@@ -60,3 +60,15 @@ void CloseLogs();
 #else
 #define LOG_TO_DEBUG(message)
 #endif
+
+#define LOG_AND_RETURN_IF_ERR(func) { \
+    if(const auto error = func; error != decltype(error)::NONE) {\
+        ErrorLog::getInstance().log(std::string("Encountered error on line " TOSTRING(__LINE__) " of ") + __FILENAME__); \
+        return error;  \
+    } \
+}
+
+#define LOG_ERR_AND_RETURN(error) { \
+    ErrorLog::getInstance().log(std::string("Encountered " #error " on line " TOSTRING(__LINE__) " of ") + __FILENAME__); \
+    return error; \
+}

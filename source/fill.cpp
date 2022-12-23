@@ -7,7 +7,7 @@
 #include <iostream>
 
 #define FILL_ERROR_CHECK(func) err = func; if (err != FillError::NONE) {return err;}
-#define ENOUGH_SPACE_CHECK(items, locations) if (items.size() > locations.size()) {return FillError::MORE_ITEMS_THAN_LOCATIONS;}
+#define ENOUGH_SPACE_CHECK(items, locations) if (items.size() > locations.size()) {LOG_TO_ERROR("items: " + std::to_string(items.size()) + " locations: " + std::to_string(locations.size())); return FillError::MORE_ITEMS_THAN_LOCATIONS;}
 
 FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, const ItemPool& itemsNotYetPlaced, LocationPool& allowedLocations, int worldToFill /*= -1*/)
 {
@@ -106,7 +106,7 @@ FillError AssumedFill(WorldPool& worlds, ItemPool& itemsToPlaceVector, const Ite
 FillError FastFill(ItemPool& itemsToPlace, LocationPool& allowedLocations)
 {
     auto emptyAllowedLocations = FilterFromPool(allowedLocations, [](Location* loc){return loc->GetCurrentItem().GetID() == NONE;});
-    ENOUGH_SPACE_CHECK(itemsToPlace, emptyAllowedLocations);
+    // ENOUGH_SPACE_CHECK(itemsToPlace, emptyAllowedLocations);
     ShufflePool(emptyAllowedLocations);
     for (auto location : emptyAllowedLocations)
     {
