@@ -46,7 +46,7 @@ void Location::SetCurrentItem(Item item)
 
 void Location::SetVanillaItemAsCurrentItem()
 {
-    SetCurrentItem(Item(vanillaItemId, world));
+    SetCurrentItem(vanillaItem);
     hasKnownVanillaItem = true;
 }
 
@@ -56,9 +56,9 @@ void Location::RemoveCurrentItem()
     currentItem = Item(NONE, world);
 }
 
-ItemID Location::GetVanillaItemID() const
+Item Location::GetVanillaItem() const
 {
-    return vanillaItemId;
+    return vanillaItem;
 }
 
 void Location::SetAsItemLocation()

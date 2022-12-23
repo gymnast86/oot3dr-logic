@@ -27,12 +27,16 @@ namespace Utility::Str {
       	return ret;
     }
 
-    template<typename T>
-    T merge(const std::vector<T>& lines, const typename T::value_type separator)
+    template<typename T, typename U>
+    T merge(const std::vector<T>& lines, const U& separator)
     {
       	T ret;
-      	for (const T& segment : lines) {
-      		  ret += segment + separator;
+      	for (size_t i = 0; i < lines.size(); i++) {
+      		  ret += lines[i];
+            if (i < lines.size() - 1)
+            {
+                ret += separator;
+            }
       	}
 
       	return ret;

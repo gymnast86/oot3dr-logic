@@ -89,7 +89,6 @@ WorldBuildingError Oot3dWorld::CreateDungeons()
 WorldBuildingError Oot3dWorld::BuildItemTable()
 {
     LOG_TO_DEBUG("Building Item Table for world " + std::to_string(worldId) + "...");
-    // std::cout << "Build Item Table for world " << std::to_string(worldId) << "..." << std::endl;
     std::string itemDataStr;
     FILE_READ_CHECK(GetFileContents(ROMFS"oot3d/item_data.yaml", itemDataStr))
     itemDataStr = Utility::Str::InsertUnicodeReplacements(itemDataStr);
@@ -120,12 +119,20 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
 
         // Get the values
         auto itemId = NameToItemID(name);
-        ItemType type = NameToOot3dItemType(name);
+        ItemType type = NameToOot3dItemType(typeStr);
         uint8_t getItemId = std::strtoul(getItemIdStr.c_str(), nullptr, 0);
         bool advancement = advancementStr == "true";
 
         // Insert the values into the item table
         itemTable.try_emplace(itemId, itemId, type, getItemId, advancement, this);
+
+        // Get this price if this is a shop item with one
+        if (type == ItemType::Shop && !item["price"].IsNone())
+        {
+            const std::string priceStr = YAML_FIELD(item["price"]);
+            uint16_t price = std::strtoul(priceStr.c_str(), nullptr, 0);
+            itemTable[itemId].SetPrice(price);
+        }
 
         // If this is a dungeon item handle that here as well
         if (!item["dungeon_small_key"].IsNone())
@@ -138,8 +145,8 @@ WorldBuildingError Oot3dWorld::BuildItemTable()
             const std::string keyCountStr   = YAML_FIELD(item["key_count"]["vanilla"]);
             const std::string mqKeyCountStr = YAML_FIELD(item["key_count"]["mq"]);
 
-            int keyCount   = std::strtol(keyCountStr.c_str(), nullptr, 0);
-            int mqKeyCount = std::strtol(mqKeyCountStr.c_str(), nullptr, 0);
+            int keyCount   = std::stoi(keyCountStr.c_str());
+            int mqKeyCount = std::stoi(mqKeyCountStr.c_str());
 
             Oot3dDungeon* dungeon = dungeons[dungeonName].get();
             dungeon->SetSmallKeyCount(keyCount);
@@ -253,7 +260,8 @@ WorldBuildingError Oot3dWorld::BuildLocationTable()
         auto type = NameToOot3dLocationType(typeStr);
         uint8_t scene = std::strtoul(sceneStr.c_str(), nullptr, 0);
         uint8_t flag = std::strtoul(flagStr.c_str(), nullptr, 0);
-        auto vanillaItem = NameToItemID(vanillaItemStr);
+        auto vanillaItemId = NameToItemID(vanillaItemStr);
+        auto vanillaItem = itemTable[vanillaItemId];
         auto checkType = NameToOot3dSpoilerCheckType(checkTypeStr);
         uint8_t arg1 = std::strtoul(arg1Str.c_str(), nullptr, 0);
         uint8_t arg2 = std::strtoul(arg2Str.c_str(), nullptr, 0);
@@ -515,6 +523,14 @@ WorldBuildingError Oot3dWorld::BuildItemPools()
         RemoveElementFromPool(itemPool, item);
     }
 
+    // Make sure that the itemPool size and the number of remaining locations match
+    // auto emptyLocations = GetTheseLocations(OOT3D_LOCATIONS_LAMDA({return location->GetCurrentItem().GetID() == NONE;}));
+    // while (emptyLocations.size() > itemPool.size())
+    // {
+    //     itemPool.push_back(Item(GetJunkItem(), this));
+    //     LOG_TO_DEBUG("Added extra junk for world " + std::to_string(worldId + 1));
+    // }
+
     return WorldBuildingError::NONE;
 }
 
@@ -526,9 +542,11 @@ WorldBuildingError Oot3dWorld::Build()
     BUILD_ERROR_CHECK(BuildLocationTable());
     BUILD_ERROR_CHECK(LoadLogicHelpers());
     BUILD_ERROR_CHECK(LoadWorldGraph());
+    BUILD_ERROR_CHECK(PlaceHardcodedItems());
+    BUILD_ERROR_CHECK(FillShopItems());
     BUILD_ERROR_CHECK(BuildItemPools());
     BUILD_ERROR_CHECK(CacheAgeTimeRequirements());
-    BUILD_ERROR_CHECK(PlaceHardcodedItems());
+
 
     return WorldBuildingError::NONE;
 }

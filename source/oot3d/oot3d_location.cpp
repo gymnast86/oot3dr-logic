@@ -5,14 +5,14 @@
 Oot3dLocation::Oot3dLocation() {}
 
 Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, std::unordered_set<Oot3dLocationCategory> categories_,
-                             const ItemID& vanillaItemId_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, std::string dungeon_, World* world_)
+                             const Item& vanillaItem_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, std::string dungeon_, World* world_)
 {
     id = id_;
     name = std::move(name_);
     type = type_;
     scene = scene_;
     flag = flag_;
-    vanillaItemId = vanillaItemId_;
+    vanillaItem = vanillaItem_;
     categories = categories_;
     collectionCheck = collectionCheck_;
     collectionCheckGroup = collectionCheckGroup_;
@@ -21,6 +21,16 @@ Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, Oot3dLoca
 }
 
 Oot3dLocation::~Oot3dLocation() = default;
+
+uint16_t Oot3dLocation::GetPrice() const
+{
+    return priceForPlacedItem;
+}
+
+void Oot3dLocation::SetPrice(uint16_t newPrice)
+{
+    priceForPlacedItem = newPrice;
+}
 
 std::string Oot3dLocation::TypeString() const
 {

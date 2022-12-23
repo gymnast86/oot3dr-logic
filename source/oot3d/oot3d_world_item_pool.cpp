@@ -8,7 +8,7 @@ using namespace std::string_literals;
 
 #define MERGE_INTO_MAIN_ITEM_POOL(pool) for (auto& [itemName, amount] : pool) { AddElementToPool(mainItemPool, itemName, amount); }
 #define MERGE_DUNGEON_POOL_INTO_MAIN(dungeonName, abbreviation) if (dungeons[dungeonName]->IsMQ()) {MERGE_INTO_MAIN_ITEM_POOL(abbreviation##_MQ);} else {MERGE_INTO_MAIN_ITEM_POOL(abbreviation##_Vanilla);}
-#define SET_VANILLA_LOCATIONS(itemId) SetTheseLocationsAsVanilla(OOT3D_LOCATIONS_LAMDA({return location->GetVanillaItemID() == itemId;}));
+#define SET_VANILLA_LOCATIONS(itemId) SetTheseLocationsAsVanilla(OOT3D_LOCATIONS_LAMDA({return location->GetVanillaItem().GetID() == itemId;}));
 
 static ItemIDPool pendingJunkPool = {};
 static const ItemMap dungeonRewards = {
@@ -80,10 +80,6 @@ static const ItemMap alwaysItems = {
     {OOT3D_ARROWS_5, 1},
     {OOT3D_ARROWS_10, 5},
     {OOT3D_TREASURE_GAME_HEART, 1},
-
-    {OOT3D_BUY_DEKU_SHIELD, 1},
-    {OOT3D_BUY_HYLIAN_SHIELD, 1},
-    {OOT3D_RUTOS_LETTER, 1},
 };
 static const ItemMap easyItems = {
     {OOT3D_BIGGORONS_SWORD, 1},
@@ -130,7 +126,7 @@ static const ItemMap DC_MQ = {
     {OOT3D_HYLIAN_SHIELD, 1},
     {OOT3D_BLUE_RUPEE, 1},
 };
-static const ItemMap JB_Vanilla = {};
+static const ItemMap JB_Vanilla = {}; // Empty pool to satisfy MERGE_DUNGEON_POOL_INTO_MAIN
 static const ItemMap JB_MQ = {
     {OOT3D_DEKU_NUTS_5, 4},
     {OOT3D_RECOVERY_HEART, 1},
@@ -179,7 +175,7 @@ static const ItemMap BW_Vanilla = {
     {OOT3D_DEKU_SHIELD, 1},
     {OOT3D_HYLIAN_SHIELD, 1},
 };
-static const ItemMap BW_MQ = {};
+static const ItemMap BW_MQ = {}; // Empty pool to satisfy MERGE_DUNGEON_POOL_INTO_MAIN
 static const ItemMap GTG_Vanilla = {
     {OOT3D_ARROWS_30, 3},
     {OOT3D_HUGE_RUPEE, 1},
@@ -530,7 +526,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     {
         for (auto& [id, location] : locations)
         {
-            if (location->GetVanillaItemID() == OOT3D_GOLD_SKULLTULA_TOKEN && location->dungeon != "None")
+            if (location->GetVanillaItem().GetID() == OOT3D_GOLD_SKULLTULA_TOKEN && location->dungeon != "None")
             {
                 location->SetVanillaItemAsCurrentItem();
             }
@@ -544,7 +540,7 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
     {
         for (auto& [id, location] : locations)
         {
-            if (location->GetVanillaItemID() == OOT3D_GOLD_SKULLTULA_TOKEN && location->dungeon == "None")
+            if (location->GetVanillaItem().GetID() == OOT3D_GOLD_SKULLTULA_TOKEN && location->dungeon == "None")
             {
                 location->SetVanillaItemAsCurrentItem();
             }
@@ -750,24 +746,25 @@ WorldBuildingError Oot3dWorld::GenerateOot3dItemPool()
         // Overworld Scrubs
         MERGE_INTO_MAIN_ITEM_POOL(dekuScrubItems);
 
-        // Not sure what this is for, but it was in ootr so it's here too
-        for (uint8_t i = 0; i < 7; i++)
-        {
-            if (Random(0, 3))
-            {
-                mainItemPool.push_back(OOT3D_ARROWS_30);
-            } else
-            {
-                mainItemPool.push_back(OOT3D_DEKU_SEEDS_30);
-            }
-        }
+        // I'm not sure what this is for, but it was in ootr so I copied it
+        // for (uint8_t i = 0; i < 7; i++)
+        // {
+        //     if (Random(0, 3))
+        //     {
+        //         mainItemPool.push_back(OOT3D_ARROWS_30);
+        //     }
+        //     else
+        //     {
+        //         mainItemPool.push_back(OOT3D_DEKU_SEEDS_30);
+        //     }
+        // }
     }
     else // Place vanilla scrub items except for the three which sell unique things
     {
         SetTheseLocationsAsVanilla(OOT3D_LOCATIONS_LAMDA(
         {
             // All deku scrubs have the Deku Scrub category, but only the three we
-            // want to exclude have the Deku Scrub Upgrades category
+            // want to still be randomized have the Deku Scrub Upgrades category
             return location->categories.count(Oot3dLocationCategory::DekuScrub) > 0 &&
                    location->categories.count(Oot3dLocationCategory::DekuScrubUpgrades) == 0;
         }));

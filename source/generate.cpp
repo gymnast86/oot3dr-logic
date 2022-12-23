@@ -26,6 +26,7 @@ int GenerateRandomizer()
         {"open_forest", "open"},
         {"gerudo_fortress", "normal"},
         {"damage_multiplier", "1x"},
+        {"shopsanity", "off"},
         {"hints", "none"},
         {"plant_beans", "off"},
         {"bridge", "medallions"},

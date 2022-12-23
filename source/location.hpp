@@ -24,7 +24,7 @@ public:
     void SetCurrentItem(Item item);
     void SetVanillaItemAsCurrentItem();
     void RemoveCurrentItem();
-    ItemID GetVanillaItemID() const;
+    Item GetVanillaItem() const;
     void SetAsItemLocation();
     bool IsItemLocation() const;
 
@@ -38,7 +38,7 @@ public:
     std::string dungeon = "None";
     World* world = nullptr;
     Item currentItem;
-    ItemID vanillaItemId = NONE;
+    Item vanillaItem;
     bool hasKnownVanillaItem = false;
 
     // Used to differentiate between regular item locations and other logical

@@ -498,7 +498,7 @@ std::string RequirementStr(const Requirement& req, int nestingLevel /*= 0*/)
 {
     std::string returnStr = "";
     uint32_t expectedCount = 0;
-    ItemID itemId;
+    Item item;
     Requirement nestedReq;
     returnStr += tabs(nestingLevel);
     switch(req.type)
@@ -530,14 +530,14 @@ std::string RequirementStr(const Requirement& req, int nestingLevel /*= 0*/)
             returnStr += RequirementStr(std::get<Requirement>(req.args[0]), nestingLevel + 1);
             return returnStr;
         case RequirementType::ITEM:
-            itemId = std::get<ItemID>(req.args[0]);
-            returnStr += ItemIDToName(itemId) + "\n";
+            item = std::get<Item>(req.args[0]);
+            returnStr += item.GetName() + "\n";
             return returnStr;
         case RequirementType::COUNT:
             returnStr += "count: ";
             expectedCount = std::get<int>(req.args[0]);
-            itemId = std::get<ItemID>(req.args[1]);
-            returnStr += std::to_string(expectedCount) + " " + ItemIDToName(itemId) + "\n";
+            item = std::get<Item>(req.args[1]);
+            returnStr += std::to_string(expectedCount) + " " + item.GetName() + "\n";
             return returnStr;
         case RequirementType::CHILD_DAY:
             returnStr += "child_day";

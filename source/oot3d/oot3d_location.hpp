@@ -100,14 +100,17 @@ public:
 
     Oot3dLocation();
     Oot3dLocation(const LocationID& id_, std::string name, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, std::unordered_set<Oot3dLocationCategory> categories_,
-                  const ItemID& vanillaItemId_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, std::string dungeon_, World* world_);
+                  const Item& vanillaItem_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, std::string dungeon_, World* world_);
     ~Oot3dLocation();
 
+    uint16_t GetPrice() const;
+    void SetPrice(uint16_t newPrice);
     std::string TypeString() const override;
 
     Oot3dLocationType type;
     uint8_t scene = 0;
     uint8_t flag = 0;
+    uint16_t priceForPlacedItem = 0;
     std::unordered_set<Oot3dLocationCategory> categories = {};
     SpoilerCollectionCheck collectionCheck;
     SpoilerCollectionCheckGroup collectionCheckGroup;

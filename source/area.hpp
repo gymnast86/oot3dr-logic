@@ -28,6 +28,8 @@ public:
     Area();
     virtual ~Area();
 
+    AreaID GetID() const;
+
     bool operator==(const Area& rhs) const;
     bool operator<(const Area& rhs) const;
 

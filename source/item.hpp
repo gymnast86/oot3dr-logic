@@ -8,7 +8,7 @@ public:
 
     Item();
     Item(const ItemID& id_, World* world_);
-    ~Item();
+    virtual ~Item();
 
     ItemID GetID() const;
     std::string GetName();

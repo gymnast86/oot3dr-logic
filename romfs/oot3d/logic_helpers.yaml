@@ -14,6 +14,7 @@ Bomb_Bag: Progressive_Bomb_Bag
 Bow: Progressive_Bow
 Adults_Wallet: Progressive_Wallet
 Giants_Wallet: count(Progressive_Wallet, 2)
+Tycoons_Wallet: count(Progressive_Wallet, 3)
 Magic_Meter: Progressive_Magic_Meter
 
 Goron_Tunic: Goron_Tunic or Buy_Goron_Tunic

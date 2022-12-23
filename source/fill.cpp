@@ -137,7 +137,9 @@ FillError FillWorlds(WorldPool& worlds)
     // Get Major items
     auto majorItems = FilterAndEraseFromPool(itemPool, [](const Item& item){return item.IsMajorItem();});
 
+    // Fill major items into any available locations
     FILL_ERROR_CHECK(AssumedFill(worlds, majorItems, itemPool, allLocations));
+    // Fill the rest with the known junk from the rest of the pool
     FILL_ERROR_CHECK(FastFill(itemPool, allLocations));
 
     if (!GameBeatable(worlds))
