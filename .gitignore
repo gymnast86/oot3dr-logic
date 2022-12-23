@@ -4,6 +4,7 @@ backup/*
 build/*
 build*
 *.txt
+!*CMakeLists.txt
 *.bin
 *.elf
 *.cia
