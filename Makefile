@@ -54,13 +54,21 @@ CFLAGS	+=	$(INCLUDE) -D__3DS__
 
 CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++17
 
-CXXFLAGS  += -DROMFS=\"romfs:\" -DLOGS_PATH=\"/3ds/logs/\" \
-				-DRANDOMIZER_VERSION=\"1.0\" -DTICKS_PER_SEC=268123480.0
+CXXFLAGS  += -DROMFS=\"romfs:\" -DLOGS_PATH="\"3ds/\""  \
+						 -DRANDOMIZER_VERSION=\"1.0\" -DTICKS_PER_SEC=268123480.0
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
 LIBS	:= -lctru -lm
+
+# Debug-specific flags
+
+ENABLE_DEBUG ?= 0
+ifneq ($(ENABLE_DEBUG), 0)
+	CFLAGS += -g -DENABLE_DEBUG
+	CXXFLAGS += -g -DENABLE_DEBUG
+endif
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing

@@ -2,8 +2,8 @@
 |                 NON-3DS MAIN                  |
 |==============================================*/
 #ifndef __3DS__
-#include "../source/generate.hpp"
-#include "../source/utility/log.hpp"
+#include "generate.hpp"
+#include "utility/log.hpp"
 
 int main()
 {
@@ -25,6 +25,7 @@ int main()
 #include <string.h>
 #include <3ds.h>
 #include "generate.hpp"
+#include "utility/log.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -50,11 +51,12 @@ int main(int argc, char* argv[])
     			 break; // break in order to return to hbmenu
         if (kDown & KEY_A)
         {
-            GenerateRandomizer();
-        }
-        if (kDown & KEY_B)
-        {
-            BKey();
+            int retVal = GenerateRandomizer();
+            if (retVal != 0)
+            {
+                std::cout << ErrorLog::getInstance().getLastErrors() << std::endl;
+            }
+            CloseLogs();
         }
   	}
 

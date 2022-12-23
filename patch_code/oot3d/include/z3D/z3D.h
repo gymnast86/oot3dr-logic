@@ -487,7 +487,7 @@ typedef enum {
     DUNGEON_JABUJABUS_BELLY_BOSS_ROOM,
 } DungeonId;
 
-#ifdef __3DS__
+#ifdef PATCH_CODE
 
 extern GlobalContext* gGlobalContext;
 extern const u32 ItemSlots[];
@@ -594,6 +594,6 @@ typedef u32 (*Flags_GetSwitch_proc)(GlobalContext* globalCtx, u32 flag);
 typedef u32 (*Flags_GetCollectible_proc)(GlobalContext* globalCtx, u32 flag);
 #define Flags_GetCollectible_addr 0x36405C
 #define Flags_GetCollectible ((Flags_GetCollectible_proc)Flags_GetCollectible_addr)
-#endif // __3DS__
+#endif // PATCH_CODE
 
 #endif //_Z3D_H_

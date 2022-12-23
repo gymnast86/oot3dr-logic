@@ -107,7 +107,7 @@ public:
     void SetPrice(uint16_t newPrice);
     std::string TypeString() const override;
 
-    Oot3dLocationType type;
+    Oot3dLocationType type = Oot3dLocationType::INVALID;
     uint8_t scene = 0;
     uint8_t flag = 0;
     uint16_t priceForPlacedItem = 0;

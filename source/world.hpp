@@ -88,14 +88,14 @@ public:
     virtual EvalSuccess EvaluateExitRequirement(Search* search, Entrance* exit);
     virtual std::string GetTypeString() const;
 
-    SettingsMap settings;
+    SettingsMap settings = {};
     std::unordered_map<std::string, EventID> eventMap = {};
     std::unordered_map<EventID, std::string> reverseEventMap = {};
-    std::map<LocationID, std::unique_ptr<Location>> locations;
-    std::unordered_map<AreaID, std::unique_ptr<Area>> areas;
-    LogicHelperMap logicHelpers;
-    ItemPool itemPool;
-    ItemPool startingInventory;
+    std::map<LocationID, std::unique_ptr<Location>> locations = {};
+    std::map<AreaID, std::unique_ptr<Area>> areas = {};
+    LogicHelperMap logicHelpers = {};
+    ItemPool itemPool = {};
+    ItemPool startingInventory = {};
     int worldId = -1;
     size_t numWorlds = 1;
     size_t numWorldTypes = 1;

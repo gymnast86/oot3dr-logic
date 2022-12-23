@@ -19,10 +19,10 @@ enum struct ConfigError {
 
 struct Config {
 
-    std::string outputDir;
-    std::string seed;
+    std::string outputDir = "";
+    std::string seed = "";
 
-    std::vector<SettingsMap> settingsVector;
+    std::vector<SettingsMap> settingsVector = {};
 };
 
 

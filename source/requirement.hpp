@@ -60,7 +60,7 @@ struct Requirement
 {
     using Argument = std::variant<int, bool, std::string, Requirement,  EventID, ItemID, AreaID, Item>;
     RequirementType type = RequirementType::INVALID;
-    std::vector<Argument> args;
+    std::vector<Argument> args = {};
 };
 
 class World;

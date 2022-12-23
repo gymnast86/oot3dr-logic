@@ -17,7 +17,7 @@ int GenerateRandomizer()
 {
     StartTiming("General");
 
-    Random_Init(3); // This eventually has to go where deciding random settings
+
 
     Config config;
     // Create default config if it doesn't exist
@@ -52,6 +52,8 @@ int GenerateRandomizer()
     {
         worldTypes.insert(settings["world_type"]);
     }
+
+    Random_Init(0); // This eventually has to go where deciding random settings
 
     std::cout << "Building Worlds..." << std::endl;
     for (size_t i = 0; i < settingsVector.size(); i++)

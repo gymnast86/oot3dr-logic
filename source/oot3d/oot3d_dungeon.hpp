@@ -26,6 +26,6 @@ public:
     ItemID keyRing = NONE;
     bool usingKeyRing = false;
     int mqKeyCount = -1;
-    bool isMq;
+    bool isMq = false;
 
 };

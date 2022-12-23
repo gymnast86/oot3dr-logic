@@ -11,7 +11,7 @@
 
 #include <unordered_map>
 
-#define OOT3D_LOCATIONS_LAMDA(func) [](Location* loc) {auto location = dynamic_cast<Oot3dLocation*>(loc); func}
+#define OOT3D_LOCATIONS_LAMDA(func) [](Location* loc) {auto location = ((Oot3dLocation*)loc); func}
 
 class Search;
 class Oot3dWorld : public World {
@@ -29,10 +29,10 @@ public:
 
     void ExpandToDTimeTravel(Search* search);
 
-    std::unordered_map<std::string, std::unique_ptr<Oot3dDungeon>> dungeons;
-    std::unordered_map<ItemID, Oot3dItem> itemTable;
-    std::unordered_map<Entrance*, uint8_t> possibleExitAgeTimes;
-    std::vector<uint8_t> iceTrapModels;
+    std::map<std::string, std::unique_ptr<Oot3dDungeon>> dungeons = {};
+    std::unordered_map<ItemID, Oot3dItem> itemTable = {};
+    std::unordered_map<Entrance*, uint8_t> possibleExitAgeTimes = {};
+    std::vector<uint8_t> iceTrapModels = {};
 
 private:
 

@@ -24,7 +24,7 @@ public:
     std::string name = "";
     World* world = nullptr;
     int worldId = -1;
-    bool isMajorItem;
+    bool isMajorItem = false;
 };
 
 // inject specialization of std::hash<Item> into the std namespace

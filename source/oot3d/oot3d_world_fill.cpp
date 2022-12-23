@@ -67,7 +67,7 @@ WorldBuildingError Oot3dWorld::FillShopItems()
         auto& currentItem = itemTable[location->GetCurrentItem().GetID()];
         if (currentItem.GetType() == ItemType::Shop)
         {
-            dynamic_cast<Oot3dLocation*>(location.get())->SetPrice(currentItem.GetPrice());
+            ((Oot3dLocation*)location.get())->SetPrice(currentItem.GetPrice());
         }
     }
 
@@ -77,7 +77,7 @@ WorldBuildingError Oot3dWorld::FillShopItems()
     {
         for (auto &locAccess : area->locations)
         {
-            auto location = dynamic_cast<Oot3dLocation*>(locAccess.location);
+            auto location = (Oot3dLocation*) locAccess.location;
             if (location->categories.count(Oot3dLocationCategory::Shop))
             {
                 std::vector<std::string> reqStrs;

@@ -224,7 +224,7 @@ void Search::ProcessEvents()
             // Set appropriate new ageTimes if we accessed the MS Pedestal in Oot3d
             if (world->GetType() == WorldType::Oot3d && world->reverseEventMap[event->eventId] == "Time_Travel")
             {
-                auto oot3dWorld = dynamic_cast<Oot3dWorld*>(world);
+                Oot3dWorld* oot3dWorld = (Oot3dWorld*) world;
                 oot3dWorld->ExpandToDTimeTravel(this);
             }
         }

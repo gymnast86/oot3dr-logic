@@ -35,9 +35,9 @@ public:
 
     AreaID id = AreaID::INVALID;
     std::string name = "";
-    std::list<Event> events;
-    std::list<LocationAccess> locations;
-    std::list<std::unique_ptr<Entrance>> exits;
+    std::list<Event> events = {};
+    std::list<LocationAccess> locations = {};
+    std::list<std::unique_ptr<Entrance>> exits = {};
     std::list<Entrance*> entrances;
     World* world = nullptr;
 
