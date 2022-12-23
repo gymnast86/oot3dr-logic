@@ -68,6 +68,6 @@ RequirementError ParseRequirementString(const std::string& str, Requirement& req
 
 std::string RequirementStr(const Requirement& req, int nestingLevel = 0);
 
-std::string errorToName(RequirementError err);
+std::string ErrorToName(RequirementError err);
 
 std::string RequirementToName(RequirementType type);

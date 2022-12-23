@@ -26,10 +26,10 @@ struct Config {
 };
 
 
-ConfigError createDefaultConfig(const std::string& filePath);
+ConfigError CreateDefaultConfig(const std::string& filePath);
 
-ConfigError loadFromFile(const std::string& filePath, Config& out, bool ignoreErrors = false);
+ConfigError LoadConfigFromFile(const std::string& filePath, Config& out, bool ignoreErrors = false);
 
-ConfigError writeToFile(const std::string& filePath, Config& config);
+ConfigError WriteConfigToFile(const std::string& filePath, Config& config);
 
-std::string errorToName(ConfigError err);
+std::string ErrorToName(ConfigError err);

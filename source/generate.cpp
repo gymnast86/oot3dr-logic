@@ -25,10 +25,10 @@ int GenerateRandomizer()
     if (!conf.is_open())
     {
         std::cout << "Creating default config" << std::endl;
-        ConfigError err = createDefaultConfig(LOGS_PATH "config.yaml");
+        ConfigError err = CreateDefaultConfig(LOGS_PATH "config.yaml");
         if (err != ConfigError::NONE)
         {
-            LOG_TO_ERROR("Failed to create config, ERROR: " + errorToName(err));
+            LOG_TO_ERROR("Failed to create config, ERROR: " + ErrorToName(err));
             return 1;
         }
     }
@@ -36,10 +36,10 @@ int GenerateRandomizer()
 
     // Read saved config
     std::cout << "Reading config" << std::endl;
-    ConfigError err = loadFromFile(LOGS_PATH "config.yaml", config);
+    ConfigError err = LoadConfigFromFile(LOGS_PATH "config.yaml", config);
     if (err != ConfigError::NONE)
     {
-        LOG_TO_ERROR("Failed to read config, ERROR: " + errorToName(err));
+        LOG_TO_ERROR("Failed to read config, ERROR: " + ErrorToName(err));
         return 1;
     }
 
@@ -99,6 +99,7 @@ int GenerateRandomizer()
     GeneratePlaythrough(worlds);
 
     GenerateSpoilerLog(worlds);
+    std::cout << "Generated Spoiler Log at \"Spoiler Log.txt\"" << std::endl;
 
     EndTiming("General");
     PrintTiming("General");

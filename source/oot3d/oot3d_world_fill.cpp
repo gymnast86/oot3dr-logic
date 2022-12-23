@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#define VALID_REQUIREMENT(err, reqStr) if (err != RequirementError::NONE) {std::cout << errorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl; return WorldBuildingError::BAD_REQUIREMENT;}
+#define VALID_REQUIREMENT(err, reqStr) if (err != RequirementError::NONE) {std::cout << ErrorToName(err) << " encountered during \n\"" << reqStr << "\"" << std::endl; return WorldBuildingError::BAD_REQUIREMENT;}
 
 WorldBuildingError Oot3dWorld::PlaceHardcodedItems()
 {

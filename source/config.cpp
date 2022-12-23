@@ -63,7 +63,7 @@
         config.settings.name = yaml[#name].As<std::string>();               \
     }
 
-ConfigError createDefaultConfig(const std::string& filePath) {
+ConfigError CreateDefaultConfig(const std::string& filePath) {
     Config conf;
 
     conf.outputDir = "";
@@ -279,12 +279,12 @@ ConfigError createDefaultConfig(const std::string& filePath) {
       {"logic_light_trial_mq", "off"},
     }};
 
-    LOG_AND_RETURN_IF_ERR(writeToFile(filePath, conf))
+    LOG_AND_RETURN_IF_ERR(WriteConfigToFile(filePath, conf))
 
     return ConfigError::NONE;
 }
 
-ConfigError loadFromFile(const std::string& filePath, Config& out, bool ignoreErrors /*= false*/) {
+ConfigError LoadConfigFromFile(const std::string& filePath, Config& out, bool ignoreErrors /*= false*/) {
     //Check if we can open the file before parsing because exceptions won't work on console
     std::ifstream file(filePath);
     if(!file.is_open()) LOG_ERR_AND_RETURN(ConfigError::COULD_NOT_OPEN);
@@ -350,7 +350,7 @@ ConfigError loadFromFile(const std::string& filePath, Config& out, bool ignoreEr
         yaml[name] = settings[name];            \
     }
 
-ConfigError writeToFile(const std::string& filePath, Config& config) {
+ConfigError WriteConfigToFile(const std::string& filePath, Config& config) {
     //Check if we can open the file before parsing because exceptions won't work on console
     std::ofstream file(filePath);
     if(!file.is_open()) return ConfigError::COULD_NOT_OPEN;
@@ -377,7 +377,7 @@ ConfigError writeToFile(const std::string& filePath, Config& config) {
     return ConfigError::NONE;
 }
 
-std::string errorToName(ConfigError err) {
+std::string ErrorToName(ConfigError err) {
     switch (err)
     {
         case ConfigError::NONE:

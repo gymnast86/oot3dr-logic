@@ -557,7 +557,7 @@ std::string RequirementStr(const Requirement& req, int nestingLevel /*= 0*/)
     }
 }
 
-std::string errorToName(RequirementError err)
+std::string ErrorToName(RequirementError err)
 {
     switch (err)
     {
