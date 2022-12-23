@@ -1,16 +1,22 @@
 #pragma once
 
-#include "debug.hpp"
 #include "item.hpp"
 #include "area.hpp"
+#include "dungeon.hpp"
 #include "location.hpp"
-#include "general_item_pool.hpp"
+#include "item_pool.hpp"
+#include "utility/log.hpp"
 
 #include <string>
 #include <list>
+#include <set>
 #include <vector>
 #include <unordered_map>
+#include <map>
 #include <memory>
+#include <functional>
+
+#define BUILD_ERROR_CHECK(func) err = func; if (err != WorldBuildingError::NONE) {return err;}
 
 enum struct WorldBuildingError
 {
@@ -23,6 +29,10 @@ enum struct WorldBuildingError
     BAD_LOCATION_VALUE,
     BAD_AREA_VALUE,
     LOCATION_NOT_DEFINED,
+    BAD_ITEM_NAME,
+    BAD_LOCATION_NAME,
+    LOCATION_NOT_IN_WORLD,
+    UNDEFINED_EVENT,
 };
 
 enum class WorldType
@@ -40,6 +50,14 @@ enum class EvaluateType
     Exit,
 };
 
+enum class EvalSuccess
+{
+    NONE = 0,
+    Partial,
+    Complete,
+    Unnecessary,
+};
+
 class World;
 using WorldPool = std::vector<std::unique_ptr<World>>;
 
@@ -48,7 +66,7 @@ class World {
 public:
 
     World();
-    World(SettingsMap& settings_);
+    World(SettingsMap& settings_, size_t numWorlds);
 
     virtual ~World();
 
@@ -57,23 +75,63 @@ public:
     WorldType GetType() const;
     const SettingsMap& GetSettings() const;
     Area* GetRootArea();
+    size_t GetNumWorlds() const;
+    size_t GetNumWorldTypes() const;
+    WorldBuildingError PlaceItemAtLocation(const LocationID& locationId, const Item& item);
+    WorldBuildingError PlaceItemAtLocation(const std::string& location, const ItemID& itemId);
+    WorldBuildingError SetLocationAsVanilla(const std::string& location);
+    LocationPool GetAllItemLocations();
 
     virtual WorldBuildingError Build();
-    // object is a pointer to the object the requirement belongs to (event, location, or exit)
-    virtual bool EvaluateRequirement(const Requirement& req, Search* search, void* object, EvaluateType evalType = EvaluateType::NONE);
-    virtual void ExpandAreaVariables();
+    virtual EvalSuccess EvaluateEventRequirement(Search* search, Event* exit);
+    virtual EvalSuccess EvaluateLocationRequirement(Search* search, LocationAccess* locAccess);
+    virtual EvalSuccess EvaluateExitRequirement(Search* search, Entrance* exit);
     virtual std::string GetTypeString() const;
 
-    SettingsMap settings;
-    std::unordered_map<LocationID, std::unique_ptr<Location>> locations;
-    std::unordered_map<AreaID, std::unique_ptr<Area>> areas;
-    LogicHelperMap logicHelpers;
-    ItemPool itemPool;
-    ItemPool startingItems;
+    SettingsMap settings = {};
+    std::unordered_map<std::string, EventID> eventMap = {};
+    std::unordered_map<EventID, std::string> reverseEventMap = {};
+    std::map<LocationID, std::unique_ptr<Location>> locations = {};
+    std::map<AreaID, std::unique_ptr<Area>> areas = {};
+    LogicHelperMap logicHelpers = {};
+    ItemPool itemPool = {};
+    ItemPool startingInventory = {};
     int worldId = -1;
+    size_t numWorlds = 1;
+    size_t numWorldTypes = 1;
     WorldType worldType = WorldType::NONE;
 
-    int numEvals = 0;
-};
+    // Store playthroughs in world 0 for now
+    std::list<std::set<Location*, PointerComparator<Location>>> playthroughSpheres = {};
+    std::list<std::list<Entrance*>> entranceSpheres = {};
 
-int TotalWorldEvals(const WorldPool& worlds);
+    // Takes a lambda function meant to evaluate locations to set as vanilla
+    // based on arbitrary criteria
+    template<typename Lambda>
+    void SetTheseLocationsAsVanilla(Lambda locationCriteria)
+    {
+        for (auto& [id, loc] : locations)
+        {
+            if (locationCriteria(loc.get()))
+            {
+                loc->SetVanillaItemAsCurrentItem();
+            }
+        }
+    }
+
+    // Takes a lambda function which filters which locations to get based on
+    // arbitrary criteria
+    template<typename Lambda>
+    LocationPool GetTheseLocations(Lambda locationCriteria, const bool& onlyItemLocations = true)
+    {
+        LocationPool pool = {};
+        for (auto& [id, loc] : locations)
+        {
+            if (locationCriteria(loc.get()) && (loc->IsItemLocation() || !onlyItemLocations))
+            {
+                pool.push_back(loc.get());
+            }
+        }
+        return pool;
+    }
+};

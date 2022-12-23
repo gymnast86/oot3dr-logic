@@ -1,14 +1,31 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
+/*==============================================|
+|                 NON-3DS MAIN                  |
+|==============================================*/
+#ifndef __3DS__
+#include "generate.hpp"
+#include "utility/log.hpp"
+
+int main()
+{
+    int retVal = GenerateRandomizer();
+    if (retVal != 0)
+    {
+        std::cout << ErrorLog::getInstance().getLastErrors() << std::endl;
+    }
+    CloseLogs();
+}
+#endif
+
+/*==============================================|
+|                   3DS MAIN                    |
+|==============================================*/
+#ifdef __3DS__
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <3ds.h>
-#define RYML_SINGLE_HDR_DEFINE_NOW
 #include "generate.hpp"
-
-#define TICKS_PER_SEC 268123480.0
+#include "utility/log.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -34,14 +51,16 @@ int main(int argc, char* argv[])
     			 break; // break in order to return to hbmenu
         if (kDown & KEY_A)
         {
-            GenerateRandomizer();
-        }
-        if (kDown & KEY_B)
-        {
-            BKey();
+            int retVal = GenerateRandomizer();
+            if (retVal != 0)
+            {
+                std::cout << ErrorLog::getInstance().getLastErrors() << std::endl;
+            }
+            CloseLogs();
         }
   	}
 
   	gfxExit();
   	return 0;
 }
+#endif

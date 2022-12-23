@@ -4,7 +4,7 @@
 
 #include "../../patch_code/oot3d/src/spoiler_data.h"
 
-enum class LocationType {
+enum class Oot3dLocationType {
     Base,
     Chest,
     Collectable,
@@ -19,7 +19,7 @@ enum class LocationType {
     INVALID,
 };
 
-enum class LocationCategory {
+enum class Oot3dLocationCategory {
     INVALID,
     KokiriForest,
     Forest,
@@ -36,6 +36,7 @@ enum class LocationCategory {
     Gerudo,
     GerudoValley,
     GerudoFortress,
+    ThievesHideout,
     HauntedWasteland,
     DesertColossus,
     InnerMarket,
@@ -50,6 +51,7 @@ enum class LocationCategory {
     GoronCity,
     DeathMountainCrater,
     ZorasRiver,
+    FrogRupees,
     ZorasDomain,
     ZorasFountain,
     LonLonRanch,
@@ -97,22 +99,27 @@ class Oot3dLocation : public Location {
 public:
 
     Oot3dLocation();
-    Oot3dLocation(const LocationID& id_, std::string name, LocationType type_, uint8_t scene_, uint8_t flag_, const ItemID& vanillaItem, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_);
+    Oot3dLocation(const LocationID& id_, std::string name, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, std::unordered_set<Oot3dLocationCategory> categories_,
+                  const Item& vanillaItem_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, std::string dungeon_, World* world_);
     ~Oot3dLocation();
 
+    uint16_t GetPrice() const;
+    void SetPrice(uint16_t newPrice);
     std::string TypeString() const override;
 
-    LocationType type;
+    Oot3dLocationType type = Oot3dLocationType::INVALID;
     uint8_t scene = 0;
     uint8_t flag = 0;
-    ItemID vanillaItem = ItemID::NONE;
+    uint16_t priceForPlacedItem = 0;
+    std::unordered_set<Oot3dLocationCategory> categories = {};
     SpoilerCollectionCheck collectionCheck;
     SpoilerCollectionCheckGroup collectionCheckGroup;
+    std::string dungeon = "None";
 };
 
-LocationType NameToOot3dLocationType(const std::string& name);
+Oot3dLocationType NameToOot3dLocationType(const std::string& name);
 
-LocationCategory NameToOot3dLocationCategory(const std::string& name);
+Oot3dLocationCategory NameToOot3dLocationCategory(const std::string& name);
 
 SpoilerCollectionCheckType NameToOot3dSpoilerCheckType(const std::string& name);
 

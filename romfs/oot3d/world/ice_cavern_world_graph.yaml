@@ -1,0 +1,76 @@
+############################
+#    VANILLA/MQ DECIDER    #
+############################
+
+- region_name: Ice Cavern Entryway
+  dungeon: Ice Cavern
+  exits:
+      Ice Cavern Beginning: ice_cavern_dungeon_mode == vanilla
+      Ice Cavern MQ Beginning: ice_cavern_dungeon_mode == mq
+      Zoras Fountain: "True"
+
+############################
+#     VANILLA DUNGEON      #
+############################
+
+- region_name: Ice Cavern Beginning
+  dungeon: Ice Cavern
+  exits:
+      Ice Cavern Entryway: "True"
+      Ice Cavern Main: here(is_adult or has_explosives or can_use(Dins_Fire))
+
+
+- region_name: Ice Cavern Main
+  dungeon: Ice Cavern
+  locations:
+      Ice Cavern Map Chest: Blue_Fire and is_adult
+      Ice Cavern Compass Chest: Blue_Fire
+      Ice Cavern Iron Boots Chest: Blue_Fire and (is_adult or Slingshot or Sticks or Kokiri_Sword or can_use(Dins_Fire))
+      Sheik in Ice Cavern: Blue_Fire and is_adult
+      Ice Cavern Freestanding PoH: Blue_Fire
+      Ice Cavern GS Spinning Scythe Room: hookshot_or_boomerang
+      Ice Cavern GS Heart Piece Room: Blue_Fire and hookshot_or_boomerang
+      Ice Cavern GS Push Block Room: Blue_Fire and hookshot_or_boomerang
+      Blue Fire: is_adult and has_bottle
+
+############################
+#   MASTER QUEST DUNGEON   #
+############################
+
+- region_name: Ice Cavern MQ Beginning
+  dungeon: Ice Cavern
+  locations:
+      Fairy Pot: has_bottle
+  exits:
+      Ice Cavern Entryway: "True"
+      Ice Cavern MQ Map Room: is_adult or can_use(Dins_Fire) or (has_explosives and
+          (can_use(Sticks) or can_use(Slingshot) or Kokiri_Sword))
+      Ice Cavern MQ Compass Room: is_adult and Blue_Fire
+      Ice Cavern MQ Iron Boots Region: Blue_Fire
+
+
+- region_name: Ice Cavern MQ Map Room
+  dungeon: Ice Cavern
+  locations:
+      Ice Cavern MQ Map Chest: Blue_Fire and (is_adult or can_use(Sticks) or
+          Kokiri_Sword or can_use_projectile)
+      Blue Fire: has_bottle
+
+
+- region_name: Ice Cavern MQ Iron Boots Region
+  dungeon: Ice Cavern
+  locations:
+      Ice Cavern MQ Iron Boots Chest: is_adult
+      Sheik in Ice Cavern: is_adult
+      Ice Cavern MQ GS Ice Block: is_adult or can_use_projectile
+      Ice Cavern MQ GS Scarecrow: is_adult and (can_use(Scarecrow) or (can_use(Hover_Boots) and can_use(Longshot)))
+                  #Trick -> (can_use(Scarecrow) or (Hover_Boots and can_use(Longshot)) or logic_ice_mq_scarecrow) and is_adult
+
+
+- region_name: Ice Cavern MQ Compass Room
+  dungeon: Ice Cavern
+  locations:
+      Ice Cavern MQ Compass Chest: "True"
+      Ice Cavern MQ Freestanding PoH: has_explosives
+      Ice Cavern MQ GS Red Ice: can_play(Song_of_Time)
+                  #Trick -> can_play(Song_of_Time) or logic_ice_mq_red_ice_gs

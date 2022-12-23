@@ -1,252 +1,6 @@
 #pragma once
 
-#include <string>
-
-enum class ItemID : uint32_t
-{
-    NONE,
-    KokiriSword,
-    MasterSword,
-    GiantsKnife,
-    BiggoronsSword,
-    DekuShield,
-    HylianShield,
-    MirrorShield,
-    GoronTunic,
-    ZoraTunic,
-    IronBoots,
-    HoverBoots,
-    Boomerang,
-    LensOfTruth,
-    MegatonHammer,
-    ShardOfAgony,
-    DinsFire,
-    FaroresWind,
-    NayrusLove,
-    FireArrows,
-    IceArrows,
-    LightArrows,
-    GerudoToken,
-    MagicBean,
-    MagicBeanPack,
-    DoubleDefense,
-    WeirdEgg,
-    Cucco,
-    ZeldasLetter,
-    KeatonMask,
-    SkullMask,
-    SpookyMask,
-    BunnyHood,
-    GoronMask,
-    ZoraMask,
-    GerudoMask,
-    MaskOfTruth,
-    PocketEgg,
-    PocketCucco,
-    Cojiro,
-    OddMushroom,
-    OddPoultice,
-    PoachersSaw,
-    BrokenGoronsSword,
-    Prescription,
-    EyeballFrog,
-    Eyedrops,
-    ClaimCheck,
-    GoldSkulltulaToken,
-    ProgressiveHookshot,
-    ProgressiveStrengthUpgrade,
-    ProgressiveBombBag,
-    ProgressiveBow,
-    ProgressiveSlingshot,
-    ProgressiveWallet,
-    ProgressiveScale,
-    ProgressiveNutCapacity,
-    ProgressiveStickCapacity,
-    ProgressiveBombchus,
-    ProgressiveMagicMeter,
-    ProgressiveOcarina,
-    ProgressiveGoronSword,
-    EmptyBottle,
-    BottleWithMilk,
-    BottleWithRedPotion,
-    BottleWithGreenPotion,
-    BottleWithBluePotion,
-    BottleWithFairy,
-    BottleWithFish,
-    BottleWithBlueFire,
-    BottleWithBugs,
-    BottleWithPoe,
-    RutosLetter,
-    BottleWithBigPoe,
-    ZeldasLullaby,
-    EponasSong,
-    SariasSong,
-    SunsSong,
-    SongOfTime,
-    SongOfStorms,
-    MinuetOfForest,
-    BoleroOfFire,
-    SerenadeOfWater,
-    RequiemOfSpirit,
-    NocturneOfShadow,
-    PreludeOfLight,
-    DekuTreeMap,
-    DodongosCavernMap,
-    JabuJabusBellyMap,
-    ForestTempleMap,
-    FireTempleMap,
-    WaterTempleMap,
-    SpiritTempleMap,
-    ShadowTempleMap,
-    BottomOfTheWellMap,
-    IceCavernMap,
-    DekuTreeCompass,
-    DodongosCavernCompass,
-    JabuJabusBellyCompass,
-    ForestTempleCompass,
-    FireTempleCompass,
-    WaterTempleCompass,
-    SpiritTempleCompass,
-    ShadowTempleCompass,
-    BottomOfTheWellCompass,
-    IceCavernCompass,
-    ForestTempleBossKey,
-    FireTempleBossKey,
-    WaterTempleBossKey,
-    SpiritTempleBossKey,
-    ShadowTempleBossKey,
-    GanonsCastleBossKey,
-    ForestTempleSmallKey,
-    FireTempleSmallKey,
-    WaterTempleSmallKey,
-    SpiritTempleSmallKey,
-    ShadowTempleSmallKey,
-    BottomOfTheWellSmallKey,
-    GerudoTrainingGroundSmallKey,
-    ThievesHideoutSmallKey,
-    GanonsCastleSmallKey,
-    ChestGameSmallKey,
-    KokiriEmerald,
-    GoronRuby,
-    ZoraSapphire,
-    ForestMedallion,
-    FireMedallion,
-    WaterMedallion,
-    SpiritMedallion,
-    ShadowMedallion,
-    LightMedallion,
-    RecoveryHeart,
-    GreenRupee,
-    BlueRupee,
-    RedRupee,
-    PurpleRupee,
-    HugeRupee,
-    PieceOfHeart,
-    HeartContainer,
-    IceTrap,
-    Milk,
-    Bombs5,
-    Bombs10,
-    Bombs20,
-    Bombchus5,
-    Bombchus10,
-    Bombchus20,
-    BombchuDrop,
-    Arrows5,
-    Arrows10,
-    Arrows30,
-    DekuNuts5,
-    DekuNuts10,
-    DekuSeeds30,
-    DekuStick1,
-    RedPotionRefill,
-    GreenPotionRefill,
-    BluePotionRefill,
-    TreasureGameHeart,
-    TreasureGameGreenRupee,
-    BuyDekuNut5,
-    BuyArrows30,
-    BuyArrows50,
-    BuyBombs525,
-    BuyDekuNut10,
-    BuyDekuStick1,
-    BuyBombs10,
-    BuyFish,
-    BuyRedPotion30,
-    BuyGreenPotion,
-    BuyBluePotion,
-    BuyHylianShield,
-    BuyDekuShield,
-    BuyGoronTunic,
-    BuyZoraTunic,
-    BuyHeart,
-    BuyBombchu10,
-    BuyBombchu20,
-    BuyBombchu5,
-    BuyDekuSeeds30,
-    SoldOut,
-    BuyBlueFire,
-    BuyBottleBug,
-    BuyPoe,
-    BuyFairysSpirit,
-    BuyArrows10,
-    BuyBombs20,
-    BuyBombs30,
-    BuyBombs535,
-    BuyRedPotion40,
-    BuyRedPotion50,
-    // Events
-    Epona,
-    LinksCow,
-    Bonooru,
-    TriforcePiece,
-    TimeTravel,
-    ScarecrowSong,
-    Triforce,
-    ForestTrialClear,
-    FireTrialClear,
-    WaterTrialClear,
-    ShadowTrialClear,
-    SpiritTrialClear,
-    LightTrialClear,
-    DekuStickDrop,
-    DekuNutDrop,
-    BlueFire,
-    Fairy,
-    Fish,
-    Bugs,
-    BigPoe,
-    DekuTreeClear,
-    WaterTempleClear,
-    ShowedMidoSwordAndShield,
-    DrainWell,
-    DampesWindmillAccess,
-    GoronCityChildFire,
-    GCWoodsWarpOpen,
-    StopGCRollingGoronAsAdult,
-    DeliverLetter,
-    KingZoraThawed,
-    CarpenterRescue,
-    GFGateOpen,
-    GTGGateOpen,
-    SellBigPoe,
-    KakarikoVillageGateOpen,
-    WakeUpAdultTalon,
-    Hint,
-    // Extra stuff for logic parsing
-    Hookshot,
-    Longshot,
-    SilverGauntlets,
-    GoldGauntlets,
-    Scarecrow,
-    DistantScarecrow,
-    Sticks,
-    INVALID,
-};
-
-ItemID NameToItemID(const std::string& name);
-
-std::string ItemIDToName(const ItemID& itemId);
+#include "item_id.hpp"
 
 class World;
 class Item {
@@ -254,20 +8,23 @@ public:
 
     Item();
     Item(const ItemID& id_, World* world_);
-    ~Item();
+    virtual ~Item();
 
     ItemID GetID() const;
-    std::string GetName() const;
+    std::string GetName();
     World* GetWorld() const;
     int GetWorldID() const;
+    void SetAsMajorItem();
+    bool IsMajorItem() const;
 
     bool operator==(const Item& rhs) const;
     bool operator<(const Item& rhs) const;
 
-    ItemID id = ItemID::INVALID;
+    ItemID id = NONE;
     std::string name = "";
     World* world = nullptr;
     int worldId = -1;
+    bool isMajorItem = false;
 };
 
 // inject specialization of std::hash<Item> into the std namespace
@@ -280,5 +37,16 @@ struct std::hash<Item>
         size_t h1 = std::hash<ItemID>{}(i.GetID());
         size_t h2 = std::hash<int>{}(i.GetWorldID());
         return h1 ^ (h2 << 16);
+    }
+};
+
+// Template comparator for sets of pointers to be sorted by their data instead of the pointer address.
+// Taken from stack overflow https://stackoverflow.com/questions/67620937/set-of-pointers-to-objects-with-custom-comparator
+template <typename T>
+struct PointerComparator
+{
+    bool operator()(const T * lhs, const T * rhs) const
+    {
+        return *lhs < *rhs;
     }
 };

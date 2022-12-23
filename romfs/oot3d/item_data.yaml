@@ -5,6 +5,12 @@
   get_item_id: 0x27
   advancement: true
 
+- name: Master Sword
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0xFF
+  advancement: true
 
 - name: Giants Knife
   spanish: Espada de Biggoron
@@ -222,6 +228,14 @@
   advancement: true
 
 
+- name: Pocket Cucco
+  spanish: Cocotte de poche
+  french: Cuco de bolsillo
+  type: Item
+  get_item_id: 0x1E
+  advancement: true
+
+
 - name: Cojiro
   spanish: Cojiro
   french: P'tit Poulet
@@ -293,6 +307,61 @@
   get_item_id: 0x26
   advancement: true
 
+- name: Keaton Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x1A
+  advancement: true
+
+- name: Skull Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x17
+  advancement: true
+
+- name: Spooky Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x18
+  advancement: true
+
+- name: Bunny Hood
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x1B
+  advancement: true
+
+- name: Mask of Truth
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x1C
+  advancement: true
+
+- name: Goron Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x51
+  advancement: true
+
+- name: Zora Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x52
+  advancement: true
+
+- name: Gerudo Mask
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0x53
+  advancement: true
 
 - name: Progressive Hookshot
   spanish: Gancho progresivo
@@ -589,6 +658,12 @@
   get_item_id: 0xC0
   advancement: true
 
+- name: Scarecrow Song
+  spanish:
+  french:
+  type: Item
+  get_item_id: 0xFF
+  advancement: true
 
 - name: Deku Tree Map
   spanish: Mapa del Gran Árbol Deku
@@ -596,6 +671,7 @@
   type: Map
   get_item_id: 0xA5
   advancement: false
+  dungeon_map: Deku Tree
 
 
 - name: Dodongos Cavern Map
@@ -604,6 +680,7 @@
   type: Map
   get_item_id: 0xA6
   advancement: false
+  dungeon_map: Dodongos Cavern
 
 
 - name: Jabu Jabus Belly Map
@@ -612,6 +689,7 @@
   type: Map
   get_item_id: 0xA7
   advancement: false
+  dungeon_map: Jabu Jabus Belly
 
 
 - name: Forest Temple Map
@@ -620,6 +698,7 @@
   type: Map
   get_item_id: 0xA8
   advancement: false
+  dungeon_map: Forest Temple
 
 
 - name: Fire Temple Map
@@ -628,6 +707,7 @@
   type: Map
   get_item_id: 0xA9
   advancement: false
+  dungeon_map: Fire Temple
 
 
 - name: Water Temple Map
@@ -636,6 +716,7 @@
   type: Map
   get_item_id: 0xAA
   advancement: false
+  dungeon_map: Water Temple
 
 
 - name: Spirit Temple Map
@@ -644,6 +725,7 @@
   type: Map
   get_item_id: 0xAB
   advancement: false
+  dungeon_map: Spirit Temple
 
 
 - name: Shadow Temple Map
@@ -652,6 +734,7 @@
   type: Map
   get_item_id: 0xAC
   advancement: false
+  dungeon_map: Shadow Temple
 
 
 - name: Bottom of the Well Map
@@ -660,6 +743,7 @@
   type: Map
   get_item_id: 0xAD
   advancement: false
+  dungeon_map: Bottom of the Well
 
 
 - name: Ice Cavern Map
@@ -668,6 +752,7 @@
   type: Map
   get_item_id: 0xAE
   advancement: false
+  dungeon_map: Ice Cavern
 
 
 - name: Deku Tree Compass
@@ -676,6 +761,7 @@
   type: Compass
   get_item_id: 0x9B
   advancement: false
+  dungeon_compass: Deku Tree
 
 
 - name: Dodongos Cavern Compass
@@ -684,6 +770,7 @@
   type: Compass
   get_item_id: 0x9C
   advancement: false
+  dungeon_compass: Dodongos Cavern
 
 
 - name: Jabu Jabus Belly Compass
@@ -692,6 +779,7 @@
   type: Compass
   get_item_id: 0x9D
   advancement: false
+  dungeon_compass: Jabu Jabus Belly
 
 
 - name: Forest Temple Compass
@@ -700,6 +788,7 @@
   type: Compass
   get_item_id: 0x9E
   advancement: false
+  dungeon_compass: Forest Temple
 
 
 - name: Fire Temple Compass
@@ -708,6 +797,7 @@
   type: Compass
   get_item_id: 0x9F
   advancement: false
+  dungeon_compass: Fire Temple
 
 
 - name: Water Temple Compass
@@ -716,6 +806,7 @@
   type: Compass
   get_item_id: 0xA0
   advancement: false
+  dungeon_compass: Water Temple
 
 
 - name: Spirit Temple Compass
@@ -724,6 +815,7 @@
   type: Compass
   get_item_id: 0xA1
   advancement: false
+  dungeon_compass: Spirit Temple
 
 
 - name: Shadow Temple Compass
@@ -732,6 +824,7 @@
   type: Compass
   get_item_id: 0xA2
   advancement: false
+  dungeon_compass: Shadow Temple
 
 
 - name: Bottom of the Well Compass
@@ -740,6 +833,7 @@
   type: Compass
   get_item_id: 0xA3
   advancement: false
+  dungeon_compass: Bottom of the Well
 
 
 - name: Ice Cavern Compass
@@ -748,6 +842,7 @@
   type: Compass
   get_item_id: 0xA4
   advancement: false
+  dungeon_compass: Ice Cavern
 
 
 - name: Forest Temple Boss Key
@@ -756,6 +851,7 @@
   type: Boss Key
   get_item_id: 0x95
   advancement: true
+  dungeon_boss_key: Forest Temple
 
 
 - name: Fire Temple Boss Key
@@ -764,6 +860,7 @@
   type: Boss Key
   get_item_id: 0x96
   advancement: true
+  dungeon_boss_key: Fire Temple
 
 
 - name: Water Temple Boss Key
@@ -772,6 +869,7 @@
   type: Boss Key
   get_item_id: 0x97
   advancement: true
+  dungeon_boss_key: Water Temple
 
 
 - name: Spirit Temple Boss Key
@@ -780,6 +878,7 @@
   type: Boss Key
   get_item_id: 0x98
   advancement: true
+  dungeon_boss_key: Spirit Temple
 
 
 - name: Shadow Temple Boss Key
@@ -788,6 +887,7 @@
   type: Boss Key
   get_item_id: 0x99
   advancement: true
+  dungeon_boss_key: Shadow Temple
 
 
 - name: Ganons Castle Boss Key
@@ -796,6 +896,7 @@
   type: Boss Key
   get_item_id: 0x9A
   advancement: true
+  dungeon_boss_key: Ganons Castle
 
 
 - name: Forest Temple Small Key
@@ -804,6 +905,10 @@
   type: Small Key
   get_item_id: 0xAF
   advancement: true
+  dungeon_small_key: Forest Temple
+  key_count:
+      vanilla: 5
+      mq: 6
 
 
 - name: Fire Temple Small Key
@@ -812,6 +917,10 @@
   type: Small Key
   get_item_id: 0xB0
   advancement: true
+  dungeon_small_key: Fire Temple
+  key_count:
+      vanilla: 8
+      mq: 5
 
 
 - name: Water Temple Small Key
@@ -820,7 +929,10 @@
   type: Small Key
   get_item_id: 0xB1
   advancement: true
-
+  dungeon_small_key: Water Temple
+  key_count:
+      vanilla: 6
+      mq: 2
 
 - name: Spirit Temple Small Key
   spanish: Llave del Templo del Espíritu
@@ -828,6 +940,10 @@
   type: Small Key
   get_item_id: 0xB2
   advancement: true
+  dungeon_small_key: Spirit Temple
+  key_count:
+      vanilla: 5
+      mq: 7
 
 
 - name: Shadow Temple Small Key
@@ -836,6 +952,10 @@
   type: Small Key
   get_item_id: 0xB3
   advancement: true
+  dungeon_small_key: Shadow Temple
+  key_count:
+      vanilla: 5
+      mq: 6
 
 
 - name: Bottom of the Well Small Key
@@ -844,6 +964,10 @@
   type: Small Key
   get_item_id: 0xB4
   advancement: true
+  dungeon_small_key: Bottom of the Well
+  key_count:
+      vanilla: 2
+      mq: 2
 
 
 - name: Gerudo Training Ground Small Key
@@ -852,6 +976,10 @@
   type: Small Key
   get_item_id: 0xB5
   advancement: true
+  dungeon_small_key: Gerudo Training Ground
+  key_count:
+      vanilla: 9
+      mq: 3
 
 
 - name: Thieves Hideout Small Key
@@ -868,12 +996,104 @@
   type: Small Key
   get_item_id: 0xB7
   advancement: true
+  dungeon_small_key: Ganons Castle
+  key_count:
+      vanilla: 2
+      mq: 3
 
 
 - name: Chest Game Small Key
   spanish: Llave del Cofre del Tesoro
   french: Clé de la chasse-aux-trésors
   type: Item
+  get_item_id: 0xDE
+  advancement: true
+
+
+- name: Forest Temple Key Ring
+  spanish: Llavero del Templo del Bosque
+  french: Trousseau du temple de la forêt
+  type: Small Key
+  get_item_id: 0xD5
+  advancement: true
+  dungeon_key_ring: Forest Temple
+
+
+- name: Fire Temple Key Ring
+  spanish: Llavero del Templo del Fuego
+  french: Trousseau du temple du feu
+  type: Small Key
+  get_item_id: 0xD6
+  advancement: true
+  dungeon_key_ring: Fire Temple
+
+
+- name: Water Temple Key Ring
+  spanish: Llavero del Templo del Agua
+  french: Trousseau du temple de l'eau
+  type: Small Key
+  get_item_id: 0xD7
+  advancement: true
+  dungeon_key_ring: Water Temple
+
+
+- name: Spirit Temple Key Ring
+  spanish: Llavero del Templo del Espíritu
+  french: Trousseau du temple de l'esprit
+  type: Small Key
+  get_item_id: 0xD8
+  advancement: true
+  dungeon_key_ring: Spirit Temple
+
+
+- name: Shadow Temple Key Ring
+  spanish: Llavero del Templo de las Sombras
+  french: Trousseau du temple de l'ombre
+  type: Small Key
+  get_item_id: 0xD9
+  advancement: true
+  dungeon_key_ring: Shadow Temple
+
+
+- name: Bottom of the Well Key Ring
+  spanish: Llavero del fondo del pozo
+  french: Trousseau du fond du puits
+  type: Small Key
+  get_item_id: 0xDA
+  advancement: true
+  dungeon_key_ring: Bottom of the Well
+
+
+- name: Gerudo Training Ground Key Ring
+  spanish: Llavero del Centro de Instrucción
+  french: Trousseau du gymnase Gerudo
+  type: Small Key
+  get_item_id: 0xDB
+  advancement: true
+  dungeon_key_ring: Gerudo Training Ground
+
+
+- name: Thieves Hideout Key Ring
+  spanish: Llavero de la Fortaleza Gerudo
+  french: Trousseau du repaire Gerudo
+  type: Fortress Small Key
+  get_item_id: 0xDC
+  advancement: true
+
+
+- name: Ganons Castle Key Ring
+  spanish: Llavero del Castillo de Ganon
+  french: Trousseau du château de Ganon
+  type: Small Key
+  get_item_id: 0xDD
+  advancement: true
+  dungeon_key_ring: Ganons Castle
+
+
+- name: Chest Game Key Ring
+  spanish: Llavero del Cofre del Tesoro
+  french: Clé de la chasse-aux-trésors
+  type: Small Key
   get_item_id: 0xD5
   advancement: true
 
@@ -1003,7 +1223,7 @@
   french: Quart de cœur
   type: Item
   get_item_id: 0x3E
-  advancement: false
+  advancement: true
 
 
 - name: Heart Container
@@ -1011,7 +1231,7 @@
   french: Réceptacle de cœur
   type: Item
   get_item_id: 0x4F
-  advancement: false
+  advancement: true
 
 
 - name: Ice Trap
@@ -1166,12 +1386,68 @@
   advancement: false
 
 
+- name: Deku Nut Drop
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+
+- name: Deku Stick Drop
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+
+- name: Bugs
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+
+- name: Fish
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+
+- name: Fairy
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+
+- name: Big Poe
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+
+- name: Blue Fire
+  spanish:
+  french:
+  type: Drop
+  get_item_id: 0xFF
+  advancement: true
+
+
 - name: Treasure Game Heart
   spanish: Pieza de corazón (Cofre del Tesoro)
   french: Quart de cœur (Chasse-aux-trésors)
   type: Item
   get_item_id: 0x76
-  advancement: false
+  advancement: true
 
 
 - name: Treasure Game Green Rupee
@@ -1190,20 +1466,13 @@
   advancement: false
 
 
-- name: Hint
-  spanish: Pista
-  french: Indice
-  type: Event
-  get_item_id: 0x73
-  advancement: false
-
-
 - name: Buy Deku Nut 5
   spanish: Comprar nueces deku (5)
   french: "Acheter: Noix Mojo (5)"
   type: Shop
   get_item_id: 0x00
   advancement: true
+  price: 15
 
 
 - name: Buy Arrows 30
@@ -1212,6 +1481,7 @@
   type: Shop
   get_item_id: 0x01
   advancement: true
+  price: 60
 
 
 - name: Buy Arrows 50
@@ -1220,6 +1490,7 @@
   type: Shop
   get_item_id: 0x02
   advancement: true
+  price: 90
 
 
 - name: Buy Bombs 5 25
@@ -1228,6 +1499,7 @@
   type: Shop
   get_item_id: 0x03
   advancement: true
+  price: 25
 
 
 - name: Buy Deku Nut 10
@@ -1236,6 +1508,7 @@
   type: Shop
   get_item_id: 0x04
   advancement: true
+  price: 30
 
 
 - name: Buy Deku Stick 1
@@ -1244,6 +1517,7 @@
   type: Shop
   get_item_id: 0x05
   advancement: true
+  price: 10
 
 
 - name: Buy Bombs 10
@@ -1252,6 +1526,7 @@
   type: Shop
   get_item_id: 0x06
   advancement: true
+  price: 50
 
 
 - name: Buy Fish
@@ -1260,6 +1535,7 @@
   type: Shop
   get_item_id: 0x07
   advancement: true
+  price: 200
 
 
 - name: Buy Red Potion 30
@@ -1268,7 +1544,7 @@
   type: Shop
   get_item_id: 0x08
   advancement: false
-
+  price: 30
 
 - name: Buy Green Potion
   spanish: Comprar poción verde
@@ -1276,7 +1552,7 @@
   type: Shop
   get_item_id: 0x09
   advancement: true
-
+  price: 30
 
 - name: Buy Blue Potion
   spanish: Comprar poción azul
@@ -1284,6 +1560,7 @@
   type: Shop
   get_item_id: 0x0A
   advancement: true
+  price: 100
 
 
 - name: Buy Hylian Shield
@@ -1292,6 +1569,7 @@
   type: Shop
   get_item_id: 0x0C
   advancement: true
+  price: 80
 
 
 - name: Buy Deku Shield
@@ -1300,6 +1578,7 @@
   type: Shop
   get_item_id: 0x0D
   advancement: true
+  price: 40
 
 
 - name: Buy Goron Tunic
@@ -1308,6 +1587,7 @@
   type: Shop
   get_item_id: 0x0E
   advancement: true
+  price: 200
 
 
 - name: Buy Zora Tunic
@@ -1316,6 +1596,7 @@
   type: Shop
   get_item_id: 0x0F
   advancement: true
+  price: 300
 
 
 - name: Buy Heart
@@ -1324,6 +1605,7 @@
   type: Shop
   get_item_id: 0x10
   advancement: false
+  price: 10
 
 
 - name: Buy Bombchu 10
@@ -1332,6 +1614,7 @@
   type: Shop
   get_item_id: 0x15
   advancement: true
+  price: 99
 
 
 - name: Buy Bombchu 20
@@ -1340,6 +1623,7 @@
   type: Shop
   get_item_id: 0x16
   advancement: true
+  price: 180
 
 
 - name: Buy Bombchu 5
@@ -1348,6 +1632,7 @@
   type: Shop
   get_item_id: 0x18
   advancement: true
+  price: 60
 
 
 - name: Buy Deku Seeds 30
@@ -1356,6 +1641,7 @@
   type: Shop
   get_item_id: 0x1D
   advancement: true
+  price: 30
 
 
 - name: Sold Out
@@ -1364,6 +1650,7 @@
   type: Shop
   get_item_id: 0x26
   advancement: false
+  price: 0
 
 
 - name: Buy Blue Fire
@@ -1372,6 +1659,7 @@
   type: Shop
   get_item_id: 0x27
   advancement: true
+  price: 300
 
 
 - name: Buy Bottle Bug
@@ -1380,6 +1668,7 @@
   type: Shop
   get_item_id: 0x28
   advancement: true
+  price: 50
 
 
 - name: Buy Poe
@@ -1388,6 +1677,7 @@
   type: Shop
   get_item_id: 0x2A
   advancement: false
+  price: 30
 
 
 - name: Buy Fairys Spirit
@@ -1396,6 +1686,7 @@
   type: Shop
   get_item_id: 0x2B
   advancement: true
+  price: 50
 
 
 - name: Buy Arrows 10
@@ -1404,6 +1695,7 @@
   type: Shop
   get_item_id: 0x2C
   advancement: true
+  price: 20
 
 
 - name: Buy Bombs 20
@@ -1412,6 +1704,7 @@
   type: Shop
   get_item_id: 0x2D
   advancement: true
+  price: 80
 
 
 - name: Buy Bombs 30
@@ -1420,6 +1713,7 @@
   type: Shop
   get_item_id: 0x2E
   advancement: true
+  price: 120
 
 
 - name: Buy Bombs 5 35
@@ -1428,6 +1722,7 @@
   type: Shop
   get_item_id: 0x2F
   advancement: true
+  price: 35
 
 
 - name: Buy Red Potion 40
@@ -1436,6 +1731,7 @@
   type: Shop
   get_item_id: 0x30
   advancement: false
+  price: 40
 
 
 - name: Buy Red Potion 50
@@ -1443,4 +1739,21 @@
   french: "Acheter: Potion rouge [50]"
   type: Shop
   get_item_id: 0x31
+  advancement: false
+  price: 50
+
+
+- name: Deliver Letter
+  spanish:
+  french:
+  type: Event
+  get_item_id: 0xFF
+  advancement: true
+
+
+- name: Hint
+  spanish: Pista
+  french: Indice
+  type: Event
+  get_item_id: 0x73
   advancement: false

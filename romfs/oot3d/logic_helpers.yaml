@@ -7,10 +7,18 @@ Scarecrow: Hookshot and can_play(Scarecrow_Song)
 Distant_Scarecrow: Longshot and can_play(Scarecrow_Song)
 Silver_Scale: Progressive_Scale
 Gold_Scale: count(Progressive_Scale, 2)
-Ocarina_of_Time: count(Ocarina, 2)
+Ocarina: Progressive_Ocarina
+Ocarina_of_Time: count(Progressive_Ocarina, 2)
+Slingshot: Progressive_Slingshot
+Bomb_Bag: Progressive_Bomb_Bag
+Bow: Progressive_Bow
+Adults_Wallet: Progressive_Wallet
+Giants_Wallet: count(Progressive_Wallet, 2)
+Tycoons_Wallet: count(Progressive_Wallet, 3)
+Magic_Meter: Progressive_Magic_Meter
 
-Goron_Tunic: "Goron_Tunic or Buy_Goron_Tunic"
-Zora_Tunic: "Zora_Tunic or Buy_Zora_Tunic"
+Goron_Tunic: Goron_Tunic or Buy_Goron_Tunic
+Zora_Tunic: Zora_Tunic or Buy_Zora_Tunic
 
 is_child: child_day or child_night
 is_adult: adult_day or adult_night
@@ -21,7 +29,7 @@ at_night: child_night or adult_night
 # without editing all logic files.
 # Bow: 'Bow',
 # Slingshot: 'Slingshot',
-Bombs: Bomb_Bag
+Bombs: Progressive_Bomb_Bag
 Deku_Shield: Buy_Deku_Shield
 Hylian_Shield: Buy_Hylian_Shield
 Nuts: Buy_Deku_Nut_5 or Buy_Deku_Nut_10 or Deku_Nut_Drop
@@ -32,8 +40,10 @@ Fish: Fish or Buy_Fish
 Fairy: Fairy or Buy_Fairys_Spirit
 
 can_use(Kokiri_Sword): is_child and Kokiri_Sword
+can_use(Master_Sword): is_adult and Master_Sword
+can_use(Biggorons_Sword): is_adult and Biggorons_Sword
 can_use(Sticks): is_child and Sticks
-can_use(Slingshot): is_child and Slingshot
+can_use(Slingshot): is_child and Progressive_Slingshot
 can_use(Boomerang): is_child and Boomerang
 can_use(Deku_Shield): is_child and Deku_Shield
 can_use(Dins_Fire): Magic_Meter and Dins_Fire
@@ -59,7 +69,7 @@ can_use(Light_Arrows): is_adult and Light_Arrows and Bow and Magic_Meter
 
 hookshot_or_boomerang: can_use(Hookshot) or can_use(Boomerang)
 can_refill_bombchus: Buy_Bombchu_5 or Buy_Bombchu_10 or Buy_Bombchu_20 or Bombchu_Drop
-found_bombchus: "(bombchus_in_logic and (Bombchus or Bombchus_5 or Bombchus_10 or Bombchus_20)) or (not bombchus_in_logic and Bomb_Bag)"
+found_bombchus: "(bombchus_in_logic and (Progressive_Bombchus or Bombchus_5 or Bombchus_10 or Bombchus_20)) or (not bombchus_in_logic and Bomb_Bag)"
 has_bombchus: "(bombchus_in_logic and found_bombchus) or (not bombchus_in_logic and can_refill_bombchus)"
 has_explosives: Bombs or (bombchus_in_logic and has_bombchus)
 has_bottle: Empty_Bottle or Bottle_with_Milk or Bottle_with_Red_Potion or Bottle_with_Green_Potion or Bottle_with_Blue_Potion or
@@ -68,6 +78,7 @@ has_bottle: Empty_Bottle or Bottle_with_Milk or Bottle_with_Red_Potion or Bottle
 is_glitched: logic_rules != glitchless
 has_shield: (is_adult and Hylian_Shield) or (is_child and Deku_Shield)
 can_shield: (is_adult and (Hylian_Shield or Mirror_Shield)) or (is_child and Deku_Shield)
+can_slash_sword: can_use(Kokiri_Sword) or can_use(Master_Sword) or can_use(Biggorons_Sword)
 can_mega: has_explosives and can_shield
 can_isg: can_shield and (is_adult or Sticks or Kokiri_Sword)
 can_hover: can_mega and can_isg
@@ -76,12 +87,13 @@ can_blast_or_smash: has_explosives or can_use(Megaton_Hammer)
 can_child_attack: is_child and (Slingshot or Boomerang or Sticks or Kokiri_Sword or has_explosives or can_use(Dins_Fire))
 can_child_damage: is_child and (Slingshot or Sticks or Kokiri_Sword or has_explosives or can_use(Dins_Fire))
 can_cut_shrubs: is_adult or Sticks or Kokiri_Sword or Boomerang or has_explosives
-can_leave_forest: open_forest != closed or is_adult or is_glitched or Deku_Tree_Clear
+can_leave_forest: open_forest != closed or is_adult or 'Deku_Tree_Clear'
 can_plant_bugs: is_child and Bugs
-can_ride_epona: is_adult and Epona and (can_play(Eponas_Song) or (is_glitched and can_hover))
+can_ride_epona: is_adult and 'Epona' and (can_play(Eponas_Song) or (is_glitched and can_hover))
 can_stun_deku: is_adult or (Slingshot or Boomerang or Sticks or Kokiri_Sword or has_explosives or can_use(Dins_Fire) or Nuts or Deku_Shield)
 can_summon_gossip_fairy: Ocarina and (Zeldas_Lullaby or Eponas_Song or Song_of_Time or Suns_Song)
 can_summon_gossip_fairy_without_suns: Ocarina and (Zeldas_Lullaby or Eponas_Song or Song_of_Time)
+
 can_take_damage: damage_multiplier != 'ohko' or Fairy or can_use(Nayrus_Love)
 can_plant_bean: plant_beans or (is_child and (Magic_Bean or Magic_Bean_Pack))
 # can_play(song): Ocarina and song
@@ -94,6 +106,9 @@ has_projectile(child): has_explosives or Slingshot or Boomerang # Check these la
 has_projectile(adult): has_explosives or Bow or Hookshot
 has_projectile(both): has_projectile(child) and has_projectile(adult)
 has_projectile(either): has_projectile(child) or has_projectile(adult)
+
+can_use_projectile: has_explosives or can_use(Bow) or can_use(Hookshot) or can_use(Slingshot) or can_use(Boomerang)
+can_use_magic_arrow: can_use(Fire_Arrows) or can_use(Ice_Arrows) or can_use(Light_Arrows)
 
 guarantee_hint: (hints == mask and Mask_of_Truth) or (hints == agony and Shard_of_Agony) or (hints != mask and hints != agony)
 has_fire_source: can_use(Dins_Fire) or can_use(Fire_Arrows)

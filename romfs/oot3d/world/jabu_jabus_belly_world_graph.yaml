@@ -1,0 +1,234 @@
+############################
+#    VANILLA/MQ DECIDER    #
+############################
+
+- region_name: Jabu Jabus Belly Entryway
+  dungeon: Jabu Jabus Belly
+  exits:
+      Jabu Jabus Belly Beginning: jabu_jabus_belly_dungeon_mode == vanilla
+      Jabu Jabus Belly MQ Beginning: jabu_jabus_belly_dungeon_mode == mq
+      Zoras Fountain: "True"
+
+############################
+#     VANILLA DUNGEON      #
+############################
+
+- region_name: Jabu Jabus Belly Beginning
+  dungeon: Jabu Jabus Belly
+  exits:
+      Jabu Jabus Belly Entryway: "True"
+      Jabu Jabus Belly Lift Middle: can_use_projectile
+                                            #Glitched -> can_use(Boomerang) or can_use(Bow) or can_use(Hookshot) or (can_use(Sticks) and can_take_damage and CanDoGlitch(GlitchType::QPA GlitchDifficulty::EXPERT)) or CanDoGlitch(GlitchType::SuperStab GlitchDifficulty::NOVICE))
+
+
+- region_name: Jabu Jabus Belly Lift Middle
+  dungeon: Jabu Jabus Belly
+  exits:
+      Jabu Jabus Belly Beginning: "True"
+      Jabu Jabus Belly Main Upper: "True"
+      Jabu Jabus Belly Lift Lower: "True"
+      Jabu Jabus Belly Near Boss Room: at('Jabu Jabus Belly Lift Upper', True) or (logic_jabu_boss_gs_adult and is_adult and can_use(Hover_Boots))
+                                               #Glitched -> (CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE) or CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::INTERMEDIATE)) and
+                                               #                    GlitchJabuSwitch and (Fish or Bugs or can_use(Farores_Wind) or (is_adult and ClaimCheck)))
+
+
+- region_name: Jabu Jabus Belly Main Upper
+  dungeon: Jabu Jabus Belly
+  exits:
+      Jabu Jabus Belly Lift Middle: "True"
+      Jabu Jabus Belly Main Lower: "True"
+      Jabu Jabus Belly Forked Corridor: "True"
+      Jabu Jabus Belly Bigocto Room: here(can_use(Boomerang))
+
+
+- region_name: Jabu Jabus Belly Main Lower
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly GS Lobby Basement Lower: hookshot_or_boomerang
+                                                              #Glitched -> Bombs and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))
+      Jabu Jabus Belly GS Lobby Basement Upper: hookshot_or_boomerang
+                                                              #Glitched -> Bombs and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::INTERMEDIATE) and CanDoGlitch(GlitchType::ISG GlitchDifficulty::INTERMEDIATE))
+  exits:
+      Jabu Jabus Belly Main Upper: "True"
+      Jabu Jabus Belly Shabomb Corridor: "True"
+      Jabu Jabus Belly Lower Side Room: "True"
+
+
+- region_name: Jabu Jabus Belly Shabomb Corridor
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly GS Water Switch Room: "True"
+      Fairy Pot: has_bottle
+  exits:
+      Jabu Jabus Belly Main Lower: "True"
+      Jabu Jabus Belly Lift Lower: can_use_projectile
+                                           #Glitched -> can_use(Boomerang) or can_use(Bow) or can_use(Hookshot) or (can_use(Sticks) and can_take_damage and CanDoGlitch(GlitchType::QPA GlitchDifficulty::EXPERT)))
+
+
+- region_name: Jabu Jabus Belly Lower Side Room
+  dungeon: Jabu Jabus Belly
+  locations:
+      Fairy Pot: (can_use(Boomerang) or can_use(Hover_Boots)) and has_bottle
+                            #Glitched -> (Bombs and CanDoGlitch(GlitchType::BombHover GlitchDifficulty::NOVICE)) or CanDoGlitch(GlitchType::Megaflip GlitchDifficulty::INTERMEDIATE))
+  exits:
+      Jabu Jabus Belly Main Lower: "True"
+
+
+- region_name: Jabu Jabus Belly Lift Lower
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly Deku Scrub: "(is_child or Silver_Scale or logic_jabu_scrub_jump_dive or can_use(Iron_Boots)) and can_stun_deku"
+  exits:
+      Jabu Jabus Belly Shabomb Corridor: "True"
+      Jabu Jabus Belly Lift Middle: "True"
+
+
+- region_name: Jabu Jabus Belly Forked Corridor
+  dungeon: Jabu Jabus Belly
+  exits:
+      Jabu Jabus Belly Main Upper: "True"
+      Jabu Jabus Belly Boomerang Room: "True"
+      Jabu Jabus Belly Map Room: "True"
+      Jabu Jabus Belly Compass Room: here(can_use(Boomerang))
+      Jabu Jabus Belly Blue Tentacle: here(can_use(Boomerang))
+      Jabu Jabus Belly Green Tentacle: here(can_use(Boomerang))
+
+
+- region_name: Jabu Jabus Belly Boomerang Room
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly Boomerang Chest: "True"
+  exits:
+      Jabu Jabus Belly Forked Corridor: "True"
+
+
+- region_name: Jabu Jabus Belly Map Room
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly Map Chest: can_use(Boomerang)
+  exits:
+      Jabu Jabus Belly Forked Corridor: "True"
+
+
+- region_name: Jabu Jabus Belly Compass Room
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly Compass Chest: is_adult or can_child_attack
+  exits:
+      Jabu Jabus Belly Forked Corridor: "True"
+
+
+- region_name: Jabu Jabus Belly Blue Tentacle
+  dungeon: Jabu Jabus Belly
+  exits:
+      Jabu Jabus Belly Forked Corridor: here(can_use(Boomerang))
+
+
+- region_name: Jabu Jabus Belly Green Tentacle
+  dungeon: Jabu Jabus Belly
+  exits:
+      Jabu Jabus Belly Forked Corridor: here(can_use(Boomerang))
+
+
+- region_name: Jabu Jabus Belly Bigocto Room
+  dungeon: Jabu Jabus Belly
+  exits:
+      Jabu Jabus Belly Main Lower: "True"
+      Jabu Jabus Belly Above Bigocto: here((can_use(Boomerang) or Nuts) and (can_use(Kokiri_Sword) or can_use(Sticks)))
+
+
+- region_name: Jabu Jabus Belly Above Bigocto
+  dungeon: Jabu Jabus Belly
+  locations:
+      Fairy Pot: has_bottle
+      Nut Pot: "True"
+  exits:
+      Jabu Jabus Belly Lift Upper: can_use(Boomerang)
+                                           #Glitched -> has_bombchus and can_shield and is_adult and (can_use(Hookshot) or can_use(Bow) or can_use(Slingshot)) and CanDoGlitch(GlitchType::ActionSwap GlitchDifficulty::ADVANCED))
+
+
+- region_name: Jabu Jabus Belly Lift Upper
+  dungeon: Jabu Jabus Belly
+  exits:
+      Jabu Jabus Belly Lift Middle: "True"
+      Jabu Jabus Belly Lift Lower: "True"
+
+
+- region_name: Jabu Jabus Belly Near Boss Room
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly GS Near Boss: is_adult or can_child_attack
+  exits:
+      Jabu Jabus Belly Lift Middle: "True"
+      Jabu Jabus Belly Boss Room: can_use(Boomerang)
+                                            #Glitched -> (can_use(Hover_Boots) and (can_use(Bow) or can_use(Slingshot))) or CanDoGlitch(GlitchType::HookshotClip GlitchDifficulty::NOVICE) or
+                                            #                    (can_use(Sticks) and CanDoGlitch(GlitchType::QPA GlitchDifficulty::NOVICE)) or (Bombs and CanDoGlitch(GlitchType::ISG GlitchDifficulty::NOVICE)) or CanDoGlitch(GlitchType::SuperStab GlitchDifficulty::NOVICE))
+
+
+- region_name: Jabu Jabus Belly Boss Room
+  dungeon: Jabu Jabus Belly
+  events:
+      Jabu Jabus Belly Clear: can_use(Boomerang)
+  locations:
+      Jabu Jabus Belly Barinade Heart: "'Jabu_Jabus_Belly_Clear'"
+      Barinade: "'Jabu_Jabus_Belly_Clear'"
+  exits:
+      Jabu Jabus Belly Near Boss Room: "'Jabu_Jabus_Belly_Clear'"
+      Jabu Jabus Belly Entryway: "'Jabu_Jabus_Belly_Clear'"
+
+############################
+#   MASTER QUEST DUNGEON   #
+############################
+
+- region_name: Jabu Jabus Belly MQ Beginning
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly MQ Map Chest: can_blast_or_smash
+      Jabu Jabus Belly MQ First Room Side Chest: is_child and can_use(Slingshot)
+      Nut Pot: "True"
+  exits:
+      Jabu Jabus Belly Entryway: "True"
+      Jabu Jabus Belly MQ Main: here(is_child and can_use(Slingshot))
+
+
+- region_name: Jabu Jabus Belly MQ Main
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly MQ Second Room Lower Chest: "True"
+      Jabu Jabus Belly MQ Second Room Upper Chest: "(is_adult and (can_use(Hover_Boots) or can_use(Hookshot))) or at('Jabu Jabus Belly MQ Boss Area', is_child)"
+      Jabu Jabus Belly MQ Compass Chest: "True"
+      Jabu Jabus Belly MQ Basement Near Vines Chest: "True"
+      Jabu Jabus Belly MQ Basement Near Switches Chest: "True"
+      Jabu Jabus Belly MQ Boomerang Room Small Chest: "True"
+      Jabu Jabus Belly MQ Boomerang Chest: "True"
+      Jabu Jabus Belly MQ GS Boomerang Chest Room: can_play(Song_of_Time)
+                  #Trick -> can_play(Song_of_Time) or (logic_jabu_mq_sot_gs and is_child and can_use(Boomerang))
+  exits:
+      Jabu Jabus Belly MQ Beginning: "True"
+      Jabu Jabus Belly MQ Depths: has_explosives and is_child and can_use(Boomerang)
+
+
+- region_name: Jabu Jabus Belly MQ Depths
+  dungeon: Jabu Jabus Belly
+  locations:
+      Jabu Jabus Belly MQ Falling Like Like Room Chest: "True"
+      Jabu Jabus Belly MQ GS Tailpasaran Room: Sticks or can_use(Dins_Fire)
+      Jabu Jabus Belly MQ GS Invisible Enemies Room: "(logic_lens_jabu_mq or can_use(Lens_of_Truth)) or here(is_adult and can_use(Hover_Boots) and can_use(Hookshot))"
+  exits:
+      Jabu Jabus Belly MQ Main: "True"
+      Jabu Jabus Belly MQ Boss Area: Sticks or (can_use(Dins_Fire) and Kokiri_Sword)
+
+
+- region_name: Jabu Jabus Belly MQ Boss Area
+  dungeon: Jabu Jabus Belly
+  events:
+      Jabu Jabus Belly Clear: "True"
+  locations:
+      Jabu Jabus Belly MQ Cow: can_play(Eponas_Song)
+      Jabu Jabus Belly MQ Near Boss Chest: "True"
+      Jabu Jabus Belly Barinade Heart: "True"
+      Barinade: "True"
+      Jabu Jabus Belly MQ GS Near Boss: "True"
+      Fairy Pot: has_bottle
+  exits:
+      Jabu Jabus Belly MQ Main: "True"

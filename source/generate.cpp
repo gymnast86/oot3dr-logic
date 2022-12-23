@@ -1,103 +1,59 @@
 #include "generate.hpp"
-#include "timing.hpp"
+
+#include "config.hpp"
 #include "fill.hpp"
-#include "random.hpp"
+#include "search.hpp"
+#include "spoiler_log.hpp"
 #include "oot3d/oot3d_world.hpp"
+#include "utility/random.hpp"
+#include "utility/timing.hpp"
 
 #include <unordered_map>
 #include <array>
 #include <vector>
 #include <unordered_set>
 
-void GenerateRandomizer()
+int GenerateRandomizer()
 {
+    StartTiming("General");
 
 
-    Random_Init(1); // This eventually has to go where deciding random settings
 
-    SettingsMap settings1 = {
-        {"world_type", "oot3d"},
-        {"starting_age", "child"},
-        {"player_num", "1"},
-        {"bombchus_in_logic", "On"},
-        {"logic_rules", "glitchless"},
-        {"open_forest", "open"},
-        {"gerudo_fortress", "normal"},
-        {"damage_multiplier", "1x"},
-        {"hints", "none"},
-        {"plant_beans", "Off"},
-        {"bridge", "open"},
-        {"lacs_condition", "vanilla"},
-        {"shuffle_ganon_bosskey", "medallions"},
-        {"bridge_tokens", "10"},
-        {"bridge_stones", "3"},
-        {"bridge_medallions", "6"},
-        {"bridge_rewards", "9"},
-        {"lacs_tokens", "10"},
-        {"lacs_stones", "3"},
-        {"lacs_medallions", "6"},
-        {"lacs_rewards", "9"},
-        {"ganon_bosskey_stones", "3"},
-        {"ganon_bosskey_tokens", "10"},
-        {"ganon_bosskey_rewards", "9"},
-        {"ganon_bosskey_medallions", "6"},
-        {"had_night_start", "Off"},
-        {"complete_mask_quest", "Off"},
-        {"entrance_shuffle", "On"},
-        {"shuffle_scrubs", "off"},
-        {"shuffle_weird_egg", "Off"},
-        {"shuffle_gerudo_token", "Off"},
-        {"shuffle_chest_game", "off"},
-        {"shuffle_dungeon_entrances", "On"},
-        {"shuffle_overworld_entrances", "On"},
-        {"free_scarecrow", "Off"},
-        {"big_poe_count", "2"},
-        {"zora_fountain", "normal"},
-        {"open_kakariko", "open"},
-        {"open_door_of_time", "open"},
-        {"skip_child_zelda", "Off"},
-        {"night_gs_expect_suns", "Off"},
+    Config config;
+    // Create default config if it doesn't exist
+    std::ifstream conf(LOGS_PATH "config.yaml");
+    if (!conf.is_open())
+    {
+        std::cout << "Creating default config" << std::endl;
+        ConfigError err = CreateDefaultConfig(LOGS_PATH "config.yaml");
+        if (err != ConfigError::NONE)
+        {
+            LOG_TO_ERROR("Failed to create config, ERROR: " + ErrorToName(err));
+            return 1;
+        }
+    }
+    conf.close();
 
-        {"logic_grottos_without_agony", "Off"},
-        {"logic_gerudo_kitchen", "Off"},
-        {"logic_adult_kokiri_gs", "On"},
-        {"logic_lost_woods_gs_bean", "Off"},
-        {"logic_lost_woods_bridge", "Off"},
-        {"logic_lab_wall_gs", "On"},
-        {"logic_lab_diving", "Off"},
-        {"logic_wasteland_crossing", "Off"},
-        {"logic_lens_wasteland", "Off"},
-        {"logic_reverse_wasteland", "Off"},
-        {"logic_colossus_gs", "Off"},
-        {"logic_kakariko_tower_gs", "On"},
-        {"logic_kakariko_rooftop_gs", "On"},
-        {"logic_man_on_roof", "On"},
-        {"logic_windmill_poh", "On"},
-        {"logic_graveyard_poh", "On"},
-        {"logic_child_dampe_race_poh", "On"},
-        {"logic_shadow_fire_arrow_entry", "Off"},
-        {"logic_visible_collisions", "Off"},
-        {"logic_dmt_bombable", "On"},
-        {"logic_dmt_soil_gs", "Off"},
-        {"logic_dmt_climb_hovers", "Off"},
-        {"logic_link_goron_dins", "On"},
-        {"logic_goron_city_leftmost", "Off"},
-        {"logic_goron_city_pot_with_strength", "On"},
-        {"logic_goron_city_pot", "On"},
-        {"logic_child_rolling_with_strength", "On"},
-        {"logic_goron_grotto", "Off"},
-        {"logic_crater_upper_to_lower", "On"},
-        {"logic_fewer_tunic_requirements", "On"},
-        {"logic_crater_bean_poh_with_hovers", "On"},
-        {"logic_zora_river_lower", "Off"},
-        {"logic_zora_river_upper", "On"},
-        {"logic_domain_gs", "On"},
-        {"logic_king_zora_skip", "On"},
-        {"logic_castle_storms_gs", "On"},
-    };
-    std::vector<SettingsMap> settingsVector = {settings1, settings1, settings1, settings1};
+    // Read saved config
+    std::cout << "Reading config" << std::endl;
+    ConfigError err = LoadConfigFromFile(LOGS_PATH "config.yaml", config);
+    if (err != ConfigError::NONE)
+    {
+        LOG_TO_ERROR("Failed to read config, ERROR: " + ErrorToName(err));
+        return 1;
+    }
+
+    auto settingsVector = config.settingsVector;
     WorldPool worlds;
     worlds.resize(settingsVector.size());
+
+    std::set<std::string> worldTypes;
+    for (auto& settings : settingsVector)
+    {
+        worldTypes.insert(settings["world_type"]);
+    }
+
+    Random_Init(0); // This eventually has to go where deciding random settings
 
     std::cout << "Building Worlds..." << std::endl;
     for (size_t i = 0; i < settingsVector.size(); i++)
@@ -105,8 +61,8 @@ void GenerateRandomizer()
         auto& settings = settingsVector[i];
         if (settings["world_type"] == "oot3d")
         {
-            //std::cout << "Building oot3d world..." << std::endl;
-            auto world = std::make_unique<Oot3dWorld>(settings);
+            LOG_TO_DEBUG("Building oot3d world...")
+            auto world = std::make_unique<Oot3dWorld>(settings, settingsVector.size());
             worlds[i] = std::move(world);
         }
         else if (settings["world_type"] == "mm3d")
@@ -115,108 +71,38 @@ void GenerateRandomizer()
         }
         else
         {
-            std::cout << "ERROR: No world type defined in settings for world " << std::to_string(i) << std::endl;
-            return;
+            LOG_TO_ERROR("ERROR: No world type defined in settings for world " + std::to_string(i));
+            return 1;
         }
         worlds[i]->worldId = i;
+        worlds[i]->numWorlds = worlds.size();
+        worlds[i]->numWorldTypes = worldTypes.size();
         if (worlds[i]->Build() != WorldBuildingError::NONE)
         {
-            std::cout << " when building world " << std::to_string(i) << " of type " << settings["world_type"] << std::endl;
-            return;
+            LOG_TO_ERROR("when building world " + std::to_string(i) + " of type " + settings["world_type"]);
+            return 1;
         }
-        // std::cout << "Done building world " << std::to_string(i) << std::endl;
     }
 
-    StartTiming("general");
+    StartTiming("Fill");
     std::cout << "Filling Worlds..." << std::endl;
-    FillError err = FillWorlds(worlds);
+    FillError fillErr = FillWorlds(worlds);
+    if (fillErr != FillError::NONE)
+    {
+        LOG_TO_ERROR("ERROR: " + ErrorToName(fillErr) + " when attempting to fill worlds");
+        return 1;
+    }
 
+    EndTiming("Fill");
+    PrintTiming("Fill");
+    std::cout << "Generating Playthrough..." << std::endl;
+    GeneratePlaythrough(worlds);
 
-    EndTiming("general");
-    PrintTiming("general");
-    DebugLog("Total Evals: " + std::to_string(TotalWorldEvals(worlds)));
-}
+    GenerateSpoilerLog(worlds);
+    std::cout << "Generated Spoiler Log at \"Spoiler Log.txt\"" << std::endl;
 
-void BKey()
-{
-  // SettingsMap settings = {
-  //     {"world_type", "oot3d"},
-  //     {"bombchus_in_logic", "On"},
-  //     {"logic_rules", "glitchless"},
-  //     {"open_forest", "open"},
-  //     {"gerudo_fortress", "normal"},
-  //     {"damage_multiplier", "1x"},
-  //     {"hints", "none"},
-  //     {"plant_beans", "Off"},
-  //     {"bridge", "open"},
-  //     {"lacs_condition", "vanilla"},
-  //     {"shuffle_ganon_bosskey", "medallions"},
-  //     {"bridge_tokens", "10"},
-  //     {"bridge_stones", "3"},
-  //     {"bridge_medallions", "6"},
-  //     {"bridge_rewards", "9"},
-  //     {"lacs_tokens", "10"},
-  //     {"lacs_stones", "3"},
-  //     {"lacs_medallions", "6"},
-  //     {"lacs_rewards", "9"},
-  //     {"ganon_bosskey_stones", "3"},
-  //     {"ganon_bosskey_tokens", "10"},
-  //     {"ganon_bosskey_rewards", "9"},
-  //     {"ganon_bosskey_medallions", "6"},
-  //     {"had_night_start", "Off"},
-  //     {"entrance_shuffle", "On"},
-  //     {"shuffle_scrubs", "off"},
-  //     {"shuffle_weird_egg", "Off"},
-  //     {"shuffle_dungeon_entrances", "On"},
-  //     {"shuffle_overworld_entrances", "On"},
-  //     {"free_scarecrow", "Off"},
-  //     {"big_poe_count", "2"},
-  //     {"zora_fountain", "normal"},
-  //
-  //     {"logic_grottos_without_agony", "Off"},
-  //     {"logic_gerudo_kitchen", "Off"},
-  //     {"logic_adult_kokiri_gs", "On"},
-  //     {"logic_lost_woods_gs_bean", "Off"},
-  //     {"logic_lab_wall_gs", "On"},
-  //     {"logic_lab_diving", "Off"},
-  //     {"logic_colossus_gs", "Off"},
-  //     {"logic_kakariko_tower_gs", "On"},
-  //     {"logic_windmill_poh", "On"},
-  //     {"logic_graveyard_poh", "On"},
-  //     {"logic_child_dampe_race_poh", "On"},
-  //     {"logic_shadow_fire_arrow_entry", "Off"},
-  //     {"logic_visible_collisions", "Off"},
-  //     {"logic_dmt_bombable", "On"},
-  //     {"logic_dmt_soil_gs", "Off"},
-  //     {"logic_dmt_climb_hovers", "Off"},
-  //     {"logic_link_goron_dins", "On"},
-  //     {"logic_goron_city_leftmost", "Off"},
-  //     {"logic_goron_city_pot_with_strength", "On"},
-  //     {"logic_goron_city_pot", "On"},
-  //     {"logic_child_rolling_with_strength", "On"},
-  //     {"logic_goron_grotto", "Off"},
-  //     {"logic_crater_upper_to_lower", "On"},
-  //     {"logic_fewer_tunic_requirements", "On"},
-  //     {"logic_crater_bean_poh_with_hovers", "On"},
-  //     {"logic_zora_river_lower", "Off"},
-  //     {"logic_zora_river_upper", "On"},
-  //     {"logic_domain_gs", "On"},
-  //     {"logic_king_zora_skip", "On"},
-  //     {"logic_castle_storms_gs", "On"},
-  // };
-  //
-  // WorldPool worlds;
-  //
-  // if (settings["world_type"] == "oot3d")
-  // {
-  //     auto world = std::make_unique<Oot3dWorld>();
-  //     worlds.push_back(std::move(world));
-  // }
-  // else
-  // {
-  //     std::cout << "ERROR: No world type defined in settings" << std::endl;
-  //     return;
-  // }
-  //
-  // worlds.back()->Build();
+    EndTiming("General");
+    PrintTiming("General");
+
+    return 0;
 }

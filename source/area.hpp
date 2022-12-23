@@ -10,7 +10,7 @@
 #include <memory>
 
 struct Event {
-    ItemID item;
+    EventID eventId;
     Requirement requirement;
     Area* area;
 };
@@ -28,14 +28,16 @@ public:
     Area();
     virtual ~Area();
 
+    AreaID GetID() const;
+
     bool operator==(const Area& rhs) const;
     bool operator<(const Area& rhs) const;
 
     AreaID id = AreaID::INVALID;
     std::string name = "";
-    std::list<Event> events;
-    std::list<LocationAccess> locations;
-    std::list<std::unique_ptr<Entrance>> exits;
+    std::list<Event> events = {};
+    std::list<LocationAccess> locations = {};
+    std::list<std::unique_ptr<Entrance>> exits = {};
     std::list<Entrance*> entrances;
     World* world = nullptr;
 

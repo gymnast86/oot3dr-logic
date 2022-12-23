@@ -28,6 +28,10 @@ public:
     Oot3dItem(const ItemID& id_, ItemType type_, uint8_t getItemId_, bool advancement_, World* world_);
     ~Oot3dItem();
 
+    ItemType GetType() const;
+    uint16_t GetPrice() const;
+    void SetPrice(const uint16_t& newPrice);
+
     ItemOverride_Value Value() const;
 
     ItemType type = ItemType::NONE;

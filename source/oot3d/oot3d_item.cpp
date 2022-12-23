@@ -14,9 +14,29 @@ Oot3dItem::Oot3dItem(const ItemID& id_, ItemType type_, uint8_t getItemId_, bool
     advancement = advancement_;
     world = world_;
     worldId = world->GetWorldID();
+    // All advancement items are major items
+    if (advancement)
+    {
+        SetAsMajorItem();
+    }
 }
 
 Oot3dItem::~Oot3dItem() = default;
+
+ItemType Oot3dItem::GetType() const
+{
+    return type;
+}
+
+uint16_t Oot3dItem::GetPrice() const
+{
+    return price;
+}
+
+void Oot3dItem::SetPrice(const uint16_t& newPrice)
+{
+    price = newPrice;
+}
 
 ItemType NameToOot3dItemType(const std::string& name)
 {

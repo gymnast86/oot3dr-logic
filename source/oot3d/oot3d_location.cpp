@@ -4,7 +4,8 @@
 
 Oot3dLocation::Oot3dLocation() {}
 
-Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, LocationType type_, uint8_t scene_, uint8_t flag_, const ItemID& vanillaItem_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, World* world_)
+Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, Oot3dLocationType type_, uint8_t scene_, uint8_t flag_, std::unordered_set<Oot3dLocationCategory> categories_,
+                             const Item& vanillaItem_, SpoilerCollectionCheck collectionCheck_, SpoilerCollectionCheckGroup collectionCheckGroup_, std::string dungeon_, World* world_)
 {
     id = id_;
     name = std::move(name_);
@@ -12,108 +13,122 @@ Oot3dLocation::Oot3dLocation(const LocationID& id_, std::string name_, LocationT
     scene = scene_;
     flag = flag_;
     vanillaItem = vanillaItem_;
+    categories = categories_;
     collectionCheck = collectionCheck_;
     collectionCheckGroup = collectionCheckGroup_;
+    dungeon = dungeon_;
     world = world_;
 }
 
 Oot3dLocation::~Oot3dLocation() = default;
+
+uint16_t Oot3dLocation::GetPrice() const
+{
+    return priceForPlacedItem;
+}
+
+void Oot3dLocation::SetPrice(uint16_t newPrice)
+{
+    priceForPlacedItem = newPrice;
+}
 
 std::string Oot3dLocation::TypeString() const
 {
     return "Oot3d Location";
 }
 
-LocationType NameToOot3dLocationType(const std::string& name)
+Oot3dLocationType NameToOot3dLocationType(const std::string& name)
 {
-    std::unordered_map<std::string, LocationType> nameLocationTypeMap = {
-        {"Base", LocationType::Base},
-        {"Chest", LocationType::Chest},
-        {"Collectable", LocationType::Collectable},
-        {"GS Token", LocationType::GSToken},
-        {"Grotto Scrub", LocationType::GrottoScrub},
-        {"Delayed", LocationType::Delayed},
-        {"Temple Reward", LocationType::TempleReward},
-        {"Hint Stone", LocationType::HintStone},
-        {"Other Hint", LocationType::OtherHint},
-        {"Event", LocationType::Event},
-        {"Drop", LocationType::Drop},
+    std::unordered_map<std::string, Oot3dLocationType> nameLocationTypeMap = {
+        {"Base", Oot3dLocationType::Base},
+        {"Chest", Oot3dLocationType::Chest},
+        {"Collectable", Oot3dLocationType::Collectable},
+        {"GS Token", Oot3dLocationType::GSToken},
+        {"Grotto Scrub", Oot3dLocationType::GrottoScrub},
+        {"Delayed", Oot3dLocationType::Delayed},
+        {"Temple Reward", Oot3dLocationType::TempleReward},
+        {"Hint Stone", Oot3dLocationType::HintStone},
+        {"Other Hint", Oot3dLocationType::OtherHint},
+        {"Event", Oot3dLocationType::Event},
+        {"Drop", Oot3dLocationType::Drop},
     };
 
     if (nameLocationTypeMap.count(name) == 0)
     {
-        return LocationType::INVALID;
+        return Oot3dLocationType::INVALID;
     }
     return nameLocationTypeMap.at(name);
 }
 
-LocationCategory NameToOot3dLocationCategory(const std::string& name)
+Oot3dLocationCategory NameToOot3dLocationCategory(const std::string& name)
 {
-    std::unordered_map<std::string, LocationCategory> nameLocationCategoryMap = {
-        {"Kokiri Forest", LocationCategory::KokiriForest},
-        {"Forest", LocationCategory::Forest},
-        {"Grotto", LocationCategory::Grotto},
-        {"Minigame", LocationCategory::Minigame},
-        {"Chest Minigame", LocationCategory::ChestMinigame},
-        {"Lost Woods", LocationCategory::LostWoods},
-        {"Deku Scrub", LocationCategory::DekuScrub},
-        {"Deku Scrub Upgrades", LocationCategory::DekuScrubUpgrades},
-        {"Need Spiritual Stones", LocationCategory::NeedSpiritualStones},
-        {"Sacred Forest Meadow", LocationCategory::SacredForestMeadow},
-        {"Hyrule Field", LocationCategory::HyruleField},
-        {"Lake Hylia", LocationCategory::LakeHylia},
-        {"Gerudo", LocationCategory::Gerudo},
-        {"Gerudo Valley", LocationCategory::GerudoValley},
-        {"Gerudo Fortress", LocationCategory::GerudoFortress},
-        {"Haunted Wasteland", LocationCategory::HauntedWasteland},
-        {"Desert Colossus", LocationCategory::DesertColossus},
-        {"Inner Market", LocationCategory::InnerMarket},
-        {"Market", LocationCategory::Market},
-        {"Hyrule Castle", LocationCategory::HyruleCastle},
-        {"Kakariko Village", LocationCategory::KakarikoVillage},
-        {"Kakariko", LocationCategory::Kakariko},
-        {"Skulltula House", LocationCategory::SkulltulaHouse},
-        {"Graveyard", LocationCategory::Graveyard},
-        {"Death Mountain Trail", LocationCategory::DeathMountainTrail},
-        {"Death Mountain", LocationCategory::DeathMountain},
-        {"Goron City", LocationCategory::GoronCity},
-        {"Death Mountain Crater", LocationCategory::DeathMountainCrater},
-        {"Zoras River", LocationCategory::ZorasRiver},
-        {"Zoras Domain", LocationCategory::ZorasDomain},
-        {"Zoras Fountain", LocationCategory::ZorasFountain},
-        {"Lon Lon Ranch", LocationCategory::LonLonRanch},
-        {"Deku Tree", LocationCategory::DekuTree},
-        {"Dodongos Cavern", LocationCategory::DodongosCavern},
-        {"Jabu Jabus Belly", LocationCategory::JabuJabusBelly},
-        {"Forest Temple", LocationCategory::ForestTemple},
-        {"Fire Temple", LocationCategory::FireTemple},
-        {"Water Temple", LocationCategory::WaterTemple},
-        {"Spirit Temple", LocationCategory::SpiritTemple},
-        {"Shadow Temple", LocationCategory::ShadowTemple},
-        {"Bottom of the Well", LocationCategory::BottomOfTheWell},
-        {"Ice Cavern", LocationCategory::IceCavern},
-        {"Gerudo Training Ground", LocationCategory::GerudoTrainingGround},
-        {"Ganons Castle", LocationCategory::GanonsCastle},
-        {"Skulltula", LocationCategory::Skulltula},
-        {"Boss Heart", LocationCategory::BossHeart},
-        {"Temple of Time", LocationCategory::TempleOfTime},
-        {"Fairies", LocationCategory::Fairies},
-        {"Outside Ganons Castle", LocationCategory::OutsideGanonsCastle},
-        {"Song", LocationCategory::Song},
-        {"Song Dungeon Reward", LocationCategory::SongDungeonReward},
-        {"Cow", LocationCategory::Cow},
-        {"Shop", LocationCategory::Shop},
-        {"Merchant", LocationCategory::Merchant},
-        {"Vanilla Small Key", LocationCategory::VanillaSmallKey},
-        {"Vanilla TH Small Key", LocationCategory::VanillaTHSmallKey},
-        {"Vanilla Boss Key", LocationCategory::VanillaBossKey},
-        {"Vanilla Map", LocationCategory::VanillaMap},
-        {"Vanilla Compass", LocationCategory::VanillaCompass},
-        {"Adult Trade", LocationCategory::AdultTrade},
+    std::unordered_map<std::string, Oot3dLocationCategory> nameLocationCategoryMap = {
+        {"Kokiri Forest", Oot3dLocationCategory::KokiriForest},
+        {"Forest", Oot3dLocationCategory::Forest},
+        {"Grotto", Oot3dLocationCategory::Grotto},
+        {"Minigame", Oot3dLocationCategory::Minigame},
+        {"Chest Minigame", Oot3dLocationCategory::ChestMinigame},
+        {"Lost Woods", Oot3dLocationCategory::LostWoods},
+        {"Deku Scrub", Oot3dLocationCategory::DekuScrub},
+        {"Deku Scrub Upgrades", Oot3dLocationCategory::DekuScrubUpgrades},
+        {"Need Spiritual Stones", Oot3dLocationCategory::NeedSpiritualStones},
+        {"Sacred Forest Meadow", Oot3dLocationCategory::SacredForestMeadow},
+        {"Hyrule Field", Oot3dLocationCategory::HyruleField},
+        {"Lake Hylia", Oot3dLocationCategory::LakeHylia},
+        {"Gerudo", Oot3dLocationCategory::Gerudo},
+        {"Gerudo Valley", Oot3dLocationCategory::GerudoValley},
+        {"Gerudo Fortress", Oot3dLocationCategory::GerudoFortress},
+        {"Thieves Hideout", Oot3dLocationCategory::ThievesHideout},
+        {"Haunted Wasteland", Oot3dLocationCategory::HauntedWasteland},
+        {"Desert Colossus", Oot3dLocationCategory::DesertColossus},
+        {"Inner Market", Oot3dLocationCategory::InnerMarket},
+        {"Market", Oot3dLocationCategory::Market},
+        {"Hyrule Castle", Oot3dLocationCategory::HyruleCastle},
+        {"Kakariko Village", Oot3dLocationCategory::KakarikoVillage},
+        {"Kakariko", Oot3dLocationCategory::Kakariko},
+        {"Skulltula House", Oot3dLocationCategory::SkulltulaHouse},
+        {"Graveyard", Oot3dLocationCategory::Graveyard},
+        {"Death Mountain Trail", Oot3dLocationCategory::DeathMountainTrail},
+        {"Death Mountain", Oot3dLocationCategory::DeathMountain},
+        {"Goron City", Oot3dLocationCategory::GoronCity},
+        {"Death Mountain Crater", Oot3dLocationCategory::DeathMountainCrater},
+        {"Zoras River", Oot3dLocationCategory::ZorasRiver},
+        {"Frog Rupees", Oot3dLocationCategory::FrogRupees},
+        {"Zoras Domain", Oot3dLocationCategory::ZorasDomain},
+        {"Zoras Fountain", Oot3dLocationCategory::ZorasFountain},
+        {"Lon Lon Ranch", Oot3dLocationCategory::LonLonRanch},
+        {"Deku Tree", Oot3dLocationCategory::DekuTree},
+        {"Dodongos Cavern", Oot3dLocationCategory::DodongosCavern},
+        {"Jabu Jabus Belly", Oot3dLocationCategory::JabuJabusBelly},
+        {"Forest Temple", Oot3dLocationCategory::ForestTemple},
+        {"Fire Temple", Oot3dLocationCategory::FireTemple},
+        {"Water Temple", Oot3dLocationCategory::WaterTemple},
+        {"Spirit Temple", Oot3dLocationCategory::SpiritTemple},
+        {"Shadow Temple", Oot3dLocationCategory::ShadowTemple},
+        {"Bottom of the Well", Oot3dLocationCategory::BottomOfTheWell},
+        {"Ice Cavern", Oot3dLocationCategory::IceCavern},
+        {"Gerudo Training Ground", Oot3dLocationCategory::GerudoTrainingGround},
+        {"Ganons Castle", Oot3dLocationCategory::GanonsCastle},
+        {"Skulltula", Oot3dLocationCategory::Skulltula},
+        {"Boss Heart", Oot3dLocationCategory::BossHeart},
+        {"Temple of Time", Oot3dLocationCategory::TempleOfTime},
+        {"Fairies", Oot3dLocationCategory::Fairies},
+        {"Outside Ganons Castle", Oot3dLocationCategory::OutsideGanonsCastle},
+        {"Song", Oot3dLocationCategory::Song},
+        {"Song Dungeon Reward", Oot3dLocationCategory::SongDungeonReward},
+        {"Cow", Oot3dLocationCategory::Cow},
+        {"Shop", Oot3dLocationCategory::Shop},
+        {"Merchant", Oot3dLocationCategory::Merchant},
+        {"Vanilla Small Key", Oot3dLocationCategory::VanillaSmallKey},
+        {"Vanilla TH Small Key", Oot3dLocationCategory::VanillaTHSmallKey},
+        {"Vanilla Boss Key", Oot3dLocationCategory::VanillaBossKey},
+        {"Vanilla Map", Oot3dLocationCategory::VanillaMap},
+        {"Vanilla Compass", Oot3dLocationCategory::VanillaCompass},
+        {"Adult Trade", Oot3dLocationCategory::AdultTrade},
     };
     if (nameLocationCategoryMap.count(name) == 0)
     {
-        return LocationCategory::INVALID;
+        return Oot3dLocationCategory::INVALID;
     }
     return nameLocationCategoryMap.at(name);
 }
@@ -137,6 +152,7 @@ SpoilerCollectionCheckType NameToOot3dSpoilerCheckType(const std::string& name)
         {"Poe Points", SpoilerCollectionCheckType::SPOILER_CHK_POE_POINTS},
         {"Shop Item", SpoilerCollectionCheckType::SPOILER_CHK_SHOP_ITEM},
         {"Magic Beans", SpoilerCollectionCheckType::SPOILER_CHK_MAGIC_BEANS},
+        {"Master Sword", SpoilerCollectionCheckType::SPOILER_CHK_MASTER_SWORD},
     };
 
     if (nameCheckTypeMap.count(name) == 0)

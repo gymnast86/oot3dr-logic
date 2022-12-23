@@ -28,9 +28,16 @@ std::vector<T> FilterAndEraseFromPool(std::vector<T>& vector, Predicate pred) {
 
 // Helper function for combining two item pools
 template <typename T, typename FromPool>
-void AddElementsToPool(std::vector<T>& toPool, const FromPool& fromPool)
+void MergePools(std::vector<T>& toPool, const FromPool& fromPool)
 {
     toPool.insert(toPool.end(), fromPool.begin(), fromPool.end());
+}
+
+// Same as above, but allows listing individual elements
+template<typename Container, typename... Args>
+void AddElementsToPool(Container& v, Args&&... args)
+{
+    (v.push_back(std::forward<Args>(args)), ...);
 }
 
 template <typename T>
@@ -65,4 +72,16 @@ void RemoveElementFromPool( Container& container, T element, int numberToRemove 
             container.erase(itr);
         }
     }
+}
+
+template <typename First, typename... T>
+bool IsAnyOf(First&& first, T&&... t)
+{
+    return ((first == t) || ...);
+}
+
+template <typename First, typename... T>
+bool IsNoneOf(First&& first, T&&... t)
+{
+    return !((first == t) || ...);
 }
